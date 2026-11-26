@@ -8,7 +8,6 @@ const config: Config = {
   tagline: "NVR With Realtime Object Detection for IP Cameras",
   url: "https://kzkvv.github.io",
   baseUrl: "/heisencam/docs/",
-  trailingSlash: true,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/branding/favicon.ico",
