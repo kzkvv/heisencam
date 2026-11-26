@@ -1,0 +1,149 @@
+{
+  "captureDate": "2026-11-26",
+  "publishers": {
+    "caltrans": {
+      "name": "Caltrans",
+      "catalog": "https://cwwp2.dot.ca.gov/closed-circuit-television-cameras.html",
+      "terms": "https://dot.ca.gov/conditions-of-use",
+      "credit": "California Department of Transportation. Excerpts from the Caltrans public traffic-camera service."
+    },
+    "calgary": {
+      "name": "The City of Calgary",
+      "catalog": "https://data.calgary.ca/Transportation-Transit/Traffic-Cameras/k7p9-kppz",
+      "terms": "https://data.calgary.ca/stories/s/Open-Calgary-Terms-of-Use/u45n-7awa",
+      "credit": "Contains information licensed under the Open Government Licence – City of Calgary."
+    }
+  },
+  "cameras": [
+    {
+      "id": "fortieth_street",
+      "name": "40th Street crossing",
+      "location": "Emeryville, California",
+      "sourceName": "T250W -- SR-123 : 40th Street - Looking West",
+      "publisher": "caltrans",
+      "sourceUrl": "https://wzmedia.dot.ca.gov/D4/N123_at_40th_St_West_View.stream/playlist.m3u8",
+      "kind": "Video",
+      "width": 960,
+      "height": 540,
+      "seconds": 16.0
+    },
+    {
+      "id": "downtown_skywalk",
+      "name": "Downtown skywalk",
+      "location": "Calgary, Alberta",
+      "sourceName": "5 Avenue / 5 Street SW",
+      "publisher": "calgary",
+      "sourceUrl": "https://trafficcam.calgary.ca/loc122.jpg",
+      "kind": "Time-lapse",
+      "width": 800,
+      "height": 600,
+      "seconds": 16.0
+    },
+    {
+      "id": "bay_bridge",
+      "name": "Bay Bridge tower",
+      "location": "San Francisco Bay, California",
+      "sourceName": "TVD32 -- I-80 : Bay Bridge SAS Tower East",
+      "publisher": "caltrans",
+      "sourceUrl": "https://wzmedia.dot.ca.gov/D4/W80_at_SAS_Tower.stream/playlist.m3u8",
+      "kind": "Video",
+      "width": 720,
+      "height": 528,
+      "seconds": 16.0
+    },
+    {
+      "id": "twelfth_avenue",
+      "name": "12 Avenue corner",
+      "location": "Calgary, Alberta",
+      "sourceName": "12 Avenue / 5 Street SW",
+      "publisher": "calgary",
+      "sourceUrl": "https://trafficcam.calgary.ca/loc76.jpg",
+      "kind": "Time-lapse",
+      "width": 800,
+      "height": 600,
+      "seconds": 16.0
+    },
+    {
+      "id": "pacific_coast",
+      "name": "Crenshaw Boulevard",
+      "location": "Torrance, California",
+      "sourceName": "SR-1 : (220) Crenshaw Blvd",
+      "publisher": "caltrans",
+      "sourceUrl": "https://wzmedia.dot.ca.gov/D7/CCTV-220.stream/playlist.m3u8",
+      "kind": "Video",
+      "width": 960,
+      "height": 540,
+      "seconds": 16.0
+    },
+    {
+      "id": "ninth_avenue",
+      "name": "9 Avenue crossing",
+      "location": "Calgary, Alberta",
+      "sourceName": "9 Avenue / 5 Street SW",
+      "publisher": "calgary",
+      "sourceUrl": "https://trafficcam.calgary.ca/loc129.jpg",
+      "kind": "Time-lapse",
+      "width": 800,
+      "height": 600,
+      "seconds": 16.0
+    }
+  ],
+  "events": [
+    {
+      "id": "twelfth_avenue-person",
+      "camera": "twelfth_avenue",
+      "label": "person",
+      "score": 77,
+      "offset": 0.5
+    },
+    {
+      "id": "pacific_coast-car",
+      "camera": "pacific_coast",
+      "label": "car",
+      "score": 77,
+      "offset": 7.2
+    },
+    {
+      "id": "ninth_avenue-person",
+      "camera": "ninth_avenue",
+      "label": "person",
+      "score": 77,
+      "offset": 4.5
+    },
+    {
+      "id": "downtown_skywalk-car",
+      "camera": "downtown_skywalk",
+      "label": "car",
+      "score": 84,
+      "offset": 4.5
+    },
+    {
+      "id": "fortieth_street-car",
+      "camera": "fortieth_street",
+      "label": "car",
+      "score": 71,
+      "offset": 14.2
+    },
+    {
+      "id": "downtown_skywalk-person",
+      "camera": "downtown_skywalk",
+      "label": "person",
+      "score": 75,
+      "offset": 12.5
+    },
+    {
+      "id": "twelfth_avenue-car",
+      "camera": "twelfth_avenue",
+      "label": "car",
+      "score": 82,
+      "offset": 12.5
+    },
+    {
+      "id": "ninth_avenue-car",
+      "camera": "ninth_avenue",
+      "label": "car",
+      "score": 80,
+      "offset": 8.5
+    }
+  ]
+}
