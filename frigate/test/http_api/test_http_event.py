@@ -45,6 +45,27 @@ class TestHttpApp(BaseTestHttp):
     ####################################################################################################################
     ###################################  GET /events Endpoint   #########################################################
     ####################################################################################################################
+    def test_date_cursor_preserves_events_with_identical_timestamps(self):
+        stamp = datetime.now().timestamp()
+        ids = [f"same-frame-{number:02d}" for number in range(26)]
+        with AuthTestClient(self.app) as client:
+            for event_id in ids:
+                super().insert_mock_event(event_id, stamp, stamp + 2)
+            for sort, expected in (("date_asc", ids), ("date_desc", ids[::-1])):
+                with self.subTest(sort=sort):
+                    params = {"sort": sort, "limit": 25}
+                    first = client.get("/events", params=params).json()
+                    last = first[-1]
+                    second = client.get(
+                        "/events",
+                        params={
+                            **params,
+                            "cursor_start_time": last["start_time"],
+                            "cursor_event_id": last["id"],
+                        },
+                    ).json()
+                    assert [row["id"] for row in first + second] == expected
+
     def test_get_event_list_no_events(self):
         with AuthTestClient(self.app) as client:
             events = client.get("/events").json()

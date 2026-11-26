@@ -21,6 +21,18 @@ PLUS_API_HOST = "https://api.frigate.video"
 
 SHM_FRAMES_VAR = "SHM_MAX_FRAMES"
 
+CAMERA_CONTROLS_LOCKED = os.getenv(
+    "FRIGATE_CONFIG_ONLY_CAMERA_CONTROLS", ""
+).lower() in {
+    "1",
+    "true",
+}
+LOCKED_CAMERA_FEATURES = frozenset({"enabled", "detect", "motion", "recordings"})
+LOCKED_CAMERA_SECTIONS = frozenset({"detect", "motion", "record"})
+CAMERA_CONTROLS_LOCKED_MESSAGE = (
+    "Camera detection and recording are controlled by the configuration file."
+)
+
 REDACTED_CREDENTIAL_SENTINEL = "__FRIGATE_SAVED_CREDENTIAL__"
 
 # Attribute & Object constants

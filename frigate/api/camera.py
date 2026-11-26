@@ -34,6 +34,11 @@ from frigate.config.camera.updater import (
     CameraConfigUpdateTopic,
 )
 from frigate.config.env import substitute_frigate_vars
+from frigate.const import (
+    CAMERA_CONTROLS_LOCKED,
+    CAMERA_CONTROLS_LOCKED_MESSAGE,
+    LOCKED_CAMERA_FEATURES,
+)
 from frigate.models import User
 from frigate.util.builtin import (
     clean_camera_user_pass,
@@ -1175,6 +1180,12 @@ async def delete_camera(
         camera_name: Name of the camera to delete
         delete_exports: Whether to also delete exports for this camera
     """
+    if CAMERA_CONTROLS_LOCKED:
+        return JSONResponse(
+            status_code=403,
+            content={"success": False, "message": CAMERA_CONTROLS_LOCKED_MESSAGE},
+        )
+
     frigate_config: FrigateConfig = request.app.frigate_config
 
     if camera_name not in frigate_config.cameras:
@@ -1386,6 +1397,12 @@ def camera_set(
             )
         dispatcher._receive("profile/set", body.value)
         return JSONResponse(content={"success": True})
+
+    if CAMERA_CONTROLS_LOCKED and feature in LOCKED_CAMERA_FEATURES:
+        return JSONResponse(
+            status_code=403,
+            content={"success": False, "message": CAMERA_CONTROLS_LOCKED_MESSAGE},
+        )
 
     if feature not in dispatcher._camera_settings_handlers:
         return JSONResponse(

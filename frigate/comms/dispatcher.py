@@ -20,10 +20,12 @@ from frigate.config.camera.updater import (
 from frigate.config.config import RuntimeFilterConfig, RuntimeMotionConfig
 from frigate.config.profile_manager import ProfileManager
 from frigate.const import (
+    CAMERA_CONTROLS_LOCKED,
     CLEAR_ONGOING_REVIEW_SEGMENTS,
     EXPIRE_AUDIO_ACTIVITY,
     INSERT_MANY_RECORDINGS,
     INSERT_PREVIEW,
+    LOCKED_CAMERA_FEATURES,
     NOTIFICATION_TEST,
     REQUEST_REGION_GRID,
     UPDATE_AUDIO_ACTIVITY,
@@ -123,6 +125,8 @@ class Dispatcher:
 
             try:
                 if command_type == "set":
+                    if CAMERA_CONTROLS_LOCKED and command in LOCKED_CAMERA_FEATURES:
+                        return
                     # Commands that require a sub-command (mask/zone name)
                     sub_command_required = {
                         "motion_mask",
@@ -427,6 +431,8 @@ class Dispatcher:
                 continue
 
             for topic, value in features.items():
+                if CAMERA_CONTROLS_LOCKED and topic in LOCKED_CAMERA_FEATURES:
+                    continue
                 handler = self._camera_settings_handlers.get(topic)
 
                 if handler is None:
@@ -457,6 +463,8 @@ class Dispatcher:
         """
         for camera_name, features in self.apply_runtime_state().items():
             for topic, value in features.items():
+                if CAMERA_CONTROLS_LOCKED and topic in LOCKED_CAMERA_FEATURES:
+                    continue
                 logger.info(
                     "Restored runtime state: %s.%s=%s",
                     camera_name,
@@ -514,6 +522,8 @@ class Dispatcher:
                 continue
 
             for topic, value in features.items():
+                if CAMERA_CONTROLS_LOCKED and topic in LOCKED_CAMERA_FEATURES:
+                    continue
                 if topic == "enabled":
                     if value and not camera.enabled_in_config:
                         continue

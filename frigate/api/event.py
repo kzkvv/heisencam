@@ -362,13 +362,21 @@ def events(
     else:
         order_by = Event.start_time.desc()
 
-    # offset paging needs a stable order when scores or speeds tie
-    tiebreaker = [Event.id] if sort and sort.startswith(("score", "speed")) else []
+    date_sort = not sort or sort in ("date_asc", "date_desc")
+    ascending = sort == "date_asc"
+    tiebreaker = Event.id.asc() if ascending else Event.id.desc()
+    if date_sort and params.cursor_start_time is not None and params.cursor_event_id:
+        stamp, event_id = params.cursor_start_time, params.cursor_event_id
+        earlier = (
+            Event.start_time < stamp if not ascending else Event.start_time > stamp
+        )
+        tie = Event.id < event_id if not ascending else Event.id > event_id
+        clauses.append(earlier | ((Event.start_time == stamp) & tie))
 
     events = (
         Event.select(*selected_columns)
         .where(reduce(operator.and_, clauses))
-        .order_by(order_by, *tiebreaker)
+        .order_by(order_by, tiebreaker)
         .limit(limit)
         .offset(offset)
         .dicts()
@@ -884,10 +892,10 @@ def events_search(
             reverse=True,
         )
     elif sort == "date_asc":
-        processed_events.sort(key=lambda x: x["start_time"])
+        processed_events.sort(key=lambda x: (x["start_time"], x["id"]))
     else:
         # "date_desc" default
-        processed_events.sort(key=lambda x: x["start_time"], reverse=True)
+        processed_events.sort(key=lambda x: (x["start_time"], x["id"]), reverse=True)
 
     # Limit the number of events returned
     processed_events = processed_events[offset:][:limit]

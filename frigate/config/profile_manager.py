@@ -14,7 +14,7 @@ from frigate.config.camera.updater import (
     CameraConfigUpdateTopic,
 )
 from frigate.config.camera.zone import ZoneConfig
-from frigate.const import CONFIG_DIR
+from frigate.const import CAMERA_CONTROLS_LOCKED, CONFIG_DIR, LOCKED_CAMERA_SECTIONS
 from frigate.util.builtin import deep_merge
 from frigate.util.config import apply_section_update
 
@@ -346,7 +346,11 @@ class ProfileManager:
                 continue
 
             # Apply enabled override
-            if profile.enabled is not None and cam_config.enabled != profile.enabled:
+            if (
+                not CAMERA_CONTROLS_LOCKED
+                and profile.enabled is not None
+                and cam_config.enabled != profile.enabled
+            ):
                 cam_config.enabled = profile.enabled
                 changed.setdefault(cam_name, set()).add("enabled")
 
@@ -377,6 +381,8 @@ class ProfileManager:
                     continue
 
                 overrides = profile_section.model_dump(exclude_unset=True)
+                if CAMERA_CONTROLS_LOCKED and section in LOCKED_CAMERA_SECTIONS:
+                    overrides.pop("enabled", None)
                 if not overrides:
                     continue
 

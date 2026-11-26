@@ -17,6 +17,8 @@ class EventsQueryParams(BaseModel):
     offset: int | None = Field(0, ge=0)
     after: float | None = None
     before: float | None = None
+    cursor_start_time: float | None = None
+    cursor_event_id: str | None = None
     time_range: str | None = DEFAULT_TIME_RANGE
     has_clip: int | None = None
     has_snapshot: int | None = None

@@ -4099,6 +4099,22 @@ paths:
               - type: number
               - type: 'null'
             title: Before
+        - name: cursor_start_time
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: number
+              - type: 'null'
+            title: Cursor Start Time
+        - name: cursor_event_id
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Cursor Event Id
         - name: time_range
           in: query
           required: false
