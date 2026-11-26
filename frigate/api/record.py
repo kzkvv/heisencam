@@ -2,15 +2,16 @@
 
 import datetime as dt
 import logging
-from datetime import datetime, timedelta
 from functools import reduce
 from pathlib import Path
+from time import time
 from urllib.parse import unquote
 
 from fastapi import APIRouter, Depends, Request
 from fastapi import Path as PathParam
 from fastapi.responses import JSONResponse
 from peewee import fn, operator
+from pydantic.json_schema import SkipJsonSchema
 
 from frigate.api.auth import (
     allow_any_authenticated,
@@ -223,13 +224,20 @@ async def recordings_summary(camera_name: str, timezone: str = "utc"):
     return JSONResponse(content=list(days.values()))
 
 
+def _recording_window(after: float | None, before: float | None) -> tuple[float, float]:
+    """Resolve omitted query bounds against a single request-time clock reading."""
+    now = time()
+    return (now - 3600 if after is None else after, now if before is None else before)
+
+
 @router.get("/{camera_name}/recordings", dependencies=[Depends(require_camera_access)])
 async def recordings(
     camera_name: str,
-    after: float = (datetime.now() - timedelta(hours=1)).timestamp(),
-    before: float = datetime.now().timestamp(),
+    after: float | SkipJsonSchema[None] = None,
+    before: float | SkipJsonSchema[None] = None,
 ):
-    """Return specific camera recordings between the given 'after'/'end' times. If not provided the last hour will be used"""
+    """Return camera recordings in the requested window, defaulting to the last hour."""
+    after, before = _recording_window(after, before)
     recordings = (
         Recordings.select(
             Recordings.id,
@@ -275,11 +283,7 @@ async def no_recordings(
     if not camera_list:
         return JSONResponse(content=[])
 
-    before = params.before or datetime.datetime.now().timestamp()
-    after = (
-        params.after
-        or (datetime.datetime.now() - datetime.timedelta(hours=1)).timestamp()
-    )
+    after, before = _recording_window(params.after, params.before)
     scale = params.scale
 
     clauses = [

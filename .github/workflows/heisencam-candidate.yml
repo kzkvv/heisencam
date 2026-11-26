@@ -71,7 +71,8 @@ jobs:
           test "$(docker image inspect "$image" --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')" = "$GITHUB_SHA"
           docker run --rm --network none --entrypoint python3 "$image" -m unittest \
             frigate.test.test_detection_evidence frigate.test.test_debug_replay \
-            frigate.test.test_video frigate.test.test_performance
+            frigate.test.test_video frigate.test.test_performance \
+            frigate.test.http_api.test_http_media
           docker run --rm --network none --entrypoint python3 -v "$PWD/tools:/opt/frigate/tools:ro" "$image" \
             -m unittest discover -s /opt/frigate/tools -p test_performance_smoke.py
           docker run --rm --network none --entrypoint python3 \

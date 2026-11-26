@@ -6969,7 +6969,7 @@ paths:
       description: |-
         **Access:** Authenticated user with access to the referenced camera.
 
-        Return specific camera recordings between the given 'after'/'end' times. If not provided the last hour will be used
+        Return camera recordings in the requested window, defaulting to the last hour.
       operationId: recordings__camera_name__recordings_get
       parameters:
         - name: camera_name
@@ -7042,6 +7042,7 @@ paths:
           required: false
           schema:
             type: integer
+            exclusiveMinimum: 0
             default: 30
             title: Scale
       responses:

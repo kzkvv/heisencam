@@ -407,6 +407,45 @@ class TestHttpMedia(BaseTestHttp):
             assert "2024-03-10" in summary
             assert summary["2024-03-10"] is True
 
+    def test_recordings_default_window_advances_with_request_time(self):
+        """A client that omits timestamps sees the last hour on each request."""
+        with AuthTestClient(self.app) as client:
+            Recordings.create(
+                id="recent",
+                camera="front_door",
+                path="/media/recent.mp4",
+                start_time=10_000,
+                end_time=10_010,
+                duration=10,
+            )
+            with patch("frigate.api.record.time", return_value=10_020):
+                for params in ({}, {"after": 9_990}, {"before": 10_020}):
+                    response = client.get("/front_door/recordings", params=params)
+                    self.assertEqual(response.status_code, 200)
+                    self.assertEqual([row["id"] for row in response.json()], ["recent"])
+            with patch("frigate.api.record.time", return_value=14_000):
+                self.assertEqual(client.get("/front_door/recordings").json(), [])
+
+    def test_unavailable_defaults_and_explicit_epoch(self):
+        """Missing bounds use the request clock and zero is a real timestamp."""
+        with (
+            AuthTestClient(self.app) as client,
+            patch("frigate.api.record.time", return_value=7200),
+        ):
+            for params, start, end in [
+                ({}, 3600, 7200),
+                ({"after": 0, "before": 60}, 0, 60),
+            ]:
+                response = client.get("/recordings/unavailable", params=params)
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(
+                    response.json(), [{"start_time": start, "end_time": end}]
+                )
+
+            self.assertEqual(
+                client.get("/recordings/unavailable?scale=0").status_code, 422
+            )
+
     def test_recordings_unavailable_reports_gap_between_recordings(self):
         """A gap between two recordings is reported as an unavailable segment."""
         with AuthTestClient(self.app) as client:
