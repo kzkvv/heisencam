@@ -18,7 +18,9 @@ detect:
   enabled: true
   width: 960
   height: 540
-  fps: 5
+  fps: 2
+objects:
+  track: [person, car]
 birdseye:
   enabled: true
   mode: continuous
@@ -30,19 +32,63 @@ record:
 snapshots:
   enabled: true
 cameras:
-  south_rim:
-    friendly_name: Kīlauea · South rim
+  fortieth_street:
+    friendly_name: 40th Street crossing
     ffmpeg:
       inputs:
-        - path: /demo/south_rim.mp4
+        - path: /demo/fortieth_street.mp4
           roles: [detect, record]
     ui:
       order: 1
-  west_rim:
-    friendly_name: Kīlauea · West rim
+  downtown_skywalk:
+    friendly_name: Downtown skywalk
+    detect:
+      width: 800
+      height: 600
     ffmpeg:
       inputs:
-        - path: /demo/west_rim.mp4
+        - path: /demo/downtown_skywalk.mp4
           roles: [detect, record]
     ui:
       order: 2
+  bay_bridge:
+    friendly_name: Bay Bridge tower
+    detect:
+      width: 720
+      height: 528
+    ffmpeg:
+      inputs:
+        - path: /demo/bay_bridge.mp4
+          roles: [detect, record]
+    ui:
+      order: 3
+  twelfth_avenue:
+    friendly_name: 12 Avenue corner
+    detect:
+      width: 800
+      height: 600
+    ffmpeg:
+      inputs:
+        - path: /demo/twelfth_avenue.mp4
+          roles: [detect, record]
+    ui:
+      order: 4
+  pacific_coast:
+    friendly_name: Crenshaw Boulevard
+    ffmpeg:
+      inputs:
+        - path: /demo/pacific_coast.mp4
+          roles: [detect, record]
+    ui:
+      order: 5
+  ninth_avenue:
+    friendly_name: 9 Avenue crossing
+    detect:
+      width: 800
+      height: 600
+    ffmpeg:
+      inputs:
+        - path: /demo/ninth_avenue.mp4
+          roles: [detect, record]
+    ui:
+      order: 6

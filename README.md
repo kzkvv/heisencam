@@ -11,12 +11,12 @@ Our name nods to Walter White's line in *Cornered*. Camera footage once helped o
 ## Run the candidate
 
 ```sh
-git clone --branch heisencam/0.18.3 https://github.com/kzkvv/heisencam.git
+git clone --depth 1 --branch heisencam/0.18.3 https://github.com/kzkvv/heisencam.git
 cd heisencam/examples/demo
 docker compose up -d
 ```
 
-Open [the local dashboard](http://127.0.0.1:8972). The demo uses two simulated camera feeds made from public-domain USGS webcam images. Its media and database are separate Docker volumes. The candidate publishes AMD64 and ARM64 images to `ghcr.io/kzkvv/heisencam`. For repeatable deployment, use the tag `sha-<full candidate commit SHA>` or its OCI digest.
+Open [the local dashboard](http://127.0.0.1:8972). The example replays six public traffic-camera samples from California and Calgary. Its recordings and database use separate Docker volumes. The candidate publishes AMD64 and ARM64 images to `ghcr.io/kzkvv/heisencam`. For repeatable deployment, use the tag `sha-<full candidate commit SHA>` or its OCI digest.
 
 ## What changes
 
@@ -27,7 +27,7 @@ Open [the local dashboard](http://127.0.0.1:8972). The demo uses two simulated c
 
 Configuration keys, `FRIGATE_*` environment variables, MQTT topics, API routes and container storage paths follow Frigate conventions. The default detector and any additional hardware dependencies depend on your configuration and chosen base image.
 
-[Candidate website](https://kzkvv.github.io/heisencam/) · [Docker demo and image credits](examples/demo/README.md) · [Build and benchmark instructions](docker/classic/README.md) · [Archive, backport and rollback](docs/heisencam-compatibility.md)
+[Browser demo](https://kzkvv.github.io/heisencam/demo/) · [Documentation](https://kzkvv.github.io/heisencam/docs/) · [Docker demo and camera credits](examples/demo/README.md) · [Build and benchmark instructions](docker/classic/README.md) · [Archive, backport and rollback](docs/heisencam-compatibility.md)
 
 <details><summary>Original naming note</summary>
 

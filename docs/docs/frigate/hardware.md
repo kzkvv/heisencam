@@ -54,20 +54,20 @@ HeisenCam supports multiple different detectors that work on different types of 
 **Most Hardware**
 
 - [Hailo](#hailo-8): The Hailo8 and Hailo8L AI Acceleration module is available in m.2 format with a HAT for RPi devices offering a wide range of compatibility with devices.
-  - [Supports many model architectures](../../configuration/object_detectors#configuration-hailo)
+  - [Supports many model architectures](../configuration/object_detectors.md#configuration-hailo)
   - Runs best with tiny or small size models
 
 - [Google Coral EdgeTPU](#google-coral-tpu): The Google Coral EdgeTPU is available in USB and m.2 format allowing for a wide range of compatibility with devices.
-  - [Supports primarily ssdlite and mobilenet model architectures](../../configuration/object_detectors#edge-tpu-detector)
+  - [Supports primarily ssdlite and mobilenet model architectures](../configuration/object_detectors.md#edge-tpu-detector)
 
 - <CommunityBadge /> [MemryX](#memryx-mx3): The MX3 M.2 accelerator module is available in m.2 format allowing for a wide range of compatibility with devices.
-  - [Supports many model architectures](../../configuration/object_detectors#memryx-mx3)
+  - [Supports many model architectures](../configuration/object_detectors.md#memryx-mx3)
   - Runs best with tiny, small, or medium-size models
 
 **AMD**
 
 - [ROCm](#rocm---amd-gpu): ROCm can run on AMD Discrete GPUs to provide efficient object detection
-  - [Supports limited model architectures](../../configuration/object_detectors#amdrocm-gpu-detector)
+  - [Supports limited model architectures](../configuration/object_detectors.md#amdrocm-gpu-detector)
   - Runs best on discrete AMD GPUs
 - <CommunityBadge /> [XDNA2 (Ryzen AI)](#amd-xdna2): AMD XDNA2 NPU (sub-watt power AI/ML processor separate to the GPU) inside Strix and other "AI" branded AMD platforms
   - Has only been tested with YOLOv9, in theory other graphs may be compiled too.
@@ -76,20 +76,20 @@ HeisenCam supports multiple different detectors that work on different types of 
 **Apple Silicon**
 
 - [Apple Silicon](#apple-silicon): Apple Silicon is usable on all M1 and newer Apple Silicon devices to provide efficient and fast object detection
-  - [Supports primarily ssdlite and mobilenet model architectures](../../configuration/object_detectors#apple-silicon-detector)
+  - [Supports primarily ssdlite and mobilenet model architectures](../configuration/object_detectors.md#apple-silicon-detector)
   - Runs well with any size models including large
   - Runs via ZMQ proxy which adds some latency, only recommended for local connection
 
 **Intel**
 
 - [OpenVino](#openvino---intel): OpenVino can run on Intel Arc GPUs, Intel integrated GPUs, and Intel NPUs to provide efficient object detection.
-  - [Supports majority of model architectures](../../configuration/object_detectors#openvino-detector)
+  - [Supports majority of model architectures](../configuration/object_detectors.md#openvino-detector)
   - Runs best with tiny, small, or medium models
 
 **Nvidia**
 
 - [Nvidia GPU](#nvidia-gpus): Nvidia GPUs can provide efficient object detection.
-  - [Supports majority of model architectures via ONNX](../../configuration/object_detectors#onnx)
+  - [Supports majority of model architectures via ONNX](../configuration/object_detectors.md#onnx)
   - Runs well with any size models including large
 
 - <CommunityBadge /> [Jetson](#nvidia-jetson): Jetson devices are supported via the TensorRT or ONNX detectors when running Jetpack 6.
@@ -97,7 +97,7 @@ HeisenCam supports multiple different detectors that work on different types of 
 **Rockchip** <CommunityBadge />
 
 - [RKNN](#rockchip-platform): RKNN models can run on Rockchip devices with included NPUs to provide efficient object detection.
-  - [Supports limited model architectures](../../configuration/object_detectors#rockchip-supported-models)
+  - [Supports limited model architectures](../configuration/object_detectors.md#rockchip-supported-models)
   - Runs best with tiny or small size models
   - Runs efficiently on low power hardware
 
@@ -298,7 +298,7 @@ The inference time of a rk3588 with all 3 cores enabled is typically 25-30 ms fo
 | ---------------- | ----------------------------------- |
 | yolov9-tiny      | ~ 4 ms                              |
 
-### AMD Ryzen AI / XDNA2
+### AMD Ryzen AI / XDNA2 {#amd-xdna2}
 
 HeisenCam supports AMD XDNA2 NPUs through the community-maintained
 frigate-xdna ZMQ sidecar. It works with stock HeisenCam and supports

@@ -3,14 +3,12 @@ import * as path from "node:path";
 import type { Config, PluginConfig } from "@docusaurus/types";
 import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
-// Bump when a new stable release ships
-const STABLE_VERSION = "0.18";
-
 const config: Config = {
   title: "HeisenCam",
   tagline: "NVR With Realtime Object Detection for IP Cameras",
   url: "https://kzkvv.github.io",
   baseUrl: "/heisencam/docs/",
+  trailingSlash: true,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/branding/favicon.ico",
@@ -88,8 +86,8 @@ const config: Config = {
       },
       items: [
         {
-          href: "https://github.com/kzkvv/heisencam/releases",
-          label: `${STABLE_VERSION}`,
+          href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3",
+          label: "0.18.3",
           position: "left",
         },
         {
@@ -104,7 +102,7 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3/examples/demo",
+          href: "https://kzkvv.github.io/heisencam/demo/",
           label: "Demo",
           position: "right",
         },
@@ -119,7 +117,7 @@ const config: Config = {
           ],
         },
         {
-          href: "https://github.com/kzkvv/heisencam",
+          href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3",
           label: "GitHub",
           position: "right",
         },

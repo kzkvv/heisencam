@@ -339,7 +339,7 @@ For example:
 ```
 services:
   frigate:
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3
     environment:
       - FRIGATE_BASE_PATH=/frigate
 ```
@@ -399,7 +399,7 @@ You can also validate your config at the command line by using the docker contai
 docker run                                \
   -v $(pwd)/config.yml:/config/config.yml \
   --entrypoint python3                    \
-  ghcr.io/blakeblackshear/frigate:stable  \
+  ghcr.io/kzkvv/heisencam:candidate-0.18.3  \
   -u -m frigate                           \
   --validate-config
 ```

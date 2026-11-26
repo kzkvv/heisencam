@@ -2,7 +2,7 @@ services:
   heisencam:
     image: ${HEISENCAM_IMAGE:-ghcr.io/kzkvv/heisencam:candidate-0.18.3}
     restart: unless-stopped
-    shm_size: 256m
+    shm_size: 512m
     environment:
       FRIGATE_CONFIG_ONLY_CAMERA_CONTROLS: "true"
     ports:

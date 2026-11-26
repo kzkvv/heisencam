@@ -5,110 +5,28 @@ title: Updating
 
 # Updating HeisenCam
 
-The current stable version of HeisenCam is **0.18.3**. The release notes and any breaking changes for this version can be found on the [HeisenCam GitHub releases page](https://github.com/blakeblackshear/frigate/releases/tag/v0.18.3).
+The [candidate branch](https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3) is based on upstream Frigate 0.18.3. Each verified build publishes images for AMD64 and ARM64. The [upstream release notes](https://github.com/blakeblackshear/frigate/releases/tag/v0.18.3) describe the underlying Frigate changes.
 
-Keeping HeisenCam up to date ensures you benefit from the latest features, performance improvements, and bug fixes. The update process varies slightly depending on your installation method (Docker, Home Assistant App, etc.). Below are instructions for the most common setups.
+## Before you begin
 
-## Before You Begin
-
-- **Stop HeisenCam**: For most methods, you’ll need to stop the running HeisenCam instance before backing up and updating.
-- **Backup Your Configuration**: Always back up your `/config` directory (e.g., `config.yml` and `frigate.db`, the SQLite database) before updating. This ensures you can roll back if something goes wrong.
-- **Check Release Notes**: Carefully review the [HeisenCam GitHub releases page](https://github.com/blakeblackshear/frigate/releases) for breaking changes or configuration updates that might affect your setup.
+Record your current image digest, configuration file, model selection and volume locations. Back up the database using SQLite's backup operation, or stop the recorder before copying its database files. Test an upgrade against copies of both the configuration and the database before switching a recorder that holds important footage.
 
 ## Updating with Docker
 
-If you’re running HeisenCam via Docker (recommended method), follow these steps:
+The example Compose file uses the `ghcr.io/kzkvv/heisencam:candidate-0.18.3` tag. Run these commands from its directory.
 
-1. **Stop the Container**:
-   - If using Docker Compose:
-     ```bash
-     docker compose down frigate
-     ```
-   - If using `docker run`:
-     ```bash
-     docker stop frigate
-     ```
+```sh
+docker compose pull
+docker compose up -d
+docker compose ps
+```
 
-2. **Update and Pull the Latest Image**:
-   - If using Docker Compose:
-     - Edit your `docker-compose.yml` file to specify the desired version tag (e.g., `0.18.3` instead of `0.17.1`). For example:
-       ```yaml
-       services:
-         frigate:
-           image: ghcr.io/blakeblackshear/frigate:0.18.3
-       ```
-     - Then pull the image:
-       ```bash
-       docker pull ghcr.io/blakeblackshear/frigate:0.18.3
-       ```
-     - **Note for `stable` Tag Users**: If your `docker-compose.yml` uses the `stable` tag (e.g., `ghcr.io/blakeblackshear/frigate:stable`), you don’t need to update the tag manually. The `stable` tag always points to the latest stable release after pulling.
-   - If using `docker run`:
-     - Pull the image with the appropriate tag (e.g., `0.18.3`, `0.18.3-tensorrt`, or `stable`):
-       ```bash
-       docker pull ghcr.io/blakeblackshear/frigate:0.18.3
-       ```
+Check the camera wall, open a recent recording and inspect detector activity in System. To pin a build, set `HEISENCAM_IMAGE=ghcr.io/kzkvv/heisencam:sha-<full commit SHA>` in the demo's `.env` file before running Compose. A custom deployment can use that image reference directly in the service's `image` setting.
 
-3. **Start the Container**:
-   - If using Docker Compose:
-     ```bash
-     docker compose up -d
-     ```
-   - If using `docker run`, re-run your original command (e.g., from the [Installation](./installation.md#docker) section) with the updated image tag.
+## Home Assistant
 
-4. **Verify the Update**:
-   - Check the container logs to ensure HeisenCam starts successfully:
-     ```bash
-     docker logs frigate
-     ```
-   - Visit the HeisenCam Web UI (default: `http://<your-ip>:5000`) to confirm the new version is running. The version number is displayed at the top of the System Metrics page.
+The [Frigate integration](../integrations/home-assistant.md) can connect to a HeisenCam server. Home Assistant's app store installs the upstream Frigate app and has its own update cycle. The Docker commands above update a separate HeisenCam server.
 
-### Notes
+## Rolling back
 
-- If you’ve customized other settings (e.g., `shm-size`), ensure they’re still appropriate after the update.
-- Docker will automatically use the updated image when you restart the container, as long as you pulled the correct version.
-
-## Updating the Home Assistant App (formerly Addon)
-
-For users running HeisenCam as a Home Assistant App:
-
-1. **Check for Updates**:
-   - Navigate to **Settings > Apps** in Home Assistant.
-   - Find your installed HeisenCam app (e.g., "HeisenCam NVR" or "HeisenCam NVR (Full Access)").
-   - If an update is available, you’ll see an "Update" button.
-
-2. **Update the App**:
-   - Make a backup of the current version of the app.
-   - Click the "Update" button next to the HeisenCam app.
-   - Wait for the process to complete. Home Assistant will handle downloading and installing the new version.
-
-3. **Restart the App**:
-   - After updating, go to the app’s page and click "Restart" to apply the changes.
-
-4. **Verify the Update**:
-   - Check the app logs (under the "Log" tab) to ensure HeisenCam starts without errors.
-   - Access the HeisenCam Web UI to confirm the new version is running.
-
-### Notes
-
-- Ensure your `/config/frigate.yml` is compatible with the new version by reviewing the [Release notes](https://github.com/blakeblackshear/frigate/releases).
-- If using custom hardware (e.g., Coral or GPU), verify that configurations still work, as app updates don’t modify your hardware settings.
-
-## Rolling Back
-
-If an update causes issues:
-
-1. Stop HeisenCam.
-2. Restore your backed-up config file and database.
-3. Revert to the previous image version:
-   - For Docker: Specify an older tag (e.g., `ghcr.io/blakeblackshear/frigate:0.18.2`) in your `docker run` command.
-   - For Docker Compose: Edit your `docker-compose.yml`, specify the older version tag (e.g., `ghcr.io/blakeblackshear/frigate:0.16.4`), and re-run `docker compose up -d`.
-   - For Home Assistant: Restore from the app/addon backup you took before you updated.
-4. Verify the old version is running again.
-
-## Troubleshooting
-
-- **Container Fails to Start**: Check logs (`docker logs frigate`) for errors.
-- **UI Not Loading**: Ensure ports (e.g., 5000, 8971) are still mapped correctly and the service is running.
-- **Hardware Issues**: Revisit hardware-specific setup (e.g., Coral, GPU) if detection or decoding fails post-update.
-
-Common questions are often answered in the [FAQ](https://github.com/blakeblackshear/frigate/discussions), pinned at the top of the support discussions.
+Stop the updated recorder, restore the matching configuration and database backup, select the previous image digest, and start the recorder with its original volume mappings. Keep recordings captured since the backup available until you have verified your archive. The [migration and rollback notes](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docs/heisencam-compatibility.md#migration-and-rollback) describe the rehearsal on a 0.12.1 database copy.

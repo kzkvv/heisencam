@@ -83,7 +83,7 @@ Now you have a minimal Debian server that requires very little maintenance.
    1. Specifically, follow the steps in the [Install using the apt repository](https://docs.docker.com/engine/install/debian/#install-using-the-repository) section
 2. Add your user to the docker group as described in the [Linux postinstall steps](https://docs.docker.com/engine/install/linux-postinstall/)
 
-## Installing HeisenCam
+## Installing HeisenCam {#installing-frigate}
 
 This section shows how to create a minimal directory structure for a Docker installation on Debian. If you have installed HeisenCam as a Home Assistant App or another way, you can continue to [Configuring HeisenCam](#configuring-frigate).
 
@@ -134,7 +134,7 @@ services:
 
 Now you should be able to start HeisenCam by running `docker compose up -d` from within the folder containing `docker-compose.yml`. On startup, an admin user and password will be created and outputted in the logs. You can see this by running `docker logs frigate`. HeisenCam should now be accessible at `https://server_ip:8971` where you can login with the `admin` user and finish configuration using the Settings UI.
 
-## Configuring HeisenCam
+## Configuring HeisenCam {#configuring-frigate}
 
 This section assumes that you already have an environment setup as described in [Installation](../frigate/installation.md). You should also configure your cameras according to the [camera setup guide](/frigate/camera_setup). Pay particular attention to the section on choosing a detect resolution.
 

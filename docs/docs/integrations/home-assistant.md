@@ -75,7 +75,7 @@ services:
     ...
 
   frigate:
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3
     ...
     ports:
       - "172.17.0.1:5000:5000"
@@ -94,7 +94,7 @@ services:
     ...
 
   frigate:
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3
     ...
     ports:
       # - "172.17.0.1:5000:5000"
@@ -131,7 +131,7 @@ Either disable TLS and use HTTP from HomeAssistant, or configure Frigate to be a
 ```yaml
 services:
   frigate:
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3
     ...
     ports:
       - "8971:8971"
@@ -145,7 +145,7 @@ Use `http://<frigate_device_tailscale_ip>:5000` as the URL for the integration.
 ```yaml
 services:
   frigate:
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3
     ...
     ports:
       - "<tailscale_ip>:5000:5000"

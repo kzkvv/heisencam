@@ -4,8 +4,9 @@ import frigateHttpApiSidebar from "./docs/integrations/api/sidebar";
 
 const sidebars: SidebarsConfig = {
   docs: {
-    Frigate: [
+    HeisenCam: [
       "frigate/index",
+      "guides/heisencam-demo",
       "frigate/hardware",
       "frigate/planning_setup",
       "frigate/installation",

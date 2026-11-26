@@ -4,12 +4,14 @@ title: HeisenCam
 slug: /
 ---
 
-HeisenCam is a local NVR derived from Frigate 0.18.3. The classic camera dashboard opens one object's recording in a single click. Review groups activity by time and camera, and History provides a recording timeline.
+HeisenCam is a local network video recorder built on Frigate 0.18.3. Open a camera from the classic dashboard, play a tracked object's recording in Events, or use History to find the minute you need.
 
 ## Get started
 
-Run the [two-camera Docker example](https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3/examples/demo) to try the interface. For your own cameras, configure the FFmpeg inputs, storage, retention and detector for the host. Access to the internal administrator endpoint in the example is bound to localhost.
+- [Open the browser demo](https://kzkvv.github.io/heisencam/demo/) to explore six public street cameras and play recorded detections.
+- [Run the same six sources in Docker](../guides/heisencam-demo.md) to try the full recorder with local detection and recording.
+- [Configure your first camera](./camera_setup.md) and [choose a detector](../configuration/object_detectors.md) for your hardware.
 
 ## Measure changes
 
-Use the [local quality replay and performance checks](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/classic/README.md) to compare false alerts and misses on labelled clips. The reference chapters also cover the APIs, MQTT topics and integrations inherited from Frigate.
+Use [quality replay](../guides/heisencam-demo.md#compare-detection-settings) to compare settings on the same labeled clips. The reference also covers [recording retention](../configuration/record.md), [MQTT](../integrations/mqtt.md) and the [HTTP API](./integrations/api/frigate-http-api/).

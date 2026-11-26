@@ -400,7 +400,7 @@ I recommend [Armbian](https://www.armbian.com/download/?arch=aarch64), if your b
 
 #### Setup
 
-Follow HeisenCam's default installation instructions, but use a docker image with `-rk` suffix for example `ghcr.io/blakeblackshear/frigate:stable-rk`.
+The upstream Frigate image for Rockchip uses the tag `ghcr.io/blakeblackshear/frigate:stable-rk`. To include the HeisenCam interface, use a matching 0.18.3 hardware image as the base in the [fork build guide](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/classic/README.md).
 
 Next, you need to grant docker permissions to access your hardware:
 
@@ -442,7 +442,7 @@ Next, you should configure [hardware object detection](/configuration/object_det
 
 #### Setup
 
-Follow HeisenCam's default installation instructions, but use a docker image with `-synaptics` suffix for example `ghcr.io/blakeblackshear/frigate:stable-synaptics`.
+The upstream Frigate image for Synaptics uses the tag `ghcr.io/blakeblackshear/frigate:stable-synaptics`. The [fork build guide](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/classic/README.md) describes how to use a matching hardware image as a base.
 
 Next, you need to grant docker permissions to access your hardware:
 
@@ -576,19 +576,11 @@ docker run -d \
   ghcr.io/kzkvv/heisencam:candidate-0.18.3
 ```
 
-The official docker image tags for the current stable version are:
-
-- `stable` - Standard HeisenCam build for amd64 & RPi Optimized HeisenCam build for arm64. This build includes support for Hailo devices as well.
-- `stable-standard-arm64` - Standard HeisenCam build for arm64
-- `stable-tensorrt` - HeisenCam build specific for amd64 devices running an Nvidia GPU
-- `stable-rocm` - HeisenCam build for [AMD GPUs](../configuration/object_detectors.md#amdrocm-gpu-detector)
-
-The community supported docker image tags for the current stable version are:
-
-- `stable-tensorrt-jp6` - HeisenCam build optimized for Nvidia Jetson devices running Jetpack 6
-- `stable-rk` - HeisenCam build for SBCs with Rockchip SoC
+HeisenCam publishes `ghcr.io/kzkvv/heisencam:candidate-0.18.3` for AMD64 and ARM64. Pin `sha-<full commit SHA>` or the image digest to repeat a deployment. Hardware-specific tags such as `stable-tensorrt`, `stable-rocm` and `stable-rk` belong to the upstream Frigate image repository. See the [fork build guide](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/classic/README.md) to build HeisenCam against a matching upstream hardware image.
 
 ## Home Assistant App
+
+This section describes the upstream Frigate app. To connect HeisenCam, run the candidate in Docker and configure the [Frigate integration](../integrations/home-assistant.md) in Home Assistant.
 
 :::warning
 
@@ -613,23 +605,23 @@ Home Assistant OS users can install via the App repository.
 
 1. In Home Assistant, navigate to _Settings_ > _Apps_ > _App Store_ > _Repositories_
 2. Add `https://github.com/blakeblackshear/frigate-hass-addons`
-3. Install the desired variant of the HeisenCam App (see below)
+3. Install the desired variant of the Frigate App (see below)
 4. Setup your network configuration in the `Configuration` tab
 5. Start the App
-6. Use the _Open Web UI_ button to access the HeisenCam UI, then click in the _cog icon_ > _Configuration editor_ and configure HeisenCam to your liking
+6. Use the _Open Web UI_ button to access the Frigate UI, then click in the _cog icon_ > _Configuration editor_ and configure Frigate to your liking
 
 There are several variants of the App available:
 
 | App Variant                | Description                                                |
 | -------------------------- | ---------------------------------------------------------- |
-| HeisenCam                    | Current release with protection mode on                    |
-| HeisenCam (Full Access)      | Current release with the option to disable protection mode |
-| HeisenCam Beta               | Beta release with protection mode on                       |
-| HeisenCam Beta (Full Access) | Beta release with the option to disable protection mode    |
+| Frigate                    | Current release with protection mode on                    |
+| Frigate (Full Access)      | Current release with the option to disable protection mode |
+| Frigate Beta               | Beta release with protection mode on                       |
+| Frigate Beta (Full Access) | Beta release with the option to disable protection mode    |
 
-If you are using hardware acceleration for ffmpeg, you **may** need to use the _Full Access_ variant of the App. This is because the HeisenCam App runs in a container with limited access to the host system. The _Full Access_ variant allows you to disable _Protection mode_ and give HeisenCam full access to the host system.
+If you are using hardware acceleration for ffmpeg, you **may** need to use the _Full Access_ variant of the App. This is because the Frigate App runs in a container with limited access to the host system. The _Full Access_ variant allows you to disable _Protection mode_ and give Frigate full access to the host system.
 
-You can also edit the HeisenCam configuration file through the [VS Code App](https://github.com/hassio-addons/addon-vscode) or similar. In that case, the configuration file will be at `/addon_configs/<addon_directory>/config.yml`, where `<addon_directory>` is specific to the variant of the HeisenCam App you are running. See the list of directories [here](../configuration/config.md#accessing-app-config-dir).
+You can also edit the Frigate configuration file through the [VS Code App](https://github.com/hassio-addons/addon-vscode) or similar. In that case, the configuration file will be at `/addon_configs/<addon_directory>/config.yml`, where `<addon_directory>` is specific to the variant of the Frigate App you are running. See the list of directories [here](../configuration/config.md#accessing-app-config-dir).
 
 ## Kubernetes
 
@@ -724,7 +716,7 @@ Because of above limitations, the installation has to be done from command line.
 
 **Installation**
 
-Run the following commands to install HeisenCam (using `stable` version as example):
+Run the following commands to install the HeisenCam candidate:
 
 ```shell
 # Download Frigate image
@@ -788,7 +780,7 @@ To allow HeisenCam to use the Apple Silicon Neural Engine / Processing Unit (NPU
 services:
   frigate:
     container_name: frigate
-    image: ghcr.io/blakeblackshear/frigate:stable-standard-arm64
+    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3
     restart: unless-stopped
     shm_size: "512mb" # update for your cameras based on calculation above
     volumes:

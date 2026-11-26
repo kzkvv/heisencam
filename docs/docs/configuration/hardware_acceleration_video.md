@@ -331,7 +331,7 @@ docker run -d \
   --name frigate \
   ...
   --device /dev/video11 \
-  ghcr.io/blakeblackshear/frigate:stable
+  ghcr.io/kzkvv/heisencam:candidate-0.18.3
 ```
 
 `/dev/video11` is the correct device (on Raspberry Pi 4B). You can check

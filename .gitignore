@@ -11,8 +11,13 @@ config/*
 !config/*.example
 models
 *.mp4
-!examples/demo/media/south_rim.mp4
-!examples/demo/media/west_rim.mp4
+!examples/demo/media/fortieth_street.mp4
+!examples/demo/media/downtown_skywalk.mp4
+!examples/demo/media/bay_bridge.mp4
+!examples/demo/media/twelfth_avenue.mp4
+!examples/demo/media/pacific_coast.mp4
+!examples/demo/media/ninth_avenue.mp4
+!site/demo/birdseye.mp4
 *.db
 *.db-*
 *.csv

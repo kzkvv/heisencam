@@ -10,6 +10,8 @@ h1,h2{margin:0;letter-spacing:-.055em;line-height:1.05}h1{font-size:clamp(40px,5
 p{line-height:1.55}.intro p,.install p{margin:0 0 16px;color:#41505b}.button{display:inline-flex;gap:18px;align-items:center;background:var(--ink);color:white;text-decoration:none;padding:10px 16px;border-radius:7px;font-size:15px;font-weight:650}
 figure{margin:0}.dashboard{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:11px;box-shadow:0 12px 32px #202c3512}
 .install > div { min-width: 0; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: .7rem 1rem; }
 figcaption{margin-top:11px;color:#55636b;font-size:13px;line-height:1.45}.install{margin:45px 0 34px;padding:30px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1.7fr;gap:5%}.install h2{margin-bottom:13px}
 pre{margin:0 0 9px;padding:17px;background:#1d252f;color:#e5f5f9;border-radius:8px;overflow-x:auto;font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}footer{padding:18px 0 26px;border-top:1px solid var(--line);font-size:13px;color:#52616b}
 @media(max-width:760px){.shell{width:calc(100% - 36px)}.mast{min-height:60px}.hero,.install{grid-template-columns:1fr;gap:18px}.hero{margin-top:31px}.install{margin-top:30px}nav{gap:14px}footer{align-items:start;flex-direction:column}}
+@media(max-width:430px){.mast{gap:6px}.wordmark{font-size:19px;gap:5px}.wordmark img{width:29px}.mast nav{gap:11px;font-size:14px}}
