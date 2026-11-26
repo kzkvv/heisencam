@@ -1,4 +1,13 @@
 {
+  "classic": {
+    "inProgress": "In progress",
+    "eventTabs": "Event details",
+    "tabs": {
+      "clip": "Clip",
+      "snapshot": "Snapshot",
+      "tracking_details": "Tracking Details"
+    }
+  },
   "documentTitle": "Explore - Frigate",
   "generativeAI": "Generative AI",
   "exploreMore": "Explore more {{label}} objects",

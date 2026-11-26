@@ -1,17 +1,21 @@
+import ActivityIndicator from "@/components/indicators/activity-indicator";
+import { lazy } from "react";
+import { useUserPersistence } from "@/hooks/use-user-persistence";
 import { useFullscreen } from "@/hooks/use-fullscreen";
 import useKeyboardListener from "@/hooks/use-keyboard-listener";
 import { useHashState, useSearchEffect } from "@/hooks/use-overlay-state";
 import { useUserPersistedOverlayState } from "@/hooks/use-overlay-state";
 import { FrigateConfig } from "@/types/frigateConfig";
-import LiveBirdseyeView from "@/views/live/LiveBirdseyeView";
-import LiveCameraView from "@/views/live/LiveCameraView";
-import LiveDashboardView from "@/views/live/LiveDashboardView";
 import { useTranslation } from "react-i18next";
 
 import { useEffect, useMemo, useRef } from "react";
 import useSWR from "swr";
 import { useAllowedCameras } from "@/hooks/use-allowed-cameras";
 import { useHasFullCameraAccess } from "@/hooks/use-has-full-camera-access";
+
+const LiveBirdseyeView = lazy(() => import("@/views/live/LiveBirdseyeView"));
+const LiveCameraView = lazy(() => import("@/views/live/LiveCameraView"));
+const LiveDashboardView = lazy(() => import("@/views/live/LiveDashboardView"));
 
 function Live() {
   const { t } = useTranslation(["views/live"]);
@@ -21,12 +25,16 @@ function Live() {
   // selection
 
   const [selectedCameraName, setSelectedCameraName] = useHashState();
-  const [cameraGroup, setCameraGroup, loaded] = useUserPersistedOverlayState(
+  const [storedGroup, setCameraGroup, loaded] = useUserPersistedOverlayState(
     "cameraGroup",
     "default" as string,
   );
 
+  const [showCameraGroups] = useUserPersistence("showCameraGroups", true);
+  const cameraGroup = showCameraGroups === false ? "default" : storedGroup;
+
   useSearchEffect("group", (cameraGroup) => {
+    if (showCameraGroups === false) return true;
     if (config && cameraGroup && loaded) {
       const group = config.camera_groups[cameraGroup];
 
@@ -148,6 +156,8 @@ function Live() {
     }
     return undefined;
   }, [config, selectedCameraName, allowedCameras]);
+
+  if (!config) return <ActivityIndicator />;
 
   return (
     <div className="size-full" ref={mainRef}>

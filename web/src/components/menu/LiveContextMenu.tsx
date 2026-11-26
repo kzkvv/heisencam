@@ -307,16 +307,18 @@ export default function LiveContextMenu({
           <ContextMenuSeparator />
           {isAdmin && (
             <>
-              <ContextMenuItem>
-                <div
-                  className="flex w-full cursor-pointer items-center justify-start gap-2"
-                  onClick={() => sendEnabled(isEnabled ? "OFF" : "ON")}
-                >
-                  <div className="text-primary">
-                    {isEnabled ? t("camera.turnOff") : t("camera.turnOn")}
+              {!config?.camera_controls_locked && (
+                <ContextMenuItem>
+                  <div
+                    className="flex w-full cursor-pointer items-center justify-start gap-2"
+                    onClick={() => sendEnabled(isEnabled ? "OFF" : "ON")}
+                  >
+                    <div className="text-primary">
+                      {isEnabled ? t("camera.turnOff") : t("camera.turnOn")}
+                    </div>
                   </div>
-                </div>
-              </ContextMenuItem>
+                </ContextMenuItem>
+              )}
               <ContextMenuSeparator />
             </>
           )}

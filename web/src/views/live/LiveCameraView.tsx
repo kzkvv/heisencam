@@ -759,7 +759,9 @@ export default function LiveCameraView({
                 )}
                 <LivePlayer
                   key={camera.name}
-                  className={`${fullscreen ? "*:rounded-none" : ""}`}
+                  className={
+                    fullscreen ? "size-full *:rounded-none" : "size-full"
+                  }
                   windowVisible
                   showStillWithoutActivity={false}
                   alwaysShowCameraName={false}
@@ -889,6 +891,8 @@ function FrigateCameraFeatures({
   // roles
 
   const isAdmin = useIsAdmin();
+  const { data: runtimeConfig } = useSWR<FrigateConfig>("config");
+  const locked = runtimeConfig?.camera_controls_locked;
 
   // manual event
 
@@ -1042,43 +1046,53 @@ function FrigateCameraFeatures({
       <>
         {isAdmin && (
           <>
-            <CameraFeatureToggle
-              className="p-2 md:p-0"
-              variant={fullscreen ? "overlay" : "primary"}
-              Icon={enabledState == "ON" ? LuPower : LuPowerOff}
-              isActive={enabledState == "ON"}
-              title={
-                enabledState == "ON" ? t("camera.turnOff") : t("camera.turnOn")
-              }
-              onClick={() => sendEnabled(enabledState == "ON" ? "OFF" : "ON")}
-              disabled={debug}
-            />
-            <CameraFeatureToggle
-              className="p-2 md:p-0"
-              variant={fullscreen ? "overlay" : "primary"}
-              Icon={detectState == "ON" ? MdPersonSearch : MdPersonOff}
-              isActive={detectState == "ON"}
-              title={
-                detectState == "ON" ? t("detect.disable") : t("detect.enable")
-              }
-              onClick={() => sendDetect(detectState == "ON" ? "OFF" : "ON")}
-              disabled={!cameraEnabled}
-            />
-            <CameraFeatureToggle
-              className="p-2 md:p-0"
-              variant={fullscreen ? "overlay" : "primary"}
-              Icon={recordState == "ON" ? LuVideo : LuVideoOff}
-              isActive={recordState == "ON"}
-              title={
-                recordState == "ON"
-                  ? t("recording.disable")
-                  : camera.record.enabled_in_config
-                    ? t("recording.enable")
-                    : t("recording.disabledInConfig")
-              }
-              onClick={() => sendRecord(recordState == "ON" ? "OFF" : "ON")}
-              disabled={!cameraEnabled || !camera.record.enabled_in_config}
-            />
+            {!locked && (
+              <>
+                <CameraFeatureToggle
+                  className="p-2 md:p-0"
+                  variant={fullscreen ? "overlay" : "primary"}
+                  Icon={enabledState == "ON" ? LuPower : LuPowerOff}
+                  isActive={enabledState == "ON"}
+                  title={
+                    enabledState == "ON"
+                      ? t("camera.turnOff")
+                      : t("camera.turnOn")
+                  }
+                  onClick={() =>
+                    sendEnabled(enabledState == "ON" ? "OFF" : "ON")
+                  }
+                  disabled={debug}
+                />
+                <CameraFeatureToggle
+                  className="p-2 md:p-0"
+                  variant={fullscreen ? "overlay" : "primary"}
+                  Icon={detectState == "ON" ? MdPersonSearch : MdPersonOff}
+                  isActive={detectState == "ON"}
+                  title={
+                    detectState == "ON"
+                      ? t("detect.disable")
+                      : t("detect.enable")
+                  }
+                  onClick={() => sendDetect(detectState == "ON" ? "OFF" : "ON")}
+                  disabled={!cameraEnabled}
+                />
+                <CameraFeatureToggle
+                  className="p-2 md:p-0"
+                  variant={fullscreen ? "overlay" : "primary"}
+                  Icon={recordState == "ON" ? LuVideo : LuVideoOff}
+                  isActive={recordState == "ON"}
+                  title={
+                    recordState == "ON"
+                      ? t("recording.disable")
+                      : camera.record.enabled_in_config
+                        ? t("recording.enable")
+                        : t("recording.disabledInConfig")
+                  }
+                  onClick={() => sendRecord(recordState == "ON" ? "OFF" : "ON")}
+                  disabled={!cameraEnabled || !camera.record.enabled_in_config}
+                />
+              </>
+            )}
             <CameraFeatureToggle
               className="p-2 md:p-0"
               variant={fullscreen ? "overlay" : "primary"}
@@ -1488,28 +1502,32 @@ function FrigateCameraFeatures({
           <>
             {isAdmin && (
               <>
-                <FilterSwitch
-                  label={t("cameraSettings.camera")}
-                  isChecked={enabledState == "ON"}
-                  onCheckedChange={() =>
-                    sendEnabled(enabledState == "ON" ? "OFF" : "ON")
-                  }
-                />
-                <FilterSwitch
-                  label={t("cameraSettings.objectDetection")}
-                  isChecked={detectState == "ON"}
-                  onCheckedChange={() =>
-                    sendDetect(detectState == "ON" ? "OFF" : "ON")
-                  }
-                />
-                {recordingEnabled && (
-                  <FilterSwitch
-                    label={t("cameraSettings.recording")}
-                    isChecked={recordState == "ON"}
-                    onCheckedChange={() =>
-                      sendRecord(recordState == "ON" ? "OFF" : "ON")
-                    }
-                  />
+                {!locked && (
+                  <>
+                    <FilterSwitch
+                      label={t("cameraSettings.camera")}
+                      isChecked={enabledState == "ON"}
+                      onCheckedChange={() =>
+                        sendEnabled(enabledState == "ON" ? "OFF" : "ON")
+                      }
+                    />
+                    <FilterSwitch
+                      label={t("cameraSettings.objectDetection")}
+                      isChecked={detectState == "ON"}
+                      onCheckedChange={() =>
+                        sendDetect(detectState == "ON" ? "OFF" : "ON")
+                      }
+                    />
+                    {recordingEnabled && (
+                      <FilterSwitch
+                        label={t("cameraSettings.recording")}
+                        isChecked={recordState == "ON"}
+                        onCheckedChange={() =>
+                          sendRecord(recordState == "ON" ? "OFF" : "ON")
+                        }
+                      />
+                    )}
+                  </>
                 )}
                 <FilterSwitch
                   label={t("cameraSettings.snapshots")}

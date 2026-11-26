@@ -172,6 +172,10 @@ export default function UiSettingsView() {
     document.title = t("documentTitle.general");
   }, [t]);
 
+  const [showCameraGroups, setShowCameraGroups] = useUserPersistence(
+    "showCameraGroups",
+    true,
+  );
   const [autoLive, setAutoLive] = useUserPersistence("autoLiveView", true);
   const [cameraNames, setCameraName] = useUserPersistence(
     "displayCameraNames",
@@ -199,6 +203,13 @@ export default function UiSettingsView() {
       description: t("general.liveDashboard.playAlertVideos.desc"),
       checked: alertVideos,
       onCheckedChange: setAlertVideos,
+    },
+    {
+      id: "show-camera-groups",
+      label: t("general.liveDashboard.cameraGroups.label"),
+      description: t("general.liveDashboard.cameraGroups.desc"),
+      checked: showCameraGroups,
+      onCheckedChange: setShowCameraGroups,
     },
     {
       id: "camera-names",

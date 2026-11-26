@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import ActivityIndicator from "@/components/indicators/activity-indicator";
 import useApiFilter from "@/hooks/use-api-filter";
 import { useAllowedCameras } from "@/hooks/use-allowed-cameras";
@@ -26,14 +27,21 @@ import {
   RECORDING_REVIEW_LINK_PARAM,
 } from "@/utils/recordingReviewUrl";
 import EventView from "@/views/events/EventView";
-import MotionSearchView from "@/views/motion-search/MotionSearchView";
-import { RecordingView } from "@/views/recording/RecordingView";
 import { useFrigateReviews } from "@/api/ws";
 import axios from "axios";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import useSWR from "swr";
+
+const MotionSearchView = lazy(
+  () => import("@/views/motion-search/MotionSearchView"),
+);
+const RecordingView = lazy(() =>
+  import("@/views/recording/RecordingView").then((module) => ({
+    default: module.RecordingView,
+  })),
+);
 
 export default function Events() {
   const { t } = useTranslation(["views/events"]);
@@ -227,7 +235,9 @@ export default function Events() {
     return true;
   });
 
+  const [showCameraGroups] = useUserPersistence("showCameraGroups", true);
   useSearchEffect("group", (reviewGroup) => {
+    if (showCameraGroups === false) return true;
     if (config && reviewGroup && reviewGroup != "default") {
       const group = config.camera_groups[reviewGroup];
       const isBirdseyeOnly =

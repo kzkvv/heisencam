@@ -1,6 +1,5 @@
 import useSWR from "swr";
-import * as monaco from "monaco-editor";
-import { configureMonacoYaml } from "monaco-yaml";
+import type { editor } from "monaco-editor";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useApiHost } from "@/api";
 import Heading from "@/components/ui/heading";
@@ -20,6 +19,11 @@ import { useResizeObserver } from "@/hooks/resize-observer";
 import { FrigateConfig } from "@/types/frigateConfig";
 
 type SaveOptions = "saveonly" | "restart";
+
+type EditorModules = [
+  typeof import("monaco-editor"),
+  typeof import("monaco-yaml"),
+];
 
 type ApiErrorResponse = {
   message?: string;
@@ -41,9 +45,25 @@ function ConfigEditor() {
 
   const { theme, systemTheme } = useTheme();
   const [error, setError] = useState<string | undefined>();
+  const [editorModules, setEditorModules] = useState<EditorModules>();
 
-  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
-  const modelRef = useRef<monaco.editor.ITextModel | null>(null);
+  useEffect(() => {
+    let active = true;
+    Promise.all([import("monaco-editor"), import("monaco-yaml")])
+      .then((modules) => {
+        if (active) setEditorModules(modules);
+      })
+      .catch((cause: unknown) => {
+        if (active)
+          setError(cause instanceof Error ? cause.message : String(cause));
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
+  const modelRef = useRef<editor.ITextModel | null>(null);
   const configRef = useRef<HTMLDivElement | null>(null);
   const schemaConfiguredRef = useRef(false);
 
@@ -108,10 +128,11 @@ function ConfigEditor() {
   }, [onHandleSaveConfig]);
 
   useEffect(() => {
-    if (!rawConfig) {
+    if (!rawConfig || !editorModules) {
       return;
     }
 
+    const [monaco, { configureMonacoYaml }] = editorModules;
     const modelUri = monaco.Uri.parse(
       `a://b/api/config/schema_${Date.now()}.json`,
     );
@@ -170,7 +191,14 @@ function ConfigEditor() {
       }
       schemaConfiguredRef.current = false;
     };
-  }, [rawConfig, apiHost, systemTheme, theme, onHandleSaveConfig]);
+  }, [
+    rawConfig,
+    editorModules,
+    apiHost,
+    systemTheme,
+    theme,
+    onHandleSaveConfig,
+  ]);
 
   // when in safe mode, attempt to validate the existing (invalid) config immediately
   // so that the user sees the validation errors without needing to press save
@@ -208,14 +236,22 @@ function ConfigEditor() {
       return;
     }
 
-    modelRef.current.onDidChangeContent(() => {
+    const subscription = modelRef.current.onDidChangeContent(() => {
       if (modelRef.current?.getValue() != rawConfig) {
         setHasChanges(true);
       } else {
         setHasChanges(false);
       }
     });
-  }, [rawConfig]);
+    return () => subscription.dispose();
+  }, [
+    rawConfig,
+    editorModules,
+    apiHost,
+    systemTheme,
+    theme,
+    onHandleSaveConfig,
+  ]);
 
   useEffect(() => {
     if (rawConfig && modelRef.current) {
@@ -279,6 +315,7 @@ function ConfigEditor() {
             <Button
               size="sm"
               className="flex items-center gap-2"
+              disabled={!editorModules}
               aria-label={t("copyConfig")}
               onClick={() => handleCopyConfig()}
             >
@@ -288,6 +325,7 @@ function ConfigEditor() {
             <Button
               size="sm"
               className="flex items-center gap-2"
+              disabled={!editorModules}
               aria-label={t("saveAndRestart")}
               onClick={handleSaveAndRestart}
             >
@@ -300,6 +338,7 @@ function ConfigEditor() {
             <Button
               size="sm"
               className="flex items-center gap-2"
+              disabled={!editorModules}
               aria-label={t("saveOnly")}
               onClick={() => onHandleSaveConfig("saveonly")}
             >
@@ -315,7 +354,15 @@ function ConfigEditor() {
               {error}
             </div>
           )}
-          <div ref={configRef} className="flex-1 overflow-hidden" />
+          <div className="relative min-h-0 flex-1">
+            {!editorModules && !error && (
+              <ActivityIndicator
+                className="absolute inset-0 text-muted-foreground"
+                size={18}
+              />
+            )}
+            <div ref={configRef} className="size-full overflow-hidden" />
+          </div>
         </div>
       </div>
       <Toaster closeButton={true} />

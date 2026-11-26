@@ -1,3 +1,4 @@
+import { useUserPersistence } from "@/hooks/use-user-persistence";
 import { Button } from "../ui/button";
 import useSWR from "swr";
 import { FrigateConfig } from "@/types/frigateConfig";
@@ -158,15 +159,16 @@ export default function ReviewFilterGroup({
     [config, allLabels, allZones, allowedCameras],
   );
 
+  const [showCameraGroups] = useUserPersistence("showCameraGroups", true);
   const groups = useMemo(() => {
-    if (!config) {
+    if (!config || showCameraGroups === false) {
       return [];
     }
 
     return Object.entries(config.camera_groups).sort(
       (a, b) => a[1].order - b[1].order,
     );
-  }, [config]);
+  }, [config, showCameraGroups]);
 
   const mobileSettingsFeatures = useMemo<DrawerFeatures[]>(() => {
     const features: DrawerFeatures[] = [];

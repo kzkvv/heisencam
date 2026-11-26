@@ -23,6 +23,8 @@ import {
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import {
+  lazy,
+  Suspense,
   useCallback,
   useEffect,
   useMemo,
@@ -37,25 +39,14 @@ import type { ConfigSectionData, JsonObject } from "@/types/configForm";
 import isEqual from "lodash/isEqual";
 import { maskCredentials } from "@/utils/credentialMask";
 import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import FilterSwitch from "@/components/filter/FilterSwitch";
 import { ZoneMaskFilterButton } from "@/components/filter/ZoneMaskFilter";
 import { PolygonType } from "@/types/canvas";
-import CameraManagementView from "@/views/settings/CameraManagementView";
-import MotionTunerView from "@/views/settings/MotionTunerView";
-import MasksAndZonesView from "@/views/settings/MasksAndZonesView";
-import UsersView from "@/views/settings/UsersView";
-import RolesView from "@/views/settings/RolesView";
 import UiSettingsView from "@/views/settings/UiSettingsView";
-import ProfilesView from "@/views/settings/ProfilesView";
-import FrigatePlusSettingsView from "@/views/settings/FrigatePlusSettingsView";
-import MediaSyncSettingsView from "@/views/settings/MediaSyncSettingsView";
-import RegionGridSettingsView from "@/views/settings/RegionGridSettingsView";
-import Go2RtcStreamsSettingsView from "@/views/settings/Go2RtcStreamsSettingsView";
-import DetectorsAndModelSettingsView from "@/views/settings/DetectorsAndModelSettingsView";
-import {
-  SingleSectionPage,
-  type SettingsPageProps,
-  type SectionStatus,
+import type {
+  SettingsPageProps,
+  SectionStatus,
 } from "@/views/settings/SingleSectionPage";
 import { useSearchEffect } from "@/hooks/use-overlay-state";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -63,7 +54,6 @@ import { useInitialCameraState } from "@/api/ws";
 import { useIsAdmin } from "@/hooks/use-is-admin";
 import { useTranslation } from "react-i18next";
 import { useAllCameraOverrides } from "@/hooks/use-config-override";
-import TriggerView from "@/views/settings/TriggerView";
 import { CameraNameLabel } from "@/components/camera/FriendlyNameLabel";
 import {
   Sidebar,
@@ -121,6 +111,38 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { TooltipPortal } from "@radix-ui/react-tooltip";
+
+const CameraManagementView = lazy(
+  () => import("@/views/settings/CameraManagementView"),
+);
+const MotionTunerView = lazy(() => import("@/views/settings/MotionTunerView"));
+const MasksAndZonesView = lazy(
+  () => import("@/views/settings/MasksAndZonesView"),
+);
+const UsersView = lazy(() => import("@/views/settings/UsersView"));
+const RolesView = lazy(() => import("@/views/settings/RolesView"));
+const ProfilesView = lazy(() => import("@/views/settings/ProfilesView"));
+const FrigatePlusSettingsView = lazy(
+  () => import("@/views/settings/FrigatePlusSettingsView"),
+);
+const MediaSyncSettingsView = lazy(
+  () => import("@/views/settings/MediaSyncSettingsView"),
+);
+const RegionGridSettingsView = lazy(
+  () => import("@/views/settings/RegionGridSettingsView"),
+);
+const Go2RtcStreamsSettingsView = lazy(
+  () => import("@/views/settings/Go2RtcStreamsSettingsView"),
+);
+const DetectorsAndModelSettingsView = lazy(
+  () => import("@/views/settings/DetectorsAndModelSettingsView"),
+);
+const TriggerView = lazy(() => import("@/views/settings/TriggerView"));
+const SingleSectionPage = lazy(() =>
+  import("@/views/settings/SingleSectionPage").then((module) => ({
+    default: module.SingleSectionPage,
+  })),
+);
 
 const allSettingsViews = [
   "uiSettings",
@@ -662,11 +684,6 @@ export default function Settings() {
 
   const isAdmin = useIsAdmin();
 
-  // for unmasked go2rtc stream sources
-  const { data: rawPaths } = useSWR<{
-    go2rtc: { streams: Record<string, string | string[]> };
-  }>(isAdmin ? "config/raw_paths" : null);
-
   const visibleSettingsViews = !isAdmin
     ? ALLOWED_VIEWS_FOR_VIEWER
     : allSettingsViews;
@@ -678,6 +695,22 @@ export default function Settings() {
   const [pendingDataBySection, setPendingDataBySection] = useState<
     Record<string, ConfigSectionData>
   >({});
+
+  const hasPendingChanges = Object.keys(pendingDataBySection).length > 0;
+  const needsSchema =
+    page !== "uiSettings" ||
+    hasPendingChanges ||
+    !collapsedGroups.has("cameras");
+  const { data: fullSchema } = useSWRImmutable<RJSFSchema>(
+    needsSchema ? "config/schema.json" : null,
+  );
+  const { data: rawPaths } = useSWR<{
+    go2rtc: { streams: Record<string, string | string[]> };
+  }>(
+    isAdmin && "go2rtc_streams" in pendingDataBySection
+      ? "config/raw_paths"
+      : null,
+  );
 
   // Profile editing state
   const [editingProfile, setEditingProfile] = useState<
@@ -713,7 +746,11 @@ export default function Settings() {
   const [selectedCamera, setSelectedCamera] = useState<string>("");
 
   // Get all camera overrides for the selected camera
-  const cameraOverrides = useAllCameraOverrides(config, selectedCamera);
+  const cameraOverrides = useAllCameraOverrides(
+    needsSchema ? config : undefined,
+    selectedCamera,
+    fullSchema,
+  );
 
   const { payload: allCameraStates } = useInitialCameraState(
     cameras.length > 0 ? cameras[0].name : "",
@@ -743,9 +780,6 @@ export default function Settings() {
   const [isAnySectionSaving, setIsAnySectionSaving] = useState(false);
   const [restartDialogOpen, setRestartDialogOpen] = useState(false);
   const { send: sendRestart } = useRestart();
-  const { data: fullSchema } = useSWR<RJSFSchema>("config/schema.json");
-
-  const hasPendingChanges = Object.keys(pendingDataBySection).length > 0;
   const hasPendingValidationErrors = useMemo(
     () =>
       Object.values(sectionStatusByKey).some(
@@ -1904,22 +1938,24 @@ export default function Settings() {
                 const CurrentComponent = getCurrentComponent(page);
                 if (!CurrentComponent) return null;
                 return (
-                  <CurrentComponent
-                    selectedCamera={selectedCamera}
-                    setUnsavedChanges={setUnsavedChanges}
-                    selectedZoneMask={filterZoneMask}
-                    onSectionStatusChange={handleSectionStatusChange}
-                    pendingDataBySection={pendingDataBySection}
-                    onPendingDataChange={handlePendingDataChange}
-                    profileState={profileState}
-                    onDeleteProfileSection={
-                      handleDeleteProfileForCurrentSection
-                    }
-                    profilesUIEnabled={profilesUIEnabled}
-                    setProfilesUIEnabled={setProfilesUIEnabled}
-                    isSavingAll={isSavingAll}
-                    onSectionSavingChange={handleSectionSavingChange}
-                  />
+                  <Suspense fallback={<ActivityIndicator />}>
+                    <CurrentComponent
+                      selectedCamera={selectedCamera}
+                      setUnsavedChanges={setUnsavedChanges}
+                      selectedZoneMask={filterZoneMask}
+                      onSectionStatusChange={handleSectionStatusChange}
+                      pendingDataBySection={pendingDataBySection}
+                      onPendingDataChange={handlePendingDataChange}
+                      profileState={profileState}
+                      onDeleteProfileSection={
+                        handleDeleteProfileForCurrentSection
+                      }
+                      profilesUIEnabled={profilesUIEnabled}
+                      setProfilesUIEnabled={setProfilesUIEnabled}
+                      isSavingAll={isSavingAll}
+                      onSectionSavingChange={handleSectionSavingChange}
+                    />
+                  </Suspense>
                 );
               })()}
             </div>
@@ -2200,20 +2236,24 @@ export default function Settings() {
               const CurrentComponent = getCurrentComponent(page);
               if (!CurrentComponent) return null;
               return (
-                <CurrentComponent
-                  selectedCamera={selectedCamera}
-                  setUnsavedChanges={setUnsavedChanges}
-                  selectedZoneMask={filterZoneMask}
-                  onSectionStatusChange={handleSectionStatusChange}
-                  pendingDataBySection={pendingDataBySection}
-                  onPendingDataChange={handlePendingDataChange}
-                  profileState={profileState}
-                  onDeleteProfileSection={handleDeleteProfileForCurrentSection}
-                  profilesUIEnabled={profilesUIEnabled}
-                  setProfilesUIEnabled={setProfilesUIEnabled}
-                  isSavingAll={isSavingAll}
-                  onSectionSavingChange={handleSectionSavingChange}
-                />
+                <Suspense fallback={<ActivityIndicator />}>
+                  <CurrentComponent
+                    selectedCamera={selectedCamera}
+                    setUnsavedChanges={setUnsavedChanges}
+                    selectedZoneMask={filterZoneMask}
+                    onSectionStatusChange={handleSectionStatusChange}
+                    pendingDataBySection={pendingDataBySection}
+                    onPendingDataChange={handlePendingDataChange}
+                    profileState={profileState}
+                    onDeleteProfileSection={
+                      handleDeleteProfileForCurrentSection
+                    }
+                    profilesUIEnabled={profilesUIEnabled}
+                    setProfilesUIEnabled={setProfilesUIEnabled}
+                    isSavingAll={isSavingAll}
+                    onSectionSavingChange={handleSectionSavingChange}
+                  />
+                </Suspense>
               );
             })()}
           </div>

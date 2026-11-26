@@ -159,6 +159,7 @@ const detect: SectionConfigOverrides = {
       "min_initialized",
       "max_disappeared",
       "annotation_offset",
+      "idle_scan_interval",
       "stationary",
       "stationary.interval",
       "stationary.threshold",
@@ -167,7 +168,7 @@ const detect: SectionConfigOverrides = {
     restartRequired: [],
     fieldGroups: {
       resolution: ["width", "height", "fps"],
-      tracking: ["min_initialized", "max_disappeared"],
+      tracking: ["min_initialized", "max_disappeared", "idle_scan_interval"],
     },
     uiSchema: {
       annotation_offset: {
@@ -181,6 +182,7 @@ const detect: SectionConfigOverrides = {
       "min_initialized",
       "max_disappeared",
       "annotation_offset",
+      "idle_scan_interval",
       "stationary",
     ],
   },
@@ -214,6 +216,7 @@ const detect: SectionConfigOverrides = {
       "min_initialized",
       "max_disappeared",
       "annotation_offset",
+      "idle_scan_interval",
       "stationary",
     ],
     advancedFields: [],

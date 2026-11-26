@@ -1,15 +1,19 @@
+import { fromZonedTime, formatInTimeZone } from "date-fns-tz";
 import Providers from "@/context/providers";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 import Wrapper from "@/components/Wrapper";
 import Sidebar from "@/components/navigation/Sidebar";
 
-import { isDesktop, isMobile } from "react-device-detect";
 import Statusbar from "./components/Statusbar";
-import Bottombar from "./components/navigation/Bottombar";
 import { Suspense, lazy } from "react";
 import { Redirect } from "./components/navigation/Redirect";
 import { cn } from "./lib/utils";
-import { isPWA } from "./utils/isPWA";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import useSWR from "swr";
 import { FrigateConfig } from "./types/frigateConfig";
@@ -70,19 +74,13 @@ function DefaultAppView() {
 
   return (
     <div className="size-full overflow-hidden">
-      {isDesktop && <Sidebar />}
-      {isDesktop && <Statusbar />}
-      {isMobile && <Bottombar />}
+      <Sidebar />
+      <div className="hidden lg:contents">
+        <Statusbar />
+      </div>
       <div
         id="pageRoot"
-        className={cn(
-          "absolute right-0 top-0 overflow-hidden",
-          isMobile
-            ? isPWA
-              ? "bottom-[calc(3rem+env(safe-area-inset-bottom))] left-0 pt-[env(safe-area-inset-top)] md:bottom-[calc(4rem+env(safe-area-inset-bottom))] landscape:pl-[env(safe-area-inset-left)] landscape:pr-[env(safe-area-inset-right)]"
-              : "bottom-12 left-0 md:bottom-16"
-            : "bottom-8 left-[52px]",
-        )}
+        className="absolute inset-x-0 bottom-0 top-14 overflow-hidden lg:bottom-8 lg:left-64 lg:top-0"
       >
         <Suspense
           fallback={
@@ -93,12 +91,26 @@ function DefaultAppView() {
             <Route element={<ProtectedRoute requiredRoles={mainRouteRoles} />}>
               <Route index element={<Live />} />
               <Route path="/review" element={<Events />} />
+              <Route path="/events" element={<Explore classic />} />
+              <Route
+                path="/birdseye"
+                element={<Navigate to="/#birdseye" replace />}
+              />
+              <Route path="/cameras/:camera" element={<ClassicCameraLink />} />
+              <Route
+                path="/recording/:camera/*"
+                element={<ClassicRecordingLink />}
+              />
               <Route path="/explore" element={<Explore />} />
               <Route path="/export" element={<Exports />} />
               <Route path="/settings" element={<Settings />} />
             </Route>
             <Route element={<ProtectedRoute requiredRoles={["admin"]} />}>
               <Route path="/system" element={<System />} />
+              <Route
+                path="/storage"
+                element={<Navigate to="/system#storage" replace />}
+              />
               <Route path="/config" element={<ConfigEditor />} />
               <Route path="/logs" element={<Logs />} />
               <Route path="/faces" element={<FaceLibrary />} />
@@ -113,6 +125,35 @@ function DefaultAppView() {
         </Suspense>
       </div>
     </div>
+  );
+}
+
+function ClassicCameraLink() {
+  const { camera } = useParams();
+  return <Navigate to={`/#${encodeURIComponent(camera ?? "")}`} replace />;
+}
+
+function ClassicRecordingLink() {
+  const { camera, "*": selection } = useParams();
+  const { data: config } = useSWR<FrigateConfig>("config");
+  const [date, hour = "00", minute = "00", second = "00"] = (
+    selection ?? ""
+  ).split("/");
+  if (date && !config) {
+    return <ActivityIndicator />;
+  }
+  const timezone =
+    config?.ui.timezone ?? Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const clock = `${date}T${[hour, minute, second].map((part) => part.padStart(2, "0")).join(":")}`;
+  const instant = date ? fromZonedTime(clock, timezone) : new Date();
+  const valid =
+    Number.isFinite(instant.getTime()) &&
+    (!date ||
+      formatInTimeZone(instant, timezone, "yyyy-MM-dd'T'HH:mm:ss") === clock);
+  const timestamp = valid ? instant.getTime() / 1000 : Date.now() / 1000;
+  const value = `${camera ?? ""}_${Math.floor(timestamp)}`;
+  return (
+    <Navigate to={`/review?timestamp=${encodeURIComponent(value)}`} replace />
   );
 }
 

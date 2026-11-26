@@ -34,7 +34,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     isAuthenticated: false,
   });
 
-  const { data: profile, error } = useSWR("/profile", {
+  const { data: profile, error } = useSWR("profile", {
     revalidateOnFocus: false,
     revalidateOnReconnect: true,
     fetcher: (url) =>

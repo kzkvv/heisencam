@@ -38,7 +38,7 @@ const SEARCH_FILTER_ARRAY_KEYS = [
   "zones",
 ];
 
-export default function Explore() {
+export default function Explore({ classic = false }: { classic?: boolean }) {
   // search field handler
 
   const { t } = useTranslation(["views/explore"]);
@@ -65,11 +65,10 @@ export default function Explore() {
 
   // default layout
 
-  const [defaultView, setDefaultView, defaultViewLoaded] = useUserPersistence(
-    "exploreDefaultView",
-    "summary",
-  );
+  const [savedDefaultView, setDefaultView, defaultViewLoaded] =
+    useUserPersistence("exploreDefaultView", "summary");
 
+  const defaultView = classic ? "grid" : savedDefaultView;
   const timezone = useTimezone(config);
 
   const [search, setSearch] = useState("");
@@ -108,7 +107,7 @@ export default function Explore() {
     // no search parameters
     if (searchSearchParams && Object.keys(searchSearchParams).length === 0) {
       if (defaultView == "grid") {
-        return ["events", {}];
+        return ["events", { include_thumbnails: 0 }];
       } else {
         return null;
       }
@@ -201,9 +200,10 @@ export default function Explore() {
     // a start_time cursor only works when rows are ordered by start_time,
     // so every other sort pages by offset
     const isDateSort =
-      params.sort === "date_asc" ||
-      params.sort === "date_desc" ||
-      (!params.sort && url === "events");
+      url === "events" &&
+      (!params.sort ||
+        params.sort === "date_asc" ||
+        params.sort === "date_desc");
 
     if (pageIndex > 0 && !isDateSort) {
       return [
@@ -213,13 +213,13 @@ export default function Explore() {
     }
 
     if (pageIndex > 0 && previousPageData) {
-      const lastDate = previousPageData[previousPageData.length - 1].start_time;
+      const last = previousPageData[previousPageData.length - 1];
       return [
         url,
         {
           ...params,
-          [params.sort === "date_asc" ? "after" : "before"]:
-            lastDate.toString(),
+          cursor_start_time: last.start_time,
+          cursor_event_id: last.id,
           limit: API_LIMIT,
         },
       ];
@@ -543,6 +543,7 @@ export default function Explore() {
           isLoading={(isLoadingInitialData || isLoadingMore) ?? true}
           isValidating={isValidating}
           hasMore={!isReachingEnd}
+          classic={classic}
           columns={gridColumns}
           defaultView={defaultView}
           setSearch={setSearch}

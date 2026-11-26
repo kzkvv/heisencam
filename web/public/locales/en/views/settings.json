@@ -151,6 +151,10 @@
   "general": {
     "title": "UI Settings",
     "liveDashboard": {
+      "cameraGroups": {
+        "label": "Show Camera Groups",
+        "desc": "Show group selectors and editing controls. Hidden groups and their layouts are retained."
+      },
       "title": "Live Dashboard",
       "automaticLiveView": {
         "label": "Automatic Live View",

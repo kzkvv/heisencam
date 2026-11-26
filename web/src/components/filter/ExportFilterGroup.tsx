@@ -1,3 +1,4 @@
+import { useUserPersistence } from "@/hooks/use-user-persistence";
 import { cn } from "@/lib/utils";
 import {
   DEFAULT_EXPORT_FILTERS,
@@ -38,15 +39,16 @@ export default function ExportFilterGroup({
     [config, allowedCameras],
   );
 
+  const [showCameraGroups] = useUserPersistence("showCameraGroups", true);
   const groups = useMemo(() => {
-    if (!config) {
+    if (!config || showCameraGroups === false) {
       return [];
     }
 
     return Object.entries(config.camera_groups).sort(
       (a, b) => a[1].order - b[1].order,
     );
-  }, [config]);
+  }, [config, showCameraGroups]);
 
   return (
     <div

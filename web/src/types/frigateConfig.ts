@@ -395,6 +395,7 @@ export type GenAIAgentConfig = {
 };
 
 export interface FrigateConfig {
+  camera_controls_locked?: boolean;
   version: string;
   safe_mode: boolean;
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { lazy, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import useSWR from "swr";
@@ -27,7 +27,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { DebugReplayConfigSheet } from "@/components/overlay/DebugReplayConfigSheet";
 import { useCameraActivity } from "@/hooks/use-camera-activity";
 import { cn } from "@/lib/utils";
 import Heading from "@/components/ui/heading";
@@ -108,6 +107,12 @@ const DEBUG_OPTION_I18N_KEY: Record<keyof DebugOptions, string> = {
   regions: "regions",
   paths: "paths",
 };
+
+const DebugReplayConfigSheet = lazy(() =>
+  import("@/components/overlay/DebugReplayConfigSheet").then((module) => ({
+    default: module.DebugReplayConfigSheet,
+  })),
+);
 
 export default function Replay() {
   const { t } = useTranslation(["views/replay", "views/settings", "common"]);

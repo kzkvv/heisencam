@@ -93,9 +93,15 @@ import { useUserPersistedOverlayState } from "@/hooks/use-overlay-state";
 
 type CameraGroupSelectorProps = {
   className?: string;
+  toolbar?: boolean;
 };
 
-export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
+export function CameraGroupSelector({
+  className,
+  toolbar = false,
+}: CameraGroupSelectorProps) {
+  const useVerticalLayout = isDesktop && !toolbar;
+  const [showCameraGroups] = useUserPersistence("showCameraGroups", true);
   const { t } = useTranslation(["components/camera"]);
   const { data: config } = useSWR<FrigateConfig>("config");
   const allowedCameras = useAllowedCameras();
@@ -167,7 +173,7 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
   const measureRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    if (isDesktop) {
+    if (useVerticalLayout || toolbar) {
       return;
     }
 
@@ -177,6 +183,9 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
     if (!wrapper || !measure) {
       return;
     }
+
+    // Measurement buttons must not enter the tab order.
+    measure.inert = true;
 
     const gap = 8; // gap-2 between buttons in the strip
     const wrapperGap = 4; // gap-1 between the strip and the kebab
@@ -225,29 +234,43 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
     observer.observe(wrapper);
 
     return () => observer.disconnect();
-  }, [groups, isAdmin]);
+  }, [groups, isAdmin, toolbar, useVerticalLayout]);
+
+  if (showCameraGroups === false) {
+    return null;
+  }
 
   const groupButtons = (afterSelect?: () => void) => {
-    const buttons = [
-      <Button
-        key="default-group"
-        className={cn(
-          "shrink-0",
-          group == "default"
-            ? "bg-blue-900 bg-opacity-60 text-selected focus:bg-blue-900 focus:bg-opacity-60"
-            : "bg-secondary text-secondary-foreground",
-        )}
-        aria-label={t("menu.live.allCameras", { ns: "common" })}
-        size="sm"
-        onClick={() => {
-          if (group) {
-            setGroup("default", true);
-          }
-          afterSelect?.();
-        }}
-      >
-        <MdHome className="size-5" />
-      </Button>,
+    const buttons = [];
+    if (!toolbar || groups.length > 0) {
+      buttons.push(
+        <Button
+          key="default-group"
+          className={cn(
+            "shrink-0",
+            group == "default"
+              ? "bg-blue-900 bg-opacity-60 text-selected focus:bg-blue-900 focus:bg-opacity-60"
+              : "bg-secondary text-secondary-foreground",
+          )}
+          aria-label={t("menu.live.allCameras", { ns: "common" })}
+          aria-pressed={group === "default"}
+          size="sm"
+          onClick={() => {
+            if (group) {
+              setGroup("default", true);
+            }
+            afterSelect?.();
+          }}
+        >
+          {toolbar ? (
+            t("menu.live.allCameras", { ns: "common" })
+          ) : (
+            <MdHome className="size-5" />
+          )}
+        </Button>,
+      );
+    }
+    buttons.push(
       ...groups.map(([name, config]) => (
         <Button
           key={name}
@@ -257,7 +280,8 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
               ? "bg-blue-900 bg-opacity-60 text-selected focus:bg-blue-900 focus:bg-opacity-60"
               : "bg-secondary text-secondary-foreground",
           )}
-          aria-label={t("group.label")}
+          aria-label={toolbar ? name : t("group.label")}
+          aria-pressed={group === name}
           size="sm"
           onClick={() => {
             setGroup(name, group != "default");
@@ -267,23 +291,25 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
           {config && config.icon && isValidIconName(config.icon) && (
             <IconRenderer icon={LuIcons[config.icon]} className="size-5" />
           )}
+          {toolbar && name}
         </Button>
       )),
-    ];
+    );
 
-    if (isAdmin) {
+    if (isAdmin && !toolbar) {
       buttons.push(
         <Button
           key="add-group"
           className="shrink-0 bg-secondary text-muted-foreground"
-          aria-label={t("group.add")}
+          aria-label={t(toolbar ? "group.editGroups" : "group.add")}
           size="sm"
           onClick={() => {
             setAddGroup(true);
             afterSelect?.();
           }}
         >
-          <LuPencil className="size-5 text-primary-variant" />
+          <LuPencil className="size-4 text-primary-variant" />
+          {toolbar && t("group.editGroups")}
         </Button>,
       );
     }
@@ -302,7 +328,27 @@ export function CameraGroupSelector({ className }: CameraGroupSelectorProps) {
         deleteGroup={deleteGroup}
         isAdmin={isAdmin}
       />
-      {isDesktop ? (
+      {toolbar && isAdmin && (
+        <button
+          type="button"
+          className={cn(
+            "fixed bottom-3 z-50 cursor-pointer rounded-lg bg-secondary text-secondary-foreground opacity-60 transition-all duration-300 hover:bg-muted hover:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring lg:bottom-9",
+            groups.some(([name]) => name === group) ? "right-28" : "right-16",
+          )}
+          aria-label={t("group.editGroups")}
+          title={t("group.editGroups")}
+          onClick={() => setAddGroup(true)}
+        >
+          <LuPencil className="m-[6px] size-5" />
+        </button>
+      )}
+      {toolbar ? (
+        groups.length > 0 && (
+          <div className={cn("flex flex-wrap items-center gap-2", className)}>
+            {groupButtons()}
+          </div>
+        )
+      ) : useVerticalLayout ? (
         <div
           className={cn(
             "flex flex-col items-center justify-start gap-2",
@@ -676,77 +722,6 @@ function NewGroupDialog({
               />
             </>
           )}
-        </Content>
-      </Overlay>
-    </>
-  );
-}
-
-type EditGroupDialogProps = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  currentGroups: [string, CameraGroupConfig][];
-  activeGroup?: string;
-};
-export function EditGroupDialog({
-  open,
-  setOpen,
-  currentGroups,
-  activeGroup,
-}: EditGroupDialogProps) {
-  const { t } = useTranslation(["components/camera"]);
-  const Overlay = isDesktop ? Dialog : MobilePage;
-  const Content = isDesktop ? DialogContent : MobilePageContent;
-  const Header = isDesktop ? DialogHeader : MobilePageHeader;
-  const Description = isDesktop ? DialogDescription : MobilePageDescription;
-  const Title = isDesktop ? DialogTitle : MobilePageTitle;
-
-  // editing group and state
-
-  const editingGroup = useMemo(() => {
-    if (currentGroups && activeGroup) {
-      return currentGroups.find(([groupName]) => groupName === activeGroup);
-    } else {
-      return undefined;
-    }
-  }, [currentGroups, activeGroup]);
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  return (
-    <>
-      <Toaster
-        className="toaster group z-[100]"
-        position="top-center"
-        closeButton={true}
-      />
-      <Overlay
-        open={open}
-        onOpenChange={(open) => {
-          setOpen(open);
-        }}
-      >
-        <Content
-          className={cn(
-            "min-w-0",
-            isDesktop && "max-h-dvh w-6/12 overflow-y-hidden",
-          )}
-        >
-          <div className="scrollbar-container flex flex-col overflow-y-auto md:my-4">
-            <Header className="mt-2" onClose={() => setOpen(false)}>
-              <Title>{t("group.edit")}</Title>
-              <Description className="sr-only">{t("group.edit")}</Description>
-            </Header>
-
-            <CameraGroupEdit
-              currentGroups={currentGroups}
-              editingGroup={editingGroup}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              onSave={() => setOpen(false)}
-              onCancel={() => setOpen(false)}
-            />
-          </div>
         </Content>
       </Overlay>
     </>

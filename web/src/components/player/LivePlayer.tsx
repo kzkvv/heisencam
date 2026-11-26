@@ -178,7 +178,7 @@ export default function LivePlayer({
       }
     }
 
-    return 30000;
+    return 7500;
   }, [
     autoLive,
     showStillWithoutActivity,
@@ -363,7 +363,12 @@ export default function LivePlayer({
       {cameraEnabled &&
         !offline &&
         (!showStillWithoutActivity || isReEnabling) &&
-        !liveReady && <ActivityIndicator />}
+        !liveReady && (
+          <ActivityIndicator
+            className="pointer-events-none absolute inset-0 z-10 text-muted-foreground opacity-60"
+            size={18}
+          />
+        )}
 
       {((showStillWithoutActivity && !liveReady) || liveReady) &&
         objects.length > 0 && (
@@ -417,26 +422,24 @@ export default function LivePlayer({
           </div>
         )}
 
-      <div
-        className={cn(
-          "absolute inset-0 w-full",
-          showStillWithoutActivity &&
-            !liveReady &&
-            !isReEnabling &&
-            cameraEnabled
-            ? "visible"
-            : "invisible",
-        )}
-      >
-        <AutoUpdatingCameraImage
-          className="pointer-events-none size-full"
-          cameraClasses="relative size-full flex justify-center"
-          camera={cameraConfig.name}
-          showFps={false}
-          reloadInterval={stillReloadInterval}
-          periodicCache
-        />
-      </div>
+      {showStillWithoutActivity && (
+        <div
+          className={cn(
+            "absolute inset-0 w-full",
+            !liveReady && !isReEnabling && cameraEnabled
+              ? "visible"
+              : "invisible",
+          )}
+        >
+          <AutoUpdatingCameraImage
+            className="pointer-events-none size-full"
+            cameraClasses="relative size-full flex justify-center"
+            camera={cameraConfig.name}
+            showFps={false}
+            reloadInterval={stillReloadInterval}
+          />
+        </div>
+      )}
 
       {offline && inDashboard && (
         <>

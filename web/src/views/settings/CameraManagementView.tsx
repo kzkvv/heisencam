@@ -544,6 +544,8 @@ function CameraStatusSelect({
   const statusBar = useContext(StatusBarMessagesContext);
   const [isSaving, setIsSaving] = useState(false);
 
+  const { data: runtimeConfig } = useSWR<FrigateConfig>("config");
+
   const currentStatus: CameraStatus = isDisabledInConfig
     ? "disabled"
     : enabledState === "OFF"
@@ -678,7 +680,11 @@ function CameraStatusSelect({
   }
 
   return (
-    <Select value={currentStatus} onValueChange={handleChange}>
+    <Select
+      value={currentStatus}
+      onValueChange={handleChange}
+      disabled={runtimeConfig?.camera_controls_locked}
+    >
       <SelectTrigger className="h-7 w-[110px] text-xs">
         <SelectValue />
       </SelectTrigger>

@@ -165,6 +165,19 @@
     "retry": "Retry"
   },
   "menu": {
+    "classic": {
+      "cameras": "Cameras",
+      "birdseye": "Birdseye",
+      "events": "Events",
+      "storage": "Storage",
+      "config": "Config",
+      "logs": "Logs",
+      "replay": "Debug Replay",
+      "recordings": "Recordings",
+      "detection": "Detection",
+      "snapshots": "Snapshots",
+      "navigation": "Navigation"
+    },
     "system": "System",
     "systemMetrics": "System metrics",
     "configuration": "Configuration",

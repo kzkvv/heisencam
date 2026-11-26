@@ -1,5 +1,5 @@
+import ClassicCameraActions from "@/components/ClassicCameraActions";
 import { useFrigateReviews } from "@/api/ws";
-import Logo from "@/components/Logo";
 import { CameraGroupSelector } from "@/components/filter/CameraGroupSelector";
 import { LiveGridIcon, LiveListIcon } from "@/components/icons/LiveIcons";
 import { AnimatedEventCard } from "@/components/card/AnimatedEventCard";
@@ -401,44 +401,42 @@ export default function LiveDashboardView({
       className="scrollbar-container size-full select-none overflow-y-auto px-1 pt-2 md:p-2"
       ref={containerRef}
     >
-      {isMobile && (
-        <div className="relative flex h-11 items-center justify-between">
-          <Logo className="absolute inset-x-1/2 h-8 -translate-x-1/2" />
-          <div className="w-[45%]">
-            <CameraGroupSelector />
-          </div>
-          {(!cameraGroup || cameraGroup == "default" || isMobileOnly) && (
-            <div className="flex items-center gap-1">
-              <Button
-                className={
-                  mobileLayout == "grid"
-                    ? "bg-blue-900 bg-opacity-60 focus:bg-blue-900 focus:bg-opacity-60"
-                    : "bg-secondary"
-                }
-                aria-label="Use mobile grid layout"
-                size="sm"
-                onClick={() => setMobileLayout("grid")}
-              >
-                <div className="size-5">
-                  <LiveGridIcon layout={mobileLayout} />
-                </div>
-              </Button>
-              <Button
-                className={
-                  mobileLayout == "list"
-                    ? "bg-blue-900 bg-opacity-60 focus:bg-blue-900 focus:bg-opacity-60"
-                    : "bg-secondary"
-                }
-                aria-label="Use mobile list layout"
-                size="sm"
-                onClick={() => setMobileLayout("list")}
-              >
-                <div className="size-5">
-                  <LiveListIcon layout={mobileLayout} />
-                </div>
-              </Button>
-            </div>
-          )}
+      {!fullscreen && (
+        <div className="relative mb-2 flex items-center gap-2 px-1 empty:hidden">
+          <CameraGroupSelector toolbar className="min-w-0 flex-1" />
+          {isMobile &&
+            (!cameraGroup || cameraGroup == "default" || isMobileOnly) && (
+              <div className="flex items-center gap-1">
+                <Button
+                  className={
+                    mobileLayout == "grid"
+                      ? "bg-blue-900 bg-opacity-60 focus:bg-blue-900 focus:bg-opacity-60"
+                      : "bg-secondary"
+                  }
+                  aria-label="Use mobile grid layout"
+                  size="sm"
+                  onClick={() => setMobileLayout("grid")}
+                >
+                  <div className="size-5">
+                    <LiveGridIcon layout={mobileLayout} />
+                  </div>
+                </Button>
+                <Button
+                  className={
+                    mobileLayout == "list"
+                      ? "bg-blue-900 bg-opacity-60 focus:bg-blue-900 focus:bg-opacity-60"
+                      : "bg-secondary"
+                  }
+                  aria-label="Use mobile list layout"
+                  size="sm"
+                  onClick={() => setMobileLayout("list")}
+                >
+                  <div className="size-5">
+                    <LiveListIcon layout={mobileLayout} />
+                  </div>
+                </Button>
+              </div>
+            )}
           {cameraGroup && cameraGroup !== "default" && isTablet && (
             <div className="flex items-center gap-1">
               <Button
@@ -493,8 +491,7 @@ export default function LiveDashboardView({
               <div
                 className={cn(
                   "mt-2 grid grid-cols-1 gap-2 px-2 md:gap-4",
-                  mobileLayout == "grid" &&
-                    "grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4",
+                  mobileLayout == "grid" && "md:grid-cols-2 3xl:grid-cols-3",
                   isMobile && "px-0",
                 )}
               >
@@ -522,15 +519,18 @@ export default function LiveDashboardView({
                   </div>
                 )}
                 {cameras.map((camera) => {
-                  let grow;
+                  let aspect;
+                  let span;
                   const aspectRatio =
                     camera.detect.width / camera.detect.height;
                   if (aspectRatio > 2) {
-                    grow = `${mobileLayout == "grid" && "col-span-2"} aspect-wide`;
+                    aspect = "aspect-wide";
+                    span =
+                      mobileLayout === "grid" ? "md:col-span-2" : undefined;
                   } else if (aspectRatio < 1) {
-                    grow = `${mobileLayout == "grid" && "row-span-2 h-full"} aspect-tall`;
+                    aspect = "aspect-tall";
                   } else {
-                    grow = "aspect-video";
+                    aspect = "aspect-video";
                   }
                   const availableStreams = camera.live.streams || {};
                   const firstStreamEntry =
@@ -561,68 +561,77 @@ export default function LiveDashboardView({
                     currentGroupStreamingSettings?.[camera.name]
                       ?.compatibilityMode || false;
                   return (
-                    <LiveContextMenu
-                      className={grow}
+                    <article
                       key={camera.name}
-                      camera={camera.name}
-                      cameraGroup={cameraGroup}
-                      streamName={streamName}
-                      preferredLiveMode={
-                        preferredLiveModes[camera.name] ?? "mse"
-                      }
-                      isRestreamed={isRestreamedStates[camera.name]}
-                      supportsAudio={
-                        supportsAudioOutputStates[streamName]?.supportsAudio ??
-                        false
-                      }
-                      audioState={audioStates[camera.name]}
-                      toggleAudio={() => toggleAudio(camera.name)}
-                      statsState={statsStates[camera.name]}
-                      toggleStats={() => toggleStats(camera.name)}
-                      volumeState={volumeStates[camera.name] ?? 1}
-                      setVolumeState={(value) =>
-                        setVolumeStates((prev) => ({
-                          ...prev,
-                          [camera.name]: value,
-                        }))
-                      }
-                      muteAll={muteAll}
-                      unmuteAll={unmuteAll}
-                      resetPreferredLiveMode={() =>
-                        resetPreferredLiveMode(camera.name)
-                      }
-                      config={config}
-                      streamMetadata={streamMetadata}
+                      className={cn(
+                        "overflow-hidden rounded-lg border border-secondary-highlight bg-background_alt shadow-md",
+                        span,
+                      )}
                     >
-                      <LivePlayer
-                        cameraRef={cameraRef}
-                        key={camera.name}
-                        className={`${grow} rounded-lg bg-black md:rounded-2xl`}
-                        windowVisible={
-                          windowVisible && visibleCameras.includes(camera.name)
-                        }
-                        cameraConfig={camera}
+                      <LiveContextMenu
+                        className={aspect}
+                        camera={camera.name}
+                        cameraGroup={cameraGroup}
+                        streamName={streamName}
                         preferredLiveMode={
                           preferredLiveModes[camera.name] ?? "mse"
                         }
-                        autoLive={autoLive ?? globalAutoLive}
-                        showStillWithoutActivity={
-                          showStillWithoutActivity ?? true
+                        isRestreamed={isRestreamedStates[camera.name]}
+                        supportsAudio={
+                          supportsAudioOutputStates[streamName]
+                            ?.supportsAudio ?? false
                         }
-                        alwaysShowCameraName={displayCameraNames}
-                        useWebGL={useWebGL}
-                        playInBackground={false}
-                        showStats={statsStates[camera.name]}
-                        streamName={streamName}
-                        onClick={() => onSelectCamera(camera.name)}
-                        onError={(e) => handleError(camera.name, e)}
-                        onResetLiveMode={() =>
+                        audioState={audioStates[camera.name]}
+                        toggleAudio={() => toggleAudio(camera.name)}
+                        statsState={statsStates[camera.name]}
+                        toggleStats={() => toggleStats(camera.name)}
+                        volumeState={volumeStates[camera.name] ?? 1}
+                        setVolumeState={(value) =>
+                          setVolumeStates((prev) => ({
+                            ...prev,
+                            [camera.name]: value,
+                          }))
+                        }
+                        muteAll={muteAll}
+                        unmuteAll={unmuteAll}
+                        resetPreferredLiveMode={() =>
                           resetPreferredLiveMode(camera.name)
                         }
-                        playAudio={audioStates[camera.name] ?? false}
-                        volume={volumeStates[camera.name]}
-                      />
-                    </LiveContextMenu>
+                        config={config}
+                        streamMetadata={streamMetadata}
+                      >
+                        <LivePlayer
+                          cameraRef={cameraRef}
+                          key={camera.name}
+                          className={cn(aspect, "bg-black")}
+                          windowVisible={
+                            windowVisible &&
+                            visibleCameras.includes(camera.name)
+                          }
+                          cameraConfig={camera}
+                          preferredLiveMode={
+                            preferredLiveModes[camera.name] ?? "mse"
+                          }
+                          autoLive={autoLive ?? globalAutoLive}
+                          showStillWithoutActivity={
+                            showStillWithoutActivity ?? true
+                          }
+                          alwaysShowCameraName={displayCameraNames}
+                          useWebGL={useWebGL}
+                          playInBackground={false}
+                          showStats={statsStates[camera.name]}
+                          streamName={streamName}
+                          onClick={() => onSelectCamera(camera.name)}
+                          onError={(e) => handleError(camera.name, e)}
+                          onResetLiveMode={() =>
+                            resetPreferredLiveMode(camera.name)
+                          }
+                          playAudio={audioStates[camera.name] ?? false}
+                          volume={volumeStates[camera.name]}
+                        />
+                      </LiveContextMenu>
+                      <ClassicCameraActions camera={camera} />
+                    </article>
                   );
                 })}
               </div>

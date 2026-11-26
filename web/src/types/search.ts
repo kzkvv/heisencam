@@ -110,6 +110,8 @@ export type SearchQueryParams = {
   search_type?: string;
   limit?: number;
   offset?: number;
+  cursor_start_time?: number;
+  cursor_event_id?: string;
   in_progress?: number;
   include_thumbnails?: number;
   query?: string;

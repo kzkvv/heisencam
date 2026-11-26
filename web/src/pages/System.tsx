@@ -1,27 +1,32 @@
+import { lazy } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import { FrigateStats } from "@/types/stats";
 import { useEffect, useMemo, useRef, useState } from "react";
 import TimeAgo from "@/components/dynamic/TimeAgo";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { isDesktop, isMobile } from "react-device-detect";
-import GeneralMetrics from "@/views/system/GeneralMetrics";
-import StorageMetrics from "@/views/system/StorageMetrics";
 import { LuActivity, LuHardDrive, LuSearchCode } from "react-icons/lu";
 import { FaVideo } from "react-icons/fa";
 import Logo from "@/components/Logo";
 import useOptimisticState from "@/hooks/use-optimistic-state";
-import CameraMetrics from "@/views/system/CameraMetrics";
 import { useHashState } from "@/hooks/use-overlay-state";
 import { Toaster } from "@/components/ui/sonner";
 import { FrigateConfig } from "@/types/frigateConfig";
-import EnrichmentMetrics from "@/views/system/EnrichmentMetrics";
 import { useTranslation } from "react-i18next";
+
+const GeneralMetrics = lazy(() => import("@/views/system/GeneralMetrics"));
+const StorageMetrics = lazy(() => import("@/views/system/StorageMetrics"));
+const CameraMetrics = lazy(() => import("@/views/system/CameraMetrics"));
+const EnrichmentMetrics = lazy(
+  () => import("@/views/system/EnrichmentMetrics"),
+);
 
 const allMetrics = ["general", "enrichments", "storage", "cameras"] as const;
 type SystemMetric = (typeof allMetrics)[number];
 
 function System() {
-  const { t } = useTranslation(["views/system"]);
+  const { t } = useTranslation(["views/system", "common"]);
   const { data: config } = useSWR<FrigateConfig>("config", {
     revalidateOnFocus: false,
   });
@@ -43,12 +48,17 @@ function System() {
 
   // stats page
 
-  const [page, setPage] = useHashState<SystemMetric>();
-  const [pageToggle, setPageToggle] = useOptimisticState(
-    page ?? "general",
-    setPage,
-    100,
-  );
+  const [selectedPage, setPage] = useHashState<SystemMetric>();
+  const navigate = useNavigate();
+  const { search } = useLocation();
+  const page =
+    selectedPage && metrics.includes(selectedPage) ? selectedPage : "general";
+  const [pageToggle, setPageToggle] = useOptimisticState(page, setPage, 100);
+  useEffect(() => {
+    if (!selectedPage || (config && !metrics.includes(selectedPage))) {
+      navigate({ hash: "#general", search }, { replace: true });
+    }
+  }, [config, metrics, navigate, search, selectedPage]);
   const [lastUpdated, setLastUpdated] = useState<number>(
     Math.floor(Date.now() / 1000),
   );
@@ -56,9 +66,7 @@ function System() {
   // Track which tabs have been visited so we can keep them mounted after first visit.
   // Using a ref updated during render avoids extra render cycles from state/effects.
   const visitedTabsRef = useRef(new Set<string>());
-  if (page) {
-    visitedTabsRef.current.add(page);
-  }
+  visitedTabsRef.current.add(page);
   const visitedTabs = visitedTabsRef.current;
 
   useEffect(() => {
@@ -76,6 +84,18 @@ function System() {
   return (
     <div className="flex size-full flex-col p-2">
       <Toaster position="top-center" />
+      <div className="flex items-baseline gap-2 px-2 pt-2">
+        <h1 className="text-xl font-semibold">
+          {page === "storage"
+            ? t("menu.classic.storage", { ns: "common" })
+            : t("title")}
+        </h1>
+        {page !== "storage" && statsSnapshot && (
+          <span className="text-sm text-muted-foreground">
+            {statsSnapshot.service.version}
+          </span>
+        )}
+      </div>
       <div className="relative flex h-11 w-full items-center justify-between">
         {isMobile && (
           <Logo className="absolute inset-x-1/2 h-8 -translate-x-1/2" />
@@ -117,14 +137,6 @@ function System() {
             </div>
           )}
         </div>
-      </div>
-      <div className="mt-2 flex items-end gap-2">
-        <div className="h-full content-center font-medium">{t("title")}</div>
-        {statsSnapshot && (
-          <div className="h-full content-center text-sm text-muted-foreground">
-            {statsSnapshot.service.version}
-          </div>
-        )}
       </div>
       {visitedTabs.has("general") && (
         <div className={page == "general" ? "contents" : "hidden"}>

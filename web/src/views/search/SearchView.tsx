@@ -1,16 +1,25 @@
 import SearchThumbnail from "@/components/card/SearchThumbnail";
 import SearchFilterGroup from "@/components/filter/SearchFilterGroup";
 import ActivityIndicator from "@/components/indicators/activity-indicator";
-import SearchDetailDialog, {
-  SearchTab,
-} from "@/components/overlay/detail/SearchDetailDialog";
+import type { ClassicEventTab } from "@/components/overlay/detail/ClassicEventDetails";
+import { useUserPersistence } from "@/hooks/use-user-persistence";
+import type { SearchTab } from "@/components/overlay/detail/SearchDetailDialog";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { FrigateConfig } from "@/types/frigateConfig";
 import { SearchFilter, SearchResult, SearchSource } from "@/types/search";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Fragment,
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { isDesktop, isMobileOnly } from "react-device-detect";
-import { LuImage, LuSearchX, LuText } from "react-icons/lu";
+import { LuImage, LuPlay, LuSearchX, LuText, LuX } from "react-icons/lu";
 import useSWR from "swr";
 import ExploreView from "../explore/ExploreView";
 import useKeyboardListener, {
@@ -19,7 +28,11 @@ import useKeyboardListener, {
 import scrollIntoView from "scroll-into-view-if-needed";
 import InputWithTags from "@/components/input/InputWithTags";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { formatDateToLocaleString } from "@/utils/dateUtil";
+import {
+  formatDateToLocaleString,
+  formatSecondsToDuration,
+  formatUnixTimestampToDateTime,
+} from "@/utils/dateUtil";
 import SearchThumbnailFooter from "@/components/card/SearchThumbnailFooter";
 import ExploreSettings from "@/components/settings/SearchSettings";
 import {
@@ -37,7 +50,15 @@ import { Button } from "@/components/ui/button";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useAllowedCameras } from "@/hooks/use-allowed-cameras";
 
+const SearchDetailDialog = lazy(
+  () => import("@/components/overlay/detail/SearchDetailDialog"),
+);
+const ClassicEventDetails = lazy(
+  () => import("@/components/overlay/detail/ClassicEventDetails"),
+);
+
 type SearchViewProps = {
+  classic?: boolean;
   search: string;
   searchTerm: string;
   searchFilter?: SearchFilter;
@@ -57,6 +78,7 @@ type SearchViewProps = {
   setDefaultView: (name: string) => void;
 };
 export default function SearchView({
+  classic = false,
   search,
   searchTerm,
   searchFilter,
@@ -229,6 +251,12 @@ export default function SearchView({
   // detail
 
   const [selectedId, setSelectedId] = useState<string>();
+  const [expandedId, setExpandedId] = useState<string>();
+  const [classicTab, setClassicTab, classicTabLoaded] =
+    useUserPersistence<ClassicEventTab>("classicEventTab", "clip");
+  const revealEvent = useCallback((panel: HTMLDivElement | null) => {
+    panel?.scrollIntoView({ block: "nearest" });
+  }, []);
   const [page, setPage] = useState<SearchTab>("snapshot");
 
   // remove duplicate event ids
@@ -236,12 +264,12 @@ export default function SearchView({
   const uniqueResults = useMemo(() => {
     if (!searchResults) return [];
 
-    const results = searchResults.filter(
-      (value, index, self) =>
-        index === self.findIndex((v) => v.id === value.id),
-    );
-
-    return results;
+    const seen = new Set<string>();
+    return searchResults.filter(({ id }) => {
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
   }, [searchResults]);
 
   const searchDetail = useMemo(() => {
@@ -279,12 +307,15 @@ export default function SearchView({
           copy.push(item.id);
           setSelectedObjects(copy);
         }
+      } else if (classic) {
+        setClassicTab(page);
+        setExpandedId(item.id);
       } else {
         setPage(page);
         setSelectedId(item.id);
       }
     },
-    [selectedObjects],
+    [classic, selectedObjects, setClassicTab],
   );
 
   const onSelectAllObjects = useCallback(() => {
@@ -301,6 +332,7 @@ export default function SearchView({
 
   useEffect(() => {
     setSelectedObjects([]);
+    setExpandedId(undefined);
     // unselect items when search term or filter changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm, searchFilter]);
@@ -517,18 +549,20 @@ export default function SearchView({
       <Toaster closeButton={true} />
       <div className="relative">
         {searchDetail && (
-          <SearchDetailDialog
-            search={searchDetail}
-            page={page}
-            setSearch={(item) => setSelectedId(item?.id)}
-            setSearchPage={setPage}
-            setSimilarity={
-              searchDetail && (() => setSimilaritySearch(searchDetail))
-            }
-            setInputFocused={setInputFocused}
-            onPrevious={goToPrevious}
-            onNext={goToNext}
-          />
+          <Suspense fallback={<ActivityIndicator />}>
+            <SearchDetailDialog
+              search={searchDetail}
+              page={page}
+              setSearch={(item) => setSelectedId(item?.id)}
+              setSearchPage={setPage}
+              setSimilarity={
+                searchDetail && (() => setSimilaritySearch(searchDetail))
+              }
+              setInputFocused={setInputFocused}
+              onPrevious={goToPrevious}
+              onNext={goToNext}
+            />
+          </Suspense>
         )}
       </div>
 
@@ -589,14 +623,16 @@ export default function SearchView({
                     filter={searchFilter}
                     onUpdateFilter={onUpdateFilter}
                   />
-                  <ExploreSettings
-                    columns={columns}
-                    setColumns={setColumns}
-                    defaultView={defaultView}
-                    setDefaultView={setDefaultView}
-                    filter={searchFilter}
-                    onUpdateFilter={onUpdateFilter}
-                  />
+                  {!classic && (
+                    <ExploreSettings
+                      columns={columns}
+                      setColumns={setColumns}
+                      defaultView={defaultView}
+                      setDefaultView={setDefaultView}
+                      filter={searchFilter}
+                      onUpdateFilter={onUpdateFilter}
+                    />
+                  )}
                   <ScrollBar orientation="horizontal" className="h-0" />
                 </>
               ) : (
@@ -639,109 +675,215 @@ export default function SearchView({
           )}
 
         {uniqueResults && (
-          <div className={gridClassName}>
+          <div className={classic ? "grid w-full gap-2 px-3" : gridClassName}>
             {uniqueResults &&
               uniqueResults.map((value, index) => {
                 const selected = selectedObjects.includes(value.id);
+                const expanded = expandedId === value.id;
+                const openClassicEvent = () => {
+                  setExpandedId(expanded ? undefined : value.id);
+                };
 
                 return (
-                  <div
-                    key={value.id}
-                    ref={(item) => {
-                      itemRefs.current[index] = item;
-                    }}
-                    data-start={value.start_time}
-                    className="relative flex flex-col rounded-lg"
-                  >
+                  <Fragment key={value.id}>
                     <div
+                      ref={(item) => {
+                        itemRefs.current[index] = item;
+                      }}
+                      data-start={value.start_time}
                       className={cn(
-                        "relative aspect-square w-full overflow-hidden rounded-lg",
+                        "relative flex flex-col rounded-lg",
+                        classic &&
+                          "flex-row items-center gap-4 border border-secondary-highlight bg-background_alt p-2 shadow-sm",
                       )}
                     >
-                      <SearchThumbnail
-                        searchResult={value}
-                        onClick={(
-                          value: SearchResult,
-                          ctrl: boolean,
-                          detail: boolean,
-                        ) => {
-                          if (detail && selectedObjects.length == 0) {
-                            setSelectedId(value.id);
-                          } else {
-                            onSelectSearch(
-                              value,
-                              ctrl || selectedObjects.length > 0,
-                            );
-                          }
-                        }}
-                      />
-                      {(searchTerm ||
-                        searchFilter?.search_type?.includes("similarity")) && (
-                        <div className={cn("absolute right-2 top-2 z-40")}>
-                          <Tooltip>
-                            <TooltipTrigger>
-                              <Chip
-                                className={`flex select-none items-center justify-between space-x-1 bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500 text-xs text-white smart-capitalize`}
-                              >
-                                {value.search_source == "thumbnail" ? (
-                                  <LuImage className="size-3" />
-                                ) : (
-                                  <LuText className="size-3" />
-                                )}
-                              </Chip>
-                            </TooltipTrigger>
-                            <TooltipPortal>
-                              <TooltipContent>
-                                <Trans
-                                  ns="views/explore"
-                                  values={{
-                                    type: t(
-                                      "filter.searchType." +
-                                        value.search_source,
-                                      { ns: "views/search" },
-                                    ),
-                                    confidence: zScoreToConfidence(
-                                      value.search_distance,
-                                    ),
-                                  }}
-                                >
-                                  searchResult.tooltip
-                                </Trans>
-                              </TooltipContent>
-                            </TooltipPortal>
-                          </Tooltip>
-                        </div>
-                      )}
-                      <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/70 to-transparent p-2">
-                        <SearchThumbnailFooter
+                      <div
+                        className={cn(
+                          "relative aspect-square w-full overflow-hidden rounded-lg",
+                          classic && "aspect-video w-28 shrink-0 sm:w-56",
+                        )}
+                      >
+                        <SearchThumbnail
                           searchResult={value}
-                          columns={columns}
-                          findSimilar={() => {
-                            if (config?.semantic_search.enabled) {
-                              setSimilaritySearch(value);
-                            }
-                          }}
-                          refreshResults={refresh}
-                          showTrackingDetails={() =>
-                            onSelectSearch(value, false, "tracking_details")
-                          }
-                          addTrigger={() => {
-                            if (
-                              config?.semantic_search.enabled &&
-                              value.data.type == "object"
-                            ) {
-                              navigate(
-                                `/settings?page=triggers&camera=${value.camera}&event_id=${value.id}`,
+                          onClick={(
+                            value: SearchResult,
+                            ctrl: boolean,
+                            detail: boolean,
+                          ) => {
+                            if (detail && selectedObjects.length == 0) {
+                              if (classic) {
+                                openClassicEvent();
+                              } else {
+                                setSelectedId(value.id);
+                              }
+                            } else {
+                              onSelectSearch(
+                                value,
+                                ctrl || selectedObjects.length > 0,
                               );
                             }
                           }}
                         />
+                        {(searchTerm ||
+                          searchFilter?.search_type?.includes(
+                            "similarity",
+                          )) && (
+                          <div className={cn("absolute right-2 top-2 z-40")}>
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <Chip
+                                  className={`flex select-none items-center justify-between space-x-1 bg-gray-500 bg-gradient-to-br from-gray-400 to-gray-500 text-xs text-white smart-capitalize`}
+                                >
+                                  {value.search_source == "thumbnail" ? (
+                                    <LuImage className="size-3" />
+                                  ) : (
+                                    <LuText className="size-3" />
+                                  )}
+                                </Chip>
+                              </TooltipTrigger>
+                              <TooltipPortal>
+                                <TooltipContent>
+                                  <Trans
+                                    ns="views/explore"
+                                    values={{
+                                      type: t(
+                                        "filter.searchType." +
+                                          value.search_source,
+                                        { ns: "views/search" },
+                                      ),
+                                      confidence: zScoreToConfidence(
+                                        value.search_distance,
+                                      ),
+                                    }}
+                                  >
+                                    searchResult.tooltip
+                                  </Trans>
+                                </TooltipContent>
+                              </TooltipPortal>
+                            </Tooltip>
+                          </div>
+                        )}
+                        <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/70 to-transparent p-2">
+                          <SearchThumbnailFooter
+                            searchResult={value}
+                            columns={columns}
+                            findSimilar={() => {
+                              if (config?.semantic_search.enabled) {
+                                setSimilaritySearch(value);
+                              }
+                            }}
+                            refreshResults={refresh}
+                            showTrackingDetails={() =>
+                              onSelectSearch(value, false, "tracking_details")
+                            }
+                            addTrigger={() => {
+                              if (
+                                config?.semantic_search.enabled &&
+                                value.data.type == "object"
+                              ) {
+                                navigate(
+                                  `/settings?page=triggers&camera=${value.camera}&event_id=${value.id}`,
+                                );
+                              }
+                            }}
+                          />
+                        </div>
                       </div>
+                      {classic && (
+                        <button
+                          type="button"
+                          className="min-w-0 grow rounded text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring"
+                          aria-expanded={expanded}
+                          onClick={openClassicEvent}
+                        >
+                          <span className="block truncate font-semibold smart-capitalize">
+                            {t(value.label, {
+                              ns: "objects",
+                              defaultValue: value.label,
+                            })}
+                          </span>
+                          <span className="block truncate text-sm">
+                            {value.camera.replaceAll("_", " ")}
+                          </span>
+                          <time
+                            className="block text-sm text-muted-foreground"
+                            dateTime={new Date(
+                              value.start_time * 1000,
+                            ).toISOString()}
+                          >
+                            {formatUnixTimestampToDateTime(
+                              value.start_time,
+                              config?.ui,
+                            )}
+                          </time>
+                          {!!value.zones?.length && (
+                            <span className="block truncate text-sm">
+                              {value.zones.join(", ").replaceAll("_", " ")}
+                            </span>
+                          )}
+                          <span className="block text-sm text-muted-foreground">
+                            {value.end_time == null
+                              ? t("classic.inProgress")
+                              : formatSecondsToDuration(
+                                  Math.max(
+                                    1,
+                                    Math.round(
+                                      value.end_time - value.start_time,
+                                    ),
+                                  ),
+                                )}
+                          </span>
+                        </button>
+                      )}
+                      {classic && value.has_clip && (
+                        <Button
+                          type="button"
+                          size="sm"
+                          className="shrink-0"
+                          disabled={!classicTabLoaded}
+                          aria-expanded={expanded}
+                          aria-label={t(
+                            expanded && classicTab === "clip"
+                              ? "button.close"
+                              : "button.play",
+                            { ns: "common" },
+                          )}
+                          onClick={() => {
+                            if (expanded && classicTab === "clip") {
+                              setExpandedId(undefined);
+                            } else {
+                              setClassicTab("clip");
+                              setExpandedId(value.id);
+                            }
+                          }}
+                        >
+                          {expanded && classicTab === "clip" ? (
+                            <LuX className="size-4" />
+                          ) : (
+                            <LuPlay className="size-4" />
+                          )}
+                        </Button>
+                      )}
+                      <div
+                        className={`review-item-ring pointer-events-none absolute inset-0 z-30 size-full rounded-lg outline outline-[3px] -outline-offset-[2.8px] ${selected ? `shadow-selected outline-selected` : "outline-transparent duration-500"}`}
+                      />
                     </div>
-                    <div
-                      className={`review-item-ring pointer-events-none absolute inset-0 z-30 size-full rounded-lg outline outline-[3px] -outline-offset-[2.8px] ${selected ? `shadow-selected outline-selected` : "outline-transparent duration-500"}`}
-                    />
-                  </div>
+                    {classic && expanded && (
+                      <div ref={revealEvent}>
+                        <Suspense fallback={<ActivityIndicator />}>
+                          {classicTabLoaded ? (
+                            <ClassicEventDetails
+                              event={value}
+                              preferredTab={classicTab ?? "clip"}
+                              onTabChange={setClassicTab}
+                            />
+                          ) : (
+                            <ActivityIndicator />
+                          )}
+                        </Suspense>
+                      </div>
+                    )}
+                  </Fragment>
                 );
               })}
           </div>

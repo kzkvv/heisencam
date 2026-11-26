@@ -1,3 +1,4 @@
+import { useUserPersistence } from "@/hooks/use-user-persistence";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Dialog,
@@ -662,9 +663,12 @@ export function ExportContent({
     [cameraActivities],
   );
 
+  const [showCameraGroups] = useUserPersistence("showCameraGroups", true);
   const cameraGroups = useMemo(
     () =>
-      Object.entries(config?.camera_groups ?? {})
+      Object.entries(
+        (showCameraGroups !== false && config?.camera_groups) || {},
+      )
         .map(([name, group]) => ({
           name,
           icon: group.icon,
@@ -675,7 +679,7 @@ export function ExportContent({
         }))
         .filter((group) => group.cameras.length > 0)
         .sort((a, b) => a.order - b.order),
-    [config?.camera_groups, availableCameraIds],
+    [config?.camera_groups, availableCameraIds, showCameraGroups],
   );
 
   // Filter the rendered camera cards by the search query

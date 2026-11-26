@@ -507,8 +507,8 @@ export const OVERRIDABLE_SECTIONS: ReadonlyArray<{
 export function useAllCameraOverrides(
   config: FrigateConfig | undefined,
   cameraName: string | undefined,
+  schema: RJSFSchema | undefined,
 ) {
-  const { data: schema } = useSWR<RJSFSchema>("config/schema.json");
   return useMemo(() => {
     if (!config || !cameraName) {
       return [];

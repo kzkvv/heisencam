@@ -48,7 +48,10 @@ import { Badge } from "@/components/ui/badge";
 import { HiDotsHorizontal } from "react-icons/hi";
 import axios from "axios";
 import { toast } from "sonner";
-import { useDetailStream } from "@/context/detail-stream-context";
+import {
+  DetailStreamProvider,
+  useDetailStream,
+} from "@/context/detail-stream-context";
 import { isDesktop, isIOS, isMobileOnly, isSafari } from "react-device-detect";
 import { useApiHost } from "@/api";
 import ImageLoadingIndicator from "@/components/indicators/ImageLoadingIndicator";
@@ -64,6 +67,21 @@ type TrackingDetailsProps = {
   tabs?: React.ReactNode;
   isAnnotationSettingsOpen?: boolean;
 };
+
+export function InlineTrackingDetails({ event }: { event: Event }) {
+  const selectedIds = useMemo(() => [event.id], [event.id]);
+
+  return (
+    <DetailStreamProvider
+      isDetailMode
+      currentTime={event.start_time ?? 0}
+      camera={event.camera}
+      initialSelectedObjectIds={selectedIds}
+    >
+      <TrackingDetails event={event} className="lg:h-[min(70dvh,48rem)]" />
+    </DetailStreamProvider>
+  );
+}
 
 export function TrackingDetails({
   className,

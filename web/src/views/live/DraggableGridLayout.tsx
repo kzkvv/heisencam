@@ -32,15 +32,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useResizeObserver } from "@/hooks/resize-observer";
 import { isEqual } from "lodash";
 import useSWR from "swr";
-import { useIsAdmin } from "@/hooks/use-is-admin";
 import { isDesktop, isMobile } from "react-device-detect";
 import BirdseyeLivePlayer from "@/components/player/BirdseyeLivePlayer";
 import LivePlayer from "@/components/player/LivePlayer";
 import { IoClose } from "react-icons/io5";
-import { LuLayoutDashboard, LuPencil } from "react-icons/lu";
+import { LuLayoutDashboard } from "react-icons/lu";
 import { cn } from "@/lib/utils";
-import { EditGroupDialog } from "@/components/filter/CameraGroupSelector";
-import { useUserPersistedOverlayState } from "@/hooks/use-overlay-state";
 import { FaCompress, FaExpand } from "react-icons/fa";
 import {
   Tooltip,
@@ -98,7 +95,6 @@ export default function DraggableGridLayout({
 }: DraggableGridLayoutProps) {
   const { t } = useTranslation(["views/live"]);
   const { data: config } = useSWR<FrigateConfig>("config");
-  const isAdmin = useIsAdmin();
   const birdseyeConfig = useMemo(() => config?.birdseye, [config]);
 
   // preferred live modes per camera
@@ -120,29 +116,12 @@ export default function DraggableGridLayout({
   const [gridLayout, setGridLayout, isGridLayoutLoaded] =
     useUserPersistence<Layout>(`${cameraGroup}-draggable-layout`);
 
-  const [group] = useUserPersistedOverlayState(
-    "cameraGroup",
-    "default" as string,
-  );
-
-  const groups = useMemo(() => {
-    if (!config) {
-      return [];
-    }
-
-    return Object.entries(config.camera_groups).sort(
-      (a, b) => a[1].order - b[1].order,
-    );
-  }, [config]);
-
   // editing
 
-  const [editGroup, setEditGroup] = useState(false);
   const [showCircles, setShowCircles] = useState(true);
 
   useEffect(() => {
     setIsEditMode(false);
-    setEditGroup(false);
     // Reset camera tracking state when group changes to prevent the camera-change
     // effect from incorrectly overwriting the loaded layout
     setCurrentCameras(undefined);
@@ -531,12 +510,6 @@ export default function DraggableGridLayout({
           className="no-scrollbar my-2 select-none overflow-x-hidden px-2 pb-8"
           ref={gridContainerRef}
         >
-          <EditGroupDialog
-            open={editGroup}
-            setOpen={setEditGroup}
-            currentGroups={groups}
-            activeGroup={group}
-          />
           <Responsive
             className="grid-layout"
             width={availableWidth ?? window.innerWidth}
@@ -725,25 +698,6 @@ export default function DraggableGridLayout({
               </Tooltip>
               {!isEditMode && (
                 <>
-                  {!fullscreen && isAdmin && (
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div
-                          className="cursor-pointer rounded-lg bg-secondary text-secondary-foreground opacity-60 transition-all duration-300 hover:bg-muted hover:opacity-100"
-                          onClick={() =>
-                            setEditGroup((prevEditGroup) => !prevEditGroup)
-                          }
-                        >
-                          <LuPencil className="size-5 md:m-[6px]" />
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        {isEditMode
-                          ? t("editLayout.exitEdit")
-                          : t("editLayout.group.label")}
-                      </TooltipContent>
-                    </Tooltip>
-                  )}
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <div
