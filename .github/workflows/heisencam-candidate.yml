@@ -1,0 +1,105 @@
+name: HeisenCam candidate
+on:
+  push:
+    branches: [heisencam/0.18.3]
+  pull_request:
+    branches: [heisencam/0.18.3]
+
+permissions:
+  contents: read
+concurrency:
+  group: heisencam-candidate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  IMAGE: ghcr.io/kzkvv/heisencam
+
+jobs:
+  web:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: web
+    env:
+      NODE_OPTIONS: --max-old-space-size=4096
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run e2e:build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run e2e:perf -- startup.spec.ts
+        env:
+          E2E_STRICT_ERRORS: "1"
+
+  native:
+    if: github.event_name == 'push' && github.repository == 'kzkvv/heisencam'
+    needs: web
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 35
+    permissions:
+      contents: read
+      packages: write
+    env:
+      ARCH: ${{ matrix.arch }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Build candidate from this revision
+        run: |
+          docker build --platform "linux/$ARCH" -f docker/classic/Dockerfile \
+            --build-arg HEISENCAM_REVISION="$GITHUB_SHA" -t "$IMAGE:sha-$GITHUB_SHA-$ARCH" .
+      - name: Test the image
+        run: |
+          image="$IMAGE:sha-$GITHUB_SHA-$ARCH"
+          test "$(docker image inspect "$image" --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')" = "$GITHUB_SHA"
+          docker run --rm --network none --entrypoint python3 "$image" -m unittest \
+            frigate.test.test_detection_evidence frigate.test.test_debug_replay \
+            frigate.test.test_video frigate.test.test_performance
+          docker run --rm --network none --entrypoint python3 -v "$PWD/tools:/opt/frigate/tools:ro" "$image" \
+            -m unittest discover -s /opt/frigate/tools -p test_performance_smoke.py
+          docker run --rm --network none --entrypoint python3 \
+            -v "$PWD/generate_api_auth_spec.py:/opt/frigate/generate_api_auth_spec.py:ro" \
+            -v "$PWD/docs/static:/opt/frigate/docs/static:ro" "$image" /opt/frigate/generate_api_auth_spec.py --check
+      - name: Publish verified architecture image
+        env:
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          printf '%s' "$REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker push "$IMAGE:sha-$GITHUB_SHA-$ARCH"
+
+  manifest:
+    needs: native
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Publish and verify the candidate manifest
+        env:
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          printf '%s' "$REGISTRY_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          docker buildx imagetools create -t "$IMAGE:sha-$GITHUB_SHA" -t "$IMAGE:candidate-0.18.3" \
+            "$IMAGE:sha-$GITHUB_SHA-amd64" "$IMAGE:sha-$GITHUB_SHA-arm64"
+          docker pull "$IMAGE:sha-$GITHUB_SHA"
+          test "$(docker inspect "$IMAGE:sha-$GITHUB_SHA" --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')" = "$GITHUB_SHA"
+          docker run --rm --network none --entrypoint python3 "$IMAGE:sha-$GITHUB_SHA" \
+            -c 'from frigate.version import VERSION; assert VERSION.startswith("0.18.3"), VERSION'
