@@ -70,7 +70,8 @@ class Dispatcher:
                 logger.error(f"Received invalid set command: {topic}")
                 return
         elif topic == "restart":
-            restart_frigate()
+            logger.info("Restart is disabled")
+            # restart_frigate()
 
     def publish(self, topic: str, payload: Any, retain: bool = False) -> None:
         """Handle publishing to communicators."""
@@ -88,20 +89,20 @@ class Dispatcher:
         if payload == "ON":
             if not self.camera_metrics[camera_name]["detection_enabled"].value:
                 logger.info(f"Turning on detection for {camera_name}")
-                self.camera_metrics[camera_name]["detection_enabled"].value = True
-                detect_settings.enabled = True
+                #self.camera_metrics[camera_name]["detection_enabled"].value = True
+                #detect_settings.enabled = True
 
                 if not self.camera_metrics[camera_name]["motion_enabled"].value:
                     logger.info(
                         f"Turning on motion for {camera_name} due to detection being enabled."
                     )
-                    self.camera_metrics[camera_name]["motion_enabled"].value = True
-                    self.publish(f"{camera_name}/motion/state", payload, retain=True)
+                    #self.camera_metrics[camera_name]["motion_enabled"].value = True
+                    #self.publish(f"{camera_name}/motion/state", payload, retain=True)
         elif payload == "OFF":
             if self.camera_metrics[camera_name]["detection_enabled"].value:
                 logger.info(f"Turning off detection for {camera_name}")
-                self.camera_metrics[camera_name]["detection_enabled"].value = False
-                detect_settings.enabled = False
+                # self.camera_metrics[camera_name]["detection_enabled"].value = False
+                # detect_settings.enabled = False
 
         self.publish(f"{camera_name}/detect/state", payload, retain=True)
 
@@ -110,7 +111,7 @@ class Dispatcher:
         if payload == "ON":
             if not self.camera_metrics[camera_name]["motion_enabled"].value:
                 logger.info(f"Turning on motion for {camera_name}")
-                self.camera_metrics[camera_name]["motion_enabled"].value = True
+                #self.camera_metrics[camera_name]["motion_enabled"].value = True
         elif payload == "OFF":
             if self.camera_metrics[camera_name]["detection_enabled"].value:
                 logger.error(
@@ -120,7 +121,7 @@ class Dispatcher:
 
             if self.camera_metrics[camera_name]["motion_enabled"].value:
                 logger.info(f"Turning off motion for {camera_name}")
-                self.camera_metrics[camera_name]["motion_enabled"].value = False
+                # self.camera_metrics[camera_name]["motion_enabled"].value = False
 
         self.publish(f"{camera_name}/motion/state", payload, retain=True)
 
@@ -188,11 +189,11 @@ class Dispatcher:
 
             if not record_settings.enabled:
                 logger.info(f"Turning on recordings for {camera_name}")
-                record_settings.enabled = True
+                #record_settings.enabled = True
         elif payload == "OFF":
             if record_settings.enabled:
                 logger.info(f"Turning off recordings for {camera_name}")
-                record_settings.enabled = False
+                # record_settings.enabled = False
 
         self.publish(f"{camera_name}/recordings/state", payload, retain=True)
 
@@ -203,10 +204,10 @@ class Dispatcher:
         if payload == "ON":
             if not snapshots_settings.enabled:
                 logger.info(f"Turning on snapshots for {camera_name}")
-                snapshots_settings.enabled = True
+                # snapshots_settings.enabled = True
         elif payload == "OFF":
             if snapshots_settings.enabled:
                 logger.info(f"Turning off snapshots for {camera_name}")
-                snapshots_settings.enabled = False
+                # snapshots_settings.enabled = False
 
         self.publish(f"{camera_name}/snapshots/state", payload, retain=True)

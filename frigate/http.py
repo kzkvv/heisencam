@@ -341,24 +341,24 @@ def get_sub_labels():
 
 @bp.route("/events/<id>", methods=("DELETE",))
 def delete_event(id):
-    try:
-        event = Event.get(Event.id == id)
-    except DoesNotExist:
-        return make_response(
-            jsonify({"success": False, "message": "Event " + id + " not found"}), 404
-        )
-
-    media_name = f"{event.camera}-{event.id}"
-    if event.has_snapshot:
-        media = Path(f"{os.path.join(CLIPS_DIR, media_name)}.jpg")
-        media.unlink(missing_ok=True)
-        media = Path(f"{os.path.join(CLIPS_DIR, media_name)}-clean.png")
-        media.unlink(missing_ok=True)
-    if event.has_clip:
-        media = Path(f"{os.path.join(CLIPS_DIR, media_name)}.mp4")
-        media.unlink(missing_ok=True)
-
-    event.delete_instance()
+    # try:
+    #     event = Event.get(Event.id == id)
+    # except DoesNotExist:
+    #     return make_response(
+    #         jsonify({"success": False, "message": "Event " + id + " not found"}), 404
+    #     )
+    #
+    # media_name = f"{event.camera}-{event.id}"
+    # if event.has_snapshot:
+    #     media = Path(f"{os.path.join(CLIPS_DIR, media_name)}.jpg")
+    #     media.unlink(missing_ok=True)
+    #     media = Path(f"{os.path.join(CLIPS_DIR, media_name)}-clean.png")
+    #     media.unlink(missing_ok=True)
+    # if event.has_clip:
+    #     media = Path(f"{os.path.join(CLIPS_DIR, media_name)}.mp4")
+    #     media.unlink(missing_ok=True)
+    #
+    # event.delete_instance()
     return make_response(
         jsonify({"success": True, "message": "Event " + id + " deleted"}), 200
     )
@@ -729,85 +729,89 @@ def config():
 
 @bp.route("/config/raw")
 def config_raw():
-    config_file = os.environ.get("CONFIG_FILE", "/config/config.yml")
+    return "This feature is disabled", 200
 
-    # Check if we can use .yaml instead of .yml
-    config_file_yaml = config_file.replace(".yml", ".yaml")
-
-    if os.path.isfile(config_file_yaml):
-        config_file = config_file_yaml
-
-    if not os.path.isfile(config_file):
-        return "Could not find file", 410
-
-    with open(config_file, "r") as f:
-        raw_config = f.read()
-        f.close()
-
-        return raw_config, 200
+    # config_file = os.environ.get("CONFIG_FILE", "/config/config.yml")
+    #
+    # # Check if we can use .yaml instead of .yml
+    # config_file_yaml = config_file.replace(".yml", ".yaml")
+    #
+    # if os.path.isfile(config_file_yaml):
+    #     config_file = config_file_yaml
+    #
+    # if not os.path.isfile(config_file):
+    #     return "Could not find file", 410
+    #
+    # with open(config_file, "r") as f:
+    #     raw_config = f.read()
+    #     f.close()
+    #
+    #     return raw_config, 200
 
 
 @bp.route("/config/save", methods=["POST"])
 def config_save():
-    save_option = request.args.get("save_option")
+    return "This feature is disabled", 200
 
-    new_config = request.get_data().decode()
-
-    if not new_config:
-        return "Config with body param is required", 400
-
-    # Validate the config schema
-    try:
-        new_yaml = FrigateConfig.parse_raw(new_config)
-        check_runtime = new_yaml.runtime_config
-    except Exception as e:
-        return make_response(
-            jsonify(
-                {
-                    "success": False,
-                    "message": f"\nConfig Error:\n\n{str(traceback.format_exc())}",
-                }
-            ),
-            400,
-        )
-
-    # Save the config to file
-    try:
-        config_file = os.environ.get("CONFIG_FILE", "/config/config.yml")
-
-        # Check if we can use .yaml instead of .yml
-        config_file_yaml = config_file.replace(".yml", ".yaml")
-
-        if os.path.isfile(config_file_yaml):
-            config_file = config_file_yaml
-
-        with open(config_file, "w") as f:
-            f.write(new_config)
-            f.close()
-    except Exception as e:
-        return make_response(
-            jsonify(
-                {
-                    "success": False,
-                    "message": f"Could not write config file, be sure that Frigate has write permission on the config file.",
-                }
-            ),
-            400,
-        )
-
-    if save_option == "restart":
-        try:
-            restart_frigate()
-        except Exception as e:
-            logging.error(f"Error restarting Frigate: {e}")
-            return "Config successfully saved, unable to restart Frigate", 200
-
-        return (
-            "Config successfully saved, restarting (this can take up to one minute)...",
-            200,
-        )
-    else:
-        return "Config successfully saved.", 200
+    # save_option = request.args.get("save_option")
+    #
+    # new_config = request.get_data().decode()
+    #
+    # if not new_config:
+    #     return "Config with body param is required", 400
+    #
+    # # Validate the config schema
+    # try:
+    #     new_yaml = FrigateConfig.parse_raw(new_config)
+    #     check_runtime = new_yaml.runtime_config
+    # except Exception as e:
+    #     return make_response(
+    #         jsonify(
+    #             {
+    #                 "success": False,
+    #                 "message": f"\nConfig Error:\n\n{str(traceback.format_exc())}",
+    #             }
+    #         ),
+    #         400,
+    #     )
+    #
+    # # Save the config to file
+    # try:
+    #     config_file = os.environ.get("CONFIG_FILE", "/config/config.yml")
+    #
+    #     # Check if we can use .yaml instead of .yml
+    #     config_file_yaml = config_file.replace(".yml", ".yaml")
+    #
+    #     if os.path.isfile(config_file_yaml):
+    #         config_file = config_file_yaml
+    #
+    #     with open(config_file, "w") as f:
+    #         f.write(new_config)
+    #         f.close()
+    # except Exception as e:
+    #     return make_response(
+    #         jsonify(
+    #             {
+    #                 "success": False,
+    #                 "message": f"Could not write config file, be sure that Frigate has write permission on the config file.",
+    #             }
+    #         ),
+    #         400,
+    #     )
+    #
+    # if save_option == "restart":
+    #     try:
+    #         restart_frigate()
+    #     except Exception as e:
+    #         logging.error(f"Error restarting Frigate: {e}")
+    #         return "Config successfully saved, unable to restart Frigate", 200
+    #
+    #     return (
+    #         "Config successfully saved, restarting (this can take up to one minute)...",
+    #         200,
+    #     )
+    # else:
+    #     return "Config successfully saved.", 200
 
 
 @bp.route("/config/schema.json")
