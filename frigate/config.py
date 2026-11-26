@@ -262,6 +262,9 @@ class DetectConfig(FrigateBaseModel):
     max_disappeared: Optional[int] = Field(
         title="Maximum number of frames the object can dissapear before detection ends."
     )
+    idle_scan_interval: int = Field(
+        default=0, ge=0, title="Scan one overlapping tile after this many idle frames (zero disables)."
+    )
     stationary: StationaryConfig = Field(
         default_factory=StationaryConfig,
         title="Stationary objects config.",

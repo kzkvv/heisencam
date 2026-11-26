@@ -137,6 +137,7 @@ class ObjectTracker:
     def update_frame_times(self, frame_time):
         for id in list(self.tracked_objects.keys()):
             self.tracked_objects[id]["frame_time"] = frame_time
+            self.tracked_objects[id]["detector_evidence"] = False
             self.tracked_objects[id]["motionless_count"] += 1
             if self.is_expired(id):
                 self.deregister(id)
@@ -153,6 +154,7 @@ class ObjectTracker:
                     "area": obj[3],
                     "ratio": obj[4],
                     "region": obj[5],
+                    "detector_evidence": len(obj) == 6 or obj[6],
                     "frame_time": frame_time,
                 }
             )

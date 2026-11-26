@@ -85,7 +85,9 @@ class TrackedObject:
         self.previous = self.to_dict()
 
         # start the score history
-        self.score_history = [self.obj_data["score"]]
+        self.score_history = (
+            [self.obj_data["score"]] if self.obj_data.get("detector_evidence", True) else []
+        )
 
     def _is_false_positive(self):
         # once a true positive, always a true positive
@@ -108,7 +110,7 @@ class TrackedObject:
         # if the object is not in the current frame, add a 0.0 to the score history
         if obj_data["frame_time"] != current_frame_time:
             self.score_history.append(0.0)
-        else:
+        elif obj_data.get("detector_evidence", True):
             self.score_history.append(obj_data["score"])
         # only keep the last 10 scores
         if len(self.score_history) > 10:

@@ -1,5 +1,6 @@
 import datetime
 import logging
+import math
 import multiprocessing as mp
 import os
 import queue
@@ -575,6 +576,17 @@ def detect(
     return detections
 
 
+def idle_scan_regions(frame_shape, model_size):
+    """Cover the image with overlapping square regions suitable for YUV crops."""
+    height, width = frame_shape
+    side = max(model_size, math.ceil(0.6 * max(height, width) / 4) * 4)
+    return tuple(dict.fromkeys(
+        calculate_region(frame_shape, x, y, x + side, y + side, model_size, multiplier=1)
+        for y in (0, max(0, height - side))
+        for x in (0, max(0, width - side))
+    ))
+
+
 def process_frames(
     camera_name: str,
     frame_queue: mp.Queue,
@@ -603,6 +615,9 @@ def process_frames(
     fps_tracker.start()
 
     startup_scan_counter = 0
+    idle_frames = 0
+    tile_index = 0
+    tiles = idle_scan_regions(frame_shape, max(model_config.width, model_config.height))
 
     while not stop_event.is_set():
         if exit_on_empty and frame_queue.empty():
@@ -631,6 +646,7 @@ def process_frames(
 
         # if detection is disabled
         if not detection_enabled.value:
+            idle_frames = 0
             object_tracker.match_and_update(frame_time, [])
         else:
             # get stationary object ids
@@ -705,6 +721,15 @@ def process_frames(
                 )
                 startup_scan_counter += 1
 
+            if detect_config.idle_scan_interval and not regions:
+                idle_frames += 1
+                if idle_frames >= detect_config.idle_scan_interval:
+                    regions.append(tiles[tile_index])
+                    tile_index = (tile_index + 1) % len(tiles)
+                    idle_frames = 0
+            else:
+                idle_frames = 0
+
             # resize regions and detect
             # seed with stationary objects
             detections = [
@@ -715,6 +740,7 @@ def process_frames(
                     obj["area"],
                     obj["ratio"],
                     obj["region"],
+                    False,  # Cached stationary detection.
                 )
                 for obj in object_tracker.tracked_objects.values()
                 if obj["id"] in stationary_object_ids
