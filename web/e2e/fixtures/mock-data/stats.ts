@@ -57,6 +57,12 @@ export const BASE_STATS = {
         used: 500000000,
         mount_type: "tmpfs",
       },
+      "/dev/shm": {
+        free: 268435456,
+        total: 402653184,
+        used: 134217728,
+        mount_type: "tmpfs",
+      },
     },
     uptime: 86400,
     latest_version: "0.15.0",

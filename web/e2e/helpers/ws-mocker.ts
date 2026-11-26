@@ -8,6 +8,7 @@
 
 import type { Page, WebSocketRoute } from "@playwright/test";
 import { cameraActivityPayload } from "../fixtures/mock-data/camera-activity";
+import type { BASE_STATS } from "../fixtures/mock-data/stats";
 
 export class WsMocker {
   private mockWs: WebSocketRoute | null = null;
@@ -17,17 +18,17 @@ export class WsMocker {
     this.cameras = cameras;
   }
 
-  async install(page: Page) {
+  async install(page: Page, stats: typeof BASE_STATS) {
     await page.routeWebSocket("**/ws", (ws) => {
       this.mockWs = ws;
 
       ws.onMessage((msg) => {
-        this.handleClientMessage(msg.toString());
+        this.handleClientMessage(msg.toString(), stats);
       });
     });
   }
 
-  private handleClientMessage(raw: string) {
+  private handleClientMessage(raw: string, stats: typeof BASE_STATS) {
     let data: { topic: string; payload?: unknown; message?: string };
     try {
       data = JSON.parse(raw);
@@ -43,33 +44,11 @@ export class WsMocker {
       this.send(
         "stats",
         JSON.stringify({
-          cameras: Object.fromEntries(
-            this.cameras.map((c) => [
-              c,
-              {
-                camera_fps: 5,
-                detection_fps: 5,
-                process_fps: 5,
-                skipped_fps: 0,
-                detection_enabled: 1,
-                connection_quality: "excellent",
-              },
-            ]),
-          ),
+          ...stats,
           service: {
-            last_updated: Date.now() / 1000,
-            uptime: 86400,
-            version: "0.15.0-test",
-            latest_version: "0.15.0",
-            storage: {},
+            ...stats.service,
+            last_updated: stats.service.last_updated + 1,
           },
-          detectors: {},
-          cpu_usages: {},
-          gpu_usages: {},
-          camera_fps: 15,
-          process_fps: 15,
-          skipped_fps: 0,
-          detection_fps: 15,
         }),
       );
     }

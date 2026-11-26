@@ -16,6 +16,7 @@
     "coverage": "vitest run --coverage",
     "e2e:build": "tsc && vite build --base=/",
     "e2e": "playwright test --config e2e/playwright.config.ts",
+    "e2e:perf": "playwright test --config e2e/playwright.performance.config.ts",
     "e2e:ui": "playwright test --config e2e/playwright.config.ts --ui",
     "e2e:headed": "playwright test --config e2e/playwright.config.ts --headed",
     "i18n:extract": "i18next-cli extract",

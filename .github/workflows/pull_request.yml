@@ -66,11 +66,18 @@ jobs:
         run: npx playwright install chromium --with-deps
         working-directory: ./web
       - name: Build web for E2E
+        id: build_e2e
         run: npm run e2e:build
         working-directory: ./web
       - name: Run E2E tests
         run: npm run e2e
         working-directory: ./web
+      - name: Check performance budgets
+        if: ${{ !cancelled() && steps.build_e2e.outcome == 'success' }}
+        run: npm run e2e:perf
+        working-directory: ./web
+        env:
+          E2E_STRICT_ERRORS: "1"
       - name: Upload test artifacts
         uses: actions/upload-artifact@v7
         if: failure()
@@ -79,6 +86,7 @@ jobs:
           path: |
             web/test-results/
             web/playwright-report/
+            web/e2e/performance/test-results/
           retention-days: 7
 
   python_checks:

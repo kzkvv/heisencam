@@ -50,10 +50,12 @@ export class ApiMocker {
     this.page = page;
   }
 
-  async install(overrides?: ApiMockOverrides) {
+  async install(
+    overrides?: ApiMockOverrides,
+    stats = statsFactory(overrides?.stats),
+  ) {
     const config = configFactory(overrides?.config);
     const profile = overrides?.profile ?? adminProfile();
-    const stats = statsFactory(overrides?.stats);
     const reviews =
       overrides?.reviews ?? (loadMockJson("reviews.json") as unknown[]);
     const events =
@@ -80,6 +82,9 @@ export class ApiMocker {
     // Stats endpoint
     await this.page.route("**/api/stats", (route) =>
       route.fulfill({ json: stats }),
+    );
+    await this.page.route(/\/api\/stats\/history(?:\?|$)/, (route) =>
+      route.fulfill({ json: [stats] }),
     );
 
     // Reviews. The real backend exposes /review (singular) for the main
@@ -234,7 +239,7 @@ export class MediaMocker {
 
   async install() {
     // Camera snapshots
-    await this.page.route("**/api/*/latest.jpg**", (route) =>
+    await this.page.route("**/api/*/latest.{jpg,webp}**", (route) =>
       route.fulfill({
         contentType: "image/png",
         body: PLACEHOLDER_PNG,
