@@ -206,10 +206,8 @@ class DebugReplayManager:
         clip_path: str,
     ) -> dict:
         """Build a camera config dictionary for the replay camera."""
-        # Extract detect config (exclude computed fields)
-        detect_dict = source_config.detect.model_dump(
-            exclude={"min_initialized", "max_disappeared", "enabled_in_config"}
-        )
+        # Keep the same tracker tuning as the source camera.
+        detect_dict = source_config.detect.model_dump(exclude={"enabled_in_config"})
 
         # Extract objects config, using .dict() on filters to convert
         # RuntimeFilterConfig ndarray masks back to string coordinates

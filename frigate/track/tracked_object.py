@@ -125,7 +125,7 @@ class TrackedObject:
 
     def compute_score(self) -> float:
         """get median of scores for object."""
-        return median(self.score_history)
+        return median(self.score_history) if self.score_history else 0.0
 
     def update(
         self, current_frame_time: float, obj_data: dict[str, Any], has_valid_frame: bool
@@ -137,7 +137,7 @@ class TrackedObject:
         # if the object is not in the current frame, add a 0.0 to the score history
         if obj_data["frame_time"] != current_frame_time:
             self.score_history.append(0.0)
-        else:
+        elif obj_data.get("detector_evidence", True):
             self.score_history.append(obj_data["score"])
 
         # only keep the last 10 scores
@@ -390,9 +390,10 @@ class TrackedObject:
         return (thumb_update, significant_change, path_update, autotracker_update)
 
     def to_dict(self) -> dict[str, Any]:
-        # Tracking internals excluded from output (centroid, estimate, estimate_velocity)
+        # Tracking internals excluded from output.
         _EXCLUDED_OBJ_DATA_KEYS = {
             "centroid",
+            "detector_evidence",
             "estimate",
             "estimate_velocity",
         }

@@ -1,6 +1,7 @@
 """Manages camera object detection processes."""
 
 import logging
+import math
 import queue
 import time
 from datetime import UTC, datetime
@@ -26,13 +27,13 @@ from frigate.motion import MotionDetector
 from frigate.motion.improved_motion import ImprovedMotionDetector
 from frigate.object_detection.base import RemoteObjectDetector
 from frigate.ptz.autotrack import ptz_moving_at_frame_time
-from frigate.track import ObjectTracker
 from frigate.track.norfair_tracker import NorfairTracker
 from frigate.track.tracked_object import TrackedObjectAttribute
 from frigate.util.builtin import EventsPerSecond
 from frigate.util.image import (
     FrameManager,
     SharedMemoryFrameManager,
+    calculate_region,
     draw_box_with_label,
 )
 from frigate.util.object import (
@@ -173,6 +174,23 @@ def detect(
     return detections
 
 
+def idle_scan_regions(
+    frame_shape: tuple[int, int], region_min_size: int
+) -> tuple[tuple[int, int, int, int], ...]:
+    """Build overlapping square tiles covering the frame."""
+    height, width = frame_shape
+    size = max(region_min_size, math.ceil(0.6 * max(height, width) / 4) * 4)
+    return tuple(
+        dict.fromkeys(
+            calculate_region(
+                frame_shape, x, y, x + size, y + size, region_min_size, multiplier=1
+            )
+            for y in (0, max(0, height - size))
+            for x in (0, max(0, width - size))
+        )
+    )
+
+
 def process_frames(
     requestor: InterProcessRequestor,
     frame_queue: Queue,
@@ -182,7 +200,7 @@ def process_frames(
     frame_manager: FrameManager,
     motion_detector: MotionDetector,
     object_detector: RemoteObjectDetector,
-    object_tracker: ObjectTracker,
+    object_tracker: NorfairTracker,
     detected_objects_queue: Queue,
     camera_metrics: CameraMetrics,
     stop_event: MpEvent,
@@ -207,9 +225,12 @@ def process_frames(
 
     startup_scan = True
     stationary_frame_counter = 0
+    idle_frames = 0
+    idle_tile = 0
     camera_enabled = True
 
     region_min_size = get_min_region_size(model_config)
+    idle_tiles = idle_scan_regions(frame_shape, region_min_size)
 
     attributes_map = model_config.attributes_map
     all_attributes = model_config.all_attributes
@@ -297,6 +318,7 @@ def process_frames(
 
         # if detection is disabled
         if not camera_config.detect.enabled:
+            idle_frames = 0
             object_tracker.match_and_update(frame_name, frame_time, [])
         else:
             # get stationary object ids
@@ -390,6 +412,22 @@ def process_frames(
                     regions.append(region)
                 startup_scan = False
 
+            # Scan independent of motion when the detector is otherwise idle.
+            idle_interval = camera_config.detect.idle_scan_interval
+            if (
+                idle_interval
+                and not regions
+                and not motion_detector.is_calibrating()
+                and not ptz_moving
+            ):
+                idle_frames += 1
+                if idle_frames >= idle_interval:
+                    regions.append(idle_tiles[idle_tile])
+                    idle_tile = (idle_tile + 1) % len(idle_tiles)
+                    idle_frames = 0
+            else:
+                idle_frames = 0
+
             # resize regions and detect
             # seed with stationary objects
             detections = [
@@ -404,6 +442,9 @@ def process_frames(
                 for obj in object_tracker.tracked_objects.values()
                 if obj["id"] in stationary_object_ids
             ]
+
+            # Reduction preserves the input tuple instances.
+            cached_detection_ids = {id(detection) for detection in detections}
 
             for region in regions:
                 detections.extend(
@@ -427,7 +468,10 @@ def process_frames(
                 ]
                 # now that we have refined our detections, we need to track objects
                 object_tracker.match_and_update(
-                    frame_name, frame_time, tracked_detections
+                    frame_name,
+                    frame_time,
+                    tracked_detections,
+                    cached_detection_ids=cached_detection_ids,
                 )
             # else, just update the frame times for the stationary objects
             else:

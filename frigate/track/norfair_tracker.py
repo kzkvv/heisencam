@@ -286,7 +286,13 @@ class NorfairTracker(ObjectTracker):
         )
         # if we don't have a match, we have a new object
         obj["score_history"] = (
-            [p.data["score"] for p in obj_match.past_detections] if obj_match else []
+            [
+                p.data["score"]
+                for p in obj_match.past_detections
+                if p.data.get("detector_evidence", True)
+            ]
+            if obj_match
+            else []
         )
         self.tracked_objects[id] = obj
         self.disappeared[id] = 0
@@ -504,13 +510,20 @@ class NorfairTracker(ObjectTracker):
             for id, obj in self.tracked_objects.items()
             if self.disappeared[id] == 0
         ]
-        self.match_and_update(frame_name, frame_time, detections=detections)
+        self.match_and_update(
+            frame_name,
+            frame_time,
+            detections,
+            cached_detection_ids={id(detection) for detection in detections},
+        )
 
     def match_and_update(
         self,
         frame_name: str,
         frame_time: float,
         detections: list[tuple[Any, Any, Any, Any, Any, Any]],
+        *,
+        cached_detection_ids: set[int] | None = None,
     ) -> None:
         # Group detections by object type
         detections_by_type: dict[str, list[Detection]] = {}
@@ -554,6 +567,10 @@ class NorfairTracker(ObjectTracker):
                     "ratio": obj[4],
                     "region": obj[5],
                     "frame_time": frame_time,
+                    "detector_evidence": (
+                        cached_detection_ids is None
+                        or id(obj) not in cached_detection_ids
+                    ),
                     "centroid": (centroid_x, centroid_y),
                 },
             )
@@ -620,12 +637,12 @@ class NorfairTracker(ObjectTracker):
                 self.register(str(t.global_id), new_obj)
             # if there wasn't a detection in this frame, increment disappeared
             elif t.last_detection.data["frame_time"] != frame_time:
-                id = self.track_id_map[str(t.global_id)]
-                self.disappeared[id] += 1
+                object_id = self.track_id_map[str(t.global_id)]
+                self.disappeared[object_id] += 1
                 # sometimes the estimate gets way off
                 # only update if the upper left corner is actually upper left
                 if estimate[0] < estimate[2] and estimate[1] < estimate[3]:
-                    self.tracked_objects[id]["estimate"] = new_obj["estimate"]
+                    self.tracked_objects[object_id]["estimate"] = new_obj["estimate"]
             # else update it
             else:
                 thresholds = get_stationary_threshold(new_obj["label"])

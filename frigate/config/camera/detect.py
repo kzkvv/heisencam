@@ -76,6 +76,12 @@ class DetectConfig(FrigateBaseModel):
         title="Maximum disappeared frames",
         description="Number of frames without a detection before a tracked object is considered gone.",
     )
+    idle_scan_interval: int = Field(
+        default=0,
+        title="Idle scan interval",
+        description="Scan one overlapping tile after this many idle frames. Zero disables the scan.",
+        ge=0,
+    )
     stationary: StationaryConfig = Field(
         default_factory=StationaryConfig,
         title="Stationary objects config",
