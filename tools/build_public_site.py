@@ -14,6 +14,9 @@ MEDIA = ROOT / "examples" / "demo" / "media"
 def build(output: Path) -> None:
     """Package only the published sample files and the compiled documentation."""
     docs = ROOT / "docs" / "build"
+    for source in (SITE, MEDIA, docs):
+        if output == source or source in output.parents:
+            raise SystemExit("Choose an output directory outside the site inputs.")
     if not (docs / "guides/heisencam-demo/index.html").is_file():
         raise SystemExit("Build the documentation in docs/ before packaging the site.")
     catalog = json.loads((SITE / "demo/catalog.json").read_text())

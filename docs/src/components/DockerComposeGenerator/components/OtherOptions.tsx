@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import React, { useMemo } from "react";
 import CodeInline from "@theme/CodeInline";
 import styles from "../styles.module.css";
@@ -90,9 +91,9 @@ export default function OtherOptions({
           ) : (
             <p className={styles.helpText}>
               See{" "}
-              <a href="/frigate/installation#calculating-required-shm-size">
+              <Link to="/frigate/installation/#calculating-required-shm-size">
                 calculating required SHM size
-              </a>{" "}
+              </Link>{" "}
               for the correct value.
             </p>
           )}

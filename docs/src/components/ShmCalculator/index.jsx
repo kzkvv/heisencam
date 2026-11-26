@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import React, { useState, useEffect } from "react";
 import Admonition from "@theme/Admonition";
 import styles from "./styles.module.css";
@@ -87,9 +88,9 @@ const ShmCalculator = () => {
           The resolution below is the <strong>detect</strong> stream resolution,
           not the <strong>record</strong> stream resolution. SHM size is
           determined by the detect resolution used for object detection.{" "}
-          <a href="/frigate/camera_setup#choosing-a-detect-resolution">
+          <Link to="/frigate/camera_setup/#choosing-a-detect-resolution">
             Learn more about choosing a detect resolution.
-          </a>
+          </Link>
         </Admonition>
 
         {width * height > 1280 * 720 && (
