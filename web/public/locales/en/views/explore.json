@@ -8,7 +8,7 @@
       "tracking_details": "Tracking Details"
     }
   },
-  "documentTitle": "Explore - Frigate",
+  "documentTitle": "Explore - HeisenCam",
   "generativeAI": "Generative AI",
   "exploreMore": "Explore more {{label}} objects",
   "exploreIsUnavailable": {
@@ -25,7 +25,7 @@
       }
     },
     "downloadingModels": {
-      "context": "Frigate is downloading the necessary embeddings models to support the Semantic Search feature. This may take several minutes depending on the speed of your network connection.",
+      "context": "HeisenCam is downloading the necessary embeddings models to support the Semantic Search feature. This may take several minutes depending on the speed of your network connection.",
       "setup": {
         "visionModel": "Vision model",
         "visionModelFeatureExtractor": "Vision model feature extractor",
@@ -35,7 +35,7 @@
       "tips": {
         "context": "You may want to reindex the embeddings of your tracked objects once the models are downloaded."
       },
-      "error": "An error has occurred. Check Frigate logs."
+      "error": "An error has occurred. Check HeisenCam logs."
     }
   },
   "trackedObjectDetails": "Tracked Object Details",
@@ -109,7 +109,7 @@
       "tips": {
         "mismatch_one": "{{count}} unavailable object was detected and included in this review item. Those objects either did not qualify as an alert or detection or have already been cleaned up/deleted.",
         "mismatch_other": "{{count}} unavailable objects were detected and included in this review item. Those objects either did not qualify as an alert or detection or have already been cleaned up/deleted.",
-        "hasMissingObjects": "Adjust your configuration if you want Frigate to save tracked objects for the following labels: <em>{{objects}}</em>"
+        "hasMissingObjects": "Adjust your configuration if you want HeisenCam to save tracked objects for the following labels: <em>{{objects}}</em>"
       },
       "toast": {
         "success": {
@@ -117,7 +117,7 @@
           "updatedSublabel": "Successfully updated sub label.",
           "updatedLPR": "Successfully updated license plate.",
           "updatedAttributes": "Successfully updated attributes.",
-          "audioTranscription": "Successfully requested audio transcription. Depending on the speed of your Frigate server, the transcription may take some time to complete."
+          "audioTranscription": "Successfully requested audio transcription. Depending on the speed of your HeisenCam server, the transcription may take some time to complete."
         },
         "error": {
           "regenerate": "Failed to call {{provider}} for a new description: {{errorMessage}}",
@@ -170,7 +170,7 @@
     "description": {
       "label": "Description",
       "placeholder": "Description of the tracked object",
-      "aiTips": "Frigate will not request a description from your Generative AI provider until the tracked object's lifecycle has ended."
+      "aiTips": "HeisenCam will not request a description from your Generative AI provider until the tracked object's lifecycle has ended."
     },
     "expandRegenerationMenu": "Expand regeneration menu",
     "regenerateFromSnapshot": "Regenerate from Snapshot",

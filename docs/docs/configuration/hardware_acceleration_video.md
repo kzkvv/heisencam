@@ -10,38 +10,38 @@ import NavPath from "@site/src/components/NavPath";
 
 # Video Decoding
 
-It is highly recommended to use an integrated or discrete GPU for hardware acceleration video decoding in Frigate.
+It is highly recommended to use an integrated or discrete GPU for hardware acceleration video decoding in HeisenCam.
 
 Some types of hardware acceleration are detected and used automatically, but you may need to update your configuration to enable hardware accelerated decoding in ffmpeg. To verify that hardware acceleration is working:
 
 - Check the logs: A message will either say that hardware acceleration was automatically detected, or there will be a warning that no hardware acceleration was automatically detected
 - If hardware acceleration is specified in the config, verification can be done by ensuring the logs are free from errors. There is no CPU fallback for hardware acceleration.
 
-Frigate supports presets for optimal hardware accelerated video decoding:
+HeisenCam supports presets for optimal hardware accelerated video decoding:
 
 **AMD**
 
-- [AMD](#amd-based-cpus): Frigate can utilize modern AMD integrated GPUs and AMD discrete GPUs to accelerate video decoding.
+- [AMD](#amd-based-cpus): HeisenCam can utilize modern AMD integrated GPUs and AMD discrete GPUs to accelerate video decoding.
 
 **Intel**
 
-- [Intel](#intel-based-cpus): Frigate can utilize most Intel integrated GPUs and Arc GPUs to accelerate video decoding.
+- [Intel](#intel-based-cpus): HeisenCam can utilize most Intel integrated GPUs and Arc GPUs to accelerate video decoding.
 
 **Nvidia GPU**
 
-- [Nvidia GPU](#nvidia-gpus): Frigate can utilize most modern Nvidia GPUs to accelerate video decoding.
+- [Nvidia GPU](#nvidia-gpus): HeisenCam can utilize most modern Nvidia GPUs to accelerate video decoding.
 
 **Raspberry Pi 3/4**
 
-- [Raspberry Pi](#raspberry-pi-34): Frigate can utilize the media engine in the Raspberry Pi 3 and 4 to slightly accelerate video decoding.
+- [Raspberry Pi](#raspberry-pi-34): HeisenCam can utilize the media engine in the Raspberry Pi 3 and 4 to slightly accelerate video decoding.
 
 **Nvidia Jetson** <CommunityBadge />
 
-- [Jetson](#nvidia-jetson): Frigate can utilize the media engine in Jetson hardware to accelerate video decoding.
+- [Jetson](#nvidia-jetson): HeisenCam can utilize the media engine in Jetson hardware to accelerate video decoding.
 
 **Rockchip** <CommunityBadge />
 
-- [RKNN](#rockchip-platform): Frigate can utilize the media engine in RockChip SOCs to accelerate video decoding.
+- [RKNN](#rockchip-platform): HeisenCam can utilize the media engine in RockChip SOCs to accelerate video decoding.
 
 **Other Hardware**
 
@@ -49,7 +49,7 @@ Depending on your system, these presets may not be compatible, and you may need 
 
 ## Intel-based CPUs
 
-Frigate can utilize most Intel integrated GPUs and Arc GPUs to accelerate video decoding.
+HeisenCam can utilize most Intel integrated GPUs and Arc GPUs to accelerate video decoding.
 
 **Recommended hwaccel Preset**
 
@@ -130,11 +130,11 @@ ffmpeg:
 
 ### Configuring Intel GPU Stats
 
-Frigate reads Intel GPU utilization directly from the kernel's per-client DRM usage counters exposed at `/proc/<pid>/fdinfo/<fd>`. This requires:
+HeisenCam reads Intel GPU utilization directly from the kernel's per-client DRM usage counters exposed at `/proc/<pid>/fdinfo/<fd>`. This requires:
 
 - An Intel GPU from Broadwell (5th gen) or newer. Older GPUs do not expose these counters on any kernel.
 - Linux kernel **5.19 or newer** for the `i915` driver (**6.5 or newer** on 12th gen and newer), or any release of the `xe` driver.
-- Frigate running with permission to read other processes' fdinfo. Running as root inside the container (the default) satisfies this; non-root setups may need `CAP_SYS_PTRACE`.
+- HeisenCam running with permission to read other processes' fdinfo. Running as root inside the container (the default) satisfies this; non-root setups may need `CAP_SYS_PTRACE`.
 
 No `intel_gpu_top` binary, `CAP_PERFMON`, privileged mode, or `perf_event_paranoid` tuning is required.
 
@@ -158,7 +158,7 @@ When passing a device path, make sure the device is also passed through to the c
 
 ## AMD-based CPUs
 
-Frigate can utilize modern AMD integrated GPUs and AMD GPUs to accelerate video decoding using VAAPI.
+HeisenCam can utilize modern AMD integrated GPUs and AMD GPUs to accelerate video decoding using VAAPI.
 
 ### Configuring Radeon Driver
 
@@ -186,7 +186,7 @@ ffmpeg:
 
 ## NVIDIA GPUs
 
-While older GPUs may work, it is recommended to use modern, supported GPUs. NVIDIA provides a [matrix of supported GPUs and features](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new). If your card is on the list and supports CUVID/NVDEC, it will most likely work with Frigate for decoding. However, you must also use [a driver version that will work with FFmpeg](https://github.com/FFmpeg/nv-codec-headers/blob/master/README). Older driver versions may be missing symbols and fail to work, and older cards are not supported by newer driver versions. The only way around this is to [provide your own FFmpeg](/configuration/advanced/system#custom-ffmpeg-build) that will work with your driver version, but this is unsupported and may not work well if at all.
+While older GPUs may work, it is recommended to use modern, supported GPUs. NVIDIA provides a [matrix of supported GPUs and features](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new). If your card is on the list and supports CUVID/NVDEC, it will most likely work with HeisenCam for decoding. However, you must also use [a driver version that will work with FFmpeg](https://github.com/FFmpeg/nv-codec-headers/blob/master/README). Older driver versions may be missing symbols and fail to work, and older cards are not supported by newer driver versions. The only way around this is to [provide your own FFmpeg](/configuration/advanced/system#custom-ffmpeg-build) that will work with your driver version, but this is unsupported and may not work well if at all.
 
 A more complete list of cards and their compatible drivers is available in the [driver release readme](https://download.nvidia.com/XFree86/Linux-x86_64/525.85.05/README/supportedchips.html).
 
@@ -313,8 +313,8 @@ ffmpeg:
 
 :::note
 
-If running Frigate through Docker, you either need to run in privileged mode or
-map the `/dev/video*` devices to Frigate. With Docker Compose add:
+If running HeisenCam through Docker, you either need to run in privileged mode or
+map the `/dev/video*` devices to HeisenCam. With Docker Compose add:
 
 ```yaml {4-5}
 services:

@@ -1,8 +1,8 @@
 {
   "documentTitle": {
-    "default": "Uživo - Frigate"
+    "default": "Uživo - HeisenCam"
   },
-  "documentTitle.withCamera": "{{camera}} - Uživo - Frigate",
+  "documentTitle.withCamera": "{{camera}} - Uživo - HeisenCam",
   "twoWayTalk": {
     "enable": "Omogući dvosmjerni razgovor",
     "disable": "Onemogući dvosmjerni razgovor"
@@ -178,7 +178,7 @@
   },
   "noCameras": {
     "title": "Nema konfiguriranih kamera",
-    "description": "Započnite povezivanjem kamere na Frigate.",
+    "description": "Započnite povezivanjem kamere na HeisenCam.",
     "buttonText": "Dodaj kameru",
     "restricted": {
       "title": "Nema dostupnih kamera",
@@ -186,7 +186,7 @@
     },
     "default": {
       "title": "Nema konfiguriranih kamera",
-      "description": "Započnite povezivanjem kamere na Frigate.",
+      "description": "Započnite povezivanjem kamere na HeisenCam.",
       "buttonText": "Dodaj kameru"
     },
     "group": {

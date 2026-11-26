@@ -1,8 +1,8 @@
 {
   "documentTitle": {
-    "default": "Tiesiogiai - Frigate"
+    "default": "Tiesiogiai - HeisenCam"
   },
-  "documentTitle.withCamera": "{{camera}} - Tiesiogiai - Frigate",
+  "documentTitle.withCamera": "{{camera}} - Tiesiogiai - HeisenCam",
   "lowBandwidthMode": "Mažo-pralaidumo Rėžimas",
   "cameraAudio": {
     "enable": "Įgalinti Kamerų Garsą",
@@ -178,7 +178,7 @@
   },
   "noCameras": {
     "title": "Nėra Sukonfiguruotų Kamerų",
-    "description": "Pradėti nuo kameros prijungimo pire Frigate.",
+    "description": "Pradėti nuo kameros prijungimo pire HeisenCam.",
     "buttonText": "Pridėti Kamerą",
     "restricted": {
       "title": "Nėra Prieinamų Kamerų",
@@ -186,7 +186,7 @@
     },
     "default": {
       "title": "Nėra Sukonfiguruotų Kamerų",
-      "description": "Pradėkite nuo kameros prijungimo prie Frigate.",
+      "description": "Pradėkite nuo kameros prijungimo prie HeisenCam.",
       "buttonText": "Pridėti Kamerą"
     },
     "group": {

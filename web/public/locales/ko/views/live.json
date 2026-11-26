@@ -1,8 +1,8 @@
 {
   "documentTitle": {
-    "default": "실시간 - Frigate"
+    "default": "실시간 - HeisenCam"
   },
-  "documentTitle.withCamera": "{{camera}} - 실시간 - Frigate",
+  "documentTitle.withCamera": "{{camera}} - 실시간 - HeisenCam",
   "lowBandwidthMode": "저대역폭 모드",
   "twoWayTalk": {
     "enable": "양방향 대화 켜기",
@@ -178,7 +178,7 @@
   },
   "noCameras": {
     "title": "설정된 카메라 없음",
-    "description": "Frigate에 카메라를 연결하여 시작하세요.",
+    "description": "HeisenCam에 카메라를 연결하여 시작하세요.",
     "buttonText": "카메라 추가",
     "restricted": {
       "title": "사용 가능한 카메라 없음",
@@ -186,7 +186,7 @@
     },
     "default": {
       "title": "설정된 카메라 없음",
-      "description": "Frigate에 카메라를 연결하여 시작하세요.",
+      "description": "HeisenCam에 카메라를 연결하여 시작하세요.",
       "buttonText": "카메라 추가"
     },
     "group": {

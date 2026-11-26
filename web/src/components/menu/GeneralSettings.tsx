@@ -757,14 +757,14 @@ export default function GeneralSettings({
               </MenuItem>
             </a>
             <a
-              href="https://github.com/blakeblackshear/frigate"
+              href="https://github.com/kzkvv/heisencam"
               target="_blank"
             >
               <MenuItem
                 className={
                   isDesktop ? "cursor-pointer" : "flex items-center p-2 text-sm"
                 }
-                aria-label="Frigate Github"
+                aria-label="HeisenCam GitHub"
               >
                 <LuGithub className="mr-2 size-4" />
                 <span>GitHub</span>

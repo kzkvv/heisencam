@@ -1,17 +1,17 @@
 {
   "documentTitle": {
-    "default": "Ρυθμίσεις - Frigate",
-    "authentication": "Ρυθμίσεις ελέγχου ταυτοποίησης - Frigate",
-    "camera": "Ρυθμίσεις Κάμερας - Frigate",
-    "enrichments": "Ρυθμίσεις εμπλουτισμού - Frigate",
-    "masksAndZones": "Ρυθμίσεις Μασκών και Ζωνών - Frigate",
-    "motionTuner": "Ρύθμιση Κίνησης - Frigate",
-    "object": "Επίλυση σφαλμάτων - Frigate",
-    "general": "Ρυθμίσεις UI - Frigate",
-    "frigatePlus": "Ρυθμίσεις Frigate+ - Frigate",
+    "default": "Ρυθμίσεις - HeisenCam",
+    "authentication": "Ρυθμίσεις ελέγχου ταυτοποίησης - HeisenCam",
+    "camera": "Ρυθμίσεις Κάμερας - HeisenCam",
+    "enrichments": "Ρυθμίσεις εμπλουτισμού - HeisenCam",
+    "masksAndZones": "Ρυθμίσεις Μασκών και Ζωνών - HeisenCam",
+    "motionTuner": "Ρύθμιση Κίνησης - HeisenCam",
+    "object": "Επίλυση σφαλμάτων - HeisenCam",
+    "general": "Ρυθμίσεις UI - HeisenCam",
+    "frigatePlus": "Ρυθμίσεις Frigate+ - HeisenCam",
     "notifications": "Ρυθμίσεις Ειδοποιήσεων",
-    "cameraManagement": "Διαχείριση καμερών - Frigate",
-    "cameraReview": "Ρυθμίσεις αξιολόγησης κάμερας - Frigate"
+    "cameraManagement": "Διαχείριση καμερών - HeisenCam",
+    "cameraReview": "Ρυθμίσεις αξιολόγησης κάμερας - HeisenCam"
   },
   "masksAndZones": {
     "zones": {

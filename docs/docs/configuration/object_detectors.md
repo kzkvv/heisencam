@@ -12,12 +12,12 @@ import objectDetectorsModels from '@site/data/object_detectors_models.yaml';
 
 ### Supported hardware
 
-Object detection is what allows Frigate to identify _what_ is in your camera's view (people, cars, animals, and more) rather than just reacting to pixel changes. When Frigate's motion detection finds activity in a frame, that region is sent to an **object detector**, which returns the objects it recognizes along with their location and a confidence score. These detections are what drive tracked objects, alerts, detections, and notifications.
+Object detection is what allows HeisenCam to identify _what_ is in your camera's view (people, cars, animals, and more) rather than just reacting to pixel changes. When HeisenCam's motion detection finds activity in a frame, that region is sent to an **object detector**, which returns the objects it recognizes along with their location and a confidence score. These detections are what drive tracked objects, alerts, detections, and notifications.
 
-Object detection is computationally intensive, so Frigate is designed to run it on a dedicated AI accelerator or GPU rather than the CPU. A **detector** is the specific hardware-and-model backend Frigate uses to run inference. Choosing a detector that matches your hardware is one of the most important steps in getting good performance, and the right choice depends on what device Frigate is running on.
+Object detection is computationally intensive, so HeisenCam is designed to run it on a dedicated AI accelerator or GPU rather than the CPU. A **detector** is the specific hardware-and-model backend HeisenCam uses to run inference. Choosing a detector that matches your hardware is one of the most important steps in getting good performance, and the right choice depends on what device HeisenCam is running on.
 
 :::info
-Frigate supports multiple different detectors that work on different types of hardware:
+HeisenCam supports multiple different detectors that work on different types of hardware:
 
 **Most Hardware**
 
@@ -28,7 +28,7 @@ Frigate supports multiple different detectors that work on different types of ha
 **AMD**
 
 - [ROCm](#amdrocm-gpu-detector): ROCm can run on AMD Discrete GPUs to provide efficient object detection.
-- [ONNX](#onnx): ROCm will automatically be detected and used as a detector in the `-rocm` Frigate image when a supported ONNX model is configured.
+- [ONNX](#onnx): ROCm will automatically be detected and used as a detector in the `-rocm` HeisenCam image when a supported ONNX model is configured.
 - <CommunityBadge /> [XDNA2](#amd-xdna2): AMD Ryzen AI / XDNA2 NPUs can run object detection through the community-maintained `frigate-xdna` ZMQ sidecar.
 
 **Apple Silicon**
@@ -38,16 +38,16 @@ Frigate supports multiple different detectors that work on different types of ha
 **Intel**
 
 - [OpenVino](#openvino-detector): OpenVino can run on Intel Arc GPUs, Intel integrated GPUs, and Intel CPUs to provide efficient object detection.
-- [ONNX](#onnx): OpenVINO will automatically be detected and used as a detector in the default Frigate image when a supported ONNX model is configured.
+- [ONNX](#onnx): OpenVINO will automatically be detected and used as a detector in the default HeisenCam image when a supported ONNX model is configured.
 
 **Nvidia GPU**
 
-- [ONNX](#onnx): Nvidia GPUs will automatically be detected and used as a detector in the `-tensorrt` Frigate image when a supported ONNX model is configured.
+- [ONNX](#onnx): Nvidia GPUs will automatically be detected and used as a detector in the `-tensorrt` HeisenCam image when a supported ONNX model is configured.
 
 **Nvidia Jetson** <CommunityBadge />
 
 - [TensortRT](#nvidia-tensorrt-detector): TensorRT can run on Jetson devices, using one of many default models.
-- [ONNX](#onnx): TensorRT will automatically be detected and used as a detector in the `-tensorrt-jp6` Frigate image when a supported ONNX model is configured.
+- [ONNX](#onnx): TensorRT will automatically be detected and used as a detector in the `-tensorrt-jp6` HeisenCam image when a supported ONNX model is configured.
 
 **Rockchip** <CommunityBadge />
 
@@ -79,7 +79,7 @@ This does not affect using hardware for accelerating other tasks such as [semant
 
 Along with picking a detector for your hardware, you will choose a model's **input resolution** (such as `320x320` or `640x640`) and, for model families like YOLOv9, a **variant size** (`tiny`, `small`, etc.). Both affect the balance between accuracy and the inference time your hardware can sustain.
 
-**Resolution (320x320 vs 640x640):** Frigate is optimized for `320x320` models, and `320x320` is the best choice for the vast majority of setups. Frigate is specifically designed to compensate for the smaller model by cropping a region of motion from the full frame and zooming into it before running detection, so a `320x320` model is actually _better_ at small and distant objects, not worse. A `640x640` model is slower and uses more resources, and its main benefit is fitting more objects into a single inference when many objects are spread across a large area. Recent versions of Frigate have improved support for `640x640` models, but `320x320` remains the recommended starting point for nearly all setups.
+**Resolution (320x320 vs 640x640):** HeisenCam is optimized for `320x320` models, and `320x320` is the best choice for the vast majority of setups. HeisenCam is specifically designed to compensate for the smaller model by cropping a region of motion from the full frame and zooming into it before running detection, so a `320x320` model is actually _better_ at small and distant objects, not worse. A `640x640` model is slower and uses more resources, and its main benefit is fitting more objects into a single inference when many objects are spread across a large area. Recent versions of HeisenCam have improved support for `640x640` models, but `320x320` remains the recommended starting point for nearly all setups.
 
 **Variant size (tiny/small/medium):** Larger variants are gradually more accurate but slower. Whether the difference is noticeable depends on your specific cameras and scenes. A good rule of thumb is to use the largest model your hardware can run without skipping detections, which you can monitor on the <NavPath path="System > Metrics > Cameras" /> page in the UI. Better accuracy only helps if your detector keeps up with the detection load across all cameras.
 
@@ -87,13 +87,13 @@ Along with picking a detector for your hardware, you will choose a model's **inp
 
 :::tip
 
-The best detection accuracy comes from a model trained on images that look like what Frigate actually sees: security camera footage cropped to regions of interest. You can train or fine-tune your own model on images like this and run it as a custom model (see the per-detector sections below), but [Frigate+](/plus) makes this much easier by handling the training for you on images submitted from your own cameras. For YOLOv9, the `s` (small) variant at `320x320` resolution is a good place to start, and the larger `c` variant is available for more powerful hardware.
+The best detection accuracy comes from a model trained on images that look like what HeisenCam actually sees: security camera footage cropped to regions of interest. You can train or fine-tune your own model on images like this and run it as a custom model (see the per-detector sections below), but [Frigate+](/plus) makes this much easier by handling the training for you on images submitted from your own cameras. For YOLOv9, the `s` (small) variant at `320x320` resolution is a good place to start, and the larger `c` variant is available for more powerful hardware.
 
 :::
 
 # Officially Supported Detectors
 
-Frigate provides a number of builtin detector types. By default, Frigate will use a single CPU detector. Other detectors may require additional configuration as described below. When using multiple detectors they will run in dedicated processes, but pull from a common queue of detection requests from across all cameras.
+HeisenCam provides a number of builtin detector types. By default, HeisenCam will use a single CPU detector. Other detectors may require additional configuration as described below. When using multiple detectors they will run in dedicated processes, but pull from a common queue of detection requests from across all cameras.
 
 ## Edge TPU Detector
 
@@ -300,9 +300,9 @@ detectors:
 
 ### Intel NPU host requirements {#intel-npu-requirements}
 
-The NPU firmware is loaded by the host kernel and is not part of the Frigate image. Everything else the NPU needs is bundled in the container, so host NPU libraries should never be mounted in.
+The NPU firmware is loaded by the host kernel and is not part of the HeisenCam image. Everything else the NPU needs is bundled in the container, so host NPU libraries should never be mounted in.
 
-Frigate bundles a specific version of Intel's [linux-npu-driver](https://github.com/intel/linux-npu-driver/releases), and the host firmware must come from that release or a newer one. Firmware older than the bundled driver may fail with `MAPPED_INFERENCE_VERSION is NOT compatible with the ELF`, where `Expected` is the version the firmware supports and `received` is the version the bundled compiler produced. Distributions often package older firmware than the driver Frigate ships, so check the build date on the host with `sudo dmesg | grep -i vpu` and update it there if needed.
+HeisenCam bundles a specific version of Intel's [linux-npu-driver](https://github.com/intel/linux-npu-driver/releases), and the host firmware must come from that release or a newer one. Firmware older than the bundled driver may fail with `MAPPED_INFERENCE_VERSION is NOT compatible with the ELF`, where `Expected` is the version the firmware supports and `received` is the version the bundled compiler produced. Distributions often package older firmware than the driver HeisenCam ships, so check the build date on the host with `sudo dmesg | grep -i vpu` and update it there if needed.
 
 Intel NPUs cannot be used under Home Assistant OS, which does not include the NPU firmware.
 
@@ -314,12 +314,12 @@ Intel NPUs cannot be used under Home Assistant OS, which does not include the NP
 
 ## Apple Silicon detector
 
-The NPU in Apple Silicon can't be accessed from within a container, so the [Apple Silicon detector client](https://github.com/frigate-nvr/apple-silicon-detector) must first be setup. It is recommended to use the Frigate docker image with `-standard-arm64` suffix, for example `ghcr.io/blakeblackshear/frigate:stable-standard-arm64`.
+The NPU in Apple Silicon can't be accessed from within a container, so the [Apple Silicon detector client](https://github.com/frigate-nvr/apple-silicon-detector) must first be setup. It is recommended to use the HeisenCam docker image with `-standard-arm64` suffix, for example `ghcr.io/blakeblackshear/frigate:stable-standard-arm64`.
 
 ### Setup {#setup-apple-silicon}
 
 1. Setup the [Apple Silicon detector client](https://github.com/frigate-nvr/apple-silicon-detector) and run the client
-2. Configure the detector in Frigate and startup Frigate
+2. Configure the detector in HeisenCam and startup HeisenCam
 
 ### Configuration {#configuration-apple-silicon}
 
@@ -416,7 +416,7 @@ $ docker exec -it frigate /bin/bash -c '(unset HSA_OVERRIDE_GFX_VERSION && /opt/
 The AMD GPU kernel is known problematic especially when converting models to mxr format. The recommended approach is:
 
 1. Disable object detection in the config.
-2. Startup Frigate with the onnx detector configured, the main object detection model will be converted to mxr format and cached in the config directory.
+2. Startup HeisenCam with the onnx detector configured, the main object detection model will be converted to mxr format and cached in the config directory.
 3. Once this is finished as indicated by the logs, enable object detection in the UI and confirm that it is working correctly.
 4. Re-enable object detection in the config.
 
@@ -431,21 +431,21 @@ See [ONNX supported models](#onnx) for supported models, there are some caveats:
 
 ## ONNX
 
-ONNX is an open format for building machine learning models, Frigate supports running ONNX models on CPU, OpenVINO, ROCm, and TensorRT. On startup Frigate will automatically try to use a GPU if one is available.
+ONNX is an open format for building machine learning models, HeisenCam supports running ONNX models on CPU, OpenVINO, ROCm, and TensorRT. On startup HeisenCam will automatically try to use a GPU if one is available.
 
 :::info
 
 If the correct build is used for your GPU then the GPU will be detected and used automatically.
 
 - **AMD**
-  - ROCm will automatically be detected and used with the ONNX detector in the `-rocm` Frigate image.
+  - ROCm will automatically be detected and used with the ONNX detector in the `-rocm` HeisenCam image.
 
 - **Intel**
-  - OpenVINO will automatically be detected and used with the ONNX detector in the default Frigate image.
+  - OpenVINO will automatically be detected and used with the ONNX detector in the default HeisenCam image.
 
 - **Nvidia**
-  - Nvidia GPUs will automatically be detected and used with the ONNX detector in the `-tensorrt` Frigate image.
-  - Jetson devices will automatically be detected and used with the ONNX detector in the `-tensorrt-jp6` Frigate image.
+  - Nvidia GPUs will automatically be detected and used with the ONNX detector in the `-tensorrt` HeisenCam image.
+  - Jetson devices will automatically be detected and used with the ONNX detector in the `-tensorrt-jp6` HeisenCam image.
 
 :::
 
@@ -491,13 +491,13 @@ When using CPU detectors, you can add one CPU detector per camera. Adding more d
 
 ## Deepstack / CodeProject.AI Server Detector
 
-The Deepstack / CodeProject.AI Server detector for Frigate allows you to integrate Deepstack and CodeProject.AI object detection capabilities into Frigate. CodeProject.AI and DeepStack are open-source AI platforms that can be run on various devices such as the Raspberry Pi, Nvidia Jetson, and other compatible hardware. It is important to note that the integration is performed over the network, so the inference times may not be as fast as native Frigate detectors, but it still provides an efficient and reliable solution for object detection and tracking.
+The Deepstack / CodeProject.AI Server detector for HeisenCam allows you to integrate Deepstack and CodeProject.AI object detection capabilities into HeisenCam. CodeProject.AI and DeepStack are open-source AI platforms that can be run on various devices such as the Raspberry Pi, Nvidia Jetson, and other compatible hardware. It is important to note that the integration is performed over the network, so the inference times may not be as fast as native HeisenCam detectors, but it still provides an efficient and reliable solution for object detection and tracking.
 
 ### Setup {#setup-deepstack}
 
-To get started with CodeProject.AI, visit their [official website](https://www.codeproject.com/Articles/5322557/CodeProject-AI-Server-AI-the-easy-way) to follow the instructions to download and install the AI server on your preferred device. Detailed setup instructions for CodeProject.AI are outside the scope of the Frigate documentation.
+To get started with CodeProject.AI, visit their [official website](https://www.codeproject.com/Articles/5322557/CodeProject-AI-Server-AI-the-easy-way) to follow the instructions to download and install the AI server on your preferred device. Detailed setup instructions for CodeProject.AI are outside the scope of the HeisenCam documentation.
 
-To integrate CodeProject.AI into Frigate, configure the detector as follows:
+To integrate CodeProject.AI into HeisenCam, configure the detector as follows:
 
 ### Configuration {#configuration-deepstack}
 
@@ -505,7 +505,7 @@ To integrate CodeProject.AI into Frigate, configure the detector as follows:
 
 Replace `<your_codeproject_ai_server_ip>` and `<port>` with the IP address and port of your CodeProject.AI server.
 
-To verify that the integration is working correctly, start Frigate and observe the logs for any error messages related to CodeProject.AI. Additionally, you can check the Frigate web interface to see if the objects detected by CodeProject.AI are being displayed and tracked properly.
+To verify that the integration is working correctly, start HeisenCam and observe the logs for any error messages related to CodeProject.AI. Additionally, you can check the HeisenCam web interface to see if the objects detected by CodeProject.AI are being displayed and tracked properly.
 
 # Community Supported Detectors
 
@@ -513,27 +513,27 @@ To verify that the integration is working correctly, start Frigate and observe t
 
 AMD Ryzen AI / XDNA2 NPUs can be used through the community-maintained
 [frigate-xdna](https://github.com/mitchins/frigate-xdna) detector sidecar.
-The sidecar runs separately from Frigate and connects using Frigate's ZMQ
+The sidecar runs separately from HeisenCam and connects using HeisenCam's ZMQ
 detector interface.
 
 Currently qualified on **Ryzen AI Max 300 / Strix Halo**. Other XDNA2 devices
 are not yet qualified; XDNA1 is unsupported.
 
 Follow the frigate-xdna setup instructions to prepare and start the sidecar
-before starting Frigate.
+before starting HeisenCam.
 
 ### Configuration {#configuration-xdna2}
 
-Using the detector config below will connect Frigate to the sidecar:
+Using the detector config below will connect HeisenCam to the sidecar:
 
 <ModelConfigDropdown detectorTitle="AMD XDNA2" models={objectDetectorsModels.xdna2.models} />
 
-The example assumes Frigate and the sidecar share a Docker network where the
+The example assumes HeisenCam and the sidecar share a Docker network where the
 sidecar is named `xdna`.
 
 ## MemryX MX3
 
-This detector is available for use with the MemryX MX3 accelerator M.2 module. Frigate supports the MX3 on compatible hardware platforms, providing efficient and high-performance object detection.
+This detector is available for use with the MemryX MX3 accelerator M.2 module. HeisenCam supports the MX3 on compatible hardware platforms, providing efficient and high-performance object detection.
 
 See the [installation docs](../frigate/installation.md#memryx-mx3) for information on configuring the MemryX hardware.
 
@@ -554,7 +554,7 @@ Custom models must be compiled using **MemryX SDK 2.1**.
 Before compiling your model, install the MemryX Neural Compiler tools from the
 [Install Tools](https://developer.memryx.com/2p1/get_started/install_tools.html) page on the **host**.
 
-> **Note:** It is recommended to compile the model on the host machine, or on another separate machine, rather than inside the Frigate Docker container. Installing the compiler inside Docker may conflict with container packages. It is recommended to create a Python virtual environment and install the compiler there.
+> **Note:** It is recommended to compile the model on the host machine, or on another separate machine, rather than inside the HeisenCam Docker container. Installing the compiler inside Docker may conflict with container packages. It is recommended to create a Python virtual environment and install the compiler there.
 
 Once the SDK 2.1 environment is set up, follow the
 [MemryX Compiler](https://developer.memryx.com/2p1/tools/neural_compiler.html#usage) documentation to compile your model.
@@ -603,11 +603,11 @@ Nvidia Jetson devices may be used for object detection using the TensorRT librar
 
 The model used for TensorRT must be preprocessed on the same hardware platform that they will run on. This means that each user must run additional setup to generate a model file for the TensorRT library. A script is included that will build several common models.
 
-The Frigate image will generate model files during startup if the specified model is not found. Processed models are stored in the `/config/model_cache` folder. Typically the `/config` path is mapped to a directory on the host already and the `model_cache` does not need to be mapped separately unless the user wants to store it in a different location on the host.
+The HeisenCam image will generate model files during startup if the specified model is not found. Processed models are stored in the `/config/model_cache` folder. Typically the `/config` path is mapped to a directory on the host already and the `model_cache` does not need to be mapped separately unless the user wants to store it in a different location on the host.
 
-By default, no models will be generated, but this can be overridden by specifying the `YOLO_MODELS` environment variable in Docker. One or more models may be listed in a comma-separated format, and each one will be generated. Models will only be generated if the corresponding `{model}.trt` file is not present in the `model_cache` folder, so you can force a model to be regenerated by deleting it from your Frigate data folder.
+By default, no models will be generated, but this can be overridden by specifying the `YOLO_MODELS` environment variable in Docker. One or more models may be listed in a comma-separated format, and each one will be generated. Models will only be generated if the corresponding `{model}.trt` file is not present in the `model_cache` folder, so you can force a model to be regenerated by deleting it from your HeisenCam data folder.
 
-If you have a Jetson device with DLAs (Xavier or Orin), you can generate a model that will run on the DLA by appending `-dla` to your model name, e.g. specify `YOLO_MODELS=yolov7-320-dla`. The model will run on DLA0 (Frigate does not currently support DLA1). DLA-incompatible layers will fall back to running on the GPU.
+If you have a Jetson device with DLAs (Xavier or Orin), you can generate a model that will run on the DLA by appending `-dla` to your model name, e.g. specify `YOLO_MODELS=yolov7-320-dla`. The model will run on DLA0 (HeisenCam does not currently support DLA1). DLA-incompatible layers will fall back to running on the GPU.
 
 If your GPU does not support FP16 operations, you can pass the environment variable `USE_FP16=False` to disable it.
 
@@ -746,7 +746,7 @@ The inference time was determined on a rk3588 with 3 NPU cores.
 | rock-i8-yolox_nano    | 3          | 14                   |
 | rock-i8_yolox_tiny    | 6          | 18                   |
 
-- All models are automatically downloaded and stored in the folder `config/model_cache/rknn_cache`. After upgrading Frigate, you should remove older models to free up space.
+- All models are automatically downloaded and stored in the folder `config/model_cache/rknn_cache`. After upgrading HeisenCam, you should remove older models to free up space.
 - You can also provide your own `.rknn` model. You should not save your own models in the `rknn_cache` folder, store them directly in the `model_cache` folder or another subfolder. To convert a model to `.rknn` format see the `rknn-toolkit2` (requires a x86 machine). Note, that there is only post-processing for the supported models.
 
 <ModelConfigDropdown detectorTitle="RKNN" models={objectDetectorsModels.rknn.models} />

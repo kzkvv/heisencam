@@ -1,13 +1,13 @@
 {
   "documentTitle": {
-    "cameras": "Στατιστικά Καμερών - Frigate",
-    "storage": "Στατιστικά αποθήκευσης - Frigate",
-    "general": "Γενικά στατιστικά - Frigate",
-    "enrichments": "Στατιστικά Εμπλουτισμού - Frigate",
+    "cameras": "Στατιστικά Καμερών - HeisenCam",
+    "storage": "Στατιστικά αποθήκευσης - HeisenCam",
+    "general": "Γενικά στατιστικά - HeisenCam",
+    "enrichments": "Στατιστικά Εμπλουτισμού - HeisenCam",
     "logs": {
-      "frigate": "Frigate αρχέιο καταγραφών - Frigate",
-      "go2rtc": "Αρχείο καταγραφής Go2RTC - Frigate",
-      "nginx": "Αρχείο καταγραφών Nginx - Frigate"
+      "frigate": "HeisenCam αρχέιο καταγραφών - HeisenCam",
+      "go2rtc": "Αρχείο καταγραφής Go2RTC - HeisenCam",
+      "nginx": "Αρχείο καταγραφών Nginx - HeisenCam"
     }
   },
   "title": "Σύστημα",

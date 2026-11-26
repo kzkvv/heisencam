@@ -22,7 +22,7 @@ function Wordmark({ onNavigate }: { onNavigate?: () => void }) {
       className="flex items-center gap-4 px-2 text-xl font-semibold hover:text-blue-500"
     >
       <Logo className="size-10" />
-      Frigate
+      HeisenCam
     </Link>
   );
 }

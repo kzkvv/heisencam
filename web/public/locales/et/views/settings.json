@@ -130,7 +130,7 @@
       "failure": "Viga kaamera '{{cameraName}}' salvestamisel."
     },
     "title": "Lisa kaamera",
-    "description": "Uue kaamera lisamiseks oma Frigate paigaldisesse järgige alltoodud samme."
+    "description": "Uue kaamera lisamiseks oma HeisenCam paigaldisesse järgige alltoodud samme."
   },
   "users": {
     "updatePassword": "Lähtesta salasõna",
@@ -245,22 +245,22 @@
     }
   },
   "documentTitle": {
-    "default": "Seadistused - Frigate",
-    "authentication": "Autentimise seaded - Frigate",
-    "cameraReview": "Kaamerate kordusvaatuste seaded - Frigate",
-    "general": "Profiili seaded - Frigate",
-    "frigatePlus": "Frigate+ seaded - Frigate",
-    "notifications": "Teavituste seaded - Frigate",
-    "cameraManagement": "Kaamerate haldus - Frigate",
-    "masksAndZones": "Maskide ja tsoonide haldus - Frigate",
-    "object": "Silumine ja veaotsing - Frigate",
-    "enrichments": "Rikastamise seaded - Frigate",
-    "motionTuner": "Liikumise häälestaja – Frigate",
-    "globalConfig": "Globaalsed seaded – Frigate",
-    "cameraConfig": "Kaamera seaded - Frigate",
-    "detectorsAndModel": "Detektorid ja mudel – Frigate",
-    "maintenance": "Hooldus – Frigate",
-    "profiles": "Profiilid - Frigate"
+    "default": "Seadistused - HeisenCam",
+    "authentication": "Autentimise seaded - HeisenCam",
+    "cameraReview": "Kaamerate kordusvaatuste seaded - HeisenCam",
+    "general": "Profiili seaded - HeisenCam",
+    "frigatePlus": "Frigate+ seaded - HeisenCam",
+    "notifications": "Teavituste seaded - HeisenCam",
+    "cameraManagement": "Kaamerate haldus - HeisenCam",
+    "masksAndZones": "Maskide ja tsoonide haldus - HeisenCam",
+    "object": "Silumine ja veaotsing - HeisenCam",
+    "enrichments": "Rikastamise seaded - HeisenCam",
+    "motionTuner": "Liikumise häälestaja – HeisenCam",
+    "globalConfig": "Globaalsed seaded – HeisenCam",
+    "cameraConfig": "Kaamera seaded - HeisenCam",
+    "detectorsAndModel": "Detektorid ja mudel – HeisenCam",
+    "maintenance": "Hooldus – HeisenCam",
+    "profiles": "Profiilid - HeisenCam"
   },
   "general": {
     "title": "Kasutajaliidese seadistused",
@@ -335,7 +335,7 @@
     "title": "Frigate+ seadistused",
     "unsavedChanges": "Frigate+ seadistuste muudatused on salvestamata",
     "toast": {
-      "success": "Frigate+ seadistuste muudatused on salvestatud. Muudatuste kasutuselevõtmiseks käivita Frigate uuesti."
+      "success": "Frigate+ seadistuste muudatused on salvestatud. Muudatuste kasutuselevõtmiseks käivita HeisenCam uuesti."
     },
     "snapshotConfig": {
       "title": "Hetkvõtte seadistused",
@@ -541,7 +541,7 @@
     "title": "Andmerikastuse seadistused",
     "restart_required": "Taaskäivitamine on vajalik (Andmerikastuse seadeid on muudetud)",
     "toast": {
-      "success": "Andmerikastamise seaded on salvestatud. Muudatuste rakendamiseks taaskäivitage Frigate.",
+      "success": "Andmerikastamise seaded on salvestatud. Muudatuste rakendamiseks taaskäivitage HeisenCam.",
       "error": "Seadete muudatuste salvestamine ebaõnnestus: {{errorMessage}}"
     }
   },
@@ -553,7 +553,7 @@
     },
     "object_descriptions": {
       "title": "Generatiivse tehisaru objektikirjeldused",
-      "desc": "Luba/keela ajutiselt selle kaamera jaoks generatiivse tehisaru objektikirjeldused kuni Frigate'i taaskäivitamiseni. Kui see on keelatud, ei küsita selle kaamera jälgitavate objektide kohta tehisintellekti poolt loodud kirjeldusi."
+      "desc": "Luba/keela ajutiselt selle kaamera jaoks generatiivse tehisaru objektikirjeldused kuni HeisenCam'i taaskäivitamiseni. Kui see on keelatud, ei küsita selle kaamera jälgitavate objektide kohta tehisintellekti poolt loodud kirjeldusi."
     },
     "review_descriptions": {
       "title": "Generatiivne tehisaru ülevaatamisele kuuluva sisu kirjedlused"

@@ -1,6 +1,6 @@
 {
-  "documentTitle": "Živě - Frigate",
-  "documentTitle.withCamera": "{{camera}}-Živě-Frigate",
+  "documentTitle": "Živě - HeisenCam",
+  "documentTitle.withCamera": "{{camera}}-Živě-HeisenCam",
   "lowBandwidthMode": "Režim nízké šířky pásma",
   "twoWayTalk": {
     "enable": "Povolit obousměrný hovor",

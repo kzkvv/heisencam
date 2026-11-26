@@ -16,10 +16,10 @@
     }
   },
   "recordings": {
-    "documentTitle": "Posnetki - Frigate"
+    "documentTitle": "Posnetki - HeisenCam"
   },
   "camera": "Kamera",
-  "documentTitle": "Pregled - Frigate",
+  "documentTitle": "Pregled - HeisenCam",
   "alerts": "Opozorila",
   "detections": "Zaznave",
   "motion": {

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HeisenCam is a local NVR with a classic camera dashboard, one-click event playback and measurable object detection.">
+  <title>HeisenCam · Local network video recorder</title>
+  <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="shell mast">
+    <a class="wordmark" href="./"><img src="assets/mark.svg" width="36" height="36" alt="">HeisenCam</a>
+    <nav aria-label="Project"><a href="#install">Install</a><a href="https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3">GitHub ↗</a></nav>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div><p class="tagline">I saw who knocked</p><h1>A classic dashboard for your cameras.</h1></div>
+      <div class="intro"><p>HeisenCam brings one-click event playback, local object detection and a replay benchmark to a recorder built on Frigate 0.18.3.</p><a class="button" href="#install">Run the Docker demo <span aria-hidden="true">↓</span></a></div>
+    </section>
+    <figure>
+      <a href="assets/dashboard.webp"><img class="dashboard" src="assets/dashboard.webp" width="1600" height="643" alt="HeisenCam camera dashboard with a lava fountain on the south rim and a wide view of Kīlauea from the west rim"></a>
+      <figcaption>Two simulated feeds replay real archival webcam images from the USGS Hawaiian Volcano Observatory. <a href="https://www.usgs.gov/media/images/s2cam-image-eruption-kilauea-summit">S2cam</a> · <a href="https://www.usgs.gov/media/images/jan-4-kilauea-volcano-summit-eruption-image-kwcam-webcam">KWcam</a></figcaption>
+    </figure>
+    <section class="install" id="install"><div><h2>Run it locally</h2><p>The example includes both public-domain camera clips. Docker Compose starts the candidate on your own machine.</p></div>
+      <div><pre><code>git clone --branch heisencam/0.18.3 https://github.com/kzkvv/heisencam.git
+cd heisencam/examples/demo
+docker compose up -d</code></pre><p>Open <code>http://127.0.0.1:8972</code> in your browser.</p></div>
+    </section>
+  </main>
+  <footer class="shell"><span>Independent derivative of <a href="https://github.com/blakeblackshear/frigate/tree/v0.18.3">Frigate</a>.</span><a href="https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/classic/README.md">Build and benchmark guide ↗</a></footer>
+</body>
+</html>

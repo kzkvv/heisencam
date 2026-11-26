@@ -1,29 +1,15 @@
 ---
 id: index
-title: Introduction
+title: HeisenCam
 slug: /
 ---
 
-A complete and local NVR designed for Home Assistant with AI object detection. Uses OpenCV and Tensorflow to perform realtime object detection locally for IP cameras.
+HeisenCam is a local NVR derived from Frigate 0.18.3. The classic camera dashboard opens one object's recording in a single click. Review groups activity by time and camera, and History provides a recording timeline.
 
-Use of a [Recommended Detector](/frigate/hardware#detectors) is optional, but strongly recommended. CPU detection should only be used for testing purposes.
+## Get started
 
-- Tight integration with Home Assistant via a [custom component](https://github.com/blakeblackshear/frigate-hass-integration)
-- Designed to minimize resource use and maximize performance by only looking for objects when and where it is necessary
-- Leverages multiprocessing heavily with an emphasis on realtime over processing every frame
-- Uses a very low overhead motion detection to determine where to run object detection
-- Object detection with TensorFlow runs in separate processes for maximum FPS
-- Communicates over MQTT for easy integration into other systems
-- Recording with retention based on detected objects
-- Re-streaming via RTSP to reduce the number of connections to your camera
-- A dynamic combined camera view of all tracked cameras.
+Run the [two-camera Docker example](https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3/examples/demo) to try the interface. For your own cameras, configure the FFmpeg inputs, storage, retention and detector for the host. Access to the internal administrator endpoint in the example is bound to localhost.
 
-## Screenshots
+## Measure changes
 
-![Live View](/img/live-view.png)
-
-![Review Items](/img/review-items.png)
-
-![Media Browser](/img/media_browser-min.png)
-
-![Notification](/img/notification-min.png)
+Use the [local quality replay and performance checks](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/classic/README.md) to compare false alerts and misses on labelled clips. The reference chapters also cover the APIs, MQTT topics and integrations inherited from Frigate.

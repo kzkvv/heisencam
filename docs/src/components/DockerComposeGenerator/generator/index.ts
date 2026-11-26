@@ -48,7 +48,10 @@ function buildImage(device: DeviceConfig): string[] {
   const tag = device.imageTagSuffix
     ? `${device.imageTag}${device.imageTagSuffix}`
     : device.imageTag;
-  return [`    image: ghcr.io/blakeblackshear/frigate:${tag}`];
+  if (tag === "stable") {
+    return ["    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3"];
+  }
+  return [`    image: ghcr.io/blakeblackshear/frigate:${tag} # Upstream hardware-specific image`];
 }
 
 function buildDevices(

@@ -4,11 +4,11 @@
     "default": "الإعدادات - فرايجيت",
     "authentication": "إعدادات المصادقة - فرايجيت",
     "enrichments": "إحصاء الاعدادات",
-    "masksAndZones": "القناع ومحرر المنطقة - Frigate",
+    "masksAndZones": "القناع ومحرر المنطقة - HeisenCam",
     "motionTuner": "مضبط الحركة - Firgate",
-    "object": "تصحيح الأخطاء - Frigate",
-    "general": "الإعدادات العامة - Frigate",
-    "notifications": "إعدادات الإشعارات - Frigate"
+    "object": "تصحيح الأخطاء - HeisenCam",
+    "general": "الإعدادات العامة - HeisenCam",
+    "notifications": "إعدادات الإشعارات - HeisenCam"
   },
   "menu": {
     "ui": "واجهة المستخدم",

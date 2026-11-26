@@ -1,83 +1,38 @@
-<p align="center">
-  <img align="center" alt="logo" src="docs/static/img/branding/frigate.png">
-</p>
+<p align="center"><img src="web/images/branding/favicon.svg" width="76" height="76" alt="HeisenCam lens"></p>
 
-# Frigate NVR™ - Realtime Object Detection for IP Cameras
+# HeisenCam
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+> **I saw who knocked** · «Я видел, кто стучал»
 
-<a href="https://hosted.weblate.org/engage/frigate-nvr/">
-<img src="https://hosted.weblate.org/widget/frigate-nvr/language-badge.svg" alt="Translation status" />
-</a>
+HeisenCam is a local network video recorder built on [Frigate 0.18.3](https://github.com/blakeblackshear/frigate/tree/v0.18.3). We bring the classic camera dashboard and single-click event playback to the current backend, alongside Review, History and Explore.
 
-\[English\] | [简体中文](https://github.com/blakeblackshear/frigate/blob/dev/README_CN.md)
+Our name nods to Walter White's line in *Cornered*. Camera footage once helped our founder identify people leaving drug drops. We kept the camera's answer as our tagline. The graphite lens and its faceted blue reflection are original HeisenCam artwork. [Background on the scene at ACMI](https://www.acmi.net.au/stories-and-ideas/breaking-bad-i-am/)
 
-A complete and local NVR designed for [Home Assistant](https://www.home-assistant.io) with AI object detection. Uses OpenCV and Tensorflow to perform realtime object detection locally for IP cameras.
+## Run the candidate
 
-Use of a GPU or AI accelerator is highly recommended. AI accelerators will outperform even the best CPUs with very little overhead. See Frigate's supported [object detectors](https://docs.frigate.video/configuration/object_detectors/).
+```sh
+git clone --branch heisencam/0.18.3 https://github.com/kzkvv/heisencam.git
+cd heisencam/examples/demo
+docker compose up -d
+```
 
-- Tight integration with Home Assistant via a [custom component](https://github.com/blakeblackshear/frigate-hass-integration)
-- Designed to minimize resource use and maximize performance by only looking for objects when and where it is necessary
-- Leverages multiprocessing heavily with an emphasis on realtime over processing every frame
-- Uses a very low overhead motion detection to determine where to run object detection
-- Object detection with TensorFlow runs in separate processes for maximum FPS
-- Communicates over MQTT for easy integration into other systems
-- Records video with retention settings based on detected objects
-- 24/7 recording
-- Re-streaming via RTSP to reduce the number of connections to your camera
-- WebRTC & MSE support for low-latency live view
+Open [the local dashboard](http://127.0.0.1:8972). The demo uses two simulated camera feeds made from public-domain USGS webcam images. Its media and database are separate Docker volumes. The candidate publishes AMD64 and ARM64 images to `ghcr.io/kzkvv/heisencam`. For repeatable deployment, use the tag `sha-<full candidate commit SHA>` or its OCI digest.
 
-## Documentation
+## What changes
 
-View the documentation at https://docs.frigate.video
+- **Review footage** from a classic camera grid and play a tracked object's clip inline. Existing camera groups can be hidden per user.
+- **Tune confirmation** using fresh detector evidence and an optional `detect.idle_scan_interval` per camera. Replay labelled recordings and compare confirmed tracks, scores and inference calls before choosing a setting.
+- **Keep capture running** with `FRIGATE_CONFIG_ONLY_CAMERA_CONTROLS=true`. The file sets camera, motion, recording and detection enablement.
+- **Load on demand** with deferred views, gzip after ingress path substitution and a bounded worker pool for dashboard snapshots.
 
-## Donations
+Configuration keys, `FRIGATE_*` environment variables, MQTT topics, API routes and container storage paths follow Frigate conventions. The default detector and any additional hardware dependencies depend on your configuration and chosen base image.
 
-If you would like to make a donation to support development, please use [Github Sponsors](https://github.com/sponsors/blakeblackshear).
+[Candidate website](https://kzkvv.github.io/heisencam/) · [Docker demo and image credits](examples/demo/README.md) · [Build and benchmark instructions](docker/classic/README.md) · [Archive, backport and rollback](docs/heisencam-compatibility.md)
 
-## License
+<details><summary>Original naming note</summary>
 
-This project is licensed under the **MIT License**.
+> **Я бы дал ему слоган *I saw who knocked* — «Я видел, кто стучал».** Это ответ камеры на знаменитую реплику Уолтера Уайта. А у тебя за шуткой стоит настоящая история — запись Frigate помогла поймать закладчиков. На логотип я бы поставил графитовый объектив с одним гранёным голубым бликом.
 
-- **Code:** The source code, configuration files, and documentation in this repository are available under the [MIT License](LICENSE). You are free to use, modify, and distribute the code as long as you include the original copyright notice.
-- **Trademarks:** The "Frigate" name, the "Frigate NVR" brand, and the Frigate logo are **trademarks of Frigate, Inc.** and are **not** covered by the MIT License.
+</details>
 
-Please see our [Trademark Policy](TRADEMARK.md) for details on acceptable use of our brand assets.
-
-## Screenshots
-
-### Live dashboard
-
-<div>
-<img width="800" alt="Live dashboard" src="https://github.com/blakeblackshear/frigate/assets/569905/5e713cb9-9db5-41dc-947a-6937c3bc376e">
-</div>
-
-### Streamlined review workflow
-
-<div>
-<img width="800" alt="Streamlined review workflow" src="https://github.com/blakeblackshear/frigate/assets/569905/6fed96e8-3b18-40e5-9ddc-31e6f3c9f2ff">
-</div>
-
-### Multi-camera scrubbing
-
-<div>
-<img width="800" alt="Multi-camera scrubbing" src="https://github.com/blakeblackshear/frigate/assets/569905/d6788a15-0eeb-4427-a8d4-80b93cae3d74">
-</div>
-
-### Built-in mask and zone editor
-
-<div>
-<img width="800" alt="Built-in mask and zone editor" src="https://github.com/blakeblackshear/frigate/assets/569905/d7885fc3-bfe6-452f-b7d0-d957cb3e31f5">
-</div>
-
-## Translations
-
-We use [Weblate](https://hosted.weblate.org/projects/frigate-nvr/) to support language translations. Contributions are always welcome.
-
-<a href="https://hosted.weblate.org/engage/frigate-nvr/">
-<img src="https://hosted.weblate.org/widget/frigate-nvr/multi-auto.svg" alt="Translation status" />
-</a>
-
----
-
-**Copyright © 2026 Frigate, Inc.**
+HeisenCam is an independent derivative. Frigate and Frigate+ are trademarks of Frigate, Inc. The upstream code and copyright notices are retained. [MIT license](LICENSE) · [Upstream trademark policy](TRADEMARK.md)

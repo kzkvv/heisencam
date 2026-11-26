@@ -1,14 +1,14 @@
 {
   "documentTitle": {
-    "cameras": "Статыстыка камер - Frigate",
-    "storage": "Статыстыка сховішча - Frigate",
-    "general": "Агульная статыстыка - Frigate",
-    "enrichments": "Статыстыка ўзбагачэнняў - Frigate",
+    "cameras": "Статыстыка камер - HeisenCam",
+    "storage": "Статыстыка сховішча - HeisenCam",
+    "general": "Агульная статыстыка - HeisenCam",
+    "enrichments": "Статыстыка ўзбагачэнняў - HeisenCam",
     "logs": {
-      "frigate": "Журналы Frigate - Frigate",
-      "go2rtc": "Журналы go2rtc - Frigate",
-      "nginx": "Журналы Nginx - Frigate",
-      "websocket": "Журналы паведамленняў - Frigate"
+      "frigate": "Журналы HeisenCam - HeisenCam",
+      "go2rtc": "Журналы go2rtc - HeisenCam",
+      "nginx": "Журналы Nginx - HeisenCam",
+      "websocket": "Журналы паведамленняў - HeisenCam"
     }
   },
   "title": "Сістэма",
@@ -127,7 +127,7 @@
     "overview": "Агляд",
     "recordings": {
       "title": "Запісы",
-      "tips": "Гэта значэнне паказвае агульны аб'ём сховішча, заняты запісамі ў базе даных Frigate. Frigate не адсочвае месца, занятае ўсімі файламі на дыску.",
+      "tips": "Гэта значэнне паказвае агульны аб'ём сховішча, заняты запісамі ў базе даных HeisenCam. HeisenCam не адсочвае месца, занятае ўсімі файламі на дыску.",
       "earliestRecording": "Самы ранні даступны запіс:"
     },
     "shm": {
@@ -147,7 +147,7 @@
       "bandwidth": "Паласа прапускання",
       "unused": {
         "title": "Нявыкарыстана",
-        "tips": "Гэта значэнне можа недакладна адлюстроўваць вольнае месца, даступнае Frigate, калі на дыску ёсць іншыя файлы акрамя запісаў Frigate. Frigate не адсочвае месца па-за сваімі запісамі."
+        "tips": "Гэта значэнне можа недакладна адлюстроўваць вольнае месца, даступнае HeisenCam, калі на дыску ёсць іншыя файлы акрамя запісаў HeisenCam. HeisenCam не адсочвае месца па-за сваімі запісамі."
       }
     }
   },

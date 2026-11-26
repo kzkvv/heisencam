@@ -1,13 +1,13 @@
 {
   "restart": {
-    "title": "Jste si jistí, že chcete restartovat Frigate?",
+    "title": "Jste si jistí, že chcete restartovat HeisenCam?",
     "button": "Restartovat",
     "restarting": {
-      "title": "Frigate restartuje",
+      "title": "HeisenCam restartuje",
       "content": "Tato stránka bude obnovena za {{countdown}} sekund.",
       "button": "Vynutit opětovné načtení"
     },
-    "description": "Frigate bude během restartu krátce nedostupný."
+    "description": "HeisenCam bude během restartu krátce nedostupný."
   },
   "explore": {
     "plus": {

@@ -1,0 +1,48 @@
+version: 0.18-0
+mqtt:
+  enabled: false
+auth:
+  enabled: false
+tls:
+  enabled: false
+detectors:
+  local:
+    type: cpu
+    num_threads: 2
+ffmpeg:
+  hwaccel_args: []
+  input_args: -re -stream_loop -1 -fflags +genpts
+  output_args:
+    record: preset-record-generic
+detect:
+  enabled: true
+  width: 960
+  height: 540
+  fps: 5
+birdseye:
+  enabled: true
+  mode: continuous
+  idle_heartbeat_fps: 3
+record:
+  enabled: true
+  continuous:
+    days: 1
+snapshots:
+  enabled: true
+cameras:
+  south_rim:
+    friendly_name: Kīlauea · South rim
+    ffmpeg:
+      inputs:
+        - path: /demo/south_rim.mp4
+          roles: [detect, record]
+    ui:
+      order: 1
+  west_rim:
+    friendly_name: Kīlauea · West rim
+    ffmpeg:
+      inputs:
+        - path: /demo/west_rim.mp4
+          roles: [detect, record]
+    ui:
+      order: 2

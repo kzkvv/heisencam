@@ -1,11 +1,11 @@
-# Frigate Classic
+# HeisenCam development and benchmarks
 
 Build from the repository root. The image extends the pinned Frigate base and builds
 the frontend from this checkout. Set the build argument `FRIGATE_BASE` to a
 different upstream hardware image at the same Frigate version when appropriate.
 
 ```sh
-docker build -f docker/classic/Dockerfile -t frigate-classic:0.18.3 .
+docker build -f docker/classic/Dockerfile -t heisencam:0.18.3 .
 ```
 
 Use Frigate's normal container mounts and configuration. For a development
@@ -13,10 +13,10 @@ instance, the example below binds the internal admin UI to localhost. Use the
 authenticated port `8971` for deployments accessible from other machines.
 
 ```sh
-docker run -d --restart unless-stopped --name frigate-classic \
+docker run -d --restart unless-stopped --name heisencam \
   --shm-size 1024m -p 127.0.0.1:8972:5000 \
   -v "$PWD/config:/config" -v "$PWD/models:/models:ro" \
-  -v "$PWD/media:/media/frigate" frigate-classic:0.18.3
+  -v "$PWD/media:/media/frigate" heisencam:0.18.3
 ```
 
 ## Measure detection quality on local recordings
@@ -39,7 +39,7 @@ the detector and its model as usual. Use a runnable backend on the Docker host.
 
 ```sh
 docker run --rm --network none --entrypoint python3 \
-  -v "$PWD/replay:/replay" -v "$PWD/models:/models:ro" frigate-classic:0.18.3 \
+  -v "$PWD/replay:/replay" -v "$PWD/models:/models:ro" heisencam:0.18.3 \
   -u /opt/frigate/tools/quality_replay.py \
   --config /replay/config.yml --manifest /replay/manifest.json \
   --output /replay/results.json --idle-scan 2 --trace
@@ -122,7 +122,7 @@ With a matching local Classic image:
 ```sh
 docker run --rm --network none --entrypoint python3 \
   -v "$PWD/frigate/test/test_performance.py:/opt/frigate/frigate/test/test_performance.py:ro" \
-  frigate-classic:0.18.3-release \
+  heisencam:0.18.3-release \
   -m unittest frigate.test.test_performance frigate.test.test_detection_evidence
 ```
 

@@ -3,36 +3,42 @@ id: installation
 title: Installation
 ---
 
+## HeisenCam candidate
+
+Start with the [HeisenCam Docker example](https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3/examples/demo).
+The published candidate image supports AMD64 and ARM64. The platform-specific image matrix below is the upstream Frigate reference.
+
+
 import ShmCalculator from '@site/src/components/ShmCalculator'
 import DockerComposeGenerator from '@site/src/components/DockerComposeGenerator'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Frigate is a Docker container that can be run on any Docker host including as a [Home Assistant App](https://www.home-assistant.io/apps/). Note that the Home Assistant App is **not** the same thing as the integration. The [integration](/integrations/home-assistant) is required to integrate Frigate into Home Assistant, whether you are running Frigate as a standalone Docker container or as a Home Assistant App.
+HeisenCam is a Docker container that can be run on any Docker host including as a [Home Assistant App](https://www.home-assistant.io/apps/). Note that the Home Assistant App is **not** the same thing as the integration. The [integration](/integrations/home-assistant) is required to integrate HeisenCam into Home Assistant, whether you are running HeisenCam as a standalone Docker container or as a Home Assistant App.
 
 :::tip
 
-If you already have Frigate installed as a Home Assistant App, check out the [getting started guide](../guides/getting_started.md#configuring-frigate) to configure Frigate.
+If you already have HeisenCam installed as a Home Assistant App, check out the [getting started guide](../guides/getting_started.md#configuring-frigate) to configure HeisenCam.
 
 :::
 
 ## Dependencies
 
-**MQTT broker (optional)** - An MQTT broker is optional with Frigate, but is required for the Home Assistant integration. If using Home Assistant, Frigate and Home Assistant must be connected to the same MQTT broker.
+**MQTT broker (optional)** - An MQTT broker is optional with HeisenCam, but is required for the Home Assistant integration. If using Home Assistant, HeisenCam and Home Assistant must be connected to the same MQTT broker.
 
 ## Preparing your hardware
 
 ### Operating System
 
-Frigate runs best with Docker installed on bare metal Debian-based distributions. For ideal performance, Frigate needs low overhead access to underlying hardware for the Coral and GPU devices. Running Frigate in a VM on top of Proxmox, ESXi, Virtualbox, etc. is not recommended though [some users have had success with Proxmox](#proxmox).
+HeisenCam runs best with Docker installed on bare metal Debian-based distributions. For ideal performance, HeisenCam needs low overhead access to underlying hardware for the Coral and GPU devices. Running HeisenCam in a VM on top of Proxmox, ESXi, Virtualbox, etc. is not recommended though [some users have had success with Proxmox](#proxmox).
 
-Windows is not officially supported, but some users have had success getting it to run under WSL or Virtualbox. Getting the GPU and/or Coral devices properly passed to Frigate may be difficult or impossible. Search previous discussions or issues for help.
+Windows is not officially supported, but some users have had success getting it to run under WSL or Virtualbox. Getting the GPU and/or Coral devices properly passed to HeisenCam may be difficult or impossible. Search previous discussions or issues for help.
 
 ### Storage
 
-Frigate uses the following locations for read/write operations in the container. Docker volume mappings can be used to map these to any location on your host machine.
+HeisenCam uses the following locations for read/write operations in the container. Docker volume mappings can be used to map these to any location on your host machine.
 
-- `/config`: Used to store the Frigate config file and sqlite database. You will also see a few files alongside the database file while Frigate is running.
+- `/config`: Used to store the HeisenCam config file and sqlite database. You will also see a few files alongside the database file while HeisenCam is running.
 - `/media/frigate/clips`: Used for snapshot storage. In the future, it will likely be renamed from `clips` to `snapshots`. The file structure here cannot be modified and isn't intended to be browsed or managed manually.
 - `/media/frigate/recordings`: Internal system storage for recording segments. The file structure here cannot be modified and isn't intended to be browsed or managed manually.
 - `/media/frigate/exports`: Storage for clips and timelapses that have been exported via the WebUI or API.
@@ -41,12 +47,12 @@ Frigate uses the following locations for read/write operations in the container.
 
 ### Ports
 
-The following ports are used by Frigate and can be mapped via docker as required.
+The following ports are used by HeisenCam and can be mapped via docker as required.
 
 | Port   | Description                                                                                                                                                                |
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `8971` | Authenticated UI and API access without TLS. Reverse proxies should use this port.                                                                                         |
-| `5000` | Internal unauthenticated UI and API access. Access to this port should be limited. Intended to be used within the docker network for services that integrate with Frigate. |
+| `5000` | Internal unauthenticated UI and API access. Access to this port should be limited. Intended to be used within the docker network for services that integrate with HeisenCam. |
 | `8554` | RTSP restreaming. By default, these streams are unauthenticated. Authentication can be configured in go2rtc section of config.                                             |
 | `8555` | WebRTC connections for cameras with two-way talk support.                                                                                                                  |
 
@@ -76,19 +82,19 @@ Users of the Snapcraft build of Docker cannot use storage locations outside your
 
 ### Calculating required shm-size
 
-Frigate utilizes shared memory to store frames during processing. The default `shm-size` provided by Docker is **64MB**.
+HeisenCam utilizes shared memory to store frames during processing. The default `shm-size` provided by Docker is **64MB**.
 
-Frigate needs about **210MB** for **2 cameras** detecting at **720p**. If Frigate is exiting with "Bus error" messages, it is likely because you have too many high resolution cameras and you need to specify a higher shm size, using [`--shm-size`](https://docs.docker.com/engine/reference/run/#runtime-constraints-on-resources) (or [`service.shm_size`](https://docs.docker.com/compose/compose-file/compose-file-v2/#shm_size) in Docker Compose). If raising the shm size does not help, check your [process and file limits](#process-and-file-limits) as well.
+HeisenCam needs about **210MB** for **2 cameras** detecting at **720p**. If HeisenCam is exiting with "Bus error" messages, it is likely because you have too many high resolution cameras and you need to specify a higher shm size, using [`--shm-size`](https://docs.docker.com/engine/reference/run/#runtime-constraints-on-resources) (or [`service.shm_size`](https://docs.docker.com/compose/compose-file/compose-file-v2/#shm_size) in Docker Compose). If raising the shm size does not help, check your [process and file limits](#process-and-file-limits) as well.
 
-The Frigate container also stores logs and an nginx cache in shm, which can take up to **50MB**. The calculator below includes this, along with room for 2 cameras added while Frigate is running. Its result holds about 25 frames per camera, a little above the 20 frame minimum Frigate warns below. Frigate keeps up to 50 when there is room, which gives slow processes more time to read each frame.
+The HeisenCam container also stores logs and an nginx cache in shm, which can take up to **50MB**. The calculator below includes this, along with room for 2 cameras added while HeisenCam is running. Its result holds about 25 frames per camera, a little above the 20 frame minimum HeisenCam warns below. HeisenCam keeps up to 50 when there is room, which gives slow processes more time to read each frame.
 
 <ShmCalculator/>
 
-The shm size cannot be set per container for Home Assistant Apps. However, this is probably not required since by default Home Assistant Supervisor allocates `/dev/shm` with half the size of your total memory. If your machine has 8GB of memory, chances are that Frigate will have access to up to 4GB without any additional configuration.
+The shm size cannot be set per container for Home Assistant Apps. However, this is probably not required since by default Home Assistant Supervisor allocates `/dev/shm` with half the size of your total memory. If your machine has 8GB of memory, chances are that HeisenCam will have access to up to 4GB without any additional configuration.
 
 ### Process and file limits
 
-Frigate runs many processes and opens a number of shared memory files. Installs with a large number of cameras can exceed the default limits your container runtime applies.
+HeisenCam runs many processes and opens a number of shared memory files. Installs with a large number of cameras can exceed the default limits your container runtime applies.
 
 Hitting the PID limit logs `RuntimeError: can't start new thread`, often followed by a "Bus error" that makes it look like an shm sizing problem. Compare the current count against the max from inside the container:
 
@@ -128,7 +134,7 @@ The Hailo-8 and Hailo-8L AI accelerators are available in both M.2 and HAT form 
 
 :::warning
 
-On Raspberry Pi OS **Bookworm**, the kernel includes an older version of the Hailo driver that is incompatible with Frigate. You **must** follow the installation steps below to install the correct driver version, and you **must** disable the built-in kernel driver as described in step 1.
+On Raspberry Pi OS **Bookworm**, the kernel includes an older version of the Hailo driver that is incompatible with HeisenCam. You **must** follow the installation steps below to install the correct driver version, and you **must** disable the built-in kernel driver as described in step 1.
 
 On Raspberry Pi OS **Trixie**, the Hailo driver is no longer shipped with the kernel. It is installed via DKMS, and the conflict described below does not apply. You can simply run the installation script.
 
@@ -285,7 +291,7 @@ On Raspberry Pi OS **Trixie**, the Hailo driver is no longer shipped with the ke
 
 #### Setup
 
-To set up Frigate, follow the default installation instructions, for example: `ghcr.io/blakeblackshear/frigate:stable`
+To set up HeisenCam, follow the default installation instructions, for example: `ghcr.io/kzkvv/heisencam:candidate-0.18.3`
 
 Next, grant Docker permissions to access your hardware by adding the following lines to your `docker-compose.yml` file:
 
@@ -330,7 +336,7 @@ For manual setup, use **MemryX SDK 2.1** only. Other SDK versions are not suppor
 
 #### Setup
 
-To set up Frigate, follow the default installation instructions, for example: `ghcr.io/blakeblackshear/frigate:stable`
+To set up HeisenCam, follow the default installation instructions, for example: `ghcr.io/kzkvv/heisencam:candidate-0.18.3`
 
 Next, grant Docker permissions to access your hardware by adding the following lines to your `docker-compose.yml` file:
 
@@ -370,7 +376,7 @@ If you can't use Docker Compose, you can run the container with something simila
     -p 8555:8555/tcp \
     -p 8555:8555/udp \
     --device /dev/memx0 \
-    ghcr.io/blakeblackshear/frigate:stable
+    ghcr.io/kzkvv/heisencam:candidate-0.18.3
 ```
 
 #### Configuration
@@ -394,7 +400,7 @@ I recommend [Armbian](https://www.armbian.com/download/?arch=aarch64), if your b
 
 #### Setup
 
-Follow Frigate's default installation instructions, but use a docker image with `-rk` suffix for example `ghcr.io/blakeblackshear/frigate:stable-rk`.
+Follow HeisenCam's default installation instructions, but use a docker image with `-rk` suffix for example `ghcr.io/blakeblackshear/frigate:stable-rk`.
 
 Next, you need to grant docker permissions to access your hardware:
 
@@ -436,7 +442,7 @@ Next, you should configure [hardware object detection](/configuration/object_det
 
 #### Setup
 
-Follow Frigate's default installation instructions, but use a docker image with `-synaptics` suffix for example `ghcr.io/blakeblackshear/frigate:stable-synaptics`.
+Follow HeisenCam's default installation instructions, but use a docker image with `-synaptics` suffix for example `ghcr.io/blakeblackshear/frigate:stable-synaptics`.
 
 Next, you need to grant docker permissions to access your hardware:
 
@@ -477,7 +483,7 @@ Follow these steps for installation:
 
 #### Setup
 
-To set up Frigate, follow the default installation instructions, for example: `ghcr.io/blakeblackshear/frigate:stable`
+To set up HeisenCam, follow the default installation instructions, for example: `ghcr.io/kzkvv/heisencam:candidate-0.18.3`
 
 Next, grant Docker permissions to access your hardware by adding the following lines to your `docker-compose.yml` file:
 
@@ -504,7 +510,7 @@ Running through Docker with Docker Compose is the recommended install method.
 <Tabs>
   <TabItem value="domestic" label="Docker Compose Generator" default>
 
-Generate a Frigate Docker Compose configuration based on your hardware and requirements.
+Generate a HeisenCam Docker Compose configuration based on your hardware and requirements.
 
 <DockerComposeGenerator/>
 
@@ -517,7 +523,7 @@ services:
     privileged: true # this may not be necessary for all setups
     restart: unless-stopped
     stop_grace_period: 30s # allow enough time to shut down the various services
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3
     shm_size: "512mb" # update for your cameras based on calculation above
     devices:
       - /dev/bus/usb:/dev/bus/usb # Passes the USB Coral, needs to be modified for other versions
@@ -567,20 +573,20 @@ docker run -d \
   -p 8554:8554 \
   -p 8555:8555/tcp \
   -p 8555:8555/udp \
-  ghcr.io/blakeblackshear/frigate:stable
+  ghcr.io/kzkvv/heisencam:candidate-0.18.3
 ```
 
 The official docker image tags for the current stable version are:
 
-- `stable` - Standard Frigate build for amd64 & RPi Optimized Frigate build for arm64. This build includes support for Hailo devices as well.
-- `stable-standard-arm64` - Standard Frigate build for arm64
-- `stable-tensorrt` - Frigate build specific for amd64 devices running an Nvidia GPU
-- `stable-rocm` - Frigate build for [AMD GPUs](../configuration/object_detectors.md#amdrocm-gpu-detector)
+- `stable` - Standard HeisenCam build for amd64 & RPi Optimized HeisenCam build for arm64. This build includes support for Hailo devices as well.
+- `stable-standard-arm64` - Standard HeisenCam build for arm64
+- `stable-tensorrt` - HeisenCam build specific for amd64 devices running an Nvidia GPU
+- `stable-rocm` - HeisenCam build for [AMD GPUs](../configuration/object_detectors.md#amdrocm-gpu-detector)
 
 The community supported docker image tags for the current stable version are:
 
-- `stable-tensorrt-jp6` - Frigate build optimized for Nvidia Jetson devices running Jetpack 6
-- `stable-rk` - Frigate build for SBCs with Rockchip SoC
+- `stable-tensorrt-jp6` - HeisenCam build optimized for Nvidia Jetson devices running Jetpack 6
+- `stable-rk` - HeisenCam build for SBCs with Rockchip SoC
 
 ## Home Assistant App
 
@@ -607,23 +613,23 @@ Home Assistant OS users can install via the App repository.
 
 1. In Home Assistant, navigate to _Settings_ > _Apps_ > _App Store_ > _Repositories_
 2. Add `https://github.com/blakeblackshear/frigate-hass-addons`
-3. Install the desired variant of the Frigate App (see below)
+3. Install the desired variant of the HeisenCam App (see below)
 4. Setup your network configuration in the `Configuration` tab
 5. Start the App
-6. Use the _Open Web UI_ button to access the Frigate UI, then click in the _cog icon_ > _Configuration editor_ and configure Frigate to your liking
+6. Use the _Open Web UI_ button to access the HeisenCam UI, then click in the _cog icon_ > _Configuration editor_ and configure HeisenCam to your liking
 
 There are several variants of the App available:
 
 | App Variant                | Description                                                |
 | -------------------------- | ---------------------------------------------------------- |
-| Frigate                    | Current release with protection mode on                    |
-| Frigate (Full Access)      | Current release with the option to disable protection mode |
-| Frigate Beta               | Beta release with protection mode on                       |
-| Frigate Beta (Full Access) | Beta release with the option to disable protection mode    |
+| HeisenCam                    | Current release with protection mode on                    |
+| HeisenCam (Full Access)      | Current release with the option to disable protection mode |
+| HeisenCam Beta               | Beta release with protection mode on                       |
+| HeisenCam Beta (Full Access) | Beta release with the option to disable protection mode    |
 
-If you are using hardware acceleration for ffmpeg, you **may** need to use the _Full Access_ variant of the App. This is because the Frigate App runs in a container with limited access to the host system. The _Full Access_ variant allows you to disable _Protection mode_ and give Frigate full access to the host system.
+If you are using hardware acceleration for ffmpeg, you **may** need to use the _Full Access_ variant of the App. This is because the HeisenCam App runs in a container with limited access to the host system. The _Full Access_ variant allows you to disable _Protection mode_ and give HeisenCam full access to the host system.
 
-You can also edit the Frigate configuration file through the [VS Code App](https://github.com/hassio-addons/addon-vscode) or similar. In that case, the configuration file will be at `/addon_configs/<addon_directory>/config.yml`, where `<addon_directory>` is specific to the variant of the Frigate App you are running. See the list of directories [here](../configuration/config.md#accessing-app-config-dir).
+You can also edit the HeisenCam configuration file through the [VS Code App](https://github.com/hassio-addons/addon-vscode) or similar. In that case, the configuration file will be at `/addon_configs/<addon_directory>/config.yml`, where `<addon_directory>` is specific to the variant of the HeisenCam App you are running. See the list of directories [here](../configuration/config.md#accessing-app-config-dir).
 
 ## Kubernetes
 
@@ -632,15 +638,15 @@ Use the [helm chart](https://github.com/blakeblackshear/blakeshome-charts/tree/m
 ## Unraid
 
 Many people have powerful enough NAS devices or home servers to also run docker. There is a Unraid Community App.
-To install make sure you have the [community app plugin here](https://forums.unraid.net/topic/38582-plug-in-community-applications/). Then search for "Frigate" in the apps section within Unraid - you can see the online store [here](https://unraid.net/community/apps?q=frigate#r)
+To install make sure you have the [community app plugin here](https://forums.unraid.net/topic/38582-plug-in-community-applications/). Then search for "HeisenCam" in the apps section within Unraid - you can see the online store [here](https://unraid.net/community/apps?q=frigate#r)
 
 ## Proxmox
 
-[According to Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#chapter_pct) it is recommended that you run application containers like Frigate inside a Proxmox QEMU VM. This will give you all the advantages of application containerization, while also providing the benefits that VMs offer, such as strong isolation from the host and the ability to live-migrate, which otherwise isn’t possible with containers. Ensure that ballooning is **disabled**, especially if you are passing through a GPU to the VM.
+[According to Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#chapter_pct) it is recommended that you run application containers like HeisenCam inside a Proxmox QEMU VM. This will give you all the advantages of application containerization, while also providing the benefits that VMs offer, such as strong isolation from the host and the ability to live-migrate, which otherwise isn’t possible with containers. Ensure that ballooning is **disabled**, especially if you are passing through a GPU to the VM.
 
 :::warning
 
-If you choose to run Frigate via LXC in Proxmox the setup can be complex so be prepared to read the Proxmox and LXC documentation, Frigate does not officially support running inside of an LXC.
+If you choose to run HeisenCam via LXC in Proxmox the setup can be complex so be prepared to read the Proxmox and LXC documentation, HeisenCam does not officially support running inside of an LXC.
 
 :::
 
@@ -650,16 +656,16 @@ Suggestions include:
   - `lxc.cgroup2.devices.allow: c 226:128 rwm`
   - `lxc.mount.entry: /dev/dri/renderD128 dev/dri/renderD128 none bind,optional,create=file`
 - The LXC configuration will likely also need `features: fuse=1,nesting=1`. This allows running a Docker container in an LXC container (`nesting`) and prevents duplicated files and wasted storage (`fuse`).
-- Successfully passing hardware devices through multiple levels of containerization (LXC then Docker) can be difficult. Many people make devices like `/dev/dri/renderD128` world-readable in the host or run Frigate in a privileged LXC container.
+- Successfully passing hardware devices through multiple levels of containerization (LXC then Docker) can be difficult. Many people make devices like `/dev/dri/renderD128` world-readable in the host or run HeisenCam in a privileged LXC container.
 - The virtualization layer often introduces a sizable amount of overhead for communication with Coral devices, but [not in all circumstances](https://github.com/blakeblackshear/frigate/discussions/1837).
 
 See the [Proxmox LXC discussion](https://github.com/blakeblackshear/frigate/discussions/5773) for more general information.
 
 ## ESXi
 
-For details on running Frigate using ESXi, please see the instructions [here](https://williamlam.com/2023/05/frigate-nvr-with-coral-tpu-igpu-passthrough-using-esxi-on-intel-nuc.html).
+For details on running HeisenCam using ESXi, please see the instructions [here](https://williamlam.com/2023/05/frigate-nvr-with-coral-tpu-igpu-passthrough-using-esxi-on-intel-nuc.html).
 
-If you're running Frigate on a rack mounted server and want to passthrough the Google Coral, [read this.](https://github.com/blakeblackshear/frigate/issues/305)
+If you're running HeisenCam on a rack mounted server and want to passthrough the Google Coral, [read this.](https://github.com/blakeblackshear/frigate/issues/305)
 
 ## Synology NAS on DSM 7
 
@@ -681,7 +687,7 @@ If you want to use the password template feature, you should add the "FRIGATE_RT
 
 **Port Settings:**
 
-The network mode should be set to `bridge`. You need to map the default frigate container ports to your local Synology NAS ports that you want to use to access Frigate.
+The network mode should be set to `bridge`. You need to map the default frigate container ports to your local Synology NAS ports that you want to use to access HeisenCam.
 
 There may be other services running on your NAS that are using the same ports that frigate uses. In that instance you can set the ports to auto or a specific port.
 
@@ -700,10 +706,10 @@ You need to configure 2 paths:
 
 These instructions were tested on a QNAP with an Intel J3455 CPU and 16G RAM, running QTS 4.5.4.2117.
 
-QNAP has a graphic tool named Container Station to install and manage docker containers. However, there are two limitations with Container Station that make it unsuitable to install Frigate:
+QNAP has a graphic tool named Container Station to install and manage docker containers. However, there are two limitations with Container Station that make it unsuitable to install HeisenCam:
 
-1. Container Station does not incorporate GitHub Container Registry (ghcr), which hosts Frigate docker image version 0.12.0 and above.
-2. Container Station uses default 64 Mb shared memory size (shm-size), and does not have a mechanism to adjust it. Frigate requires a larger shm-size to be able to work properly with more than two high resolution cameras.
+1. Container Station does not incorporate GitHub Container Registry (ghcr), which hosts HeisenCam docker image version 0.12.0 and above.
+2. Container Station uses default 64 Mb shared memory size (shm-size), and does not have a mechanism to adjust it. HeisenCam requires a larger shm-size to be able to work properly with more than two high resolution cameras.
 
 Because of above limitations, the installation has to be done from command line. Here are the steps:
 
@@ -711,18 +717,18 @@ Because of above limitations, the installation has to be done from command line.
 
 1. Install Container Station from QNAP App Center if it is not installed.
 2. Enable ssh on your QNAP (please do an Internet search on how to do this).
-3. Prepare Frigate config file, name it `config.yml`.
+3. Prepare HeisenCam config file, name it `config.yml`.
 4. Calculate shared memory size according to [documentation](https://docs.frigate.video/frigate/installation).
 5. Find your time zone value from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 6. ssh to QNAP.
 
 **Installation**
 
-Run the following commands to install Frigate (using `stable` version as example):
+Run the following commands to install HeisenCam (using `stable` version as example):
 
 ```shell
 # Download Frigate image
-docker pull ghcr.io/blakeblackshear/frigate:stable
+docker pull ghcr.io/kzkvv/heisencam:candidate-0.18.3
 # Create directory to host Frigate config file on QNAP file system.
 # E.g., you can choose to create it under /share/Container.
 mkdir -p /share/Container/frigate/config
@@ -757,16 +763,16 @@ docker run \
   --cpus="2" \
   --detach=true \
   -t \
-  ghcr.io/blakeblackshear/frigate:stable
+  ghcr.io/kzkvv/heisencam:candidate-0.18.3
 ```
 
-Log into QNAP, open Container Station. Frigate docker container should be listed under 'Overview' and running. Visit Frigate Web UI by clicking Frigate docker, and then clicking the URL shown at the top of the detail page.
+Log into QNAP, open Container Station. HeisenCam docker container should be listed under 'Overview' and running. Visit HeisenCam Web UI by clicking HeisenCam docker, and then clicking the URL shown at the top of the detail page.
 
 ## macOS - Apple Silicon
 
 :::warning
 
-macOS uses port 5000 for its Airplay Receiver service. If you want to expose port 5000 in Frigate for local app and API access the port will need to be mapped to another port on the host e.g. 5001
+macOS uses port 5000 for its Airplay Receiver service. If you want to expose port 5000 in HeisenCam for local app and API access the port will need to be mapped to another port on the host e.g. 5001
 
 Failure to remap port 5000 on the host will result in the WebUI and all API endpoints on port 5000 being unreachable, even if port 5000 is exposed correctly in Docker.
 
@@ -774,7 +780,7 @@ Failure to remap port 5000 on the host will result in the WebUI and all API endp
 
 Docker containers on macOS can be orchestrated by either [Docker Desktop](https://docs.docker.com/desktop/setup/install/mac-install/) or [OrbStack](https://orbstack.dev) (native Swift app). The difference in inference speeds is negligible, however CPU, power consumption and container start times will be lower on OrbStack because it is a native Swift application.
 
-To allow Frigate to use the Apple Silicon Neural Engine / Processing Unit (NPU) the host must be running [Apple Silicon Detector](../configuration/object_detectors.md#apple-silicon-detector) on the host (outside Docker)
+To allow HeisenCam to use the Apple Silicon Neural Engine / Processing Unit (NPU) the host must be running [Apple Silicon Detector](../configuration/object_detectors.md#apple-silicon-detector) on the host (outside Docker)
 
 #### Docker Compose example
 

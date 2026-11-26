@@ -18,9 +18,9 @@
   },
   "timeline.aria": "Selecione a linha do tempo",
   "alerts": "Alertas",
-  "documentTitle": "Análise - Frigate",
+  "documentTitle": "Análise - HeisenCam",
   "recordings": {
-    "documentTitle": "Frigate - Gravações"
+    "documentTitle": "HeisenCam - Gravações"
   },
   "calendarFilter": {
     "last24Hours": "Últimas 24 horas"

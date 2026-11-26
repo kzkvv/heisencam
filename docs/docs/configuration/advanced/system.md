@@ -9,7 +9,7 @@ import NavPath from "@site/src/components/NavPath";
 
 ### Logging
 
-#### Frigate `logger`
+#### HeisenCam `logger`
 
 Change the default log level for troubleshooting purposes.
 
@@ -143,7 +143,7 @@ This may need to be in a custom location if network storage is used for the medi
 
 Navigate to <NavPath path="Settings > System > Database" />.
 
-- Set **Database path** to the custom path for the Frigate database file (default: `/config/frigate.db`)
+- Set **Database path** to the custom path for the HeisenCam database file (default: `/config/frigate.db`)
 
 </TabItem>
 <TabItem value="yaml">
@@ -239,11 +239,11 @@ Some labels have special handling and modifications can disable functionality.
 
 ## Network Configuration
 
-Frigate exposes a few networking options. IPv6 and the listen ports are set in the `networking` configuration (or from the Settings UI); more advanced changes require [customizing the bundled Nginx configuration](#customizing-the-nginx-configuration).
+HeisenCam exposes a few networking options. IPv6 and the listen ports are set in the `networking` configuration (or from the Settings UI); more advanced changes require [customizing the bundled Nginx configuration](#customizing-the-nginx-configuration).
 
 ### Enabling IPv6
 
-By default Frigate listens on IPv4 only. To also listen on IPv6 (on port `5000`, and on `8971` when TLS is configured), enable it in the `networking` configuration.
+By default HeisenCam listens on IPv4 only. To also listen on IPv6 (on port `5000`, and on `8971` when TLS is configured), enable it in the `networking` configuration.
 
 <ConfigTabs>
 <TabItem value="ui">
@@ -291,17 +291,17 @@ networking:
 
 :::warning
 
-This setting is for advanced users. For the majority of use cases it's recommended to change the `ports` section of your Docker compose file or use the Docker `run` `--publish` option instead, e.g. `-p 443:8971`. Changing Frigate's ports may break some integrations.
+This setting is for advanced users. For the majority of use cases it's recommended to change the `ports` section of your Docker compose file or use the Docker `run` `--publish` option instead, e.g. `-p 443:8971`. Changing HeisenCam's ports may break some integrations.
 
-The internal and external ports must be different port numbers, and Frigate will refuse to start otherwise. Requests arriving on the internal port are treated as authenticated admins, so pointing both at the same port would remove authentication from the external one.
+The internal and external ports must be different port numbers, and HeisenCam will refuse to start otherwise. Requests arriving on the internal port are treated as authenticated admins, so pointing both at the same port would remove authentication from the external one.
 
-Nginx binds these ports when it starts, so port changes only take effect after Frigate restarts.
+Nginx binds these ports when it starts, so port changes only take effect after HeisenCam restarts.
 
 :::
 
 ### Customizing the Nginx configuration
 
-More advanced changes to Frigate's internal network configuration can be made by bind mounting your own `nginx.conf` into the container. For example:
+More advanced changes to HeisenCam's internal network configuration can be made by bind mounting your own `nginx.conf` into the container. For example:
 
 ```yaml
 services:
@@ -315,7 +315,7 @@ services:
 
 ## Base path
 
-By default, Frigate runs at the root path (`/`). However some setups require to run Frigate under a custom path prefix (e.g. `/frigate`), especially when Frigate is located behind a reverse proxy that requires path-based routing.
+By default, HeisenCam runs at the root path (`/`). However some setups require to run HeisenCam under a custom path prefix (e.g. `/frigate`), especially when HeisenCam is located behind a reverse proxy that requires path-based routing.
 
 ### Set Base Path via HTTP Header
 
@@ -344,7 +344,7 @@ services:
       - FRIGATE_BASE_PATH=/frigate
 ```
 
-This can be used for example to access Frigate via a Tailscale agent (https), by simply forwarding all requests to the base path (http):
+This can be used for example to access HeisenCam via a Tailscale agent (https), by simply forwarding all requests to the base path (http):
 
 ```
 tailscale serve --https=443 --bg --set-path /frigate http://localhost:5000/frigate
@@ -354,24 +354,24 @@ tailscale serve --https=443 --bg --set-path /frigate http://localhost:5000/friga
 
 ### Custom ffmpeg build
 
-Included with Frigate is a build of ffmpeg that works for the vast majority of users. However, there exists some hardware setups which have incompatibilities with the included build. In this case, statically built `ffmpeg` and `ffprobe` binaries can be placed in `/config/custom-ffmpeg/bin` for Frigate to use.
+Included with HeisenCam is a build of ffmpeg that works for the vast majority of users. However, there exists some hardware setups which have incompatibilities with the included build. In this case, statically built `ffmpeg` and `ffprobe` binaries can be placed in `/config/custom-ffmpeg/bin` for HeisenCam to use.
 
 To do this:
 
 1. Download your ffmpeg build and uncompress it to the `/config/custom-ffmpeg` folder. Verify that both the `ffmpeg` and `ffprobe` binaries are located in `/config/custom-ffmpeg/bin`.
-2. Update the `ffmpeg.path` in your Frigate config to `/config/custom-ffmpeg`.
-3. Restart Frigate and the custom version will be used if the steps above were done correctly.
+2. Update the `ffmpeg.path` in your HeisenCam config to `/config/custom-ffmpeg`.
+3. Restart HeisenCam and the custom version will be used if the steps above were done correctly.
 
 ### Custom go2rtc version
 
-Frigate currently includes go2rtc v1.9.14, there may be certain cases where you want to run a different version of go2rtc.
+HeisenCam currently includes go2rtc v1.9.14, there may be certain cases where you want to run a different version of go2rtc.
 
 To do this:
 
 1. Download the go2rtc build to the `/config` folder.
 2. Rename the build to `go2rtc`.
 3. Give `go2rtc` execute permission.
-4. Restart Frigate and the custom version will be used, you can verify by checking go2rtc logs.
+4. Restart HeisenCam and the custom version will be used, you can verify by checking go2rtc logs.
 
 ## Validating your config.yml file updates
 
@@ -379,7 +379,7 @@ When frigate starts up, it checks whether your config file is valid, and if it i
 
 ### Via API
 
-Frigate can accept a new configuration file as JSON at the `/api/config/save` endpoint. When updating the config this way, Frigate will validate the config before saving it, and return a `400` if the config is not valid.
+HeisenCam can accept a new configuration file as JSON at the `/api/config/save` endpoint. When updating the config this way, HeisenCam will validate the config before saving it, and return a `400` if the config is not valid.
 
 ```bash
 curl -X POST http://frigate_host:5000/api/config/save -d @config.json
@@ -393,7 +393,7 @@ yq -o=json '.' config.yaml | curl -X POST 'http://frigate_host:5000/api/config/s
 
 ### Via Command Line
 
-You can also validate your config at the command line by using the docker container itself. In CI/CD, you leverage the return code to determine if your config is valid, Frigate will return `1` if the config is invalid, or `0` if it's valid.
+You can also validate your config at the command line by using the docker container itself. In CI/CD, you leverage the return code to determine if your config is valid, HeisenCam will return `1` if the config is invalid, or `0` if it's valid.
 
 ```bash
 docker run                                \

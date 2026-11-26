@@ -1,13 +1,13 @@
 {
   "restart": {
-    "title": "Вы уверены, что хотите перезапустить Frigate?",
+    "title": "Вы уверены, что хотите перезапустить HeisenCam?",
     "button": "Перезапуск",
     "restarting": {
-      "title": "Frigate перезапускается",
+      "title": "HeisenCam перезапускается",
       "content": "Эта страница перезагрузится через {{countdown}} сек.",
       "button": "Принудительная перезагрузка"
     },
-    "description": "Это перезагрузки перезагрузит Frigate."
+    "description": "Это перезагрузки перезагрузит HeisenCam."
   },
   "explore": {
     "plus": {

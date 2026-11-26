@@ -1,14 +1,14 @@
 {
   "documentTitle": {
-    "cameras": "Estatísticas das Câmeras - Frigate",
-    "storage": "Status de Armazenamento - Frigate",
-    "general": "Estatísticas Gerais - Frigate",
-    "enrichments": "Estatísticas de Enriquecimento - Frigate",
+    "cameras": "Estatísticas das Câmeras - HeisenCam",
+    "storage": "Status de Armazenamento - HeisenCam",
+    "general": "Estatísticas Gerais - HeisenCam",
+    "enrichments": "Estatísticas de Enriquecimento - HeisenCam",
     "logs": {
-      "frigate": "Registros Frigate - Frigate",
-      "go2rtc": "Registros GoRTC - Frigate",
-      "nginx": "Registros Nginx - Frigate",
-      "websocket": "Registros de Mensagem - Frigate"
+      "frigate": "Registros HeisenCam - HeisenCam",
+      "go2rtc": "Registros GoRTC - HeisenCam",
+      "nginx": "Registros Nginx - HeisenCam",
+      "websocket": "Registros de Mensagem - HeisenCam"
     }
   },
   "title": "Sistema",
@@ -111,7 +111,7 @@
     "recordings": {
       "title": "Gravações",
       "earliestRecording": "Gravação mais recente disponível:",
-      "tips": "Esse valor representa o armazenamento total usado pelas gravações no banco de dados do Frigate. O Frigate não rastreia o uso de armazenamento para todos os arquivos do seu disco."
+      "tips": "Esse valor representa o armazenamento total usado pelas gravações no banco de dados do HeisenCam. O HeisenCam não rastreia o uso de armazenamento para todos os arquivos do seu disco."
     },
     "cameraStorage": {
       "title": "Armazenamento da Câmera",
@@ -122,7 +122,7 @@
       "bandwidth": "Largura de Banda",
       "unused": {
         "title": "Não Utilizado",
-        "tips": "Esse valor por não representar com precisão o espaço livre disponí®el para o Frigate se você possui outros arquivos armazenados no seu drive além das gravações do Frigate. O Frigate não rastreia a utilização do armazenamento além de suas próprias gravações."
+        "tips": "Esse valor por não representar com precisão o espaço livre disponí®el para o HeisenCam se você possui outros arquivos armazenados no seu drive além das gravações do HeisenCam. O HeisenCam não rastreia a utilização do armazenamento além de suas próprias gravações."
       }
     },
     "shm": {

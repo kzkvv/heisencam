@@ -7,7 +7,7 @@ import ConfigTabs from "@site/src/components/ConfigTabs";
 import TabItem from "@theme/TabItem";
 import NavPath from "@site/src/components/NavPath";
 
-Generative AI can be used to automatically generate structured summaries of review items. These summaries will show up in Frigate's native notifications as well as in the UI. Generative AI can also be used to take a collection of summaries over a period of time and provide a report, which may be useful to get a quick report of everything that happened while out for some amount of time.
+Generative AI can be used to automatically generate structured summaries of review items. These summaries will show up in HeisenCam's native notifications as well as in the UI. Generative AI can also be used to take a collection of summaries over a period of time and provide a report, which may be useful to get a quick report of everything that happened while out for some amount of time.
 
 Requests for a summary are requested automatically to your AI provider for alert review items when the activity has ended, they can also be optionally enabled for detections as well.
 
@@ -26,11 +26,11 @@ Review summaries provide structured JSON responses that are saved for each revie
 - `potential_threat_level` (integer): 0, 1, or 2 as defined below.
 ```
 
-This will show in multiple places in the UI to give additional context about each activity, and allow viewing more details when extra attention is required. Frigate's built in notifications will automatically show the title and `shortSummary` when the data is available, while the full `scene` description is available in the UI for detailed review.
+This will show in multiple places in the UI to give additional context about each activity, and allow viewing more details when extra attention is required. HeisenCam's built in notifications will automatically show the title and `shortSummary` when the data is available, while the full `scene` description is available in the UI for detailed review.
 
 ### Defining Typical Activity
 
-Each installation and even camera can have different parameters for what is considered suspicious activity. Frigate allows the `activity_context_prompt` to be defined globally and at the camera level, which allows you to define more specifically what should be considered normal activity. It is important that this is not overly specific as it can sway the output of the response.
+Each installation and even camera can have different parameters for what is considered suspicious activity. HeisenCam allows the `activity_context_prompt` to be defined globally and at the camera level, which allows you to define more specifically what should be considered normal activity. It is important that this is not overly specific as it can sway the output of the response.
 
 To configure the activity context prompt:
 
@@ -102,7 +102,7 @@ review:
 
 ### Image Source
 
-By default, review summaries use preview images (cached preview frames) which have a lower resolution but use fewer tokens per image. For better image quality and more detailed analysis, configure Frigate to extract frames directly from recordings at a higher resolution.
+By default, review summaries use preview images (cached preview frames) which have a lower resolution but use fewer tokens per image. For better image quality and more detailed analysis, configure HeisenCam to extract frames directly from recordings at a higher resolution.
 
 <ConfigTabs>
 <TabItem value="ui">
@@ -170,7 +170,7 @@ review:
 
 ### Preferred Language
 
-By default, review summaries are generated in English. Configure Frigate to generate summaries in your preferred language by setting the `preferred_language` option.
+By default, review summaries are generated in English. Configure HeisenCam to generate summaries in your preferred language by setting the `preferred_language` option.
 
 <ConfigTabs>
 <TabItem value="ui">

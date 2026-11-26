@@ -22,9 +22,9 @@
     "aria": "בחירת אירועים",
     "noFoundForTimePeriod": "לא נמצאו אירועים עבור תקופת זמן זו."
   },
-  "documentTitle": "סקירה - Frigate",
+  "documentTitle": "סקירה - HeisenCam",
   "recordings": {
-    "documentTitle": "הקלטות - Frigate"
+    "documentTitle": "הקלטות - HeisenCam"
   },
   "calendarFilter": {
     "last24Hours": "24 שעות אחרונות"

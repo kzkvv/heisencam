@@ -11,6 +11,8 @@ config/*
 !config/*.example
 models
 *.mp4
+!examples/demo/media/south_rim.mp4
+!examples/demo/media/west_rim.mp4
 *.db
 *.db-*
 *.csv

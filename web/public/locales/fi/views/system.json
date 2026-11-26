@@ -27,15 +27,15 @@
     }
   },
   "documentTitle": {
-    "cameras": "Kameroiden tilastot - Frigate",
+    "cameras": "Kameroiden tilastot - HeisenCam",
     "storage": "Tallenteiden tilastot - Fgirage",
-    "general": "Yleiset tilastot - Frigate",
-    "enrichments": "Rikastetut tilastot - Frigate",
+    "general": "Yleiset tilastot - HeisenCam",
+    "enrichments": "Rikastetut tilastot - HeisenCam",
     "logs": {
-      "frigate": "Frigaten lokit - Frigate",
-      "go2rtc": "Go2RTC lokit - Frigate",
-      "nginx": "Nginx lokit - Frigate",
-      "websocket": "Viestilokit - Frigate"
+      "frigate": "Frigaten lokit - HeisenCam",
+      "go2rtc": "Go2RTC lokit - HeisenCam",
+      "nginx": "Nginx lokit - HeisenCam",
+      "websocket": "Viestilokit - HeisenCam"
     }
   },
   "title": "Järjestelmä",

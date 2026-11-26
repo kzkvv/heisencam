@@ -1,0 +1,17 @@
+services:
+  heisencam:
+    image: ${HEISENCAM_IMAGE:-ghcr.io/kzkvv/heisencam:candidate-0.18.3}
+    restart: unless-stopped
+    shm_size: 256m
+    environment:
+      FRIGATE_CONFIG_ONLY_CAMERA_CONTROLS: "true"
+    ports:
+      - "127.0.0.1:${HEISENCAM_PORT:-8972}:5000"
+    volumes:
+      - config:/config
+      - ./config.yml:/config/config.yml:ro
+      - ./media:/demo:ro
+      - recordings:/media/frigate
+volumes:
+  config:
+  recordings:

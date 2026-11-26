@@ -1,11 +1,11 @@
 {
   "documentTitle": {
-    "cameras": "Estatísticas de cámaras - Frigate",
-    "storage": "Estatísticas de Almacenamento - Frigate",
-    "general": "Estatísticas Xerais - Frigate",
-    "enrichments": "Estatísticas complementarias - Frigate",
+    "cameras": "Estatísticas de cámaras - HeisenCam",
+    "storage": "Estatísticas de Almacenamento - HeisenCam",
+    "general": "Estatísticas Xerais - HeisenCam",
+    "enrichments": "Estatísticas complementarias - HeisenCam",
     "logs": {
-      "frigate": "Rexistros de Frigate - Frigate"
+      "frigate": "Rexistros de HeisenCam - HeisenCam"
     }
   },
   "title": "Sistema",

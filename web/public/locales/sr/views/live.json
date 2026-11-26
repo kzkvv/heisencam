@@ -1,6 +1,6 @@
 {
-  "documentTitle": "Uživo - Frigate",
-  "documentTitle.withCamera": "{{camera}} - Uživo - Frigate",
+  "documentTitle": "Uživo - HeisenCam",
+  "documentTitle.withCamera": "{{camera}} - Uživo - HeisenCam",
   "lowBandwidthMode": "Režim niskog propusnog opsega",
   "twoWayTalk": {
     "enable": "Omogući dvosmerni razgovor",

@@ -1,15 +1,15 @@
 {
   "documentTitle": {
-    "cameras": "Kamerų Statistika - Frigate",
-    "storage": "Saugyklos Statistika - Frigate",
+    "cameras": "Kamerų Statistika - HeisenCam",
+    "storage": "Saugyklos Statistika - HeisenCam",
     "logs": {
-      "frigate": "Frigate Žurnalas - Frigate",
-      "go2rtc": "Go2RTC Žurnalas - Frigate",
-      "nginx": "Nginx Žurnalas - Frigate",
-      "websocket": "Žinučių Išrašas - Frigate"
+      "frigate": "HeisenCam Žurnalas - HeisenCam",
+      "go2rtc": "Go2RTC Žurnalas - HeisenCam",
+      "nginx": "Nginx Žurnalas - HeisenCam",
+      "websocket": "Žinučių Išrašas - HeisenCam"
     },
-    "general": "Bendroji Statistika - Frigate",
-    "enrichments": "Pagerinimų Statistika - Frigate"
+    "general": "Bendroji Statistika - HeisenCam",
+    "enrichments": "Pagerinimų Statistika - HeisenCam"
   },
   "title": "Sistema",
   "metrics": "Sistemos metrikos",
@@ -108,7 +108,7 @@
       "intelGpuWarning": {
         "title": "Intel GPU statistikų įspėjimas",
         "message": "GPU statistika negalima",
-        "description": "Tai žinoma problema su Intel GPU statistikos raportavimo įrankiu (intel_gpu_top), kai jis stringa ir pakartotinai grąžina GPU vartojimas 0% net tais atvejais kai hardware acceleration ir objektų aptikimas taisiklingai veikia naudojant (i)GPU. Tai nėra Frigate klaida. Laikinai padeda įrenginio perkrovimas, kad įsitikinti teisingu GPU funkcionavimu. Tai neįtakoja spartos."
+        "description": "Tai žinoma problema su Intel GPU statistikos raportavimo įrankiu (intel_gpu_top), kai jis stringa ir pakartotinai grąžina GPU vartojimas 0% net tais atvejais kai hardware acceleration ir objektų aptikimas taisiklingai veikia naudojant (i)GPU. Tai nėra HeisenCam klaida. Laikinai padeda įrenginio perkrovimas, kad įsitikinti teisingu GPU funkcionavimu. Tai neįtakoja spartos."
       },
       "gpuCompute": "GPU Skaičiavimai / Transformavimas",
       "gpuTemperature": "GPU Temperatūra",
@@ -132,7 +132,7 @@
     "overview": "Apžvalga",
     "recordings": {
       "title": "Įrašai",
-      "tips": "Ši reikšmė nurodo kiek iš viso Frigate duombazėje esantys įrašai užima vietos saugykloje. Frigate neseka kiek vietos užima visi kiti failai esantys laikmenoje.",
+      "tips": "Ši reikšmė nurodo kiek iš viso HeisenCam duombazėje esantys įrašai užima vietos saugykloje. HeisenCam neseka kiek vietos užima visi kiti failai esantys laikmenoje.",
       "earliestRecording": "Anksčiausias esantis įrašas:"
     },
     "cameraStorage": {
@@ -144,7 +144,7 @@
       "bandwidth": "Pralaidumas",
       "unused": {
         "title": "Nepanaudota",
-        "tips": "Jei saugykloje turite daugiau failų apart Frigate įrašų, ši reikšmė neatspindės tikslios likusios laisvos vietos Frigate panaudojimui. Frigate neseka saugyklos panaudojimo už savo įrašų ribų."
+        "tips": "Jei saugykloje turite daugiau failų apart HeisenCam įrašų, ši reikšmė neatspindės tikslios likusios laisvos vietos HeisenCam panaudojimui. HeisenCam neseka saugyklos panaudojimo už savo įrašų ribų."
       }
     },
     "shm": {

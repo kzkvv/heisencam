@@ -7,20 +7,18 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 const STABLE_VERSION = "0.18";
 
 const config: Config = {
-  title: "Frigate",
+  title: "HeisenCam",
   tagline: "NVR With Realtime Object Detection for IP Cameras",
-  url: "https://docs.frigate.video",
-  baseUrl: "/",
+  url: "https://kzkvv.github.io",
+  baseUrl: "/heisencam/docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/branding/favicon.ico",
-  organizationName: "blakeblackshear",
-  projectName: "frigate",
+  organizationName: "kzkvv",
+  projectName: "heisencam",
   themes: [
     "@docusaurus/theme-mermaid",
     "docusaurus-theme-openapi-docs",
-    "@inkeep/docusaurus/chatButton",
-    "@inkeep/docusaurus/searchBar",
   ],
   markdown: {
     mermaid: true,
@@ -35,54 +33,9 @@ const config: Config = {
     },
   },
   themeConfig: {
-    announcementBar: {
-      id: "frigate_plus",
-      content: `
-        <span style="margin-right: 8px; display: inline-block; animation: pulse 2s infinite;">🚀</span>
-        Get more relevant and accurate detections with Frigate+ models.
-        <a style="margin-left: 12px; padding: 3px 10px; background: #94d2bd; color: #001219; text-decoration: none; border-radius: 4px; font-weight: 500; " target="_blank" rel="noopener noreferrer" href="https://frigate.video/plus/">Learn more</a>
-        <span style="margin-left: 8px; display: inline-block; animation: pulse 2s infinite;">✨</span>
-        <style>
-          @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50%       { transform: scale(1.1); }
-          }
-        </style>`,
-      backgroundColor: "#005f73",
-      textColor: "#e0fbfc",
-      isCloseable: false,
-    },
     docs: {
       sidebar: {
         hideable: true,
-      },
-    },
-    inkeepConfig: {
-      baseSettings: {
-        apiKey: "b1a4c4d73c9b48aa5b3cdae6e4c81f0bb3d1134eeb5a7100",
-        integrationId: "cm6xmhn9h000gs601495fkkdx",
-        organizationId: "org_map2JQEOco8U1ZYY",
-        primaryBrandColor: "#010101",
-      },
-      aiChatSettings: {
-        chatSubjectName: "Frigate",
-        botAvatarSrcUrl: "https://frigate.video/images/favicon.png",
-        getHelpCallToActions: [
-          {
-            name: "GitHub",
-            url: "https://github.com/blakeblackshear/frigate",
-            icon: {
-              builtIn: "FaGithub",
-            },
-          },
-        ],
-        quickQuestions: [
-          "How to configure and setup camera settings?",
-          "How to setup notifications?",
-          "Supported builtin detectors?",
-          "How to restream video feed?",
-          "How can I get sound or audio in my recordings?",
-        ],
       },
     },
     prism: {
@@ -127,15 +80,15 @@ const config: Config = {
       },
     ],
     navbar: {
-      title: "Frigate",
+      title: "HeisenCam",
       logo: {
-        alt: "Frigate",
+        alt: "HeisenCam",
         src: "img/branding/logo.svg",
         srcDark: "img/branding/logo-dark.svg",
       },
       items: [
         {
-          href: "https://github.com/blakeblackshear/frigate/releases",
+          href: "https://github.com/kzkvv/heisencam/releases",
           label: `${STABLE_VERSION}`,
           position: "left",
         },
@@ -146,12 +99,12 @@ const config: Config = {
           position: "left",
         },
         {
-          href: "https://frigate.video",
+          href: "https://kzkvv.github.io/heisencam/",
           label: "Website",
           position: "right",
         },
         {
-          href: "http://demo.frigate.video",
+          href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3/examples/demo",
           label: "Demo",
           position: "right",
         },
@@ -166,7 +119,7 @@ const config: Config = {
           ],
         },
         {
-          href: "https://github.com/blakeblackshear/frigate",
+          href: "https://github.com/kzkvv/heisencam",
           label: "GitHub",
           position: "right",
         },
@@ -180,16 +133,16 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/blakeblackshear/frigate",
+              href: "https://github.com/kzkvv/heisencam",
             },
             {
               label: "Discussions",
-              href: "https://github.com/blakeblackshear/frigate/discussions",
+              href: "https://github.com/kzkvv/heisencam/discussions",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Frigate, Inc.`,
+      copyright: `HeisenCam contributors. Based on Frigate by Frigate, Inc.`,
     },
   },
   plugins: [
@@ -225,7 +178,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           editUrl:
-            "https://github.com/blakeblackshear/frigate/edit/master/docs/",
+            "https://github.com/kzkvv/heisencam/edit/heisencam/0.18.3/docs/",
           sidebarCollapsible: false,
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
         },

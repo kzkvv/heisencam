@@ -1,7 +1,7 @@
 {
   "documentTitle": {
-    "default": "Жывы прагляд - Frigate",
-    "withCamera": "{{camera}} - жывы прагляд - Frigate"
+    "default": "Жывы прагляд - HeisenCam",
+    "withCamera": "{{camera}} - жывы прагляд - HeisenCam"
   },
   "lowBandwidthMode": "Рэжым нізкай паласы прапускання",
   "twoWayTalk": {
@@ -180,7 +180,7 @@
   },
   "noCameras": {
     "title": "Камеры не наладжаны",
-    "description": "Пачніце з падлучэння камеры да Frigate.",
+    "description": "Пачніце з падлучэння камеры да HeisenCam.",
     "buttonText": "Дадаць камеру",
     "restricted": {
       "title": "Няма даступных камер",
@@ -188,7 +188,7 @@
     },
     "default": {
       "title": "Камеры не наладжаны",
-      "description": "Пачніце з падлучэння камеры да Frigate.",
+      "description": "Пачніце з падлучэння камеры да HeisenCam.",
       "buttonText": "Дадаць камеру"
     },
     "group": {

@@ -11,9 +11,9 @@ import NavPath from "@site/src/components/NavPath";
 
 :::tip
 
-If you already have an environment with Linux and Docker installed, you can continue to [Installing Frigate](#installing-frigate) below.
+If you already have an environment with Linux and Docker installed, you can continue to [Installing HeisenCam](#installing-frigate) below.
 
-If you already have Frigate installed through Docker or through a Home Assistant App, you can continue to [Configuring Frigate](#configuring-frigate) below.
+If you already have HeisenCam installed through Docker or through a Home Assistant App, you can continue to [Configuring HeisenCam](#configuring-frigate) below.
 
 :::
 
@@ -83,13 +83,13 @@ Now you have a minimal Debian server that requires very little maintenance.
    1. Specifically, follow the steps in the [Install using the apt repository](https://docs.docker.com/engine/install/debian/#install-using-the-repository) section
 2. Add your user to the docker group as described in the [Linux postinstall steps](https://docs.docker.com/engine/install/linux-postinstall/)
 
-## Installing Frigate
+## Installing HeisenCam
 
-This section shows how to create a minimal directory structure for a Docker installation on Debian. If you have installed Frigate as a Home Assistant App or another way, you can continue to [Configuring Frigate](#configuring-frigate).
+This section shows how to create a minimal directory structure for a Docker installation on Debian. If you have installed HeisenCam as a Home Assistant App or another way, you can continue to [Configuring HeisenCam](#configuring-frigate).
 
 ### Setup directories
 
-Frigate will create a config file if one does not exist on the initial startup. The following directory structure is the bare minimum to get started.
+HeisenCam will create a config file if one does not exist on the initial startup. The following directory structure is the bare minimum to get started.
 
 ```
 .
@@ -104,7 +104,7 @@ This will create the above structure:
 mkdir storage config && touch docker-compose.yml
 ```
 
-If you are setting up Frigate on a Linux device via SSH, you can use [nano](https://itsfoss.com/nano-editor-guide/) to edit the following files. If you prefer to edit remote files with a full editor instead of a terminal, I recommend using [Visual Studio Code](https://code.visualstudio.com/) with the [Remote SSH extension](https://code.visualstudio.com/docs/remote/ssh-tutorial).
+If you are setting up HeisenCam on a Linux device via SSH, you can use [nano](https://itsfoss.com/nano-editor-guide/) to edit the following files. If you prefer to edit remote files with a full editor instead of a terminal, I recommend using [Visual Studio Code](https://code.visualstudio.com/) with the [Remote SSH extension](https://code.visualstudio.com/docs/remote/ssh-tutorial).
 
 :::note
 
@@ -119,7 +119,7 @@ services:
     container_name: frigate
     restart: unless-stopped
     stop_grace_period: 30s
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3
     volumes:
       - ./config:/config
       - ./storage:/media/frigate
@@ -132,19 +132,19 @@ services:
       - "8554:8554" # RTSP feeds
 ```
 
-Now you should be able to start Frigate by running `docker compose up -d` from within the folder containing `docker-compose.yml`. On startup, an admin user and password will be created and outputted in the logs. You can see this by running `docker logs frigate`. Frigate should now be accessible at `https://server_ip:8971` where you can login with the `admin` user and finish configuration using the Settings UI.
+Now you should be able to start HeisenCam by running `docker compose up -d` from within the folder containing `docker-compose.yml`. On startup, an admin user and password will be created and outputted in the logs. You can see this by running `docker logs frigate`. HeisenCam should now be accessible at `https://server_ip:8971` where you can login with the `admin` user and finish configuration using the Settings UI.
 
-## Configuring Frigate
+## Configuring HeisenCam
 
 This section assumes that you already have an environment setup as described in [Installation](../frigate/installation.md). You should also configure your cameras according to the [camera setup guide](/frigate/camera_setup). Pay particular attention to the section on choosing a detect resolution.
 
-### Step 1: Start Frigate
+### Step 1: Start HeisenCam
 
-At this point you should be able to start Frigate and a basic config will be created automatically.
+At this point you should be able to start HeisenCam and a basic config will be created automatically.
 
 ### Step 2: Add a camera
 
-Click the **Add Camera** button in <NavPath path="Settings > Global configuration > Camera management" /> to use the camera setup wizard to get your first camera added into Frigate. See [Adding a camera with the Add Camera Wizard](../configuration/cameras.md#adding-a-camera-with-the-add-camera-wizard) for a walkthrough of each step.
+Click the **Add Camera** button in <NavPath path="Settings > Global configuration > Camera management" /> to use the camera setup wizard to get your first camera added into HeisenCam. See [Adding a camera with the Add Camera Wizard](../configuration/cameras.md#adding-a-camera-with-the-add-camera-wizard) for a walkthrough of each step.
 
 ### Step 3: Configure hardware acceleration (recommended)
 
@@ -192,9 +192,9 @@ cameras:
 
 ### Step 4: Configure detectors
 
-By default, Frigate will use a single OpenVINO detector running on the CPU.
+By default, HeisenCam will use a single OpenVINO detector running on the CPU.
 
-In many cases, the integrated graphics on Intel CPUs provides sufficient performance for typical Frigate setups. If you have an Intel processor, you can follow the configuration below.
+In many cases, the integrated graphics on Intel CPUs provides sufficient performance for typical HeisenCam setups. If you have an Intel processor, you can follow the configuration below.
 
 <details>
   <summary>Use Intel OpenVINO detector</summary>
@@ -301,7 +301,7 @@ cameras:
 
 More details on available detectors can be found [here](../configuration/object_detectors.md).
 
-Restart Frigate and you should start seeing detections for `person`. If you want to track other objects, they can be configured in <NavPath path="Settings > Global configuration > Objects" /> or via the [configuration file reference](../configuration/advanced/reference.md).
+Restart HeisenCam and you should start seeing detections for `person`. If you want to track other objects, they can be configured in <NavPath path="Settings > Global configuration > Objects" /> or via the [configuration file reference](../configuration/advanced/reference.md).
 
 ### Step 5: Setup motion masks
 
@@ -315,7 +315,7 @@ Note that motion masks should not be used to mark out areas where you do not wan
 
 :::
 
-If you are using YAML to configure Frigate instead of the UI, your configuration should look similar to this now:
+If you are using YAML to configure HeisenCam instead of the UI, your configuration should look similar to this now:
 
 ```yaml {16-18}
 mqtt:
@@ -343,7 +343,7 @@ cameras:
 
 ### Step 6: Enable recordings
 
-In order to review activity in the Frigate UI, recordings need to be enabled.
+In order to review activity in the HeisenCam UI, recordings need to be enabled.
 
 <ConfigTabs>
 <TabItem value="ui">
@@ -382,13 +382,13 @@ If you don't have separate streams for detect and record, you would just add the
 
 :::note
 
-If you only define one stream in your `inputs` and do not assign a `detect` role to it, Frigate will automatically assign it the `detect` role. Frigate will always decode a stream to support motion detection, Birdseye, the API image endpoints, and other features, even if you have disabled object detection with `enabled: False` in your config's `detect` section.
+If you only define one stream in your `inputs` and do not assign a `detect` role to it, HeisenCam will automatically assign it the `detect` role. HeisenCam will always decode a stream to support motion detection, Birdseye, the API image endpoints, and other features, even if you have disabled object detection with `enabled: False` in your config's `detect` section.
 
-If you only plan to use Frigate for recording, it is still recommended to define a `detect` role for a low resolution stream to minimize resource usage from the required stream decoding.
+If you only plan to use HeisenCam for recording, it is still recommended to define a `detect` role for a low resolution stream to minimize resource usage from the required stream decoding.
 
 :::
 
-By default, Frigate will retain video of all tracked objects for 10 days. The full set of options for recording can be found [here](../configuration/advanced/reference.md).
+By default, HeisenCam will retain video of all tracked objects for 10 days. The full set of options for recording can be found [here](../configuration/advanced/reference.md).
 
 ### Step 7: Complete config
 

@@ -7,7 +7,7 @@ import ConfigTabs from "@site/src/components/ConfigTabs";
 import TabItem from "@theme/TabItem";
 import NavPath from "@site/src/components/NavPath";
 
-Frigate provides a builtin audio detector which runs on the CPU. Compared to object detection in images, audio detection is a relatively lightweight operation so the only option is to run the detection on a CPU.
+HeisenCam provides a builtin audio detector which runs on the CPU. Compared to object detection in images, audio detection is a relatively lightweight operation so the only option is to run the detection on a CPU.
 
 ## Configuration
 
@@ -78,7 +78,7 @@ cameras:
 
 ### Configuring Minimum Volume
 
-The audio detector uses volume levels in the same way that motion in a camera feed is used for object detection. This means that Frigate will not run audio detection unless the audio volume is above the configured level in order to reduce resource usage. Audio levels can vary widely between camera models so it is important to run tests to see what volume levels are. The [Debug view](/usage/live#the-single-camera-view) in the Frigate UI has an Audio tab for cameras that have the `audio` role assigned where a graph and the current levels are displayed. The `min_volume` parameter should be set to the minimum the `RMS` level required to run audio detection.
+The audio detector uses volume levels in the same way that motion in a camera feed is used for object detection. This means that HeisenCam will not run audio detection unless the audio volume is above the configured level in order to reduce resource usage. Audio levels can vary widely between camera models so it is important to run tests to see what volume levels are. The [Debug view](/usage/live#the-single-camera-view) in the HeisenCam UI has an Audio tab for cameras that have the `audio` role assigned where a graph and the current levels are displayed. The `min_volume` parameter should be set to the minimum the `RMS` level required to run audio detection.
 
 :::tip
 
@@ -116,7 +116,7 @@ audio:
 
 ### Common Audio Labels
 
-The labelmap includes hundreds of sound types. The labels below are the ones most users may find practical, grouped by what they're typically used for. Use the exact label string from the left column in your `listen` config, or search for the label in the Frigate UI directly.
+The labelmap includes hundreds of sound types. The labels below are the ones most users may find practical, grouped by what they're typically used for. Use the exact label string from the left column in your `listen` config, or search for the label in the HeisenCam UI directly.
 
 Some labels cover several related sounds: `yell` is triggered by shouting, yelling, children shouting, and screaming; `crying` covers baby cries, sobbing, and whimpering; and `speech` covers ordinary talking and conversation.
 
@@ -174,13 +174,13 @@ Some labels cover several related sounds: `yell` is triggered by shouting, yelli
 
 :::tip
 
-Frequently-heard labels like `speech` can generate a lot of events, and each event could save a snapshot and recording based on your configuration, so start with a focused set and expand from there. The defaults (`bark`, `fire_alarm`, `speech`, `yell`) plus a few of the safety labels above cover most needs. See the [full audio labelmap](https://github.com/blakeblackshear/frigate/blob/dev/audio-labelmap.txt) or the Frigate UI for every available type.
+Frequently-heard labels like `speech` can generate a lot of events, and each event could save a snapshot and recording based on your configuration, so start with a focused set and expand from there. The defaults (`bark`, `fire_alarm`, `speech`, `yell`) plus a few of the safety labels above cover most needs. See the [full audio labelmap](https://github.com/blakeblackshear/frigate/blob/dev/audio-labelmap.txt) or the HeisenCam UI for every available type.
 
 :::
 
 ### Audio Transcription
 
-Frigate supports fully local audio transcription using either `sherpa-onnx` or OpenAI's open-source Whisper models via `faster-whisper`. The goal of this feature is to support Semantic Search for `speech` audio events. Frigate is not intended to act as a continuous, fully-automatic speech transcription service. Automatically transcribing all speech (or queuing many audio events for transcription) requires substantial CPU (or GPU) resources and is impractical on most systems. For this reason, transcriptions for events are initiated manually from the UI or the API rather than being run continuously in the background.
+HeisenCam supports fully local audio transcription using either `sherpa-onnx` or OpenAI's open-source Whisper models via `faster-whisper`. The goal of this feature is to support Semantic Search for `speech` audio events. HeisenCam is not intended to act as a continuous, fully-automatic speech transcription service. Automatically transcribing all speech (or queuing many audio events for transcription) requires substantial CPU (or GPU) resources and is impractical on most systems. For this reason, transcriptions for events are initiated manually from the UI or the API rather than being run continuously in the background.
 
 :::info
 
@@ -256,7 +256,7 @@ The only field that is valid at the camera level is `enabled`.
 
 #### Live transcription
 
-The single camera Live view in the Frigate UI supports live transcription of audio for streams defined with the `audio` role. Use the Enable/Disable Live Audio Transcription button/switch to toggle transcription processing, or toggle it outside of the UI with the [`frigate/<camera_name>/audio_transcription/set`](/integrations/mqtt#frigatecamera_nameaudio_transcriptionset) MQTT topic or the HTTP API. When speech is heard, the UI will display a black box over the top of the camera stream with text. The MQTT topic `frigate/<camera_name>/audio/transcription` will also be updated in real-time with transcribed text.
+The single camera Live view in the HeisenCam UI supports live transcription of audio for streams defined with the `audio` role. Use the Enable/Disable Live Audio Transcription button/switch to toggle transcription processing, or toggle it outside of the UI with the [`frigate/<camera_name>/audio_transcription/set`](/integrations/mqtt#frigatecamera_nameaudio_transcriptionset) MQTT topic or the HTTP API. When speech is heard, the UI will display a black box over the top of the camera stream with text. The MQTT topic `frigate/<camera_name>/audio/transcription` will also be updated in real-time with transcribed text.
 
 Results can be error-prone due to a number of factors, including:
 
@@ -280,7 +280,7 @@ The transcribed/translated speech will appear in the description box in the Trac
 
 :::note
 
-Only one `speech` event may be transcribed at a time. Frigate does not automatically transcribe `speech` events or implement a queue for long-running transcription model inference.
+Only one `speech` event may be transcribed at a time. HeisenCam does not automatically transcribe `speech` events or implement a queue for long-running transcription model inference.
 
 :::
 
@@ -288,18 +288,18 @@ Recorded `speech` events will always use a `whisper` model, regardless of the `m
 
 #### FAQ
 
-1. Why doesn't Frigate automatically transcribe all `speech` events?
+1. Why doesn't HeisenCam automatically transcribe all `speech` events?
 
-   Frigate does not implement a queue mechanism for speech transcription, and adding one is not trivial. A proper queue would need backpressure, prioritization, memory/disk buffering, retry logic, crash recovery, and safeguards to prevent unbounded growth when events outpace processing. That's a significant amount of complexity for a feature that, in most real-world environments, would mostly just churn through low-value noise.
+   HeisenCam does not implement a queue mechanism for speech transcription, and adding one is not trivial. A proper queue would need backpressure, prioritization, memory/disk buffering, retry logic, crash recovery, and safeguards to prevent unbounded growth when events outpace processing. That's a significant amount of complexity for a feature that, in most real-world environments, would mostly just churn through low-value noise.
 
    Because transcription is **serialized (one event at a time)** and speech events can be generated far faster than they can be processed, an auto-transcribe toggle would very quickly create an ever-growing backlog and degrade core functionality. For the amount of engineering and risk involved, it adds **very little practical value** for the majority of deployments, which are often on low-powered, edge hardware.
 
    If you hear speech that's actually important and worth saving/indexing for the future, **just press the transcribe button (the microphone icon) in Explore** on that specific `speech` event - that keeps things explicit, reliable, and under your control.
 
-   Other options are being considered for future versions of Frigate to add transcription options that support external `whisper` Docker containers. A single transcription service could then be shared by Frigate and other applications (for example, Home Assistant Voice), and run on more powerful machines when available.
+   Other options are being considered for future versions of HeisenCam to add transcription options that support external `whisper` Docker containers. A single transcription service could then be shared by HeisenCam and other applications (for example, Home Assistant Voice), and run on more powerful machines when available.
 
 2. Why don't you save live transcription text and use that for `speech` events?
 
    There's no guarantee that a `speech` event is even created from the exact audio that went through the transcription model. Live transcription and `speech` event creation are **separate, asynchronous processes**. Even when both are correctly configured, trying to align the **precise start and end time of a speech event** with whatever audio the model happened to be processing at that moment is unreliable.
 
-   Automatically persisting that data would often result in **misaligned, partial, or irrelevant transcripts**, while still incurring all of the CPU, storage, and privacy costs of transcription. That's why Frigate treats transcription as an **explicit, user-initiated action** rather than an automatic side-effect of every `speech` event.
+   Automatically persisting that data would often result in **misaligned, partial, or irrelevant transcripts**, while still incurring all of the CPU, storage, and privacy costs of transcription. That's why HeisenCam treats transcription as an **explicit, user-initiated action** rather than an automatic side-effect of every `speech` event.

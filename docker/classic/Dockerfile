@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
-ARG FRIGATE_BASE=ghcr.io/blakeblackshear/frigate:0.18.3
-FROM --platform=$BUILDPLATFORM node:24-bookworm-slim AS web-build
+ARG FRIGATE_BASE=ghcr.io/blakeblackshear/frigate:0.18.3@sha256:d1a3e0008557bb3f3314d442ecd4ba68e9b16ab7872d64612649f7a6e5156635
+FROM --platform=$BUILDPLATFORM node:24-bookworm-slim@sha256:873f586f3794f52281bd039bf02c048a0be08fde619338f9941bad1eb6b34530 AS web-build
 ENV NODE_OPTIONS=--max-old-space-size=4096
 WORKDIR /work
 COPY web/package.json web/package-lock.json ./
@@ -13,6 +13,11 @@ RUN export VITE_GIT_COMMIT_HASH="$(find public/locales -type f -print0 | sort -z
     && rm -rf dist/BASE_PATH
 
 FROM ${FRIGATE_BASE}
+ARG HEISENCAM_REVISION=development
+LABEL org.opencontainers.image.title="HeisenCam" \
+      org.opencontainers.image.source="https://github.com/kzkvv/heisencam" \
+      org.opencontainers.image.revision="${HEISENCAM_REVISION}" \
+      org.opencontainers.image.licenses="MIT"
 WORKDIR /opt/frigate
 COPY frigate/ frigate/
 COPY tools/quality_replay.py tools/

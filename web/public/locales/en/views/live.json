@@ -1,7 +1,7 @@
 {
   "documentTitle": {
-    "default": "Live - Frigate",
-    "withCamera": "{{camera}} - Live - Frigate"
+    "default": "Live - HeisenCam",
+    "withCamera": "{{camera}} - Live - HeisenCam"
   },
   "lowBandwidthMode": "Low-bandwidth Mode",
   "twoWayTalk": {
@@ -180,7 +180,7 @@
   },
   "noCameras": {
     "title": "No Cameras Configured",
-    "description": "Get started by connecting a camera to Frigate.",
+    "description": "Get started by connecting a camera to HeisenCam.",
     "buttonText": "Add Camera",
     "restricted": {
       "title": "No Cameras Available",
@@ -188,7 +188,7 @@
     },
     "default": {
       "title": "No Cameras Configured",
-      "description": "Get started by connecting a camera to Frigate.",
+      "description": "Get started by connecting a camera to HeisenCam.",
       "buttonText": "Add Camera"
     },
     "group": {
