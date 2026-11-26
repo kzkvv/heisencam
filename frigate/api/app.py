@@ -9,7 +9,7 @@ import platform
 import traceback
 import urllib
 from datetime import datetime, timedelta
-from functools import reduce
+from functools import lru_cache, reduce
 from io import StringIO
 from pathlib import Path as FilePath
 from typing import Any
@@ -19,7 +19,11 @@ import ruamel.yaml
 from fastapi import APIRouter, Body, Path, Request, Response
 from fastapi.encoders import jsonable_encoder
 from fastapi.params import Depends
-from fastapi.responses import JSONResponse, PlainTextResponse, StreamingResponse
+from fastapi.responses import (
+    JSONResponse,
+    PlainTextResponse,
+    StreamingResponse,
+)
 from filelock import FileLock, Timeout
 from markupsafe import escape
 from peewee import SQL, fn, operator
@@ -47,7 +51,12 @@ from frigate.config.camera.updater import (
     CameraConfigUpdateEnum,
     CameraConfigUpdateTopic,
 )
-from frigate.const import REDACTED_CREDENTIAL_SENTINEL
+from frigate.const import (
+    CAMERA_CONTROLS_LOCKED,
+    CAMERA_CONTROLS_LOCKED_MESSAGE,
+    LOCKED_CAMERA_SECTIONS,
+    REDACTED_CREDENTIAL_SENTINEL,
+)
 from frigate.ffmpeg_presets import FFMPEG_HWACCEL_VAAPI, _gpu_selector
 from frigate.genai import PROVIDERS, load_providers
 from frigate.jobs.media_sync import (
@@ -105,9 +114,15 @@ def is_healthy():
     return "Frigate is running. Alive and healthy!"
 
 
+@lru_cache(maxsize=1)
+def _config_schema_bytes() -> bytes:
+    """Serialize the process-static schema once for this Frigate build."""
+    return JSONResponse(content=get_config_schema(FrigateConfig)).body
+
+
 @router.get("/config/schema.json", dependencies=[Depends(allow_public())])
-def config_schema(request: Request):
-    return JSONResponse(content=get_config_schema(FrigateConfig))
+def config_schema():
+    return Response(content=_config_schema_bytes(), media_type="application/json")
 
 
 @router.get(
@@ -298,6 +313,8 @@ def config(request: Request):
         name: detector.model_dump(mode="json", warnings="none", exclude_none=True)
         for name, detector in config_obj.detectors.items()
     }
+
+    config["camera_controls_locked"] = CAMERA_CONTROLS_LOCKED
 
     # remove environment_vars for non-admin users
     if request.headers.get("remote-role") != "admin":
@@ -587,6 +604,39 @@ def _restricted_go2rtc_response(
     )
 
 
+def _protected_camera_settings(raw_config: str) -> tuple:
+    """Return file-backed enablement values relevant to the camera controls lock."""
+
+    def enabled_fields(section):
+        return (
+            section.get("enabled"),
+            *(
+                (section.get(key) or {}).get("enabled")
+                for key in sorted(LOCKED_CAMERA_SECTIONS)
+            ),
+        )
+
+    raw = ruamel.yaml.YAML(typ="safe").load(raw_config) or {}
+    return (
+        enabled_fields(raw),
+        {
+            name: enabled_fields(camera)
+            for name, camera in (raw.get("cameras") or {}).items()
+        },
+    )
+
+
+def _camera_controls_conflict(old_config: str, new_config: str) -> JSONResponse | None:
+    if CAMERA_CONTROLS_LOCKED and _protected_camera_settings(
+        old_config
+    ) != _protected_camera_settings(new_config):
+        return JSONResponse(
+            status_code=403,
+            content={"success": False, "message": CAMERA_CONTROLS_LOCKED_MESSAGE},
+        )
+    return None
+
+
 @router.post("/config/save", dependencies=[Depends(require_role(["admin"]))])
 def config_save(save_option: str, body: Any = Body(media_type="text/plain")):
     new_config = body.decode()
@@ -671,7 +721,9 @@ def config_save(save_option: str, body: Any = Body(media_type="text/plain")):
     except OSError:
         old_raw_config = ""
 
-    restricted_response = _restricted_go2rtc_response(old_raw_config, new_config)
+    restricted_response = _camera_controls_conflict(
+        old_raw_config, new_config
+    ) or _restricted_go2rtc_response(old_raw_config, new_config)
     if restricted_response is not None:
         return restricted_response
 
@@ -804,6 +856,19 @@ def _config_set_in_memory(request: Request, body: AppConfigSetBody) -> JSONRespo
                 )
             else:
                 grouped[cam][section] = value
+
+        if CAMERA_CONTROLS_LOCKED and any(
+            "enabled" in sections
+            or any(
+                isinstance(sections.get(key), dict) and "enabled" in sections[key]
+                for key in LOCKED_CAMERA_SECTIONS
+            )
+            for sections in grouped.values()
+        ):
+            return JSONResponse(
+                status_code=403,
+                content={"success": False, "message": CAMERA_CONTROLS_LOCKED_MESSAGE},
+            )
 
         # Apply each section update
         for cam_name, sections in grouped.items():
@@ -987,9 +1052,9 @@ def config_set(request: Request, body: AppConfigSetBody):
                         ),
                         status_code=400,
                     )
-                restricted_response = _restricted_go2rtc_response(
+                restricted_response = _camera_controls_conflict(
                     old_raw_config, new_raw_config
-                )
+                ) or _restricted_go2rtc_response(old_raw_config, new_raw_config)
                 if restricted_response is not None:
                     with open(config_file, "w") as f:
                         f.write(old_raw_config)

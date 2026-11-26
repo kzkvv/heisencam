@@ -585,7 +585,12 @@ class RKNNModelRunner(BaseModelRunner):
 
 
 def get_optimized_runner(
-    model_path: str, device: str | None, model_type: str, **kwargs
+    model_path: str,
+    device: str | None,
+    model_type: str,
+    *,
+    cpu_num_threads: int | None = None,
+    **kwargs,
 ) -> BaseModelRunner:
     """Get an optimized runner for the hardware."""
     device = device or "AUTO"
@@ -631,10 +636,16 @@ def get_optimized_runner(
         providers.pop(0)
         options.pop(0)
 
+    session_options = get_ort_session_options(model_type)
+    if cpu_num_threads is not None and providers[0] == "CPUExecutionProvider":
+        session_options = session_options or ort.SessionOptions()
+        session_options.intra_op_num_threads = cpu_num_threads
+        session_options.add_session_config_entry("session.intra_op.allow_spinning", "0")
+
     return ONNXModelRunner(
         ort.InferenceSession(
             model_path,
-            sess_options=get_ort_session_options(model_type),
+            sess_options=session_options,
             providers=providers,
             provider_options=options,
         ),

@@ -84,12 +84,21 @@ class CameraState:
             self.lpr_min_obj_area = self.camera_config.lpr.min_area * 20
 
     def get_current_frame(self, draw_options: dict[str, Any] = {}) -> np.ndarray:
+        needs_objects = any(
+            draw_options.get(key) for key in ("bounding_boxes", "zones", "paths")
+        )
         with self.current_frame_lock:
             frame_copy = np.copy(self._current_frame)
             frame_time = self.current_frame_time
-            tracked_objects = {k: v.to_dict() for k, v in self.tracked_objects.items()}
-            motion_boxes = self.motion_boxes.copy()
-            regions = self.regions.copy()
+            tracked_objects = (
+                {key: obj.to_dict() for key, obj in self.tracked_objects.items()}
+                if needs_objects
+                else {}
+            )
+            motion_boxes = (
+                self.motion_boxes.copy() if draw_options.get("motion_boxes") else []
+            )
+            regions = self.regions.copy() if draw_options.get("regions") else []
 
         frame_copy = cv2.cvtColor(frame_copy, cv2.COLOR_YUV2BGR_I420)  # type: ignore[assignment]
         # draw on the frame

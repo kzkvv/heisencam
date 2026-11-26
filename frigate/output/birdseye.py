@@ -159,6 +159,12 @@ class FFMpegConverter(threading.Thread):
             f"{quality}",
             "-bf",
             "0",
+            "-g",
+            "4",
+            "-muxdelay",
+            "0",
+            "-flush_packets",
+            "1",
             "pipe:",
         ]
 
@@ -903,6 +909,7 @@ class Birdseye:
                 and (now - self.birdseye_manager.last_output_time)
                 >= self._idle_interval
             ):
+                self.birdseye_manager.last_output_time = now
                 self.__send_new_frame()
 
     def stop(self) -> None:

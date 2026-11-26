@@ -38,6 +38,13 @@ class ONNXDetectorConfig(BaseDetectorConfig):
         description="The device to use for ONNX inference (e.g. 'AUTO', 'CPU', 'GPU').",
     )
 
+    num_threads: int | None = Field(
+        default=None,
+        ge=1,
+        title="CPU inference threads",
+        description="Number of ONNX Runtime threads when using the CPU execution provider.",
+    )
+
 
 class ONNXDetector(DetectionApi):
     type_key = DETECTOR_KEY
@@ -52,6 +59,7 @@ class ONNXDetector(DetectionApi):
             path,
             detector_config.device,
             model_type=detector_config.model.model_type,
+            cpu_num_threads=detector_config.num_threads,
         )
 
         self.onnx_model_type = detector_config.model.model_type

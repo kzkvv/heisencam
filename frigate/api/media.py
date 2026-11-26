@@ -15,6 +15,7 @@ from urllib.parse import unquote
 import cv2
 import numpy as np
 import pytz
+from anyio import CapacityLimiter, to_thread
 from fastapi import APIRouter, Depends, Path, Query, Request, Response
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from pathvalidate import sanitize_filename
@@ -168,7 +169,7 @@ async def camera_ptz_info(request: Request, camera_name: str):
         future = asyncio.run_coroutine_threadsafe(
             request.app.onvif.get_camera_info(camera_name), request.app.onvif.loop
         )
-        result = future.result()
+        result = await asyncio.wrap_future(future)
         return JSONResponse(content=result)
     else:
         return JSONResponse(
@@ -187,6 +188,21 @@ async def latest_frame(
     camera_name: str,
     extension: Extension,
     params: MediaLatestFrameQueryParams = Depends(),
+):
+    # Full-resolution frame copies are expensive when all tiles refresh together.
+    limiter = getattr(request.app.state, "latest_frame_workers", None)
+    if limiter is None:
+        limiter = request.app.state.latest_frame_workers = CapacityLimiter(3)
+    return await to_thread.run_sync(
+        _render_latest_frame, request, camera_name, extension, params, limiter=limiter
+    )
+
+
+def _render_latest_frame(
+    request: Request,
+    camera_name: str,
+    extension: Extension,
+    params: MediaLatestFrameQueryParams,
 ):
     frame_processor: TrackedObjectProcessor = request.app.detected_frames_processor
     draw_options = {
@@ -237,14 +253,14 @@ async def latest_frame(
 
                 frame = request.app.camera_error_image
 
-        height = int(params.height or str(frame.shape[0]))
-        width = int(height * frame.shape[1] / frame.shape[0])
-
         if frame is None:
             return JSONResponse(
                 content={"success": False, "message": "Unable to get valid frame"},
                 status_code=500,
             )
+
+        height = int(params.height or str(frame.shape[0]))
+        width = int(height * frame.shape[1] / frame.shape[0])
 
         if height < 1 or width < 1:
             return JSONResponse(
