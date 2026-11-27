@@ -9,7 +9,7 @@ For more information about how to use Hosted Models to improve your model, see t
 
 :::info
 
-Hosted Models requires an active internet connection to communicate with `https://api.frigate.video` for model downloads, image uploads, and annotations. See [Network Requirements](/frigate/network_requirements#frigate) for details.
+Hosted Models requires an active internet connection to communicate with `https://api.frigate.video` for model downloads, image uploads, and annotations. See [Network Requirements](/frigate/network_requirements) for details.
 
 :::
 

@@ -63,13 +63,17 @@ test("documentation provides local search and the HTTP reference", async ({
   page,
 }) => {
   await page.goto("./");
-  const search = page.getByLabel("Search", { exact: true });
+  const search = page.getByRole("combobox", { name: "Search" });
+  await page.getByLabel("Search", { exact: true }).click();
   await search.fill("idle_scan_interval");
-  await search.press("Enter");
-  await expect(page).toHaveURL(/\/search\/?.*q=idle_scan_interval/);
-  await expect(
-    page.getByText("idle_scan_interval", { exact: true }).first(),
-  ).toBeVisible();
+  const result = page
+    .getByRole("option", { name: /Idle scan interval/i })
+    .first();
+  await expect(result).toBeVisible();
+  await result.click();
+  await expect(page).toHaveURL(
+    /\/configuration\/cameras\/?#idle-scan-interval/,
+  );
 
   await page.goto("integrations/api/");
   await page.getByRole("link", { name: "HTTP API reference" }).click();
