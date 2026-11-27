@@ -72,6 +72,8 @@ jobs:
         id: build_e2e
         run: npm run e2e:build
         working-directory: ./web
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
       - name: Run E2E tests
         run: npm run e2e
         working-directory: ./web
