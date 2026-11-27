@@ -196,7 +196,12 @@ class TestMaintainer(unittest.IsolatedAsyncioTestCase):
                 )
             )
         }
-        maintainer = RecordingMaintainer(config, MagicMock())
+        # Full discovery can import the maintainer before this module's mocks.
+        with (
+            patch("frigate.record.maintainer.InterProcessRequestor"),
+            patch("frigate.record.maintainer.RecordingsDataPublisher"),
+        ):
+            maintainer = RecordingMaintainer(config, MagicMock())
         maintainer.validate_and_move_segment = AsyncMock(return_value=None)
         start = datetime.datetime(2026, 1, 1, tzinfo=datetime.UTC)
         review_end = start.timestamp() - 40
