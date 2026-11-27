@@ -5,10 +5,6 @@ on:
   release:
     types: [published]
 
-permissions:
-  contents: read
-  packages: write
-
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -44,11 +40,15 @@ jobs:
             exit 1
           fi
 
-          BUILD_TYPE=beta
-          if [[ "$TAG" == "v$version" && "$PRERELEASE" != true ]]; then
-            BUILD_TYPE=stable
+          tag_prerelease=false
+          if [[ "$TAG" != "v$version" ]]; then
+            tag_prerelease=true
           fi
-          echo "BUILD_TYPE=$BUILD_TYPE" >> "$GITHUB_ENV"
+          if [[ "$GITHUB_EVENT_NAME" == release && "$PRERELEASE" != "$tag_prerelease" ]]; then
+            echo "Release tags with a suffix must be marked as prereleases, and prereleases must use a suffix"
+            exit 1
+          fi
+          echo "TAG_PRERELEASE=$tag_prerelease" >> "$GITHUB_ENV"
           echo "BASE=ghcr.io/$LOWERCASE_REPO" >> "$GITHUB_ENV"
           echo "BUILD_TAG=${GITHUB_SHA::7}" >> "$GITHUB_ENV"
           echo "CLEAN_VERSION=${TAG#v}" >> "$GITHUB_ENV"
@@ -63,7 +63,7 @@ jobs:
           done
 
           # stable tag
-          if [[ "${BUILD_TYPE}" == "stable" ]]; then
+          if [[ "$TAG_PRERELEASE" == false ]]; then
             docker run --rm -v $HOME/.docker/config.json:/config.json quay.io/skopeo/stable:latest copy --authfile /config.json --multi-arch all docker://${PULL_TAG} docker://${STABLE_TAG}
             for variant in standard-arm64 tensorrt tensorrt-jp6 rk rocm synaptics; do
               docker run --rm -v $HOME/.docker/config.json:/config.json quay.io/skopeo/stable:latest copy --authfile /config.json --multi-arch all docker://${PULL_TAG}-${variant} docker://${STABLE_TAG}-${variant}
