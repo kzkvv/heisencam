@@ -20,6 +20,8 @@ LABEL org.opencontainers.image.title="HeisenCam" \
       org.opencontainers.image.licenses="MIT"
 WORKDIR /opt/frigate
 COPY frigate/ frigate/
+RUN --mount=type=bind,source=VERSION,target=/tmp/heisencam-version \
+    printf 'VERSION = "%s-%.7s"\n' "$(cat /tmp/heisencam-version)" "$HEISENCAM_REVISION" > frigate/version.py
 COPY tools/quality_replay.py tools/
 COPY docker/main/rootfs/usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 RUN rm -rf web

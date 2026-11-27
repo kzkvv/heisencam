@@ -69,6 +69,9 @@ jobs:
         run: |
           image="$IMAGE:sha-$GITHUB_SHA-$ARCH"
           test "$(docker image inspect "$image" --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')" = "$GITHUB_SHA"
+          version="$(cat VERSION)"
+          test "$(docker run --rm --network none --entrypoint python3 "$image" \
+            -c 'from frigate.version import VERSION; print(VERSION)')" = "$version-${GITHUB_SHA::7}"
           docker run --rm --network none --entrypoint python3 "$image" -m unittest \
             frigate.test.test_detection_evidence frigate.test.test_debug_replay \
             frigate.test.test_video frigate.test.test_performance \
@@ -102,5 +105,3 @@ jobs:
             "$IMAGE:sha-$GITHUB_SHA-amd64" "$IMAGE:sha-$GITHUB_SHA-arm64"
           docker pull "$IMAGE:sha-$GITHUB_SHA"
           test "$(docker inspect "$IMAGE:sha-$GITHUB_SHA" --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')" = "$GITHUB_SHA"
-          docker run --rm --network none --entrypoint python3 "$IMAGE:sha-$GITHUB_SHA" \
-            -c 'from frigate.version import VERSION; assert VERSION.startswith("0.18.3"), VERSION'

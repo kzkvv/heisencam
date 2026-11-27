@@ -1,8 +1,8 @@
 default_target: local
 
 COMMIT_HASH := $(shell git log -1 --pretty=format:"%h"|tail -1)
-VERSION = 0.18.3
-IMAGE_REPO ?= ghcr.io/blakeblackshear/frigate
+VERSION := $(shell cat VERSION)
+IMAGE_REPO ?= ghcr.io/kzkvv/heisencam
 GITHUB_REF_NAME ?= $(shell git rev-parse --abbrev-ref HEAD)
 BOARDS= #Initialized empty
 
@@ -58,4 +58,4 @@ run_tests: local
 	docker run --rm --workdir=/opt/frigate --entrypoint= frigate:latest \
 		python3 -u -m mypy --config-file frigate/mypy.ini frigate
 
-.PHONY: run_tests
+.PHONY: run_tests version

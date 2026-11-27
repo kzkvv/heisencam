@@ -5,6 +5,10 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -26,13 +30,28 @@ jobs:
       - name: Create tag variables
         env:
           TAG: ${{ github.ref_name }}
+          PRERELEASE: ${{ github.event.release.prerelease }}
           LOWERCASE_REPO: ${{ steps.lowercaseRepo.outputs.lowercase }}
         run: |
-          BUILD_TYPE=$([[ "${TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] && echo "stable" || echo "beta")
-          echo "BUILD_TYPE=${BUILD_TYPE}" >> $GITHUB_ENV
-          echo "BASE=ghcr.io/${LOWERCASE_REPO}" >> $GITHUB_ENV
-          echo "BUILD_TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
-          echo "CLEAN_VERSION=$(echo ${GITHUB_REF##*/} | tr '[:upper:]' '[:lower:]' | sed 's/^[v]//')" >> $GITHUB_ENV
+          calver='^v([0-9]{4}\.([1-9]|1[0-2])\.[1-9][0-9]*)(-[a-z0-9][a-z0-9.-]*)?$'
+          if [[ "$GITHUB_REF_TYPE" != tag || ! "$TAG" =~ $calver ]]; then
+            echo "Expected a HeisenCam release tag such as v2026.11.1"
+            exit 1
+          fi
+          version="${BASH_REMATCH[1]}"
+          if [[ "$version" != "$(cat VERSION)" ]]; then
+            echo "Release tag $TAG must match the version in VERSION"
+            exit 1
+          fi
+
+          BUILD_TYPE=beta
+          if [[ "$TAG" == "v$version" && "$PRERELEASE" != true ]]; then
+            BUILD_TYPE=stable
+          fi
+          echo "BUILD_TYPE=$BUILD_TYPE" >> "$GITHUB_ENV"
+          echo "BASE=ghcr.io/$LOWERCASE_REPO" >> "$GITHUB_ENV"
+          echo "BUILD_TAG=${GITHUB_SHA::7}" >> "$GITHUB_ENV"
+          echo "CLEAN_VERSION=${TAG#v}" >> "$GITHUB_ENV"
       - name: Tag and push the main image
         run: |
           VERSION_TAG=${BASE}:${CLEAN_VERSION}
