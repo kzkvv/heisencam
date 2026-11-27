@@ -1,0 +1,33 @@
+---
+id: batchexportresultmodel
+title: "BatchExportResultModel"
+description: "Per-item result for a batch export request."
+sidebar_label: "BatchExportResultModel"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"camera":"string","export_id":"string","success":true,"status":"string","error":"string","item_index":0,"client_item_id":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"BatchExportResultModel"}
+>
+</Heading>
+
+
+
+Per-item result for a batch export request.
+
+<Schema
+  schema={{"properties":{"camera":{"type":"string","title":"Camera","description":"Camera name for this export attempt"},"export_id":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Export Id","description":"The export ID when the export was successfully queued"},"success":{"type":"boolean","title":"Success","description":"Whether the export was successfully queued"},"status":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Status","description":"Queue status for this camera export"},"error":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Error","description":"Validation or queueing error for this item, if any"},"item_index":{"anyOf":[{"type":"integer"},{"type":"null"}],"title":"Item Index","description":"Zero-based index of this result within the request items list"},"client_item_id":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Client Item Id","description":"Opaque client-supplied item identifier echoed from the request"}},"type":"object","required":["camera","success"],"title":"BatchExportResultModel","description":"Per-item result for a batch export request."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

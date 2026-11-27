@@ -1,0 +1,72 @@
+---
+id: delete-user-users-username-delete
+title: "Delete user"
+description: "**Access:** Admin role required."
+sidebar_label: "Delete user"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zgQ/SuDueQDiuUGuxfdAiTFfnTRonF3D6lh0NLYYiORKodyYgj678WQkj/iTYFFe9mLJZNvhjNP8x479GrNmD3gTetLnCdYEOdON15bgxleXt7kOTFnl5dwU9TagLMVgaOvrXZUTD6bz+aWKvLEoKBlcrDchqdRNU1gVhIsW135K21AhQQBlCtjrIclQRGiiwl8jDl5gMk5suhbZxi4DWVATcxqTWAdkHPWgV7FhJJtZVtTTDBB25BT0sHvBWYYT1gILPzwYjEWuFjETUywUU7V5MkJGx3KLmY4AjFBLXw0ypeY4Ng/Zt61lCDnJdUKsw79tpE49k6bNSbota9k4dOYqO/nEs+NNUwsIdfTqTyOib+PDa/aCj4OYEwwt8aT8QJXTVPpPHSZfmGJ6fZl9H3fJ/jL9fVp4r9VpYsQBnfC4H/Iio0TZr2OdRfkla7kTXuq+RRQ2fxoV5nt+1Vg95ilPtmtaONpTQ77eZ+Ma8o5tT2g8p2NBWKfYM3r77H+VxwX3CV7HRrIgJns9vuz7fIL5f7oiz+EvuLRA26+T7OnN7L7ehu3kb5/O2yE/DabfThJGL8tU9467beBzpXTa+UpCDToOHuYy5g9X41lX4mcpAiBYIL07MmwtiZO+yNtMTuBJ7hRVbsPk5Q1+dLuVRWEIwdiGqSVdqNiepQi3WYUVOsqzLD0vuEsTQuq7WQoe7LRBdlUNTpMwh6YpWllc1WVln3263T6JmLm++7vZTTjsJ1ysPvWqtF/0naUcG7to5bCB4kPgQtvH0moOZaLpCLjRRNUABMLafBUWhYXZFttqIieqBnOAk9n0fZGrGYg9mpZaS6pgI1W4EuCP/6ZQSwFNHNLhRjnh/f3M0gru9YmEY8TcOPs8xZU60soSRXkGM4d1dbTVXC+FIZ/UsUFPJVk4G3sCVxrGJZUalOAMiHJ0Iw2a3AkX4fiCRMZ1YELMaufyaHZHh59wON5YO5so+mJ3Jl0XOp1Se4i+emc/QAvvXS9soGNQZmiDXIc+5tO3kymQl9j2dcqmOZATLwbwxX1kpZu77v/02t2GA1Pzz5tKqWDIwf5doMrPIQLlDHBbHeTzhMUQctm1y0V0ydX9b0sf23JiaHNxXicVkuh+qHDQrO8F5itVMX0HR7Ph+6KC3itvnGezfbA3zAZLHBXZbiA4uwcOKR8pcYfGuPL+/LII2/v3t3N7jBBdSKmxyCm4eXgSjyu66WuYhXye3BnHod0XZRq3+/wcevViKHLER2Mvu/7b1jOf9c=
+sidebar_class_name: "delete api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete user"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/users/{username}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Deletes a user by username. The built-in admin user cannot be deleted. Requires admin role. Returns success message or error if user not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"username","in":"path","required":true,"schema":{"type":"string","title":"Username"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,33 @@
+---
+id: chatmessage
+title: "ChatMessage"
+description: "A single message in a chat conversation."
+sidebar_label: "ChatMessage"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"role":"string","tool_call_id":"string","name":"string","tool_calls":[{}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ChatMessage"}
+>
+</Heading>
+
+
+
+A single message in a chat conversation.
+
+<Schema
+  schema={{"properties":{"role":{"type":"string","title":"Role","description":"Message role: 'user', 'assistant', 'system', or 'tool'"},"content":{"anyOf":[{},{"type":"null"}],"title":"Content","description":"Message content. Usually a string, but may be a multimodal content list (e.g. text + image_url) or null for assistant turns that only request tool calls."},"tool_call_id":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Tool Call Id","description":"For tool messages, the ID of the tool call"},"name":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Name","description":"For tool messages, the tool name"},"tool_calls":{"anyOf":[{"items":{"type":"object"},"type":"array"},{"type":"null"}],"title":"Tool Calls","description":"For assistant messages replayed from prior turns, the OpenAI-format tool calls the model previously requested. Replaying these verbatim keeps the conversation prefix byte-for-byte identical so the model server's prompt cache hits on follow-up turns."}},"type":"object","required":["role"],"title":"ChatMessage","description":"A single message in a chat conversation."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

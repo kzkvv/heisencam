@@ -5,13 +5,13 @@ title: Explore
 
 import NavPath from "@site/src/components/NavPath";
 
-**Explore** is where you browse and search every **tracked object** HeisenCam has saved. By default it groups recent objects by label; when [Semantic Search](/configuration/semantic_search) is enabled, you can also search by natural-language description or visual similarity. Selecting any object opens a detail pane with its snapshot, lifecycle, and metadata.
+**Explore** is where you browse and search every **tracked object** HeisenCam has saved. By default it groups recent objects by label; when [Semantic Search](../configuration/semantic_search.md) is enabled, you can also search by natural-language description or visual similarity. Selecting any object opens a detail pane with its snapshot, lifecycle, and metadata.
 
-This page describes how to _use_ the Explore view. For how the underlying features are _configured_, see [Semantic Search](/configuration/semantic_search) and [Generative AI descriptions](/configuration/genai/genai_objects).
+This page describes how to _use_ the Explore view. For how the underlying features are _configured_, see [Semantic Search](../configuration/semantic_search.md) and [Generative AI descriptions](../configuration/genai/objects.md).
 
 :::tip
 
-If you just want to quickly see what happened on your cameras, it's recommended to use [Review](/usage/review) rather than Explore. Review groups overlapping and adjacent activity on a camera into **review items** and sorts them into Alerts, Detections, and Motion, so you can scan and play back footage in a few clicks instead of sifting through individual objects. Reach for Explore when you need to find a _specific_ tracked object after the fact: by label, time, zone, or description.
+If you just want to quickly see what happened on your cameras, it's recommended to use [Review](./review.md) rather than Explore. Review groups overlapping and adjacent activity on a camera into **review items** and sorts them into Alerts, Detections, and Motion, so you can scan and play back footage in a few clicks instead of sifting through individual objects. Reach for Explore when you need to find a _specific_ tracked object after the fact: by label, time, zone, or description.
 
 :::
 
@@ -23,7 +23,7 @@ Clicking a thumbnail opens its [detail dialog](#tracked-object-details); right-c
 
 ## Searching
 
-When [Semantic Search](/configuration/semantic_search) is enabled, a search bar appears that combines two things in one input:
+When [Semantic Search](../configuration/semantic_search.md) is enabled, a search bar appears that combines two things in one input:
 
 - **Natural-language search**: type a free-text query and press Enter to run a semantic search over your tracked objects.
 - **Filter tokens**: type a `key:` to get suggestions, then a value, to add a structured filter. Each filter becomes a removable chip, and you can chain several together.
@@ -62,7 +62,7 @@ When a filter or search is active, a **Sort** control lets you order results by 
 
 - The **Search Type** setting controls whether a text query is matched against each object's **thumbnail** or its **description**. Each result indicates which one it matched and the confidence.
 
-Natural-language search, thumbnail search, and description search all require [Semantic Search](/configuration/semantic_search) to be enabled.
+Natural-language search, thumbnail search, and description search all require [Semantic Search](../configuration/semantic_search.md) to be enabled.
 
 ## Tracked Object Details
 
@@ -73,7 +73,7 @@ Selecting an object opens the **Tracked Object Details** dialog. Use the arrows 
 
 The details pane shows the object's **label**, **scores**, **camera**, **timestamp**, estimated **speed**, any **recognized license plate** and **classification attributes**, and its **description**. Admins can edit the sub label, license plate, and attributes inline.
 
-The **description** can be edited by hand, and, when [Generative AI descriptions](/configuration/genai/genai_objects) are enabled and the object's lifecycle has ended, regenerated from the snapshot or from thumbnails. For `speech` objects, a **Transcribe** action is available when audio transcription is enabled. When [Frigate+](/integrations/plus) is enabled, admins can submit a snapshot to improve their model directly from this pane.
+The **description** can be edited by hand, and, when [Generative AI descriptions](../configuration/genai/objects.md) are enabled and the object's lifecycle has ended, regenerated from the snapshot or from thumbnails. For `speech` objects, a **Transcribe** action is available when audio transcription is enabled. When [Frigate+](../integrations/plus.md) is enabled, admins can submit a snapshot to improve their model directly from this pane.
 
 ## Actions and bulk selection
 
@@ -81,7 +81,7 @@ Right-clicking or long-pressing an object (in the grid or its thumbnail) opens a
 
 :::note
 
-Deleting a tracked object removes its snapshot, embeddings, and tracking-details entries, but the recorded footage of that object in [History](/usage/history) is **not** deleted.
+Deleting a tracked object removes its snapshot, embeddings, and tracking-details entries, but the recorded footage of that object in [History](./history.md) is **not** deleted.
 
 :::
 
@@ -98,4 +98,4 @@ To act on many objects at once, Ctrl/Cmd-click or right-click to start a selecti
 
 ## Triggers
 
-From an object's actions menu, **Add trigger** sets up a per-camera trigger that uses Semantic Search to automate an action (a notification, sub label, or attribute) whenever a similar object appears. Triggers require Semantic Search and are managed under <NavPath path="Settings > Enrichments > Triggers" />. See [Triggers](/configuration/semantic_search#triggers) for full configuration and best practices.
+From an object's actions menu, **Add trigger** sets up a per-camera trigger that uses Semantic Search to automate an action (a notification, sub label, or attribute) whenever a similar object appears. Triggers require Semantic Search and are managed under <NavPath path="Settings > Enrichments > Triggers" />. See [Triggers](../configuration/semantic_search.md#triggers) for full configuration and best practices.

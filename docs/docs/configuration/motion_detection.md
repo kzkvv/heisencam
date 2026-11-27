@@ -11,7 +11,7 @@ import NavPath from "@site/src/components/NavPath";
 
 HeisenCam uses motion detection as a first line check to see if there is anything happening in the frame worth checking with object detection.
 
-Once motion is detected, it tries to group up nearby areas of motion together in hopes of identifying a rectangle in the image that will capture the area worth inspecting. These are the red "motion boxes" you see in the [debug viewer](/usage/live#the-single-camera-view).
+Once motion is detected, it tries to group up nearby areas of motion together in hopes of identifying a rectangle in the image that will capture the area worth inspecting. These are the red "motion boxes" you see in the [debug viewer](../usage/live.md#the-single-camera-view).
 
 ## The Goal
 
@@ -21,7 +21,7 @@ Before tuning motion it is important to understand the goal. In an optimal confi
 
 ## Create Motion Masks
 
-First, mask areas with regular motion not caused by the objects you want to detect. The best way to find candidates for motion masks is by watching the debug stream with motion boxes enabled. Good use cases for motion masks are timestamps or tree limbs and large bushes that regularly move due to wind. When possible, avoid creating motion masks that would block motion detection for objects you want to track **even if they are in locations where you don't want alerts or detections**. Motion masks should not be used to avoid detecting objects in specific areas. More details can be found [in the masks docs.](/configuration/masks.md).
+First, mask areas with regular motion not caused by the objects you want to detect. The best way to find candidates for motion masks is by watching the debug stream with motion boxes enabled. Good use cases for motion masks are timestamps or tree limbs and large bushes that regularly move due to wind. When possible, avoid creating motion masks that would block motion detection for objects you want to track **even if they are in locations where you don't want alerts or detections**. Motion masks should not be used to avoid detecting objects in specific areas. More details can be found [in the masks docs.](./masks.md).
 
 ## Prepare For Testing
 
@@ -200,4 +200,4 @@ When the skip threshold is exceeded, **no motion is reported** for that frame, m
 
 ## Reviewing Detected Motion
 
-To review what the detector picked up, or to search past recordings for motion in a specific region, see [Reviewing Motion](/usage/review#reviewing-motion) on the Review page.
+To review what the detector picked up, or to search past recordings for motion in a specific region, see [Reviewing Motion](../usage/review.md#reviewing-motion) on the Review page.

@@ -14,7 +14,7 @@ HeisenCam offers native notifications using the [WebPush Protocol](https://web.d
 
 :::info
 
-Push notifications require internet access from the HeisenCam server to the browser vendor's push service (e.g., Google FCM, Mozilla autopush). See [Network Requirements](/frigate/network_requirements#push-notifications) for details.
+Push notifications require internet access from the HeisenCam server to the browser vendor's push service (e.g., Google FCM, Mozilla autopush). See [Network Requirements](../frigate/network_requirements.md#push-notifications) for details.
 
 :::
 
@@ -22,7 +22,7 @@ Push notifications require internet access from the HeisenCam server to the brow
 
 In order to use notifications the following requirements must be met:
 
-- HeisenCam must be accessed via a secure `https` connection while signed in as a HeisenCam user ([see the authorization docs](/configuration/authentication)).
+- HeisenCam must be accessed via a secure `https` connection while signed in as a HeisenCam user ([see the authorization docs](./authentication.md)).
 - A supported browser must be used. Currently Chrome, Firefox, and Safari are known to be supported.
 - In order for notifications to be usable externally, HeisenCam must be accessible externally.
 - For iOS devices, some users have also indicated that the Notifications switch needs to be enabled in iOS Settings --> Apps --> Safari --> Advanced --> Features.
@@ -141,7 +141,7 @@ Push notifications involve HeisenCam, your browser, and your browser vendor's pu
    - HeisenCam must be reached over `https` with a certificate your device trusts. Browsers silently refuse to register a service worker otherwise, and a self-signed certificate that is not installed as trusted on the device will fail.
    - On iOS, notifications only work when HeisenCam has been installed to the Home Screen via **Share > Add to Home Screen** and opened from that icon. Safari and Chrome tabs cannot receive web push on iOS.
    - Each device must be registered individually, and HeisenCam must be restarted after registering before anything can be sent, including test notifications.
-   - The HeisenCam server needs outbound internet access to the browser vendor's push service. See [Network Requirements](/frigate/network_requirements#push-notifications).
+   - The HeisenCam server needs outbound internet access to the browser vendor's push service. See [Network Requirements](../frigate/network_requirements.md#push-notifications).
 
 3. Test from the UI. Use the `Send a test notification` button in <NavPath path="Settings > Notifications" />. If the log shows `Sending test notification` but nothing arrives on the device, the problem is between the push service and your device rather than in HeisenCam.
 
@@ -167,6 +167,6 @@ Work through these in order:
 - Notifications are only sent for **alerts**. If the camera is producing detections instead, adjust the camera's `review > alerts > labels` so the objects you care about are classified as alerts.
 - Confirm notifications are enabled for that camera in <NavPath path="Settings > Camera configuration > Notifications" />.
 - Check the camera's `cooldown` value, and remember that the global cooldown applies across all cameras. A busy camera can consume the global cooldown and suppress a quieter one.
-- If [authentication](/configuration/authentication) is enabled with roles, users only receive notifications for the cameras their role grants access to.
+- If [authentication](./authentication.md) is enabled with roles, users only receive notifications for the cameras their role grants access to.
 
 </FaqItem>

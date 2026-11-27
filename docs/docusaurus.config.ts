@@ -6,6 +6,8 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 const docsAddress = process.env.HEISENCAM_DOCS_URL || "https://docs.heisen.cam/";
 const docsUrl = new URL(docsAddress.endsWith("/") ? docsAddress : docsAddress + "/");
 const demoUrl = new URL("demo/", docsUrl).href;
+const includeDraftDocs =
+  process.env.NODE_ENV !== "production" || process.env.HEISENCAM_DOCS_PREVIEW === "1";
 
 const config: Config = {
   title: "HeisenCam",
@@ -90,8 +92,7 @@ const config: Config = {
       },
       items: [
         {
-          href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3",
-          label: "0.18.3",
+          type: "docsVersionDropdown",
           position: "left",
         },
         {
@@ -106,7 +107,7 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3",
+          href: "https://github.com/kzkvv/heisencam",
           label: "GitHub",
           position: "right",
         },
@@ -162,6 +163,7 @@ const config: Config = {
       {
         docs: {
           routeBasePath: "/",
+          includeCurrentVersion: includeDraftDocs,
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           editUrl:

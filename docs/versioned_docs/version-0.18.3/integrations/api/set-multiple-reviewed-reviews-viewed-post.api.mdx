@@ -1,0 +1,70 @@
+---
+id: set-multiple-reviewed-reviews-viewed-post
+title: "Set Multiple Reviewed"
+description: "**Access:** Authenticated user with access to the referenced camera."
+sidebar_label: "Set Multiple Reviewed"
+hide_title: true
+hide_table_of_contents: true
+api: eJytll9v2zYQwL8KwZe0gWI5wfait7TrtmwNWiTu9mAIAS2eJTYUqZKUbUHQdy+OpGw5btqhy4stisfj3e/+qaeOlZZmS3oHGwFbmidUN2CYE1rdcJpRC+6hbqUTjYQH44WAxwf7EJeNto4m1MCXFqx7o3lHs94vhQFOM2daSGihlQPlcIs1jRSFvyX9bLXCd7aooGb41Bi0wQmwuBI8/Dmo/YPrGkDDnBGqpAmthXoPqnQVzS6HZNxmxrAu7N6Ek5cJdcJJ3Lzhlg5ob7B/onWltQSm6EH2bhRKKIc1a6UL/gyHu/TqMxQjgODx0pudP1Vzq7lYd7eRpwc1DIM3xTZa2eDx1XyOfxxsYUSDkGhG79uiAGvXrSR3UZj+NFMblH3X8XghgqrBWlbCt+iP0rdR5EdYxpsPSieQ/gAFRhR7/wKbX66uTnH8w6Tg3lnyzhhtfp4FB8eEPEqxYwGpi6NdproPa5otn8IYkv0boRyUYOiQn2bk6Ox7HQz0gG35n+COyp4X9TDIAnd/FAr0K1wd5SaROOANdJ9347eA71uXjSJ/LhYfTxSG2FooWiNc53GujSiZg08WzHWL9bzMhzyhu4vR6gujvcKC1WCYr8hpTpyfX/vkys7PCSoA5TAJgJPWgiFb4SrCvARxmrgKiIE1GFAFcBJ0zmhCYedAWaGV9VY9QkezEyMSumGynRiDltbgKo1dMzbEhqEXNI3tMt13EgtmAybob42kGa2ca2yWphxqPYsgZhvBQaesET63DoJZmkpdMFlp67Jf5/PLIJMfeN5jsof0jcqueS1UwLrPHtaIvwGDKRBfofWjQM8Uq3E3Hnxw+hHUCexjwBYsEiPbSlvEarXcACeIighLzhjefjYjiwr2ssISsI6tpLAVcLIRzMfkr38XJJhChLUtcLLqyMcP9wuSSl0KlRBtvHBj9K4jrHUVqYBxMJa8MlBrBxc+3imJK7TiNdlWoMjvwSdiWmXJCiqhOGHKK4nOCFUSAxgdCDfMMPlPUvNlGKpuevWE4ytP7swnjDlDjytRVmBeJy/O7H9wGRKK3fXuMPff7VjdSNjP7eXYofLpuPXzE4mttScZ+wQWFRgb2Mxnl7M5osdaqplv4RHqPTgyzlByNJ8ncPvDPHipxhAj7mDn0kYy4Vu3r8o+lvoyOonzLZqVJxTLFPf6fsUsfDJyGPD1lxYMNr4ce4kRbIUQljgxQmgm3edtcOXC9/VD6zkZc9gmwgl0uHHflZ02LMwVmtBV/HSrNcczhm1xZrBtCI72aH1T8e96KpkqW/9lQINOTAl2UiCPvkDiw2RwMtVNLHxaK8ER/J1M1uMjfR/Kbxj28mHr2RMR7SiNMcyHYfgKSsnSEg==
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Set Multiple Reviewed"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/reviews/viewed"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Authenticated user with access to the referenced camera.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"ids":{"items":{"type":"string","minLength":1},"type":"array","minItems":1,"title":"Ids"},"reviewed":{"type":"boolean","title":"Reviewed","default":true}},"type":"object","required":["ids"],"title":"ReviewModifyMultipleBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

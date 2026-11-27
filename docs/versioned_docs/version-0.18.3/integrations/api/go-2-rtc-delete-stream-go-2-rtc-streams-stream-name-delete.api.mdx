@@ -1,0 +1,72 @@
+---
+id: go-2-rtc-delete-stream-go-2-rtc-streams-stream-name-delete
+title: "Go2Rtc Delete Stream"
+description: "**Access:** Admin role required."
+sidebar_label: "Go2Rtc Delete Stream"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1v2zgQ/SvEXPIBxnKD3YtuwSb72d0Wibt7cA2DlsYWG4lUScqJIPC/L4akbTluChTtxabIN8OZx3kzAzixsZDP4RfRoBGw4FCiLYxsndQKcri8vCkKtDa/vGQ3ZSMVM7pGZvBzJw2Wk4/qo7rFGh0ywTb62riCWWdQNBPgoFs0gjz9UUIO8XhZBvgyopZpM37Z5W5biQaXCQocWmFEgw4NBTsAnUIOIyxwkBRvK1wFHHbxQe5MhxxsUWEjIB/A9W0ylWoDHJx0NW08BF/sH/Ll/YJc2FYri5asrqdT+jvm5qEL1Ky7mt0nMHAotHKoHMFF29ayCARknyzZDIdIvPeew0/X16eO/xW1LIMZuzNGm2/wCq0h0p2McZfohKxpJR029hRQ6+LoVKj+3TpwfEyU5/sdqRxu0IBfeL7bE8aIfsTmWx0DBM+hsZuvEf83Wis2CHtnr0MDGWxGp/5wt159wsIdPfo85BWvTrjFwc2B3sju62ncRvq+dNkO8vts9v7EYXxbi0VnpOsDnWsjN8Jh0NBN5yrI5wsqs+erXdhXpCwKgiDAAZ8dKiu1ijX/iD3kJ3AOW1F3BzNy2aCrNAluJB+6ELIotiyJLRtGAvJAAZvtTmKdqSGHyrnW5llWYqMnKYXJVpaoM9HKUBUHYJ5ltS5EXWnr8p+n0zcRszgw8UBlGgvvlI/9u4tW/oX9TtGF1o+SkkiiT4ZLpx+RaDqWDrlC5UgfWDKLlghkT5W21LSsrrdYxhYmLTsLnJ1N2KzCPVZahtaJVS1thSXbSsFchezP/2YshsKktR2WbNWz9+8eZiyr9UYqzrQJ4Nbo556JzlWsQlGisezcYKMdXnUWDctY+qIoLthThYr9GnNiplOWrbCSqmRCBScpGak2zCC9DsYbJlS2iYsPFs2P5FD146tHPJ4H5s62Ep/QnFHGldxUaC74D+fsO3jxlPVaBzaSSkknaGzMbzp5M5kSfa22rhGhgSZiftPX965gaaLFmfCSn+HQjL9zPKa3cvjssrYWMrTLoKchSXaehiaJM4oWOOTjubfgQHoj6DCshMUPpvaetj93aKj3LKhHGClWxMR8gFJaWpeQr0Vt8SvZnd+nPC7Ya9Huyk31o1YEPHWrcaBhXMTXHfUzoq914zb2croddbTbu7d3szvgIE7K/TGUe1qMBthxaC8rP0ZBv6MJd2wyDFFM3u/x8ehVi5TlDh3asvf+f8pMQJY=
+sidebar_class_name: "delete api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Go2Rtc Delete Stream"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/go2rtc/streams/{stream_name}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Delete a go2rtc stream.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"stream_name","in":"path","required":true,"schema":{"type":"string","title":"Stream Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

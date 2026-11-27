@@ -15,7 +15,7 @@ Semantic Search is accessed via the _Explore_ view in the HeisenCam UI.
 
 :::info
 
-Semantic search requires a one-time internet connection to download embedding models from HuggingFace. Once cached, models work fully offline. See [Network Requirements](/frigate/network_requirements#one-time-model-downloads) for details.
+Semantic search requires a one-time internet connection to download embedding models from HuggingFace. Once cached, models work fully offline. See [Network Requirements](../frigate/network_requirements.md#one-time-model-downloads) for details.
 
 :::
 
@@ -62,7 +62,7 @@ If you are enabling Semantic Search for the first time, be advised that HeisenCa
 
 The [V1 model from Jina](https://huggingface.co/jinaai/jina-clip-v1) has a vision model which is able to embed both images and text into the same vector space, which allows `image -> image` and `text -> image` similarity searches. HeisenCam uses this model on tracked objects to encode the thumbnail image and store it in the database. When searching for tracked objects via text in the search box, HeisenCam will perform a `text -> image` similarity search against this embedding. When clicking "Find Similar" in the tracked object detail pane, HeisenCam will perform an `image -> image` similarity search to retrieve the closest matching thumbnails.
 
-The V1 text model is used to embed tracked object descriptions and perform searches against them. Descriptions can be created, viewed, and modified on the Explore page when clicking on thumbnail of a tracked object. See [the object description docs](/configuration/genai/objects.md) for more information on how to automatically generate tracked object descriptions.
+The V1 text model is used to embed tracked object descriptions and perform searches against them. Descriptions can be created, viewed, and modified on the Explore page when clicking on thumbnail of a tracked object. See [the object description docs](./genai/objects.md) for more information on how to automatically generate tracked object descriptions.
 
 Differently weighted versions of the Jina models are available and can be selected by setting the model size.
 
@@ -216,13 +216,13 @@ If the correct build is used for your GPU / NPU and the `large` model is configu
 Specify the `device` option to target a specific GPU in a multi-GPU system (see [onnxruntime's provider options](https://onnxruntime.ai/docs/execution-providers/)).
 If you do not specify a device, the first available GPU will be used.
 
-See the [Hardware Accelerated Enrichments](/configuration/hardware_acceleration_enrichments.md) documentation.
+See the [Hardware Accelerated Enrichments](./hardware_acceleration_enrichments.md) documentation.
 
 :::
 
 ## Usage and Best Practices
 
-For tips on getting the best results from Semantic Search (choosing between thumbnail and description search, phrasing queries effectively, and combining search with the other Explore filters), see [Usage and best practices](/usage/explore#usage-and-best-practices) in the Usage docs.
+For tips on getting the best results from Semantic Search (choosing between thumbnail and description search, phrasing queries effectively, and combining search with the other Explore filters), see [Usage and best practices](../usage/explore.md#usage-and-best-practices) in the Usage docs.
 
 ## Triggers
 

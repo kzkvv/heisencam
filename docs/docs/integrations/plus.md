@@ -5,11 +5,11 @@ title: Frigate+
 
 import NavPath from "@site/src/components/NavPath";
 
-For more information about how to use Frigate+ to improve your model, see the [Frigate+ docs](/plus/).
+For more information about how to use Frigate+ to improve your model, see the [Frigate+ docs](../plus/index.md).
 
 :::info
 
-Frigate+ requires an active internet connection to communicate with `https://api.frigate.video` for model downloads, image uploads, and annotations. See [Network Requirements](/frigate/network_requirements#frigate) for details.
+Frigate+ requires an active internet connection to communicate with `https://api.frigate.video` for model downloads, image uploads, and annotations. See [Network Requirements](../frigate/network_requirements.md#frigate) for details.
 
 :::
 
@@ -23,7 +23,7 @@ Free accounts can be created at [https://plus.frigate.video](https://plus.frigat
 
 Once logged in, you can generate an API key for Frigate in Settings.
 
-![API key](/img/plus-api-key-min.png)
+![API key](../assets/plus-api-key-min.png)
 
 ### Set your API key
 
@@ -47,13 +47,13 @@ Snapshots must be enabled to be able to submit examples to Frigate+
 
 :::
 
-![Submit To Plus](/img/plus/submit-to-plus.jpg)
+![Submit To Plus](../assets/plus/submit-to-plus.jpg)
 
 ### Annotate and verify
 
 You can view all of your submitted images at [https://plus.frigate.video](https://plus.frigate.video). Annotations can be added by clicking an image. For more detailed information about labeling, see the documentation on [annotating](../plus/annotating.md).
 
-![Annotate](/img/annotate.png)
+![Annotate](../assets/annotate.png)
 
 ## Use Models
 

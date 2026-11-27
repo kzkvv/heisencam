@@ -44,11 +44,11 @@ Connect each stream to get a live preview, an estimated bandwidth figure, and a 
 - Using a restreamed input for the `record` role
 - Brand-specific issues, such as an RTSP stream on a Reolink camera that should use http-flv, or a Dahua/Hikvision substream selected for `detect`
 
-**Use stream compatibility mode** passes the stream through go2rtc's ffmpeg module. Enable it if a stream fails to load after several attempts. Note that this also prevents [two way talk](/configuration/live#two-way-talk) from being detected for that stream.
+**Use stream compatibility mode** passes the stream through go2rtc's ffmpeg module. Enable it if a stream fails to load after several attempts. Note that this also prevents [two way talk](./live.md#two-way-talk) from being detected for that stream.
 
 **Save New Camera** writes the configuration and starts the camera right away. No restart is required.
 
-Other features, including [hardware acceleration](hardware_acceleration_video.md), [two way talk](/configuration/live#two-way-talk), and audio transcoding, is configured after the camera has been added. For camera model specific quirks, see the [camera specific](camera_specific.md) docs.
+Other features, including [hardware acceleration](hardware_acceleration_video.md), [two way talk](./live.md#two-way-talk), and audio transcoding, is configured after the camera has been added. For camera model specific quirks, see the [camera specific](camera_specific.md) docs.
 
 ## Deleting a camera
 
@@ -56,7 +56,7 @@ Click **Delete Camera** in <NavPath path="Settings > Global configuration > Came
 
 :::warning
 
-Deleting a camera permanently removes its recordings, tracked objects, and configuration. If you only want to stop processing a camera, set its state to **Off** or **Disabled** in <NavPath path="Settings > Global configuration > Camera management" /> instead. See [camera state](/configuration/live#camera-state).
+Deleting a camera permanently removes its recordings, tracked objects, and configuration. If you only want to stop processing a camera, set its state to **Off** or **Disabled** in <NavPath path="Settings > Global configuration > Camera management" /> instead. See [camera state](./live.md#camera-state).
 
 :::
 
@@ -66,7 +66,7 @@ Deleting a camera removes:
 - Every database record for the camera: tracked objects, review items, recordings, previews, timeline entries, the saved region grid, and [triggers](semantic_search.md#triggers).
 - Every media file for the camera: recordings, snapshots, thumbnails, and preview clips.
 
-[Exports](/usage/exports) are kept by default, so saved footage survives the deletion of the camera it came from. Turn on **Also delete exports for this camera** in the confirmation step to remove those too.
+[Exports](../usage/exports.md) are kept by default, so saved footage survives the deletion of the camera it came from. Turn on **Also delete exports for this camera** in the confirmation step to remove those too.
 
 The camera's processes are stopped and the change takes effect immediately, so no restart is required. If the resulting config cannot be parsed, HeisenCam restores the previous config and reports an error instead of leaving HeisenCam in a broken state.
 
@@ -255,4 +255,4 @@ camera_groups:
 
 ## Two-Way Audio
 
-See the guide [here](/configuration/live/#two-way-talk)
+See the guide [here](./live.md#two-way-talk)

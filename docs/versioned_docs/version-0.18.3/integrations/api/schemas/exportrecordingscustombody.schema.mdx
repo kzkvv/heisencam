@@ -1,0 +1,33 @@
+---
+id: exportrecordingscustombody
+title: "ExportRecordingsCustomBody"
+description: ""
+sidebar_label: "ExportRecordingsCustomBody"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"source":"recordings","name":"string","image_path":"string","export_case_id":"string","ffmpeg_input_args":"string","ffmpeg_output_args":"string","cpu_fallback":false}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExportRecordingsCustomBody"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"properties":{"source":{"title":"Playback source","default":"recordings","type":"string","enum":["recordings","preview"]},"name":{"type":"string","maxLength":256,"title":"Friendly name"},"image_path":{"type":"string","title":"Image Path"},"export_case_id":{"anyOf":[{"type":"string","maxLength":30},{"type":"null"}],"title":"Export case ID","description":"ID of the export case to assign this export to"},"ffmpeg_input_args":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"FFmpeg input arguments","description":"Custom FFmpeg input arguments. If not provided, defaults to timelapse input args."},"ffmpeg_output_args":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"FFmpeg output arguments","description":"Custom FFmpeg output arguments. If not provided, defaults to timelapse output args."},"cpu_fallback":{"type":"boolean","title":"CPU Fallback","description":"If true, retry export without hardware acceleration if the initial export fails.","default":false}},"type":"object","title":"ExportRecordingsCustomBody"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

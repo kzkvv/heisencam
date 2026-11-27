@@ -1,0 +1,74 @@
+---
+id: transcribe-audio-audio-transcribe-put
+title: "Transcribe audio"
+description: "**Access:** Admin role required."
+sidebar_label: "Transcribe audio"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktz2zYQ/is7e3HioUXF0154cxO3dR8Tjy23B1vjgcgViZgEGADUYzT875kFSJGWEieT5tiLRAL7/Hb3W+7Qidxico9vS2GtXMpUOKkVziPMyKZG1v41wdPTizQla5PTU7jIKqnA6JLA0MdGGsomD+pBzYxQrLMgC6LJpIal0RUIsDWlbBtoRcpNHhQAwE1Q7UVdp+wdgtOwICAlFiVlIBW4giDVainzxvgQJzArKBh8lFkwWTXWAW2kdb1KJpxYCEsTuCHXGGU5msZnAhVZK3ICbUAoIGO0Abn8bDjSgtJuH4823njvnK+lWolSZhOMUNcUQrzKMEG3B+XRW+5+R8d14zBCRpKs+0VnW0x22AOLiTMNRZhq5Ug5vhJ1XXZ1ij9Yrs4ObVpQJfipNuzfSbL81ofIz25bEyZonZEqxwiddCUfXLIMXGV4WPOrd6CXQ6ZclCHsvsLaYNtGvXG9+EBpn06I/34IYj44vWDt2Rhkn3nbsjFDttbKhhTOp1P+ex7abajhsinhphPG7wapa4gRRgutSxJqBFLnENsIu755CdK/O5GvIdN7HoyOIPqNFBmZ7vML2Px0fn4Mxz/cez5ZuOQ+/n4sMnJClvwkHVX2WKDU6bNbobbvl5jcH4LRRvsTqRzlZLCdD3AIY8R2hNhfumMeBtjm3wRub+yF1vZDPePbr5WC8wquO7lRJQZ4A7pfTuNdgO9zznqR32ez6yODobaW0sZIt/VwLo3MhSNPtheNKzC5n7fzCDdnfdhnTMEcBItghLRxpKzUynoDT7TF5Eg8wpUom0GNTVbkCs1kFaioFuwNYz/h8TDyyBGaFZlgvzElJlg4V9skjjOq9KSLebKSGelY1NK3wSCYxHGpU1EW2rrk5+n0TZCZD6nfcl+GTjsGYF9oUcs/iXGX3P2p1k+So1Oi4ttO8dHpJ1JHrMamSDkeCMrAkmXEYF1oy+vM6nJFWVhu0sKJB+kkLJteVlog68SilLagDFZSeJL8498ZhFBAWttQBostXL+/nUFc6lyqiPcGC9dGb7YgGldAQSIjY+GVoUo7OmssGYihe+MoXsO6IAW/hpzANMrCggqpMt5aYkhGqhwMcXUoeJhwn3ZY3FkyPxJDtR27HuH4yiN3spK0JnPCGRcyL8i8jn44Zv8BlzZCJsKbYedebkRVl/R8Zw5chlIttQevm2KeIzI2wDGdvJlMWarW1lXCE2yH4+xgYR5CuRuI+v9vrG//xup62NHGxXUppN8bnmd2HX3dY4/3iMDmETL18O1uxzHfmbJt+fhjQ4Z5d878aCTH4Ak3wtBuI0Z9Gwp25tfKiE4PtyxTX9DgstbuRdkxC1/fzTDCRfclWOmMVYxY88YS69B82oPmedKf7bAUKm/8dwkGk9zl4mjmn/zMdw+jtS3UdhTg4fiHPPh3tNefq+x2gVHadi8frr6o0SHbS/tl1LbtJ2bMZAU=
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Transcribe audio"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/audio/transcribe"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Transcribes audio from a specific event.
+    Requires audio transcription to be enabled in the configuration. The event_id
+    must exist in the database. Returns a success message or an error if audio transcription is not enabled or the event_id is invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"event_id":{"type":"string","title":"Event Id","description":"ID of the event to transcribe audio for"}},"type":"object","required":["event_id"],"title":"AudioTranscriptionBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

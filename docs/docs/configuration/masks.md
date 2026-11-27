@@ -11,7 +11,7 @@ HeisenCam has two kinds of masks: motion masks and object filter masks. Both are
 
 ## Motion masks
 
-Motion masks are used to prevent unwanted types of motion from triggering detection. Try watching the [Debug view](/usage/live#the-single-camera-view) with `Motion Boxes` enabled to see what may be regularly detected as motion. For example, you want to mask out your timestamp, the sky, rooftops, etc. Keep in mind that this mask only prevents motion from being detected and does not prevent objects from being detected if object detection was started due to motion in unmasked areas. Motion is also used during object tracking to refine the object detection area in the next frame. _Over-masking will make it more difficult for objects to be tracked._
+Motion masks are used to prevent unwanted types of motion from triggering detection. Try watching the [Debug view](../usage/live.md#the-single-camera-view) with `Motion Boxes` enabled to see what may be regularly detected as motion. For example, you want to mask out your timestamp, the sky, rooftops, etc. Keep in mind that this mask only prevents motion from being detected and does not prevent objects from being detected if object detection was started due to motion in unmasked areas. Motion is also used during object tracking to refine the object detection area in the next frame. _Over-masking will make it more difficult for objects to be tracked._
 
 See [further clarification](#further-clarification) below on why you may not want to use a motion mask.
 
@@ -21,7 +21,7 @@ Object filter masks are used to filter out false positives for a given object ty
 
 Object filter masks can be used to filter out stubborn false positives in fixed locations. For example, the base of this tree may be frequently detected as a person. The following image shows an example of an object filter mask (shaded red area) over the location where the bottom center is typically located to filter out person detections in a precise location.
 
-![object mask](/img/bottom-center-mask.jpg)
+![object mask](../assets/bottom-center-mask.jpg)
 
 ## Which tool do I need?
 

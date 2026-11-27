@@ -1,0 +1,70 @@
+---
+id: review-preview-review-event-id-preview-get
+title: "Review Preview"
+description: "**Access:** Authenticated user with access to the referenced camera."
+sidebar_label: "Review Preview"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1v2zgQ/SvEXPIBxXKD7kW3AJvudneLBom7ewiMgBbHEhuJVEnKiSDwvy+GlGS5bgIUzcWSqeGbmTfzZnpwvLCQ3cMnFJLDOgHdoOFOavVRQAYGdxKfHprhOTwecIfKPUjxMH0p0EECDTe8RoeGMHtQvEbIYLSGBKSCDBruSkjA4LdWGhSQOdNiAjYvseaQ9eC6hu5ZZ6QqIAEnXUUH1wTEPgrwPpnQt9rU3I3Y31o03QH4llf2VXRUbU0UFHILCdTNe6JB4Ja3lYNsOB5D+BC9eb8mH7bRyqIl1Mvlkh4CbW5kQwRCBndtnqO127Zit4MxJJBr5VA5MudNU8k88J1+tXSn30fqvfcJvL+8PAb+l1dShGvs2hhtfgIVGkM1djLGLdBxWdGbdFjbY4NK5wdfueo+b0N5D4mkkgwnUjks0IBf+2Q848bwbkbkPzoGCD6B2havlf0TWssLhAnslQ4hMtiKvvq9b735irk76Ir7kFd0Pdit9zB7eiO7L6fxe6TvR85Gkz9Xq5sjwFhbi3lrpOsCnVsjC+7wi0Vz1boSsvs1ddnzxRj1hdEBMOc1Gg7Jdz1xfn4Vui07P2cEgMpRE6BgrUXDnqQrGQ8WzGnmSmQGt2hQ5ShYxFyQHJ4dKiu1ihp+xA6yoyAS2PGqnQVDkdboSk1TYxwGlASkcUKk/TgGfDoMDSACzG6cFq2pIIPSucZmaSqw1ouBksVOCtQpb2Tosr1hlqaVznlVauuy35bLd9FmvWf2jto+NvIAdiVqqSLBUx/xRv6N3ThDcq0fJeU4Tph48cHpR1RHtB9SbdESd+yp1JYItrraoWBEGpOWnXDyfrJgqxInW2kZWsc3lbQlCraTPFTnr/9WLIbCpLUtCrbp2M3nuxVLK11IlTBtgnFj9HPHeOtKViIXaCw7NVhrhxeh8ikb/lEUZ+ypRMU+xJyYaZVlGyylEoyrADIkI1XBDFJ1MHpYkAyOmvRtOFTd3PWMx9PA3Am1C5oTyriURYnmLHlzzn6BF09Zb3VgY1A9SQSNjfktF+8WS6Kv0dbVPAzkgZjbIAV2M0nigJl+P9bfSt9DuRw+u7SpuAwTOEiqHyR7D1Mw2Wx3j6pdJ0B6I7u+33CLX0zlPR3H5UtaFtLyTTVbv3GMTLt6nB5BqztuJFn/+OaLfJzeDiPpjL2U1tiaqpv7HKOZcgt7KrbBbOYR28082KO1ejD0/rheQQL8SBSPQRTDy2xtHgb1vT5iCPQ726uHV/o+Ss77yT5+evHGkOJoTRytvff/Ay90cvQ=
+sidebar_class_name: "get api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Review Preview"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/review/{event_id}/preview"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Authenticated user with access to the referenced camera.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}},{"name":"format","in":"query","required":false,"schema":{"type":"string","enum":["gif","mp4"],"default":"gif","title":"Format"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

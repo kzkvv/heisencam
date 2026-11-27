@@ -1,0 +1,70 @@
+---
+id: review-clip-review-review-id-clip-mp-4-get
+title: "Review Clip"
+description: "**Access:** Authenticated user with access to the referenced camera."
+sidebar_label: "Review Clip"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVt9v2zYQ/leIe8kPKJYbZC96C9Zu67aiQeJuD4Fh0OLZYiORLEk5EQT978ORkiXHSdFiebFl6vjd3Xff3bkFz7cOsnv4hEJyWCagDVrupVYfBWRgcSfxcZWX0qz65+FbilU8r8zVaoseEjDc8go9WoJsQfEKRwwpIAGpIAPDfQEJWPxWS4sCMm9rTMDlBVYcshZ8Y+ii81aqLSTgpS/p4DYgsY8Cui7Z4xsuRLQL6N9qtM0B/IaX7iV8qTxu0UICAl1upaG0IYObCMi8ZtyYsqEHynQWLDe8Lj1k8zGs3h66HwfqlhSgM1o5dBTS5XxOX4f37+o8R+c2dclue2NIINfKo/JkTqgyD+VKvzq6045pdl3XJXB1eXkM/A8vpQjX2Adrtf0JVDCWJOJljFug57KkJ+mxcscGpc4P3nLVfN4EeRxWmQr6rC7dskuGM24tbyZS+FvHAIn0ym2/p5pP6BzfIuzBXjcNZLAFve1G33r9FXN/IKn7kFd03dstR5iR3sju62m8j/S95Gww+WOxuDkCjLV1mNdW+ibQubFyyz1+cWiva19Adr8klT1dDFFfWB0Ac16h5UeqPz+/DmrLzs8ZAaDyJAIUrHZo2aP0BePBgmTsC2QWN2hR5ShYxKQGwSePykmt4gx4wAayoyAS2PGyngRDkVboC01DZxgmlASkcXyk7X6MdGnoocpcAVFgd8O8qW0JGRTeG5elqcBKz3pSZjspUKfcyKCz0TBL01LnvCy089kv8/m7aLMcub0j4Ucp92DXopIqUrxXEjfyL2yGEZRr/SApy35C9RdXXj+gOiL+kGyHjthjj4V2RLHT5Q4FI9qYdOyEk/eTGVsUuLeVjqHzfF1KV6BgO8lDff78d8FiKEw6V6Ng64bdfL5bsLTUW6kSpm0wNlY/NYzXvmAFcoHWsVOLlfZ4EWqfsv4XRXHGHgtU7LeYE7O1cmyNhVSCcRVA+mRo8lmk6mD0MKNGOJLp23ComqnrCY+ngbkT0g7aE8q4kNsC7Vny5pz9D146ynqjAxt931OToHUxv/ns3WxO9BntfMXDSO6J6Zfir6U0z2lpx6n+Vu3d18rjk09NyWUYwKGf2r5j7/uFDwlk09W/b9plAtRuZNm2a+7wiy27jo7j6qZWFtLxdTlZ3q/m9b1l/WKwcSKNfxqGSRS6fsetJMc/GcTpbT/ezthrbgeRq2bqcwhnJCosvaioyQCl2hk/uXm0ow8m6O8fFpAAP+qvh9Bf/cNkBx9G9bzVYgj0OVnSh1faNnZv1+3t46tXb/QpDtZE0rLruv8ASdKjbw==
+sidebar_class_name: "get api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Review Clip"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/review/{review_id}/clip.mp4"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Authenticated user with access to the referenced camera.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"review_id","in":"path","required":true,"schema":{"type":"string","title":"Review Id"}},{"name":"padding","in":"query","required":false,"schema":{"type":"integer","description":"Padding to apply to clip.","default":0,"title":"Padding"},"description":"Padding to apply to clip."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

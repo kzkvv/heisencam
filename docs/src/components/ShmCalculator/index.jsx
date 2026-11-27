@@ -1,4 +1,3 @@
-import Link from "@docusaurus/Link";
 import React, { useState, useEffect } from "react";
 import Admonition from "@theme/Admonition";
 import styles from "./styles.module.css";
@@ -16,7 +15,7 @@ const frameMb = (width, height) =>
 // room for 2 cameras added at runtime, sized as 720p
 const addedCamerasMb = 2 * frameMb(1280, 720);
 
-const ShmCalculator = () => {
+const ShmCalculator = ({ children }) => {
   const [width, setWidth] = useState(1280);
   const [height, setHeight] = useState(720);
   const [cameraCount, setCameraCount] = useState(1);
@@ -87,10 +86,8 @@ const ShmCalculator = () => {
         <Admonition type="note">
           The resolution below is the <strong>detect</strong> stream resolution,
           not the <strong>record</strong> stream resolution. SHM size is
-          determined by the detect resolution used for object detection.{" "}
-          <Link to="/frigate/camera_setup/#choosing-a-detect-resolution">
-            Learn more about choosing a detect resolution.
-          </Link>
+          determined by the detect resolution used for object detection.
+          {children}
         </Admonition>
 
         {width * height > 1280 * 720 && (

@@ -14,7 +14,7 @@ LPR works best when the license plate is clearly visible to the camera. For movi
 
 :::info
 
-License plate recognition requires a one-time internet connection to download OCR and detection models from GitHub. Once cached, models work fully offline. See [Network Requirements](/frigate/network_requirements#one-time-model-downloads) for details.
+License plate recognition requires a one-time internet connection to download OCR and detection models from GitHub. Once cached, models work fully offline. See [Network Requirements](../frigate/network_requirements.md#one-time-model-downloads) for details.
 
 :::
 
@@ -105,7 +105,7 @@ Navigate to <NavPath path="Settings > Enrichments > License plate recognition" /
   - Default: `0.7`
 - **Minimum plate area**: Minimum area (in pixels) a license plate must be before recognition runs. This is an _area_ measurement (length x width). For reference, 1000 pixels represents a ~32x32 pixel square in your camera image. Depending on the resolution of your camera's `detect` stream, you can increase this value to ignore small or distant plates.
   - Default: `1000` pixels
-- **Device**: Device to use to run license plate detection _and_ recognition models. Auto-selected by HeisenCam and can be `CPU`, `GPU`, or the GPU's device number. For users without a model that detects license plates natively, using a GPU may increase performance of the YOLOv9 license plate detector model. See the [Hardware Accelerated Enrichments](/configuration/hardware_acceleration_enrichments.md) documentation.
+- **Device**: Device to use to run license plate detection _and_ recognition models. Auto-selected by HeisenCam and can be `CPU`, `GPU`, or the GPU's device number. For users without a model that detects license plates natively, using a GPU may increase performance of the YOLOv9 license plate detector model. See the [Hardware Accelerated Enrichments](./hardware_acceleration_enrichments.md) documentation.
   - Default: `None`
 - **Model size**: The size of the model used to identify regions of text on plates. The `small` model is fast and identifies groups of Latin and Chinese characters. The `large` model identifies Latin characters only, and uses an enhanced text detector to find characters on multi-line plates. If your country or region does not use multi-line plates, you should use the `small` model.
   - Default: `small`
@@ -688,7 +688,7 @@ lpr:
 3. Ensure your plates are being _detected_.
 
    If you are using a Frigate+ or `license_plate` detecting model:
-   - Watch the [Debug view](/usage/live#the-single-camera-view) to ensure that `license_plate` is being detected.
+   - Watch the [Debug view](../usage/live.md#the-single-camera-view) to ensure that `license_plate` is being detected.
    - View MQTT messages for `frigate/events` to verify detected plates.
    - You may need to adjust your `min_score` and/or `threshold` for the `license_plate` object if your plates are not being detected.
 

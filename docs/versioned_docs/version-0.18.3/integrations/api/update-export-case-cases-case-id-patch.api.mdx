@@ -1,0 +1,72 @@
+---
+id: update-export-case-cases-case-id-patch
+title: "Update export case"
+description: "**Access:** Admin role required."
+sidebar_label: "Update export case"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVktz2zYQ/iuYvfgxtCR72gtvruM2adPGYyvtwdFoIGIlIgYBBgBlcTj8750FKImSIieT+CKRxD6/3f0WDXi+cJA+wu2qNNbDJAGBLrOy9NJoSOH8/DrL0Ln0/Jxdi0JqZo1CZvFLJS2KwSf9SX8sBffoGNcMV9J5qRcMgz2WcYcDSMCUaDmZfCcghSooTKPMlGTCj5vGZymm05L7LIcESm55gR4tRdmA5gVCCp0YJCApyJJ7kl0HBam3FSbgshwLDmkDvi5JzXkr9QIS8NIr+nDDHbJ3Atp2EtXR+d+MqEln31pmtEft6YiXpZJZyGf42RFOTc9ZaSlbL9HRW4y4Aa7rD/OQw34wBV+9R73wOaSXo1GbbCR0pRRQZOtw/yFb+xWK6As2txK1UDUjj8zMmc+xXwZo9zSPx/RSDG96Jo6F0vv61UDaZG3ezD5j5nsViX1IdYnGQjX2/dzHSrGZETWbG8tCQ1HbHW3BtiWvFl1ptIuVuRqN6G/X9EMV2n1eKXbfCcMP195FY70OnBmjkOtewp1Dqk6BzvEFvtSwf3ciX4Nw27CPG89bo70S/oEarcw2+UVsfrm6OoTjX66kCMmyW2uN/XEsBHouFT1Jj4U7FFAm2zn9juaU2uMCLbSTLRzcWl73EHtvYoABYLf4LnDXxo6LBjDYmE6/VQrKK7ru5HqV2MIb0T2expsI30uj83Y8vjswGGvrMKus9HWAc27lgnsMbH5dEe08TmjCVxfrsC+I4ykIEoEEcOVRO2l0JOEnrCE9EE9gyVW1VSOTBfrciMjQHZ2TPxgGuh82HY+3QCHa5ZrlK6sghdz70qXDocDCDLqgB0sp0Ax5KUMfbAXT4VCZjKvcOJ/+OhpdRpnJNvcHaszYaocIbCrNS/kX1uvFkhnzJCm1bu90ilNvnvCQ/sgUak8TgYI5dAQZe86No4XpjFqiiOtTOnYSUDoZsHGOG1npGDrPZ0q6HAVbSh7I88//xiyGwqRzFQo2q9ndh4cxGyqzkDphxgbh0ppVzXjlc5YjF2gdO7VYGI8XlUPLhqx7oyjO2HOOmv0ec2K20o7NMJdaEI3ybTJEphapOhg9DKhROyw+OrSviaGu+657OJ4G5E6WEp/RnlDGuVzkaM+SV8fsJ3BpEyAmvN/eJW5XvCgVbu8CWzbZTX3DbyD13AQ8u8mm2ULrothocDkYkVRpnC+47hmOK3Nn1x7s/A19v9bVriu6x5UflorLwLRhMJtu3B/DfY2WUbq+uE0SoEmls6aZ0ba3qm3p85cKLfHUhPjESj4jBB4bENLRs4B0zpXDF/I6ve8yOGPHwls3qq57tAVJx2zrIMNaiT3R472b6OgikH+P9PZ3IfFT1CCYS/+ibJ8r767HN28hgVl3ES2MICXLn2mz8OcYqgmZBzoL3xpQXC+qcH+AaJSakR+M5lMYze6ht153wdif0pgJ/fb2765K08TBb9uNfDw6qtFhu5YOS6Nt2/8B/rJaLQ==
+sidebar_class_name: "patch api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update export case"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/cases/{case_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Updates an existing export case.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"case_id","in":"path","required":true,"schema":{"type":"string","title":"Case Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"name":{"anyOf":[{"type":"string","maxLength":100},{"type":"null"}],"title":"Name","description":"Updated friendly name of the export case"},"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Description","description":"Updated description of the export case"}},"type":"object","title":"ExportCaseUpdateBody","description":"Request body for updating an existing export case."}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

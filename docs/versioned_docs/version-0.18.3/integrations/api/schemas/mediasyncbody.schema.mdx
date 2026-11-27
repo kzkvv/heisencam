@@ -1,0 +1,33 @@
+---
+id: mediasyncbody
+title: "MediaSyncBody"
+description: ""
+sidebar_label: "MediaSyncBody"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"dry_run":true,"media_types":["string"],"force":false,"verbose":false}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"MediaSyncBody"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"properties":{"dry_run":{"type":"boolean","title":"Dry Run","description":"If True, only report orphans without deleting them","default":true},"media_types":{"items":{"type":"string"},"type":"array","title":"Media Types","description":"Types of media to sync: 'all', 'event_snapshots', 'event_thumbnails', 'review_thumbnails', 'previews', 'exports', 'recordings'","default":["all"]},"force":{"type":"boolean","title":"Force","description":"If True, bypass safety threshold checks","default":false},"verbose":{"type":"boolean","title":"Verbose","description":"If True, write full orphan file list to disk","default":false}},"type":"object","title":"MediaSyncBody"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

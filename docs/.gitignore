@@ -8,6 +8,10 @@
 .docusaurus
 .cache-loader
 docs/integrations/api/
+/docs/configuration/data/labelmap.txt
+/docs/frigate/compose-generator/config/devices.ts
+/docs/frigate/compose-generator/config/hardware.ts
+/docs/frigate/compose-generator/config/ports.ts
 
 # Misc
 .DS_Store

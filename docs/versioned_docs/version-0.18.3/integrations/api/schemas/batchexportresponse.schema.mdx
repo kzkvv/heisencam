@@ -1,0 +1,33 @@
+---
+id: batchexportresponse
+title: "BatchExportResponse"
+description: "Response model for starting an export batch."
+sidebar_label: "BatchExportResponse"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"export_case_id":"string","export_ids":["string"],"results":[{"camera":"string","export_id":"string","success":true,"status":"string","error":"string","item_index":0,"client_item_id":"string"}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"BatchExportResponse"}
+>
+</Heading>
+
+
+
+Response model for starting an export batch.
+
+<Schema
+  schema={{"properties":{"export_case_id":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Export Case Id","description":"Export case ID associated with the batch"},"export_ids":{"items":{"type":"string"},"type":"array","title":"Export Ids","description":"Export IDs successfully queued"},"results":{"items":{"properties":{"camera":{"type":"string","title":"Camera","description":"Camera name for this export attempt"},"export_id":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Export Id","description":"The export ID when the export was successfully queued"},"success":{"type":"boolean","title":"Success","description":"Whether the export was successfully queued"},"status":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Status","description":"Queue status for this camera export"},"error":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Error","description":"Validation or queueing error for this item, if any"},"item_index":{"anyOf":[{"type":"integer"},{"type":"null"}],"title":"Item Index","description":"Zero-based index of this result within the request items list"},"client_item_id":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Client Item Id","description":"Opaque client-supplied item identifier echoed from the request"}},"type":"object","required":["camera","success"],"title":"BatchExportResultModel","description":"Per-item result for a batch export request."},"type":"array","title":"Results","description":"Per-item batch export results"}},"type":"object","required":["export_ids","results"],"title":"BatchExportResponse","description":"Response model for starting an export batch."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

@@ -1,0 +1,74 @@
+---
+id: delete-classification-model-classification-name-delete
+title: "Delete a classification model"
+description: "**Access:** Admin role required."
+sidebar_label: "Delete a classification model"
+hide_title: true
+hide_table_of_contents: true
+api: eJzllk1z2zYQhv/KDi7+GFpSMu2FN0/tfqZNxlaag63RQORKRAwBDBaUrXD43zsLQBJpxWmnza0XiQR2F7sPsC/YCi9XJPI78YOWRGqpCumVNWKWiRKpcKoOr7k4P78sCiTKz8/hslwrA85qBIefGuWwHN2be3OFGj0SSKAaCw4GxSAsrG2JGqQpQWoNyhNIIlso6bGEUno5ujcAAB+seyDADRpQS/AVJk9FYKwHZcJYYc1SreAUR6tRBrV0Xkmtt1A4jAEbp8wKHtVn6cqzFPoGfeNMSLIJFcEaieQKRyITtkYXMv2lFLkoQz3zYQ3zkMnzwbmRa5zPo4fIRC2dXKNHx3BbwbMij3+ZUAy0lr4SmdgBFLl3DWaCigrXUuSt8NuafchzESITXnnNA39wkK6bsS/V1hASm7+eTPhvuGu3scRlo+EmGYtMFNZ4NJ7NZV3rVMP4I7FP20uhdgzEq7hC4tXLbWGtRml6yaUFRZeJhPVrpfyeTLou29nYxUcs/ADM3X7lQ9DZIchPaNCpYl9f13G4716/Psbxp9SqjCfx2jnr/j2LEr1Ump+UxzUdG2hbDGal2b5dhrMwhNFl+xFlPK7QiW52wCGdk9sesTc2NSgDptU/grsL9rJpgAFTnv27reC64tLJrrcTB7yR7stlXEV8X1psZ/LzdPruKGDcW8KiccpvA86lUyvpMWjSZeMrkd/NuDmeLnZpX7BScRJsIjKBTx4NKWtibz7gVuRH5pnYSN0c3DjkGn1lD8IQ2pwXFOOhGoxbbvROcKZus9OAxmmRi8r7mvLxuMS1HaXcRxtVoh3LWoXjcDDMx2NtC6krSz7/fjJ5FW1mBwS3fD7jiTsGsd9wWavfcLtTnsLaB8XZJ1VKjnNvH5D5DHuGQ6HxXBqWQEhMDh4rS6z+ZPUGy3gXKIKTAOtkBNMK97aKAMnLhVZUYQkbJYN6//phCjEVUEQNlrDYwru3t1MYa7tSJgPrgnHt7NMWZOMrqFCW6AhOHa6tx4uG0MEY0htncQaPFRr4MdYErjEEC6wUXzkmBEnF8M3gkHcH4wojPq+JxXtC9y0Zmm1/6R7H00DuZKPwEd0JV1ypVYXuLPvmzP4Dl46rXtpAI7UnNwg6ivVNRq9GE8ZXW/JrGZQzgYnfBCC/+CXwHFR7kOP/yQdHOlwen/y41lIFYQ8C0CZxuRPDkkQm8sB2lgnWBbZo24UkfO901/HwpwYdi+OMRcwpueAdu2tFqYifS5EvpSb8CvzTm4T5DF5KctcWZtvTSpElOQ0ZhossHr+e0vK21r4vsM/v3YHWXl2/uZ5ei0zIo358CP2YHnpX6zCn560Zs+Df3t07dGnb2O1dt7ePUy96pCp31uHC6LruL3YX7y8=
+sidebar_class_name: "delete api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a classification model"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/classification/{name}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Deletes a specific classification model and all its associated data.
+    Works even if the model is not in the config (e.g., partially created during wizard).
+    Returns a success message.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

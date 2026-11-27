@@ -53,7 +53,7 @@ If you have a Hailo device, you will need to specify the hardware you have when 
 
 #### Rockchip (RKNN) Support
 
-Rockchip models are automatically converted as of 0.17. For 0.16, YOLOv9 onnx models will need to be manually converted. First, you will need to configure Frigate to use the model id for your YOLOv9 onnx model so it downloads the model to your `model_cache` directory. From there, you can follow the [documentation](/configuration/object_detectors.md#converting-your-own-onnx-model-to-rknn-format) to convert it.
+Rockchip models are automatically converted as of 0.17. For 0.16, YOLOv9 onnx models will need to be manually converted. First, you will need to configure Frigate to use the model id for your YOLOv9 onnx model so it downloads the model to your `model_cache` directory. From there, you can follow the [documentation](../configuration/object_detectors.md#converting-your-own-onnx-model-to-rknn-format) to convert it.
 
 ## Supported detector types
 
@@ -61,13 +61,13 @@ Currently, Frigate+ models support CPU (`cpu`), Google Coral (`edgetpu`), OpenVi
 
 | Hardware                                                                         | Recommended Detector Type   | Recommended Model Type |
 | -------------------------------------------------------------------------------- | --------------------------- | ---------------------- |
-| [CPU](/configuration/object_detectors.md#cpu-detector-not-recommended)           | `openvino (or alternative)` | `yolov9`               |
-| [Coral (all form factors)](/configuration/object_detectors.md#edge-tpu-detector) | `edgetpu`                   | `yolov9`               |
-| [Intel](/configuration/object_detectors.md#openvino-detector)                    | `openvino`                  | `yolov9`               |
-| [NVidia GPU](/configuration/object_detectors#onnx)                               | `onnx`                      | `yolov9`               |
-| [AMD ROCm GPU](/configuration/object_detectors#amdrocm-gpu-detector)             | `onnx`                      | `yolov9`               |
-| [Hailo8/Hailo8L/Hailo8R](/configuration/object_detectors#hailo-8)                | `hailo8l`                   | `yolov9`               |
-| [Rockchip NPU](/configuration/object_detectors#rockchip-platform)                | `rknn`                      | `yolov9`               |
+| [CPU](../configuration/object_detectors.md#cpu-detector-not-recommended)           | `openvino (or alternative)` | `yolov9`               |
+| [Coral (all form factors)](../configuration/object_detectors.md#edge-tpu-detector) | `edgetpu`                   | `yolov9`               |
+| [Intel](../configuration/object_detectors.md#openvino-detector)                    | `openvino`                  | `yolov9`               |
+| [NVidia GPU](../configuration/object_detectors.md#onnx)                               | `onnx`                      | `yolov9`               |
+| [AMD ROCm GPU](../configuration/object_detectors.md#amdrocm-gpu-detector)             | `onnx`                      | `yolov9`               |
+| [Hailo8/Hailo8L/Hailo8R](../configuration/object_detectors.md#hailo-8)                | `hailo8l`                   | `yolov9`               |
+| [Rockchip NPU](../configuration/object_detectors.md#rockchip-platform)                | `rknn`                      | `yolov9`               |
 
 ## Improving your model
 
@@ -125,8 +125,8 @@ objects:
 
 When using Frigate+ models, Frigate will choose the snapshot of a person object that has the largest visible face. For cars, the snapshot with the largest visible license plate will be selected. This aids in secondary processing such as facial and license plate recognition for person and car objects.
 
-![Face Attribute](/img/plus/attribute-example-face.jpg)
+![Face Attribute](../assets/plus/attribute-example-face.jpg)
 
 Delivery logos such as `amazon`, `ups`, and `fedex` labels are used to automatically assign a sub label to car objects.
 
-![Fedex Attribute](/img/plus/attribute-example-fedex.jpg)
+![Fedex Attribute](../assets/plus/attribute-example-fedex.jpg)

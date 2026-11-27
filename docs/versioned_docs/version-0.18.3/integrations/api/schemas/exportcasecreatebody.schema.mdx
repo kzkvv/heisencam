@@ -1,0 +1,33 @@
+---
+id: exportcasecreatebody
+title: "ExportCaseCreateBody"
+description: "Request body for creating a new export case."
+sidebar_label: "ExportCaseCreateBody"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"name":"string","description":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExportCaseCreateBody"}
+>
+</Heading>
+
+
+
+Request body for creating a new export case.
+
+<Schema
+  schema={{"properties":{"name":{"type":"string","maxLength":100,"title":"Name","description":"Friendly name of the export case"},"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Description","description":"Optional description of the export case"}},"type":"object","required":["name"],"title":"ExportCaseCreateBody","description":"Request body for creating a new export case."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

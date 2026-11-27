@@ -1,0 +1,75 @@
+---
+id: register-face-faces-name-register-post
+title: "Register a face image"
+description: "**Access:** Admin role required."
+sidebar_label: "Register a face image"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktz2zYQ/is7uPgxtKh42gtvbtr03WRspT3YGg1ErkTEJMBgQdkcDf97ZgFQoiy7ybTprReJJPb5Yffb3Qon1ySyW/G6kkRqpXLplNFinogCKbeq8a+ZOD+/ynMkys7P4aqolQZrKgSLH1tlsZjc6Tt9jWtFDi2BhJXMEVQt1wgrY0ECNZiz/XCiZY2w7KBtKiMLpdcg9SCuKpzcaQCAWYlRAot4qggaazgSLEDqAmTBh86AKzHYtpibtVYcOFBHDusJXKNrrSaQwTC1PhmwSI3RhPCgXAkFOqkqArk0rfP2rM/IekwS4Dw0oLXGglodOQumFYE2DlDLZYUF67ChEHwuNZ8tcZ/DRCTCNBhc/FyITNiI4oLt+x9aLBivxWJ31BhyIhGNtLJGRlxkt1vBQiILf4lQfG2NdKVIxHBNInO2xURQXmItRbYVrmtYh5xVei0S4ZSr+MMfbKTv50EXyX1nio4VnprKjXaoHR/VbeVUI61LV8bWF4V03sXeWWM5VaeQ+I0v+rkQWFk6kYml0tJ2o6DesEbfJ4OKWX7A3B3kdxvMzvdKHPjii0Hte7Y/1IWP83I65b/DfrgJFbRqK7iOwuIADNk0Veym9AOxzstIxHIcgbE0pkKpR7lHh6JPRI1Ecv0sdoP071Hkc2ANnvdGR8j9iBqtynf5BWy+ubw8huNPWanCJws/cH/8cyxCE/KTcljTsUBl8oNTqbu3K1//h2D0ye6L0g7XaEU/38MhrZXj2vrNROpjgGn9ReAOxl4W9WDAjE8/dxWcV3Ad5UY3sYc3oPtyGt8H+J5zNoj8NJu9OzIY7pYwb61ynYdzZdVaOvRsf9W6UmS3cyaEx4sh7AueARwEi4hE4KNDTcrowEf32InsSDwRG1m1ezU2WaMrDZPfjtjYnUh9o6ZbbtQ+HRpVcJx2M7BeayuRidK5hrI0LbA2kxj5ZKMKNKlslC+GvWCWppXJZVUactm30+mrIDPfA3DD1Rlp6giG3XXLRv2K3cC1uTH3ivOLPBwVF87cI6Nz2DFsCrXjtsACCIlxg4fSEA8VMtUGizBjFcGJh+pk4ifiIKsIkJxcVopKLGCjpB81v/w1gxAKKKIWC56z797ezCCtzFqFOcbCjTWPHcjWlVCiLHhun1qsjcOLltBCCvGNoziDhxI1vAk5gW01wRJLxRNYeyMxGZ7lFvl2MHiYcLVGLN4T2q+Joe7Grkc4nnrkTjYKH9CecMalWpdoz5Kvjtm/wKXnrFfGoxGbk9sDLYX8ppNXkynDx21RS8+bEZhh1zpYtZ4CtN2T8P8L3H+4wMVSdvjo0qaSyg8RTzfbSGW3wlOZSEQW17Mdm80TwTzEMtvtUhK+t1Xf8+ePLVqm4jlTplUcj2e8QpGPTWQrWRH+zaWfXsfrPYOXwhzaUHcjZhZJJG8frB+bodxHvP46eLnww22v+twSyOwblLgGGzeeAU9Xg4NxwC0oErGMu2dtCk8KxtbebrJ/5NmUCHnELfeeW+LDaEk4zPcpzYRg+Xe0RRyqbLeBufp+Jx+OXtSICA7SfvT1ff8JqoCxJQ==
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Register a face image"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/faces/{name}/register"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Registers a face image for a specific face name by uploading an image file.
+    The uploaded image is processed and added to the face recognition system. Returns a
+    success response with details about the registration, or an error if face recognition
+    is not enabled or the image cannot be processed.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"multipart/form-data":{"schema":{"properties":{"file":{"type":"string","format":"binary","title":"File"}},"type":"object","required":["file"],"title":"Body_register_face_faces__name__register_post"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

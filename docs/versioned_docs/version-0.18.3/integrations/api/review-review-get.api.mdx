@@ -1,0 +1,70 @@
+---
+id: review-review-get
+title: "Review"
+description: "**Access:** Any authenticated user."
+sidebar_label: "Review"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1V1Fv2zYQ/isEX9IGiu0G24ve3DXrunVokLgr0MAwKOkssaFIlaScuIL++3CkJFNxkjlL+hLH0se743ffd6QballuaHxFL2DD4YYuI6oq0MxyJT9kNKbaPV91HzlYGtGKaVaCBY0rGypZCTSmKStBM0MjyiWN6fca9JZGVMP3mmvIaLxmwkBETVpAyWjcULutcKGxmsucRjSDNauFpTFlQtCIWm4FAn7rIrdtNGQTLAHxM5J99IHDXD+UhJ+R6quLG2byNEP29GRcWshBB9Ev+lgj2njJ7UtE/+gChaENbEBzu30GUSDrEsXIBGjriLOQohRRl33myy7PGYLDAhJYKw1PTy/rMhnt7a0PFMZma+sgzw09d3HadomrTaWkAYP409kMPzIwqeaV23JML+s0BWPWtSAXHZhGNFXSgrQIZ1UleOrMOv1mcE2zXwPTmrmmWChdrkqjxS33mXl2Xyf6ej9ktI06az+G8xZFrLFM25XlSNs+fq10ydAJGbNw4lBBZ3EpWeDDFsWQ/b8wZzIbghTMrBIAuRqctYuWKCWAyWDlH8yQtwCS7LwT7XT9MoKNqC3qMllVzBaPMbpAFDlHVBvhPj3/3dt3+L3FYH65Sr5BakeavMLWDr0bNSYg9z6KotDLQbVdGcu7M+YS8hKkHTTahgD/rGO0/3gPODuw/l9OT/eF/w8TPHOyJmdaK/0U1Y/VnYFlXDid3y9/odLRWya3n9buWBs3BmfBnWHYLnf89yYbxqPyBSIXpckfa/TfYAzLPWsO8jDUkUEW+Pa/eo/78qk7XNC1Hb2e3Ye38c7Td1+ywTOLxfleQN9bA2ntnXPV0LXmObPw2YCe1yj9qyVOwduTvuoTrVxAJrfOSaEgjo/nbhTGx8dkLreE1bYAaVEFkJHagJ6gqG8tSMOV9PeSa9jSeC9BRDdM1H0iLKEEWyi86/S3G6yOTr0dnBn0pr/r1FrQmBbWViaeTjMo1aTb2GTDM1BTVnGnlR0wnk6FSpkolLHxr7PZG49Z7vi5RPF6OXbB5lnJpadpN8cr/hcMp2uq1DXH3XQHVLdwZdU1yD3+5iO+DBhkidwUygDRYJTYQEaQHsINOWKY/WhCFgUMWG4IGMsSwU0BGdlwRmwB5M8vC+JLIdyYGjKSbMn5p8sFmQqVcxkRpR240urW940UwDLQhrzSUCoLJ9g+MiXdN6ziNbkpQJLf/Z6IrqUhCRRcZoTJsPlc5kTjrDLgM0xQzHtSexkO93TXc/PKMXfkpqc+wh0XPC9Av45enLNn8NLirtcqPEXQDKCN399s8mYyQ/oqZWzJ3FjtiLnorTBipNkN5QMN2nXBwq2dVoJxNx6dU5rOdlfdFRjHFRoGnzRNwgx81qJt8bG/faEZM25YIoL7l3f87odI73TnyAfQww+JQ8D9L4FDsMFxelAd3c38EGxwPB8CHy7Gh4D7m+4Ou8QvmiPYTe2IejUGQxabX4XV753Ro0H7/mxBI8r2vHntvNn9E5zB/kjoY9+1qS8B/waH9HhJ03jnt+2A968eXNFtsUejVJdt2/4LxqopNA==
+sidebar_class_name: "get api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Review"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/review"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Any authenticated user.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"cameras","in":"query","required":false,"schema":{"type":"string","default":"all","title":"Cameras"}},{"name":"labels","in":"query","required":false,"schema":{"type":"string","default":"all","title":"Labels"}},{"name":"zones","in":"query","required":false,"schema":{"type":"string","default":"all","title":"Zones"}},{"name":"reviewed","in":"query","required":false,"schema":{"type":"integer","title":"Reviewed"}},{"name":"limit","in":"query","required":false,"schema":{"type":"integer","title":"Limit"}},{"name":"severity","in":"query","required":false,"schema":{"type":"string","enum":["alert","detection"],"title":"SeverityEnum"}},{"name":"before","in":"query","required":false,"schema":{"type":"number","title":"Before"}},{"name":"after","in":"query","required":false,"schema":{"type":"number","title":"After"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"type":"array","items":{"properties":{"id":{"type":"string","title":"Id"},"camera":{"type":"string","title":"Camera"},"start_time":{"type":"string","format":"date-time","title":"Start Time"},"end_time":{"type":"string","format":"date-time","title":"End Time"},"has_been_reviewed":{"type":"boolean","title":"Has Been Reviewed"},"severity":{"type":"string","enum":["alert","detection"],"title":"SeverityEnum"},"thumb_path":{"type":"string","title":"Thumb Path"},"data":{"title":"Data"}},"type":"object","required":["id","camera","start_time","end_time","has_been_reviewed","severity","thumb_path","data"],"title":"ReviewSegmentResponse"},"title":"Response Review Review Get"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

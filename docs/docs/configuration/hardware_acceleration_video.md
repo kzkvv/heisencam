@@ -186,7 +186,7 @@ ffmpeg:
 
 ## NVIDIA GPUs
 
-While older GPUs may work, it is recommended to use modern, supported GPUs. NVIDIA provides a [matrix of supported GPUs and features](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new). If your card is on the list and supports CUVID/NVDEC, it will most likely work with HeisenCam for decoding. However, you must also use [a driver version that will work with FFmpeg](https://github.com/FFmpeg/nv-codec-headers/blob/master/README). Older driver versions may be missing symbols and fail to work, and older cards are not supported by newer driver versions. The only way around this is to [provide your own FFmpeg](/configuration/advanced/system#custom-ffmpeg-build) that will work with your driver version, but this is unsupported and may not work well if at all.
+While older GPUs may work, it is recommended to use modern, supported GPUs. NVIDIA provides a [matrix of supported GPUs and features](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new). If your card is on the list and supports CUVID/NVDEC, it will most likely work with HeisenCam for decoding. However, you must also use [a driver version that will work with FFmpeg](https://github.com/FFmpeg/nv-codec-headers/blob/master/README). Older driver versions may be missing symbols and fail to work, and older cards are not supported by newer driver versions. The only way around this is to [provide your own FFmpeg](./advanced/system.md#custom-ffmpeg-build) that will work with your driver version, but this is unsupported and may not work well if at all.
 
 A more complete list of cards and their compatible drivers is available in the [driver release readme](https://download.nvidia.com/XFree86/Linux-x86_64/525.85.05/README/supportedchips.html).
 
@@ -436,7 +436,7 @@ Hardware accelerated video de-/encoding is supported on all Rockchip SoCs using 
 
 ### Prerequisites
 
-Make sure to follow the [Rockchip specific installation instructions](/frigate/installation#rockchip-platform).
+Make sure to follow the [Rockchip specific installation instructions](../frigate/installation.md#rockchip-platform).
 
 ### Configuration
 
@@ -503,7 +503,7 @@ Hardware accelerated video de-/encoding is supported on Synaptics SL-series SoC.
 
 ### Prerequisites
 
-Make sure to follow the [Synaptics specific installation instructions](/frigate/installation#synaptics).
+Make sure to follow the [Synaptics specific installation instructions](../frigate/installation.md#synaptics).
 
 ### Configuration
 

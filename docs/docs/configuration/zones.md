@@ -10,7 +10,7 @@ import NavPath from "@site/src/components/NavPath";
 Zones allow you to define a specific area of the frame and apply additional filters for object types so you can determine whether or not an object is within a particular area. Presence in a zone is evaluated based on the bottom center of the bounding box for the object. It does not matter how much of the bounding box overlaps with the zone.
 
 For example, the cat in this image is currently in Zone 1, but **not** Zone 2.
-![bottom center](/img/bottom-center.jpg)
+![bottom center](../assets/bottom-center.jpg)
 
 Zones cannot have the same name as a camera. If desired, a single zone can include multiple cameras if you have multiple cameras covering the same area by configuring zones with the same name for each camera.
 
@@ -18,7 +18,7 @@ Zones cannot have the same name as a camera. If desired, a single zone can inclu
 
 Zones can be toggled on or off without removing them from the configuration. Disabled zones are completely ignored at runtime - objects will not be tracked for zone presence, and zones will not appear in the debug view. This is useful for temporarily disabling a zone during certain seasons or times of day without modifying the configuration.
 
-During testing, enable the Zones option for the [Debug view](/usage/live#the-single-camera-view) of your camera so you can adjust as needed. The zone line will increase in thickness when any object enters the zone.
+During testing, enable the Zones option for the [Debug view](../usage/live.md#the-single-camera-view) of your camera so you can adjust as needed. The zone line will increase in thickness when any object enters the zone.
 
 ## Creating a Zone
 
@@ -280,7 +280,7 @@ HeisenCam can be configured to estimate the speed of objects moving through a zo
 
 Your zone must be defined with exactly 4 points and should be aligned to the ground where objects are moving.
 
-![Ground plane 4-point zone](/img/ground-plane.jpg)
+![Ground plane 4-point zone](../assets/ground-plane.jpg)
 
 Speed estimation requires a minimum number of frames for your object to be tracked before a valid estimate can be calculated, so create your zone away from places where objects enter and exit for the best results. The object's bounding box must be stable and remain a constant size as it enters and exits the zone. _Your zone should not take up the full frame, and the zone does **not** need to be the same size or larger than the objects passing through it._ An object's speed is tracked while it passes through the zone and then saved to HeisenCam's database.
 

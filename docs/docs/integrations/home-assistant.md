@@ -122,7 +122,7 @@ Use `http://<frigate_device_ip>:8971` as the URL for the integration so that aut
 
 :::tip
 
-The above URL assumes you have [disabled TLS](../configuration/tls).
+The above URL assumes you have [disabled TLS](../configuration/tls.md).
 By default, TLS is enabled and Frigate will be using a self-signed certificate. HomeAssistant will fail to connect HTTPS to port 8971 since it fails to verify the self-signed certificate.
 Either disable TLS and use HTTP from HomeAssistant, or configure Frigate to be accessible with a valid certificate.
 
@@ -197,7 +197,7 @@ For clips to be castable to media devices, audio is required and may need to be 
 
 ## Camera API
 
-To turn a camera off (pauses Frigate's processing of the stream; does not persist across Frigate restarts; see [Camera state](/configuration/live#camera-state)):
+To turn a camera off (pauses Frigate's processing of the stream; does not persist across Frigate restarts; see [Camera state](../configuration/live.md#camera-state)):
 
 ```
 action: camera.turn_off
@@ -281,7 +281,7 @@ For advanced usecases, this behavior can be changed with the [RTSP URL
 template](#options) option. When set, this string will override the default stream
 address that is derived from the default behavior described above. This option supports
 [jinja2 templates](https://jinja.palletsprojects.com/) and has the `camera` dict
-variables from [Frigate API](/integrations/api/frigate-http-api)
+variables from [Frigate API](./api/frigate-http-api)
 available for the template. Note that no Home Assistant state is available to the
 template, only the camera dict from Frigate.
 
@@ -318,7 +318,7 @@ The Frigate integration seamlessly supports the use of multiple Frigate servers.
 In order for multiple Frigate instances to function correctly, the
 `topic_prefix` and `client_id` parameters must be set differently per server.
 See [MQTT
-configuration](mqtt)
+configuration](./mqtt.md)
 for how to set these.
 
 #### API URLs

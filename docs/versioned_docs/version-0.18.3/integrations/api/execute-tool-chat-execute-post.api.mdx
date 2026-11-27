@@ -1,0 +1,72 @@
+---
+id: execute-tool-chat-execute-post
+title: "Execute a tool"
+description: "**Access:** Admin role required."
+sidebar_label: "Execute a tool"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVktz2zYQ/iuYvTjx0KTiaS+8uYk7fThNxlbag6LxQOSKRAwCDABK4nD43zsLUCIlxWk79UUigX1+u/stO3C8sJAu4G3JHSwjyNFmRtROaAUpXF7eZBlam15espu8EooZLZEZ/NoIg3n8WX1WtzvMGoeMM6e1ZOtGZaTNMi4lWxtdMa7Y3d37GCLQNRpOt7/mkAIGzUfSe8xK7h73J7W2DiIgP2jdTzpvIe1g7xZSZxqMINPKoXJ0xetaisybTr5Yir0Dm5VYcXqqDTl2Ai29eXeKV+hf2hohBeuMUAVE4ISTdDCnXP4goT4CboqmQuXsREOvvmDmJho3B6G+j86kxtgXkwCmppfHzgdY7wMEcFqZ4ZxVOkfJ1toE9AOAQqsY+p7iMGhrrWzI/Ho2o79jSw+NL/G6kex+EIZ/j23w8sP19bnhP7kUuVdjt8Zo8x+snlQsR8eFpCfhsLLnAlJnR7dctR/WkC5O69tHhxOhHBZooF+O1eLG8HZS0jsdAqQeqGzxvX55j9bywndLEHle1IPB5nT7T51CeQXXg9ykSUZ4A7rPp/EuwPctZ3uRX+bzj2cGQ20tZo0RrvVwro0ouEPPBTeNKyFdLPtlBLurfdhXxBAUBIlABLhzqKzQynoDT9hCeiYewYbLZlQjkxW6UhNNDGRQc3IHCRFFMhAFUHhmgyYYb4yEFErnapsmSY6VjoeA443IUSe8Fr4HRsE0SaTOuCy1demPs9mbILMc836gpgxtdp79ocq8Fr8jgS6o9TOtnwRFF2hmr/jo9BOqs1kmU6gcTQPmzKIluNi21Jao1mq5wTwQr7DswiN0EbN5iQdZYRlax1dS2BJzthGcuRLZb3/NWQiFCWsbzNmqZR8/PMxZInUhVMS08cK10buW8caVrESeo7HslcFKO7xqLBqWsOGNonjNtiUq9nPIiZlGWbbCUqicmJ6PyQhVMINUHQweYmrSAYtPFs1LYqjaqesJjq88chcbgVs0F5RxKYoSzevoxTH7H7j0ERAL3o8b73bHq1riycYa6WS6lEhdqLX2wsNI01ChsQGeWfwmnhH6NEwV92w7GDze36fAdiNnv/jXwFB2hzuX1JILz7N+NLth2hdA0+5ZJMz7MgKaVLrpuhW3+MnIvqfjrw0a4qglcYkRfEUgLIjcQ3Um7PM2ZHTlKXhCPacbiZgiaFDetfuu7JSxqF0ggtXw3UI7GlIwfEv0zrehONoj7HnFn3UguSoaWiIpBJtUVn42I09+RoaHyY7jqp1EeDouIRH6nSzBY5WuCxPY9wf5cPWsxgDtXtozd9/3fwPhe5SU
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Execute a tool"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/chat/execute"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Execute a tool function call from an LLM.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"tool_name":{"type":"string","title":"Tool Name"},"arguments":{"type":"object","title":"Arguments"}},"type":"object","required":["tool_name","arguments"],"title":"ToolExecuteRequest","description":"Request model for tool execution."}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

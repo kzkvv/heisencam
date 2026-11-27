@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const CONFIG_DIR = path.resolve(__dirname, "../src/components/DockerComposeGenerator/config");
+const CONFIG_DIR = path.resolve(__dirname, "../docs/frigate/compose-generator/config");
 const YAML_PATH = path.join(CONFIG_DIR, "config.yaml");
 
 // Read & parse YAML
@@ -60,5 +60,10 @@ console.log("Building config from config.yaml...");
 generateTsFile("devices", config.devices, "DeviceConfig", "devices", "deviceMap", "config.yaml");
 generateTsFile("hardware", config.hardware, "HardwareOption", "hardwareOptions", "hardwareMap", "config.yaml");
 generateTsFile("ports", config.ports, "PortConfig", "ports", "portMap", "config.yaml");
+
+fs.copyFileSync(
+  new URL("../../labelmap.txt", import.meta.url),
+  new URL("../docs/configuration/data/labelmap.txt", import.meta.url),
+);
 
 console.log("Done!");

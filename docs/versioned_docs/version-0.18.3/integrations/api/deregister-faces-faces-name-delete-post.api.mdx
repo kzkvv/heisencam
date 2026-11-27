@@ -1,0 +1,74 @@
+---
+id: deregister-faces-faces-name-delete-post
+title: "Delete face images"
+description: "**Access:** Admin role required."
+sidebar_label: "Delete face images"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1z2zYQ/Ss7uDjx0JKTaS+8pXHSuk2bjK20B0fjgcgliRgEGCwoW6Phf88sAFqUVSdtmmMvogju59vdt9gKL2sS+ZV4qSWRqlQhvbJGLDNRIhVOdeE1F8fHL4oCifLjY3hRtsqAsxrB4adeOSxnH8wHc4YaPRJQhwWbgkoWCKqVNRJU1oGEWq3RxHMjW5zBokkScH5G0PbkYYXamvqDAQDwFnyDo0Uso2pldYluBgsLZfAJ0gAarxxOBTKQWk+sKwO+kT5ajiKjRyA0fgYX6HtnCCRQH9KFFolYn6M3gM5ZB6qKXhwWtjaKEQJFYKwHNHKlsZyJTNgOXQDzvBS5KNFhrciju2ZdSr/XjML1dcziurPkRSY66WSLHh1XZitYROTxkQnF1eikb0QmRvRF7l2PmaCiwVaKfCv8pmMd8k6ZWmTCK6/54A82MgzLqIvkf7LlhhUemiqs8Wg8f5Jdp1NfzD8Sd8N24qlznKhXSPymyvjw2NJhHEM2Hkjn5GYS13lJ4mHLvVHkwVapgJXSyBAQ90SqeuVsG/pjUnQx7LzY1Ucs/B5QVyHE5c5zbNrXssDz0KgBkGFgKw6ps4ZiZs9PT/mxH+Jl7JKq13CRhMU3Y5dabgLbylqN0kxwSg4ZydSZX6r270nka5CMnndGJwD9jAadKu7zi9j88Pz5IRx/Sq3KkCy84kn5dixK9FLpvVbaF9C22PsqzeZtFcblYcvdnyjjseYGWT7eh29sIkAGmOp/BO5o7HHRAAYs+OvXSsF5RddJblKJHbwR3cfTOIvw/Z2zUeSXxeLdgcFYW8Kid8pvApyVU7X0GDj/Re8bkV8tmT/uTsawT3gTcBAsIjKBdx4NKWsifd3gRuQH4plYS93v1Nhki76xTJb3PMjuxDxQ5XzL0z/M4+gLjtKtR4rsnRa5aLzvKJ/PS2ztLMU9W6sS7Vx2KrTCTjCfz7UtpG4s+fzH09NnUWa5S/+SezN22yEI98WWnfoNNyMxF9beKI4ukXZSvPb2Bs0Bw7EpXluF9FgCITFqcNtY4uVCVq+xjHtWERwFoI7iyhxlFQGSlyutqMES1koGPvz1rwXEUEAR9VjCagPv3l4uYK5trUzG+4yFO2fvNiB730CDskRH8MRhaz2e9IQO5pDeOIqncNuggdcxJ3C9IVhho0zJu1HuklGmBodcHYweZtyrCYv3hO57Ymg2U9cTHJ8E5I7WCm/RHXHGjaobdE+z747Zf8BlyAST4cVuHb+6k22n8X6dXo2EwrylTGUDcmmMeZDQUcTidPZsdspQ8wC1MjBsAvEsbczdjewhktsdV/9/2/vXt73UyR7v/LzTUoUNEthmm3jsSgQeE5nI01UuUdkyE0xCLLHdriThe6eHgY8/9eiYhZfMlk6xs0B3paLgWOSV1IRfKOSTi1Syp/BYkOMMms2ElEWWeDuEGjZm7PUJpb+MXk7CXpvw+cM1z7wbNbipOv9F2eka4OETmVilK2prS9Zx8pZ3pryNYdqQdWDpcLYVWpq6DzcjEW3yjMkDxrkJjJP+TC4O+0A8JJ+YCP9Obhb7Kttt5LNhuJePnx7VSNCO0mEdDsPwGd32syY=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete face images"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/faces/{name}/delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Deletes specific face images for a given face name. The image IDs must belong
+    to the specified face folder. To delete an entire face folder, all image IDs in that
+    folder must be sent. Returns a success message or an error if face recognition is not enabled.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"ids":{"items":{"type":"string"},"type":"array","title":"Ids","description":"List of image filenames to delete from the face folder"}},"type":"object","required":["ids"],"title":"DeleteFaceImagesBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

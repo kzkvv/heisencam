@@ -9,7 +9,7 @@ This error message is due to a shm-size that is too small. Try updating your shm
 
 ### How can I get sound or audio in my recordings? {#audio-in-recordings}
 
-By default, HeisenCam removes audio from recordings to reduce the likelihood of failing for invalid data. If you would like to include audio, you need to set a [FFmpeg preset](/configuration/ffmpeg_presets) that supports audio:
+By default, HeisenCam removes audio from recordings to reduce the likelihood of failing for invalid data. If you would like to include audio, you need to set a [FFmpeg preset](../configuration/ffmpeg_presets.md) that supports audio:
 
 ```yaml
 ffmpeg:
@@ -23,18 +23,18 @@ Audio is only supported for live view when go2rtc is configured, see [the live d
 
 ### I can't view recordings in the Web UI.
 
-Ensure your cameras send h264 encoded video, or [transcode them](/configuration/restream.md).
+Ensure your cameras send h264 encoded video, or [transcode them](../configuration/restream.md).
 
 You can open `chrome://media-internals/` in another tab and then try to playback, the media internals page will give information about why playback is failing.
 
 ### What do I do if my cameras sub stream is not good enough?
 
-HeisenCam generally [recommends cameras with configurable sub streams](/frigate/hardware.md). However, if your camera does not have a sub stream that is a suitable resolution, the main stream can be resized.
+HeisenCam generally [recommends cameras with configurable sub streams](../frigate/hardware.md). However, if your camera does not have a sub stream that is a suitable resolution, the main stream can be resized.
 
 To do this efficiently the following setup is required:
 
 1. A GPU or iGPU must be available to do the scaling.
-2. [ffmpeg presets for hwaccel](/configuration/hardware_acceleration_video.md) must be used
+2. [ffmpeg presets for hwaccel](../configuration/hardware_acceleration_video.md) must be used
 3. Set the desired detection resolution for `detect -> width` and `detect -> height`.
 
 When this is done correctly, the GPU will do the decoding and scaling which will result in a small increase in CPU usage but with better results.
@@ -51,13 +51,13 @@ go2rtc:
     my_camera: "ffmpeg:rtsp://user:password@192.168.1.10:554/stream#video=h264#hardware#rotate=90"
 ```
 
-Point the camera's inputs at the restream as described in the [restream docs](/configuration/restream.md), and swap `detect -> width` and `detect -> height` to match the rotated resolution.
+Point the camera's inputs at the restream as described in the [restream docs](../configuration/restream.md), and swap `detect -> width` and `detect -> height` to match the rotated resolution.
 
 ### My mjpeg stream or snapshots look green and crazy
 
 This almost always means that the width/height defined for your camera are not correct. Double check the resolution with VLC or another player. Also make sure you don't have the width and height values backwards.
 
-![mismatched-resolution](/img/mismatched-resolution-min.jpg)
+![mismatched-resolution](../assets/mismatched-resolution-min.jpg)
 
 ### "[mov,mp4,m4a,3gp,3g2,mj2 @ 0x5639eeb6e140] moov atom not found"
 
@@ -79,7 +79,7 @@ This is because HeisenCam does not run in host mode so localhost points to the H
 
 ### How do I know if my camera is offline
 
-HeisenCam publishes a per-role health status to [`frigate/<camera_name>/status/<role>`](/integrations/mqtt#frigatecamera_namestatusrole), where `<role>` is each enabled role on the camera (`detect`, `record`, and `audio`). The published value is one of:
+HeisenCam publishes a per-role health status to [`frigate/<camera_name>/status/<role>`](../integrations/mqtt.md#frigatecamera_namestatusrole), where `<role>` is each enabled role on the camera (`detect`, `record`, and `audio`). The published value is one of:
 
 - `online`: HeisenCam's process for that role is running normally
 - `offline`: the process is down and HeisenCam is restarting it
@@ -131,7 +131,7 @@ No. HeisenCam uses the TCP protocol to connect to your camera's RTSP URL. VLC au
 
 TCP ensures that all data packets arrive in the correct order. This is crucial for video recording, decoding, and stream processing, which is why HeisenCam enforces a TCP connection. UDP is faster but less reliable, as it does not guarantee packet delivery or order, and VLC does not have the same requirements as HeisenCam.
 
-You can still configure HeisenCam to use UDP by using ffmpeg input args or the preset `preset-rtsp-udp`. See the [ffmpeg presets](/configuration/ffmpeg_presets) documentation.
+You can still configure HeisenCam to use UDP by using ffmpeg input args or the preset `preset-rtsp-udp`. See the [ffmpeg presets](../configuration/ffmpeg_presets.md) documentation.
 
 ### HeisenCam is slow to start up with a "probing detect stream" message in the logs
 

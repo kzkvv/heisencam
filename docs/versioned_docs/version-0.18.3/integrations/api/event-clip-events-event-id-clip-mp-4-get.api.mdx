@@ -1,0 +1,70 @@
+---
+id: event-clip-events-event-id-clip-mp-4-get
+title: "Event Clip"
+description: "**Access:** Authenticated user with access to the referenced camera."
+sidebar_label: "Event Clip"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVk1v4zYQ/SvEXPIBxfIG6UW3oE3bbbvYYONtD4Fh0OJY4kYiuSTlRBD034shJVuOk6CL5mLL1PDNzJs3M+7A88JBdg+fUEgOywS0Qcu91OqjgAxwi8qv8kqaVXh0q/i9kmIVj2tztSrQQwKGW16jR0uAHShe4w5BCkhAKsjAcF9CAha/N9KigMzbBhNweYk1h6wD3xq657yVqoAEvPQVHdwQEPsooO+THbrhQkSzAP69QdseoG945V6Cl8pjgRYSEOhyKw2lDBncRkDmNePGVC09UJ6zYLnhTeUhm++jGuyh/+9A/ZICdEYrh45CupzP6evw/l2T5+jcpqnYl8EYEsi18qg8mROqzEOp0m+O7nT7NPu+7xO4urw8Bv6bV1KEa+zGWm1/ABWMJXl4GeMW6Lms6El6rN2xQaXzg7dctZ83QRyHRaaCPqtLv+yT8Yxby9uJEv7SMUAivXbFW6L5hM7xAmEH9oa+iAy2oLf93rdef8PcH0jqPuQVXQ92yz3Mnt7I7utp/BLpe8nZaPL7YnF7BBhr6zBvrPRtoHNjZcE9fnVorxtfQna/JJU9XYxRX1gdAHNeo+VHqj8/vw5qy87PGQGg8iQCFKxxaNmj9CXjwYJk7EtkFjdoUeUoWMSkBsEnj8pJreIEeMAWsqMgEtjyqpkEQ5HW6EtNA2ccJZQEpHHmpN04RPo0tFBtroAYsNtx2DS2ggxK743L0lRgrWcDJ7OtFKhTbmSQ2d4wS9NK57wqtfPZT/P5h2iz3FN7R7qPSh7ArkUtVWR4JyRu5J/YjhMo1/pBUpLDgBourrx+QHXE+yHXDh2Rxx5L7Yhhp6stCkasMenYCSfvJzO2KHFnKx1D5/m6kq5EwbaSh/L88c+CxVCYdK5BwdYtu/18t2BppQupEqZtMDZWP7WMN75kJXKB1rFTi7X2eBFKn7LhF0Vxxh5LVOzXmBOzjXJsjaVUgnEVQIZkaPBZpOpg9DCjPjhS6ftwqNqp6wmPp4G5k63ER7QnlHEpixLtWfLunP0PXnrKeqMDG0PbU4+gdTG/+ezDbE70Ge18zcNEHoiJK/HnSprnrHT7mf5ezT2UyuOTT03FZRi/oZ26oV/v47J3kEA2Wfu7ll0mQM1Ghl235g6/2qrv6TjubWpkIR1fV5PN/Wpab23qF2ON42j/j2EcQ6Hnt9xKcvyDQZx+GWbbGXvN7Shx1U59juHseAoLL8ppMjypcsZPLh7t54Pp+dvNAhLgR831EJpreJjs38OgnvdZDIE+Jwv68ErXxdbt+519fPXqjSHF0Zo4WvZ9/y9x9J/4
+sidebar_class_name: "get api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Event Clip"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/events/{event_id}/clip.mp4"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Authenticated user with access to the referenced camera.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}},{"name":"padding","in":"query","required":false,"schema":{"type":"integer","description":"Padding to apply to clip.","default":0,"title":"Padding"},"description":"Padding to apply to clip."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

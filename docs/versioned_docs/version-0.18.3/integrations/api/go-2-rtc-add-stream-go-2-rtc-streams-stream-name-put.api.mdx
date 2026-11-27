@@ -1,0 +1,72 @@
+---
+id: go-2-rtc-add-stream-go-2-rtc-streams-stream-name-put
+title: "Go2Rtc Add Stream"
+description: "**Access:** Admin role required."
+sidebar_label: "Go2Rtc Add Stream"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vclu4zgQ/RWiLlmgWG5j5qJbMPvaQeLMHNKGQYtliR2JVJOUE0Hgvw9KpGw5bjcwmJ6LLVGvtld8VT04XljInuA7XqPhsEpAoM2NbJzUCjK4vr7Nc7Q2u75mt6KWihldITP4qZUGxeyD+qBuhWDasLYR3CHjrNAL43JmnUFes1yrrSxaw8njDBLQDYaXXwRkEMBrLsQ6GKzjSXiz6/FY8RrX66Z1kEDDDa/RoaHce6BPkMEECAlISr/hroQExnQhc6bFBGxeYs0h68F1TTSVqoAEnHQVHTyE5P8kX94nhxgmH31/atF0R863vLJf9C5wy9vKQQbTUCYH71fkyDZaWbRkupjP6e+4Gw/t0IxtW7H7CIYEcq0cKkdw3jSVzAd204+WbPpDOt57n8A3i8Wp4794JcVgxn4wRpt/4RUaQx11MuQt0HFZ0ZN0WNtTQKXzo69cde+3QxuP2SLS44lUDgs04Fc+Gc+4MbybsPi7DgmCT6C2xZd6+wdaywuEvbPz0IEMtqSv/hBbbz5i7o5a/zTUFUJH3Org5kBvYPd8Gd8H+j4XbIT8vFzenTgMvbWYt0a6bqBza2TBHQ6qvW1dCdnTiq7Z682Y9g1pmZIgCCSArw6VlVoFWT1jB9kJPIEdr9qDGbms0ZWa1DzKk6JBGpScRiWn/USgHihbsxsl3JoKMiida2yWpgJrPYv5z3ZSoE55I4crcQBmaVrpnFelti77dj5/FzCrAw0PdEfDrTslY9903sjfsBtVnWv9LKnKKPhouHb6GRW8HY/kCpUjcaBgFi2xx15KbWlGWl3tUISJKS27GAi7mLFliXustAyt45tK2hIF20nOXIns17+XLKTCpLUtCrbp2N37hyVLK11IldDEJXBj9GvHeOtKViIXaCy7NFhrhzetRcNSFt8oiyv2UqJiP4aamGmVZRsspRKMq8FJLEaqghmk7mCIMKM7G7l4tGi+Joeqm4ae8Hg5MHexk/iC5oIqLmVRorlKvjpn/4EXT1Vv9cBGlCiJBI0N9c1n72Zzoq/R1tV8mJ6RmJ/04t7ljBZoWDhvyekPY/j/WMWxew5fXdpUXA7Tc1BYH0X8FBc0yTXIGBLIppt2lQApkKB9v+EWH03lPR2HBUnqFtLyTTVZkWG0hGU6jpNBujtuJEE/b3aWm8v7yMIVO1fWeFNVN425T2VS0bBmwsWYzEEiv3HT8fd2Kx5NwrvHJSTAT2TyPMgkPky23nFebxUTUqDfyVo8Nun7IELv9/jw6axFLHFED7Pce/8P4uJ4VA==
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Go2Rtc Add Stream"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/go2rtc/streams/{stream_name}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Add or update a go2rtc stream configuration.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"stream_name","in":"path","required":true,"schema":{"type":"string","title":"Stream Name"}},{"name":"src","in":"query","required":false,"schema":{"type":"string","default":"","title":"Src"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

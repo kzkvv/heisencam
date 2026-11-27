@@ -143,6 +143,6 @@ HeisenCam stores a single clean snapshot on disk:
 | Stored file                              | `<camera>-<id>-clean.webp`, always unannotated                                                        |
 | `/api/events/<id>/snapshot.jpg`          | Starts from the camera's `snapshots` defaults, then applies any query param overrides at request time |
 | `/api/events/<id>/snapshot-clean.webp`   | Returns the same stored snapshot without annotations                                                  |
-| [Frigate+](/plus/first_model) submission | Uses the same stored clean snapshot                                                                   |
+| [Frigate+](../plus/first_model.md) submission | Uses the same stored clean snapshot                                                                   |
 
 MQTT snapshots are configured separately under the camera MQTT settings and are unrelated to the stored event snapshot.

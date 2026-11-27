@@ -1,0 +1,73 @@
+---
+id: set-description-events-event-id-description-post
+title: "Set event description"
+description: "**Access:** Admin role required."
+sidebar_label: "Set event description"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVktz2zYQ/iuYvfgxtKh42gtvTuK26WOSsZX2YGs0ELkSEZMAgwVlczj875kFSImSaieT5tCLRBL7/Hb3W7Tg5JoguYPrDWpHMI8gQ0qtqpwyGhI4P79KUyRKzs/FVVYqLawpUFj8XCuL2eRe3+tbdCSkFsg2TkiMLEzutRBC3KCrrSYhBdXenCiRSK5RGOs1rTVWqJVwOQYzQpHQxomVqXU2gQhMhVayyXcZJEDoFiM3C69Di/C/UNli77Qy5CCCSlpZokPLGbegZYmQwKACESjOuJIuhwiGDCFxtsYIKM2xlJC04JqK9chZpdcQgVOu4A8eQvEug66bB30k99pkDSsdmkuNdqgdH8mqKlTqc4s/EaPejrxVljN3Conf9orTgtTN+5VPZj+oLtp+0XVRAAc0hDnLcVwhYUaoQ9dFg6JZfsLU7SFxt+d/fpA6vd0d+rS7js1ZpMpoCvFfTqdHacBt6IlVXYibXhi+G6G+wUaFWhpToNSjSvUOoYug78OX6vpXL/I1bAbPO6MjhH5FjVal2/wCNj9dXh7D8bcsVOaTFdc8F9+PRYZOqoKflMOSjgUKk+6dfkM/Ke1wjRa6+Q4Oaa1sRoj9aUKAHmBafxO4g7EX5suTxIxPv1YKziu47uVGldjBG9B9Po23Ab5/czaI/DabfTgyGGpLmNZWucbDubJqLR16Br2qXQ7J3ZyH8uliCPuCeZWDYBGIAJ8calJGB7J6wAaSI/EINrKod2psskSXG+bILeuxO4gDRcbtwHddPG47jtduBmqsbQEJ5M5VlMRxhqWZ9BlMNipDE8tK+abYCSZxXJhUFrkhl/w8nb4KMvMdELfcpaHvjuHYll1W6g9sBjJOjXlQnGdP1r3iwpkH5KD3J4dNoXY8HpgJQmL8xGNuiDcWmWKDWdhfisSJh+xkIpgQB1lFAsnJZaEox0xslPTk+Ps/MxFCEYqoxkwsG/Hh/e1MxIVZKx3xHmPhypqnRsja5SJHmaElcWqxNA4vakIrYtG/cRRn4jFHLX4JOQlbaxJLzJXOeCfKXTJKr4VFrg4GDxPu2h6Lj4T2R2Kom7HrEY6nHrmTjcJHtCecca7WOdqz6Idj9h9w6SJgWrzZrd/rJ1lWBR4T7ZbcQOmV8fj1Y82DhZaC2HTyajJlKR6oUnrG7aG8RddfV/Zn6WBNb+n7/3Od6jvF4ZOLq0Iqz9V+mtueMe7CzYj3WTK6Ix3cAHjcWbZtl5Lwoy26jj9/rtEy882ZoaySS4b1roVMET9nkKxkQfgCUqc3PSZn4rlwh27XzYgIIeq5chuz31Shs0ZU+iZ4uvD7ZMSjh+uVWS5ocOUq96LsmH651SGCZX8BLE3GOlY+8q6SjyFU4zP3nOi/tVBIva79jQSCTe5oeTTfD36++4fRwt4H43DUQyL8O9ro+yptG9ij67by4ehZjR7aQdqvoa7rvgAykknp
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Set event description"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/events/{event_id}/description"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Sets an event's description.
+    Returns a success message or an error if the event is not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"The description of the event"}},"type":"object","required":["description"],"title":"EventsDescriptionBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

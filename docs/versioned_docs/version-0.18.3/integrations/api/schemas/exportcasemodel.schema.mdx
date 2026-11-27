@@ -1,0 +1,33 @@
+---
+id: exportcasemodel
+title: "ExportCaseModel"
+description: "Model representing a single export case."
+sidebar_label: "ExportCaseModel"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"string","name":"string","description":"string","created_at":0,"updated_at":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExportCaseModel"}
+>
+</Heading>
+
+
+
+Model representing a single export case.
+
+<Schema
+  schema={{"properties":{"id":{"type":"string","title":"Id","description":"Unique identifier for the export case"},"name":{"type":"string","title":"Name","description":"Friendly name of the export case"},"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Description","description":"Optional description of the export case"},"created_at":{"type":"number","title":"Created At","description":"Unix timestamp when the export case was created"},"updated_at":{"type":"number","title":"Updated At","description":"Unix timestamp when the export case was last updated"}},"type":"object","required":["id","name","created_at","updated_at"],"title":"ExportCaseModel","description":"Model representing a single export case."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

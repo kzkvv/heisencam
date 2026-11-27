@@ -1,0 +1,74 @@
+---
+id: false-positive-events-event-id-false-positive-put
+title: "Submit false positive to Frigate+"
+description: "**Access:** Admin role required."
+sidebar_label: "Submit false positive to Frigate+"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVktv4zYQ/ivEXPKoYnmD9qJbgN2i2wc22DjtITEMWhpb3FCklkM5MQT992JIyZbtTQq0e+vFksV5fjPzDVvwck2QPcCHDRpPME+gQMqdqr2yBjK4vLzJcyTKLi/FTVEpI5zVKBx+bZTDYvJoHs1ds6yUF9IIZCtCkpBiJTWhqC0przYovBU/O7WWHn+YPBohhJiVigSaorbKeKFI+BIFyQpZP7x7aQrpip2iIHZEpKzZKSbR2LIJJqjGXK1ULrXeipV1opLuSZn1m7FNIAFbo5Oc8scCMgjni+F8ETRpEZ8LVSwWRwJ14yGBWjpZoUfHgLZgZIWQwaAECSgGtJa+hAQGACHzrsEEKC+xkpC14Lc165F3yqwhAa+85g+hQuJjAV03Z32qrSEkVrmeTvlxWLm7JhRu1WjxuReGBHJrPBrP4rKutcpD1ukXYp12FEbtGBOvogeKxkbxLa3VKM0owN4hdAnUuiHO+Y10bnVDMZtkkLHLL5j7A3Aedp73RudHmNzX2sqC7e3y7Do2++P19Sksf0qtipC0+OCcdf8ekwK9VJrflMeKTgW0zQ9Opdl+WoXeOASlS3ZflPG4RgfdfA+LdE5uR8j9bmOADHRF67dA/gOJ5BphZ+yN9mIwxIxP/6kknFd03cuNKrKHN6L7ehrvI3zfcjaI/DKb3Z4YjLUlzBun/DbAuYoEEfjppvElZA9zHpKXqyHsK2YtDoJFIAF88WiYSOKsPuEWshPxBDZSN3s1NlmhLy1zxDDz7A3SSBFpO0x7lx5SBHDEbjNwQ+M0ZFB6X1OWpgVWdtLnMNmoAm0qaxXaYi+Ypam2udSlJZ/9NJ2+izLzPRR33Kex804B2RVe1uo33A5slFv7pDi6nq16xYW3T8g4Hc4Om0LjeUCwEISRip9LS7wRyOoNFnE/KBJnAbSziZgxl/eyTPnk5VIrKrEQGyUD1f/610zEUIQiarAQy624/XQ3E6m2a2USYV0Qrp192QrZ+FKUKAt0JM4dVtbjVUPoRCr6fxzFhXgu0QzrQ7jGkFhiqUzB+0Duk+EN4ZCrg9HDhPu2x+Ke0H1PDM127HqE43lA7myj8BndGWdcqnWJ7iL57pj9B1w6znplAxr9mPKgoKOY33TybjINO8CSr2Rg0B6Y/p7w+s3gGKx2T83/l4tI32EeX3xaa6kCywcWaHuyeYhXCt6I2ehyccQ38wSYKVi8bZeS8N7pruPPXxt0TJtzpjen5JJr+NBCoYjfC8iCqTdKcf65B/1CvBbxMChmO2JRSHqi3YUd1lxsyhEPc6FrP6bf4618wMS39zNIQJ6M6FMY0f5ltHUPgzqe1hgC/47W8qFK20YC6LqdfDx6VaNPcZAOu6Trur8BJob8jQ==
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Submit false positive to Frigate+"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/events/{event_id}/false_positive"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Submit an event as a false positive to Frigate+.
+    This endpoint is the same as the standard Frigate+ submission endpoint,
+    but is specifically for marking an event as a false positive.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"plus_id":{"type":"string","title":"Plus Id"}},"type":"object","required":["success","plus_id"],"title":"EventUploadPlusResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

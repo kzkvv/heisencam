@@ -1,0 +1,65 @@
+---
+id: reindex-embeddings-reindex-put
+title: "Reindex embeddings"
+description: "**Access:** Admin role required."
+sidebar_label: "Reindex embeddings"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVU1v40YM/SsEL9kNJpK3QC+6BQVabIuii3ygh8QIRhItzXo0ox2OHBuC/ntBjRw7yfbUvdUHW5Y4j3yP5NOIUTeMxQP+YjWz2ZhKR+MdrhXWxFUw/fy3wMvL66oi5uLyEq7rzjgI3hIE+jaYQHX26B7dDRlX054YYktAXUl1bVzDsPEBtLUQg662VIMvv1IVOXt0AAA3CYOBqdMumgqYdKhaiB5KAnK6tFSDcTNs5d3GNEOY68zghuIQHIMGHuYCoSNm3RBITgcUgg9gNu/ADYPz8YieoULfU0L9XGOBIZF5OtF4Ot7qh4gKA3HvHRNjMeJPq5X8vNbsNlW0GSzcLMGosPIukosSrvveLornX1nOjMhVS52Wqz5IRdGkDAs9uYyHnrDA0ntL2qHCaKKlU0KcFC4qnIVzDMY1Z9F/LiHTpI4xqTEzudRXGY1j5hPo+gTyGzkKpnrhN8lHIVM1BBMPWDyMuAmm0ZHmsbkeYovFw3paK9xfHdNcyTBhgVpCUCHtIzk23vEMsKUDFu/CFe60HU7HBLKj2HppX+pRryUb5kvnUAoLOwoJdggWC2xj7LnI85o6ny2lZjtTk891b3BS54FFnltfadt6jsXPq9WnFLM+Mb6V/qWWvef90gzdmz/ogAqNDErl/dYIIac7ebocfIp+SyLH67ESKJJR1pFqYGIRCp5bz7KP7O2O6rSdhuFi1uYig7uWXmINA3HUpTXcUg07o+fV+v3vO0ilgGEeqIbyAF/+ur2D3PrGOCU7JcF98PsD6CG20JKuKTB8CNT5SFcDU4Acln9SxUd4bsnBr4kThMExlNQaV8t+6hMZ4xoIJN2hlCGTQV60uGcKP1JDdzhPfabjh1m5i52hZwoXwrg1TUvho/rhmv0HXSZhvfGzGssmyj5Q4MRvlX3KViJf7zl2enaWRZjFpc/8+a0648mj/g++v4xTpH3Me6vFSVRa+XExkIfj20CcT1Zfbo1jqZnug50muf1toCB2txZbCkbQZ59TmNp9ZmSiaB/P/evte+CVlX25v0OF+t3wb+fhXy4E/fjIHc6w3+5BKkG+xdm+e2Qc02pN00t8evSvJxaKx+jZjKdp+gdsOOxQ
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Reindex embeddings"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/reindex"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Reindexes the embeddings for all tracked objects.
+    Requires semantic search to be enabled in the configuration. Returns a success message or an error if semantic search is not enabled.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

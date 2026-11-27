@@ -1,0 +1,74 @@
+---
+id: recognize-face-faces-recognize-post
+title: "Recognize a face from an uploaded image"
+description: "**Access:** Admin role required."
+sidebar_label: "Recognize a face from an uploaded image"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1z2zYQ/Ss7uNjx0JKSaS+8pWkz/U7GdpqDrfFAxFJEDAIMFnSsavjfOwuQIiXZSabNsReJJHYXbx9232IrglyTyK/FKyOJdKkLGbSzYpkJhVR43cTXXJydvSwKJMrPzuClqrUF7wyCx4+t9qhmN/bGXmDh1lb/jQQSSlkglN7VIC20jXFSoQJdyzVCqQ3CagOFqxvptV2DDiDXUlsKNxYAwONaU0CPKgYi0BZChUAbCljP4AJD6y3Fb37YNtmClTWCtAoKZ0ut0BYIVDiPWYrtPENC750HXSafPgYnC5rAugBo5cqgYnPeJSEvpOW1FULjHfOBaiYy4Rr0kbhflMjFDtAtx44/dDt+bBwFkQmmDin84NRG5FsxMCny4FvMROFsQBt4qW5N0I30YV46X58rGSR/pqLCOj41ngEEjcRvzC7/h02DIhcUmGGRCXaWQeRipa30G5GJoAObitfs0XXZ4OJWH7AYMCZQ1ynscnRi4Ldfk2rXcWiP1DhLCeKLxYL/9kvsso0VVrYGLnpjsceDbBrTF+j8A7HP0yRQCjbhYeWcQWknafcbisNaf19hqDAd+1F1fJIEtEMqukzE2or47OZNKfLr3Za2rVfoRZdNvhgjugmLl9H5EMGrg8oFV05LPQI5XZw/f8b7R+a56B/F0B//5zC85hz/5ACHOK6eai9d7pHwhdIZDuNgz4sxm8mB7yMYFqB2Cg2Uzh8fCVrVOG1DL0JTZaDWBCZPhoB1E1hqghtT+rxOzfrS/e7Fi+Nq/UsarWItwk8sJf++VBUGqQ0/6YA1HRsYV+ytfsUZaxtwzaW3HI9Gei+nXf+768W+y0RN68ckYzD9A4nkGsUu2NOmkQy44tUvlQXnlbbu7Sb1MdKb2H06jR8TfY9tNpj8fHX19ihgOlvCovU6bCKdpddrGTDOt5dtqER+veRGeTgfYJ/z1GMQbCIygQ8BLWlnKQa4w43Ij8wzcS9NO7pxyBpD5XhY9NOgkbydmEcFne8KVDBCf48+xW+9EbmoQmgon88V1m7WY57da4VuLhsdy2A0zOdz4wppKkch/36xeJ5slmPql1yX/eg4ImB30LLRvyHzrrn6C+fuNKNLujM43gZ3h/aoiTkU2sANgQoIiaKSVo5ijzpzjyrdJzTBSSTpZAYsPoOtJkAKcmU0VajgXsvY4L++v4IEBTRRi4pvFW/fXF7B3Li1thlPbzZuvHvYgGxDBRVKhZ7g1GPtAp63hB7m0L8ximfwqUILr1NO4FtLsMJKW8UaIcdkWE488ulg2mEW9Tj5vSP035JDu5luPeHxNDJ3cq/xE/oTzrjS6wr9s+ybc/YfeOk469JFNvq25MZATym/xez5bMH0cUPUMipmT8zF18n1IWXbUZD/v75+9vral2fAhzBvjNRxJEQJ2fbCdB1vGRQFfJCmZSZYVHhxu11JwnfedB1//tiiZ0VdsvJ5zUCilGYiFdJEK1+lIzqPA2MUyseuvKxryYnPsglTXT0ct3sSy8UtMrHqb9p8k+B2c76OcbPxMYGUR117F7u2f5gMXmk3ExSHDZzA8u9kMu+7bLdJE7puZ5+WnvToGRys4zjpuu4f93LP2A==
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Recognize a face from an uploaded image"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/faces/recognize"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Recognizes a face from an uploaded image file by comparing it against
+    registered faces in the system. Returns the recognized face name and confidence score,
+    or an error if face recognition is not enabled or the image cannot be processed.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"multipart/form-data":{"schema":{"properties":{"file":{"type":"string","format":"binary","title":"File"}},"type":"object","required":["file"],"title":"Body_recognize_face_faces_recognize_post"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success","description":"Whether the face recognition was successful"},"score":{"anyOf":[{"type":"number"},{"type":"null"}],"title":"Score","description":"Confidence score of the recognition (0-1)"},"face_name":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Face Name","description":"The recognized face name if successful"}},"type":"object","required":["success"],"title":"FaceRecognitionResponse","description":"Response model for face recognition endpoint.\n\nReturns the result of attempting to recognize a face from an uploaded image."}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

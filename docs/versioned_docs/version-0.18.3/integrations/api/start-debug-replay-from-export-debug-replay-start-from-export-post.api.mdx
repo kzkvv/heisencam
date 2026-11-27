@@ -1,0 +1,72 @@
+---
+id: start-debug-replay-from-export-debug-replay-start-from-export-post
+title: "Start debug replay from an export"
+description: "**Access:** Admin role required."
+sidebar_label: "Start debug replay from an export"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVlFv2zYQ/isHvqQNFNsNsofqLWtTLN2GFom7PbhGQIlni4lEqkfKsWDovw9HyrFip8nQ9WUvtiQej3fffXcfN8LLpRPpTJzXtZgnQqHLSddeWyNScXx8nufoXHp8DOeq0gbIlgiE3xpNqEZfzVdz7SV5kKAwa5ZAWJeyBYfOaWsgtyskbZYgDeBaO8/PuK4t+SMHXlcIJM0SRzAtENCo+E07UEh6hQoWZCvwvLjdtdIKLaiGJEc5EomwNcaXSyVS4TigmxDOTQznhp3cRAePF6LtcLm2zotEcIro/K9WtSLdiG3GIvXUYCJyazwaz0uyrkudh+PHt45h2wiXF1hJfqqJg/MaHb/1Z2jFL76tMYTLAIlEeO1L/nARjEAr0XXJ1spmt5hvA4uRzAbu5rvt7zm/q5BeKM0HslV0GZLZL/FVTBQyq1pYWIIASSjZ0yUNBQnlZJ8j0XUcJqGrrXExzdPJKf89Pui6CVRaNCVc9cbih4F00dkAxszaEqUZ4NgfKEJ0odq5rJDkc9hH3OBdNOwScWuzF8r10WZw+XKtthHvB/NwxDMlHOC1X7y48G8Kt63U2WRyWJxLs5KlVn1Rk0FnJmAJjAXC3JLSZhkAPZucHTrpiWush4VtjIqGbw8Nz/c5pR3IklCqFmTu9QrD1tMnWPQXhxk4AhdEln6cQgq91CU/aY+VOzQobf5oVZr200Kks30qdMnDF208LpFEN9+xQRLJdsCXP2wMkFOs3PI5av2JzsllACOaPDM0GAyY8upLTOS84tG93YB5O3gjut9P432E76nDtia/TaefDxxGEjrMG9K+DXAuSC+lxyAw540vRDqbd/NErE+2YZ+w7HAQbCISgWuPhpnjgoM7bEV6YJ6IlSyb3TZ2WaEvLItEP+ZryceJ8VAUxgeiIDhgWiHF4xoqRSoK72uXjscKKzvqUxgFbRrLWgdW7AzT8bi0uSwL63z6y2TyJtrMd0hcM00j8Q7xeKi7rPXvyGXQ3Ay5tXeaEzWy4tV+4423d2gOhgW7QuO5P1A9tN59YR0rurMly23Qd+3gKGB2FHV50KbovMxK7QpUsNIyKPPHv6cQQwHtXIMKshY+f7qewri0S23CCGHjmuy6Bdn4AgqUCsnBK8LKejxpHBKMoX/jKF7DfYEGPsScgBrjIMNCG8XqI3fJ8Mgj5OpgPGHEtO2x+OKQfiaGph0ePcDxVUDuaKXxHumIMy70skB6nfx0zP4DLqxozpqr3e3mYi2rusS928lutgltFjag13c19xWSi3hMRm9GE7bifqpkGLg9kPFe+EiJHl8d9sHd7Cb5/+Xi2TPK49qP61LqMNRD12/60TITw9HCg+RguMwTwWOBbTebTDr8QmXX8edvDRKPyDmPMtIy4wLMWFsiFQbD712E7iQowGDy7Qsij6W4gwGu/bO2w4HJ3BSJyPoLcWUV7yF5z+oi7yMxbChlGGLh20aU0iwb1rBURJ9MQXnQkHehIfuHgcRK0w4i3O/NmAj/DjT48ZbNJrZ71z3Yx6Xv7uih3VoH4ei67h/rzJrA
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Start debug replay from an export"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/debug_replay/start_from_export"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Start a debug replay session covering an existing export's time range. The end time is derived from the export's video duration.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"export_id":{"type":"string","title":"Export id"}},"type":"object","required":["export_id"],"title":"DebugReplayStartFromExportBody","description":"Request body for starting a debug replay session from an export."}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"202":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"replay_camera":{"type":"string","title":"Replay Camera"},"job_id":{"type":"string","title":"Job Id"}},"type":"object","required":["success","replay_camera","job_id"],"title":"DebugReplayStartResponse","description":"Response for starting a debug replay session."}}}},"400":{"description":"Invalid export, time range, or no recordings"},"404":{"description":"Export not found"},"409":{"description":"A replay session is already active"},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

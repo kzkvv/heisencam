@@ -47,7 +47,7 @@ If you are using multiple streams then you must set the `audio` role on the stre
 
 :::note
 
-The ffmpeg process for capturing audio will be a separate connection to the camera along with the other roles assigned to the camera, for this reason it is recommended that the go2rtc restream is used for this purpose. See [the restream docs](/configuration/restream.md) for more information.
+The ffmpeg process for capturing audio will be a separate connection to the camera along with the other roles assigned to the camera, for this reason it is recommended that the go2rtc restream is used for this purpose. See [the restream docs](./restream.md) for more information.
 
 :::
 
@@ -78,7 +78,7 @@ cameras:
 
 ### Configuring Minimum Volume
 
-The audio detector uses volume levels in the same way that motion in a camera feed is used for object detection. This means that HeisenCam will not run audio detection unless the audio volume is above the configured level in order to reduce resource usage. Audio levels can vary widely between camera models so it is important to run tests to see what volume levels are. The [Debug view](/usage/live#the-single-camera-view) in the HeisenCam UI has an Audio tab for cameras that have the `audio` role assigned where a graph and the current levels are displayed. The `min_volume` parameter should be set to the minimum the `RMS` level required to run audio detection.
+The audio detector uses volume levels in the same way that motion in a camera feed is used for object detection. This means that HeisenCam will not run audio detection unless the audio volume is above the configured level in order to reduce resource usage. Audio levels can vary widely between camera models so it is important to run tests to see what volume levels are. The [Debug view](../usage/live.md#the-single-camera-view) in the HeisenCam UI has an Audio tab for cameras that have the `audio` role assigned where a graph and the current levels are displayed. The `min_volume` parameter should be set to the minimum the `RMS` level required to run audio detection.
 
 :::tip
 
@@ -184,7 +184,7 @@ HeisenCam supports fully local audio transcription using either `sherpa-onnx` or
 
 :::info
 
-Audio transcription requires a one-time internet connection to download the Whisper or Sherpa-ONNX model on first use. Once cached, transcription runs fully offline. See [Network Requirements](/frigate/network_requirements#one-time-model-downloads) for details.
+Audio transcription requires a one-time internet connection to download the Whisper or Sherpa-ONNX model on first use. Once cached, transcription runs fully offline. See [Network Requirements](../frigate/network_requirements.md#one-time-model-downloads) for details.
 
 :::
 
@@ -256,7 +256,7 @@ The only field that is valid at the camera level is `enabled`.
 
 #### Live transcription
 
-The single camera Live view in the HeisenCam UI supports live transcription of audio for streams defined with the `audio` role. Use the Enable/Disable Live Audio Transcription button/switch to toggle transcription processing, or toggle it outside of the UI with the [`frigate/<camera_name>/audio_transcription/set`](/integrations/mqtt#frigatecamera_nameaudio_transcriptionset) MQTT topic or the HTTP API. When speech is heard, the UI will display a black box over the top of the camera stream with text. The MQTT topic `frigate/<camera_name>/audio/transcription` will also be updated in real-time with transcribed text.
+The single camera Live view in the HeisenCam UI supports live transcription of audio for streams defined with the `audio` role. Use the Enable/Disable Live Audio Transcription button/switch to toggle transcription processing, or toggle it outside of the UI with the [`frigate/<camera_name>/audio_transcription/set`](../integrations/mqtt.md#frigatecamera_nameaudio_transcriptionset) MQTT topic or the HTTP API. When speech is heard, the UI will display a black box over the top of the camera stream with text. The MQTT topic `frigate/<camera_name>/audio/transcription` will also be updated in real-time with transcribed text.
 
 Results can be error-prone due to a number of factors, including:
 

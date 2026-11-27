@@ -34,7 +34,7 @@ record:
     days: 3 # keep all footage for 3 days
 ```
 
-See [Recording](/configuration/record) for the full set of common configurations, including reduced-storage and alerts-only setups.
+See [Recording](../configuration/record.md) for the full set of common configurations, including reduced-storage and alerts-only setups.
 
 </FaqItem>
 
@@ -42,7 +42,7 @@ See [Recording](/configuration/record) for the full set of common configurations
 
 If you only configured `motion`, `alerts`, or `detections` retention (with no `continuous`), HeisenCam keeps footage selectively based on the retention `mode`:
 
-- **`mode: motion`** (the default) only retains segments that contain motion. If your [motion masks](/configuration/motion_detection) cover the areas where activity happens, or your motion sensitivity is too low, nothing will be retained even though recording is "on".
+- **`mode: motion`** (the default) only retains segments that contain motion. If your [motion masks](../configuration/motion_detection.md) cover the areas where activity happens, or your motion sensitivity is too low, nothing will be retained even though recording is "on".
 - **`mode: active_objects`** only retains segments where a tracked object was actively moving.
 - **`mode: all`** retains every segment in the window.
 
@@ -55,13 +55,13 @@ If you expected continuous footage but only configured motion/event retention, a
 `alerts` and `detections` retention only keep footage that overlaps a tracked object, so they depend on object detection running:
 
 - **Detection must be enabled.** If `detect: enabled: False`, no alerts or detections are ever created, so alert/detection retention keeps nothing. (Continuous and motion retention still work with detection disabled.)
-- **The object must be supported by your model.** If you track an object your model doesn't support (for example `deer` or `license_plate` on the default model), HeisenCam never detects it and never records for it. Check your logs for warnings such as `... is configured to track ['deer'] objects, which are not supported by the current model` and remove unsupported objects or switch to a model (e.g. [Frigate+](/plus/)) that includes them.
+- **The object must be supported by your model.** If you track an object your model doesn't support (for example `deer` or `license_plate` on the default model), HeisenCam never detects it and never records for it. Check your logs for warnings such as `... is configured to track ['deer'] objects, which are not supported by the current model` and remove unsupported objects or switch to a model (e.g. [Frigate+](../plus/index.md)) that includes them.
 
 </FaqItem>
 
 <FaqItem id="youre-following-an-outdated-guide" question="You're following an outdated guide">
 
-Configuration keys change between major versions. The old `clips` config, for example, has not existed for a long time. If you copied a config from an old blog post or video, verify every key against the current [reference config](/configuration/advanced/reference).
+Configuration keys change between major versions. The old `clips` config, for example, has not existed for a long time. If you copied a config from an old blog post or video, verify every key against the current [reference config](../configuration/advanced/reference.md).
 
 </FaqItem>
 
@@ -71,7 +71,7 @@ Configuration keys change between major versions. The old `clips` config, for ex
 
 HeisenCam stores recordings in an MP4 container, and some camera audio codecs (most commonly `pcm_alaw`, `pcm_mulaw`, or other G.711 variants) **cannot be placed in an MP4 container**. When this happens, ffmpeg fails to write the segment and no recording is saved, even though the live view works fine. This is a frequent cause on Tapo, TP-Link VIGI, and some Reolink cameras.
 
-Transcode the audio to AAC (or drop it entirely) using the appropriate [ffmpeg preset](/configuration/ffmpeg_presets):
+Transcode the audio to AAC (or drop it entirely) using the appropriate [ffmpeg preset](../configuration/ffmpeg_presets.md):
 
 ```yaml
 cameras:
@@ -132,7 +132,7 @@ Open the same recording in **Firefox** or **Safari**. Firefox and Safari both us
 
 Browser support for H.265 (HEVC) is limited and depends on the operating system, GPU, hardware acceleration, and browser version, which makes it the most common cause of this error. Options, in order of reliability:
 
-- **Record H.264 instead.** Configure the camera's `record`/main stream to output H.264, the most compatible codec across all browsers. See [camera settings recommendations](/configuration/live#camera-settings-recommendations).
+- **Record H.264 instead.** Configure the camera's `record`/main stream to output H.264, the most compatible codec across all browsers. See [camera settings recommendations](../configuration/live.md#camera-settings-recommendations).
 - **Transcode to H.264 with go2rtc.** If you must keep HEVC on the camera, have go2rtc re-encode the recording stream. This increases CPU usage; add `#hardware` to use the GPU where available:
 
   ```yaml
@@ -153,7 +153,7 @@ Browser support for H.265 (HEVC) is limited and depends on the operating system,
 
   The `#video=h264` parameter only takes effect with the `ffmpeg:` source module; adding it to a plain `rtsp://` go2rtc source does nothing.
 
-- **Keep HEVC but improve compatibility.** If your browser and OS do support HEVC, set [`apple_compatibility`](/configuration/camera_specific#h265-cameras-via-safari) on the camera. Some players (Safari and other clients) require a specific HEVC stream format that this option corrects:
+- **Keep HEVC but improve compatibility.** If your browser and OS do support HEVC, set [`apple_compatibility`](../configuration/camera_specific.md#h265-cameras-via-safari) on the camera. Some players (Safari and other clients) require a specific HEVC stream format that this option corrects:
 
   ```yaml
   cameras:
@@ -227,12 +227,12 @@ This is almost always a **camera or network problem**, not a HeisenCam one. A se
 
 #### Start with the camera and the network
 
-- **The camera dropped the connection.** Cameras reboot, reinitialize their stream when switching to night mode, and cut clients off when they are overloaded or out of simultaneous connections. Count everything pulling from the camera at once: HeisenCam's detect and record streams, go2rtc, a phone app, and any other NVR each use one. Routing all roles through a single [RTSP restream](/configuration/restream#reduce-connections-to-camera) so the camera only ever sees one connection often resolves this by itself.
+- **The camera dropped the connection.** Cameras reboot, reinitialize their stream when switching to night mode, and cut clients off when they are overloaded or out of simultaneous connections. Count everything pulling from the camera at once: HeisenCam's detect and record streams, go2rtc, a phone app, and any other NVR each use one. Routing all roles through a single [RTSP restream](../configuration/restream.md#reduce-connections-to-camera) so the camera only ever sees one connection often resolves this by itself.
 - **The link to the camera is unreliable.** WiFi cameras, powerline adapters, a saturated uplink, a failing switch port, or a marginal cable all produce this pattern, and usually only on one camera at a time. WiFi cameras are [not recommended](https://ipcamtalk.com/threads/multiple-cameras-high-bandwidth.77100/#post-861110).
 - **The camera cannot reliably send what it is being asked for.** A high bitrate 4K stream can be more than the camera's own hardware can encode and push out under load. Lower the bitrate, or record a lower-resolution profile.
 - **The camera is using a "Smart Codec", H.264+, or H.265+ mode.** These change encoding parameters mid-stream and produce the broken timestamps behind the corrupt-segment variant. Turn the mode off and set the camera's keyframe interval equal to its frame rate. See [Segments are only ~1 second long](#segments-are-only-1-second-long).
 
-Read the rest of the HeisenCam and/or go2rtc log around the **first** occurrence. When the camera or the network is at fault, other messages show up with it, such as `No frames received from <camera> in 20 seconds`, `Non-monotonic DTS`, `RTP: PT=xx: bad cseq`, `error while decoding MB`, or a connection timeout. Each of those is explained in [Common error messages](/troubleshooting/common_errors). To confirm the camera is the source, open its stream in the [go2rtc web interface](/troubleshooting/go2rtc) on port `1984` or play the same URL in VLC, and leave it running long enough for the failures to happen again.
+Read the rest of the HeisenCam and/or go2rtc log around the **first** occurrence. When the camera or the network is at fault, other messages show up with it, such as `No frames received from <camera> in 20 seconds`, `Non-monotonic DTS`, `RTP: PT=xx: bad cseq`, `error while decoding MB`, or a connection timeout. Each of those is explained in [Common error messages](./common_errors.md). To confirm the camera is the source, open its stream in the [go2rtc web interface](./go2rtc.md) on port `1984` or play the same URL in VLC, and leave it running long enough for the failures to happen again.
 
 #### If the camera and network check out
 
@@ -448,7 +448,7 @@ Errors like `[Errno 17] File exists: '/media/frigate/recordings/.../<camera>'`, 
 
 If the next-line error references a camera name that no longer exists in your config, orphaned data is left over from a rename or removal in a persistent `/tmp/cache` volume.
 
-- Using a `tmpfs` mount for `/tmp/cache` as recommended in the [installation docs](/frigate/installation#storage) prevents stale cache files under the old camera name from surviving a restart, which avoids this issue entirely.
+- Using a `tmpfs` mount for `/tmp/cache` as recommended in the [installation docs](../frigate/installation.md#storage) prevents stale cache files under the old camera name from surviving a restart, which avoids this issue entirely.
 - If errors persist, stop HeisenCam and remove any leftover segments for the old camera name from `/tmp/cache`.
 
 </FaqItem>
@@ -461,7 +461,7 @@ You'll want to:
 
 - Make sure your camera's timestamp is masked out with a motion mask. Even if there is no motion occurring in your scene, your motion settings may be sensitive enough to count your timestamp as motion.
 - If you have audio detection enabled, keep in mind that audio that is heard above `min_volume` is considered motion.
-- [Tune your motion detection settings](/configuration/motion_detection) either by editing your config file or by using the UI's Motion Tuner.
+- [Tune your motion detection settings](../configuration/motion_detection.md) either by editing your config file or by using the UI's Motion Tuner.
 
 </FaqItem>
 

@@ -1,0 +1,73 @@
+---
+id: set-plate-events-event-id-recognized-license-plate-post
+title: "Set event license plate"
+description: "**Access:** Admin role required."
+sidebar_label: "Set event license plate"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVktz2zYQ/iuYvfgxtCRn2gtvbuu2aZ2Jx1Lag63RQORKRAwCDADKUjj8750FQImyIqWT5tCLRZP7/Hb3223A8aWF9BFuV6ichWkCOdrMiMoJrSCFy8ubLENr08tLdpOXQjGjJTKDn2phMB88qSc1RmcZVwzJxpllUmSoLLJKcoeDJ8UYYw/oaqMs48zW3iAr0Vq+RKaN1zVGGyYWzBUYDDFhmdKOLXSt8gEkoCs0nMJ6m0MKFt3MO5h5aTsLvzORz2YGM71U4jPmsxhLFK20dZBAxQ0v0aGh1BtQvERIodOHBASlXnFXQAJdqpA6U2MCNiuw5JA24DYV6VlnhFpCAk44SS88luxtDm07Dfpo3U8635DSa3OZVg6Vo0+8qqTIfIrDj5bgb3reKkMAOIE2mOlSvAsZ3lOCX4qq5Os7VEtXQHo9Gu2ifNhaYNEECzba5Ij1caaNd8HV5v3CQxedqbqcownORFmXkF4ngOtM1las8J1Q4eWoTXoqUgLh08XjrbOFNmznfb+VoG2TTl3PP2Lm9srzeAyU6avS2Lv7B1+Otm19srbSygZc34xG9LM/BOPQsotasocoDN9cudj/vVLNtZbIVa+DokMqRRyTU/32Lop8DZ7O885oD5nfUKER2Ta/gM0Pb94cwvEXlyL3ybJbGttvxyJHx4WkJ+GwtIcCUmd7Xw86L4LRayyhHC7RQDvdwcGN4ZseYnc6BOgBtst/BW5n7MTcew6b0NevlYLyCq6jXK8SO3gDusfT+CXA9yVnncjvk8n9gcFQW4tZbYTbeDgXRiy5Q0/xNzWRxeOUpnN91YV9RcRPQZAI0Hg7VFZoFUj0GTeQHognsOKy3qmRyRJdoYnCt2xM7mAYeHzYdDzcDo/xOFDwZtXxd20kpFA4V9l0OMyx1IOYzmAlctRDXgnfITvBdDiUOuOy0NalP45G10FmukNlTC0bmvAQm20P8Er8iZtuY2RaPwuKLm6UqDhz+hkJsv0xIlOoHM0K5syiJTDZS6Et7Ver5QrzsG2FZWcev7MBmxS4lRWWoXV8LoUtMGcrwf36/OPvCQuhMGFtjTmbb9j9+/GEDaVeCpXQziXhyuj1hvHaFaxAnqOx7NxgqR1e1RYNG7L4H0VxwV4KVOzXkBMztbJsjoVQOe1vvktGqCUzSNXB4GFALRyx+GDRfE8M1abvuofjuUfubCXwBc0ZZVyIZYHmIvnumP0HXNoEiCMfdjfC7ZqXlcRTO37HPCf39KglSBfaQx3pgAYSjQ3gjQbXgxHVhgax5J6pI+pjdPEK29/Ar/BvdsT/f7oUY2M5XLthJbnwPO+Hv4ls8xiuPdqFae/uO0o40wSIKkixaebc4gcj25Zef6rREIVOieqM4HPC+bGBXFh6ziFdcGnxBHDnDxGiC3Ys9m5S1KbHqJBE0t0m4Fde6MoeJ/8cPF35xdQj5Nd7mhgyaFAhK3dSts/jNCaQwDxeuKXOScfwF0KUv4RQtc883K70rgHJ1bL2pw0EmzQN/IAbnj03xIfe5t8H4zVNhETob+802FdpmsA8bbuVD5+OakRoO2m/z9q2/Qcnup2l
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Set event license plate"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/events/{event_id}/recognized_license_plate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Sets an event's license plate.
+    Returns a success message or an error if the event is not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"recognizedLicensePlate":{"type":"string","maxLength":100,"title":"Recognized License Plate"},"recognizedLicensePlateScore":{"anyOf":[{"type":"number","maximum":1,"exclusiveMinimum":0},{"type":"null"}],"title":"Score for recognized license plate"}},"type":"object","required":["recognizedLicensePlate"],"title":"EventsLPRBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

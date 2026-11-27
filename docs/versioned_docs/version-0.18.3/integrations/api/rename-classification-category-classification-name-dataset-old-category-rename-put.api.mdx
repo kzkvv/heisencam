@@ -1,0 +1,73 @@
+---
+id: rename-classification-category-classification-name-dataset-old-category-rename-put
+title: "Rename a classification category"
+description: "**Access:** Admin role required."
+sidebar_label: "Rename a classification category"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVktv4zYQ/isDXvKAYmWD9qJbmm7fbYLEaQ+JYdDSWOKGIrUk5QcE/ffFkLQt20266C566cWmyOE8vhl+Mx1zvLQse2I3klsr5iLnTmjFJgkr0OZGNP4zY+fn13mO1mbn53Bd1EKB0RLB4MdWGCxGz+pZ3aPiNVrgkO9pg5w7LLVZw1wb4FCKBapDmVoXKEfPCgBgXCFoWezu1a11gCthHXBVgKsQFC6BzIWzGcKCS1GM4B5daxQ5YVvvMdRoLS8RyLYCNEYbEPOghBQIC0KF2yxhukHjPfq5YBkzPqTpvq/TjV+H+1MvPC244xbddKplsZOdRl1N61jCGm54jQ4Nod8xOmFZ+EuYIMQb7iqWsA3CLHOmxYTZvMKas6xjbt3QHeuMUCVLmBNO0sYfpKTvk63WoRtfrP1WFnCzUdb3k6ADrftOF2u6mGvlUDla8qaREZv0g6U66o4t6NkHzN3AglfU931Pqm2jlUVL8leXl/S3X5cPIcnzVsJ9FGbJ5/vQGMq3E8FCrJiBczOtJXI18C4aZH3CYmG9hdbvUYSCOYx3h/3T1vJO6WSn5EdUaES+jS9g883V1TEcf1IZhwf1ngr932NRoONC0ko4rO2xgNT53ilX69u5L+Z9MKgQ445QDks0rJ/s4ODG8PUAsd90pCAC2JafBe5G2euiHgwY0+k/pYLiCqaj3CATO3gDuq+H8X2A7++MbUR+Go/vjhSG3FrMWyPc2sM5N6LkDj3rXreuYtnThN7d6mLj9gVxMTlBIixhuHKorNAqkMsLrll2JJ6wBZft7hqprNFVmnhvQ1JkjaX7NJd2xCt9Gmku7Yb80qeB5hgFYRYbfmuNZBmrnGtslqYF1noUwxotRIE65Y3wlbITzNJU6pzLSluXfXt5+S7ITHboPFDphmI8xmhbC7wRv+KW93KtXwR5F7kxXpw6/YIE3f5zIlWoHAWOBVi0BCosK22p9VktF1iERigsnHgcT0a+fW1khQW0js+ksBUWsBDcN55f/hpDcAWEtS0WMFvD3e3DGFKpS6ES6lYk3Bi9WgNvXQUV8gKNhVODtXZ40Vo0kEL8Ii/OYFmhgh9CTGBaZWGGlVAFdT6+C0aoEgxSdjBYGFEpRyweLZqviaFaD00PcDz1yJ0sBC7RnFDElSgrNGfJV8fsC3DpE0Zceb/rcu9XvG7owXU9ITLXHqn4quldobEh9svRu9ElQdto62ruCTeCFoal12elQxwHjfX/M4zF8nO4cmkjufBdwVNEF8npie27zhKWRf6J/EQ7BxNQpKhJwohcSEnXzbjFRyP7nrY/tmiIfCdEkkbwGaX2qWOFsLQuWDbn0uIbKTq9j8k4g9fi2LwttR5wMUsiXXsPiRH/Q5t7MPkmHd7PoIvcBGsXvpUOWsjhZEGehxtUqo17U3bYee4exyxhszhMUiHSGM6XlDa+DN5qH7wnfr/XMclV2fpZjAWV9Gz5EYm9eBKLi8Goso/HIZ+FOOh3MMvsX+m6QJF9v5UPR6/eiMhupH0D7vv+E3INtnc=
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Rename a classification category"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/classification/{name}/dataset/{old_category}/rename"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Renames a classification category for a given classification model.
+    The old category must exist and the new name must be valid. Returns a success message or an error if the name is invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}},{"name":"old_category","in":"path","required":true,"schema":{"type":"string","title":"Old Category"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","title":"Body"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

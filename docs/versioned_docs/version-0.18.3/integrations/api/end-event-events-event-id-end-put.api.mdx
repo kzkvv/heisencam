@@ -1,0 +1,74 @@
+---
+id: end-event-events-event-id-end-put
+title: "End manual event"
+description: "**Access:** Admin role required."
+sidebar_label: "End manual event"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVk1z2zYQ/Ss7uDj20JLiaS+8ua3bpl/x2Ep7cDQeSFiJiEGAwYKyNRz+98wCkERZjdtJc+lFIondxb6H3bfoRJArEuWduFqjDSRmhVBIC6+boJ0VpTg7u1wskKg8O4NLVWsL3hkEjx9b7VGN3tv39soqAgm1tK00gBxp9N4CANxgaL3lRWpjGKiRSK4QnAdpAb13HvQSQoXJETSBdQGWrrUqR/nj7fSqhGmlCahyrVHgrNnAHKElVLB0/mBvGolCuAa9ZAxvlCgFWnUf19Iv3ec3re7vea1pgyhEI72sMaBnRjphZY3smy1FITQz0shQiUJsGRBl8C0WghYV1lKUnQibhv0oeG1XohBBB8MfIsXwRom+nyV/pPCdUxt2eh5u4WxAG3hJNo3Riwhm/IH4VLrBbo1nqEEj8RuDCZrz7oS0m7fLiCRnZNt6jl70xeCLMYKz2eVoFUzZv++LrZGbf8BFeA6ErqyKyfc923qkxllKWVxMJvx3WEm3qQKWrYGbbCy+GGcupwHdc+cMSjtIM28o+kLkqnvpdH7PJn8HfH84d7ud90EH9P2EFr1e7PAlbr65uDim409ptIpg4Yq74Mu5UBikNvykA9Z0bGDc4mD1qDAyGYPC0DbgimtltqdDei83A8Z+cynBSDCt/hW522AvdEmUhCmv/tNRMK60dbYbnMSe3sTu52H8kOh7qeB/nk6vjwKmsyVctF6HTaRz6fVKBow6edmGSpR3M+6up/Nt2uesnpwEm4hC4FNAS9rZJDkPuBHlkXkh1tK0ezcOWWOoHEvbVrp4NzFO8jbutqLVj9GychH69VbXWm9EKaoQGirHY4W1G+XER2ut0I1lo2Mt7A3L8di4hTSVo1B+O5m8TjazPf5bLs5Ubscs7E5bNvpX3GyVdOHcg2Z4WWmz431wD8jkHDYMh0IbuCtQASExbfBYOeJxRM6sUaXhpAlOIlMnI5hWuLPVBEhBzo2mChWstYxz55e/ppBSAU3UooL5Bq7f3k5hbNxK24KHFRs33j1tQLahggqlQk/wymPtAp63hB7GkN84i1N4rNDCjwkT+NYSzLHSVvHgk3sw2q7AI58Oph1GXKyZi3eE/mtyaDfDrQc8vorMnaw1PqI/YcSVXlXoT4uvztl/4KUvBKvhzX52Xj3JujF4OPsmPbOzdJG13MPcRegp8TAZvR5NmObGUahllNdMIE/A4W3iOYfdXqb/t5ejXEkBn8K4MVJHCY/d3mUluUvXHh5z5eACxGIyKwTLANt03VwSvvOm7/nzxxY9C+GMBctrOWfi7zqhNPGzEuVSGsIXCH11k6k7hc+lue0CuxnooiiydO5yjYMrVdxAWb9PO53H8TKQ1efTltUvefABN+FF26EaX7+bikLM86WudopdvHzkySUfU6YuAo9SGb91wki7auP9RKSQXOjyqO0fYtvnh8H4PuTiuQIkHPw7mO+HLl2XRKXvd/Zp6bMemdmtdRxKfd9/AsXSPiM=
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"End manual event"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/events/{event_id}/end"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Ends a manual event.
+    Returns a success message or an error if the event is not found.
+    NOTE: This should only be used for manual events.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"end_time":{"anyOf":[{"type":"number"},{"type":"null"}],"title":"End Time"}},"type":"object","title":"EventsEndBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

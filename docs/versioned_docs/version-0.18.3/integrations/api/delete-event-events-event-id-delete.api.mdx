@@ -1,0 +1,73 @@
+---
+id: delete-event-events-event-id-delete
+title: "Delete event"
+description: "**Access:** Admin role required."
+sidebar_label: "Delete event"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVU1v4zYQ/SuDueQDiuUN2otuAZK2226xi8TbHhwjoMWxxY1EaknKiSHovy+GlGw5btKi3UMvtiTO13ucedOiF2uH2RxvNqS9w0WCklxuVe2V0Zjh+flVnpNz2fk5XMlKabCmJLD0tVGW5ORe3+trKsmTA6GBOAysrKnAFwRSeLEUjib3GgDglnxjtQMBrglRoSLnxJrA2OBtrbGgVsE3hlIOtPGwMo2WE0zQ1GQF1/ZeYoYyZH4IpvHXPfRvSj48xGNMsBZWVOTJMtYWtagIMxwMMUHFWGvhC0xwwIaZtw0l6PKCKoFZi35bs5/zVuk1JuiVL/lDIA/eS+y6Bfu72mhHjl0up1P+OyT1LqJfNSXc9saYYG60J+3ZXNR1qfKAM/3i2KcdlVFbZsGrmKGnclTf0piShB4V2CfELsGe8bfg/N6bdF0y2JjlF8r9ATnzXeZ90MU+yM+kyap8h6/rONwPl5fHdPwhSiUDWLjhDvj3XEjyQpX8pDxV7tigNPnBqdDbj6vQE4dkdMnui9Ke1mSxW+zpENaK7YixDyYWGAh2639E7hDsjbYK4zDj07+7CsYVU/d2o5vY0xvZfR3GdaTvr5INJr/MZp+OAsa7dZQ3VvltoHNl1Vp4CpJx1fgCs/mCh+P5Yij7goWEi2ATTJCePWmnjI4z+khbzI7ME9yIstm7cciKfGH2ahDGnRNiGhUhbYdB75CrtJtBBxpbYoaF97XL0lRSZSZ93ZONkmRSUavQCnvDLE1Lk4uyMM5nP06n76LNYg//jnszdtsxCbvLFrX6jbaD8uTGPCquvFem3vHBm0dibg7nhUOR9jwUJMGRY9bgqTCOhdmZckMyyrRycBKIOpnArKCdrXJAzotlqVxBEjZKBMn99c8ZxFJAOdeQhOUWPn28m0FamrXSCes0G9fWPG9BNL6AgoQk6+DUUmU8XTSOLKTQv3EVZ/BUkIafIiawjXawpEJpyZov9mCUXoMlvh2KGSbcqz0Xnx3Z78mh3o5Tj3g8DcydbBQ9kT1hxIVaF2TPku/O2X/gpWPUKxPY6EeTh4Osi/imk3eTKdNXG+crEVSzJyau67hfX/LS7pX3f7f6+1v39OzTuhQqqG2YzLaf+Hlc6byRst1yXyTIw8qnbcsVfbZl1/Hnrw1ZVqsFq4pVYsk0zluUyvGzxGwlSkdvUHR625NxBq8VOPSq3o7EC5Ne33ZVhu0S+2Ikf3wBtR+r3stleCCA1zcfbmY3mKA4GpTHMCj9w2jfHdb1cmZiFfw7WoiHLm0bx7Drdvbx6FWPHuVgHVS867pv2QWjNg==
+sidebar_class_name: "delete api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete event"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/events/{event_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Deletes an event from the database.
+    Returns a success message or an error if the event is not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

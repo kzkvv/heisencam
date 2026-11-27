@@ -5,13 +5,13 @@ title: Review
 
 import NavPath from "@site/src/components/NavPath";
 
-**Review** is where you triage what happened on your cameras. It groups activity into **review items**, segments of time on a single camera that bundle together the objects and audio that were active at once, and sorts them into **Alerts**, **Detections**, and **Motion**. From here you can scrub through activity, mark items as reviewed, filter, export, and jump to the full recording in [History](/usage/history).
+**Review** is where you triage what happened on your cameras. It groups activity into **review items**, segments of time on a single camera that bundle together the objects and audio that were active at once, and sorts them into **Alerts**, **Detections**, and **Motion**. From here you can scrub through activity, mark items as reviewed, filter, export, and jump to the full recording in [History](./history.md).
 
-This page describes how to _use_ the Review view. For how alerts and detections are _configured_ (labels, zones, required zones, retention), see the [Review configuration](/configuration/review) docs.
+This page describes how to _use_ the Review view. For how alerts and detections are _configured_ (labels, zones, required zones, retention), see the [Review configuration](../configuration/review.md) docs.
 
 :::info
 
-Review items are only created for a camera when **object tracking and recording are enabled** for that camera. See [Recording](/configuration/record).
+Review items are only created for a camera when **object tracking and recording are enabled** for that camera. See [Recording](../configuration/record.md).
 
 :::
 
@@ -27,7 +27,7 @@ The toggle at the top of the page switches between these three severities. One i
 | **Detections** | orange          | Everything else HeisenCam tracked that wasn't promoted to an alert.                                                |
 | **Motion**     | yellow          | Periods of significant motion, with the ability to filter to periods which did **not** produce a tracked object. |
 
-This same color coding is used for the ring around a selected item and the dots on the calendar. How an object is categorized as an alert vs. a detection, and how required zones refine that, is covered in [Alerts and Detections](/configuration/review#alerts-and-detections).
+This same color coding is used for the ring around a selected item and the dots on the calendar. How an object is categorized as an alert vs. a detection, and how required zones refine that, is covered in [Alerts and Detections](../configuration/review.md#alerts-and-detections).
 
 The **Alerts** and **Detections** tabs show a count next to their label. With **Show Reviewed** turned off (the default), this is the number of items still left to review; with it on, the count reflects every item in the selected time range.
 
@@ -35,7 +35,7 @@ The **Alerts** and **Detections** tabs show a count next to their label. With **
 
 Review items are shown as a grid of thumbnail cards next to a vertical activity timeline. Hovering a card (desktop) or swiping to the right (mobile) plays a short preview inline.
 
-- **Clicking** a card opens its recording in [History](/usage/history) and marks the item as reviewed.
+- **Clicking** a card opens its recording in [History](./history.md) and marks the item as reviewed.
 - The object chip on each card is **gray** when the item is unreviewed and turns **green** once it has been reviewed.
 - The **Mark these items as reviewed** button marks everything currently shown as reviewed at once.
 
@@ -47,7 +47,7 @@ To act on several items at once, start a selection by **Ctrl/Cmd-clicking** a ca
 
 With items selected, an action bar appears with options to:
 
-- **Export** the selected items (a single item exports directly; multiple items open the batch [export](/usage/exports) dialog),
+- **Export** the selected items (a single item exports directly; multiple items open the batch [export](./exports.md) dialog),
 - **Mark as reviewed** or **Mark as unreviewed**, and
 - **Delete** them (admins only).
 
@@ -64,7 +64,7 @@ Future dates are disabled, and the week start and time zone follow your configur
 
 ## Reviewing Motion
 
-The Review page also can show periods of motion that didn't produce a tracked object, and provides a way to search past recordings for motion in a specific region. These tools complement the alerts and detections workflow above. See [Tuning Motion Detection](/configuration/motion_detection) for how the underlying motion detector is configured.
+The Review page also can show periods of motion that didn't produce a tracked object, and provides a way to search past recordings for motion in a specific region. These tools complement the alerts and detections workflow above. See [Tuning Motion Detection](../configuration/motion_detection.md) for how the underlying motion detector is configured.
 
 The **Motion** tab itself shows a multi-camera grid scrubbed to a shared point in time, with a draggable timeline and a playback-speed selector. A camera tile gains a colored ring when a review item or significant motion overlaps the current time, and clicking a tile opens that camera's recording at that moment. Each camera's options menu (the kebab in the corner of its tile) is where you open **Motion Previews** and **Motion Search**, described below.
 
@@ -86,7 +86,7 @@ Clicking a preview clip seeks the recording player to that timestamp so you can 
 
 Motion Search lets you scan recorded footage for changes inside a region of interest you draw on the camera. Unlike Motion Previews, which surfaces what HeisenCam's motion detector flagged in real time, Motion Search re-analyzes the saved recordings, so it can find changes that were missed (for example, an object that appeared while motion detection was paused by `lightning_threshold`, or in a region that is normally motion-masked).
 
-To start a search, open the Actions menu in [History](/usage/history) or click the kebab menu on a camera in the <NavPath path="Review > Motion" /> page and choose **Motion Search**. In the dialog:
+To start a search, open the Actions menu in [History](./history.md) or click the kebab menu on a camera in the <NavPath path="Review > Motion" /> page and choose **Motion Search**. In the dialog:
 
 1. Pick the camera and time range to scan. In the date pickers, days that have recordings available are underlined.
 2. Draw a polygon on the camera frame to define the region of interest.
@@ -135,6 +135,6 @@ To increase the speed of searches:
 
 ## AI review summaries
 
-When [Generative AI review](/configuration/genai/genai_review) is configured, HeisenCam can generate a title, description, and threat classification for review items and surface them automatically in Review and History. Clicking the summary chip opens an **AI Analysis** dialog with the generated detail and any flagged concerns.
+When [Generative AI review](../configuration/genai/review_summaries.md) is configured, HeisenCam can generate a title, description, and threat classification for review items and surface them automatically in Review and History. Clicking the summary chip opens an **AI Analysis** dialog with the generated detail and any flagged concerns.
 
 In Review, an additional icon appears on unreviewed items that the AI classified as **suspicious** (Level 1) or **critical** (Level 2), so the activity that most warrants attention stands out before you open it. The icon goes away once the item has been reviewed.

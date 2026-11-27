@@ -1,0 +1,33 @@
+---
+id: generatestateexamplesbody
+title: "GenerateStateExamplesBody"
+description: ""
+sidebar_label: "GenerateStateExamplesBody"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"model_name":"string","cameras":{}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GenerateStateExamplesBody"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"properties":{"model_name":{"type":"string","title":"Model Name","description":"Name of the classification model"},"cameras":{"additionalProperties":{"prefixItems":[{"type":"number"},{"type":"number"},{"type":"number"},{"type":"number"}],"type":"array","maxItems":4,"minItems":4},"type":"object","title":"Cameras","description":"Dictionary mapping camera names to normalized crop coordinates in [x1, y1, x2, y2] format (values 0-1)"}},"type":"object","required":["model_name","cameras"],"title":"GenerateStateExamplesBody"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

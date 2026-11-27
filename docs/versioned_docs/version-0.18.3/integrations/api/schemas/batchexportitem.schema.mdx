@@ -1,0 +1,33 @@
+---
+id: batchexportitem
+title: "BatchExportItem"
+description: ""
+sidebar_label: "BatchExportItem"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"camera":"string","start_time":0,"end_time":0,"image_path":"string","friendly_name":"string","client_item_id":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"BatchExportItem"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"properties":{"camera":{"type":"string","title":"Camera name"},"start_time":{"type":"number","title":"Start time"},"end_time":{"type":"number","title":"End time"},"image_path":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Existing thumbnail path","description":"Optional existing image to use as the export thumbnail"},"friendly_name":{"anyOf":[{"type":"string","maxLength":256},{"type":"null"}],"title":"Friendly name","description":"Optional friendly name for this specific export item"},"client_item_id":{"anyOf":[{"type":"string","maxLength":128},{"type":"null"}],"title":"Client item ID","description":"Optional opaque client identifier echoed back in results"}},"type":"object","required":["camera","start_time","end_time"],"title":"BatchExportItem"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

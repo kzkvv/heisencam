@@ -1,0 +1,72 @@
+---
+id: update-role-users-username-role-put
+title: "Update user role"
+description: "**Access:** Admin role required."
+sidebar_label: "Update user role"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVktv4zYQ/iuDueQBxfIG7UW3tN2iT2yQOO0hawS0OLa4kUgtSTkRBP33xZCSLcdN2qJ76cWmyHl+nPmGHXqxcZjd41XjC1wmKMnlVtVeGY0Znp9f5Tk5l52fw5WslAZrSgJLnxtlSc4+6o/6rpbCkwMBjSN74oLIDBYFwapRpb9QGkTQnZxDLrQ2HlYElZFqrUjO4CaadYN4tPOHKJUMawfCEkhaK00SlAZfEORGr9WmsYIjnmGCpqb48bPEDJsQ3AOrP7B79xD+tKjoIe7WjccEa2FFRZ4sg9Ehn7P2IIoJKoajFr7ABMf0MfO2oQRdXlAlMOvQtzXrOW+V3mCCXvmSN+5GQ32/jPrk/HdGtqz00lxutCft+UjUdanykE76yfGVdBNvteVkvSIXzBh29XoMN3ze98koYFafKPcH6dxHI8u90lVdXzeeVUO0fc8GLLnaaBfdXs7n/HdYN7dNKJt1U8LNIIz/PLHo5ZvLy2PDoRqCGry31th/YfUFXJK8UCWvlKfKHQuUJj84Fbr9sA7VcYhwn+x2lPa0IYv9cg+zsFa0k2v4zcQAsU+wcpu3bux3ck5sCHfGXhcNYMCCT//uijmv6HqQm1z3Ht6I7utp/BDh+ytno8hPi8X1kcF4t47yxirfBjjXVm2Ep8AvgYay+yW3yfPFGPZFrG0MvIAJ0rMn7ZTRsVsfqcXsSDzBrSibvRqbrMgXhnlh7Hr2hmlghrQb271PBwOO7HakhMaWmGHhfe2yNJVUmdkQ+GyrJJlU1CrUwl4wS9PS5KIsjPPZt/P5uyiz3Od/y8UZy+0Yhd1ti1r9Su1IQrkxj4qjG0hqUHzw5pEYnMOGYVOkPXcFSXDkGDZ4KoxjGnem3FJkV1AOTgJSJ5G8R1nlgJwXq1K5giRslQjE+8ufC4ihgHKuIQmrFq4/3C4gLc1G6QSMDcK1Nc8tiMYXUJCQZB2cWqqMpwsGHFIYvjiKM3gqSMOPMSewjXawokJpCUIHI0MySm/AEt8ORQ8zLtYBC6bbr4mhbqeuJzieBuROtoqeyJ5wxoXaFGTPkq+O2X/ApU+Q2fBmP3beP4uqjuNiaK0dmaHSaxOAG9qYG4msi1DMZ+9mc5aqjfOVCAw7YBjfAWHIw9A/BzB2e6b+P74rhjry9OzTuhQqEHjo9W7gkfvwXnCYYDZ5OIwTlUmAZbpuJRzd2bLveftzQ5ZpcMl0ZZVYMeb3HUrleC0xW4vS0RtYng7pyTN4LcyxB3Q7YUVMBuLcBRvGVqy3Ca9+Hz1dhOEyIdWXs5a5L2rw3db+TdkpF1/fLTDB1fAaqoxkFSueGDzxFCM1IfH4zuG9DkuhNw1PxwyjSS5zcdT0j6Hph8VkeB9i8bL/Yx78O5nuhypdFyml73fy8ehVjQHZUTqMpL7vvwCx/vyN
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update user role"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/users/{username}/role"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Updates a user's role. The built-in admin user's role cannot be modified. Requires admin role. Valid roles are defined in the configuration.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"username","in":"path","required":true,"schema":{"type":"string","title":"Username"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"role":{"type":"string","title":"Role"}},"type":"object","required":["role"],"title":"AppPutRoleBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

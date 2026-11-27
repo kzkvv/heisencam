@@ -13,7 +13,7 @@ New recording segments are written from the camera stream to cache, they are onl
 
 :::tip
 
-To keep a specific clip beyond your retention window, [export](/usage/exports) it rather than increasing retention for the whole camera. Exports are saved separately and are never removed by retention.
+To keep a specific clip beyond your retention window, [export](../usage/exports.md) it rather than increasing retention for the whole camera. Exports are saved separately and are never removed by retention.
 
 :::
 
@@ -366,7 +366,7 @@ The disk **total** shown beside it, and the free-space figure HeisenCam uses to 
 
 Only **recording segments** (`/media/frigate/recordings`) are included in the recordings storage total. Plenty of other things consume real disk space but are **not** part of that number:
 
-- **Snapshots and thumbnails** (`/media/frigate/clips`): see [Snapshots](/configuration/snapshots). These are retained independently of recordings.
+- **Snapshots and thumbnails** (`/media/frigate/clips`): see [Snapshots](./snapshots.md). These are retained independently of recordings.
 - **Preview videos** and **review thumbnails** (also under `/media/frigate/clips`).
 - **Exports** (`/media/frigate/exports`): exports are never removed by retention.
 - **The database, downloaded detection models, and face / license plate training images** (stored under `/config`).
@@ -391,11 +391,11 @@ docker exec -it frigate df -h /media/frigate
 docker exec -it frigate mount | grep media
 ```
 
-See the [storage mount layout](/frigate/installation#storage) for how the volumes are expected to be configured.
+See the [storage mount layout](../frigate/installation.md#storage) for how the volumes are expected to be configured.
 
 ### The `/tmp/cache` area is separate
 
-Recording segments are first written to `/tmp/cache`, a small, in-memory (`tmpfs`) area, before being checked and moved to `/media/frigate/recordings`. Because it is separate and small, `/tmp/cache` can fill up and produce `No space left on device` errors even when the recordings disk has plenty of room. They are different storage areas. See [Recordings troubleshooting](/troubleshooting/recordings) for diagnosing cache and slow-storage issues.
+Recording segments are first written to `/tmp/cache`, a small, in-memory (`tmpfs`) area, before being checked and moved to `/media/frigate/recordings`. Because it is separate and small, `/tmp/cache` can fill up and produce `No space left on device` errors even when the recordings disk has plenty of room. They are different storage areas. See [Recordings troubleshooting](../troubleshooting/recordings.md) for diagnosing cache and slow-storage issues.
 
 ### When the metrics don't match what's on disk
 

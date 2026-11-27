@@ -89,7 +89,7 @@ Apps and displays for viewing Frigate outside of its built-in web UI.
 
 ## Home Assistant
 
-Cards and Home Assistant Marketplace integrations that build on the [Frigate Home Assistant integration](/integrations/home-assistant).
+Cards and Home Assistant Marketplace integrations that build on the [Frigate Home Assistant integration](./home-assistant.md).
 
 ### [Advanced Camera Card (formerly known as Frigate Card)](https://card.camera/#/README)
 

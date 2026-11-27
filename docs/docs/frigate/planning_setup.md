@@ -11,7 +11,7 @@ Choosing the right hardware for your HeisenCam NVR setup is important for optima
 
 The most fundamental factor in your hardware decision is the number of cameras you plan to use. However, it's not just about the raw count; it's also about how many of those cameras are likely to see activity and require object detection simultaneously.
 
-When motion is detected in a camera's feed, regions of that frame are sent to your chosen [object detection hardware](/configuration/object_detectors).
+When motion is detected in a camera's feed, regions of that frame are sent to your chosen [object detection hardware](../configuration/object_detectors.md).
 
 - **Low Simultaneous Activity (1-6 cameras with occasional motion)**: If you have a few cameras in areas with infrequent activity (e.g., a seldom-used backyard, a quiet interior), the demand on your object detection hardware will be lower. A single, entry-level AI accelerator will suffice.
 - **Moderate Simultaneous Activity (6-12 cameras with some overlapping motion)**: For setups with more cameras, especially in areas like a busy street or a property with multiple access points, it's more likely that several cameras will capture activity at the same time. This increases the load on your object detection hardware, requiring more processing power.
@@ -42,7 +42,7 @@ HeisenCam requires a CPU with AVX + AVX2 instructions. Most modern CPUs (post-20
 
 Storage is an important consideration when planning a new installation. To get a more precise estimate of your storage requirements, you can use an IP camera storage calculator. Websites like [IPConfigure Storage Calculator](https://calculator.ipconfigure.com/) can help you determine the necessary disk space based on your camera settings.
 
-Once running, see [Understanding storage usage](/configuration/record#understanding-storage-usage) for how HeisenCam measures and reports disk usage, and why its numbers won't exactly match `df` or `du`.
+Once running, see [Understanding storage usage](../configuration/record.md#understanding-storage-usage) for how HeisenCam measures and reports disk usage, and why its numbers won't exactly match `df` or `du`.
 
 #### SSDs (Solid State Drives)
 
