@@ -213,7 +213,7 @@ On Raspberry Pi OS **Trixie**, the Hailo driver is no longer shipped with the ke
    Download the installation script:
 
    ```bash
-   wget https://raw.githubusercontent.com/kzkvv/heisencam/28e4fe997572c923655b3d2c826060dfc4e5b198/docker/hailo8l/user_installation.sh
+   wget https://raw.githubusercontent.com/kzkvv/heisencam/refs/heads/heisencam/0.18.3/docker/hailo8l/user_installation.sh
    ```
 
    Make it executable:
@@ -323,7 +323,7 @@ To get started with MX3 hardware setup for your system, refer to the [Hardware S
 
 Then follow these steps for installing the correct driver/runtime configuration:
 
-1. Copy or download [this script](https://github.com/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/docker/memryx/user_installation.sh).
+1. Copy or download [this script](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/memryx/user_installation.sh).
 2. Ensure it has execution permissions with `sudo chmod +x user_installation.sh`
 3. Run the script with `./user_installation.sh`
 4. **Restart your computer** to complete driver installation.
