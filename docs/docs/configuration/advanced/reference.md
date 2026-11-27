@@ -61,7 +61,7 @@ detectors:
   # Required: name of the detector
   detector_name:
     # Required: type of the detector
-    # HeisenCam provides many types, see https://docs.frigate.video/configuration/object_detectors for more details (default: shown below)
+    # HeisenCam provides many types, see https://docs.heisen.cam/configuration/object_detectors for more details (default: shown below)
     # Additional detector types can also be plugged in.
     # Detectors may require additional configuration.
     # Refer to the Detectors configuration page for more information.
@@ -268,7 +268,7 @@ birdseye:
   idle_heartbeat_fps: 0.0
 
 # Optional: ffmpeg configuration
-# More information about presets at https://docs.frigate.video/configuration/ffmpeg_presets
+# More information about presets at https://docs.heisen.cam/configuration/ffmpeg_presets
 ffmpeg:
   # Optional: ffmpeg binary path (default: shown below)
   # can also be set to `8.0` or `5.0` to specify one of the included versions

@@ -29,7 +29,7 @@ When a plate is recognized, the details are:
 
 ## Model Requirements
 
-Users running a Hosted Models model (or any custom model that natively detects license plates) should ensure that `license_plate` is added to the [list of objects to track](https://docs.frigate.video/plus/#available-label-types) either globally or for a specific camera. This will improve the accuracy and performance of the LPR model.
+Users running a Hosted Models model (or any custom model that natively detects license plates) should ensure that `license_plate` is added to the [list of objects to track](https://docs.heisen.cam/plus/#available-label-types) either globally or for a specific camera. This will improve the accuracy and performance of the LPR model.
 
 Users without a model that detects license plates can still run LPR. HeisenCam uses a lightweight YOLOv9 license plate detection model that can be configured to run on your CPU or GPU. In this case, you should _not_ define `license_plate` in your list of objects to track.
 

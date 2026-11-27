@@ -681,7 +681,7 @@ Because of above limitations, the installation has to be done from command line.
 1. Install Container Station from QNAP App Center if it is not installed.
 2. Enable ssh on your QNAP (please do an Internet search on how to do this).
 3. Prepare HeisenCam config file, name it `config.yml`.
-4. Calculate shared memory size according to [documentation](https://docs.frigate.video/frigate/installation).
+4. Calculate shared memory size according to [documentation](https://docs.heisen.cam/frigate/installation).
 5. Find your time zone value from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 6. ssh to QNAP.
 
@@ -705,7 +705,7 @@ mkdir -p /share/share_vol2/frigate/media
 # Also replace the time zone value for 'TZ' in the sample command.
 # Example command will create a docker container that uses at most 2 CPUs and 4G RAM.
 # You may need to add "--env=LIBVA_DRIVER_NAME=i965 \" to the following docker run command if you
-# have certain CPU (e.g., J4125). See https://docs.frigate.video/configuration/hardware_acceleration_video.
+# have certain CPU (e.g., J4125). See https://docs.heisen.cam/configuration/hardware_acceleration_video.
 docker run \
   --name=frigate \
   --shm-size=256m \
