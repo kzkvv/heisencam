@@ -2,7 +2,7 @@
 
 # HeisenCam
 
-> **I saw who knocked** · «Я видел, кто стучал»
+> **I saw who knocked**
 
 HeisenCam is a local network video recorder built on [Frigate 0.18.3](https://github.com/blakeblackshear/frigate/tree/v0.18.3). We bring the classic camera dashboard and single-click event playback to the current backend, alongside Review, History and Explore.
 
@@ -28,11 +28,5 @@ Open [the local dashboard](http://127.0.0.1:8972). The example replays six publi
 Configuration keys, `FRIGATE_*` environment variables, MQTT topics, API routes and container storage paths follow Frigate conventions. The default detector and any additional hardware dependencies depend on your configuration and chosen base image.
 
 [Browser demo](https://kzkvv.github.io/heisencam/demo/) · [Documentation](https://kzkvv.github.io/heisencam/docs/) · [Docker demo and camera credits](examples/demo/README.md) · [Build and benchmark instructions](docker/classic/README.md) · [Archive, backport and rollback](docs/heisencam-compatibility.md)
-
-<details><summary>Original naming note</summary>
-
-> **Я бы дал ему слоган *I saw who knocked* — «Я видел, кто стучал».** Это ответ камеры на знаменитую реплику Уолтера Уайта. А у тебя за шуткой стоит настоящая история — запись Frigate помогла поймать закладчиков. На логотип я бы поставил графитовый объектив с одним гранёным голубым бликом.
-
-</details>
 
 HeisenCam is an independent derivative. Frigate and Frigate+ are trademarks of Frigate, Inc. The upstream code and copyright notices are retained. [MIT license](LICENSE) · [Upstream trademark policy](TRADEMARK.md)
