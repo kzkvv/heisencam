@@ -46,7 +46,7 @@ def get_latest_version(config: FrigateConfig) -> str:
 
     try:
         request = requests.get(
-            "https://api.github.com/repos/blakeblackshear/frigate/releases/latest",
+            "https://api.github.com/repos/kzkvv/heisencam/releases/latest",
             timeout=10,
         )
         response = request.json()
@@ -54,7 +54,7 @@ def get_latest_version(config: FrigateConfig) -> str:
         return "unknown"
 
     if request.ok and response and "tag_name" in response:
-        return str(response.get("tag_name").replace("v", ""))
+        return str(response["tag_name"]).removeprefix("v")
     else:
         return "unknown"
 

@@ -26,13 +26,32 @@ jobs:
       - name: Create tag variables
         env:
           TAG: ${{ github.ref_name }}
+          PRERELEASE: ${{ github.event.release.prerelease }}
           LOWERCASE_REPO: ${{ steps.lowercaseRepo.outputs.lowercase }}
         run: |
-          BUILD_TYPE=$([[ "${TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] && echo "stable" || echo "beta")
-          echo "BUILD_TYPE=${BUILD_TYPE}" >> $GITHUB_ENV
-          echo "BASE=ghcr.io/${LOWERCASE_REPO}" >> $GITHUB_ENV
-          echo "BUILD_TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
-          echo "CLEAN_VERSION=$(echo ${GITHUB_REF##*/} | tr '[:upper:]' '[:lower:]' | sed 's/^[v]//')" >> $GITHUB_ENV
+          calver='^v([0-9]{4}\.([1-9]|1[0-2])\.[1-9][0-9]*)(-[a-z0-9][a-z0-9.-]*)?$'
+          if [[ "$GITHUB_REF_TYPE" != tag || ! "$TAG" =~ $calver ]]; then
+            echo "Expected a HeisenCam release tag such as v2026.11.1"
+            exit 1
+          fi
+          version="${BASH_REMATCH[1]}"
+          if [[ "$version" != "$(cat VERSION)" ]]; then
+            echo "Release tag $TAG must match the version in VERSION"
+            exit 1
+          fi
+
+          tag_prerelease=false
+          if [[ "$TAG" != "v$version" ]]; then
+            tag_prerelease=true
+          fi
+          if [[ "$GITHUB_EVENT_NAME" == release && "$PRERELEASE" != "$tag_prerelease" ]]; then
+            echo "Release tags with a suffix must be marked as prereleases, and prereleases must use a suffix"
+            exit 1
+          fi
+          echo "TAG_PRERELEASE=$tag_prerelease" >> "$GITHUB_ENV"
+          echo "BASE=ghcr.io/$LOWERCASE_REPO" >> "$GITHUB_ENV"
+          echo "BUILD_TAG=${GITHUB_SHA::7}" >> "$GITHUB_ENV"
+          echo "CLEAN_VERSION=${TAG#v}" >> "$GITHUB_ENV"
       - name: Tag and push the main image
         run: |
           VERSION_TAG=${BASE}:${CLEAN_VERSION}
@@ -44,7 +63,7 @@ jobs:
           done
 
           # stable tag
-          if [[ "${BUILD_TYPE}" == "stable" ]]; then
+          if [[ "$TAG_PRERELEASE" == false ]]; then
             docker run --rm -v $HOME/.docker/config.json:/config.json quay.io/skopeo/stable:latest copy --authfile /config.json --multi-arch all docker://${PULL_TAG} docker://${STABLE_TAG}
             for variant in standard-arm64 tensorrt tensorrt-jp6 rk rocm synaptics; do
               docker run --rm -v $HOME/.docker/config.json:/config.json quay.io/skopeo/stable:latest copy --authfile /config.json --multi-arch all docker://${PULL_TAG}-${variant} docker://${STABLE_TAG}-${variant}
