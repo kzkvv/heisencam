@@ -227,6 +227,8 @@ def process_frames(
     stationary_frame_counter = 0
     idle_frames = 0
     idle_tile = 0
+    calibration_scan_budget = 0
+    was_calibrating = False
     camera_enabled = True
 
     region_min_size = get_min_region_size(model_config)
@@ -312,6 +314,10 @@ def process_frames(
 
         # look for motion if enabled
         motion_boxes = motion_detector.detect(frame)
+        calibrating = motion_detector.is_calibrating()
+        if calibrating and not was_calibrating:
+            calibration_scan_budget = 2 * len(idle_tiles)
+        was_calibrating = calibrating
 
         regions = []
         consolidated_detections = []
@@ -341,7 +347,7 @@ def process_frames(
                     # and it doesn't overlap with any current motion boxes when not calibrating
                     and not intersects_any(
                         obj["box"],
-                        [] if motion_detector.is_calibrating() else motion_boxes,
+                        [] if calibrating else motion_boxes,
                     )
                 ]
 
@@ -380,7 +386,7 @@ def process_frames(
                 )
             )
 
-            if not motion_detector.is_calibrating() and not ptz_moving:
+            if not calibrating and not ptz_moving:
                 # find motion boxes that are not inside tracked object regions
                 standalone_motion_boxes = [
                     b for b in motion_boxes if not inside_any(b, regions)
@@ -412,14 +418,20 @@ def process_frames(
                     regions.append(region)
                 startup_scan = False
 
+            if (
+                calibrating
+                and calibration_scan_budget
+                and not regions
+                and not ptz_moving
+                and camera_config.motion.enabled
+            ):
+                regions.append(idle_tiles[idle_tile])
+                idle_tile = (idle_tile + 1) % len(idle_tiles)
+                calibration_scan_budget -= 1
+
             # Scan independent of motion when the detector is otherwise idle.
             idle_interval = camera_config.detect.idle_scan_interval
-            if (
-                idle_interval
-                and not regions
-                and not motion_detector.is_calibrating()
-                and not ptz_moving
-            ):
+            if idle_interval and not regions and not calibrating and not ptz_moving:
                 idle_frames += 1
                 if idle_frames >= idle_interval:
                     regions.append(idle_tiles[idle_tile])
