@@ -27,6 +27,6 @@ Open [the local dashboard](http://127.0.0.1:8972). The example replays six publi
 
 Configuration keys, `FRIGATE_*` environment variables, MQTT topics, API routes and container storage paths follow Frigate conventions. The default detector and any additional hardware dependencies depend on your configuration and chosen base image.
 
-[Browser demo](https://kzkvv.github.io/heisencam/demo/) · [Documentation](https://kzkvv.github.io/heisencam/docs/) · [Docker demo and camera credits](examples/demo/README.md) · [Build and benchmark instructions](docker/classic/README.md) · [Archive, backport and rollback](docs/heisencam-compatibility.md)
+[Browser demo](https://docs.heisen.cam/demo/) · [Documentation](https://docs.heisen.cam/) · [Docker demo and camera credits](examples/demo/README.md) · [Build and benchmark instructions](docker/classic/README.md) · [Archive, backport and rollback](docs/heisencam-compatibility.md)
 
 HeisenCam is an independent derivative. Frigate and Frigate+ are trademarks of Frigate, Inc. The upstream code and copyright notices are retained. [MIT license](LICENSE) · [Upstream trademark policy](TRADEMARK.md)

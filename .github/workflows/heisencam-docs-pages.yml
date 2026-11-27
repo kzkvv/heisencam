@@ -1,0 +1,81 @@
+name: HeisenCam documentation
+
+on:
+  pull_request:
+    branches: [dev]
+    paths:
+      - "docs/**"
+      - "tools/prepare_docs_pages.py"
+      - ".github/workflows/heisencam-docs-pages.yml"
+  push:
+    branches: [dev]
+    paths:
+      - "docs/**"
+      - "tools/prepare_docs_pages.py"
+      - ".github/workflows/heisencam-docs-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build documentation and demo
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Read Pages configuration
+        if: github.event_name != 'pull_request'
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Check out the published demo
+        uses: actions/checkout@v6
+        with:
+          # Pin the existing React demo until its source is on the default branch.
+          ref: 6ccf33b1ece4edd0be9523bfb609a89c99dc0318
+          path: published-demo
+          sparse-checkout: demo
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: docs/package-lock.json
+      - run: npm ci
+        working-directory: docs
+      - name: Build and check documentation links
+        run: npm run build
+        working-directory: docs
+        env:
+          HEISENCAM_DOCS_URL: ${{ steps.pages.outputs.base_url }}
+      - name: Package the demo and legacy URLs
+        run: python3 tools/prepare_docs_pages.py docs/build published-demo --docs-url "$HEISENCAM_DOCS_URL"
+        env:
+          HEISENCAM_DOCS_URL: ${{ steps.pages.outputs.base_url }}
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: docs/build
+
+  deploy:
+    name: Deploy documentation
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: heisencam-docs-pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
