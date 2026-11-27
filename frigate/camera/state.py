@@ -424,6 +424,25 @@ class CameraState:
             for c in self.callbacks["start"]:
                 c(self.name, new_obj, frame_name)
 
+            if (
+                object_type == "person"
+                and new_obj.obj_data["frame_time"] == frame_time
+                and new_obj.obj_data.get("detector_evidence", True)
+                and len(new_obj.score_history) >= 2
+                and new_obj.compute_score()
+                >= self.camera_config.objects.filters[object_type].threshold
+            ):
+                # Use the retained history without counting this frame twice.
+                new_obj.update(
+                    frame_time,
+                    new_obj.obj_data,
+                    current_frame is not None,
+                    record_score=False,
+                )
+                for c in self.callbacks["update"]:
+                    c(self.name, new_obj, frame_name)
+                new_obj.last_published = frame_time
+
         for id in updated_ids:
             updated_obj = tracked_objects[id]
             thumb_update, significant_update, path_update, autotracker_update = (

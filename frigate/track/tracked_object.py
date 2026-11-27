@@ -128,17 +128,23 @@ class TrackedObject:
         return median(self.score_history) if self.score_history else 0.0
 
     def update(
-        self, current_frame_time: float, obj_data: dict[str, Any], has_valid_frame: bool
+        self,
+        current_frame_time: float,
+        obj_data: dict[str, Any],
+        has_valid_frame: bool,
+        *,
+        record_score: bool = True,
     ) -> tuple[bool, bool, bool, bool]:
         thumb_update = False
         significant_change = False
         path_update = False
         autotracker_update = False
         # if the object is not in the current frame, add a 0.0 to the score history
-        if obj_data["frame_time"] != current_frame_time:
-            self.score_history.append(0.0)
-        elif obj_data.get("detector_evidence", True):
-            self.score_history.append(obj_data["score"])
+        if record_score:
+            if obj_data["frame_time"] != current_frame_time:
+                self.score_history.append(0.0)
+            elif obj_data.get("detector_evidence", True):
+                self.score_history.append(obj_data["score"])
 
         # only keep the last 10 scores
         if len(self.score_history) > 10:

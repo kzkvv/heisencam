@@ -1,4 +1,5 @@
 import logging
+import math
 import random
 import string
 from collections.abc import Sequence
@@ -284,16 +285,34 @@ class NorfairTracker(ObjectTracker):
         obj_match = next(
             (o for o in tracker.tracked_objects if str(o.global_id) == track_id), None
         )
-        # if we don't have a match, we have a new object
-        obj["score_history"] = (
+        observations = (
             [
-                p.data["score"]
+                p.data
                 for p in obj_match.past_detections
                 if p.data.get("detector_evidence", True)
             ]
             if obj_match
             else []
         )
+        obj["score_history"] = [observation["score"] for observation in observations]
+        if (
+            obj["label"] == "person"
+            and obj.get("detector_evidence", True)
+            and observations
+            and observations[0]["frame_time"] < obj["frame_time"]
+        ):
+            first = observations[0]["box"]
+            last = obj["box"]
+            horizontal = (last[0] + last[2] - first[0] - first[2]) / 2
+            vertical = last[3] - first[3]
+            width = min(first[2] - first[0], last[2] - last[0])
+            # Demand displacement as well as overlap loss to reject box resizing.
+            if (
+                math.hypot(horizontal, vertical) >= width / 2
+                and intersection_over_union(first, last)
+                < get_stationary_threshold("person").active_check_iou
+            ):
+                obj["position_changes"] = 1
         self.tracked_objects[id] = obj
         self.disappeared[id] = 0
         if obj_match:
