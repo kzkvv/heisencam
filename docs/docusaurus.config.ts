@@ -3,11 +3,16 @@ import * as path from "node:path";
 import type { Config, PluginConfig } from "@docusaurus/types";
 import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
+const docsAddress = process.env.HEISENCAM_DOCS_URL || "https://docs.heisen.cam/";
+const docsUrl = new URL(docsAddress.endsWith("/") ? docsAddress : docsAddress + "/");
+const demoUrl = new URL("demo/", docsUrl).href;
+
 const config: Config = {
   title: "HeisenCam",
   tagline: "NVR With Realtime Object Detection for IP Cameras",
-  url: "https://kzkvv.github.io",
-  baseUrl: "/heisencam/docs/",
+  url: docsUrl.origin,
+  baseUrl: docsUrl.pathname,
+  customFields: { demoUrl },
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/branding/favicon.ico",
@@ -96,12 +101,7 @@ const config: Config = {
           position: "left",
         },
         {
-          href: "https://kzkvv.github.io/heisencam/",
-          label: "Website",
-          position: "right",
-        },
-        {
-          href: "https://kzkvv.github.io/heisencam/demo/",
+          href: demoUrl,
           label: "Demo",
           position: "right",
         },
@@ -175,7 +175,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           editUrl:
-            "https://github.com/kzkvv/heisencam/edit/heisencam/0.18.3/docs/",
+            "https://github.com/kzkvv/heisencam/edit/dev/docs/",
           sidebarCollapsible: false,
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
         },

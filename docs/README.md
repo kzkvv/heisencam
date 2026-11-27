@@ -1,17 +1,17 @@
 # Documentation and public site
 
-The [documentation](https://kzkvv.github.io/heisencam/docs/) uses Docusaurus. The [browser demo](https://kzkvv.github.io/heisencam/demo/) is a static, read-only player for the source media in `examples/demo/media`. The project site, demo and documentation share one GitHub Pages repository.
+The [documentation](https://docs.heisen.cam/) uses Docusaurus. The [browser demo](https://docs.heisen.cam/demo/) plays recorded street scenes and sample detections without an account.
 
 ## Build
 
-Use Node.js 24, npm and Python 3. Run these commands from the repository root.
+Use Node.js 24 and npm. Run these commands from the repository root.
 
 ```sh
 cd docs
 npm ci
 npm run build
-cd ..
-python3 tools/build_public_site.py /tmp/heisencam-pages
 ```
 
-The packaging command expects an empty or new output directory. It assembles the landing page, six selected recordings, their demo assets and the compiled documentation. Publish that directory at `/heisencam/` through the fork's `gh-pages` branch. The documentation build checks internal links and generates the HTTP API reference from `docs/static/frigate-api.yaml`.
+The build checks internal links and generates the HTTP API reference from `docs/static/frigate-api.yaml`. GitHub Actions publishes this build at the root of `docs.heisen.cam` with the published browser demo under `/demo/` and redirects from the previous `/docs/` paths.
+
+Run `npm run start` from `docs/` to preview the documentation locally. The `HEISENCAM_DOCS_URL` environment variable sets the public origin and base path for a different deployment.

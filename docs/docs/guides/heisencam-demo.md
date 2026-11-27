@@ -3,7 +3,9 @@ title: Try HeisenCam
 description: Run six sample camera feeds, play their recordings and test detection settings.
 ---
 
-The [browser demo](https://kzkvv.github.io/heisencam/demo/) plays recorded street scenes from California and Calgary. Select a camera for playback, open Birdseye for a six-camera overview, or select a detection in Events. It works without an account.
+import DemoLink from "@site/src/components/DemoLink";
+
+The <DemoLink>browser demo</DemoLink> plays recorded street scenes from California and Calgary. Select a camera for playback, open Birdseye for a six-camera overview, or select a detection in Events. It works without an account.
 
 ## Run the full recorder
 
@@ -27,4 +29,4 @@ Use the [camera setup guide](../frigate/camera_setup.md) to assign your camera's
 
 Keep a set of labeled clips with people or cars and a second set of false alerts. Run the same clips before and after changing the model or `detect.idle_scan_interval`. The replay reports confirmed objects, detector calls and per-frame scores. See the [replay command and input format](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/classic/README.md#measure-detection-quality-on-local-recordings).
 
-The [demo sources and credits](https://kzkvv.github.io/heisencam/demo/#sources) identify each camera, its publisher and how the recording was prepared.
+The <DemoLink sources>demo sources and credits</DemoLink> identify each camera, its publisher and how the recording was prepared.
