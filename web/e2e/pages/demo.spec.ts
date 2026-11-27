@@ -67,12 +67,12 @@ test("documentation provides local search and the HTTP reference", async ({
   await page.getByLabel("Search", { exact: true }).click();
   await search.fill("idle_scan_interval");
   const result = page
-    .getByRole("option", { name: /Idle scan interval/i })
+    .getByRole("option", { name: /idle_scan_interval.*Camera Configuration/i })
     .first();
   await expect(result).toBeVisible();
   await result.click();
   await expect(page).toHaveURL(
-    /\/configuration\/cameras\/?#idle-scan-interval/,
+    /\/configuration\/cameras\/?(?:\?[^#]*)?#idle-scan-interval/,
   );
 
   await page.goto("integrations/api/");
