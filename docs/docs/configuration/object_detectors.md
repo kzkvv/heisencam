@@ -152,7 +152,7 @@ detectors:
 
 ### Native Coral (Dev Board)
 
-_warning: may have [compatibility issues](https://github.com/blakeblackshear/frigate/issues/1706) after `v0.9.x`_
+A [2021 Frigate report](https://github.com/blakeblackshear/frigate/issues/1706) documents an nginx startup failure on this board with Frigate `0.9.0-rc2`.
 
 <ConfigTabs>
 <TabItem value="ui">

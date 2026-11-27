@@ -7,7 +7,7 @@ import ConfigTabs from "@site/src/components/ConfigTabs";
 import TabItem from "@theme/TabItem";
 import NavPath from "@site/src/components/NavPath";
 
-HeisenCam ships with a set of FFmpeg presets to keep your configuration short and readable. Each preset expands to a longer list of FFmpeg arguments at runtime. You can see exactly what every preset expands to in [this file](https://github.com/blakeblackshear/frigate/blob/master/frigate/ffmpeg_presets.py).
+HeisenCam ships with a set of FFmpeg presets to keep your configuration short and readable. Each preset expands to a longer list of FFmpeg arguments at runtime. You can see exactly what every preset expands to in [this file](https://github.com/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/frigate/ffmpeg_presets.py).
 
 In the config file you reference a preset by its name (for example, `preset-vaapi`). In the UI, the same preset is shown with a friendly label (for example, **VAAPI (Intel/AMD GPU)**). Both refer to the same thing: the tables below list the config name alongside the label you'll see in the UI.
 

@@ -252,7 +252,7 @@ openvino:
       label: YOLO-NAS
       recommended: false
       download: |-
-        You can build and download a compatible model with pre-trained weights using [this notebook](https://github.com/blakeblackshear/frigate/blob/dev/notebooks/YOLO_NAS_Pretrained_Export.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/blakeblackshear/frigate/blob/dev/notebooks/YOLO_NAS_Pretrained_Export.ipynb) which can be run directly in [Google Colab](https://colab.research.google.com/github/blakeblackshear/frigate/blob/dev/notebooks/YOLO_NAS_Pretrained_Export.ipynb).
+        You can build and download a compatible model with pre-trained weights using [this notebook](https://github.com/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/notebooks/YOLO_NAS_Pretrained_Export.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/notebooks/YOLO_NAS_Pretrained_Export.ipynb) which can be run directly in [Google Colab](https://colab.research.google.com/github/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/notebooks/YOLO_NAS_Pretrained_Export.ipynb).
 
         :::warning
 
@@ -654,7 +654,7 @@ onnx:
       label: YOLO-NAS
       recommended: false
       download: |-
-        You can build and download a compatible model with pre-trained weights using [this notebook](https://github.com/blakeblackshear/frigate/blob/dev/notebooks/YOLO_NAS_Pretrained_Export.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/blakeblackshear/frigate/blob/dev/notebooks/YOLO_NAS_Pretrained_Export.ipynb) which can be run directly in [Google Colab](https://colab.research.google.com/github/blakeblackshear/frigate/blob/dev/notebooks/YOLO_NAS_Pretrained_Export.ipynb).
+        You can build and download a compatible model with pre-trained weights using [this notebook](https://github.com/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/notebooks/YOLO_NAS_Pretrained_Export.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/notebooks/YOLO_NAS_Pretrained_Export.ipynb) which can be run directly in [Google Colab](https://colab.research.google.com/github/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/notebooks/YOLO_NAS_Pretrained_Export.ipynb).
 
         :::warning
 

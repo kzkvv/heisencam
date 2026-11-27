@@ -88,7 +88,7 @@ Volume is considered motion for recordings, this means when the `record -> retai
 
 ### Configuring Audio Events
 
-The included audio model has over [500 different types](https://github.com/blakeblackshear/frigate/blob/dev/audio-labelmap.txt) of audio that can be detected, many of which are not practical. By default `bark`, `fire_alarm`, `speech`, and `yell` are enabled but these can be customized.
+The included audio model has over [500 different types](https://github.com/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/audio-labelmap.txt) of audio that can be detected, many of which are not practical. By default `bark`, `fire_alarm`, `speech`, and `yell` are enabled but these can be customized.
 
 <ConfigTabs>
 <TabItem value="ui">
@@ -174,7 +174,7 @@ Some labels cover several related sounds: `yell` is triggered by shouting, yelli
 
 :::tip
 
-Frequently-heard labels like `speech` can generate a lot of events, and each event could save a snapshot and recording based on your configuration, so start with a focused set and expand from there. The defaults (`bark`, `fire_alarm`, `speech`, `yell`) plus a few of the safety labels above cover most needs. See the [full audio labelmap](https://github.com/blakeblackshear/frigate/blob/dev/audio-labelmap.txt) or the HeisenCam UI for every available type.
+Frequently-heard labels like `speech` can generate a lot of events, and each event could save a snapshot and recording based on your configuration, so start with a focused set and expand from there. The defaults (`bark`, `fire_alarm`, `speech`, `yell`) plus a few of the safety labels above cover most needs. See the [full audio labelmap](https://github.com/kzkvv/heisencam/blob/28e4fe997572c923655b3d2c826060dfc4e5b198/audio-labelmap.txt) or the HeisenCam UI for every available type.
 
 :::
 

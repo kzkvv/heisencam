@@ -7,9 +7,14 @@ title: Contributing To The Main Code Base
 
 ### Core, Web, Docker, and Documentation
 
-This repository holds the main Frigate application and all of its dependencies.
+This repository contains the HeisenCam application, container build files, and documentation.
 
-Fork [blakeblackshear/frigate](https://github.com/blakeblackshear/frigate.git) to your own GitHub profile, then clone the forked repo to your local machine.
+Fork [kzkvv/heisencam](https://github.com/kzkvv/heisencam) to your GitHub account. Clone your fork using your GitHub username.
+
+```sh
+git clone https://github.com/YOUR_GITHUB_USERNAME/heisencam.git
+cd heisencam
+```
 
 From here, follow the guides for:
 
@@ -197,7 +202,7 @@ The Web UI is built using [Vite](https://vitejs.dev/), [Preact](https://preactjs
 Light guidelines and advice:
 
 - Avoid adding more dependencies. The web UI intends to be lightweight and fast to load.
-- Do not make large sweeping changes. [Open a discussion on GitHub](https://github.com/blakeblackshear/frigate/discussions/new) for any large or architectural ideas.
+- Propose large or architectural changes in [HeisenCam Issues](https://github.com/kzkvv/heisencam/issues) before implementing them.
 - Ensure `lint` passes. This command will ensure basic conformance to styles, applying as many automatic fixes as possible, including Prettier formatting.
 
 ```console

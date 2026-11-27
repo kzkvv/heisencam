@@ -156,7 +156,7 @@ Follow these steps to begin:
 
 **The short version:** Start with a few clear, front-facing photos of each person. As faces are detected in the Recent Recognitions tab, train clear images that scored lower, adding variety (different angles, lighting, and expressions) slowly. Diversity matters far more than volume, and low-quality images hurt recognition more than they help.
 
-For a step-by-step narrative of these best practices (and the same principles applied to state and object classification), see the [HeisenCam Tips: Best Practices for Training](https://github.com/blakeblackshear/frigate/discussions/21374) discussion.
+For a step-by-step narrative of these best practices (and the same principles applied to state and object classification), see the [Frigate Tips: Best Practices for Training](https://github.com/blakeblackshear/frigate/discussions/21374) discussion.
 
 :::
 
