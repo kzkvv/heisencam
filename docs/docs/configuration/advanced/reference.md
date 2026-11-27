@@ -161,7 +161,7 @@ auth:
 # NOTE: The default values are for the EdgeTPU detector.
 # Other detectors will require the model config to be set.
 model:
-  # Required: path to the model. Frigate+ models use plus://<model_id> (default: automatic based on detector)
+  # Required: path to the model (default: automatic based on detector)
   path: /edgetpu_model.tflite
   # Required: path to the labelmap (default: shown below)
   labelmap_path: /labelmap.txt
@@ -687,7 +687,7 @@ face_recognition:
   # Optional: Minimum face distance score required to mark as a potential match (default: shown below)
   unknown_score: 0.8
   # Optional: Minimum face detection score required to detect a face (default: shown below)
-  # NOTE: This only applies when not running a Frigate+ model
+  # NOTE: This only applies to the secondary face detector
   detection_threshold: 0.7
   # Optional: Minimum face distance score required to be considered a match (default: shown below)
   recognition_threshold: 0.9

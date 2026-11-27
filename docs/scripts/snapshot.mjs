@@ -8,7 +8,10 @@ if (!release) {
 }
 
 // Keep the release schema alongside the generated API pages in the snapshot.
-copyFileSync("static/frigate-api.yaml", "docs/integrations/api/frigate-api.yaml");
+copyFileSync(
+  ".generated/static/frigate-api.yaml",
+  "docs/integrations/api/frigate-api.yaml",
+);
 
 const snapshot = spawnSync(
   process.execPath,

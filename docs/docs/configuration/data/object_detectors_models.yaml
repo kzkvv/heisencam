@@ -901,7 +901,7 @@ xdna2:
       label: YOLOv9
       recommended: true
       download: |-
-        Prepare the model using the frigate-xdna setup instructions linked above. For local YOLO models, Frigate must have access to the same ONNX file bytes as the sidecar. The example below uses YOLOv9-C at 320x320. Frigate+ models may instead use the same `plus://MODEL_ID` in Frigate and the sidecar.
+        Prepare the model using the frigate-xdna setup instructions linked above. HeisenCam and the sidecar must have access to the same ONNX model file. The example below uses YOLOv9-C at 320x320.
       ui: |-
         Navigate to **Settings > System > Detectors and model** and select **ZMQ IPC** from the detector type dropdown and click **Add**, then set the endpoint to `tcp://xdna:5555`. Then on the same page, in the **Custom Model** tab, configure:
 

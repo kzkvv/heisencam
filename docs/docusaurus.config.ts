@@ -15,6 +15,7 @@ const config: Config = {
   url: docsUrl.origin,
   baseUrl: docsUrl.pathname,
   customFields: { demoUrl },
+  staticDirectories: [".generated/static"],
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/branding/favicon.ico",
@@ -143,7 +144,7 @@ const config: Config = {
         docsPluginId: "classic", // configured for preset-classic
         config: {
           frigateApi: {
-            specPath: "static/frigate-api.yaml",
+            specPath: ".generated/static/frigate-api.yaml",
             outputDir: "docs/integrations/api",
             sidebarOptions: {
               groupPathsBy: "tag",

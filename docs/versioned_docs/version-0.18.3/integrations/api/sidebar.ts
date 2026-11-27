@@ -584,12 +584,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "integrations/api/plus-models-plus-models-get",
-          label: "Plusmodels",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
           id: "integrations/api/get-recognized-license-plates-recognized-license-plates-get",
           label: "Get Recognized License Plates",
           className: "api-method get",
@@ -858,18 +852,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "integrations/api/send-to-plus-events-event-id-plus-post",
-          label: "Send event to Frigate+",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "integrations/api/false-positive-events-event-id-false-positive-put",
-          label: "Submit false positive to Frigate+",
-          className: "api-method put",
-        },
-        {
-          type: "doc",
           id: "integrations/api/set-sub-label-events-event-id-sub-label-post",
           label: "Set event sub label",
           className: "api-method post",
@@ -977,12 +959,6 @@ const sidebar: SidebarsConfig = {
           id: "integrations/api/get-snapshot-from-recording-camera-name-recordings-frame-time-snapshot-format-get",
           label: "Get Snapshot From Recording",
           className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "integrations/api/submit-recording-snapshot-to-plus-camera-name-plus-frame-time-post",
-          label: "Submit Recording Snapshot To Plus",
-          className: "api-method post",
         },
         {
           type: "doc",
@@ -1358,12 +1334,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "integrations/api/schemas/eventuploadplusresponse",
-          label: "EventUploadPlusResponse",
-          className: "schema",
-        },
-        {
-          type: "doc",
           id: "integrations/api/schemas/eventsattributesbody",
           label: "EventsAttributesBody",
           className: "schema",
@@ -1618,12 +1588,6 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "integrations/api/schemas/startexportresponse",
           label: "StartExportResponse",
-          className: "schema",
-        },
-        {
-          type: "doc",
-          id: "integrations/api/schemas/submitplusbody",
-          label: "SubmitPlusBody",
           className: "schema",
         },
         {
