@@ -6,9 +6,13 @@ slug: /
 
 import DemoLink from "@site/src/components/DemoLink";
 
-HeisenCam is a local network video recorder built on Frigate 0.18.3. Open a camera from the classic dashboard, play a tracked object's recording in Events, or use History to find the minute you need.
+HeisenCam is a local NVR focused on speed, a classic camera dashboard, and a smoother experience when reviewing footage.
+
+HeisenCam is a fork of [Frigate](https://github.com/blakeblackshear/frigate) with an especial focus on performance, reliability, and UI/UX.
 
 ## Get started
+
+Open a camera from the classic dashboard, play a tracked object's recording in Events, or use History to find the minute you need.
 
 - <DemoLink>Open the browser demo</DemoLink> to explore six public street cameras and play recorded detections.
 - [Run the same six sources in Docker](../guides/heisencam-demo.md) to try the full recorder with local detection and recording.

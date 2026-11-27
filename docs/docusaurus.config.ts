@@ -131,7 +131,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `HeisenCam contributors. Based on Frigate by Frigate, Inc.`,
+      copyright: "HeisenCam contributors.",
     },
   },
   plugins: [
