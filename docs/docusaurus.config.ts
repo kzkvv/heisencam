@@ -106,16 +106,6 @@ const config: Config = {
           position: "right",
         },
         {
-          type: "localeDropdown",
-          position: "right",
-          dropdownItemsAfter: [
-            {
-              label: "简体中文（社区翻译）",
-              href: "https://docs.frigate-cn.video",
-            },
-          ],
-        },
-        {
           href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3",
           label: "GitHub",
           position: "right",
