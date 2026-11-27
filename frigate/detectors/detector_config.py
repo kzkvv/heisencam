@@ -48,7 +48,7 @@ class ModelConfig(BaseModel):
     path: str | None = Field(
         None,
         title="Custom object detector model path",
-        description="Path to a custom detection model file (or plus://<model_id> for Frigate+ models).",
+        description="Path to a custom detection model file (or plus://<model_id> for hosted models).",
     )
     labelmap_path: str | None = Field(
         None,

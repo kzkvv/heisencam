@@ -4786,11 +4786,11 @@ paths:
     post:
       tags:
         - Events
-      summary: Send event to Frigate+
+      summary: Send event to Hosted Models
       description: |-
         **Access:** Admin role required.
 
-        Sends an event to Frigate+.
+        Sends an event to Hosted Models.
             Returns a success message or an error if the event is not found.
       operationId: send_to_plus_events__event_id__plus_post
       parameters:
@@ -4825,12 +4825,12 @@ paths:
     put:
       tags:
         - Events
-      summary: Submit false positive to Frigate+
+      summary: Submit false positive to Hosted Models
       description: |-
         **Access:** Admin role required.
 
-        Submit an event as a false positive to Frigate+.
-            This endpoint is the same as the standard Frigate+ submission endpoint,
+        Submit an event as a false positive to Hosted Models.
+            This endpoint is the same as the standard Hosted Models submission endpoint,
             but is specifically for marking an event as a false positive.
       operationId: false_positive_events__event_id__false_positive_put
       parameters:

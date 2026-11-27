@@ -1,4 +1,4 @@
-"""Read-only performance checks for a running Frigate Classic instance."""
+"""Read-only performance checks for a running HeisenCam instance."""
 
 import argparse
 import concurrent.futures
@@ -12,7 +12,7 @@ from pathlib import Path
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
-PREFIX = "/perf/frigate"
+PREFIX = "/perf/heisencam"
 
 # Run inside the container so the metrics come from its own cgroup.
 CGROUP_SAMPLE = """
@@ -76,7 +76,7 @@ def check_database(base, container):
     config = json.loads(fetch(base, "/api/config")[0])
     path = config.get("database", {}).get("path")
     if not isinstance(path, str) or not Path(path).is_absolute():
-        raise ValueError("Frigate did not report an absolute database path")
+        raise ValueError("HeisenCam did not report an absolute database path")
     output = subprocess.check_output(
         ["docker", "exec", container, "python3", "-c", SQLITE_CHECK, path],
         text=True,

@@ -1,4 +1,4 @@
-"""Measure Frigate's tracked-object scores by replaying labelled local clips."""
+"""Measure HeisenCam's tracked-object scores by replaying labelled local clips."""
 
 import argparse
 import hashlib
@@ -93,7 +93,7 @@ def load_config(path, camera_names, idle_scan):
             if hasattr(camera.detect, "idle_scan_interval"):
                 camera.detect.idle_scan_interval = idle_scan
             elif idle_scan:
-                raise ValueError("This Frigate image has no idle scan setting")
+                raise ValueError("This recorder image has no idle scan setting")
     return config
 
 
@@ -183,7 +183,7 @@ class ReplayFrames:
         if item is None:
             raise queue.Empty
         stamp, self.frame = item
-        # Include the timestamp as well as the decoded YUV pixels given to Frigate.
+        # Include the timestamp as well as the decoded YUV pixels given to the detector.
         self.digest.update(struct.pack("!d", stamp))
         self.digest.update(self.frame)
         self.frame_name = f"replay-{stamp}"

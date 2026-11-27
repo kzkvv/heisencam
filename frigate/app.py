@@ -568,7 +568,7 @@ class FrigateApp:
                 logger.info("********************************************************")
 
     def start(self) -> None:
-        logger.info(f"Starting Frigate ({VERSION})")
+        logger.info(f"Starting HeisenCam ({VERSION})")
 
         # Ensure global state.
         self.ensure_dirs()

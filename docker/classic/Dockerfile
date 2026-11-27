@@ -27,6 +27,7 @@ COPY tools/quality_replay.py tools/
 COPY docker/main/rootfs/usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 COPY docker/main/rootfs/usr/local/go2rtc/create_config.py /usr/local/go2rtc/create_config.py
 COPY docker/main/rootfs/etc/s6-overlay/s6-rc.d/frigate/run /etc/s6-overlay/s6-rc.d/frigate/run
+COPY docker/main/rootfs/etc/s6-overlay/s6-rc.d/frigate/finish /etc/s6-overlay/s6-rc.d/frigate/finish
 RUN rm -rf web
 ENV PYTHONPATH=/opt/frigate
 COPY --from=web-build /work/dist/ web/

@@ -1058,8 +1058,8 @@ def set_retain(event_id: str):
     "/events/{event_id}/plus",
     response_model=EventUploadPlusResponse,
     dependencies=[Depends(require_role(["admin"]))],
-    summary="Send event to Frigate+",
-    description="""Sends an event to Frigate+.
+    summary="Send event to Hosted Models",
+    description="""Sends an event to Hosted Models.
     Returns a success message or an error if the event is not found.
     """,
 )
@@ -1183,9 +1183,9 @@ async def send_to_plus(request: Request, event_id: str, body: SubmitPlusBody = N
     "/events/{event_id}/false_positive",
     response_model=EventUploadPlusResponse,
     dependencies=[Depends(require_role(["admin"]))],
-    summary="Submit false positive to Frigate+",
-    description="""Submit an event as a false positive to Frigate+.
-    This endpoint is the same as the standard Frigate+ submission endpoint,
+    summary="Submit false positive to Hosted Models",
+    description="""Submit an event as a false positive to Hosted Models.
+    This endpoint is the same as the standard Hosted Models submission endpoint,
     but is specifically for marking an event as a false positive.""",
 )
 async def false_positive(request: Request, event_id: str):
@@ -1221,7 +1221,7 @@ async def false_positive(request: Request, event_id: str):
         )
 
     if event.false_positive:
-        message = "False positive already submitted to Frigate+"
+        message = "False positive already submitted to Hosted Models"
         logger.error(message)
         return JSONResponse(
             content=({"success": False, "message": message}), status_code=400
