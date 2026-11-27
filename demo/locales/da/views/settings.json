@@ -1,0 +1,46 @@
+{
+  "documentTitle": {
+    "default": "Indstillinger - HeisenCam",
+    "authentication": "Bruger Indstillinger - HeisenCam",
+    "camera": "Kamera indstillinger - HeisenCam",
+    "object": "Debug - HeisenCam",
+    "cameraManagement": "Administrér kameraer - HeisenCam",
+    "cameraReview": "Indstillinger for kameragennemgang - HeisenCam",
+    "enrichments": "Indstillinger for berigelser - HeisenCam",
+    "masksAndZones": "Maske- og zoneeditor - HeisenCam",
+    "motionTuner": "Bevægelsesjustering - HeisenCam",
+    "general": "Brugergrænsefladeindstillinger - HeisenCam",
+    "frigatePlus": "Frigate+ Indstillinger - HeisenCam",
+    "notifications": "Notifikations indstillinger - HeisenCam"
+  },
+  "menu": {
+    "ui": "Brugergrænseflade",
+    "profiles": "Profiler"
+  },
+  "configMessages": {
+    "model": {
+      "optimizedFor320": "HeisenCam er optimeret til en 320x320 model, der er det bedste valg for de fleste konfigurationer. En 640x640 model er langsommere og hjælper kun i særlige scenarier"
+    }
+  },
+  "configForm": {
+    "cameraInputs": {
+      "sourceMode": {
+        "manual": "Manuel input sti"
+      }
+    }
+  },
+  "cameraManagement": {
+    "clone": {
+      "footer": {
+        "restartNeeded": "Genstart er nødvendig for visse ændringer.",
+        "liveOnly": "Alle ændringer vil blive aktiveret umiddelbart uden genstart.",
+        "submit": "Klone",
+        "submitting": "Kloner…"
+      },
+      "toast": {
+        "success": "Indstillinger kopieret til {{cameraName}}",
+        "successWithRestart": "Indstillinger kopieret til {{cameraName}}. Genstart HeisenCam for at aktivere alle ændringer."
+      }
+    }
+  }
+}

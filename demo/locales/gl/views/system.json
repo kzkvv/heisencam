@@ -1,0 +1,17 @@
+{
+  "documentTitle": {
+    "cameras": "Estatísticas de cámaras - HeisenCam",
+    "storage": "Estatísticas de Almacenamento - HeisenCam",
+    "general": "Estatísticas Xerais - HeisenCam",
+    "enrichments": "Estatísticas complementarias - HeisenCam",
+    "logs": {
+      "frigate": "Rexistros de HeisenCam - HeisenCam"
+    }
+  },
+  "title": "Sistema",
+  "logs": {
+    "download": {
+      "label": "Descargar logs"
+    }
+  }
+}

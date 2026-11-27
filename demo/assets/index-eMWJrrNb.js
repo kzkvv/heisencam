@@ -1,0 +1,1 @@
+var n=Object.defineProperty;var o=(t,r)=>n(t,"name",{value:r,configurable:!0});import{r as e}from"./main-BR6-ZHyf.js";var i=e.createContext(void 0);function s(t){const r=e.useContext(i);return t||r||"ltr"}o(s,"useDirection");export{s as u};

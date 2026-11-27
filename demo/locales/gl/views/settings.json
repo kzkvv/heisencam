@@ -1,0 +1,11 @@
+{
+  "documentTitle": {
+    "default": "Preferencias - HeisenCam",
+    "authentication": "Configuracións de Autenticación - HeisenCam",
+    "camera": "Configuracións da Cámara - HeisenCam",
+    "general": "Configuracións UI - HeisenCam",
+    "notifications": "Configuración de Notificacións - HeisenCam",
+    "enrichments": "Configuración complementarias - HeisenCam",
+    "masksAndZones": "Editor de máscaras e zonas - HeisenCam"
+  }
+}

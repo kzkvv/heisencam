@@ -1,0 +1,1 @@
+var r=Object.defineProperty;var n=(o,c)=>r(o,"name",{value:c,configurable:!0});import{u as a}from"./main-BR6-ZHyf.js";function l(){const{i18n:o}=a(),e={"zh-CN":"docs.frigate-cn.video"}[o.language]||"docs.frigate.video";return{getLocaleDocUrl:n(t=>{const s=t.startsWith("/")?t:`/${t}`;return`https://${e}${s}`},"getLocaleDocUrl"),docDomain:e}}n(l,"useDocDomain");export{l as u};
