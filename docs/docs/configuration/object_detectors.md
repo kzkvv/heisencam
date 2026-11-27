@@ -8,7 +8,7 @@ import ConfigTabs from '@site/src/components/ConfigTabs';
 import TabItem from '@theme/TabItem';
 import NavPath from '@site/src/components/NavPath';
 import ModelConfigDropdown from '@site/src/components/ModelConfigDropdown';
-import objectDetectorsModels from '@site/data/object_detectors_models.yaml';
+import objectDetectorsModels from './data/object_detectors_models.yaml';
 
 ### Supported hardware
 
@@ -87,7 +87,7 @@ Along with picking a detector for your hardware, you will choose a model's **inp
 
 :::tip
 
-The best detection accuracy comes from a model trained on images that look like what HeisenCam actually sees: security camera footage cropped to regions of interest. You can train or fine-tune your own model on images like this and run it as a custom model (see the per-detector sections below), but [Frigate+](/plus) makes this much easier by handling the training for you on images submitted from your own cameras. For YOLOv9, the `s` (small) variant at `320x320` resolution is a good place to start, and the larger `c` variant is available for more powerful hardware.
+Detection accuracy improves when the training images resemble the camera footage HeisenCam analyzes. You can train or fine-tune your own model on these images and run it as a custom model using the per-detector setup below. For YOLOv9, the `s` (small) variant at `320x320` resolution is a good place to start, and the larger `c` variant is available for more powerful hardware.
 
 :::
 
@@ -103,7 +103,7 @@ The Edge TPU device can be specified using the `"device"` attribute according to
 
 :::tip
 
-See [common Edge TPU troubleshooting steps](/troubleshooting/edgetpu) if the Edge TPU is not detected.
+See [common Edge TPU troubleshooting steps](../troubleshooting/edgetpu.md) if the Edge TPU is not detected.
 
 :::
 
@@ -152,7 +152,7 @@ detectors:
 
 ### Native Coral (Dev Board)
 
-_warning: may have [compatibility issues](https://github.com/blakeblackshear/frigate/issues/1706) after `v0.9.x`_
+A [2021 Frigate report](https://github.com/blakeblackshear/frigate/issues/1706) documents an nginx startup failure on this board with Frigate `0.9.0-rc2`.
 
 <ConfigTabs>
 <TabItem value="ui">
@@ -252,7 +252,7 @@ See the [installation docs](../frigate/installation.md#hailo-8) for information 
 
 :::info
 
-If no custom model is provided, the Hailo detector downloads a default model from the Hailo Model Zoo on first startup. Once cached, the model works fully offline. See [Network Requirements](/frigate/network_requirements#hardware-specific-detector-models) for details.
+If no custom model is provided, the Hailo detector downloads a default model from the Hailo Model Zoo on first startup. Once cached, the model works fully offline. See [Network Requirements](../frigate/network_requirements.md#hardware-specific-detector-models) for details.
 
 :::
 
@@ -696,7 +696,7 @@ This implementation uses the [Rockchip's RKNN-Toolkit2](https://github.com/airoc
 
 :::info
 
-If no custom model is provided, the RKNN detector downloads a default model from GitHub on first startup. Once cached, the model works fully offline. See [Network Requirements](/frigate/network_requirements#hardware-specific-detector-models) for details.
+If no custom model is provided, the RKNN detector downloads a default model from GitHub on first startup. Once cached, the model works fully offline. See [Network Requirements](../frigate/network_requirements.md#hardware-specific-detector-models) for details.
 
 :::
 
@@ -718,7 +718,7 @@ detectors:
 
 ### Prerequisites
 
-Make sure to follow the [Rockchip specific installation instructions](/frigate/installation#rockchip-platform).
+Make sure to follow the [Rockchip specific installation instructions](../frigate/installation.md#rockchip-platform).
 
 :::tip
 
@@ -798,7 +798,7 @@ See the [installation docs](../frigate/installation.md#axera) for information on
 
 :::info
 
-The AXEngine detector downloads its default model from HuggingFace on first startup. Once cached, the model works fully offline. See [Network Requirements](/frigate/network_requirements#hardware-specific-detector-models) for details.
+The AXEngine detector downloads its default model from HuggingFace on first startup. Once cached, the model works fully offline. See [Network Requirements](../frigate/network_requirements.md#hardware-specific-detector-models) for details.
 
 :::
 

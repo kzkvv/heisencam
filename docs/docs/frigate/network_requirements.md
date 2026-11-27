@@ -12,7 +12,7 @@ HeisenCam is designed to run locally and does not require a persistent internet 
 HeisenCam's internet usage falls into three categories:
 
 1. **One-time model downloads**: ML models are downloaded the first time a feature is enabled, then cached locally. No internet is needed on subsequent startups.
-2. **Optional cloud services**: Features like Frigate+ and Generative AI connect to external APIs only when explicitly configured.
+2. **Optional cloud services**: Features such as Generative AI connect to external APIs only when explicitly configured.
 3. **Build-time dependencies**: Components bundled into the Docker image during the build process. These require no internet at runtime.
 
 :::tip
@@ -27,12 +27,12 @@ The following models are downloaded automatically the first time their associate
 
 | Feature                                                                                       | Models Downloaded                                                          | Source               |
 | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------- |
-| [Semantic search](/configuration/semantic_search)                                             | Jina CLIP v1 or v2 (ONNX) + tokenizer                                      | HuggingFace          |
-| [Face recognition](/configuration/face_recognition)                                           | FaceNet, ArcFace, face detection model                                     | GitHub               |
-| [License plate recognition](/configuration/license_plate_recognition)                         | PaddleOCR (detection, classification, recognition) + YOLOv9 plate detector | GitHub               |
-| [Bird classification](/configuration/bird_classification)                                     | MobileNetV2 bird model + label map                                         | GitHub               |
-| [Custom classification](/configuration/custom_classification/state_classification) (training) | MobileNetV2 ImageNet base weights (via Keras)                              | Google storage       |
-| [Audio transcription](/configuration/advanced/system)                                         | Whisper or Sherpa-ONNX streaming model                                     | HuggingFace / OpenAI |
+| [Semantic search](../configuration/semantic_search.md)                                             | Jina CLIP v1 or v2 (ONNX) + tokenizer                                      | HuggingFace          |
+| [Face recognition](../configuration/face_recognition.md)                                           | FaceNet, ArcFace, face detection model                                     | GitHub               |
+| [License plate recognition](../configuration/license_plate_recognition.md)                         | PaddleOCR (detection, classification, recognition) + YOLOv9 plate detector | GitHub               |
+| [Bird classification](../configuration/bird_classification.md)                                     | MobileNetV2 bird model + label map                                         | GitHub               |
+| [Custom classification](../configuration/custom_classification/state_classification.md) (training) | MobileNetV2 ImageNet base weights (via Keras)                              | Google storage       |
+| [Audio transcription](../configuration/advanced/system.md)                                         | Whisper or Sherpa-ONNX streaming model                                     | HuggingFace / OpenAI |
 
 :::note
 
@@ -46,9 +46,9 @@ If you are using one of the following hardware detectors and have not provided y
 
 | Detector                                                           | Model Downloaded     | Source                   |
 | ------------------------------------------------------------------ | -------------------- | ------------------------ |
-| [Rockchip RKNN](/configuration/object_detectors#rockchip-platform) | RKNN detection model | GitHub                   |
-| [Hailo 8 / 8L](/configuration/object_detectors#hailo-8)            | YOLOv6n (.hef)       | Hailo Model Zoo (AWS S3) |
-| [AXERA AXEngine](/configuration/object_detectors)                  | Detection model      | HuggingFace              |
+| [Rockchip RKNN](../configuration/object_detectors.md#rockchip-platform) | RKNN detection model | GitHub                   |
+| [Hailo 8 / 8L](../configuration/object_detectors.md#hailo-8)            | YOLOv6n (.hef)       | Hailo Model Zoo (AWS S3) |
+| [AXERA AXEngine](../configuration/object_detectors.md)                  | Detection model      | HuggingFace              |
 
 :::note
 
@@ -87,12 +87,6 @@ If your HeisenCam instance has restricted internet access, you can point model d
 
 These features connect to external services during normal operation and require internet whenever they are active.
 
-### Frigate+
-
-When a Frigate+ API key is configured, HeisenCam communicates with `https://api.frigate.video` to download models, upload snapshots for training, submit annotations, and report false positives. Remove the API key to disable all Frigate+ network activity.
-
-See [Frigate+](/integrations/plus) for details.
-
 ### Generative AI
 
 When a Generative AI provider is configured, HeisenCam sends images and prompts to the configured provider for event descriptions, chat, and camera monitoring. Available providers:
@@ -105,7 +99,7 @@ When a Generative AI provider is configured, HeisenCam sends images and prompts 
 | Ollama        | Depends: typically local (`localhost:11434`), but can be remote |
 | llama.cpp     | No, runs entirely locally                                       |
 
-Disable Generative AI by removing the `genai` configuration from your cameras. See [Generative AI](/configuration/genai/genai_config) for details.
+Disable Generative AI by removing the `genai` configuration from your cameras. See [Generative AI](../configuration/genai/config.md) for details.
 
 ### Version Check
 
@@ -118,19 +112,19 @@ telemetry:
 
 ### Push Notifications
 
-When [notifications](/configuration/notifications) are enabled and users have registered for push notifications in the web UI, HeisenCam sends push messages through the browser vendor's push service (e.g., Google FCM, Mozilla autopush). This requires internet access from the HeisenCam server to these push endpoints.
+When [notifications](../configuration/notifications.md) are enabled and users have registered for push notifications in the web UI, HeisenCam sends push messages through the browser vendor's push service (e.g., Google FCM, Mozilla autopush). This requires internet access from the HeisenCam server to these push endpoints.
 
 ### MQTT
 
-If an [MQTT broker](/integrations/mqtt) is configured, HeisenCam maintains a connection to the broker's host and port. This is typically a local network connection, but will require internet if you use a cloud-hosted MQTT broker.
+If an [MQTT broker](../integrations/mqtt.md) is configured, HeisenCam maintains a connection to the broker's host and port. This is typically a local network connection, but will require internet if you use a cloud-hosted MQTT broker.
 
 ### DeepStack / CodeProject.AI
 
-When using the [DeepStack detector plugin](/configuration/object_detectors), HeisenCam sends images to the configured API endpoint for inference. This is typically local but depends on where the service is hosted.
+When using the [DeepStack detector plugin](../configuration/object_detectors.md), HeisenCam sends images to the configured API endpoint for inference. This is typically local but depends on where the service is hosted.
 
 ## WebRTC (STUN)
 
-For [WebRTC live streaming](/configuration/live), HeisenCam uses STUN for NAT traversal:
+For [WebRTC live streaming](../configuration/live.md), HeisenCam uses STUN for NAT traversal:
 
 - **go2rtc** defaults to a local STUN listener (`stun:8555`), no internet required.
 - **The web UI's WebRTC player** includes a fallback to Google's public STUN server (`stun:stun.l.google.com:19302`), which requires internet.
@@ -156,7 +150,7 @@ To run HeisenCam in an air-gapped or offline environment:
 2. **Pre-download the training base weights**: If you plan to train custom classification models, set `TF_KERAS_MOBILENET_V2_WEIGHTS_URL` before training, then run one training job while online. Without this variable the base weights are cached outside `/config/` and are lost whenever the container is recreated, so a later training run will fail offline. If the machine never has internet access, copy the weights in manually as described below.
 3. **Disable version check**: Set `telemetry.version_check: false` in your configuration.
 4. **Block outbound model requests**: Set the `HF_HUB_OFFLINE=1` and `TRANSFORMERS_OFFLINE=1` environment variables to prevent HuggingFace and Transformers from attempting any network requests.
-5. **Avoid cloud features**: Do not configure Frigate+, Generative AI providers that require internet, or cloud MQTT brokers.
+5. **Avoid cloud features**: Use local Generative AI providers and local MQTT brokers.
 6. **Use local model mirrors**: If limited internet is available, set the `HF_ENDPOINT`, `GITHUB_ENDPOINT`, `GITHUB_RAW_ENDPOINT`, and `TF_KERAS_MOBILENET_V2_WEIGHTS_URL` environment variables to point to local mirrors.
 
 After these steps, HeisenCam will operate with no outbound internet connections.

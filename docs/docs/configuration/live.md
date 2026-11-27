@@ -12,7 +12,7 @@ HeisenCam intelligently displays your camera streams on the Live view dashboard.
 
 ### Live View technologies
 
-HeisenCam intelligently uses three different streaming technologies to display your camera streams on the dashboard and the single camera view, switching between available modes based on network bandwidth, player errors, or required features like two-way talk. The highest quality and fluency of the Live view requires the bundled `go2rtc` to be [configured](/configuration/go2rtc).
+HeisenCam intelligently uses three different streaming technologies to display your camera streams on the dashboard and the single camera view, switching between available modes based on network bandwidth, player errors, or required features like two-way talk. The highest quality and fluency of the Live view requires the bundled `go2rtc` to be [configured](./go2rtc.md).
 
 The jsmpeg live view will use more browser and client GPU resources. Using go2rtc is highly recommended and will provide a superior experience.
 
@@ -24,7 +24,7 @@ The jsmpeg live view will use more browser and client GPU resources. Using go2rt
 
 :::info
 
-WebRTC may use an external STUN server for NAT traversal. MSE and HLS streaming do not require any internet access. See [Network Requirements](/frigate/network_requirements#webrtc-stun) for details.
+WebRTC may use an external STUN server for NAT traversal. MSE and HLS streaming do not require any internet access. See [Network Requirements](../frigate/network_requirements.md#webrtc-stun) for details.
 
 :::
 
@@ -203,14 +203,14 @@ See [go2rtc WebRTC docs](https://github.com/AlexxIT/go2rtc/tree/v1.9.14#module-w
 For devices that support two way talk, HeisenCam can be configured to use the feature from the camera's Live view in the Web UI. You should:
 
 - Set up go2rtc with [WebRTC](#webrtc-extra-configuration).
-- Ensure you access HeisenCam via https (may require [opening port 8971](/frigate/installation/#ports)).
+- Ensure you access HeisenCam via https (may require [opening port 8971](../frigate/installation.md#ports)).
 - For the Home Assistant HeisenCam card, [follow the docs](http://card.camera/#/usage/2-way-audio) for the correct source.
 
-To use the Reolink Doorbell with two way talk, you should use the [recommended Reolink configuration](/configuration/camera_specific#reolink-cameras)
+To use the Reolink Doorbell with two way talk, you should use the [recommended Reolink configuration](./camera_specific.md#reolink-cameras)
 
 As a starting point to check compatibility for your camera, view the list of cameras supported for two-way talk on the [go2rtc repository](https://github.com/AlexxIT/go2rtc?tab=readme-ov-file#two-way-audio). For cameras in the category `ONVIF Profile T`, you can use the [ONVIF Conformant Products Database](https://www.onvif.org/conformant-products/)'s FeatureList to check for the presence of `AudioOutput`. A camera that supports `ONVIF Profile T` _usually_ supports this, but due to inconsistent support, a camera that explicitly lists this feature may still not work. If no entry for your camera exists on the database, it is recommended not to buy it or to consult with the manufacturer's support on the feature availability.
 
-To prevent go2rtc from blocking other applications from accessing your camera's two-way audio, you must configure your stream with `#backchannel=0`. See [preventing go2rtc from blocking two-way audio](/configuration/restream#two-way-talk-restream) in the restream documentation.
+To prevent go2rtc from blocking other applications from accessing your camera's two-way audio, you must configure your stream with `#backchannel=0`. See [preventing go2rtc from blocking two-way audio](./restream.md#two-way-talk-restream) in the restream documentation.
 
 ### Streaming options on camera group dashboards
 
@@ -284,8 +284,8 @@ Turning a camera off is temporary and does not require a restart. The available 
 - The right-click context menu on a camera tile on the Live dashboard
 - The Camera management settings pane (status set to **Off**)
 - The mobile settings drawer on the single-camera Live view (admin users only)
-- The [MQTT topic](/integrations/mqtt#frigatecamera_nameenabledset) `frigate/<camera_name>/enabled/set` with payload `ON` or `OFF`
-- The Home Assistant integration via the [`camera.turn_on` / `camera.turn_off` actions](/integrations/home-assistant#camera-api)
+- The [MQTT topic](../integrations/mqtt.md#frigatecamera_nameenabledset) `frigate/<camera_name>/enabled/set` with payload `ON` or `OFF`
+- The Home Assistant integration via the [`camera.turn_on` / `camera.turn_off` actions](../integrations/home-assistant.md#camera-api)
 
 #### Disabling a camera
 
@@ -306,7 +306,7 @@ If you want a camera's historical data (review items, tracked objects, footage) 
 The Live view toggles for **camera on/off**, **detect**, **recordings**, **snapshots**, and **audio detection** (along with the equivalent MQTT `/set` topics) write the new state to `.runtime_state.json` next to your `config.yml`. The file is replayed on HeisenCam startup so your last-known toggle states survive a restart. Two interactions worth knowing:
 
 - **Settings UI saves win.** When you save a field through **Settings → Global configuration**, the matching entry is cleared from `.runtime_state.json` so the new value in your config file is the durable source.
-- **Switching profiles clears all runtime overrides.** Activating or deactivating a [profile](/configuration/profiles) is treated as a deliberate state change, so the file is wiped to avoid stale overrides replaying on top of the new profile.
+- **Switching profiles clears all runtime overrides.** Activating or deactivating a [profile](./profiles.md) is treated as a deliberate state change, so the file is wiped to avoid stale overrides replaying on top of the new profile.
 
 If you hand-edit `config.yml` while runtime overrides exist, the overrides will still replay on restart. Delete `.runtime_state.json` to reset to the YAML-defined defaults.
 
@@ -369,7 +369,7 @@ If your camera is streaming (as indicated by a red dot in the upper right, or if
 
 The debug view plays the `detect` stream processed by HeisenCam itself, while the Live view plays your go2rtc stream directly in the browser. If the debug view works but the Live view doesn't, your browser usually can't decode what the camera is sending, most often H.265 video or an incompatible audio track.
 
-Work through the [go2rtc troubleshooting guide](/troubleshooting/go2rtc#live-view-is-black-buffering-or-stuck-in-low-bandwidth-mode) to isolate the problem. Two fixes resolve the majority of cases:
+Work through the [go2rtc troubleshooting guide](../troubleshooting/go2rtc.md#live-view-is-black-buffering-or-stuck-in-low-bandwidth-mode) to isolate the problem. Two fixes resolve the majority of cases:
 
 1. Restream through go2rtc's FFmpeg module by prefixing your source with `ffmpeg:`, for example `- ffmpeg:rtsp://user:password@192.168.1.5:554/stream`.
 2. If that doesn't help, transcode to compatible codecs: `- ffmpeg:rtsp://user:password@192.168.1.5:554/stream#video=h264#audio=aac#hardware`.
@@ -378,7 +378,7 @@ Work through the [go2rtc troubleshooting guide](/troubleshooting/go2rtc#live-vie
 
 <FaqItem id="how-do-i-get-the-best-live-view-experience-in-home-assistant" question="How do I get the best live view experience in Home Assistant?">
 
-For a full-resolution, low-latency live view in Home Assistant dashboards, use the [Advanced Camera Card](https://card.camera) with the [go2rtc live provider](https://card.camera/#/configuration/cameras/live-provider?id=go2rtc), which streams directly from HeisenCam's bundled go2rtc. This also supports audio and [two-way talk](#two-way-talk) on capable cameras. See the [Home Assistant integration docs](/integrations/home-assistant) for setup.
+For a full-resolution, low-latency live view in Home Assistant dashboards, use the [Advanced Camera Card](https://card.camera) with the [go2rtc live provider](https://card.camera/#/configuration/cameras/live-provider?id=go2rtc), which streams directly from HeisenCam's bundled go2rtc. This also supports audio and [two-way talk](#two-way-talk) on capable cameras. See the [Home Assistant integration docs](../integrations/home-assistant.md) for setup.
 
 </FaqItem>
 

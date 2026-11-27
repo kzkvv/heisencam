@@ -11,7 +11,7 @@ Generative AI can be used to automatically generate structured summaries of revi
 
 Requests for a summary are requested automatically to your AI provider for alert review items when the activity has ended, they can also be optionally enabled for detections as well.
 
-Generative AI review summaries can also be toggled dynamically for a [camera via MQTT](/integrations/mqtt#frigatecamera_namereview_descriptionsset).
+Generative AI review summaries can also be toggled dynamically for a [camera via MQTT](../../integrations/mqtt.md#frigatecamera_namereview_descriptionsset).
 
 ## Review Summary Usage and Best Practices
 
@@ -198,10 +198,10 @@ Along with individual review item summaries, Generative AI can also produce a si
 
 ### Requesting Reports Programmatically
 
-Review reports can be requested via the [API](/integrations/api/generate-review-summary-review-summarize-start-start-ts-end-end-ts-post) by sending a POST request to `/api/review/summarize/start/{start_ts}/end/{end_ts}` with Unix timestamps.
+Review reports can be requested via the [API](../../integrations/api/generate-review-summary-review-summarize-start-start-ts-end-end-ts-post.api.mdx) by sending a POST request to `/api/review/summarize/start/{start_ts}/end/{end_ts}` with Unix timestamps.
 
 For Home Assistant users, there is a built-in service (`frigate.review_summarize`) that makes it easy to request review reports as part of automations or scripts. This allows you to automatically generate daily summaries, vacation reports, or custom time period reports based on your specific needs.
 
 ## Troubleshooting
 
-If summaries are not being generated, or the generated summaries are not what you expect, see [How do I debug GenAI issues?](/configuration/genai/genai_config#how-do-i-debug-genai-issues).
+If summaries are not being generated, or the generated summaries are not what you expect, see [How do I debug GenAI issues?](./config.md#how-do-i-debug-genai-issues).

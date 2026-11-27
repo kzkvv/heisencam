@@ -1,0 +1,73 @@
+---
+id: set-sub-label-events-event-id-sub-label-post
+title: "Set event sub label"
+description: "**Access:** Admin role required."
+sidebar_label: "Set event sub label"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVktz2zYQ/iuYvfgxtCR72gtvbuq2aZNJxlLag63RgORKREwCDBaUpeHwv3cWoERKfiTT5NCLHsA+v939Fg04uSKI7+BmjdoRzCPIkFKrKqeMhhjOz6/TFIni83NxnZVKC2sKFBa/1MpiNrrX93qKjoTUAtnGCQmqE1HIBIvRvRZCiFt0tdUkpKDaGxMlEskVCmO9nrXGCrUULsdgRCgS2jixNLXORhCBqdBKDultBjEQugXVycI7WXgNWoTvhcoWg7vKkIMIKmlliQ4t59qAliVCDDsFiEBxrpV0OUSwyw1iZ2uMgNIcSwlxA25bsR45q/QKInDKFXzgwRNvM2jbedBHcr+YbMtKx+ZSox1qx1eyqgqV+rzGn4nxbgbeKstZO4Xkz+vkHaf0XByl3LxDvXI5xJeTSR/XdFcIaKO9gWlqLHrvevth6fHo7Om6TNAGe6qsS4gvI8BNWtSk1vhe6XA4aaOBSlEAJ713ydbF0ti+C9h5Kku08lmvXRavGX3jtYXLFQmTfMbUN0iGDlOHmTB6BG0b7dSDxEEh73r45kdlo2l34+vVtmzIIlVGUwD+ajLhr8OxmIZGXtaFuO2E4TtK640NKpsYU6DUMCxlkGkj6IbntYZ834l8HZVgtTc6gOd31GhVus8vYPPT1dVTOP6Whcp8suKGh/m/Y5Ghk8o3uXJY0lOBwqQHt9/QT0o7XKGFdt7DIa2V2wFi70wI0ANMq28Cd2fsFWLwzDbj26+VgvMKrju5QSV6eAO6L6fxa4DvOWc7kT9ms49PDIbaEqa1VW7r4VxatZIOPelf18wtd3Meys3FLuwLXgUcBIsAU4VDTcrowLIPuIX4iXgEa1nUvRqbLNHlhol9T9fsDsaB2cfNjqjb8Z7ZgaO16x2j17aAGHLnKorH4wxLM+riH61VhmYsK+VboheMx+PCpLLIDbn458nkMsjMexim3KOh656CsS+6rNRfuN3tkNSYB8VZdjumU1w484CM0eHcsCnUjocDM0FIjJ54zA3xiiVTrDELC1eROPGAnYzELMe9rCKB5GRSKMoxE2sl/Rb985+ZCKEIRVRjJpKt+PhhOhPjwqyUjnj1snBlzWYrZO1ykaPM0JI4tVgahxc1oRVj0f3jKM7EY45a/BZyErbWJBLMlc54jcs+GaVXwiJXB4OHEfdsh8UnQvsjMdTboesBjqceuZO1wke0J5xxrlY52rPoh2P2Hbi0ETAp3vavhpuNLKsCD7d+Ty5Hi3zSb9ee+0DppfEAd1PPc4eWAmST0eVowlI8b6X0hNxhPUXXPcH6/X2EeNNz+//ledi1kcONG1eFVJ7G/ag3HZnchdcer7p48O7r+WQeATMBSzZNIgk/2aJt+fhLjZYpcc7UZZVMGNC7BjJF/DuDeCkLwldQOr3t8DgTLwW7GwS9HTAkRB2J7iP2Kyw03YBj3wRPF37RDAj2eO8yAQYNrlrlXpUd8jJPAUSQdE/a0mSsY+UjLzH5GEI1PnNPl/6sgULqVe2fKhBscrPLJ6P/4Ee/+zHY5IdgHLNASIQ/B6v+UKVpArG07V4+XL2o0UG7k/b7qW3bfwEzMYlD
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Set event sub label"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/events/{event_id}/sub_label"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Sets an event's sub label.
+    Returns a success message or an error if the event is not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"subLabel":{"type":"string","maxLength":100,"title":"Sub label"},"subLabelScore":{"anyOf":[{"type":"number","maximum":1,"exclusiveMinimum":0},{"type":"null"}],"title":"Score for sub label"},"camera":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Camera this object is detected on."}},"type":"object","required":["subLabel"],"title":"EventsSubLabelBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

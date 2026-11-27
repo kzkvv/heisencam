@@ -7,7 +7,7 @@ import ConfigTabs from "@site/src/components/ConfigTabs";
 import TabItem from "@theme/TabItem";
 import NavPath from "@site/src/components/NavPath";
 
-This page covers common problems with the bundled [go2rtc](/configuration/go2rtc) and how to resolve them, whether your cameras were added with the setup wizard or configured by hand.
+This page covers common problems with the bundled [go2rtc](../configuration/go2rtc.md) and how to resolve them, whether your cameras were added with the setup wizard or configured by hand.
 
 When a stream won't play or behaves oddly, the most important first step is to figure out **where** in the pipeline it breaks. HeisenCam's live view is a chain (_camera → go2rtc → your browser_), and each stage fails for different reasons. Work through the checks below in order, then jump to the matching problem category.
 
@@ -92,11 +92,11 @@ When the live view shows a black screen, spins forever, or repeatedly drops to t
 
 The fix is to produce an **H.264 + AAC** stream, either by changing your camera's firmware codecs or by transcoding in go2rtc (see [Fix the codec with the FFmpeg module](#4-fix-the-codec-with-the-ffmpeg-module)). A few other things worth checking:
 
-- **Set the camera's I-frame (keyframe) interval to match its frame rate** (or "1x" on Reolink), and avoid "smart"/"+" codecs like _H.264+_ or _H.265+_. A long keyframe interval delays the first decodable frame past HeisenCam's startup timeout, which forces the fallback to jsmpeg. See [camera settings recommendations](/configuration/live#camera-settings-recommendations).
+- **Set the camera's I-frame (keyframe) interval to match its frame rate** (or "1x" on Reolink), and avoid "smart"/"+" codecs like _H.264+_ or _H.265+_. A long keyframe interval delays the first decodable frame past HeisenCam's startup timeout, which forces the fallback to jsmpeg. See [camera settings recommendations](../configuration/live.md#camera-settings-recommendations).
 - **A spinner that never clears, even though video plays in VLC**, is often an unplayable _audio_ track stalling playback. Drop or transcode the audio (see below).
-- **Remote/VPN viewing that buffers** while the LAN is fine is usually latency/jitter exceeding MSE's startup buffer. Set up [WebRTC](/configuration/live#webrtc-extra-configuration), which drops late frames instead of buffering.
+- **Remote/VPN viewing that buffers** while the LAN is fine is usually latency/jitter exceeding MSE's startup buffer. Set up [WebRTC](../configuration/live.md#webrtc-extra-configuration), which drops late frames instead of buffering.
 
-The general live-view behavior (smart streaming, the MSE → WebRTC → jsmpeg fallback chain, and how to read browser console errors) is documented in detail in the [Live view FAQ](/configuration/live#live-view-faq).
+The general live-view behavior (smart streaming, the MSE → WebRTC → jsmpeg fallback chain, and how to read browser console errors) is documented in detail in the [Live view FAQ](../configuration/live.md#live-view-faq).
 
 ## H.265 / HEVC cameras
 
@@ -107,7 +107,7 @@ For dependable live viewing, use **H.264** for the stream the live view consumes
 - Point the live view at the camera's H.264 **substream** and keep the H.265 main stream for recording only, or
 - Transcode H.265 → H.264 in go2rtc with the FFmpeg module and `#hardware` (software HEVC transcoding is very CPU heavy).
 
-Treat browser HEVC playback as best-effort. See also [H.265 cameras via Safari](/configuration/camera_specific#h265-cameras-via-safari).
+Treat browser HEVC playback as best-effort. See also [H.265 cameras via Safari](../configuration/camera_specific.md#h265-cameras-via-safari).
 
 ## No audio in Live view
 
@@ -147,15 +147,15 @@ go2rtc:
 </TabItem>
 </ConfigTabs>
 
-Setting the camera firmware to AAC (and H.264) avoids transcoding entirely and is always preferable when the camera supports it. For more detail and examples, see [Audio Support](/configuration/live#audio-support).
+Setting the camera firmware to AAC (and H.264) avoids transcoding entirely and is always preferable when the camera supports it. For more detail and examples, see [Audio Support](../configuration/live.md#audio-support).
 
 ## WebRTC and two-way talk
 
 WebRTC is only attempted when MSE fails or when using a camera's two-way talk feature; the "All Cameras" dashboard never uses it. When it doesn't work, the cause is almost always one of:
 
 - **Codec mismatch**: WebRTC cannot carry H.265 or AAC. The stream backing the WebRTC view must provide Opus (or PCMA/PCMU) audio and H.264 video. Add an `ffmpeg:back#audio=opus` source as shown above.
-- **Port `8555` not reachable, or no candidates set**: WebRTC needs port `8555` (both TCP and UDP) open and a reachable candidate advertised. On Docker installs running on a custom/overlay network, go2rtc may advertise unreachable container IPs as ICE candidates; setting `webrtc.filters.candidates: []` and supplying only your host's LAN IP resolves this. See [WebRTC extra configuration](/configuration/live#webrtc-extra-configuration).
-- **Two-way talk** additionally requires a secure context (HTTPS or the authenticated port `8971`, because browsers block microphone access on plain HTTP). The camera's RTSP backchannel must also be handled correctly: go2rtc seizes the backchannel by default, which blocks two-way audio for other consumers and can inject static. Disable it on the primary stream with `#backchannel=0` and use a separate dedicated stream for talk, carrying no `#` modifiers of any kind, as documented in [preventing go2rtc from blocking two-way audio](/configuration/restream#two-way-talk-restream).
+- **Port `8555` not reachable, or no candidates set**: WebRTC needs port `8555` (both TCP and UDP) open and a reachable candidate advertised. On Docker installs running on a custom/overlay network, go2rtc may advertise unreachable container IPs as ICE candidates; setting `webrtc.filters.candidates: []` and supplying only your host's LAN IP resolves this. See [WebRTC extra configuration](../configuration/live.md#webrtc-extra-configuration).
+- **Two-way talk** additionally requires a secure context (HTTPS or the authenticated port `8971`, because browsers block microphone access on plain HTTP). The camera's RTSP backchannel must also be handled correctly: go2rtc seizes the backchannel by default, which blocks two-way audio for other consumers and can inject static. Disable it on the primary stream with `#backchannel=0` and use a separate dedicated stream for talk, carrying no `#` modifiers of any kind, as documented in [preventing go2rtc from blocking two-way audio](../configuration/restream.md#two-way-talk-restream).
 
 ## High CPU usage
 
@@ -171,9 +171,9 @@ To keep CPU usage down:
 
 If go2rtc logs `401 Unauthorized` for a URL that works in VLC, the password almost certainly contains reserved URL characters. **HeisenCam URL-encodes passwords for its own `cameras.ffmpeg.inputs`, but it does not touch what you write under `go2rtc.streams`**: go2rtc parses that URL itself. You must URL-encode special characters yourself in the `go2rtc.streams` section (`@` → `%40`, `#` → `%23`, `?` → `%3F`, `%` → `%25`, etc.).
 
-Note the asymmetry: under `cameras.ffmpeg.inputs` you should use the **raw** password (HeisenCam encodes it for you). Pre-encoding it there causes a double-encode and fails. See [Handling Complex Passwords](/configuration/restream#handling-complex-passwords).
+Note the asymmetry: under `cameras.ffmpeg.inputs` you should use the **raw** password (HeisenCam encodes it for you). Pre-encoding it there causes a double-encode and fails. See [Handling Complex Passwords](../configuration/restream.md#handling-complex-passwords).
 
-Repeated `401`/`Connection refused` errors can also mean the camera hit its **concurrent connection limit** or triggered a login lockout. Routing all roles through a single [RTSP restream](/configuration/restream#reduce-connections-to-camera) means the camera only ever sees one connection from go2rtc.
+Repeated `401`/`Connection refused` errors can also mean the camera hit its **concurrent connection limit** or triggered a login lockout. Routing all roles through a single [RTSP restream](../configuration/restream.md#reduce-connections-to-camera) means the camera only ever sees one connection from go2rtc.
 
 ## Stream names must match everywhere
 
@@ -188,16 +188,16 @@ If you rename or remove a go2rtc stream while experimenting and the live stream 
 
 ## Camera-specific behavior
 
-Several camera brands have well-known quirks with go2rtc. Rather than repeat them here, see the [camera-specific configuration](/configuration/camera_specific) page, which covers them in detail. The highlights:
+Several camera brands have well-known quirks with go2rtc. Rather than repeat them here, see the [camera-specific configuration](../configuration/camera_specific.md) page, which covers them in detail. The highlights:
 
-- **Reolink**: RTSP is unreliable on many models; the **http-flv** stream through the FFmpeg module is recommended, and you must enable HTTP/RTMP in the camera and **reboot** it. 6MP+ models stream H.265 over http-flv-enhanced, which requires FFmpeg 8.0. See [Reolink Cameras](/configuration/camera_specific#reolink-cameras).
+- **Reolink**: RTSP is unreliable on many models; the **http-flv** stream through the FFmpeg module is recommended, and you must enable HTTP/RTMP in the camera and **reboot** it. 6MP+ models stream H.265 over http-flv-enhanced, which requires FFmpeg 8.0. See [Reolink Cameras](../configuration/camera_specific.md#reolink-cameras).
 - **TP-Link Tapo**: use go2rtc's native `tapo://` source for stability and two-way audio; a stale RTSP credential can often be revived by clicking play once in the go2rtc web UI.
 - **Ubiquiti/UniFi Protect**: use the `rtspx://` scheme (not `rtsps://…?enableSrtp`).
-- **Amcrest/Dahua**: use the `/cam/realmonitor?channel=1&subtype=N` scheme, where `subtype=0` is the main stream. See [Amcrest & Dahua](/configuration/camera_specific#amcrest--dahua).
+- **Amcrest/Dahua**: use the `/cam/realmonitor?channel=1&subtype=N` scheme, where `subtype=0` is the main stream. See [Amcrest & Dahua](../configuration/camera_specific.md#amcrest--dahua).
 
 ## Non-RTSP sources and the FFmpeg module
 
-go2rtc's native zero-copy handling only supports well-formed RTSP H.264/H.265. Anything else (MJPEG, HTTP/HTTP-FLV, RTMP, or unusual codecs) must be handed to the FFmpeg module by prefixing the source with `ffmpeg:`. This is also necessary for some camera streams to be parsed at all, at the cost of slightly slower startup. MJPEG and other non-H.264 sources additionally need `#video=h264` (with `#hardware`) before they can be used for the `record`, `detect`, or restream roles. See [MJPEG Cameras](/configuration/camera_specific#mjpeg-cameras) for a complete example.
+go2rtc's native zero-copy handling only supports well-formed RTSP H.264/H.265. Anything else (MJPEG, HTTP/HTTP-FLV, RTMP, or unusual codecs) must be handed to the FFmpeg module by prefixing the source with `ffmpeg:`. This is also necessary for some camera streams to be parsed at all, at the cost of slightly slower startup. MJPEG and other non-H.264 sources additionally need `#video=h264` (with `#hardware`) before they can be used for the `record`, `detect`, or restream roles. See [MJPEG Cameras](../configuration/camera_specific.md#mjpeg-cameras) for a complete example.
 
 ## Hardware-accelerated transcoding with FFmpeg 8
 

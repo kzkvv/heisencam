@@ -1,0 +1,73 @@
+---
+id: regenerate-description-events-event-id-description-regenerate-put
+title: "Regenerate event description"
+description: "**Access:** Admin role required."
+sidebar_label: "Regenerate event description"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVktv2zgQ/isEL3lAsdxg96JbgKa73QcaJM7uITEMWhpbbChS5VBODEP/vRhSsqi4zi62PezFssR5fjPzDXfciTXy7IFfb0A75POEF4C5lbWTRvOMn59f5TkgZufn7KqopGbWKGAWvjTSQjF51I/6FtagwQoHyIRmQKZOkEWGJo+aMcZuwTVWIxMMG2+VVYAo1sCM9ZrWGsvkirkSghkmkWnj2Mo0upjwhJuaHEmjPxY843bveRF5W3hVXITnQhaL0WmkVDeOJ7wWVlTgwBISO65FBTzjvTJPuCQkauFKnvA+c54520DCMS+hEjzbcbetSQ+dlXrNE+6kU/TBQ8s+Frxtk711NI3Nobf9pQG7HRlfCYUj60JvP618fK/9gG4qKqErm2qphVTIE45a1FgaRxXtAxnq9H6A45q0KbDOrG6U4q3vg5VolOPZ2HBv7C4kEOe0Mt+Z0tIYBUK/HU5npo/jgwlhzMkV1kYjIBm/nE7pMe7mu9B2q0ax206YJzw32oF2PqS6VjL3DZZ+RtLZRQHXltrPyeCh6+Go9H38EUqdTJvwrtXf6pQ/O5G2TXoZs/wMuRvh+LD3PBiNqvwL1Vjm+/zalsz9dHl5CMdfQsnCJ8uuafT+OxYFOCEV/ZMOKjwUUCYfnR5r56j0UjtYg+XtfIBDWCu2EWJ/mBCgBxjX/wrc3tgbE+t5aEan/1QKyiu47uSiSgzwBnSPp/E+wPctZ73Ir7PZzYHBUFuEvLHSbT2cKyvXwoHn6qvGlTx7mNNwvFz0YV8Qg1MQJEL88eJAozQ60N8TbHl2IJ7wjVDNoEYmK3ClIRruaZS88TSwb7rrCbRNo65LB/YllgK76Wm3sYpnvHSuxixNC6jMpMtlspEFmFTU0rfHIJilqTK5UKVBl/08nb4LMvMBkjvq19CBh8DsG0DU8nfY9syVG/MkKbqe1oLiwpknILzGM0SmQDsaFCgYAhKS7Lk0SFsSjdpAEXamRHbiwTuZsFkJe1mJDNCJpZJYQsE2Uvj999vfMxZCYRKxgYItt+zm092MpcqspU5oaZJwbc3LlonGlawEUYBFdmqhMg4uGgTLUta9URRn7LkEzT6EnJhtNLIllFIXtIDFkIzUa2aBqgPBw4T6t8PiHsH+SAz1NnYd4XjqkTvZSHgGe0IZl3Jdgj1Lfjhm34FLS1mvjEejG1caGLAY8ptO3k2mBF9t0FXCM2kHzLCTuwtPjMwrnHYDO//v7mVdFzh4cWmthPSM7Cd11xHDQ7hR0dbKorvVON+IHeYJp7kmxd1uKRDurWpb+hyuFsQZhUSxVNHlIpDX/nLVc5bnjSPC/a1lkJ3Ti5Uk/G0vR6tyetvhf8aOYdKPi97GPvtg9sD4pRdaM2JlqnntYjJ+vaNHvHxzP+MJFweD+uQHtfsT7eBxUK9nNoRAv9GSHqvsdoEG2nYvH46OanQp9tJ+s7Rt+xW241tj
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Regenerate event description"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/events/{event_id}/description/regenerate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Regenerates an event's description.
+    Returns a success message or an error if the event is not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}},{"name":"source","in":"query","required":false,"schema":{"anyOf":[{"type":"string","enum":["thumbnails","snapshot"],"title":"RegenerateDescriptionEnum"},{"type":"null"}],"default":"thumbnails","title":"Source"}},{"name":"force","in":"query","required":false,"schema":{"anyOf":[{"type":"boolean"},{"type":"null"}],"default":false,"title":"Force"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

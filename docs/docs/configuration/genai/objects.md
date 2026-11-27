@@ -7,7 +7,7 @@ import ConfigTabs from "@site/src/components/ConfigTabs";
 import TabItem from "@theme/TabItem";
 import NavPath from "@site/src/components/NavPath";
 
-Generative AI can be used to automatically generate descriptive text based on the thumbnails of your tracked objects. This helps with [Semantic Search](/configuration/semantic_search) in HeisenCam to provide more context about your tracked objects. Descriptions are accessed via the _Explore_ view in the HeisenCam UI by clicking on a tracked object's thumbnail.
+Generative AI can be used to automatically generate descriptive text based on the thumbnails of your tracked objects. This helps with [Semantic Search](../semantic_search.md) in HeisenCam to provide more context about your tracked objects. Descriptions are accessed via the _Explore_ view in the HeisenCam UI by clicking on a tracked object's thumbnail.
 
 Requests for a description are sent off automatically to your AI provider at the end of the tracked object's lifecycle, or can optionally be sent earlier after a number of significantly changed frames, for example in use in more real-time notifications. Descriptions can also be regenerated manually via the HeisenCam UI. Note that if you are manually entering a description for tracked objects prior to its end, this will be overwritten by the generated response.
 
@@ -15,7 +15,7 @@ By default, descriptions will be generated for all tracked objects and all zones
 
 Optionally, you can generate the description using a snapshot (if enabled) by setting `use_snapshot` to `True`. By default, this is set to `False`, which sends the uncompressed images from the `detect` stream collected over the object's lifetime to the model. Once the object lifecycle ends, only a single compressed and cropped thumbnail is saved with the tracked object. Using a snapshot might be useful when you want to _regenerate_ a tracked object's description as it will provide the AI with a higher-quality image (typically downscaled by the AI itself) than the cropped/compressed thumbnail. Using a snapshot otherwise has a trade-off in that only a single image is sent to your provider, which will limit the model's ability to determine object movement or direction.
 
-Generative AI object descriptions can also be toggled dynamically for a camera via MQTT with the topic `frigate/<camera_name>/object_descriptions/set`. See the [MQTT documentation](/integrations/mqtt#frigatecamera_nameobject_descriptionsset).
+Generative AI object descriptions can also be toggled dynamically for a camera via MQTT with the topic `frigate/<camera_name>/object_descriptions/set`. See the [MQTT documentation](../../integrations/mqtt.md#frigatecamera_nameobject_descriptionsset).
 
 ## Usage and Best Practices
 
@@ -116,4 +116,4 @@ Many providers also have a public facing chat interface for their models. Downlo
 
 ## Troubleshooting
 
-If descriptions are not being generated, or the generated descriptions are not what you expect, see [How do I debug GenAI issues?](/configuration/genai/genai_config#how-do-i-debug-genai-issues).
+If descriptions are not being generated, or the generated descriptions are not what you expect, see [How do I debug GenAI issues?](./config.md#how-do-i-debug-genai-issues).

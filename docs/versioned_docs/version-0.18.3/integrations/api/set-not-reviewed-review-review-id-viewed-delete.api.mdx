@@ -1,0 +1,70 @@
+---
+id: set-not-reviewed-review-review-id-viewed-delete
+title: "Set Not Reviewed"
+description: "**Access:** Authenticated user with access to the referenced camera."
+sidebar_label: "Set Not Reviewed"
+hide_title: true
+hide_table_of_contents: true
+api: eJytld9v2zYQx/8V4l7yA4rlBtuL3gI027p1a5G420NgGLR4tthIpEqenBiC/vfiSNqW66UbtrxYsnh3vPvw7sseSK49FA9whxuNTzDPwLboJGlr3ikowCMtjKWFC+uo0sti99RqsUgrCmskhAxa6WSDhI4j92Bkg1DA3gEy0AYKaCVVkIHDL512qKAg12EGvqywkVD0QNuWHT05bdaQAWmq+UPMVbxTMAxzDuBbazx69rmeTvmh0JdOt1wGFHDflSV6v+pqcZeMIYPSGkJDbC7bttZlqDr/7NmnH+XROmZCOu7gY7BRgktra5RmlGHaEIYMGvRervF79fyeTIYh29nY5Wcs6YjOw37nQ9D5IcjPaNDpcl/fMHC4H66vT3H8KWutQrHi1jnr/jsLhSR1zW+asPGnBrUtj1al2X5Yha44hjFk+y/aEK7RwTA/4JDOye2I2HsbEwyA/fpfwd0Fe9k0wBAzXv2no+C64tbJbnQSB7yR7stlvI34/m6znckvs9nHk4DxbD2WndO0DThXTq8l4SeP7qajCoqHOc/G89Uu6ytnQ8BSNugkZN/0xOXlTWiu4vJScAA0xE2ASnQenXjSVAkZLARZQRUKhyt0aEpUIsacQAb4TGi8tiaO/iNuoThJIoONrLtRMpxpg1RZVpyRjHAdkEfhyPu9gAx5VBxgBm6z05nO1VBARdT6Is8VNnaSqEw2WqHNZatDox0MizyvbSnrynoqfpxO30Sb+QHuPXd+7OUU7EY12kTG+1aSrf4NtzthK6191FxBUr7kuCD7iOaE/DFtj57xiafKembsbb1BJZib0F6cSd79bCJmFe5ttRfoSS5r7StUYqNlOKBf/5qJmIrQ3neoxHIrPn64n4m8tmttMmFdMG6dfd4K2VElKpQKnRfnDhtLeBUOPxfpH2dxIZ4qNOKnWJNwnfFiiZU2SkgTgqRitFkLh3w6GHeY8CSc9OnrMDTb8dYjjueB3FloGHfGFVd6XaG7yF6d2f/gMnDVKxtopMHnKUHnY33TyZvJlPG11lMjgyYnMPdI4g9L4g73Q3HEpj9o+2sNeTowwmfK21rqIMNhqPo0tA/ptocMivG9n1KcZ8ATx3Z9v5QeP7l6GPjzlw4dC9qcNcJpuWQWDz0o7fldQbGStcfv1Hh+l7TmQryU6q7hzHYkRZAltTrkG26geLojNWOELY08Ty7MIzl7e/v+dnYLGciTdn8M7Z5eRnficWLfdn7Mgn9Hl+axS9/HYRqGvX1cetEjVbmzZk7zYRi+AsxhfzM=
+sidebar_class_name: "delete api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Set Not Reviewed"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/review/{review_id}/viewed"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Authenticated user with access to the referenced camera.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"review_id","in":"path","required":true,"schema":{"type":"string","title":"Review Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

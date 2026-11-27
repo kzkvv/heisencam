@@ -7,21 +7,21 @@ import NavPath from "@site/src/components/NavPath";
 
 **History** is HeisenCam's full-resolution recording viewer. Unlike Live, Review, and Explore, there is no menu item for it. You reach it from within another view, then scrub the timeline, switch cameras, inspect a tracked object's lifecycle, and export or share any moment.
 
-This page describes how to _use_ the History view. For how recordings are _configured_ (retention, pre/post capture), see [Recording](/configuration/record).
+This page describes how to _use_ the History view. For how recordings are _configured_ (retention, pre/post capture), see [Recording](../configuration/record.md).
 
 ## Opening History
 
 You can open History from several places:
 
-- **From [Review](/usage/review):** clicking a review item opens its recording, scrubbed to just before the activity on that camera.
-- **From [Live](/usage/live):** the **History** button in a camera's single-camera view opens that camera about 30 seconds in the past.
+- **From [Review](./review.md):** clicking a review item opens its recording, scrubbed to just before the activity on that camera.
+- **From [Live](./live.md):** the **History** button in a camera's single-camera view opens that camera about 30 seconds in the past.
 - **From a share link:** opening a shared timestamp link (see [Share Timestamp](#the-actions-menu) below) jumps straight to that camera and moment.
 
 Use the **Back** button to return where you came from, or the **Live** button to jump to the current camera's live view.
 
 :::tip
 
-If you see **"No recordings found for this time"**, the most common causes are: recording was not enabled for that camera at the time of the event; the retention window has since expired and those segments were removed; or storage ran low and HeisenCam deleted them early to free space. See [Recording](/configuration/record) to verify your retention settings.
+If you see **"No recordings found for this time"**, the most common causes are: recording was not enabled for that camera at the time of the event; the retention window has since expired and those segments were removed; or storage ran low and HeisenCam deleted them early to free space. See [Recording](../configuration/record.md) to verify your retention settings.
 
 :::
 
@@ -43,7 +43,7 @@ On desktop, when more than one camera is available, a **row of secondary preview
 
 ## Filtering and the calendar
 
-You can filter History by **cameras** and **date**. The calendar behaves the same as it does in [Review](/usage/review#filtering-and-the-calendar): an **underline** under a day means recordings exist for that day, and a **colored dot** (red for unreviewed alerts, orange for unreviewed detections) marks days with unreviewed activity.
+You can filter History by **cameras** and **date**. The calendar behaves the same as it does in [Review](./review.md#filtering-and-the-calendar): an **underline** under a day means recordings exist for that day, and a **colored dot** (red for unreviewed alerts, orange for unreviewed detections) marks days with unreviewed activity.
 
 ## The Detail view
 
@@ -57,16 +57,16 @@ The **Detail View Settings** at the bottom let you toggle whether the active ite
 
 On desktop, the **Actions** menu (the film icon) collects the things you can do with the footage you are viewing:
 
-- **Export**: save a clip of a chosen time range so it is never removed by retention. The dialog pre-selects the last hour; adjust the range or drag the timeline handles, then export. See [Exports](/usage/exports) for managing and downloading exports.
+- **Export**: save a clip of a chosen time range so it is never removed by retention. The dialog pre-selects the last hour; adjust the range or drag the timeline handles, then export. See [Exports](./exports.md) for managing and downloading exports.
 - **Share Timestamp**: generate a link to the current moment (or a custom timestamp) to share with another HeisenCam user. This is an internal link, not a public share URL.
-- **Motion Search**: scan this camera's recordings for changes in a region you draw. This is the same tool documented under [Reviewing Motion](/usage/review#motion-search).
+- **Motion Search**: scan this camera's recordings for changes in a region you draw. This is the same tool documented under [Reviewing Motion](./review.md#motion-search).
 - **Debug Replay** (admins): replay a recorded range back through HeisenCam's detection pipeline to see how it would be processed.
 
-You can also capture an instant snapshot of the current frame, and submit a frame to [Frigate+](/integrations/plus) directly from the player (admins only).
+You can also capture a snapshot of the current frame directly from the player.
 
 ## AI review summaries
 
-When [Generative AI review](/configuration/genai/genai_review) is configured, HeisenCam can generate a title, description, and threat classification for review items and surface them as you scrub through History. A review item that has an AI summary exposes its details in a few places:
+When [Generative AI review](../configuration/genai/review_summaries.md) is configured, HeisenCam can generate a title, description, and threat classification for review items and surface them as you scrub through History. A review item that has an AI summary exposes its details in a few places:
 
 - **Over the video**: when the item is on screen, a popup appears over the player.
 - **In the Events side panel**: items with a summary show the title below the thumbnail.

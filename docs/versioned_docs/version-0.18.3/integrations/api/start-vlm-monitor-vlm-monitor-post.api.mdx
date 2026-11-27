@@ -1,0 +1,72 @@
+---
+id: start-vlm-monitor-vlm-monitor-post
+title: "Start a VLM watch job"
+description: "**Access:** Admin role required."
+sidebar_label: "Start a VLM watch job"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVttu2zgQ/ZUBX9IGiu0Gu33QWzbtYi8JUiRuFljXCMbS2GJCkSpJ+VJD/14MKduy3WRvfdqXRCZnhjNnDs9wLTzOnEhH4rJAL8aJyMllVlZeGi1ScXp6kWXkXHp6Chd5KTVYowgsfa6lpbz3SX/Sdx6th9Jo6Y2VegYIGZZkERbSF+ALgrl00miorJnLnGwPhgXB/dU1oEa1+kIOlJwTTC2W5KDWXqrg5yrK5FRSDpnRueSkQDooySe8r8GRzh0gaOPlVGbIFj240WoFRhMs0GcFPJoJZKjB1hrQA4KXJfVEIkxFNrj8motUOK7jYa7Kh7aWve/KOC8SwZWT8z+ZfCXStdgAIVJva0pEZrQn7XkLq0q1GfUfHaO5Fi4rqET+qiwf7iU5/hXx4i+/qijkwkiKRHjpFS9cRosmHBGReNF8a9QkosTlQ17HSh9KqWsfT22dpfY0I9vxvsYlvGsd4Lp1YGpMsVZepG8HTSIUTkiFONJT6Y6zaZLNAlqLq078q+jaiTgaN4n4YjT9u4B/Bs/9eDtrM3mkbNO82K3RBvIunuNdwPur6+vY+NvYcHF4M9p1KE1OCqbGQuBP5D9Te8u9nmgazsaSq4x2scTzwYD/7ce8q8Nlm9YKbltj8fc5FU/54fz8OPA9KpnHdr631th/EPWAqTl5lGqvSfsGymR7u6hXN1ORjo6beUTAZvwCZUxMMPDZzV7i/jU5hzPa0eV50wAGDHn3r/jCdcWjW7suW7bwRnSfL+NdhO9bh21MfhkOPxwFjL11lNVW+lWAc2rlDD0FVb6ofRFIP07E8myT9hlrNSfBJiIRtPSkWYhdCPBEK5EemSdijqreuXHIknxhWCJbEayQjxP9uSr7rT4Kzs7OycbYtVUiFYX3lUv7/ZxK02vz7fEEMH2sZKDAzjDt95XJUBXG+fTHweBNtBnvyr5jTkaWHRe/bTJW8ndizCUzPzPmSXJVGkvebR0fvHkifXSpORRpz5eBcnDkwthaFMbxzHNGzSmPE1A6OAkAncRhtrGVDsh5nCjpCsphLjEMst/+GEJMBaRzNeUwWcGHm7sh9JWZSZ2AscG4sma5Aqx9AQVhTtbBK0ul8XRWO7LQh/YXZ/EaFjwEf4418XxzMKFC6hxQhyBtMaxKlrg7FE/oMUdbLD46st8TQ73qHt3B8VVA7mQuaUH2hCsu5Kwg+zr57pj9B1yaRLAI3u4G/fsllpWi7qDeSUlnHO8Wvz1x3w52U3O0MR5v595uqWHgpyY0pFUFvpdkXTxn0HvTG3AH+T6WGAS77U18jB1MoMMerXfq/z9/4bV89rT0/UqhDPMjaM66VbGRmKuSW9bq2DgRrEC8sV5P0NFHq5qGlz/XZFl6xyyRVuKEGxMeLpF1HVG9jPCehcnSUdTDQcsKGD24CZV/0bYrxHwNRCIm7TOUHyEiFRYXPLVwEQljQruDXoa1tVCoZzXPxlTEmMx2PLr7T+Hutx+d0Y161cnwUAZiIfy3M9v3XdbrqCxNs7WPW896tNBurMNAaprmK+T0aXA=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Start a VLM watch job"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/vlm/monitor"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Start monitoring a camera with the vision provider. The VLM analyzes live frames until the specified condition is met, then sends a notification. Only one watch job can run at a time.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"camera":{"type":"string","title":"Camera"},"condition":{"type":"string","title":"Condition"},"max_duration_minutes":{"type":"integer","title":"Max Duration Minutes","default":60},"labels":{"items":{"type":"string"},"type":"array","title":"Labels","default":[]},"zones":{"items":{"type":"string"},"type":"array","title":"Zones","default":[]}},"type":"object","required":["camera","condition"],"title":"VLMMonitorRequest","description":"Request model for starting a VLM watch job."}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

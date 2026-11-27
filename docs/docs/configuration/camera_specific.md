@@ -7,13 +7,13 @@ import NavPath from "@site/src/components/NavPath";
 
 :::note
 
-This page makes use of presets of FFmpeg args. For more information on presets, see the [FFmpeg Presets](/configuration/ffmpeg_presets) page.
+This page makes use of presets of FFmpeg args. For more information on presets, see the [FFmpeg Presets](./ffmpeg_presets.md) page.
 
 :::
 
 :::note
 
-Many cameras support encoding options which greatly affect the live view experience, see the [Live view](/configuration/live) page for more info.
+Many cameras support encoding options which greatly affect the live view experience, see the [Live view](./live.md) page for more info.
 
 :::
 
@@ -192,7 +192,7 @@ Reolink's latest cameras support two way audio via go2rtc and other applications
 
 NOTE: The RTSP stream can not be prefixed with `ffmpeg:`, as go2rtc needs to handle the stream to support two way audio.
 
-Ensure [HTTP is enabled](https://support.reolink.com/articles/360003452893-How-to-Access-Reolink-Cameras-NVRs-Home-Hub-Locally-via-Web-Browsers/) in the camera's advanced network settings. To use two way talk with HeisenCam, see the [Live view documentation](/configuration/live#two-way-talk).
+Ensure [HTTP is enabled](https://support.reolink.com/articles/360003452893-How-to-Access-Reolink-Cameras-NVRs-Home-Hub-Locally-via-Web-Browsers/) in the camera's advanced network settings. To use two way talk with HeisenCam, see the [Live view documentation](./live.md#two-way-talk).
 
 :::
 

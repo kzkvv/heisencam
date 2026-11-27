@@ -1,0 +1,74 @@
+---
+id: create-classification-category-classification-name-dataset-category-create-post
+title: "Create an empty classification category folder"
+description: "**Access:** Admin role required."
+sidebar_label: "Create an empty classification category folder"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVktv4zYQ/isDXvKAYnmD9qJbkL5fu0i87SExDFoaW9xIpJZDOREE/fdiRMqW4npbdBe99GJL1Dy/mfmGrXBySyJ5ELeFJFIblUqnjBbLSGRIqVVV/5qIy8ubNEWi5PISbrJSabCmQLD4sVYWs9mjftS3FqVDAqkBy8o1sDFFhhY2xoKEdOIBUulwa2wze9QAAItcESiCmjADZyDtbQUL1JsIGgoJXC4dZEafOcjlDkGVcosEDbpg7g5dbTWBBKr7uKFEIrlF4Fg0oLXGgtqAyxG0LJF9K72ThcpmIhKmQtvH+WMmEuGDWU0zWA0ZvD5fsb3VKpNOErrVQW4V7FSGnIhEJa0s0aHlArSCtUTi/yKhGPRKulxEYgBZJM7WGAlKcyylSFrhmop1yFmltyISTrmCD35jI10X7a0OMXy25dvBUNctWZ8qowmJVa7nc/6b9s29h39TF3AXhEUkUqMdasfisqqKgFz8gVinHYVRWa6EU95DqOUovrUxBUo9CjA4FF0kQsk/lc6vQaTrokHGrD9g6ibgPOw9H4wuD0a+R41Wpfv8uo7NfXV9fQzH79xgfgC+5Rb891hk6KQq+Ek5LOlYoDDp5KvUzdtN32lTMLhLwonSDrdoRbc8wCGtlc0IsV9MoAgGmLb/CNzB2GnRHgxY8Ne/KwXn5V0HuVElDvB6dE+n8Y2H76+cDSI/LBbvjgz62hKmtVWu6eHcWLWVDntWvKldLpKHJQ/Hy9UQ9hVzJQfBIiIS+OJQkzLaT/4TNiI5Eo/EThb1QY1Nluhyw4y0pxB2J+IpA8UtT30XBwaK22H6u9gzkOAM7G5gntoWIhG5cxUlcZxhaWYhp9lOZWhiWam+TQ6CSRwXJpVFbsglX8/nb7zM8gDNPfet78RjgPaNICv1M+5ZKTXmSXF0gbWC4sqZJ2TcprPEplA7ThozICRGFJ5zQ7yXyBQ7zPyWUgRnPYhnM1jkuJdVBEhOrgtFOWawU7LfBz/9sQAfCiiiGjNYN/Du7f0C4sJslY54ibBwZc1LA7J2OeQo+0V1brE0Dq9qQgsxhDeO4gKec9Twnc8JbK0J1pgrnfFCkodklN6CRa4Oeg8z7uOAxXtC+yUx1M3Y9QjH8x65s53CZ7RnnHGutjnai+iLY/YZuHSc9cb0aISx5cFBSz6/+ezNbM7w8cCUsmfUAIy/rRwuKyfuJ+EK8hq59sDb/7e7UWg7hy8urgqp+lXQU0MbCOlBTBMSkUjCvSZwEp+M7iSBlpaRYEJhA227loTvbdF1fPyxRstsu2RWtEquudQPrcgU8XMmko0sCD9RpPO7UI4LOJXDME+6GZGviAI/9wkwC/6HPvcQ9RvZz8toZXDbVW68KV5fICZLg8dRREIe0cdTTx/hYXRDmEb1mkl8DPw7ukJMVdrWk1PX7eX9p5MaIcdBut97Xdf9CSPBY9g=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create an empty classification category folder"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/classification/{name}/dataset/{category}/create"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Creates an empty folder for a classification category.
+    This is used to create folders for categories that don't have images yet.
+    Returns a success message or an error if the name is invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}},{"name":"category","in":"path","required":true,"schema":{"type":"string","title":"Category"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

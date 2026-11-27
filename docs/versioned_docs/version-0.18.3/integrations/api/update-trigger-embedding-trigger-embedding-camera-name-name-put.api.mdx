@@ -1,0 +1,73 @@
+---
+id: update-trigger-embedding-trigger-embedding-camera-name-name-put
+title: "Update trigger embedding"
+description: "**Access:** Admin role required."
+sidebar_label: "Update trigger embedding"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVk1v2zgQ/SuDuaQNFMstthfdum0W+90gcXYPiWHQ0thiI5EqSTkxBP33YkjKluMki2KLBfYSOeR8vHkcvmGHTqwtZjd4viHlLM4TLMjmRjZOaoUZnp6+z3OyNjs9hfdFLRUYXREY+tJKQ8XkVt2q66YQjiwIcEau12SA6iUVhVRrWGkDAmxDuVzJfDCY3CoAgEtyrVHsaFufBWqyVqwJ2EsBGaMNyBW4knaxpQWlHax0q4oJJqgbMoLR/lJghq3HsojGix2QJ1YWuajJiIUSNS0W8dO0DhNshBE1OTLMTYe8hRmO7DFByfQ0wpWY4EAHZs60lKDNS6oFZh26bcOu1hmp1pigk67ihQ8+FvzJsfo+2eX4LsFj1HnwJet+1MWWHR6HyrVypBxviaapZO6JTD9bPvtulKkxTLOTZPd5j/OTamtuJle29VIJWeFhO833EGfhOGYcoU+wEO7Fij7yfp+gKw3ZUlfFyFi19ZIMJliLB1kzgjcJ1lKF39NRzp0zw1qJtnKYTSfveg4cYunlZ8rdAek3YS9iPC7hfGgoT3LfczRDttHKBrbeTqf8ObxXV6HhV20Fl9EYv+E8HsMdMA2xINxJiBhhB/KJlVErAsTPRetiKT+8fXuM/i9RycJjg3O+o98C/bCVCnLcJ1mH0lFtjw0qnR/sCrX9tPK38rBX+A7FFakcrclgP98frDBGbEdE/a4DQG6q2q5f6r0/gibhLtjzpp4MCE39D03FdYXU0W7UWXt6A7vPl/Ex0PdUssHk59ns4ihgOFtLeWuk23o6V0auhSMv8u9bV2J2M2cJeTgbYJ+x9DMINuHr/uBIWalVUMk72mJ2ZJ7gRlTt3o1D1uRKzWo9qC1nwzRKdLqT6LQbSW6fdv6DjNtsBm1uTYUZls41NkvTgmo9iZVMNrIgnYpG+ubYG2ZpWulcVKW2Lns3nb4JNvM9IVfcraH/jmnZHb9o5G+0HdQ61/pOcr1RyaPjwuk7Uvh4rnIoUo6vCRVgyTKPcF9qy8PV6mpDRRi10sKJp+5kArOSdrbSAlknlpW0JRWwkcKPyV//nkGAAtLalgpYbuHi09UM0kqvpUp4trJxY/TDFkTrSihJFGQsvDJUa0dnrSUDKcT/GMVruC9JwU+hJjCtsrCkUqqC57TYF8OCYohPh0KGCXdv5OLakvmeHKrtOPWIx1eeuZONpHsyJ1xxKdclmdfJd+fsX/DSJ8jyeLmf0ecPom6qscQcjFI/JEeqsx+GPMWYw5X2vvHq8+UjYwNb08mbyZQPo9HW1cKrcqQ5Douj19tjxru9yv8PHoYDg/Tg0qYS0mu9V4EuSs4NRl8Ws1HR2eFLL/PfeYIsGOzVdUth6dpUfc/LX1oyrKFz1jojxZLJv+mwkJZ/F5itRGXpBTJfXUbaXsNzwIf7orYjScUkqu4YMIvdf5g65ORRG67EaBZ8CFnOZuEBtRsEj98HjDh4cE817kXb8fy4uJ5hgsv4uq11wS5G3POsFfcBpfZFey33ax1WQq1bnugZhpB8E8WRLt15XYo/Rg+OQx4eS1Sog/+OXiSHLl0XVK/vd/Zh61mPyOxg7cdo3/dfAeR7vPM=
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update trigger embedding"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/trigger/embedding/{camera_name}/{name}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Updates a trigger embedding for a specific trigger.
+    Returns a success message or an error if the trigger is not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"camera_name","in":"path","required":true,"schema":{"type":"string","title":"Camera Name"}},{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"type":{"type":"string","enum":["thumbnail","description"],"title":"TriggerType"},"data":{"type":"string","title":"Data"},"threshold":{"type":"number","maximum":1,"minimum":0,"title":"Threshold","default":0.5}},"type":"object","required":["type","data"],"title":"TriggerEmbeddingBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"type":"object","title":"Response Update Trigger Embedding Trigger Embedding Camera Name   Name  Put"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

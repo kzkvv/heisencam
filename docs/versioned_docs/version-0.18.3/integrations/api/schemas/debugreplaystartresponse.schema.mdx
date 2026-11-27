@@ -1,0 +1,33 @@
+---
+id: debugreplaystartresponse
+title: "DebugReplayStartResponse"
+description: "Response for starting a debug replay session."
+sidebar_label: "DebugReplayStartResponse"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"success":true,"replay_camera":"string","job_id":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DebugReplayStartResponse"}
+>
+</Heading>
+
+
+
+Response for starting a debug replay session.
+
+<Schema
+  schema={{"properties":{"success":{"type":"boolean","title":"Success"},"replay_camera":{"type":"string","title":"Replay Camera"},"job_id":{"type":"string","title":"Job Id"}},"type":"object","required":["success","replay_camera","job_id"],"title":"DebugReplayStartResponse","description":"Response for starting a debug replay session."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

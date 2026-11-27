@@ -10,7 +10,7 @@ import FaqItem from "@site/src/components/FaqItem";
 
 An ONVIF-capable, PTZ (pan-tilt-zoom) camera that supports relative movement within the field of view (FOV) can be configured to automatically track moving objects and keep them in the center of the frame.
 
-![Autotracking example with zooming](/img/frigate-autotracking-example.gif)
+![Autotracking example with zooming](../assets/frigate-autotracking-example.gif)
 
 ## Autotracking behavior
 
@@ -162,9 +162,9 @@ Every PTZ camera is different, so autotracking may not perform ideally in every 
 
 The object tracker in HeisenCam estimates the motion of the PTZ so that tracked objects are preserved when the camera moves. In most cases 5 fps is sufficient, but if you plan to track faster moving objects, you may want to increase this slightly. Higher frame rates (> 10fps) will only slow down HeisenCam and the motion estimator and may lead to dropped frames, especially if you are using experimental zooming.
 
-A fast [detector](object_detectors.md) is recommended. CPU detectors will not perform well or won't work at all. You can watch HeisenCam's [debug viewer](/usage/live#the-single-camera-view) for your camera to see a thicker colored box around the object currently being autotracked.
+A fast [detector](object_detectors.md) is recommended. CPU detectors will not perform well or won't work at all. You can watch HeisenCam's [debug viewer](../usage/live.md#the-single-camera-view) for your camera to see a thicker colored box around the object currently being autotracked.
 
-![Autotracking Debug View](/img/autotracking-debug.gif)
+![Autotracking Debug View](../assets/autotracking-debug.gif)
 
 A full-frame zone in `required_zones` is not recommended, especially if you've calibrated your camera and there are `movement_weights` defined in the configuration file. HeisenCam will continue to autotrack an object that has entered one of the `required_zones`, even if it moves outside of that zone.
 
@@ -272,7 +272,7 @@ To maintain object tracking during PTZ moves, HeisenCam tracks the motion of you
 
 <FaqItem id="why-does-object-detection-pause-briefly-when-the-camera-moves" question="Why does object detection pause briefly when the camera moves?">
 
-When the PTZ moves, the entire frame changes at once. HeisenCam's motion detection treats sudden scene-wide changes (like a lightning flash, an infrared mode switch, or a camera move) specially and pauses detection momentarily until the scene stabilizes. This is expected and normal, and detection resumes shortly after the camera stops moving. If detection does not resume once the camera is stationary, use the [debug view](/usage/live#the-single-camera-view) to see what is happening.
+When the PTZ moves, the entire frame changes at once. HeisenCam's motion detection treats sudden scene-wide changes (like a lightning flash, an infrared mode switch, or a camera move) specially and pauses detection momentarily until the scene stabilizes. This is expected and normal, and detection resumes shortly after the camera stops moving. If detection does not resume once the camera is stationary, use the [debug view](../usage/live.md#the-single-camera-view) to see what is happening.
 
 </FaqItem>
 

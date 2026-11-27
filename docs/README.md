@@ -12,6 +12,14 @@ npm ci
 npm run build
 ```
 
-The build checks internal links and generates the HTTP API reference from `docs/static/frigate-api.yaml`. GitHub Actions publishes this build at the root of `docs.heisen.cam` with the published browser demo under `/demo/` and redirects from the previous `/docs/` paths.
+The build checks internal links. GitHub Actions publishes the latest release at the root of `docs.heisen.cam`, older releases under `/<version>/`, and the browser demo under `/demo/`. The previous `/docs/` paths redirect to the corresponding documentation.
 
-Run `npm run start` from `docs/` to preview the documentation locally. The `HEISENCAM_DOCS_URL` environment variable sets the public origin and base path for a different deployment.
+## Preview
+
+Run `npm run start` from `docs/` to open the release and the working copy at `/next/`. Set `HEISENCAM_DOCS_PREVIEW=1` to include the working copy in a static build. The `HEISENCAM_DOCS_URL` environment variable sets the origin and base path.
+
+## Release a documentation version
+
+Update the guides in `docs/docs/` and the API schema in `docs/static/frigate-api.yaml` for the upcoming release. Keep version-specific data and images beside the guide that uses them, and link to other guides by their Markdown file paths.
+
+From `docs/`, run `npm run snapshot` when the release is ready. It reads `VERSION` from the root `Makefile`, generates the Docker Compose settings and API reference, and copies the documentation, data, API schema, and sidebar into versioned files. Commit the resulting `versions.json` and the new directories and sidebar under `versioned_docs/` and `versioned_sidebars/`.

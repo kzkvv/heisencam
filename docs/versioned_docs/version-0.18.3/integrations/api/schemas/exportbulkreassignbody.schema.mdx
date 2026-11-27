@@ -1,0 +1,33 @@
+---
+id: exportbulkreassignbody
+title: "ExportBulkReassignBody"
+description: "Request body for bulk reassigning exports to a case."
+sidebar_label: "ExportBulkReassignBody"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"ids":["string"],"export_case_id":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExportBulkReassignBody"}
+>
+</Heading>
+
+
+
+Request body for bulk reassigning exports to a case.
+
+<Schema
+  schema={{"properties":{"ids":{"items":{"type":"string","minLength":1},"type":"array","minItems":1,"title":"Ids"},"export_case_id":{"anyOf":[{"type":"string","maxLength":30},{"type":"null"}],"title":"Export Case Id","description":"Case ID to assign to, or null to unassign from current case"}},"type":"object","required":["ids"],"title":"ExportBulkReassignBody","description":"Request body for bulk reassigning exports to a case."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

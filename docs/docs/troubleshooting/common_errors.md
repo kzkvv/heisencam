@@ -18,7 +18,7 @@ Two things to know before you start:
 
 These are FFmpeg errors about reaching the camera (or the go2rtc restream). `Connection refused` and `No route to host` mean nothing is listening at that address or the host is unreachable; `401 Unauthorized` is wrong credentials; `404 Not Found` is a wrong stream path (or a `restream` input pointing at a go2rtc stream name that does not exist). A camera that has hit its concurrent-connection limit can also return `refused` or `401` on a URL that works in VLC.
 
-See [go2rtc troubleshooting](/troubleshooting/go2rtc#1-read-the-go2rtc-logs) for how to isolate the stream.
+See [go2rtc troubleshooting](./go2rtc.md#1-read-the-go2rtc-logs) for how to isolate the stream.
 
 </FaqItem>
 
@@ -40,7 +40,7 @@ These are FFmpeg messages indicating the camera sent packets with out-of-order t
 
 In most cases, the fix is to improve the network, reduce system resource usage, or switch to non-WiFi cameras. In general, WiFi cameras are [not recommended](https://ipcamtalk.com/threads/multiple-cameras-high-bandwidth.77100/#post-861110).
 
-On the video stream, this can affect recordings: because they are copied without re-encoding, FFmpeg cannot fix the timestamps, and the segment muxer often splits early, producing one-second segments and a cache backlog. See [Recordings: segments are only 1 second long](/troubleshooting/recordings#segments-are-only-1-second-long).
+On the video stream, this can affect recordings: because they are copied without re-encoding, FFmpeg cannot fix the timestamps, and the segment muxer often splits early, producing one-second segments and a cache backlog. See [Recordings: segments are only 1 second long](./recordings.md#segments-are-only-1-second-long).
 
 On the audio stream, the messages can come from the output's audio encoding. If the audio stream is the problem, it may help to have go2rtc transcode it by adding `#audio=aac` to the camera's go2rtc stream to produce clean timestamps for everything consuming the restream.
 
@@ -48,7 +48,7 @@ On the audio stream, the messages can come from the output's audio encoding. If 
 
 <FaqItem id="bad-cseq" question="RTP: PT=xx: bad cseq (packet loss / reordering)">
 
-An FFmpeg message meaning RTP packets arrived out of sequence, which almost always means the stream is using UDP transport. HeisenCam's RTSP presets force TCP, so seeing this points at a custom `input_args`, `preset-rtsp-udp`, or a go2rtc source that is not using TCP. Switch to TCP unless your camera is [UDP-only](/configuration/camera_specific#udp-only-cameras).
+An FFmpeg message meaning RTP packets arrived out of sequence, which almost always means the stream is using UDP transport. HeisenCam's RTSP presets force TCP, so seeing this points at a custom `input_args`, `preset-rtsp-udp`, or a go2rtc source that is not using TCP. Switch to TCP unless your camera is [UDP-only](../configuration/camera_specific.md#udp-only-cameras).
 
 </FaqItem>
 
@@ -70,7 +70,7 @@ An FFmpeg message meaning it probed the stream but never saw enough decodable vi
 
 HeisenCam's record watchdog is restarting the record FFmpeg process because the camera stopped producing usable recordings. The wording distinguishes the cases: `No new recording segments` means no new segment file reached the cache, so ffmpeg isn't getting video out of the record stream; the two `valid` variants mean recordings are arriving but keep failing validation. Either way the fault is on the camera or network side, and the restart is HeisenCam trying to recover.
 
-See [Recordings: no new recording segments were created](/troubleshooting/recordings#no-new-recording-segments-were-created).
+See [Recordings: no new recording segments were created](./recordings.md#no-new-recording-segments-were-created).
 
 </FaqItem>
 
@@ -78,7 +78,7 @@ See [Recordings: no new recording segments were created](/troubleshooting/record
 
 A cached recording segment failed validation and was deleted, either because it had no readable video stream or because its length was impossible. This nearly always means the camera stopped sending usable video partway through the segment: a camera that rebooted, dropped the connection, or ran out of simultaneous connections, or an unreliable link such as WiFi or a failing switch port. Broken camera timestamps (a "Smart Codec" / H.264+ mode) cause the corrupt-segment variants. The same stream failure trips the record watchdog, so the restarts above usually appear alongside these messages.
 
-See [Recordings: invalid or missing video stream in segment](/troubleshooting/recordings#invalid-or-missing-video-stream-in-segment).
+See [Recordings: invalid or missing video stream in segment](./recordings.md#invalid-or-missing-video-stream-in-segment).
 
 </FaqItem>
 
@@ -86,7 +86,7 @@ See [Recordings: invalid or missing video stream in segment](/troubleshooting/re
 
 Some camera audio codecs (G.711 variants such as `pcm_alaw` and `pcm_mulaw`) cannot be stored in an MP4 container, so segments never finalize even though live view works.
 
-See [Recordings: incompatible audio codec](/troubleshooting/recordings#incompatible-audio-codec-recordings-silently-fail-to-save) for the FFmpeg preset that transcodes the audio to AAC.
+See [Recordings: incompatible audio codec](./recordings.md#incompatible-audio-codec-recordings-silently-fail-to-save) for the FFmpeg preset that transcodes the audio to AAC.
 
 </FaqItem>
 
@@ -94,7 +94,7 @@ See [Recordings: incompatible audio codec](/troubleshooting/recordings#incompati
 
 A generic wrapper; the real exception is on the next log line. Frequently it is `[Errno 28] No space left on device` or `[Errno 17] File exists` on a network share.
 
-See [Recordings cache warnings and errors](/troubleshooting/recordings#i-see-the-message-error--error-occurred-when-attempting-to-maintain-recording-cache), which covers this message and the common `Errno` cases.
+See [Recordings cache warnings and errors](./recordings.md#i-see-the-message-error--error-occurred-when-attempting-to-maintain-recording-cache), which covers this message and the common `Errno` cases.
 
 </FaqItem>
 
@@ -104,7 +104,7 @@ See [Recordings cache warnings and errors](/troubleshooting/recordings#i-see-the
 
 A VAAPI/QSV hardware frame-sync failure between FFmpeg and the GPU driver, not a HeisenCam bug. It usually appears when the detect stream is being scaled or decoded on the GPU.
 
-See [GPU: Failed to download frame: -5](/troubleshooting/gpu#failed-to-download-frame--5), which lists the fixes in order (switch VAAPI/QSV preset, change `LIBVA_DRIVER_NAME`, use an H.264 substream, match detect resolution and fps to the stream).
+See [GPU: Failed to download frame: -5](./gpu.md#failed-to-download-frame--5), which lists the fixes in order (switch VAAPI/QSV preset, change `LIBVA_DRIVER_NAME`, use an H.264 substream, match detect resolution and fps to the stream).
 
 </FaqItem>
 
@@ -116,7 +116,7 @@ Both mean the GPU ran out of decode surfaces: `No decoder surfaces left` is NVID
 
 <FaqItem id="nvidia-container-cli-nvml-error" question="nvidia-container-cli: nvml error: driver not loaded">
 
-This comes from the NVIDIA container runtime while starting the container, not from HeisenCam, and the container never starts. The NVIDIA driver is not loaded on the host. Confirm `nvidia-smi` works on the host itself (not inside the container) before troubleshooting HeisenCam. In a VM or LXC, the driver must be available inside the guest. See [Hardware: Nvidia GPU](/configuration/hardware_acceleration_video).
+This comes from the NVIDIA container runtime while starting the container, not from HeisenCam, and the container never starts. The NVIDIA driver is not loaded on the host. Confirm `nvidia-smi` works on the host itself (not inside the container) before troubleshooting HeisenCam. In a VM or LXC, the driver must be available inside the guest. See [Hardware: Nvidia GPU](../configuration/hardware_acceleration_video.md).
 
 </FaqItem>
 
@@ -126,14 +126,14 @@ This comes from the NVIDIA container runtime while starting the container, not f
 
 The process was killed by the CPU for executing an unsupported instruction. There are two distinct causes in HeisenCam:
 
-- **A Coral EdgeTPU** on a newer kernel with an outdated gasket driver. See [EdgeTPU: Illegal instruction](/troubleshooting/edgetpu#attempting-to-load-tpu-as-pci--fatal-python-error-illegal-instruction).
-- **A CPU without AVX/AVX2**, when enabling semantic search, face recognition, license plate recognition, classification, or audio transcription. These features use libraries compiled with AVX and crash immediately on CPUs that lack it (commonly Intel Celeron/Pentium before the 2020 Tiger Lake generation). See the [CPU requirements](/frigate/planning_setup#cpu).
+- **A Coral EdgeTPU** on a newer kernel with an outdated gasket driver. See [EdgeTPU: Illegal instruction](./edgetpu.md#attempting-to-load-tpu-as-pci--fatal-python-error-illegal-instruction).
+- **A CPU without AVX/AVX2**, when enabling semantic search, face recognition, license plate recognition, classification, or audio transcription. These features use libraries compiled with AVX and crash immediately on CPUs that lack it (commonly Intel Celeron/Pentium before the 2020 Tiger Lake generation). See the [CPU requirements](../frigate/planning_setup.md#cpu).
 
 </FaqItem>
 
 <FaqItem id="onnx-invalidprotobuf" question="ONNX Runtime InvalidProtobuf / failed to load model">
 
-ONNX Runtime could not parse the model file. The file exists but its contents are not a valid ONNX model, usually a corrupted or interrupted download in `model_cache`, or the wrong file pointed at by `model.path`. Delete the cached model file so HeisenCam re-downloads it, and confirm `model.path` points at an actual `.onnx` model. See [ONNX detector configuration](/configuration/object_detectors#onnx).
+ONNX Runtime could not parse the model file. The file exists but its contents are not a valid ONNX model, usually a corrupted or interrupted download in `model_cache`, or the wrong file pointed at by `model.path`. Delete the cached model file so HeisenCam re-downloads it, and confirm `model.path` points at an actual `.onnx` model. See [ONNX detector configuration](../configuration/object_detectors.md#onnx).
 
 </FaqItem>
 
@@ -147,7 +147,7 @@ ONNX Runtime CUDA errors. `999` (`cudaErrorUnknown`) is a general, unrecoverable
 
 OpenVINO could not find the configured device (usually `GPU` or `NPU`). Most often the `/dev/dri` render node is not passed into the container, or the wrong render node is mapped when an iGPU and a discrete GPU coexist.
 
-See [GPU: no supported devices found](/troubleshooting/gpu#cant-get-optimization_capabilities-property-as-no-supported-devices-found).
+See [GPU: no supported devices found](./gpu.md#cant-get-optimization_capabilities-property-as-no-supported-devices-found).
 
 </FaqItem>
 
@@ -157,7 +157,7 @@ See [GPU: no supported devices found](/troubleshooting/gpu#cant-get-optimization
 
 HeisenCam ran out of shared memory (`/dev/shm`). The container's `shm_size` is too small for the number and resolution of your detect streams, or you added cameras after startup without increasing it.
 
-See [Calculating required shm-size](/frigate/installation#calculating-required-shm-size). If you cannot increase `shm_size`, lowering the `SHM_MAX_FRAMES` environment variable reduces how many frames HeisenCam buffers per camera.
+See [Calculating required shm-size](../frigate/installation.md#calculating-required-shm-size). If you cannot increase `shm_size`, lowering the `SHM_MAX_FRAMES` environment variable reduces how many frames HeisenCam buffers per camera.
 
 </FaqItem>
 
@@ -165,7 +165,7 @@ See [Calculating required shm-size](/frigate/installation#calculating-required-s
 
 A filesystem is full: the recordings volume (`/media/frigate`), the cache tmpfs (`/tmp/cache`), or `/dev/shm`. Check which one, and note that inode exhaustion can produce this while `df -h` still shows free space.
 
-See [Recordings: No space left on device](/troubleshooting/recordings#i-see-the-message-error--error-occurred-when-attempting-to-maintain-recording-cache).
+See [Recordings: No space left on device](./recordings.md#i-see-the-message-error--error-occurred-when-attempting-to-maintain-recording-cache).
 
 </FaqItem>
 
@@ -181,7 +181,7 @@ A silent exit is usually the host or container out-of-memory killer. Because `/d
 
 SQLite could not acquire the write lock. HeisenCam's timeout already scales with camera count, so under normal local-disk operation this essentially only happens when the database is on a network share (SMB/NFS), where file locking is unreliable, or when two instances point at the same file.
 
-See [Database is locked](/troubleshooting/faqs#error-database-is-locked).
+See [Database is locked](./faqs.md#error-database-is-locked).
 
 </FaqItem>
 

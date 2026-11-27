@@ -1,0 +1,77 @@
+---
+id: train-face-faces-train-name-classify-post
+title: "Classify and save a face training image"
+description: "**Access:** Admin role required."
+sidebar_label: "Classify and save a face training image"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktz2zYQ/is7uPgxtOhk2gtvbpq+22RspT3YGs2KXImISYABQEkcDf97ZwFIpKzazbS5tReJBPf5Yffb3QmHKyuye/GmQmvlUubopFZiloiCbG5k418zcXl5k+dkbXZ5CTdFLRUYXREY+tRKQ8XkQT2om6KwgOAMSiXVCmSNKwKnAcE2lLN1WGJOoLAmWGoT3gzleqUkO5o8KAAAdtU4CyRdSWZscikrgqXRNbiSwjEU0lDutOlAG0AFtCbl5rJgz7R1BnMXzLKK98gGJjAtKYYoLVhck9fYC53ZkWFUxaCdR6jIBLPSQl4RmqAvVa5Now068iqKNkP4BTqcwC251iiGyrYeVKjJWg5kI105xMqqnLCHK+ZmjDYglyfIcRRKOyCFi4qKJIQrK0o9HIdIpVpjJYuE7Q0ZoWLdBe3xomIiEqEbMr4cfixEJnwSc5b3P3YeDuYc3XweQenmjbZOJKJBgzU5MlxdO8FCIgt/iZBcUQ26UiRiX0Eic6alRNi8pBpFthOua1jHOiPVSiTCSVfxwW9spO9nQZes+0YXHSvkWjlSjh+xaapYy+lHyxW8O7WsFx8pdyPL3lDf9z2bto1WlizLv76+5r/jjrgLd7dsK7iNwiL5/Bgaw/A6GTzEQhgFt9C6IlSj6KJD0Sci1stLKP0aRTiZp/kOmN8fPA9GZ4OR70mRkfkhv4DNV69fn8LxO5eVTxbecpH+cywKcigrfpKOansqUOn86Cuq7t3Sl9kxGH1yOJHK0YqM6GcDHGgMdiPEftGR/Bhgu/oscPfGnhf1YMCUv/7dVXBewXWUG93EAG9A9/k0vg3w/ZWzvcgP0+n7E4Phbi3lrZGu83AujVyhI8/3N60rRXY/477bXu3DvuIpwEGwiEgEbR0pK7UKbf9InchOxBOxxqod1NhkTa7UTDMH/mB3IvVUk3qqSXdMH326pxrB0Zr1nmJaU4lMlM41NkvTgmo9ifFP1rIgnWIjfUkMglmaVjrHqtTWZV9fX78KMrMBhjuu0VB1p2AcLh0b+TN1e2LLtX6UnGUkvag4d/qRGKPjvmFTpBw3BxVgyTJ6sCm1ZX63uuK55GettHDmATsLs2svKy2QdbiopC2pgLVEz+w//TGFEApIa1sqYNHB+3d3U0grvZLKjwAWbozedoCtK6EkLMhYODdUa0dXrSUDKcQ3juICNiUp+C7kBKZVFhZUSlXweMIhGR53hvh2KHiYcM1GLD5YMl8SQ9WNXY9wPPfIna0lbcicccalXJVkLpIvjtm/wKVPBJPi7TDO3m6xbrizdj0jstQeqdi+3EBkbMj9evJqcs3QcuPU6Jk1ghZ3urC+8IIDGOb98Yb2FM7RIP1/7fsPrn2xIR1tXdpUKP1A9KS5i7R8LzwtsyynKBKRxc3uwM2zRDCrsuxut0BLH0zV93z8qSXD42XGY8BIjtvzdyGtz0FkS6wsvVCU57ex/C7guXD3pKK60bQRSRxIPli/CoTmHc2qN8HLlR/Yo0H1dH/hQRI0QtW+KDueb8wmIhGLuLPWumAdgxteBnATwtQ+az92/NlOVKhWrV/5RLDJpIEnFProKTQ+jDaiYyCesmlIhH9HK9Oxym4XCLrvD/Lh07MaEdq9tJ/zfd//Cf6qAno=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Classify and save a face training image"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/faces/train/{name}/classify"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Adds a training image to a specific face name for face recognition.
+    Accepts either a training file from the train directory or an event_id to extract
+    the face from. The image is saved to the face's directory and the face classifier
+    is cleared to incorporate the new training data. Returns a success message with
+    the new filename or an error if face recognition is not enabled, the file/event
+    is invalid, or the face cannot be extracted.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","title":"Body"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,77 @@
+---
+id: login-login-post
+title: "Login with credentials"
+description: "**Access:** Public — no authentication required."
+sidebar_label: "Login with credentials"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVl1v2zYU/SsX9yVtIH8k2LBNGAa4W4d2a1EjcbcH20ho6VpiQ5EqSdnxDAP7EfuF+yXDJaXKSdZsw/oyYHmIJerw8vLcy3O4Ry8Kh+kcJ40vcZlgTi6zsvbSaEzx9HSSZeRcenoK02alZAa///obaAOi8SVpLzPBULD0vpGW8uFCL/Sk/0YOBDSOLGylL8OTFhWB0DnUwrmtsfkQLsg3VjP0h59n4M0NaRD86ihrLMGL2Ww6MFrtIDPmRhL4UnjIhIYVccwc1saCa1aO3jekPUymL0NK5Lwbwqyko8A8TShneK4lbyVtOIA1FfiSh1xttIsphtghk2ckLNk2hNQByvs0Vv4SKShJ5GQDAc9vRVUrTk3q4s7UdKGvr68XOmusgsELWOCdIGkH/jqgrzZCNfTNAqH0vnbpaLS2shCermSdfvnVF2cjUctRbc1aKgqRMUFTkw3BXuaYojKF1Ffxf22cxwRbYp6ZfIfpHrvSYeptQwlmRnvSnj+JulZthUfvHHfEHl1WUiX4qba8lJfk+I1Ly79+VxOm6LyVusAEvfSKB97y90OCXdUfw047zOGQdCCzekdZl37Mdx4XPYq57GNM6npqnH/FOw9bPRw4WlfekPP5eMw/d3v+sgktv24UXLRg/PusxFU+Oz9/GPgnoWQee+W5tcb+g6j3uM7JC6n4SXqq3EOAMtmdr0Lv3qwxnd+n/JB8GJHaU8ElWvacC2vF7qgur0xMkOtYueKxEr4m50RB+CHYx6GBDJjx17+qN+8rLt3ijgre0xvZ/fg2vov0/dliHYQV50HAWNugSdLvMJ0vE7wddPkNrAlT66CTmCDdetJOGu0C8ze0w/QBPsFwxvt5h2WCFfnS8OltT2wtfIkpjsIxRk7BbsjGsI1VmGKnDzlVZtiKxHAjczIsEaHOPTAdjZTJhCqN8+nn4/FZxCz7vV1y48VWaoNN8koGYT+qpKjlj8TESm7vKM2YIAs8pt3Eq6BkeN9Zjj0iB0eOiYJtaVyQYKNYlJkhkA5OBK9+EpW8w0oH5LxYKelKymEjRRBlFvrWJaRzDeWw2sH0zeUMIn0JGBvAtTW3u+BjrXQ7eGKpMp4GwbBG0L5xFk9hW5KG7+OewDbawYpKqXNgOzkyQ12AJa4OxRWG3IgtF6yBn5JDvTte+ojHJ4G5k42kLdkT3nEpi5Ls0+STc/YveDkkyEp30ftRa5y9n/Rq0ftGL14o9doEMttjy8eJrIv0jIdnw3GwHON8JYKitrwGV4hXksxSzjkK5e4TvO/1+f+b0H/wJtQeMU+3flQrIYNvBRnct5I6j/cjthEWQx7Y71fC0VurDgceft+QbaV+I6wUK+6zOXtk3OWRtH8bm2UQnKzX9QfGzmIcZ3BL1f5R7LEb8InEBFftxa0yOc+xYssuKbax/01o3iDdYWyPSuiiYS9OMcbkvz8AQUoy5g==
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Login with credentials"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/login"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Public — no authentication required.
+
+Authenticates a user with username and password. Returns a JWT token as a secure HTTP-only cookie that can be used for subsequent API requests. The JWT token can also be retrieved from the response and used as a Bearer token in the Authorization header.
+
+Example using Bearer token:
+```
+curl -H "Authorization: Bearer <token_value>" https://frigate_ip:8971/api/profile
+```
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"user":{"type":"string","title":"User"},"password":{"type":"string","title":"Password"}},"type":"object","required":["user","password"],"title":"AppPostLoginBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

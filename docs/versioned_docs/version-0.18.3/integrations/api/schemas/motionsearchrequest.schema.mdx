@@ -1,0 +1,33 @@
+---
+id: motionsearchrequest
+title: "MotionSearchRequest"
+description: "Request body for motion search."
+sidebar_label: "MotionSearchRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"start_time":0,"end_time":0,"polygon_points":[0],"threshold":30,"min_area":5,"parallel":false,"max_results":25}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"MotionSearchRequest"}
+>
+</Heading>
+
+
+
+Request body for motion search.
+
+<Schema
+  schema={{"properties":{"start_time":{"type":"number","title":"Start Time","description":"Start timestamp for the search range"},"end_time":{"type":"number","title":"End Time","description":"End timestamp for the search range"},"polygon_points":{"items":{"items":{"type":"number"},"type":"array"},"type":"array","title":"Polygon Points","description":"List of [x, y] normalized coordinates (0-1) defining the ROI polygon"},"threshold":{"type":"integer","maximum":255,"minimum":1,"title":"Threshold","description":"Pixel difference threshold (1-255)","default":30},"min_area":{"type":"number","maximum":100,"minimum":0.1,"title":"Min Area","description":"Minimum change area as a percentage of the ROI","default":5},"parallel":{"type":"boolean","title":"Parallel","description":"Enable parallel scanning across segments","default":false},"max_results":{"type":"integer","maximum":200,"minimum":1,"title":"Max Results","description":"Maximum number of search results to return","default":25}},"type":"object","required":["start_time","end_time","polygon_points"],"title":"MotionSearchRequest","description":"Request body for motion search."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

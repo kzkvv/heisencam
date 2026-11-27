@@ -7,13 +7,13 @@ import NavPath from "@site/src/components/NavPath";
 
 **Live view** is HeisenCam's real-time dashboard and the page you land on by default. It shows all of your cameras at a glance, streams your most recent alerts across the top, and lets you open any camera in a full-resolution single-camera view with audio, two-way talk, PTZ, and on-demand recording controls.
 
-This page describes how to _use_ the Live view. For how to _configure_ live streaming (go2rtc, stream selection, smart streaming, WebRTC, and audio), see the [Live View configuration](/configuration/live) docs.
+This page describes how to _use_ the Live view. For how to _configure_ live streaming (go2rtc, stream selection, smart streaming, WebRTC, and audio), see the [Live View configuration](../configuration/live.md) docs.
 
 ## The dashboard at a glance
 
-The default **All Cameras** dashboard shows every camera, with a filmstrip of recent **alerts** scrolling across the top. Clicking an alert opens it in [Review](/usage/review); each card also has a check button to mark it reviewed without leaving the dashboard. Only **alerts** appear in the filmstrip. To suppress a label or zone from showing there, configure it as a detection instead (see [Alerts and Detections](/configuration/review#alerts-and-detections)).
+The default **All Cameras** dashboard shows every camera, with a filmstrip of recent **alerts** scrolling across the top. Clicking an alert opens it in [Review](./review.md); each card also has a check button to mark it reviewed without leaving the dashboard. Only **alerts** appear in the filmstrip. To suppress a label or zone from showing there, configure it as a detection instead (see [Alerts and Detections](../configuration/review.md#alerts-and-detections)).
 
-By default HeisenCam uses **smart streaming**: a camera's image updates roughly once per minute while nothing is happening, and switches to a full live stream the moment activity is detected. This conserves bandwidth and resources. You can change this for each camera when using a camera group (see [Streaming settings](#streaming-settings-and-the-right-click-menu) below), and the behavior is explained in detail under [Live view technologies](/configuration/live#live-view-technologies).
+By default HeisenCam uses **smart streaming**: a camera's image updates roughly once per minute while nothing is happening, and switches to a full live stream the moment activity is detected. This conserves bandwidth and resources. You can change this for each camera when using a camera group (see [Streaming settings](#streaming-settings-and-the-right-click-menu) below), and the behavior is explained in detail under [Live view technologies](../configuration/live.md#live-view-technologies).
 
 On mobile, a toggle in the header switches between a **grid** layout and a single-column **list** layout. On desktop a **fullscreen** button is available in the lower-right corner.
 
@@ -26,7 +26,7 @@ The icon rail (top-left on desktop, a horizontal strip on mobile) switches betwe
 
 Camera groups are useful for organizing cameras by location (for example, _Front of House_ or _Backyard_) and for giving each group its own dashboard layout and camera streaming preferences.
 
-You can also view [Birdseye](/configuration/birdseye) on the dashboard, or open it directly at `http://<frigate_host>:5000/#birdseye`. Clicking a camera inside the Birdseye view jumps to that camera's live feed.
+You can also view [Birdseye](../configuration/birdseye.md) on the dashboard, or open it directly at `http://<frigate_host>:5000/#birdseye`. Clicking a camera inside the Birdseye view jumps to that camera's live feed.
 
 ## Creating and editing camera groups
 
@@ -58,13 +58,13 @@ You can optionally overlay live streaming statistics (stream type, bandwidth, la
 
 ## Streaming settings and the right-click menu
 
-Right-clicking (or long-pressing) a camera tile opens a context menu with quick controls: an **audio volume** control for streams that support audio, **Mute / Unmute all cameras**, **show or hide streaming statistics**, the **debug view**, **notification** options, and, for admins, turning the camera on or off. If the audio control doesn't appear, see [Audio Support](/configuration/live#audio-support). Audio requires go2rtc configured with a compatible codec.
+Right-clicking (or long-pressing) a camera tile opens a context menu with quick controls: an **audio volume** control for streams that support audio, **Mute / Unmute all cameras**, **show or hide streaming statistics**, the **debug view**, **notification** options, and, for admins, turning the camera on or off. If the audio control doesn't appear, see [Audio Support](../configuration/live.md#audio-support). Audio requires go2rtc configured with a compatible codec.
 
-A **Low-bandwidth mode** notice may also appear in the context menu with a **Reset** option when HeisenCam has fallen back to the lower-quality jsmpeg stream. See the [Live view FAQ](/configuration/live#live-view-faq) for why this happens.
+A **Low-bandwidth mode** notice may also appear in the context menu with a **Reset** option when HeisenCam has fallen back to the lower-quality jsmpeg stream. See the [Live view FAQ](../configuration/live.md#live-view-faq) for why this happens.
 
 For non-default groups, the context menu also exposes **Streaming Settings** for that camera, which let you choose:
 
-- the **stream** to display (the dropdown lists the streams you configured under [`live -> streams`](/configuration/live#setting-streams-for-live-ui), and indicates whether audio is available),
+- the **stream** to display (the dropdown lists the streams you configured under [`live -> streams`](../configuration/live.md#setting-streams-for-live-ui), and indicates whether audio is available),
 - the **streaming method**: **No Streaming**, **Smart Streaming** (recommended), or **Continuous Streaming** (higher bandwidth), and
 - **compatibility mode**, for devices that have trouble rendering the default player.
 
@@ -75,7 +75,7 @@ These settings are saved per group and per device in your browser, not in your c
 Clicking a camera tile opens its full-resolution single-camera view. The top bar provides:
 
 - **Back** (also the `Esc` key) to return to the dashboard,
-- **History** to jump to the [recordings](/usage/history) for this camera, starting about 30 seconds in the past,
+- **History** to jump to the [recordings](./history.md) for this camera, starting about 30 seconds in the past,
 - **Fullscreen** and **Picture-in-Picture** (if supported by your browser),
 - **Two-way talk** (the microphone button, which requires a supported camera and WebRTC; keyboard shortcut `t`), and
 - **Camera audio muting** (the speaker button; keyboard shortcut `m`).
@@ -84,7 +84,7 @@ You can pinch or scroll to zoom into the feed. A **settings** gear provides a **
 
 :::tip
 
-Two-way talk and camera audio have specific codec and port requirements. See [Audio Support](/configuration/live#audio-support) and [WebRTC](/configuration/live#webrtc-extra-configuration) for setup details.
+Two-way talk and camera audio have specific codec and port requirements. See [Audio Support](../configuration/live.md#audio-support) and [WebRTC](../configuration/live.md#webrtc-extra-configuration) for setup details.
 
 :::
 
@@ -98,7 +98,7 @@ Admins get a row of toggles in the single-camera view (a settings drawer on mobi
 - **Snapshots**,
 - **Audio detection**,
 - **Live audio transcription** (when audio detection is enabled), and
-- **Autotracking** (for [autotracking-capable PTZ cameras](/configuration/autotracking)).
+- **Autotracking** (for [autotracking-capable PTZ cameras](../configuration/autotracking.md)).
 
 These toggles change runtime behavior immediately. Whether a change persists across a restart depends on the feature. See the relevant configuration page.
 
@@ -109,10 +109,10 @@ The single-camera view can capture footage on demand:
 - **Start on-demand recording** begins a manual recording based on the camera's recording retention settings (the button pulses while active). If recording is disabled for the camera, only a snapshot is saved. Use **End on-demand recording** to stop.
 - **Download instant snapshot** saves a still image of the current frame.
 
-See [Recording](/configuration/record) and [Snapshots](/configuration/snapshots) for how retention is configured, and [Exports](/usage/exports) for keeping a clip permanently.
+See [Recording](../configuration/record.md) and [Snapshots](../configuration/snapshots.md) for how retention is configured, and [Exports](./exports.md) for keeping a clip permanently.
 
 ## PTZ controls
 
 For ONVIF cameras that support it, a control panel provides pan/tilt arrows, **zoom**, **focus**, and saved **presets**. You can also enable a **click-to-move / drag-to-zoom** overlay: click a point in the frame to center the camera there, or drag a box to pan and zoom to that area (dragging top-left to bottom-right zooms in, the reverse zooms out).
 
-For continuous, automatic tracking of a moving object, see [Autotracking](/configuration/autotracking).
+For continuous, automatic tracking of a moving object, see [Autotracking](../configuration/autotracking.md).

@@ -1,0 +1,72 @@
+---
+id: generate-state-examples-classification-generate-examples-state-post
+title: "Generate state classification examples"
+description: "**Access:** Admin role required."
+sidebar_label: "Generate state classification examples"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vk1z2zYQ/Ss7e/HH0KLsSS+8uU7apl/xxE57UDQaiFyJiEmAAUBZjIb/vbMAKVGSnXTc9CKR4MNi9+3uW2zQiaXFZII3hbBWLmQqnNQKpxFmZFMjK/+a4Pn5dZqStcn5OVxnpVRgdEFg6HMtDWWjj+qj+pkUGeEIaC3KqiALC23AOl5K9+yPMEJdMVhq9TbDBJfd3pmHz3oLs/19sy1sCwj4SluHEbI7ZN2POmsw2WDvHSbO1BRhqpUj5fiTqKqiMxp/shziBm2aUyn4qTLsnZNk+a3UGRUzJUriN9dUhAlaZ6RaYoROuoIX/mAU/MmoQ/J4EfQCXH5IBHjb2EaYipKM8OeJLJP8URS3e35UhhZy/dZRySnbeqLqck4G2+hFK9OoXxHGiAYjLEV/xqsIS6n6l3aL1PNPlLpB7Ded84eBv5apD8Q0UIqqkmoJIU5gNi04DUqbUhTyC2WQGl1BqrXJpBKOLEgFk/VlBM1lBOurCJqrKZdUKRycrkRRk4XxxeUZtk+4tsv9ZJjAHdHTnft94d5xLb3pKssXUduybUO20sqGLFyNx/y3H+hd7btjURfwvgPji+vNBmODYptrXZBQA8a7A7lySrJWLL9emx3kW0T1J++MHrIk0218gZtXV1fHdPwlCpmFAn9jjDYv5yIjJ2TBTzKU4SGg0OneV6Gad4the3RkDEpfKkdLX/vtUfH3wf6uOyVkgu3yX5HbG3se6smAe/76rVRwXOHoDjfIxI7ewO7zYbwO9D11WA/55f7+9shgyK2ltDbSNZ7OhZFL4ciL/3XtckwmU1aP9UXv9gWPBHaCIRghrR0pK7UKcvVADSZH8Ah9J2+3scmSXK55KnSyXgk+DuN97YyPhkHshwGy42ZFJhxbmwITzJ2rbBLHGZV61IUyWsmMdCwq6atjB0ziuNCpKHJtXfLDeHwZMNMdI3dcrqEAj3nZ5l9U8jfidEhuilTrB8nehUnSb5w5/UDqSDrZFCnHsVIGliwTCY+5tjx1rS5WlIUZLC2ceO5ORnCf0xYrLZB1Yl5Im1MGKyn8APr173sIroC0tqYM5g3cvru7h7jQS6ki0MaDK6PXDYja5ZCTyMhYODVUakcXtSUDMXRv7MUZPOak4KcQE5haWZhTLlUGQnkjXTA8AwxxdiicMOLy7bj4YMl8Tw5VMzx6wOOpZ+5kJemRzAlHnMtlTuYs+u6c/Qde2ghZH9/vbjXdcDq8leyUZneN4N1SLbTnsut17jYyNrAzHl2Oxkw+d1kpvAx35rY3uacub9vr3SHfm53I/w/3xa4eHK1dXBVCemn2PbvpBGKC+7swwiOJYHHwIjGNkNubd202c2Hpgynalpc/12RY8qYsTUaKOVM34VkRUjoQs5sQ74VX9IGSHQ44lpewg1mp3FexQwHkGsMI592FlnOOCRrxyNNCPIaUas+/FyO/tsFCqGXt7wQYbHIxiKPGevCN1T0MRqZQzcDDwx4LgfDvYKbub9lsQtu27RYfPj27o6O2R/tB0LbtPyZoZ4Y=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generate state classification examples"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/classification/generate_examples/state"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Generate examples for state classification.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"model_name":{"type":"string","title":"Model Name","description":"Name of the classification model"},"cameras":{"additionalProperties":{"prefixItems":[{"type":"number"},{"type":"number"},{"type":"number"},{"type":"number"}],"type":"array","maxItems":4,"minItems":4},"type":"object","title":"Cameras","description":"Dictionary mapping camera names to normalized crop coordinates in [x1, y1, x2, y2] format (values 0-1)"}},"type":"object","required":["model_name","cameras"],"title":"GenerateStateExamplesBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

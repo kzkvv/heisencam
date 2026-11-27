@@ -1,0 +1,75 @@
+---
+id: get-custom-attributes-classification-attributes-get
+title: "Get custom classification attributes"
+description: "**Access:** Authenticated user with access to all cameras."
+sidebar_label: "Get custom classification attributes"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1v20YQ/SuDuTgxGMkJ2gtvaZumaRs4SJT24AjCihyRGy93mZ2lbELgfy9ml/qgVbcI2t56sUXyzdebmbe7w6AqxvwGvzeKWW90oYJ2FpcZlsSF1218zPHy8mVREHN+eQkvu1CTDYKlEjomD3c61KAiAoIDZQwUqiGvePbJfrLvKXTeMhQdB9dAMQkGKgSv110gho3zoKDSW7Lg1p+pCBD6lmafLADAtTU9aFuYriSGxpVkOIWeelyJDTAFyeXi4P5idPNdDyVtVGcC+DExBRujArDzUpLRHMBtYhkHazBqTYZHH282UHnXtat1v4qJgGYIvqPs6PNYVoRSCes+ZQ1WNTTDDF1LPqb8psQcKwqrRNHqaLx6UNvJl4oCZtgqrxoK5KWROxTXmGNiLzKBGWrp4ZeOfI8ZevrSaU8l5htlmDLkoqZGYb7DCM+Rg9e2wgyDDkZeXKdeLOTzMGSHKFMOvj7Q2jlDyqKMW+zIAbqP/FoiSMvexgjDsBS/3DrLxOLpxdWV/JuO64cuzuKmM/B+BGOGhbOBbBC4alszMjr/zGKzO2Y3DMOQ4TcvXpw7/k0ZXaaxfeW981/hFVsv7Q465V1SUNrILx2o4XOAccXkq7L99Sa2eNolacf4RttAFXkclkO2f6e8V/1JK391444PGTZc/VXX3xKzqggPzh6HRjIO87GHpSGcTMJNrCuFHnHLo5sjvYndx8v4IdH3Z8H2kJ8Wi3dnDlNvmYrO69BHOjdeVyrQRyYv0ob5zVKm7P7ZPutn3kWHypjVKGuYId0HsqydTXt3Sz3mZ0YZbpXpHhqL+4ZC7catj1sskXE+3fb5cdtRsvbb/Zp33mCOdQgt5/N5SY2bjXXMtrokN1etjqNxBObzuXGFMrXjkH97dfU8YZZHOj7IrKbpG529LBttEyuH5qtW/0L9ftkL5261FDpKwmi4Cu6W0mKf7s/07GBiIRDuascEntiZLZUgzImeXiiJfjGDRU0HrGYgDmptNNdUwlYrCDXBz78vIKUCmrlLYvvu+sMC5sZV2mbgfAS33t33oLpQQ02qJM/wxFPjAj2LR9kcxifJ4inc1WThx1QT+M4yrKnWtgRlo5OxGG0r8CTdoRRhJrN7Nln/Doe2Pw19wuOTyNzFVtMd+QupuNZVTf5p9q9z9g94GaTqjYtsjKsqe0KeU31Xs+ezK6GvdRwaFVV0JOY1hb+9RDzka3dU6P+vMf/NNWYc6kD3Yd4apePhEoVnNwrbDU5rwwxPOrbMUERJYLvdWjF99GYY5HW6SojglZrV2pxcJpLgTu85e7GNyveIxdmd5Wi0lAevxSqeAhmmcT8ReJmfNpzq+sMzfyLur18tpNSz5b+Nyz/+ODnTle1PfD/UgZSC/D059Kcmu12SlmE44NOnRy3GEvdoad5yGIY/AB0YPhY=
+sidebar_class_name: "get api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get custom classification attributes"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/classification/attributes"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Authenticated user with access to all cameras.
+
+Returns custom classification attributes for a given object type.
+    Only includes models with classification_type set to 'attribute'.
+    By default returns a flat sorted list of all attribute labels.
+    If group_by_model is true, returns attributes grouped by model name.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"object_type","in":"query","required":false,"schema":{"type":"string","title":"Object Type"}},{"name":"group_by_model","in":"query","required":false,"schema":{"type":"boolean","default":false,"title":"Group By Model"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

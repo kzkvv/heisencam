@@ -1,0 +1,33 @@
+---
+id: genaiprobebody
+title: "GenAIProbeBody"
+description: ""
+sidebar_label: "GenAIProbeBody"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"provider":"openai","name":"string","api_key":"string","base_url":"string","provider_options":{}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GenAIProbeBody"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"properties":{"provider":{"type":"string","enum":["openai","azure_openai","gemini","ollama","llamacpp"],"title":"GenAIProviderEnum"},"name":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Name"},"api_key":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Api Key"},"base_url":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Base Url"},"provider_options":{"type":"object","title":"Provider Options"}},"type":"object","required":["provider"],"title":"GenAIProbeBody"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

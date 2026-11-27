@@ -1,0 +1,72 @@
+---
+id: clear-region-grid-camera-name-region-grid-delete
+title: "Clear Region Grid"
+description: "**Access:** Admin role required."
+sidebar_label: "Clear Region Grid"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1v2zgQ/SvEXPIBxXKD3YtuQZv9bLdF4u4eXMOgxbHERiJVknIiCPzvxZCyLdVNgWJzSWTyzfDN47xhD44XFrIlvEMhOawSEGhzIxsntYIMLi9v8hytzS4v2Y2opWJGV8gMfmmlQTH7pD6p1xVyw1xJy4XUihVGCrbVhnGW8xoNn0ECukHDKeufAjLIKWYd8WvCr9cRula8xvVkR2CFDiGBhhteo0NDjHsgJKU6xkECklg33JWQwJ4lZM60mIDNS6w5ZD24rqFQ64xUBSTgpKto4XXIxf6hXN6vKIVttLJoKep6Pqd/U4Xu2yDQtq3Y3QCGBHKtHCpHcN40lcxD6elnSzH9kYn33ifwy/X1aeJ/eSVFCGO3xmjzE1mhMSS3k5G3QMdlRV/SYW1PAZXOJ7tcde+3QeOpUD45rEjlsEADfuWT/Ro3hncjNd/qSBB8ArUtfiT8O7SWFwiHZM9DgxhsQbv+eLbefMbcTS59GeqKRw+41THNUd6o7vNlvInyfe+wPeSPxeLDScJ4txbz1kjXBTm3RhbcYXDSTetKyJYrarOnqz3tK/IXkSAIJIBPDpWVWsWef8AOshN4AjtetccwSlmjKzVZbWQfOhDSfuQYn46cBsTW7Pb+ak0FGZTONTZLU4G1ng38ZzspUKe8kaEljsAsTSud86rU1mW/zuevImZ1lOGeejR23akYh0vnjfwbu72dc60fJFUwOH4IXDv9gKTR1DeUCpUjc6BgFi2pxx5LbWlAWV3tUMQpJi07C4KdzdiixANWWobW8U0lbYmC7SQP0+2v/xYsUmHS2hYF23Tsw/v7BUsrXUiVMG0CuDH6qWO8dSUrkQs0lp0brLXDq9aiYSkbfhGLC/ZYomK/xZqYaZVlGyylEoyrkGQoRqqCGaTbwXjCjHp20OKjRfOSGqpufPRIx/Og3NlO4iOaM6q4lEWJ5iJ5cc3+hy6eqt7qoMZgUTIJGhvrm89ezeYkX6Otq3mYnoMw8TW7iy/Z79EVE3H64xh+wedxuDSHTy5tKi7D0AzG6gfjLiGbPnVj564SIM8Rqu833OJHU3lPy19aNDR8VjQkjOQbUmPZg5CWvgVkW15Z/EGR53dDORfsOaL7llPdaBZBMoyrMe3wXsQbHg00UrFx4zn27fM2GWlvbt/eLm4hAX7S8g+h5YeP0Qs2pfZt90cW9Hf0xE1D+j4ayvsDPm49GzFUuUeHuey9/wpl3EJO
+sidebar_class_name: "delete api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Clear Region Grid"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/{camera_name}/region_grid"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Clear the region grid for a camera.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"camera_name","in":"path","required":true,"schema":{"type":"string","title":"Camera Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

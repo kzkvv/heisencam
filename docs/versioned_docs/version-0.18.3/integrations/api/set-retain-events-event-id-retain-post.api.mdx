@@ -1,0 +1,74 @@
+---
+id: set-retain-events-event-id-retain-post
+title: "Set event retain indefinitely."
+description: "**Access:** Admin role required."
+sidebar_label: "Set event retain indefinitely."
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVk1z4zYM/SsYXPIxiuXNtBfdMtO03X5lJ/G2h8TjoUXY4kYmtSTlRKPRf9+BSNlyvEk77Z56iRXxAQQegAe16MXaYXaP11vS3uE8QUkut6ryymjM8Pz8Ks/Juez8HK7kRmmwpiSw9LlWluTkQT/oO/IOhAZiH+ANWPJCaVBa0kpp5alsJg8aAOCWfG21AwGu7v3ChpwTawJjexfWGgtqBb6g6E850MbDytRaRi9/3MyuM5gVyvGpgJLWIm+AtKyM0h6EloOZq6vKWE8SlO6drqzRnrScYIKmIis40fcSM3TkFyHyRX+zW4TfhZKL4aAyzmOClbBiQ54sc9eiFhvCDAc0JqiYu0r4AhMcuMLM25oSdHlBG4FZi76p2M55q/QaE/TKl/yiLwa8l9h1c7Z3ldGOHJtcTqf8c1iku8Dlqi7hNoIxwbxP1DNcVFWp8j7V9JNjm3YURmWZCK/CDbEwo/iWxpQk9CjAeCF2Ccb6vZXO7xHSdcmAMctPlPsDcu53N++dzvdOfiJNVuW7/LqO3X13eXlMx5+iVLJPFq65n/49F5KrXvKT8rRxx4DS5AenQjc3q74nDsnokt0bpT2tyWI339MhrBXNiLHfTAiwJ9it/xG5g7M32qofrhmf/l0pOK9wdcSNKrGnN7D7eho/BPq+dtkA+Xk2+3DkMNTWUV5b5ZuezpVVa+Gpl6Cr2heY3c95OJ4vhrAvWJg4CIZggvTsSTtldJjRR2owO4InuBVlvTdjlxvyhWFB2A07X4dpEIW0Hca8S4MoIIdqt4MY1LbEDAvvK5elqaSNmcTgJ1slyaSiUn0/7IFZmpYmF2VhnM++n07fBcx8z8EdN2houWMmdhUXlfqVmkF+cmMeFacY5SkaLrx5JA76cGjYFWnPk0ESHDmmDp4K41jtnSm3JIP2KwcnPVsnE5gVtMMqB+S8WJbKFSRhq0QvuL/8NYMQCijnapKwbODDzd0M0tKslU5Y+hlcWfPcgKh9AQUJSdbBqaWN8XRRO7KQQvyPoziDp4I0/BhyAltrB0sqlJa8RsQ+GaXXYImrQ+GGCTds5OKjI/stOdTN+OoRj6c9cydbRU9kTzjjQq0LsmfJN+fsP/DScdYr07MR55MnhKwL+U0n7yZTpo8nYyN66YzE3JGP+/pry/8lU+1ekP/fXxixqTw9+7QqWSy6JAx+G3XlPnw28NbLRh8QUVrmCbIoMKxtl8LRR1t2Hb/+XJNlaZyzhFklllyu+xalcvwsMVuJ0tEbxJ/eRorP4LVIh5nQzUgpMYliugu3X2Wh/0Zay2Wt/FhiX27eA7Xl9sYExdE4PvbjGB9Gq/UwqpeTGWLgv6Pde2jStmHYu26HD0evWsQcB3S/MLqu+wJxJOXS
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Set event retain indefinitely."}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/events/{event_id}/retain"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Sets an event to retain indefinitely.
+    Returns a success message or an error if the event is not found.
+    NOTE: This is a legacy endpoint and is not supported in the frontend.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

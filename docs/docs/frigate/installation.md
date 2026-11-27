@@ -10,11 +10,11 @@ The published candidate image supports AMD64 and ARM64. The platform-specific im
 
 
 import ShmCalculator from '@site/src/components/ShmCalculator'
-import DockerComposeGenerator from '@site/src/components/DockerComposeGenerator'
+import DockerComposeGenerator from './compose-generator'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-HeisenCam is a Docker container that can be run on any Docker host including as a [Home Assistant App](https://www.home-assistant.io/apps/). Note that the Home Assistant App is **not** the same thing as the integration. The [integration](/integrations/home-assistant) is required to integrate HeisenCam into Home Assistant, whether you are running HeisenCam as a standalone Docker container or as a Home Assistant App.
+HeisenCam is a Docker container that can be run on any Docker host including as a [Home Assistant App](https://www.home-assistant.io/apps/). Note that the Home Assistant App is **not** the same thing as the integration. The [integration](../integrations/home-assistant.md) is required to integrate HeisenCam into Home Assistant, whether you are running HeisenCam as a standalone Docker container or as a Home Assistant App.
 
 :::tip
 
@@ -88,7 +88,11 @@ HeisenCam needs about **210MB** for **2 cameras** detecting at **720p**. If Heis
 
 The HeisenCam container also stores logs and an nginx cache in shm, which can take up to **50MB**. The calculator below includes this, along with room for 2 cameras added while HeisenCam is running. Its result holds about 25 frames per camera, a little above the 20 frame minimum HeisenCam warns below. HeisenCam keeps up to 50 when there is room, which gives slow processes more time to read each frame.
 
-<ShmCalculator/>
+<ShmCalculator>
+
+[Learn more about choosing a detect resolution.](./camera_setup.md#choosing-a-detect-resolution)
+
+</ShmCalculator>
 
 The shm size cannot be set per container for Home Assistant Apps. However, this is probably not required since by default Home Assistant Supervisor allocates `/dev/shm` with half the size of your total memory. If your machine has 8GB of memory, chances are that HeisenCam will have access to up to 4GB without any additional configuration.
 
@@ -213,7 +217,7 @@ On Raspberry Pi OS **Trixie**, the Hailo driver is no longer shipped with the ke
    Download the installation script:
 
    ```bash
-   wget https://raw.githubusercontent.com/blakeblackshear/frigate/dev/docker/hailo8l/user_installation.sh
+   wget https://raw.githubusercontent.com/kzkvv/heisencam/refs/heads/heisencam/0.18.3/docker/hailo8l/user_installation.sh
    ```
 
    Make it executable:
@@ -304,7 +308,7 @@ If you are using `docker run`, add this option to your command `--device /dev/ha
 
 #### Configuration
 
-Finally, configure [hardware object detection](/configuration/object_detectors#hailo-8) to complete the setup.
+Finally, configure [hardware object detection](../configuration/object_detectors.md#hailo-8) to complete the setup.
 
 ### MemryX MX3
 
@@ -323,7 +327,7 @@ To get started with MX3 hardware setup for your system, refer to the [Hardware S
 
 Then follow these steps for installing the correct driver/runtime configuration:
 
-1. Copy or download [this script](https://github.com/blakeblackshear/frigate/blob/dev/docker/memryx/user_installation.sh).
+1. Copy or download [this script](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/memryx/user_installation.sh).
 2. Ensure it has execution permissions with `sudo chmod +x user_installation.sh`
 3. Run the script with `./user_installation.sh`
 4. **Restart your computer** to complete driver installation.
@@ -381,7 +385,7 @@ If you can't use Docker Compose, you can run the container with something simila
 
 #### Configuration
 
-Finally, configure [hardware object detection](/configuration/object_detectors#memryx-mx3) to complete the setup.
+Finally, configure [hardware object detection](../configuration/object_detectors.md#memryx-mx3) to complete the setup.
 
 ### Rockchip platform
 
@@ -434,7 +438,7 @@ or add these options to your `docker run` command:
 
 #### Configuration
 
-Next, you should configure [hardware object detection](/configuration/object_detectors#rockchip-platform) and [hardware video processing](/configuration/hardware_acceleration_video#rockchip-platform).
+Next, you should configure [hardware object detection](../configuration/object_detectors.md#rockchip-platform) and [hardware video processing](../configuration/hardware_acceleration_video.md#rockchip-platform).
 
 ### Synaptics
 
@@ -465,7 +469,7 @@ or add these options to your `docker run` command:
 
 #### Configuration
 
-Next, you should configure [hardware object detection](/configuration/object_detectors#synaptics) and [hardware video processing](/configuration/hardware_acceleration_video#synaptics).
+Next, you should configure [hardware object detection](../configuration/object_detectors.md#synaptics) and [hardware video processing](../configuration/hardware_acceleration_video.md#synaptics).
 
 ### AXERA
 
@@ -501,7 +505,7 @@ If you are using `docker run`, add this option to your command `--device /dev/ax
 
 #### Configuration
 
-Finally, configure [hardware object detection](/configuration/object_detectors#axera) to complete the setup.
+Finally, configure [hardware object detection](../configuration/object_detectors.md#axera) to complete the setup.
 
 ## Docker
 
@@ -597,7 +601,7 @@ There are important limitations in HA OS to be aware of:
 
 :::tip
 
-See [the network storage guide](/guides/ha_network_storage.md) for instructions to setup network storage for frigate.
+See [the network storage guide](../guides/ha_network_storage.md) for instructions to setup network storage for frigate.
 
 :::
 

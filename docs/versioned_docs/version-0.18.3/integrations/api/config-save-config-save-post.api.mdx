@@ -1,0 +1,70 @@
+---
+id: config-save-config-save-post
+title: "Config Save"
+description: "**Access:** Admin role required."
+sidebar_label: "Config Save"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1v2zgQ/SvEXPIBxnKD3YtuaXcX+4kUtbt7CIyAlsYSG4lUScqOIPC/F0NKthQ3xS62l0QmZ97MPM6b6cGJwkL6AHdNAxsOukEjnNTqtxxSyLTayeLRij0+Tr8bbR1waIQRNTo0hNCDEjVCCsFCNwQCHKSCFD63aDrgYPBzKw3mkDrTIgeblVgLSHtwXRN8nZGqAA5OuooOVmKP7D6Ceb+JEGjdW5135PcSMdPKoXIBEp9d0lSCMuinoQboAOG99wRqG60sWrq/XS7pX442MzJGTmHVZhlau2sr9mEwhlk00TSVzAJ1ySer5zFjlB9ub8+B/xaVzIMb+9kYbf4DKjSGnsvJmHeOTsiKvqTD2p4bVDqb3QrV3e/Cy83Z9/x4IpXDAg34jefjmTBGdJMn+lPHBMFzqG3xrdf8C60VBcIR7HXTQAZb060/xdbbT5i5WSc9hLpi6MFuc4I50RvZfb2MnyJ9Xws2mvy6Xr8/A4xvazFrjXRdoHNnZCEc3uW1VHetKyF92FDvPt+Mad8YHRAFmQB/0RPX13eh29LraxZAGJmz0XkBHPDZobJSqyi9J+wgPcPnsBdVe4pDOdToSk3aPmqY8oMkyjsh8QKVY/ajrFtTQQqlc41NkyTHWi+GAhd7maNORCNDz5wM0ySpdCaqUluX/rhcvok2mxNPK2ri2JbnbB27QjTyD+zGKZJp/SQpu2HQDI6PTj/hOYkEhcqRejBnFi2xxQ6ltsSk1dUe88irtOwiEHSxYOsSj7bSMrRObCtpS8zZXgrmSmS//7NmMRUmrW0xZ9uOvb9frVlS6UIqzrQJxo3Rzx0TrStZiSJHY9mlwVo7vGktGpaw4RdlccUOJSr2S6yJmVZZtsVSqpwJFUCGYqQqmEF6HYwRFtTUAxcfLZrvyaHqpqEnPF4G5i72Eg9oLqjiUhYlmiv+3Tn7H7x4qnqnp1OfRIHGxvqWizeLJdFHYqhFGK8DMe+CHtgq6mFGS3+a0P9GqsM7TNaR51Er/aC+h2HRkvAo3oYDKYcu+n4rLH40lfd0HBcpqTKXVmwrGoA7UVn8RoqXH4Zkrthr2cTxMV/c4+gIst0LIylcmGQc4tNMJs+7GO0mzOuT7yzKaEuENW46nF4uudmcoi4BDtth4dc6Jx8jDrQFxCFkyEGcNf1TaPrhY7LkhOomsV/2f0yR/k624Nyl76OkvD/ax6tXPQa6Ruswib33XwABAULs
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Config Save"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/config/save"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"save_option","in":"query","required":true,"schema":{"type":"string","title":"Save Option"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"text/plain":{"schema":{"title":"Body"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

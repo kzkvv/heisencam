@@ -1,0 +1,73 @@
+---
+id: generate-description-embedding-description-generate-post
+title: "Generate description embedding"
+description: "**Access:** Admin role required."
+sidebar_label: "Generate description embedding"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVk1v2zgQ/SuDuaQNFNsNdi+6pW32e9EicXcPiRHQ0lhiI5EqSTkxBP33YkjKkuPNtuj2sBdDJh/n43HmDTt0orCY3uDllpSzuEowJ5sZ2TipFaZ4enqRZWRtenoKF3ktFRhdERj61EpD+exW3aqfSZERjiwIBVSvKc+lKmCjjV9gyycWJnZntwoA4Ipca5QFAbb1TqAma0VBEE8aow3IDbiSghmQFpR2sNGtymeYoG7Ys9Tq1xxTLGIgdxNfd/uADlb30EZbhwlyQmTda53vMO1wyA9TZ1pKMNPKkXK8JZqmkpl3Ov9omaQObVZSLfirMRySk2T53wGXHQq1e7fB9KZDt2sIU7TOSFVgn+xXVFtV2K8SdNJVvLAsaUod6Akd2PfJcFCvP1I2ZBJCvznwP7EZLvvtuOnT7ns2Z8g2WtkQ//licZQGXofL2rQVXEUwfjND8eb5Myay1roioXAMNzrEPsFYIBN4pHBE/xkhX+Jm8DwanTDkS1pm+/wCNz+cnx/T8ZeoZO6ThUsu2G/nIicnZMVf0lFtjwGVzg52v6KepHJUkMF+NdIhjBG7CWN/6BCgJ9gWX0XuYOx5qCcDlrz7pavgvILriJvcxEhvYPf5NN4G+v7J2QD5Zbl8f2Qw3K2lrDXS7TydGyML4cgL3kXrSkxvVtyUj2dD2GcsgxwEQzBBenSkrNTKegP3tMP0CJ7gVlTteIxN1uRKzeIVhagR7A7nkyKbD2KFHKbZkglOWlNhiqVzjU3n85xqPYuBz7YyJz0XjfS1MALT+bzSmahKbV3642LxKmBWY/7XXJyh3I5Z2N+2aOTvxORLboFM63vJ0SlR8248eOf0PTE5hw3Dpkg57grKwZJl2uCh1JbnitXVlvIwZaSFE8/UyQxYBwestEDWiXUlbUk5bKXwmvjb30sIoYC0tqUc1jt4/+56CfNKF1IlPFcY3Bj9uAPRuhJKEjkZCy8M1drRWWvJwBziP47iJTyUpOCnkBOYVllYUylVzjNKjMnwzDPEt0PBw4yLNXLxwZL5nhyq3dT1hMcXnrmTraQHMieccSmLkszL5Ltz9h946RNkNbwap+7lo6ibio71da9pKNVGe/5iN3M/kbEBtpi9mi0YxX1UCy+0kcrhfXIwR/fPgqfcdqN8/99fP7GQHD26eVMJ6RXcN3sXdeTwCZDsX0issKwBjOi6tbD0wVR9z8ufWjKsgitWKyPFmrm+4fER7n2ib28CUWde5Cfi9nTmsQaFE0xn4/4VO9VELkRMcB1fZbXO+YwRDzxAxEOoAe2T84rl1zqshCpa/0zAYJPrTRx1373vvvgxmaJC7SYRPm3EkAj/Tsbs4ZGuC73d93t82Hr2RKR2QPvZ0Pf9Z5lcDJ0=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generate description embedding"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/description/generate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Generates an embedding for an event's description.
+    Returns a success message or an error if the event is not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"description":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"The description of the event"}},"type":"object","required":["description"],"title":"EventsDescriptionBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

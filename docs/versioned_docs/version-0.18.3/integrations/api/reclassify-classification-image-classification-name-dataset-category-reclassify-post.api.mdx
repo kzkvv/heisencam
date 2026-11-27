@@ -1,0 +1,73 @@
+---
+id: reclassify-classification-image-classification-name-dataset-category-reclassify-post
+title: "Reclassify a dataset image to a different category"
+description: "**Access:** Admin role required."
+sidebar_label: "Reclassify a dataset image to a different category"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVltv2zYU/isHfMkFiuUW24vesqzrbm2DxN0eEsOgpWOJjUSqJOVEEPTfh0NSlmwvWbEWA/ZiS9S58Pt4znfYMctzw5I7dlVyY8RGpNwKJdkyYhmaVIvavSbs/PwyTdGY5PwcLrNKSNCqRND4uREas9m9vJfv1BYNcDBC5iVCxi03aEFUPEfYaFWBkggpt5gr3YJVwKWyBerZvQQAWBQYjIUBjReGbzEDbuD6/VsQEmyBYLnO0Y5BuMxAY6XI0qUgI6ManeKMRUzVqB2iXzKWMI2ph9mu0j28K5f2cHEleYWrVcCxWg1JV6tJoFoZyyJWc80rtKiJzY6RJ0v8X8QEMVhzW7CIDYyxxOoGI2bSAivOko7ZtiYfY7WQOYuYFbakhfcUpO+jXdRhH18d+WoI1PdL74/G/qCylpxSJS1KS4+8rstASvzJUD10x9HV+hOmdhLdBer7vqfQplbSoCH71/M5/e3X123jymvTlHATjFn05XuoNZ20FT6D8cEmm1srVSKXk92FhKyPWIXG8BxfYupdMCEwh3hH3u92mcegyzHIW5SoRbrD57n57vXrYzr+4KXIHFh4o7XS/56LDC0XJT0Ji5U5NihVuveVy/bDxhXxPhlUgGFFSIs5atYvRzq41rydMPa7ClJCBJv8i8gdgj1v6siABX39p6MgXD51sJucxEivZ/d5GD96+v4u2WDy82JxfRTQn63BtNHCto7OjRY5t+jU87KxBUvultR3TxfDti9IU2kTZMIihk8WpRFKelF5wJYlR+YR2/KyGd0oZIW2UKR4O3WidCzeF7i4I0Hp4yBwcTcISx+PAscIhd4OwtbokiWssLY2SRxnWKlZwDXbigxVzGvhSmU0TOK4VCkvC2Vs8v18/srbLEd6bql2fTUek7QrBl6L33AneqlSD4LQB1EMjiurHpC42+8nCoXSEnDMwKAhVuGxUIZmmFElzQ830YSBE0fkycwNpMFWGEBj+boUpsAMtoK7UfPrnwvwWwFhTIMZrFu4/nC7gLhUuZARKO2Ma62eWuCNLaBAnqE2cEqDy+JFY1BDDOGNdnEGjwVK+MljAt1IA2sshMyASxckgBEyB410OugzzKiWAxcfDepvyaFsp6knPJ465k62Ah9RnxDiQuQF6rPom3P2Fbz0ESOxvBnH3JsnXtXUcV1PjGyUYyq0NTUWauOxz2evZnOilhqq4k5xA2k3u1YBfnDnoRsOZGKzQY1yvLQcMjuZtf/Xe1YoL4tPNq5LLpzsOwnogvjcsX3xYRFLwvUoAKCVCUUTCVpGjMSDgnTdmhv8qMu+p+XPDWpS1yWpoBZ8TUd317FMGHrOWLLhpcEXCD+9CdSewXM4ht6R7URsWRT02IEgxfsPc+5ochPY98ZkRFz5TBduTk7mw+G1gXbtPajoavui7XSsULOyiK3DVbFSGflo/kjnxh/9VpVD7lTdrXWs5DJv3E2L+ZjUk/xIoR6cQoWHyUVkn4xDsfJA6HdyU9l36Tqvf32/s/efnvUI1A7Wbrz2ff8XDWGUeQ==
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Reclassify a dataset image to a different category"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/classification/{name}/dataset/{category}/reclassify"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Moves a single dataset image from one category to another.
+    The image is re-saved as PNG in the target category and removed from the source.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}},{"name":"category","in":"path","required":true,"schema":{"type":"string","title":"Category"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","title":"Body"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

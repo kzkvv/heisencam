@@ -1,0 +1,70 @@
+---
+id: delete-reviews-reviews-delete-post
+title: "Delete Reviews"
+description: "**Access:** Admin role required."
+sidebar_label: "Delete Reviews"
+hide_title: true
+hide_table_of_contents: true
+api: eJytlt1v2zYQwP8V4l7SBorlBNuL3rK127I1aJG424NhFLR4lthQpEpSTgRD/3txJGUrcdMWXV8siTzex4/34R14XjkolnCDW4n3sMrAtGi5l0ZfCShAoEKPH2zYdvtnWm6N85CBxU8dOv+bET0Uu/ApLQoovO0wg9Joj9rTFm9bJcugPv/ojKY1V9bYcHprLRn3Eh19SREfHpvw4vsWoQDnrdQVZNBI/QZ15Wsozods3ObW8j7uXsWT5xl46RVtXgkHA/lLUZCDe61rYxRyDQfZm1EoA4Eb3ikf4xkOtsz6I5YjgBjxMri9eqrm2gi56a875WWrMIAahiG44lqjXYz4Yj6nh0BXWtkSJCjgtitLdG7TKXaThOGHmbqo7KuBJ4MEqkHneIVfoj9KXyeRb2EZLR+UTiD9iRqtLPfxRTa/XFwc4/iXKylCsOy1tcb+OAuBnkv1KMUeCyhTPtrlun+7gWL5FMaQ7Vek9lihhWF1nJFjsG9MdDAAdtV3wR2VPS8aYLAF7X7rKiiuaDrJTW7igDfSfT6MVxHfl4yNIn8tFu+OFMa7dVh2Vvo+4NxYWXGPl6KR+rKjgl6uhlUGD2ej22fWBI2cREJFTnPi9PQyJFdxesqCEkbibDw8gwzwwaN20mgXLN5hD8WR/gy2XHUHO+RDg7421AlTr2s5+Qd56oR57IRAEdkt2qi+swoKqL1vXZHnAhszSzHOtlKgyXkrQ9ocBIs8V6bkqjbOF7/O5+dRZnVAdUt5HDPzGNg+MXgr/0G6J0lkSmPuJHmneUO76eAHb+7wmCOpQu2pgFAwh46AsfvaOILpjNqiiGilYyeB0cmMLWrcy0rH0Hm+VtLVKNhWcuZrZH//t2DRFSad61Cwdc/evb1dsFyZSuqMGRuEW2seesY7X7MauUDr2AuLjfF41jm0LGfpi7x4ye5r1OyPGBOznXZsjbXUgnEdlKRgpK6YRbodjBZmlNeJxXuH9mcy1P3U9ITji0DuJEwVe0IR17Kq0b7Mfjqz/8FlyIAa581hpL9+4E2rcD+Sl2PzWU0naRiNRGxjAsnUAqim0LrIZj47n80JPdVSw0N3TlBfhTJicVq6p1R3hx7/PcWertHjg89bxWVotaHUdql+l8nzaClU8CoDqj3a2+3W3OF7q4aBlj91aKlRrag/WMnXFNmSOnzkPekov0c3z0IfnrSTp2OJaj+eoGBa/1XZaReiBIAM1umvVmMEnbH8nno8v4/ETcAWOkVY24HiuurCJIeok+6ZH2X9Xcj69DIZdFz3Ew+fFkAMhH4nk/Dxkd0u1tQw7OXj1rMnEtpROnTjYRg+A+hHsOw=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Reviews"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/reviews/delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"ids":{"items":{"type":"string","minLength":1},"type":"array","minItems":1,"title":"Ids"},"reviewed":{"type":"boolean","title":"Reviewed","default":true}},"type":"object","required":["ids"],"title":"ReviewModifyMultipleBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

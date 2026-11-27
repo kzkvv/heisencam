@@ -7,7 +7,7 @@ import ConfigTabs from "@site/src/components/ConfigTabs";
 import TabItem from "@theme/TabItem";
 import NavPath from "@site/src/components/NavPath";
 
-HeisenCam ships with a set of FFmpeg presets to keep your configuration short and readable. Each preset expands to a longer list of FFmpeg arguments at runtime. You can see exactly what every preset expands to in [this file](https://github.com/blakeblackshear/frigate/blob/master/frigate/ffmpeg_presets.py).
+HeisenCam ships with a set of FFmpeg presets to keep your configuration short and readable. Each preset expands to a longer list of FFmpeg arguments at runtime. You can see exactly what every preset expands to in [this file](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/frigate/ffmpeg_presets.py).
 
 In the config file you reference a preset by its name (for example, `preset-vaapi`). In the UI, the same preset is shown with a friendly label (for example, **VAAPI (Intel/AMD GPU)**). Both refer to the same thing: the tables below list the config name alongside the label you'll see in the UI.
 
@@ -15,7 +15,7 @@ In the config file you reference a preset by its name (for example, `preset-vaap
 
 Hardware acceleration arguments tell FFmpeg to decode your camera's video stream on a GPU or integrated graphics chip instead of the CPU, which dramatically lowers CPU usage. Using a preset is highly recommended. Beyond replacing a long list of arguments, each preset also tells HeisenCam what hardware is available so it can offload additional work to the GPU, for example, encoding the Birdseye restream or scaling a stream whose resolution differs from the camera's native size.
 
-See [the hardware acceleration docs](/configuration/hardware_acceleration_video.md) for details on setting up hardware acceleration for your GPU / iGPU, then select the preset that matches your hardware.
+See [the hardware acceleration docs](./hardware_acceleration_video.md) for details on setting up hardware acceleration for your GPU / iGPU, then select the preset that matches your hardware.
 
 | Preset (YAML config)  | UI Label                | Usage                             | Notes                                                           |
 | --------------------- | ----------------------- | --------------------------------- | --------------------------------------------------------------- |
@@ -55,7 +55,7 @@ cameras:
 
 Input arguments are passed to FFmpeg before your camera source and control how HeisenCam connects to and reads the stream: the transport protocol, timeouts, reconnection behavior, and how the stream is probed. The right input args ensure a reliable connection and maximum compatibility for each type of stream.
 
-See [the camera-specific docs](/configuration/camera_specific.md) for more on non-standard cameras and recommendations for using them in HeisenCam.
+See [the camera-specific docs](./camera_specific.md) for more on non-standard cameras and recommendations for using them in HeisenCam.
 
 | Preset (config)                  | UI Label                                  | Usage                       | Notes                                                                           |
 | -------------------------------- | ----------------------------------------- | --------------------------- | ------------------------------------------------------------------------------- |

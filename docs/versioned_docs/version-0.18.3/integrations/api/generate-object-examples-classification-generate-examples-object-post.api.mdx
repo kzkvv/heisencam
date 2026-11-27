@@ -1,0 +1,72 @@
+---
+id: generate-object-examples-classification-generate-examples-object-post
+title: "Generate object classification examples"
+description: "**Access:** Admin role required."
+sidebar_label: "Generate object classification examples"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vk1z2zYQ/SuYvcj20KLiaS+8uWn63SYTK+1B0WggckUiBgEGAGVrNPzvmQVAkZJip5OmF1sk3369XbzFHhwvLWQLeCm5tWIjcu6EVrBMoECbG9H4xwyurm7zHK3Nrq7YbVELxYyWyAx+bIXBYvpevVc/o0LDHTJ85HUj0bKNNkyvP2DuWH4UYAoJ6IbQQqtfC8igjMargF/1PlbHhqsD7gCIBo22DhKgjNC6H3Sxg2wPfYKQOdNiArlWDpWjT7xpZPSafrBU5R5sXmHN6VdjKD8n0NJTrQuUK8VrpCe3axAysM4IVUICTjhJL/4kFPuLUKf80UumN8xVeEIF876hS0DyNcrn/P/hAaeuXweCvTVzmuVaSnpx1IULnJbThE0aNFarScImOTeTS+i6pA8XeIwUBs4W48L7BJdDQn3HQwqvYkDPfdeRa4O20coGEm9mM/p3nP1d6+dq00r2NoLhq9tkg7MRh2utJXI1IjEGJMJrtJaXz7c0Qr7EUx95cHpKk8gP9QVuvru5Oafjby5FEebilTHafD0XBTou/DgJh7U9B0idH33lavd6A9nilIwuObwRymGJBrrlQAc3hu/GQ6qjhhDBtvxX5PbOnoZ6Mticvn6pFVRXCB1xo04M9AZ2ny7jx0Df54L1kF/m8zdnDkNvLeatEW7n6dwYUXKHXjZvW1dBtlh2ywQer/u0r0lMKQmCQAL46FBZoZX1Du5xB9kZPIEtl+1gRi5rdJUmOY1q2HAKB+mx5KRnIpoeirNotmhC3NZIyKByrrFZmhZY62msZboVBeqUN8KPxwDM0lTqnMtKW5d9P5u9CJjlQMkdzWuYwHNiDgPAG/E7Uj8EnYpc63tBFQcF7g1XTt+jOhNEcoXKUbFYMIuWmGQPlba0sKyWWyzC+hKWTTx5kymbV3jACsvQOr6WwlZYsK3gXrh/+2fOQipMWNtiwdY79ub13ZylUpdCJUwbD26Mftwx3rqKVcgLNJZdGKy1w+vWomEpi0+UxSV7qFCxn0JNzLTKsjVWQhWMK+8kFiNUyQxSdzBEmNL8Ri7eWTTfkkO1G4ce8XjhmZtsBT6gmVDFlSgrNJfJN+fsP/DSJUAC+Xa4DcTtdLrNB6mJ63eQPRBqoz2f8cDTkUNjA0Oz6YvpjFB01GrutTi6PFyEPnv3OSzmU9L3g9T/H/etOBUOH13aSC68QvuTu486sYBjK0jgTCno4ha0YpkAnXIy2+/X3OI7I7uOXn9s0ZD0LUmijOBrYm9BOyN0diRqL0PF117ZR4p2uuhIZYIF8dK4Z7FjIaRRgwTW8T5IrYcMDH+grcEfQle174DXJP9uD5KrsvV3Awg+aaL42fm69+cr/hitTq52owxPj1oohP6OduuxyX4fTm/XHfDh05MWkdoe7RdC13WfAIMII/E=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generate object classification examples"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/classification/generate_examples/object"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Generate examples for object classification.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"model_name":{"type":"string","title":"Model Name","description":"Name of the classification model"},"label":{"type":"string","title":"Label","description":"Object label to collect examples for (e.g., 'person', 'car')"}},"type":"object","required":["model_name","label"],"title":"GenerateObjectExamplesBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

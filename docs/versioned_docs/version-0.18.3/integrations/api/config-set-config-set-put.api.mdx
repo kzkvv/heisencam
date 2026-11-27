@@ -1,0 +1,70 @@
+---
+id: config-set-config-set-put
+title: "Config Set"
+description: "**Access:** Admin role required."
+sidebar_label: "Config Set"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu4zgM/RVBL50p3Dgtdl/81rks9oopmnT3IQgCxWZsTWRJI8q5IPC/Dyi5sZu0RQc7L4kjk4fiIXmYA/eiRJ7N+K21fJ5wY8EJL43+o+AZz41eyXKB4BeDR9t4nnAH3xpA/8EUe54dwk/poOCZdw0k5OpBe3olrFUyD6jpVzSazjCvoBb0ZB3F9BJwAIMLB+iFC/5+b4FnXGoPJTiecC+9opP7zpjdd8YJL2AlGuV5dt0mvLGF8LDwxso8XETvv6x4NjtCondSl7xNjie6UYq38z7GQ8Bg04DRJo+UFMKLZyHN8ivk/lXIjwGCfSKINuG4lnaBYgODXJfGKBB6kOtkLS2bkNUgyZVQCG2bnATvvW6tjdEmECvVtmTuAK3RGCm/GY/pqwDMnbRUJQrX5DkgrhpF5AZj/vaixii/3NycA/8rlCyCG/vsnHE/gHrSKgV4IRU9SQ81nhsokz95+4byP/ZYO+9JFc6J/YDTv028INWuxnJQtQ6vN/0HEEUJ/Aj2smkgg03p7XMF7cdrFvKKoTu7QW/19EZ2X07jU6Tvte75fTq9OwOMtUXIGyf9PtC5crIUHm6LWurbxlc8m82p4XdXj9e+ciYgCjIJHTzsicvL29Bt2eUlCyCMzNmj84gnHHYeNEqjMURcw55nZ/gJ3wjV9HHoDjX4ypCWRdWygq7H0zjGKQIdIrgNuIjcOMUzXnlvMUvTAmoz6tIbbWQBJhVWho7pDbM0VSYXqjLos1/H4+toM+9ZmlALx6Y85+rYE8LKv4BKJHXQXrOWlJMWNb3tHBferOGcQoIC7Wl2oGAISFyxbWWQeESjNlBEViWyi0DPxYhNKzjaSmSkokslsYKCbaRgvgL2539TFq/CJGIDBVvu2d2XyZSlypRSJ8y4YGyd2e2ZaHzFKhAFOGTvHNTGw1WD4FjKul90i/dsW4Fmv8WcmGs0siVUUhdM6ADSJSN1yRxQdSBGGFFLd1w8ILifyaHeD0MPeHwXmLvYSNiCu6CMK1lW4N4nP52z/8FLm3DSzPt+MX/eidoqeH6xXp8uyF6Uni65pzsq7hwieGUC8Z1Y0PSBw0jleHQ9GlOlrEFfi6DjXQ267TcBf1qAQ78J3iIJXcU97HxqlZBBkMNUHroxn3WJhBH3JJM0onR+OCwFwoNTbUvH3xpwJGVzUhAnxZIymtEOiGUZaM7HeMWroNQDwTldXCQR0YMSsf5V26FO3T1MecKX3d+q2hTk4sSWloDYRqJNYCz+YaKzA1dClw2tmoxHSOoGcTYb6zAb3cNgEwq9H1zwdExiHvQ5WJVPXQ6HOHlte7SPr1706Jh9tA5y3bbtd2pwphs=
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Config Set"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/config/set"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"requires_restart":{"type":"integer","title":"Requires Restart","default":1},"update_topic":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Update Topic"},"config_data":{"anyOf":[{"type":"object"},{"type":"null"}],"title":"Config Data"},"skip_save":{"type":"boolean","title":"Skip Save","default":false}},"type":"object","title":"AppConfigSetBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

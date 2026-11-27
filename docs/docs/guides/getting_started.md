@@ -108,7 +108,7 @@ If you are setting up HeisenCam on a Linux device via SSH, you can use [nano](ht
 
 :::note
 
-This `docker-compose.yml` file is just a starter for amd64 devices. You will need to customize it for your setup as detailed in the [Installation docs](/frigate/installation#docker).
+This `docker-compose.yml` file is just a starter for amd64 devices. You will need to customize it for your setup as detailed in the [Installation docs](../frigate/installation.md#docker).
 
 :::
 `docker-compose.yml`
@@ -136,7 +136,7 @@ Now you should be able to start HeisenCam by running `docker compose up -d` from
 
 ## Configuring HeisenCam {#configuring-frigate}
 
-This section assumes that you already have an environment setup as described in [Installation](../frigate/installation.md). You should also configure your cameras according to the [camera setup guide](/frigate/camera_setup). Pay particular attention to the section on choosing a detect resolution.
+This section assumes that you already have an environment setup as described in [Installation](../frigate/installation.md). You should also configure your cameras according to the [camera setup guide](../frigate/camera_setup.md). Pay particular attention to the section on choosing a detect resolution.
 
 ### Step 1: Start HeisenCam
 
@@ -305,7 +305,7 @@ Restart HeisenCam and you should start seeing detections for `person`. If you wa
 
 ### Step 5: Setup motion masks
 
-Now that you have optimized your configuration for decoding the video stream, you will want to check to see where to implement motion masks. Click on the camera from the main dashboard, then select the gear icon in the top right, enable the [Debug view](/usage/live#the-single-camera-view), and finally enable the switch for Motion Boxes. Watch for areas that continuously trigger unwanted motion to be detected. Common areas to mask include camera timestamps and trees that frequently blow in the wind. The goal is to avoid wasting object detection cycles looking at these areas.
+Now that you have optimized your configuration for decoding the video stream, you will want to check to see where to implement motion masks. Click on the camera from the main dashboard, then select the gear icon in the top right, enable the [Debug view](../usage/live.md#the-single-camera-view), and finally enable the switch for Motion Boxes. Watch for areas that continuously trigger unwanted motion to be detected. Common areas to mask include camera timestamps and trees that frequently blow in the wind. The goal is to avoid wasting object detection cycles looking at these areas.
 
 Use the mask editor to draw polygon masks directly on the camera feed. Navigate to <NavPath path="Settings > Camera configuration > Masks / Zones" /> and set up a motion mask over the area. More information about masks can be found [here](../configuration/masks.md).
 

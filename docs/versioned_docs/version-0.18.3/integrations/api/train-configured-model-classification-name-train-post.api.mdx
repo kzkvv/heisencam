@@ -1,0 +1,73 @@
+---
+id: train-configured-model-classification-name-train-post
+title: "Train a classification model"
+description: "**Access:** Admin role required."
+sidebar_label: "Train a classification model"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVslu40YQ/ZVCXbyAFjWD5MKbkX2dga1JDrYgtMiS2GOym9PVlC0Q/PeguimJsuxJkMwpF4nLq+1V1Wt26NWaMbvDbyrFrFc6V15bg/MEC+Lc6SbcZnh5eZ3nxJxdXsJ1UWsDzlYEjj612lExuTf3ZuaUNgwKuKFcfEF+5BVqW1A1uTcAALOSwKiaoG7ZAz1p9qAN+JJetOIJ3JBvXfTfhlygJma1JrAOlAFyzjrQq+AjuNYM2mxUpYsJJmgbcsHjTwVm6CXZRW7NSq9bR8UihFkcx14sxM9iEcGNZY8JNsqpmjw5Ia5DQWAW/xLUQlajfIkJ7sjBzLuWEuS8pFph1qHfNmLD3mmzxgS99pU8+F2c9P1cbLmxhokF/nY6lb/jjtxGElZtBTcDGBPMrfFkvMBV01RDHelHFptulELjhA+vY4SB0VFuS2srUmaU3BAQ+wQH4j9Xym8DpO+THcYuP1Luj4i520c+OJ0fnPxAhpzO9/X1vbj76u3bUzr+kDbHgflOBuHfc1GQV7qSK+2p5lNAZfOjt8ps363CLByT0Sf7J9p4WpPDfn6gQzmntiPGfrXD8gnBvP5H5O6cvQ4NZMBM3v5dK6SuGHrAjTpxoDey+3oZ30b6Xgq2g/w4m70/cRh7y5S3TvttoHPl9Fp5Cnpz3foSs7u5LMfT1S7tK1EhSUIgmCA9eTKsrYm7+UBbzE7gCW5U1R7MxGVNvrSiC/sll3CYHutB2sma92nQA5Rs3WanA62rMMPS+4azNC2otpMh/8lGF2RT1egwEgdglqaVzVVVWvbZ19Ppm4iZH2i4lRmNU3dKxr7pqtG/0HanPrm1D1qqHJRpMFx4+0CS9PHeiCsyXgqkAphY2IPH0rKoO9tqQ0XUes1wFgg7mwT13mE1A7FXy0pzSQVstAoK/POfM4ipgGZuqYDlFt6/u51BWtm1NonItoAbZ5+2oFpfQkmqIMdw7qi2nq5aJgcpDHeSxQU8lmTg+1gTuNYwLKnUppAjQB2K0WYNjqQ7FCNMZGYHLj4wuS/JodmOQ494PA/MnW00PZI7k4pLvS7JXSRfnLP/wEsvVa9sYGNYUVkSchzrm07eTKZCnyxHrYJ6DsSEMx/Ui2f2c566gyL/H74nhsHx9OTTphJB6JO43N0gH3d4HBoTzIbvhKgg8wRl9wXZdUvF9MFVfS+PP7XkRATnIlZOq6V05a7DQrNcF5itVMX0GYbPbwYuL+C1ZHejb7YjTcRkkM2QaTiw4oiNFFV61/ixkD4/X480VSYYE1QnG/cQNm64GB2gxxk9X76Yg/yOTthjk66L+9z3e3x89arFUOMOHY6Fvu//AkMu3FA=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Train a classification model"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/classification/{name}/train"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Trains a specific classification model.
+    The name must exist in the classification models. Returns a success message or an error if the name is invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -7,15 +7,15 @@ The glossary explains terms commonly used in HeisenCam's documentation.
 
 ## Alert
 
-The higher-priority of the two [review item](#review-item) severities, the other being a [detection](#detection). By default a review item is an alert when it involves a `person` or `car`; the qualifying [labels](#label) and [zones](#zone) can be configured. [See the review docs for more info](/configuration/review)
+The higher-priority of the two [review item](#review-item) severities, the other being a [detection](#detection). By default a review item is an alert when it involves a `person` or `car`; the qualifying [labels](#label) and [zones](#zone) can be configured. [See the review docs for more info](../configuration/review.md)
 
 ## Attribute
 
-A property detected on an [object](#object) that exists alongside its [label](#label). Unlike a [sub label](#sub-label), an object can carry several attributes at once. Some attributes come directly from the object detection [model](#model) (for example `face`, `license_plate`, or delivery carrier logos such as `amazon`, `ups`, and `fedex`), while others come from a [custom object classification model](/configuration/custom_classification/object_classification) configured with the `attribute` type. Attributes are visible in the Tracked Object Details pane in Explore, in `frigate/events` MQTT messages, and through the HTTP API.
+A property detected on an [object](#object) that exists alongside its [label](#label). Unlike a [sub label](#sub-label), an object can carry several attributes at once. Some attributes come directly from the object detection [model](#model) (for example `face`, `license_plate`, or delivery carrier logos such as `amazon`, `ups`, and `fedex`), while others come from a [custom object classification model](../configuration/custom_classification/object_classification.md) configured with the `attribute` type. Attributes are visible in the Tracked Object Details pane in Explore, in `frigate/events` MQTT messages, and through the HTTP API.
 
 ## Bounding Box
 
-A box returned by the object detection [model](#model) that outlines a detected [object](#object) in the frame. In the [Debug view](/usage/live#the-single-camera-view), bounding boxes are colored by object [label](#label).
+A box returned by the object detection [model](#model) that outlines a detected [object](#object) in the frame. In the [Debug view](../usage/live.md#the-single-camera-view), bounding boxes are colored by object [label](#label).
 
 ### Bounding Box Colors
 
@@ -26,11 +26,11 @@ A box returned by the object detection [model](#model) that outlines a detected 
 
 ## Class
 
-The categories a classification [model](#model) is trained to distinguish between. Each class is a distinct visual category the model predicts, plus a `none` class for inputs that don't fit any category. For example, a custom object classification model for `person` objects might use the classes `delivery_person`, `resident`, and `none`. The predicted class is applied to the [object](#object) as either a [sub label](#sub-label) or an [attribute](#attribute), depending on the model's configuration. [See the object classification docs for more info](/configuration/custom_classification/object_classification)
+The categories a classification [model](#model) is trained to distinguish between. Each class is a distinct visual category the model predicts, plus a `none` class for inputs that don't fit any category. For example, a custom object classification model for `person` objects might use the classes `delivery_person`, `resident`, and `none`. The predicted class is applied to the [object](#object) as either a [sub label](#sub-label) or an [attribute](#attribute), depending on the model's configuration. [See the object classification docs for more info](../configuration/custom_classification/object_classification.md)
 
 ## Detection
 
-The lower-priority of the two [review item](#review-item) severities, the other being an [alert](#alert). By default, any review item that does not qualify as an alert is a detection; the qualifying [labels](#label) and [zones](#zone) can be configured. Despite the name, a detection is a category of review item, not the same as the object detection performed by the [model](#model). [See the review docs for more info](/configuration/review)
+The lower-priority of the two [review item](#review-item) severities, the other being an [alert](#alert). By default, any review item that does not qualify as an alert is a detection; the qualifying [labels](#label) and [zones](#zone) can be configured. Despite the name, a detection is a category of review item, not the same as the object detection performed by the [model](#model). [See the review docs for more info](../configuration/review.md)
 
 ## False Positive
 
@@ -38,11 +38,11 @@ An incorrect result from the object detection [model](#model), where it assigns 
 
 ## Label
 
-The type assigned to a detected [object](#object) by the object detection [model](#model), drawn from the model's labelmap, for example `person`, `car`, or `dog`. HeisenCam tracks `person` by default; additional labels are tracked by adding them to the objects configuration. [See the available objects docs for the full list](/configuration/objects)
+The type assigned to a detected [object](#object) by the object detection [model](#model), drawn from the model's labelmap, for example `person`, `car`, or `dog`. HeisenCam tracks `person` by default; additional labels are tracked by adding them to the objects configuration. [See the available objects docs for the full list](../configuration/objects.md)
 
 ## Mask
 
-There are two types of masks in HeisenCam. [See the mask docs for more info](/configuration/masks)
+There are two types of masks in HeisenCam. [See the mask docs for more info](../configuration/masks.md)
 
 ### Motion Mask
 
@@ -58,15 +58,15 @@ The lowest score a detected object can have to be kept during tracking. Anything
 
 ## Model
 
-A machine learning model that HeisenCam uses to detect or classify objects. The object detection model locates [objects](#object) in each frame and returns their [labels](#label) and [bounding boxes](#bounding-box). Additional enrichment models run on tracked objects to add detail: face recognition, license plate recognition, bird classification, custom object and state classification, and the embedding models used for semantic search. [See the object detectors docs for more info](/configuration/object_detectors)
+A machine learning model that HeisenCam uses to detect or classify objects. The object detection model locates [objects](#object) in each frame and returns their [labels](#label) and [bounding boxes](#bounding-box). Additional enrichment models run on tracked objects to add detail: face recognition, license plate recognition, bird classification, custom object and state classification, and the embedding models used for semantic search. [See the object detectors docs for more info](../configuration/object_detectors.md)
 
 ## Motion
 
-A change in pixels between the current camera frame and previous frames. When many nearby pixels change together, they are grouped and shown as a red motion box in the debug live view. [See the motion detection docs for more info](/configuration/motion_detection)
+A change in pixels between the current camera frame and previous frames. When many nearby pixels change together, they are grouped and shown as a red motion box in the debug live view. [See the motion detection docs for more info](../configuration/motion_detection.md)
 
 ## Object
 
-Something HeisenCam can detect and follow in a camera frame, identified by its [label](#label) (for example a person or a car). The object types HeisenCam watches for are set in the `objects` configuration. Once an object is detected and followed across frames it becomes a [tracked object](#tracked-object-event-in-previous-versions), which may also carry a [sub label](#sub-label) and [attributes](#attribute). [See the available objects docs for more info](/configuration/objects)
+Something HeisenCam can detect and follow in a camera frame, identified by its [label](#label) (for example a person or a car). The object types HeisenCam watches for are set in the `objects` configuration. Once an object is detected and followed across frames it becomes a [tracked object](#tracked-object-event-in-previous-versions), which may also carry a [sub label](#sub-label) and [attributes](#attribute). [See the available objects docs for more info](../configuration/objects.md)
 
 ## Region
 
@@ -74,7 +74,7 @@ A portion of the camera frame sent to the object detection [model](#model). Regi
 
 ## Review Item
 
-A period of time during which one or more [tracked objects](#tracked-object-event-in-previous-versions) were active, grouped together for review. Each review item is categorized as either an [alert](#alert) or a [detection](#detection). [See the review docs for more info](/configuration/review)
+A period of time during which one or more [tracked objects](#tracked-object-event-in-previous-versions) were active, grouped together for review. Each review item is categorized as either an [alert](#alert) or a [detection](#detection). [See the review docs for more info](../configuration/review.md)
 
 ## Snapshot Score
 
@@ -98,4 +98,4 @@ An [object](#object) followed from the moment it enters the frame until it leave
 
 ## Zone
 
-A user-defined area of interest within the camera frame. Zones can be used for notifications and to limit where HeisenCam creates a [review item](#review-item). [See the zone docs for more info](/configuration/zones)
+A user-defined area of interest within the camera frame. Zones can be used for notifications and to limit where HeisenCam creates a [review item](#review-item). [See the zone docs for more info](../configuration/zones.md)

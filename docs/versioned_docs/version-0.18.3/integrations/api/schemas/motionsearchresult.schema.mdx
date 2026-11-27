@@ -1,0 +1,33 @@
+---
+id: motionsearchresult
+title: "MotionSearchResult"
+description: "A single search result with timestamp and change info."
+sidebar_label: "MotionSearchResult"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"timestamp":0,"change_percentage":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"MotionSearchResult"}
+>
+</Heading>
+
+
+
+A single search result with timestamp and change info.
+
+<Schema
+  schema={{"properties":{"timestamp":{"type":"number","title":"Timestamp","description":"Timestamp where change was detected"},"change_percentage":{"type":"number","title":"Change Percentage","description":"Percentage of ROI area that changed"}},"type":"object","required":["timestamp","change_percentage"],"title":"MotionSearchResult","description":"A single search result with timestamp and change info."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

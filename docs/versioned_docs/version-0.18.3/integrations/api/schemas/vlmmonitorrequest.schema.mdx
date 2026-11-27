@@ -1,0 +1,33 @@
+---
+id: vlmmonitorrequest
+title: "VLMMonitorRequest"
+description: "Request model for starting a VLM watch job."
+sidebar_label: "VLMMonitorRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"camera":"string","condition":"string","max_duration_minutes":60,"labels":["string"],"zones":["string"]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"VLMMonitorRequest"}
+>
+</Heading>
+
+
+
+Request model for starting a VLM watch job.
+
+<Schema
+  schema={{"properties":{"camera":{"type":"string","title":"Camera"},"condition":{"type":"string","title":"Condition"},"max_duration_minutes":{"type":"integer","title":"Max Duration Minutes","default":60},"labels":{"items":{"type":"string"},"type":"array","title":"Labels","default":[]},"zones":{"items":{"type":"string"},"type":"array","title":"Zones","default":[]}},"type":"object","required":["camera","condition"],"title":"VLMMonitorRequest","description":"Request model for starting a VLM watch job."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

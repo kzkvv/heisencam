@@ -1,0 +1,33 @@
+---
+id: exportrecordingsbody
+title: "ExportRecordingsBody"
+description: ""
+sidebar_label: "ExportRecordingsBody"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"source":"recordings","name":"string","image_path":"string","export_case_id":"string","chapters":"none"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExportRecordingsBody"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"properties":{"source":{"title":"Playback source","default":"recordings","type":"string","enum":["recordings","preview"]},"name":{"anyOf":[{"type":"string","maxLength":256},{"type":"null"}],"title":"Friendly name"},"image_path":{"type":"string","title":"Image Path"},"export_case_id":{"anyOf":[{"type":"string","maxLength":30},{"type":"null"}],"title":"Export case ID","description":"ID of the export case to assign this export to"},"chapters":{"anyOf":[{"type":"string","enum":["none","recording_segments","review_items"],"title":"ChaptersEnum"},{"type":"null"}],"title":"Chapter mode","description":"Optional chapter metadata to embed in the export. When omitted, the camera's configured export chapter mode is used."}},"type":"object","title":"ExportRecordingsBody"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

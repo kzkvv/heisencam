@@ -153,7 +153,7 @@ The OpenVINO detector type is able to run on:
 - Most modern AMD CPUs (though this is officially not supported by Intel)
 - x86 & Arm64 hosts via CPU (generally not recommended)
 
-More information is available [in the detector docs](/configuration/object_detectors#openvino-detector)
+More information is available [in the detector docs](../configuration/object_detectors.md#openvino-detector)
 
 Inference speeds vary greatly depending on the CPU or GPU used, some known examples of GPU inference times are below:
 
@@ -239,7 +239,7 @@ HeisenCam supports the MemryX MX3 M.2 AI Acceleration Module on compatible hardw
 
 A single MemryX MX3 module is capable of handling multiple camera streams using the default models, making it sufficient for most users. For larger deployments with more cameras or bigger models, multiple MX3 modules can be used. HeisenCam supports multi-detector configurations, allowing you to connect multiple MX3 modules to scale inference capacity.
 
-Detailed information is available [in the detector docs](/configuration/object_detectors#memryx-mx3).
+Detailed information is available [in the detector docs](../configuration/object_detectors.md#memryx-mx3).
 
 **Default Model Configuration:**
 
@@ -260,7 +260,7 @@ Inference speeds may vary depending on the host platform. The above data was mea
 
 ### Nvidia Jetson
 
-Jetson devices are supported via the TensorRT or ONNX detectors when running Jetpack 6. It will [make use of the Jetson's hardware media engine](/configuration/hardware_acceleration_video#nvidia-jetson) when configured with the [appropriate presets](/configuration/ffmpeg_presets#hwaccel-presets), and will make use of the Jetson's GPU and DLA for object detection when configured with the [TensorRT detector](/configuration/object_detectors#nvidia-tensorrt-detector).
+Jetson devices are supported via the TensorRT or ONNX detectors when running Jetpack 6. It will [make use of the Jetson's hardware media engine](../configuration/hardware_acceleration_video.md#nvidia-jetson) when configured with the [appropriate presets](../configuration/ffmpeg_presets.md#hwaccel-presets), and will make use of the Jetson's GPU and DLA for object detection when configured with the [TensorRT detector](../configuration/object_detectors.md#nvidia-tensorrt-detector).
 
 Inference speed will vary depending on the YOLO model, jetson platform and jetson nvpmodel (GPU/DLA/EMC clock speed). It is typically 20-40 ms for most models. The DLA is more efficient than the GPU, but not faster, so using the DLA will reduce power consumption but will slightly increase inference time.
 
@@ -302,7 +302,7 @@ The inference time of a rk3588 with all 3 cores enabled is typically 25-30 ms fo
 
 HeisenCam supports AMD XDNA2 NPUs through the community-maintained
 frigate-xdna ZMQ sidecar. It works with stock HeisenCam and supports
-Frigate+ models or compatible local YOLO ONNX models. Models are compiled
+compatible local YOLO ONNX models. Models are compiled
 once on the target system and cached for subsequent use.
 
 Currently qualified on **Ryzen AI Max 300 / Strix Halo**. Other XDNA2

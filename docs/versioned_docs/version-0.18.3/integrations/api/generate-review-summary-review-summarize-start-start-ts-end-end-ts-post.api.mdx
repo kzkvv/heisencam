@@ -1,0 +1,72 @@
+---
+id: generate-review-summary-review-summarize-start-start-ts-end-end-ts-post
+title: "Generate Review Summary"
+description: "**Access:** Authenticated user with access to all cameras."
+sidebar_label: "Generate Review Summary"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVdtu20YQ/ZXBvPgCWlSM9oVvBpqm6QUJYrl9cARhRY7EjcldZmcpmyH478FwVzerLlAkaF8kcjnXs3PO9OjVmjG7xw+00fSI8wQL4tzpxmtrMMPLy5s8J+bs8hJuWl+S8TpXngpomRw8al+CGi3AW1BVBbmqySmefDQfzR0TvCFz81Y+clvXyukvBG5MBtpTzWA35EBBQ07bAuwKvK5pggnahpySMt4WmOGajLzSIjgvQrTu+FV/oQV75fwi/nleLMgU4UdeGsseE2yUUzV5ctJ8j0bVhBlufTBBLc03ypeYoKPPrXZUYOZdSwlyXlKtMOvRd434mbZeksMEvfaVHNxKIJgxDkOyix5K+ObYr00RIs/FmxtrmFgcrqdT+Tu+v9t2vJxVW8GHaIwJ5tZ4Ml7MVdNUcqPamvQTi0+/L2IYhiHBH66vTwP/qSpdjG7w2jnr/kVUbJzcrdeh7oK80pU8jQNxalDZ/OirMt271XhvESP2Tps1CtbxRBtPa3I4zIdke6acU90BkL/bUCAOCda8PsA8xtub/kHMak24C/ay6QgGzOTrsM9tl58o90f3fT/2FVJHu/k+zB7egO7LbfwU4Pu7ZFuTX2az9ycBw90y5a3TvhvhXDm9Vp7umJxwHbP7uUzZ09W26itnx4CqqhaR55ggPXkyrK0JZHqgDrMTpwQ3qmqfO0v4mnxpheI7bkpqTAOz0x2z05Geab9l6ZCSKdI+0GpA6cVttoxuXYUZlt43nKVpQbWdxO4mG12QTVWjx4HZG2ZpWtlcVaVln/04nb4KNvM9SLcywWEmY7CbotYmYLUbCdXo36jb8jy39kFL+1EFouPC2wcy+FxujyWWiQVWeCwti2qyrTZUgOAJmuFMSfazCcxK2tlqBmKvlpXmkgrYaAW+JPj1rxmEUkAzt1TAsoP3725nkFZ2rU0C1o3GjbNPHajWl1CSKsgxnDuqraerUfFTiG9SxQU8lmTg59ATuNYwLKnUpgBlxiCxGW3WovrkmEKGiUz0ybx9HwxNd5j6AMfzEbkzGStyZ9JxqdcluYvku2P2DbgM0vXKjmhEAgt7yHHobzp5NZkKfMKXWo3aGoF5E5ckhHUOt2FJPoeo30v1/7ng4117evJpUyk9KvHIxz6KwD2GSELubXB5FgXABLODhU2mkJO4ZOcJCo0lQt8vFdOdq4ZBjj+35ETt5iJITqulAHzfY6FZngvMVqpi+gfEzj9EYbuAl5rYTrHpDnQPkyiNu6pFf/7DvBGbcSeGOT3Qa5mCxh/K9PMVfqTVQgNMUJ3Q9mGkbXw42NHHNT1ncKhBfg+W+LFL3wdRGIadffj0okfscWstEM2HYfgKLr/LaQ==
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generate Review Summary"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/review/summarize/start/{start_ts}/end/{end_ts}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Authenticated user with access to all cameras.
+
+Use GenAI to summarize review items over a period of time.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"start_ts","in":"path","required":true,"schema":{"type":"number","title":"Start Ts"}},{"name":"end_ts","in":"path","required":true,"schema":{"type":"number","title":"End Ts"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

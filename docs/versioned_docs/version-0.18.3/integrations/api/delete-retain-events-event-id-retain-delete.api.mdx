@@ -1,0 +1,74 @@
+---
+id: delete-retain-events-event-id-retain-delete
+title: "Stop event from being retained indefinitely"
+description: "**Access:** Admin role required."
+sidebar_label: "Stop event from being retained indefinitely"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVktz2zYQ/is7e/FjaFHxtBfePBO1TZvWmVhpD7bGAxErETEFMAAom8Phf88sQEqUVbuZNrdeRIrY57e736JFL9YOs1ucbUl7h4sEJbncqsorozHD8/OrPCfnsvNzuJIbpcGaksDSl1pZkpM7fadvvKkcCA3ERmBlzQaWpPQaLHmhNElQWtJKaeWpbCZ3GgDgI/naagcCXB1cwIacE2sCY4Mxa40FtQJfUG9ZOdDGw8rUWvZW/riezzKYF8rxqYCS1iJvgLSsjNIehJaDmqurylgfoglGV9ZoT1pOMEFTkRWc8zuJGUoqydN9DP8+OHf38Xmv5P1wEMUwwUpYsSFPlrFsUYsNYYaDPCaoGMtK+AITHLDDzNuaEnR5QRuBWYu+qVjPeav0GhP0ypf8IRQH3knsugXru8poR45VLqdTfhwW7SYCuqpL+NgLY4J5yNazuKiqUuUh3/SzY512FEZlGQ2vooe+OqP4lsaUJPQowN4hdgn2RXwtnd97ka5LBhmz/Ey5PwDndud5b3SxN/IzabIq3+XXdWzuh8vLYzj+FKWSIVmYcVP9eywk173kN+Vp444FSpMfnArdXK9CTxyC0SW7L0p7WpPFbrGHQ1grmhFi700MMADs1t8E7mDslbYKEzbn038qBecVXfdyo0rs4Y3ovpzG2wjf3zkbRH6Zzz8cGYy1dZTXVvkmwLmyai08BUq6qn2B2e2Ch+PpYgj7gomKg2ARTJCePGmnjI4z+kANZkfiCW5FWe/V2OSGfGH2rBDGnR1iGokhbYdB79JIDMjB2u1AB7UtMcPC+8plaSppYyZ9+JOtkmRSUanQEXvBLE1Lk4uyMM5nP06nb6LMYo/CDbdobLpjLHY1F5X6jZqBgHJjHhQn0BNUr3jvzQNx0Idjw6ZIe54NkuDIMXjwWBjH/O9MuSUZt4FycBLwOpnAvKCdrHJAzotlqVxBErZKBN799a85xFBAOVeThGUDH65v5pCWZq10whuAhStrnhoQtS+gICHJOji1tDGeLmpHFlLo/3EUZ/BYkIafYk5ga+1gSYXSkreJ2CcTFxNXh6KHCbdsj8UnR/Z7YqibsesRjqcBuZOtokeyJ5xxodYF2bPku2P2H3DpOOuVCWj0E8ozQtbF/KaTN5Mpw1cZ5zcikGcPDN8KvvFG8By2ds/P/5sLSN9snp58WpVMIl0SCaHt+eY2Xih4H2ajq0VPOYsEmSxYrG2XwtEnW3Ydf/5Sk2XSXDC5WSWWXMbbFqVy/C4xW4nS0Ss1OP3Yo30GL0U6zIpuRhyKSU+zu3DDkot9OWJhrnDlx+T7fCcf8PDb2fvZfIYJiqNBfQiD2r+M1u5hXM9nNkbBv6O9fKjStpEGum4nH49e1OizHKTDMum67isORfZA
+sidebar_class_name: "delete api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Stop event from being retained indefinitely"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/events/{event_id}/retain"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Stops an event from being retained indefinitely.
+    Returns a success message or an error if the event is not found.
+    NOTE: This is a legacy endpoint and is not supported in the frontend.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"path","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

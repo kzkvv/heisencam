@@ -9,7 +9,7 @@ Some of HeisenCam's enrichments can use a discrete GPU or integrated GPU for acc
 
 ## Requirements
 
-Object detection and enrichments (like Semantic Search, Face Recognition, and License Plate Recognition) are independent features. To use a GPU / NPU for object detection, see the [Object Detectors](/configuration/object_detectors.md) documentation. If you want to use your GPU for any supported enrichments, you must choose the appropriate HeisenCam Docker image for your GPU / NPU and configure the enrichment according to its specific documentation.
+Object detection and enrichments (like Semantic Search, Face Recognition, and License Plate Recognition) are independent features. To use a GPU / NPU for object detection, see the [Object Detectors](./object_detectors.md) documentation. If you want to use your GPU for any supported enrichments, you must choose the appropriate HeisenCam Docker image for your GPU / NPU and configure the enrichment according to its specific documentation.
 
 - **AMD**
   - ROCm support in the `-rocm` HeisenCam image is automatically detected for enrichments, but only some enrichment models are available due to ROCm's focus on LLMs and limited stability with certain neural network models. HeisenCam disables models that perform poorly or are unstable to ensure reliable operation, so only compatible enrichments may be active.

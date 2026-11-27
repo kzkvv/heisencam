@@ -48,7 +48,7 @@ Video decoding is one of the most CPU-intensive tasks in HeisenCam. While an AI 
 
 ### Configuration
 
-HeisenCam provides preset configurations for common hardware acceleration scenarios. Set up `hwaccel_args` based on your hardware in your [configuration](../configuration/advanced/reference) as described in the [getting started guide](../guides/getting_started).
+HeisenCam provides preset configurations for common hardware acceleration scenarios. Set up `hwaccel_args` based on your hardware in your [configuration](../configuration/advanced/reference.md) as described in the [getting started guide](../guides/getting_started.md).
 
 ### Troubleshooting Hardware Acceleration
 
@@ -64,23 +64,23 @@ If hardware acceleration isn't working:
 
 **Priority: Critical**
 
-Choosing the right detector for your hardware is the single most important factor for detection performance. The detector is responsible for running the AI model that identifies objects in video frames. Different detector types have vastly different performance characteristics and hardware requirements, as detailed in the [hardware documentation](../frigate/hardware).
+Choosing the right detector for your hardware is the single most important factor for detection performance. The detector is responsible for running the AI model that identifies objects in video frames. Different detector types have vastly different performance characteristics and hardware requirements, as detailed in the [hardware documentation](../frigate/hardware.md).
 
 ### Understanding Detector Performance
 
-HeisenCam uses motion detection as a first-line check before running expensive object detection, as explained in the [motion detection documentation](../configuration/motion_detection). When motion is detected, HeisenCam creates a "region" (the green boxes in the [debug viewer](/usage/live#the-single-camera-view)) and sends it to the detector. The detector's inference speed determines how many detections per second your system can handle.
+HeisenCam uses motion detection as a first-line check before running expensive object detection, as explained in the [motion detection documentation](../configuration/motion_detection.md). When motion is detected, HeisenCam creates a "region" (the green boxes in the [debug viewer](../usage/live.md#the-single-camera-view)) and sends it to the detector. The detector's inference speed determines how many detections per second your system can handle.
 
 **Calculating Detector Capacity:** Your detector has a finite capacity measured in detections per second. With an inference speed of 10ms, your detector can handle approximately 100 detections per second (1000ms / 10ms = 100).If your cameras collectively require more than this capacity, you'll experience delays, missed detections, or the system will fall behind.
 
 ### Choosing the Right Detector
 
-Different detectors have vastly different performance characteristics, see the expected performance for object detectors in [the hardware docs](../frigate/hardware)
+Different detectors have vastly different performance characteristics, see the expected performance for object detectors in [the hardware docs](../frigate/hardware.md)
 
 ### Multiple Detector Instances
 
 When a single detector cannot keep up with your camera count, some detector types (`openvino`, `onnx`) allow you to define multiple detector instances to share the workload. This is particularly useful with GPU-based detectors that have sufficient VRAM to run multiple inference processes.
 
-For detailed instructions on configuring multiple detectors, see the [Object Detectors documentation](../configuration/object_detectors).
+For detailed instructions on configuring multiple detectors, see the [Object Detectors documentation](../configuration/object_detectors.md).
 
 **When to add a second detector:**
 
@@ -88,7 +88,7 @@ For detailed instructions on configuring multiple detectors, see the [Object Det
 
 ### Model Selection and Optimization
 
-The model you use significantly impacts detector performance. HeisenCam provides default models optimized for each detector type, but you can customize them as described in the [detector documentation](../configuration/object_detectors).
+The model you use significantly impacts detector performance. HeisenCam provides default models optimized for each detector type, but you can customize them as described in the [detector documentation](../configuration/object_detectors.md).
 
 **Model Size Trade-offs:**
 
@@ -103,12 +103,12 @@ For more detail on picking the right size, see [Choosing a model size](../config
 
 The **Detector CPU Usage** metric measures the CPU spent converting frames into the tensor format the model expects and post-processing the model's output. It does not include inference, so this value can be high even when you've configured a GPU, NPU, or Coral for object detection.
 
-This metric scales with how many detections per second HeisenCam runs and how expensive each one is to prepare. Tuning [motion detection](../configuration/motion_detection) is usually the first recommendation to reduce the number of detections. Additionally, you can:
+This metric scales with how many detections per second HeisenCam runs and how expensive each one is to prepare. Tuning [motion detection](../configuration/motion_detection.md) is usually the first recommendation to reduce the number of detections. Additionally, you can:
 
 - **Lower `detect -> fps`.** 5 is the recommended value for nearly all cameras. Running at 10 doubles the frames eligible for detection and is one of the largest contributors to this metric.
 - **Use a 320x320 model.** A 640x640 model has 4 times as many pixels to transpose, convert, and copy on every inference.
 - **Prefer a model that takes integer input.** Models configured with `input_dtype: float` require each frame to be converted to float32 and normalized on the CPU first. Models taking `int` input, such as the tflite models used by the Edge TPU, skip that step.
 - **Do not match the detect resolution to the model resolution.** The detect stream should match your camera's aspect ratio, for example `1280x720`, not the model's input size. HeisenCam crops and scales regions of motion itself, so an oversized detect stream only adds work.
-- **Tune stationary object behavior.** Objects that never settle into a stationary state are re-detected continuously. Raising `detect -> stationary -> interval` reduces how often detection runs on objects that are already parked. See [stationary objects](../configuration/stationary_objects).
+- **Tune stationary object behavior.** Objects that never settle into a stationary state are re-detected continuously. Raising `detect -> stationary -> interval` reduces how often detection runs on objects that are already parked. See [stationary objects](../configuration/stationary_objects.md).
 
 Adding [more detector instances](#multiple-detector-instances) spreads this work across more CPU cores, but does not reduce the total CPU used.

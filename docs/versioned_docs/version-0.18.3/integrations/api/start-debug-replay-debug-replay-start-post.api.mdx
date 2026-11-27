@@ -1,0 +1,72 @@
+---
+id: start-debug-replay-debug-replay-start-post
+title: "Start debug replay"
+description: "**Access:** Admin role required."
+sidebar_label: "Start debug replay"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVk1z2zYQ/Ss7uDjx0JKSSQ9hT26STpN+JGM7zcHReEBiTSImAWYByuZo+N87C1AWLMX2NM2tF4kkdheLt2/fYi28rJzIz8Vx14llJhS6knTntTUiF4eHx2WJzuWHh3CsWm2AbINA+LXXhGr22Xw2p16SBwkKi74Cwq6RAzh0TlsDl2RbKGWLJIGwtKS0qdwMTtD3ZBzotkWlpcdmgOtaNwhlozuo0CBJTgKoNw6kAwmFLK8qsr1R8MUWP4PrC861QPAWfI1wEFK4iCkcsNGF89IjfDoFbztdBkOS5RV0ZCtC52YiE7ab9nqrRC4cH+cijXT3Ja531nmRCQYCnf/FqkHka7HBReSeesxEaY1H43lJdl2jy7DN/ItjcNfClTW2kp864iS8RsdvES9+8kOHISfSphKZ8No3/OHU9lTiBlgjWxRjNqXudYuJr+nbAin1DfViK+dl27EjGvWo2xujUqcx21ja4guWGzDi6c83R7iTU7LPchv3NYN7ErANmQUsd3l4EnGGwqoBLi1BCKtNdQ/vZmIcOUVC11njIqzPF8/5727k0z4Q/LJv4GQyFt9dOBeDJTAW1jYoTQr/ZBOyC4x6vNwRHngVDcdMMLW1esjlnS3grXq0TpuMd5O53eKBSiV47VYrLvybSr1YLPaL89asZKPVhueWAgOBpKkC4V8sXuw7/WUTpQFtgjRMjYpqL8LL/QjHuyqmHciGUKoBZOn1Kro+/wad/uZ8o3C9IbL0/VxS6KVu+El7bN2+QWPLO6vSDO8vRX6+y4kxu/2ijccKSYzLLS0kkRwS4vxhY4J8xNZVD3HsT3RORhyjyf2mAQw449XHKMnniltPdgkFt/BGdO8/xusI37c225j8dnb2YS9gZKPDsifthwDnJelKegzz77j3tcjPl+MyEzdHm7SPeCpyEmzCOnfj0TBzXAhwhYPI98wzsZJNv3XjkC362vIUmuZLJ3k7MU8n0Dx0FEsr0gopbtFTI3JRe9+5fD5X2NrZlPZspRXauex0YMLWMJ/PG1vKprbO5z8tFs+izXJ7+lOmZiTbPga3tZad/h0Zes0NUFp7pflwYSjlG8cLb6/Q7CkFh0LjuSdQ3bbbdW0dt6yzzQpVvHJoBwcBp4MZnNWYtiaPpKLRrkYFKy1Dv7/7dAYxFdDO9aigGODD+9MzmDe20iZjMWHjjuzNALL3NdQoFZKDJ4St9XjUOySYw/TGWTyF6xoN/BrPFK8mBdbaKJAmBJkOw3pHyNXBuMOMqTph8dEh/UgMzZBuneD4JCB3sNJ4jXTAJ651VSM9zX44Zv8BFx5nzpqT7VXqzY1suwbTq9BWUdJLziK9uixGhu/SBlinFucmQ3IRqMXs2WzBdeDmamVQ3wnheCdK59MuzOutjv8/bsUTMz3e+HnXSB0GQlCP9SRL5yKNvCkNyzVLCq+v14V0+JGaceTPX3skltQlSx9pWXCNznkWRRolYvkqgn0UJkailLsDlCUtenBJOv+gbSqwzGuRiWK6ubdWsQ/Ja55G8jpyx4biBwEM39aikabqeeblIsZk+sq9Zr4KzTw9JCNZmiHJcLev40H4N5nZd13W6ygV43hrH5fu9Zig3ViHQTOO4z/Q4d/n
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Start debug replay"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/debug_replay/start"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Start a debug replay session from camera recordings. Returns immediately while clip generation runs as a background job; subscribe to the 'debug_replay' job_state WS topic to track progress.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"camera":{"type":"string","title":"Source camera name"},"start_time":{"type":"number","title":"Start timestamp"},"end_time":{"type":"number","title":"End timestamp"}},"type":"object","required":["camera","start_time","end_time"],"title":"DebugReplayStartBody","description":"Request body for starting a debug replay session."}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"202":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"replay_camera":{"type":"string","title":"Replay Camera"},"job_id":{"type":"string","title":"Job Id"}},"type":"object","required":["success","replay_camera","job_id"],"title":"DebugReplayStartResponse","description":"Response for starting a debug replay session."}}}},"400":{"description":"Invalid camera or time range"},"404":{"description":"No recordings in the requested time range"},"409":{"description":"A replay session is already active"},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

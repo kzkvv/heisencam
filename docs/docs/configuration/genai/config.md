@@ -75,8 +75,8 @@ The `embeddings` role needs a different kind of model. Text queries are matched 
 
 | Model                | Notes                                                                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `embeddinggemma-2`   | Multimodal embeddings for [Semantic Search](/configuration/semantic_search#genai-provider). Strong semantic search accuracy with efficient inference on a small model. |
-| `qwen3-vl-embedding` | Multimodal embeddings for [Semantic Search](/configuration/semantic_search#genai-provider). Good performance, large model that requires strong hardware for inference. |
+| `embeddinggemma-2`   | Multimodal embeddings for [Semantic Search](../semantic_search.md#genai-provider). Strong semantic search accuracy with efficient inference on a small model. |
+| `qwen3-vl-embedding` | Multimodal embeddings for [Semantic Search](../semantic_search.md#genai-provider). Good performance, large model that requires strong hardware for inference. |
 
 :::info
 
@@ -243,7 +243,7 @@ Cloud providers run on remote infrastructure and require an API key for authenti
 
 :::info
 
-Cloud Generative AI providers require an active internet connection to send images and prompts for processing. Local providers like llama.cpp and Ollama (with local models) do not require internet. See [Network Requirements](/frigate/network_requirements#generative-ai) for details.
+Cloud Generative AI providers require an active internet connection to send images and prompts for processing. Local providers like llama.cpp and Ollama (with local models) do not require internet. See [Network Requirements](../../frigate/network_requirements.md#generative-ai) for details.
 
 :::
 
@@ -447,7 +447,7 @@ genai:
 
 <FaqItem id="how-do-i-debug-genai-issues" question="How do I debug GenAI issues?">
 
-HeisenCam's Generative AI features are configured and enabled separately. [Review descriptions and summaries](/configuration/genai/genai_review) live under `review.genai`, and [object descriptions](/configuration/genai/genai_objects) live under `objects.genai`. Configuring a provider on this page does not enable either feature, and enabling one does not enable the other. Decide which of the two is not working, then work through the steps below.
+HeisenCam's Generative AI features are configured and enabled separately. [Review descriptions and summaries](./review_summaries.md) live under `review.genai`, and [object descriptions](./objects.md) live under `objects.genai`. Configuring a provider on this page does not enable either feature, and enabling one does not enable the other. Decide which of the two is not working, then work through the steps below.
 
 1. Confirm a provider is available and holds the `descriptions` role.
    - Review descriptions, review summaries, and object descriptions all use the provider that has the `descriptions` role assigned in <NavPath path="Settings > Enrichments > Generative AI > Roles" /> (`genai.<provider>.roles`).

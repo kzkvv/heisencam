@@ -11,7 +11,7 @@ Bird classification identifies known birds using a quantized Tensorflow model. W
 
 :::info
 
-Bird classification requires a one-time internet connection to download the classification model and label map from GitHub. Once cached, models work fully offline. See [Network Requirements](/frigate/network_requirements#one-time-model-downloads) for details.
+Bird classification requires a one-time internet connection to download the classification model and label map from GitHub. Once cached, models work fully offline. See [Network Requirements](../frigate/network_requirements.md#one-time-model-downloads) for details.
 
 :::
 

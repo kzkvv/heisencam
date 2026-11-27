@@ -1,8 +1,6 @@
 const path = require("node:path");
 
-// Enables importing YAML data files from docs/data as plain JS objects.
-// Scoped to the data directory so it never intercepts other .yaml files
-// (e.g. the OpenAPI spec under static/).
+// Load YAML data imported by the working docs and release snapshots.
 module.exports = function (context, options) {
   return {
     name: "yaml-data-loader",
@@ -12,7 +10,10 @@ module.exports = function (context, options) {
           rules: [
             {
               test: /\.ya?ml$/,
-              include: path.resolve(__dirname, "..", "data"),
+              include: [
+                path.resolve(__dirname, "..", "docs"),
+                path.resolve(__dirname, "..", "versioned_docs"),
+              ],
               use: path.resolve(__dirname, "js-yaml-loader.js"),
             },
           ],

@@ -1,0 +1,73 @@
+---
+id: sync-media-media-sync-post
+title: "Start media sync job"
+description: "**Access:** Admin role required."
+sidebar_label: "Start media sync job"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVk1vGzcQ/SsDXpQYa0kx0kP35jYJmn4gga2kB0UwqOWsljGX3HC4khfC/vdiyLW1smqjRXPqRZBGw/l4M3yPexHkhkS+FJdNI1aZUEiF103QzopcnJ1dFgUS5WdncKlqbcE7g+DxW6s9qukX+8VeB+kDSAuSOltU3lnXEtSotAS2wFe3huCg1FaBtApeuBheGtO9BI+12yI431TSohrOldogTb9YAIArDK23BBfzC9jpUMV4CoPUhmBXoYVvLbaoMnAeXs9/BF2CjE6aQBqPUnXgW2u13UxFJlyDXnIB75XIBVd4E5MOn9HQOAoiE9wnUvjJqU7ke3HftsiDbzEThbMBbeC/ZNMYXcSws6/E2O0FFRXWkr81npMGjcS/lO9ufBtdQtegyMXaOYPSikwEHQxb3vgOrlq2HA/kfQkLzg3Omg48Ns6HATyK6Lg2gEKDQdsNhArrGKKUrQmp7D4TqVHOHevRAWsaVUPBa7sRfXZvkN7LblTcH3FGi3j+cYHRCq4cBhlc3IEcJtKYSQYT3KINN2RlQ5ULdDCFqq3XlofKNo9bjbtHxiZZ06E7bn3wLZxX2m5oMm52KaQxYtVnonS+wGfhfhc9ngR73TWSCEiWGDoIlUeqnFFQVFjc0jhpKQ0xxFv0a0fPJ/08+DyZdud1QChbY4YRx3sBRlNgYJWm29Pch7G59VcswuO5XXe2iAvd9+zrkRpnKW3CxXweF/SonOs2UkDZGrganMU/3/2U5fXFxWngz9JoFY/BW++d/xdRH9+oyAZHu3zsYFxx9K+03YdS5MvTnX+waBtwg170q6cvwu8uFch3pabN6R0aY08kN3i4VU+7RjDi9RJ/N80DCy1jXyn14LcardcDvAndp9t4k+B7bnV+WSw+ngRMsyUsWq9DF+Esvd7IgFErLttQiXy56leZuDu/L/ucFYSLYBeRCbwLaEk7SzHALXYiP3HPxFaa9nCMQ9YYKscUPpB1IzmdmEXimTHrCC7Ob9Gn0K03IhdVCA3ls5nC2k2HcqdbrdDNZKPjBhwc89nMuEKaylHIf5jPXyWf1aHra17JtGSnvT/MWDb6N2TINS9+4dyt5qasrPnf4eBNcLd4SvkcCm3gu4AKCInBgl3liIWYnNmiSrKsCSYRn8kUFhU++GoCpCDXRlOFCrbMyxXCr38uIJUCmqhFBesOPn64XsDMuI22UVDZufHurgPZhgoqlAo9wQvW7YDnLaGHGQy/uIqXSZPfpZ5YeAnWWCXxj0GGZligPPJ0MGWY8ooOWHwi9N8TQ9uNU49wfBGRm7CuoJ9wx5XeVOhfZt8ds/+AS58J5sCrw3vk7Z2sG4NH74n0KjlS9+U9vaweZDDKxEih7iVL29JFuIcrL6IPJQDn01fTOc+HL1stIxsPyKf33/F77/EA9gdm/1++KYcVDXgXZo2ROipCpJH9wEvLNBemJGamVSaYU9i+368l4Sdv+p7N31r0zKUr5jyv5ZqHsWQRSns0YsmfE6bnUSpGFPlYOZnT0glGvgnP+o6ZlRdbZGI9vH9rp/iMlzuWIblLS5KQjwwYbXthpN20LHa5SDF5f+XJbb6Nt3n4MtJiabtRhY8vdmqEP0difXxkv09c0fcP/umvJ08M0N57R4Xp+/4vOiOKtg==
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Start media sync job"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/media/sync"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Start an asynchronous media sync job to find and (optionally) remove orphaned media files.
+    Returns 202 with job details when queued, or 409 if a job is already running.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"properties":{"dry_run":{"type":"boolean","title":"Dry Run","description":"If True, only report orphans without deleting them","default":true},"media_types":{"items":{"type":"string"},"type":"array","title":"Media Types","description":"Types of media to sync: 'all', 'event_snapshots', 'event_thumbnails', 'review_thumbnails', 'previews', 'exports', 'recordings'","default":["all"]},"force":{"type":"boolean","title":"Force","description":"If True, bypass safety threshold checks","default":false},"verbose":{"type":"boolean","title":"Verbose","description":"If True, write full orphan file list to disk","default":false}},"type":"object","title":"MediaSyncBody"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -5,7 +5,7 @@ title: Exports
 
 **Exports** are how you keep a specific piece of footage permanently.
 
-HeisenCam's recordings are governed by your [retention settings](/configuration/record): once footage ages past its retention window (or, depending on your configuration, once it is only kept where motion, alerts, or detections occurred), it is deleted to free up disk space. An **export** saves a copy of a chosen time range to a separate location that is **never removed by retention**, so it stays available until you delete it yourself.
+HeisenCam's recordings are governed by your [retention settings](../configuration/record.md): once footage ages past its retention window (or, depending on your configuration, once it is only kept where motion, alerts, or detections occurred), it is deleted to free up disk space. An **export** saves a copy of a chosen time range to a separate location that is **never removed by retention**, so it stays available until you delete it yourself.
 
 This is the answer to the common question _"how do I stop HeisenCam from deleting an important clip?"_ Instead of increasing retention for an entire camera (which uses far more storage to protect a single moment), export just the footage you want to keep.
 

@@ -1,0 +1,75 @@
+---
+id: reclassify-face-image-faces-name-reclassify-post
+title: "Reclassify a face image to a different name"
+description: "**Access:** Admin role required."
+sidebar_label: "Reclassify a face image to a different name"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktz2zYQ/is7uPgxtKh42gtvbpq+02RspT3YGg1ErkjEJMAsQNkaDv97ZgFIoqzaybQ59iKB5D6/3f0WvXCytCK7Fa9raa1aqVw6ZbSYJ6JAm5Nq/WMmzs+v8hytzc7P4apolAYyNQLhp04RFpM7faffmjVakGCVLmuElcwRVCNLhBWZBoxGaJGs0ScWVqYukMAZkNq4CmlypwEAZtVWR1lozBoLkLoAQi0bLBL/4KpoPI9BI7F0XqMkLMCZYErp3FBrSDr0KnkldYkTuEbXkfaBdj4naNBadmkIpAYkMgRqxUrRUhO/OkklOuBY2KPSa1mrYiISYVokD92vhcgEYQxts+BAF96AP9rFgrUXi5FIa6wTiWglyQYdEhekFywmsvCXCMVFaKWrRCK2oIvMUYeJsHmFjRRZL9ymZR3rSOlSJMIpV/OLP9nIMMyDLlr3gyk2rJAb7VA7Psq2rWP504+Wi94fWzbLj5i7kWVvaBiGgU3b1miLluUvp1P+O2yim4D3qqvhOgqL5OtjaIlRdip4iMUbBbc0pkapR9FFh2JIRKzxSyi9jSKczNN895jf7jzvjc73Rn5GjaTyXX4Bm+8uL4/h+IubxycLb7jn/j0WBTqpaj4ph409FqhNfvBV6s27lW+zQzCGZPdGaYclkhjmezgkkdyMEPvDRL5ggG35VeBujT0v6sGAGX/9Uik4r+A6yo0qsYc3oPt8Gj8G+P7J2Vbkl9ns/ZHBUFuLeUfKbTycK1KldOgp8qpzlchu5zx3jxfbsC+YODkIFhGJwEeH2iqjw9jf40ZkR+KJWMu626uxyQZdZZhtdvzB7kTqaSbtmTiGdE8zgiOl9ZZeOqpFJirnWpulaYGNmcTYJ2tVoEllq3w77AWzNK1NLuvKWJd9P52+CjLzPQQ33J+h446B2BVctup33GxJLTfmXnGGkfCi4sKZe2R8DmeGTaF2PBhYgEXLyMFDZSwvI2tq3hh+NSkLJx6sk4nfKltZZQGtk8ta2QoLWCvpt8Nvf88ghALK2g4LWG7g/bubGaS1KZVOmP9ZuCXzuAHZuQoqlAWShVPCxji86CwSpBCfOIozeKhQw08hJ6BOW1hipTSvNW8kJqN0CYRcHQweJtyvEYsPFulbYqg3Y9cjHE89cidrhQ9IJ5xxpcoK6Sz55pj9B1yGRDAhXu9X2ZtH2bQ8Vf3AiKyMRyqOLg8Pkg25TyevJlOGloemkZ5VI2jXu1EBOb688B0FCrVaIaEOy/8ppKNF+v9N6Qs3pdjADh9d2tZS+eXhSaaPFHYrPIWJRGQR7BGLzRPB/MNSfb+UFj9QPQz8+lOHxCQ8Z7IkJZdc/dteFMryuRDZStYWXyjd6XUs0hk8F+h2/PRmxMkiibTtw/ULM7T5iNFfBy8Xfq2N6PzplmfKDRrcRq17UXa8BXjuRCKW8WbXmIJ1SD4wfvIhhGl81p6g/bte1FKXnb8YiWCTx0sekc29J5t4GN0bDoF4yjshEf4dXSwOVfo+UNkw7OTDp2c1IrRbab8Nh2H4DBhmbFg=
+sidebar_class_name: "post api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Reclassify a face image to a different name"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/faces/{name}/reclassify"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Moves a single face image from one person's folder to another.
+    The image is moved and renamed, and the face classifier is cleared to
+    incorporate the change. Returns a success message or an error if the
+    image or target name is invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","title":"Body"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"properties":{"success":{"type":"boolean","title":"Success"},"message":{"type":"string","title":"Message"}},"type":"object","required":["success","message"],"title":"GenericResponse"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

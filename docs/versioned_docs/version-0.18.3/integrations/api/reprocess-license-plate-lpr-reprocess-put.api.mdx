@@ -1,0 +1,75 @@
+---
+id: reprocess-license-plate-lpr-reprocess-put
+title: "Reprocess a license plate"
+description: "**Access:** Admin role required."
+sidebar_label: "Reprocess a license plate"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktv4zYQ/iuDueQBxc4G7UW3oN2i2wc2yDrtITEMWhpb3FCklkM5MQz998WQkh9xE6Bojr0kljiPb76Z+agNBrVkzO/xJ6OY9UIXKmhncZphSVx43cTHHM/Pr4uCmPPzc7gua23BO0Pg6VurPZWjB/tgb6nxToyIQYHRBVkmaIwKBLpWS4LgoG1KeQ5VfzJ6sAAAtykQv3DzVLil1QJCnOcEZNXcUAnaxhiFswu9bH2EPYJJRUArsmGmyxS4bjkAPWsOg0upgporphHcUmi9FbDcxuqgJmYB6jwoC+S986AXh6BS3H1kmsG6sIXmfMwz4JBjbVfK6HKEGbqGEtpPJeboB85mfY5ZzDEzjZ/tzpo2YIaN8qqmQF46tkGrasIchzSYoZZOfWvJrzHDoTWYB99ShlxUVCvMNxjWjThy8NouMcOgg5EXHyUSfCqx66biz42zTCwuV5eX8u9wJr4k0hatgdveGDMsnA1kg5irpjH9RI2/svhsdjC6rusy/OHq6jjwX8JVdIOP0oJ/ERUbLwQHnXCXFJQ28ksHqvnYwLji4FTZ9edFpPeQpS7bvtE20JI8dtMuG94p79V6j8o/XL9IXYY1L99i/c80crgN9kaD4jxO5LTb5Xbzr1SEg47fx7pS6t5uuguzozex+3oZPyf6/inZYPLrZHJzFDD1lqlovQ7rSOfC66UKFLXjug0V5vdTGbPniwH2hSiKgBATzJCeA1nWzqZxf6Q15kfmGa6UaXduErKmUDlZrmFtJBuOTePH25VCgedXwy613mCOVQgN5+NxSbUb9YBHK12SG6tGxxnYGebjsXGFMpXjkP94efkh2Ux3dX+RoUxjdlz9tsuq0b/TetjewrlHLWX12907zoJ7JCHlcFEkFNkg20AlMLHQBU+VY5FOdmZFZRJqzXASGTpJIjnYagbioOZGc0UlrLSK2vXb3xNIUEAzt1TCfA03n79MYGzcUttMRE6MG++e16DaUEFFqiTPcOqpdoEuWiYPY+ifBMUZPFVk4ZdUE/jWMsyp0rYUtVW7YrRdgifpDqUMIxnSnos7Jv+eHNr1fuo9Hk8jcycrTU/kT6TiSi8r8mfZu3P2H3jppOqFi2z0OylbQZ5TfZejD6NLoa9xHGoV5bInZnthv7yuX5K02env/18C7/Yl0A9voOcwbozS8baIArPpReseTeOjsg+yNc1QBEeONhvBfudN18nrdO+LmJWaY3rMF8owvdHL057s8gxew5Nkd+8jY9DbKHUr5bXkimqeYRrnPbmWUWnCvkq/vLwPBPvmboIZqqPlfozL3f/Yu5yVXe/FfrnnCYL83bu9D102myQdXbe1T0evevQlDtbxyum67jtSfe2r
+sidebar_class_name: "put api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Reprocess a license plate"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/lpr/reprocess"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Reprocesses a license plate image to update the plate.
+    Requires license plate recognition to be enabled in the configuration. The event_id
+    must exist in the database. Returns a success message or an error if license plate
+    recognition is not enabled or the event_id is invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"event_id","in":"query","required":true,"schema":{"type":"string","title":"Event Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

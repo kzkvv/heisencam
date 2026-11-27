@@ -126,11 +126,11 @@ Only the fields you explicitly set in a profile override are applied. All other 
 
 ## Activating Profiles
 
-Profiles can be activated and deactivated via the HeisenCam UI, [MQTT](/integrations/mqtt#frigateprofileset), the [HTTP API](../integrations/api/camera-set-camera-camera-name-set-feature-sub-command-put.api.mdx), or the Home Assistant integration.
+Profiles can be activated and deactivated via the HeisenCam UI, [MQTT](../integrations/mqtt.md#frigateprofileset), the [HTTP API](../integrations/api/camera-set-camera-camera-name-set-feature-sub-command-put.api.mdx), or the Home Assistant integration.
 
 In the HeisenCam UI, open the Settings cog and select **Profiles** from the submenu to see all defined profiles. From there you can activate any profile or deactivate the current one. The active profile is indicated in the UI so you always know which profile is in effect.
 
-Activating or deactivating a profile clears any [runtime toggle overrides](/configuration/live#runtime-toggle-persistence) so the profile's settings aren't silently undone by a stale toggle from before the switch.
+Activating or deactivating a profile clears any [runtime toggle overrides](./live.md#runtime-toggle-persistence) so the profile's settings aren't silently undone by a stale toggle from before the switch.
 
 ## Example: Home / Away Setup
 

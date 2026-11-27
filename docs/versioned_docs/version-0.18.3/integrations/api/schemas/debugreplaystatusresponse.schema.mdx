@@ -1,0 +1,38 @@
+---
+id: debugreplaystatusresponse
+title: "DebugReplayStatusResponse"
+description: "Response for debug replay status."
+sidebar_label: "DebugReplayStatusResponse"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"active":true,"replay_camera":"string","source_camera":"string","start_time":0,"end_time":0,"live_ready":false}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DebugReplayStatusResponse"}
+>
+</Heading>
+
+
+
+Response for debug replay status.
+
+Returns only session-presence fields. Startup progress and error
+details flow through the job_state WebSocket topic via the
+debug_replay job (see frigate.jobs.debug_replay); the
+Replay page subscribes there with useJobStatus("debug_replay").
+
+<Schema
+  schema={{"properties":{"active":{"type":"boolean","title":"Active"},"replay_camera":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Replay Camera"},"source_camera":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Source Camera"},"start_time":{"anyOf":[{"type":"number"},{"type":"null"}],"title":"Start Time"},"end_time":{"anyOf":[{"type":"number"},{"type":"null"}],"title":"End Time"},"live_ready":{"type":"boolean","title":"Live Ready","default":false}},"type":"object","required":["active"],"title":"DebugReplayStatusResponse","description":"Response for debug replay status.\n\nReturns only session-presence fields. Startup progress and error\ndetails flow through the job_state WebSocket topic via the\ndebug_replay job (see frigate.jobs.debug_replay); the\nReplay page subscribes there with useJobStatus(\"debug_replay\")."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

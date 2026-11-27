@@ -23,7 +23,7 @@ The ideal resolution for detection is one where the objects you want to detect f
 
 Larger resolutions **do** improve performance if the objects are very small in the frame.
 
-![Resolutions](/img/resolutions-min.jpg)
+![Resolutions](../assets/resolutions-min.jpg)
 
 ### Choosing a detect frame rate
 
@@ -31,7 +31,7 @@ Larger resolutions **do** improve performance if the objects are very small in t
 
 :::warning
 
-Most users who raise `detect.fps` above the default don't need to. Increasing it consumes more CPU/GPU (detection load scales directly with the frame rate) while providing **no benefit to tracking** once objects are already being followed smoothly. Leave it at **5** unless you have a specific scene that fails the test below, and confirm any change actually helps in the [debug view](/usage/live#the-single-camera-view).
+Most users who raise `detect.fps` above the default don't need to. Increasing it consumes more CPU/GPU (detection load scales directly with the frame rate) while providing **no benefit to tracking** once objects are already being followed smoothly. Leave it at **5** unless you have a specific scene that fails the test below, and confirm any change actually helps in the [debug view](../usage/live.md#the-single-camera-view).
 
 :::
 
@@ -61,7 +61,7 @@ Confirm any change in the Debug view or Debug Replay. Watch a typical object cro
 
 #### Dedicated LPR cameras
 
-A dedicated license plate recognition camera is the most common reason to use something higher than 5 fps: the camera is highly zoomed, the plate is small, and it moves at full vehicle speed, so it transits the frame quickly. However, the same ceiling applies: above 10 fps is unnecessary, and **placement matters most**: aim LPR cameras where vehicles slow down, such as gates, driveways, and parking entrances. A tight view of a fast through-road will not likely read plates reliably at any frame rate. See [License Plate Recognition](/configuration/license_plate_recognition) for details.
+A dedicated license plate recognition camera is the most common reason to use something higher than 5 fps: the camera is highly zoomed, the plate is small, and it moves at full vehicle speed, so it transits the frame quickly. However, the same ceiling applies: above 10 fps is unnecessary, and **placement matters most**: aim LPR cameras where vehicles slow down, such as gates, driveways, and parking entrances. A tight view of a fast through-road will not likely read plates reliably at any frame rate. See [License Plate Recognition](../configuration/license_plate_recognition.md) for details.
 
 ### Example Camera Configuration
 
@@ -72,7 +72,7 @@ For the Dahua/Loryta 5442 camera, I use the following settings:
 - Encode Mode: H.264
 - Resolution: 2688\*1520
 - Frame Rate(FPS): 15
-- I Frame Interval: 30 (15 can also be used to prioritize streaming performance - see the [camera settings recommendations](/configuration/live#camera-settings-recommendations) for more info)
+- I Frame Interval: 30 (15 can also be used to prioritize streaming performance - see the [camera settings recommendations](../configuration/live.md#camera-settings-recommendations) for more info)
 
 **Sub Stream (Detection)**
 

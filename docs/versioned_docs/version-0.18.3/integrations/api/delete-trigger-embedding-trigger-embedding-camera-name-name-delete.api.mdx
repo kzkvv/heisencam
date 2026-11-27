@@ -1,0 +1,73 @@
+---
+id: delete-trigger-embedding-trigger-embedding-camera-name-name-delete
+title: "Delete trigger embedding"
+description: "**Access:** Admin role required."
+sidebar_label: "Delete trigger embedding"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVttu4zYQ/ZXBvOQCxfIG7YvegsZFL9vuIvG2D45h0NLY4kYitSTlxBD074shaVuONwsUDQr0xZSpuZw5nDlUh06sLWYznGxIOYvzBAuyuZGNk1phhpeXN3lO1maXl3BT1FKB0RWBoS+tNFSMHtSDuqWKHFkQ4Ixcr8kA1UsqCqnWsNIGBNiGcrmS+c5g9KAAAO7ItUaxo219FqjJWrEmYC8FZIw2IFfgStrHlhaUdrDSrSpGmKBuyAhG+2uBGRYeyyIaL/ZAvrGzyEVNRiyUqGmxiEvwxwQbYURNjgzT0yG/xQwHLpigZIYa4UpMcMcIZs60lKDNS6oFZh26bcOu1hmp1pigk67ijZ98LPiTY/V9ss/xJsFj1Dn72kYrS5bNr8djXo7P+D6Qv2oruIvGmGCulSPl2Fw0TSVzT3L62bJPdwpBLz9T7gYQdrEg9AdM4wFO9s1xujPgBCAuwR37vu8T/OH6+rSAv0QlCw8PJtwy/wR9Y7iBnAz8FOSErPhJOqrtqUGl86O3Qm0/rHyHHJ8En2fckcrRmgz28z7Z7QljxHbA1XsdAGKfYG3X3zvZP8KI4D7Y66aeDJjy2/6Qe39Qh66a+bpC6mg3P4Q50BvYfb2M20Dft5LtTH6ZTj+eBAxnaylvjXRbT+fKyLVw5DXnpnUlZrM5t/Pz1Q72FSsRg2ATTJCeHSkrtQoT+0hbzE7ME9yIqj24cciaXKkP4uGHnxNiGkUj3YtG2g0UoE87vyBDN5udVLSmwgxL5xqbpWlBtR7FYkYbWZBORSN9fxwMszStdC6qUluX/Tgevws28wMn99ywoQVPmdl3gGjk77TdiUeu9aPkcqKwRMeF04/EhB0PEYci5XhSqABLlqmEp1Jblnurqw0VQfylhTPP3tkIpiXtbaUFsk4sK2lLKmAjhRfu3/6eQoAC0tqWClhu4eOH+ymklV5LlbDas3Fj9PMWROtKKEkUZCycG6q1o6vWkoEU4j9GcQFPJSn4OdQEplUWllRKVfDNIQ7FsKwY4tOhkGHEDRy5+GTJvCWHajtMPeDx3DN3tpH0ROaMKy7luiRzkbw5Z/+Cl56rXmnPRpxXnhgyNtQ3Hr0bjZm+RltXCy+lkZgo8idfAC856g7S/D/4uIg94ejZpU0lpBdoP7ddFIkZRl9WoEHR2fGnQubXeYI84uzVdUth6ZOp+p63v7RkWPjmLFBGiiWTP+uwkJafC8xWorL0HTLP7yJtF/Aa8F2Hq+1ABzGJUjkEzPL0H6YOOfl+DE08EHDukMYNdfvldX4k4beT95PpBBMUJ1P96Kc6Pgxu7GNMLwc8oODfwZV+7NJ1QTP6fm8fXr3qEavcWft7qO/7r3zW/NA=
+sidebar_class_name: "delete api-method"
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete trigger embedding"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/trigger/embedding/{camera_name}/{name}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+**Access:** Admin role required.
+
+Deletes a trigger embedding for a specific trigger.
+    Returns a success message or an error if the trigger is not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"camera_name","in":"path","required":true,"schema":{"type":"string","title":"Camera Name"}},{"name":"name","in":"path","required":true,"schema":{"type":"string","title":"Name"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Response","content":{"application/json":{"schema":{"type":"object","title":"Response Delete Trigger Embedding Trigger Embedding Camera Name   Name  Delete"}}}},"422":{"description":"Validation Error","content":{"application/json":{"schema":{"properties":{"detail":{"items":{"properties":{"loc":{"items":{"anyOf":[{"type":"string"},{"type":"integer"}]},"type":"array","title":"Location"},"msg":{"type":"string","title":"Message"},"type":{"type":"string","title":"Error Type"}},"type":"object","required":["loc","msg","type"],"title":"ValidationError"},"type":"array","title":"Detail"}},"type":"object","title":"HTTPValidationError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

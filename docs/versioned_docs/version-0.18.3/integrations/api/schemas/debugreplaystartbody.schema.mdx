@@ -1,0 +1,33 @@
+---
+id: debugreplaystartbody
+title: "DebugReplayStartBody"
+description: "Request body for starting a debug replay session."
+sidebar_label: "DebugReplayStartBody"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"camera":"string","start_time":0,"end_time":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DebugReplayStartBody"}
+>
+</Heading>
+
+
+
+Request body for starting a debug replay session.
+
+<Schema
+  schema={{"properties":{"camera":{"type":"string","title":"Source camera name"},"start_time":{"type":"number","title":"Start timestamp"},"end_time":{"type":"number","title":"End timestamp"}},"type":"object","required":["camera","start_time","end_time"],"title":"DebugReplayStartBody","description":"Request body for starting a debug replay session."}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            
