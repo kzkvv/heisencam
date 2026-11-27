@@ -12,12 +12,12 @@
   "explore": {
     "plus": {
       "submitToPlus": {
-        "label": "Pošalji na Frigate+",
+        "label": "Pošalji na Hosted Models",
         "desc": "Predmeti u lokacijama koje želite izbjeći nisu lažni pozitivi. Pošiljanje ih kao lažne pozitive zbunjuje model."
       },
       "review": {
         "question": {
-          "label": "Potvrdite ovu oznaku za Frigate Plus",
+          "label": "Potvrdite ovu oznaku za HeisenCam Plus",
           "ask_a": "Je li ovaj objekt <code>{{label}}</code>?",
           "ask_an": "Je li ovaj objekt <code>{{label}}</code>?",
           "ask_full": "Je li ovaj objekt <code>{{untranslatedLabel}}</code> ({{translatedLabel}})?"

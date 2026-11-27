@@ -12,7 +12,7 @@
   "explore": {
     "plus": {
       "submitToPlus": {
-        "label": "Küldés a Frigate+-nak",
+        "label": "Küldés a HeisenCam+-nak",
         "desc": "Objektumok, amelyek olyan helyeken vannak, ahol nem akarod, hogy felismerésre kerüljenek, nem számítanak téves egyezésnek. Ha téves egyezésként küldöd be őket, az összezavarja a modellt."
       },
       "review": {

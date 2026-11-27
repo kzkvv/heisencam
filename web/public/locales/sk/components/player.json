@@ -3,7 +3,7 @@
   "noPreviewFound": "Náhľad nenájdený",
   "noPreviewFoundFor": "Žiadný náhľad nájdený pre {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Odoslať tento rám na Frigate+?",
+    "title": "Odoslať tento rám na Hosted Models?",
     "submit": "Odoslať"
   },
   "livePlayerRequiredIOSVersion": "Pre tento typ živého vysielania je potrebný systém iOS 17.1 alebo novší.",
@@ -42,10 +42,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Snímok bol úspešne odoslaný službe Frigate+"
+      "submittedFrigatePlus": "Snímok bol úspešne odoslaný službe Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Nepodarilo sa odoslať snímku službe Frigate+"
+      "submitFrigatePlusFailed": "Nepodarilo sa odoslať snímku službe Hosted Models"
     }
   }
 }

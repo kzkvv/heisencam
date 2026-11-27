@@ -8,7 +8,7 @@
     "motionTuner": "Regolatore di movimento - HeisenCam",
     "object": "Correzioni - HeisenCam",
     "general": "Impostazioni interfaccia - HeisenCam",
-    "frigatePlus": "Impostazioni Frigate+ - HeisenCam",
+    "frigatePlus": "Impostazioni Hosted Models - HeisenCam",
     "notifications": "Impostazioni di notifica - HeisenCam",
     "enrichments": "Impostazioni di miglioramento - HeisenCam",
     "cameraManagement": "Gestisci telecamere - HeisenCam",
@@ -27,16 +27,16 @@
         "camera": "Telecamera",
         "cleanCopySnapshots": "Istantanee <code>clean_copy</code>"
       },
-      "desc": "Per inviare i dati a Frigate+ è necessario abilitare le istantanee nella configurazione.",
+      "desc": "Per inviare i dati a Hosted Models è necessario abilitare le istantanee nella configurazione.",
       "documentation": "Leggi la documentazione",
       "title": "Configurazione istantanee"
     },
     "apiKey": {
-      "title": "Chiave API Frigate+",
-      "validated": "La chiave API Frigate+ è stata rilevata e convalidata",
-      "notValidated": "La chiave API Frigate+ non è stata rilevata o non è stata convalidata",
-      "desc": "La chiave API Frigate+ consente l'integrazione con il servizio Frigate+.",
-      "plusLink": "Scopri di più su Frigate+"
+      "title": "Chiave API Hosted Models",
+      "validated": "La chiave API Hosted Models è stata rilevata e convalidata",
+      "notValidated": "La chiave API Hosted Models non è stata rilevata o non è stata convalidata",
+      "desc": "La chiave API Hosted Models consente l'integrazione con il servizio HeisenCam+.",
+      "plusLink": "Scopri di più su Hosted Models"
     },
     "modelInfo": {
       "trainDate": "Data addestramento",
@@ -46,16 +46,16 @@
         "userModel": "Messa a punto fine",
         "baseModel": "Modello base"
       },
-      "availableModels": "Modelli Frigate+ disponibili",
+      "availableModels": "Modelli Hosted Models disponibili",
       "loadingAvailableModels": "Caricamento dei modelli disponibili…",
       "supportedDetectors": "Rilevatori supportati",
       "error": "Impossibile caricare le informazioni sul modello",
       "modelType": "Tipo di modello",
-      "modelSelect": "Qui puoi selezionare i modelli disponibili su Frigate+. Nota: puoi selezionare solo i modelli compatibili con la configurazione attuale del tuo rilevatore.",
+      "modelSelect": "Qui puoi selezionare i modelli disponibili su HeisenCam+. Nota: puoi selezionare solo i modelli compatibili con la configurazione attuale del tuo rilevatore.",
       "title": "Informazioni sul modello",
       "loading": "Caricamento informazioni sul modello…",
       "noModelsAvailable": "Nessun modello disponibile",
-      "noModelLoaded": "Al momento non è caricato alcun modello di Frigate+.",
+      "noModelLoaded": "Al momento non è caricato alcun modello di HeisenCam+.",
       "selectModel": "Seleziona un modello",
       "filter": {
         "ariaLabel": "Filtra i modelli per tipo",
@@ -65,12 +65,12 @@
     },
     "toast": {
       "error": "Impossibile salvare le modifiche alla configurazione: {{errorMessage}}",
-      "success": "Le impostazioni di Frigate+ sono state salvate. Riavvia HeisenCam per applicare le modifiche."
+      "success": "Le impostazioni di Hosted Models sono state salvate. Riavvia HeisenCam per applicare le modifiche."
     },
-    "title": "Impostazioni Frigate+",
-    "restart_required": "Riavvio richiesto (modello Frigate+ modificato)",
-    "unsavedChanges": "Modifiche alle impostazioni di Frigate+ non salvate",
-    "description": "Frigate+ è un servizio in abbonamento che offre accesso a funzionalità e capacità aggiuntive per la tua istanza di HeisenCam, tra cui la possibilità di utilizzare modelli di rilevamento oggetti personalizzati addestrati sui tuoi dati. Puoi gestire le impostazioni del tuo modello Frigate+ qui.",
+    "title": "Impostazioni Hosted Models",
+    "restart_required": "Riavvio richiesto (modello Hosted Models modificato)",
+    "unsavedChanges": "Modifiche alle impostazioni di Hosted Models non salvate",
+    "description": "Hosted Models è un servizio in abbonamento che offre accesso a funzionalità e capacità aggiuntive per la tua istanza di HeisenCam, tra cui la possibilità di utilizzare modelli di rilevamento oggetti personalizzati addestrati sui tuoi dati. Puoi gestire le impostazioni del tuo modello Hosted Models qui.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Modello attuale",
@@ -445,7 +445,7 @@
     "masksAndZones": "Maschere / Zone",
     "debug": "Correzioni",
     "users": "Utenti",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "enrichments": "Miglioramenti",
     "triggers": "Attivatori",
     "roles": "Ruoli",
@@ -1986,10 +1986,10 @@
   },
   "detectionModel": {
     "plusActive": {
-      "title": "Gestione del modello Frigate+",
+      "title": "Gestione del modello Hosted Models",
       "label": "Fonte del modello attuale",
-      "description": "Questa istanza utilizza un modello Frigate+. Seleziona o modifica il tuo modello nelle impostazioni di Frigate+.",
-      "goToFrigatePlus": "Vai alle impostazioni di Frigate+",
+      "description": "Questa istanza utilizza un modello HeisenCam+. Seleziona o modifica il tuo modello nelle impostazioni di HeisenCam+.",
+      "goToFrigatePlus": "Vai alle impostazioni di Hosted Models",
       "showModelForm": "Configura manualmente un modello"
     }
   },
@@ -2246,15 +2246,15 @@
       "model": "Modello di rilevamento"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "Modello personalizzato"
     },
     "mismatch": {
-      "warning": "Il modello Frigate+ attuale \"{{model}}\" richiede il rilevatore {{required}}. Seleziona un modello compatibile qui sotto oppure passa a Modello personalizzato prima di salvare."
+      "warning": "Il modello Hosted Models attuale \"{{model}}\" richiede il rilevatore {{required}}. Seleziona un modello compatibile qui sotto oppure passa a Modello personalizzato prima di salvare."
     },
     "plusModel": {
       "requiresDetector": "Richiede: {{detector}}",
-      "noModelSelected": "Seleziona un modello Frigate+"
+      "noModelSelected": "Seleziona un modello Hosted Models"
     },
     "toast": {
       "saveSuccess": "Rilevatori e impostazioni del modello salvati. Riavviare HeisenCam per applicare le modifiche.",

@@ -1,4 +1,8 @@
 {
+  "demo": {
+    "loadError": "Could not load the demo. Reload the page to try again.",
+    "sources": "Demo recording sources"
+  },
   "time": {
     "untilForTime": "Until {{time}}",
     "untilForRestart": "Until HeisenCam restarts.",
@@ -256,7 +260,7 @@
     "help": "Help",
     "documentation": {
       "title": "Documentation",
-      "label": "Upstream Frigate documentation"
+      "label": "Upstream HeisenCam documentation"
     },
     "restart": "Restart HeisenCam",
     "live": {

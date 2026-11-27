@@ -190,8 +190,8 @@
       "aria": "查看相似的目标/物体"
     },
     "submitToPlus": {
-      "label": "提交至 Frigate+",
-      "aria": "提交至 Frigate Plus"
+      "label": "提交至 Hosted Models",
+      "aria": "提交至 HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "在历史记录中查看",

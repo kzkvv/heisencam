@@ -3,7 +3,7 @@
   "noPreviewFound": "Priekšskatījums nav atrasts",
   "noPreviewFoundFor": "{{cameraName}} nav atrasts priekšskatījums",
   "submitFrigatePlus": {
-    "title": "Nosūtīt šo kadru uz Frigate+?",
+    "title": "Nosūtīt šo kadru uz Hosted Models?",
     "submit": "Iesniegt",
     "previewError": "Nevar ielādēt atēla priekškatījumu. Ieraksts var nebūt pieejams, šōbrīd."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Kadrs veiksmīgi iesniegts pakalpojumam Frigate+"
+      "submittedFrigatePlus": "Kadrs veiksmīgi iesniegts pakalpojumam Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Neizdevās iesniegt kadru Frigate+"
+      "submitFrigatePlusFailed": "Neizdevās iesniegt kadru Hosted Models"
     }
   },
   "cameraOff": "Kamera ir izslēgta"

@@ -3,7 +3,7 @@
   "noPreviewFound": "لا يوجد معاينة",
   "noPreviewFoundFor": "لا يوجد معاينة لـ{{cameraName}}",
   "submitFrigatePlus": {
-    "title": "هل ترغب بإرسال هذه الصوره الى Frigate+؟",
+    "title": "هل ترغب بإرسال هذه الصوره الى Hosted Models؟",
     "submit": "تقديم"
   },
   "livePlayerRequiredIOSVersion": "مطلوب نظام iOS 17.1 أو أكبر لهذا النوع من البث المباشر.",

@@ -196,19 +196,20 @@ If your distribution does not offer NVIDIA driver packages, you can [download th
 
 Additional configuration is needed for the Docker container to be able to access the NVIDIA GPU. The supported method for this is to install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) and specify the GPU to Docker. How you do this depends on how Docker is being run:
 
+Build the [NVIDIA variant for HeisenCam](../frigate/installation.md#docker) before starting the container. The local examples below use the custom images built for these devices.
+
 #### Docker Compose - Nvidia GPU
 
 ```yaml {5-12}
 services:
   frigate:
     ...
-    image: ghcr.io/blakeblackshear/frigate:stable-tensorrt
+    image: heisencam:local-tensorrt
     deploy:    # <------------- Add this section
       resources:
         reservations:
           devices:
             - driver: nvidia
-              device_ids: ['0'] # this is only needed when using multiple GPUs
               count: 1 # number of GPUs
               capabilities: [gpu]
 ```
@@ -220,7 +221,7 @@ docker run -d \
   --name frigate \
   ...
   --gpus=all \
-  ghcr.io/blakeblackshear/frigate:stable-tensorrt
+  heisencam:local-tensorrt
 ```
 
 ### Setup Decoder
@@ -352,7 +353,7 @@ Or map in all the `/dev/video*` devices.
 
 ## NVIDIA Jetson
 
-A separate set of docker images is available for Jetson devices. They come with an `ffmpeg` build with codecs that use the Jetson's dedicated media engine. If your Jetson host is running Jetpack 6.0+ use the `stable-tensorrt-jp6` tagged image. Note that the Orin Nano has no video encoder, so frigate will use software encoding on this platform, but the image will still allow hardware decoding and tensorrt object detection.
+A separate set of docker images is available for Jetson devices. They come with an `ffmpeg` build with codecs that use the Jetson's dedicated media engine. For JetPack 6.0+, build HeisenCam against a matching JetPack 6 base and tag the output `heisencam:local-tensorrt-jp6`. Note that the Orin Nano has no video encoder, so frigate will use software encoding on this platform, but the image will still allow hardware decoding and tensorrt object detection.
 
 You will need to use the image with the nvidia container runtime:
 
@@ -361,8 +362,8 @@ You will need to use the image with the nvidia container runtime:
 ```bash {3}
 docker run -d \
   ...
-  --runtime nvidia
-  ghcr.io/blakeblackshear/frigate:stable-tensorrt-jp6
+  --runtime nvidia \
+  heisencam:local-tensorrt-jp6
 ```
 
 ### Docker Compose - Jetson
@@ -371,7 +372,7 @@ docker run -d \
 services:
   frigate:
     ...
-    image: ghcr.io/blakeblackshear/frigate:stable-tensorrt-jp6
+    image: heisencam:local-tensorrt-jp6
     runtime: nvidia   # Add this
 ```
 

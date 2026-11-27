@@ -191,8 +191,8 @@
       "aria": "Ähnliche verfolgte Objekte finden"
     },
     "submitToPlus": {
-      "label": "Bei Frigate+ einreichen",
-      "aria": "Bei Frigate+ einreichen"
+      "label": "Bei Hosted Models einreichen",
+      "aria": "Bei Hosted Models einreichen"
     },
     "viewInHistory": {
       "label": "Ansicht im Verlauf",

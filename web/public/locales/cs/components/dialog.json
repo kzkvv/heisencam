@@ -13,7 +13,7 @@
     "plus": {
       "review": {
         "question": {
-          "label": "Potvrďte tento štítek pro Frigate Plus",
+          "label": "Potvrďte tento štítek pro HeisenCam Plus",
           "ask_a": "Je tento objekt <code>{{label}}</code>?",
           "ask_an": "Tento objekt je <code>{{label}}</code>?",
           "ask_full": "Je tento objekt <code>{{untranslatedLabel}}</code> ({{translatedLabel}})?"
@@ -22,11 +22,11 @@
           "submitted": "Odesláno"
         },
         "toast": {
-          "error": "Odeslání do Frigate+ se nezdařilo. Zkontrolujte své síťové připojení a zkuste to znovu."
+          "error": "Odeslání do Hosted Models se nezdařilo. Zkontrolujte své síťové připojení a zkuste to znovu."
         }
       },
       "submitToPlus": {
-        "label": "Odeslat do Frigate+",
+        "label": "Odeslat do Hosted Models",
         "desc": "Objekty na místech, kterým se chcete vyhnout, nejsou falešné poplachy. Označení takových objektů jako falešných pozitiv může model zmást."
       }
     },

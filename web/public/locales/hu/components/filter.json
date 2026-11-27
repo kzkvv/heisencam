@@ -55,8 +55,8 @@
   "features": {
     "hasSnapshot": "Van pillanatképe",
     "submittedToFrigatePlus": {
-      "label": "Elküldve a Frigate+-hoz",
-      "tips": "Először szűrjön azokra a követett objektumokra, amelyek rendelkeznek pillanatképpel.<br /><br />A pillanatkép nélküli követett objektumokat nem lehet beküldeni a Frigate+ rendszerébe."
+      "label": "Elküldve a HeisenCam+-hoz",
+      "tips": "Először szűrjön azokra a követett objektumokra, amelyek rendelkeznek pillanatképpel.<br /><br />A pillanatkép nélküli követett objektumokat nem lehet beküldeni a Hosted Models rendszerébe."
     },
     "label": "Funkciók",
     "hasVideoClip": "Van videója"

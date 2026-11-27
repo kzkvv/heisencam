@@ -25,7 +25,9 @@
       "kind": "Video",
       "width": 960,
       "height": 540,
-      "seconds": 16.0
+      "seconds": 16.0,
+      "sha256": "a0258139a945bb306b830224bb0b0b192301fd09e5c7b4aebf5510fb55d2b152",
+      "acquisition": "16-second HLS excerpt"
     },
     {
       "id": "downtown_skywalk",
@@ -37,7 +39,9 @@
       "kind": "Time-lapse",
       "width": 800,
       "height": 600,
-      "seconds": 16.0
+      "seconds": 16.0,
+      "sha256": "5ed4798618f552a285e501d8307287261ac1828a03db3d6c1cd0337eb83a4ee2",
+      "acquisition": "Eight successive public JPEGs, displayed for two seconds each"
     },
     {
       "id": "bay_bridge",
@@ -49,7 +53,9 @@
       "kind": "Video",
       "width": 720,
       "height": 528,
-      "seconds": 16.0
+      "seconds": 16.0,
+      "sha256": "93bf5a9230c86f99ac943e82cb4e5c2c083cbd9b15ce1d19697a06ceac4a5ee1",
+      "acquisition": "16-second HLS excerpt"
     },
     {
       "id": "twelfth_avenue",
@@ -61,7 +67,9 @@
       "kind": "Time-lapse",
       "width": 800,
       "height": 600,
-      "seconds": 16.0
+      "seconds": 16.0,
+      "sha256": "dd87b3fdc61ae6a3fab924a8556b418f54f58d4c9bfb09f3dd531d7f3eddd33d",
+      "acquisition": "Eight successive public JPEGs, displayed for two seconds each"
     },
     {
       "id": "pacific_coast",
@@ -73,7 +81,9 @@
       "kind": "Video",
       "width": 960,
       "height": 540,
-      "seconds": 16.0
+      "seconds": 16.0,
+      "sha256": "8f17e3c84a6d6aa37ca777daf537b006c72a01c5edb327ccc02572a3592f12b0",
+      "acquisition": "16-second HLS excerpt"
     },
     {
       "id": "ninth_avenue",
@@ -85,7 +95,9 @@
       "kind": "Time-lapse",
       "width": 800,
       "height": 600,
-      "seconds": 16.0
+      "seconds": 16.0,
+      "sha256": "2dfc49eb078343ebe5233b0aae79410e2de0306a53613c7d1deaaa074dd5c4ca",
+      "acquisition": "Eight successive public JPEGs, displayed for two seconds each"
     }
   ],
   "events": [

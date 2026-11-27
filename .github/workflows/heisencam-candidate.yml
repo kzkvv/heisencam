@@ -1,9 +1,9 @@
 name: HeisenCam candidate
 on:
   push:
-    branches: [heisencam/0.18.3]
+    branches: [dev, heisencam/0.18.3]
   pull_request:
-    branches: [heisencam/0.18.3]
+    branches: [dev, heisencam/0.18.3]
 
 permissions:
   contents: read
@@ -39,6 +39,21 @@ jobs:
         env:
           E2E_STRICT_ERRORS: "1"
 
+  backend-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Build and verify the proposed image
+        run: |
+          image="heisencam:pr-$GITHUB_SHA"
+          docker build -f docker/classic/Dockerfile \
+            --build-arg HEISENCAM_REVISION="$GITHUB_SHA" --build-arg HEISENCAM_CHANNEL=pr -t "$image" .
+          bash tools/check_candidate.sh "$image" "$GITHUB_SHA"
+
   native:
     if: github.event_name == 'push' && github.repository == 'kzkvv/heisencam'
     needs: web
@@ -61,23 +76,12 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
           persist-credentials: false
-      - name: Build candidate from this revision
-        run: |
-          docker build --platform "linux/$ARCH" -f docker/classic/Dockerfile \
-            --build-arg HEISENCAM_REVISION="$GITHUB_SHA" -t "$IMAGE:sha-$GITHUB_SHA-$ARCH" .
-      - name: Test the image
+      - name: Build and verify the candidate
         run: |
           image="$IMAGE:sha-$GITHUB_SHA-$ARCH"
-          test "$(docker image inspect "$image" --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}')" = "$GITHUB_SHA"
-          docker run --rm --network none --entrypoint python3 "$image" -m unittest \
-            frigate.test.test_detection_evidence frigate.test.test_debug_replay \
-            frigate.test.test_video frigate.test.test_performance \
-            frigate.test.http_api.test_http_media
-          docker run --rm --network none --entrypoint python3 -v "$PWD/tools:/opt/frigate/tools:ro" "$image" \
-            -m unittest discover -s /opt/frigate/tools -p test_performance_smoke.py
-          docker run --rm --network none --entrypoint python3 \
-            -v "$PWD/generate_api_auth_spec.py:/opt/frigate/generate_api_auth_spec.py:ro" \
-            -v "$PWD/docs/static:/opt/frigate/docs/static:ro" "$image" /opt/frigate/generate_api_auth_spec.py --check
+          docker build --platform "linux/$ARCH" -f docker/classic/Dockerfile \
+            --build-arg HEISENCAM_REVISION="$GITHUB_SHA" --build-arg HEISENCAM_CHANNEL=candidate -t "$image" .
+          bash tools/check_candidate.sh "$image" "$GITHUB_SHA"
       - name: Publish verified architecture image
         env:
           REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -86,6 +90,7 @@ jobs:
           docker push "$IMAGE:sha-$GITHUB_SHA-$ARCH"
 
   manifest:
+    if: github.event_name == 'push' && github.repository == 'kzkvv/heisencam'
     needs: native
     runs-on: ubuntu-24.04
     timeout-minutes: 15

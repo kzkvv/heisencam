@@ -192,8 +192,8 @@
       "aria": "Buscar objetos rastreados similares"
     },
     "submitToPlus": {
-      "label": "Enviar a Frigate+",
-      "aria": "Enviar a Frigate Plus"
+      "label": "Enviar a Hosted Models",
+      "aria": "Enviar a HeisenCam Plus"
     },
     "viewInHistory": {
       "aria": "Ver en Historial",

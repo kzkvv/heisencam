@@ -206,8 +206,8 @@
       "aria": "Запытаць транскрыпцыю гуку"
     },
     "submitToPlus": {
-      "label": "Адправіць у Frigate+",
-      "aria": "Адправіць у Frigate Plus"
+      "label": "Адправіць у Hosted Models",
+      "aria": "Адправіць у HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Паказаць у гісторыі",

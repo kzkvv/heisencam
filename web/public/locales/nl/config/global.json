@@ -474,7 +474,7 @@
             "description": "Detector-specifieke modelconfiguratie-opties (pad, invoergrootte, enz.).",
             "path": {
                 "label": "Pad naar aangepast objectdetectormodel",
-                "description": "Pad naar een aangepast detectiemodel (of plus://<model_id> voor Frigate+-modellen)."
+                "description": "Pad naar een aangepast detectiemodel (of plus://<model_id> voor HeisenCam+-modellen)."
             },
             "labelmap_path": {
                 "label": "Labelmap voor aangepaste objectdetector",
@@ -647,7 +647,7 @@
         "description": "Instellingen voor het configureren van een aangepast objectdetectiemodel en de invoervorm.",
         "path": {
             "label": "Pad naar aangepast objectdetectormodel",
-            "description": "Pad naar een aangepast detectiemodel (of plus://<model_id> voor Frigate+-modellen)."
+            "description": "Pad naar een aangepast detectiemodel (of plus://<model_id> voor HeisenCam+-modellen)."
         },
         "labelmap_path": {
             "label": "Labelmap voor aangepaste objectdetector",

@@ -266,5 +266,6 @@
       "classification_speed": "{{name}} Classification Speed",
       "classification_events_per_second": "{{name}} Classification Events Per Second"
     }
-  }
+  },
+  "buildInfo": "{{channel}} build {{revision}} · Runtime {{base}}"
 }

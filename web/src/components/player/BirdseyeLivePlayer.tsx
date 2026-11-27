@@ -7,6 +7,8 @@ import { LivePlayerMode } from "@/types/live";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { ImageShadowOverlay } from "../overlay/ImageShadowOverlay";
+import DemoVideo from "@/demo/DemoVideo";
+import { demoBuild } from "@/env";
 
 type LivePlayerProps = {
   className?: string;
@@ -28,7 +30,9 @@ export default function BirdseyeLivePlayer({
   onClick,
 }: LivePlayerProps) {
   let player;
-  if (liveMode == "webrtc") {
+  if (demoBuild) {
+    player = <DemoVideo camera="birdseye" loop />;
+  } else if (liveMode == "webrtc") {
     player = (
       <WebRtcPlayer
         className={`size-full rounded-lg md:rounded-2xl`}

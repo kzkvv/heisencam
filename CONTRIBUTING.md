@@ -1,6 +1,6 @@
-# Contributing to Frigate
+# Contributing to HeisenCam
 
-Thank you for your interest in contributing to Frigate. This document covers the expectations and guidelines for contributions. Please read it before submitting a pull request.
+Thank you for your interest in contributing to HeisenCam. This document covers the expectations and guidelines for contributions. Please read it before submitting a pull request.
 
 All participation in this project, including pull requests, issues, and discussions, is covered by our [AI policy](AI_POLICY.md).
 
@@ -18,21 +18,10 @@ A pull request is more than just code — it's a request for the maintainers to 
 
 Before writing code for a new feature:
 
-1. **Check for existing discussion.** Search [feature requests](https://github.com/blakeblackshear/frigate/issues) and [discussions](https://github.com/blakeblackshear/frigate/discussions) to see if it's been proposed or discussed. Feature requests tagged with "planned" are on our radar — we plan to get to them, but we don't maintain a public roadmap or timeline. Check in with us first if you have interest in contributing to one.
-2. **Start a discussion or feature request first.** This helps ensure your idea aligns with Frigate's direction before you invest time building it. Community interest in a feature request helps us gauge demand, though a great idea is a great idea even without a crowd behind it.
+1. **Search existing reports.** Check [issues](https://github.com/kzkvv/heisencam/issues) and [pull requests](https://github.com/kzkvv/heisencam/pulls).
+2. **Describe the use case.** Open an issue in this repository before undertaking a large change.
 
-## AI usage policy
-
-AI tools are a reality of modern development and we're not opposed to their use. But we need to understand your relationship with the code you're submitting, and we need to hear from you rather than from your AI assistant.
-
-**Read the [AI policy](AI_POLICY.md) before you open a pull request.** It is short, and it applies to everything you post here. The parts that most often catch people out:
-
-- A person has to be in the loop. Don't wire a bot or agent up to open pull requests, issues, or discussions on your behalf.
-- Disclose how AI was used. The PR template asks for this. Be honest, it won't automatically disqualify your PR.
-- Review and test everything you submit, and be prepared to explain every line when asked.
-- Don't use AI to write your PR description or your replies to maintainers.
-
-Pull requests that appear to be unreviewed AI output will be closed without review.
+See the [AI assistance policy](AI_POLICY.md) for contribution disclosure.
 
 ## Pull request guidelines
 
@@ -48,7 +37,7 @@ Pull requests that appear to be unreviewed AI output will be closed without revi
 
 - **Does it work?** Tested locally, tests pass, no regressions.
 - **Is it maintainable?** Clear code, appropriate complexity, good separation of concerns.
-- **Does it fit?** Consistent with Frigate's architecture and design philosophy.
+- **Does it fit?** Consistent with HeisenCam's architecture and design philosophy.
 - **Is it scoped well?** Solves the stated problem without unnecessary additions.
 
 ### After submitting
@@ -119,17 +108,10 @@ migrations/        # Database migrations
 
 ## Translations
 
-Frigate uses [Weblate](https://hosted.weblate.org/projects/frigate-nvr/) for managing language translations. If you'd like to help translate Frigate into your language:
-
-1. Visit the [Frigate project on Weblate](https://hosted.weblate.org/projects/frigate-nvr/).
-2. Create an account or log in.
-3. Browse the available languages and select the one you'd like to contribute to, or request a new language.
-4. Translate strings directly in the Weblate interface — no code changes or pull requests needed.
-
-Translation contributions through Weblate are automatically synced to the repository. Please do not submit pull requests for translation changes — use Weblate instead so that translations are properly tracked and coordinated.
+Update the appropriate files under `web/public/locales/<language>/` and describe any strings that need a native speaker's review in your pull request.
 
 ## Resources
 
-- [Documentation](https://docs.frigate.video)
-- [Discussions, Support, and Bug Reports](https://github.com/blakeblackshear/frigate/discussions)
-- [Feature Requests](https://github.com/blakeblackshear/frigate/issues)
+- [Documentation](https://docs.heisen.cam)
+- [HeisenCam issues](https://github.com/kzkvv/heisencam/issues)
+- [Pull requests](https://github.com/kzkvv/heisencam/pulls)

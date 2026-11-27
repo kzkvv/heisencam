@@ -290,7 +290,7 @@ def update_yaml_file_bulk(file_path: str, updates: dict[str, Any]):
         with open(file_path, "w") as f:
             yaml.dump(data, f)
     except Exception as e:
-        logger.error(f"Unable to write to Frigate config file {file_path}: {e}")
+        logger.error(f"Unable to write to HeisenCam config file {file_path}: {e}")
 
 
 def clear_orphaned_comments(collection, parent, parent_key) -> None:
@@ -375,7 +375,7 @@ def clear_and_unlink(file: Path, missing_ok: bool = True) -> None:
     if not missing_ok and not file.exists():
         raise FileNotFoundError()
 
-    # empty contents of file before unlinking https://github.com/blakeblackshear/frigate/issues/4769
+    # Truncate before unlinking to release disk space held by readers.
     with open(file, "w"):
         pass
 

@@ -1251,7 +1251,7 @@
             "description": "Opcje konfiguracji modelu specyficzne dla detektora (ścieżka, rozmiar wejściowy itp.).",
             "path": {
                 "label": "Ścieżka do niestandardowego modelu detektora",
-                "description": "Ścieżka do pliku niestandardowego modelu detekcji (lub plus://<model_id> dla modeli Frigate+)."
+                "description": "Ścieżka do pliku niestandardowego modelu detekcji (lub plus://<model_id> dla modeli Hosted Models)."
             },
             "labelmap_path": {
                 "label": "Mapa etykiet dla niestandardowego detektora",
@@ -1408,7 +1408,7 @@
         "description": "Ustawienia konfiguracji niestandardowego modelu detekcji obiektów i jego kształtu wejściowego.",
         "path": {
             "label": "Ścieżka do modelu",
-            "description": "Ścieżka do pliku niestandardowego modelu detekcji (lub plus://<model_id> dla modeli Frigate+)."
+            "description": "Ścieżka do pliku niestandardowego modelu detekcji (lub plus://<model_id> dla modeli Hosted Models)."
         },
         "labelmap_path": {
             "label": "Ścieżka mapy etykiet",

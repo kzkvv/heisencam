@@ -33,7 +33,7 @@
     "title": "Потокът е офлайн"
   },
   "submitFrigatePlus": {
-    "title": "Да се изпрати ли този кадър към Frigate+?",
+    "title": "Да се изпрати ли този кадър към Hosted Models?",
     "submit": "Изпрати",
     "previewError": "Не можe да се зареди предварителен преглед на моментната снимка. Записът може да не е наличен в момента."
   },
@@ -43,10 +43,10 @@
   "cameraDisabled": "Камерата е изключена",
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Успешно изпратен кадър към Frigate+"
+      "submittedFrigatePlus": "Успешно изпратен кадър към Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Неуспешно изпратен кадър към Frigate+"
+      "submitFrigatePlusFailed": "Неуспешно изпратен кадър към Hosted Models"
     }
   },
   "cameraOff": "Камерата е изключена"

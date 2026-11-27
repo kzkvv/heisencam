@@ -197,8 +197,8 @@
       "label": "Завантажити Відео"
     },
     "submitToPlus": {
-      "aria": "Надіслати до Frigate Plus",
-      "label": "Надіслати до Frigate+"
+      "aria": "Надіслати до HeisenCam Plus",
+      "label": "Надіслати до Hosted Models"
     },
     "downloadSnapshot": {
       "label": "Завантажити знімок",

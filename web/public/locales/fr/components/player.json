@@ -3,7 +3,7 @@
   "noPreviewFoundFor": "Aucun aperçu trouvé pour {{cameraName}}",
   "noPreviewFound": "Aucun aperçu trouvé",
   "submitFrigatePlus": {
-    "title": "Soumettre cette image à Frigate+ ?",
+    "title": "Soumettre cette image à Hosted Models ?",
     "submit": "Soumettre",
     "previewError": "Impossible de télécharger le snapshot. L'enregistrement ne pas disponible sur cette période."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "error": {
-      "submitFrigatePlusFailed": "Échec de la soumission de l'image à Frigate+"
+      "submitFrigatePlusFailed": "Échec de la soumission de l'image à Hosted Models"
     },
     "success": {
-      "submittedFrigatePlus": "Image soumise avec succès à Frigate+"
+      "submittedFrigatePlus": "Image soumise avec succès à Hosted Models"
     }
   },
   "cameraOff": "La camera est éteinte"

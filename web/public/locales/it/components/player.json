@@ -3,7 +3,7 @@
   "noRecordingsFoundForThisTime": "Nessuna registrazione trovata per questo intervallo",
   "noPreviewFoundFor": "Nessuna anteprima trovata per {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Vuoi inviare questo fotogramma a Frigate+?",
+    "title": "Vuoi inviare questo fotogramma a Hosted Models?",
     "submit": "Invia",
     "previewError": "Impossibile caricare l'anteprima dell'istantanea. La registrazione potrebbe non essere disponibile al momento."
   },
@@ -42,10 +42,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Fotogramma inviato correttamente a Frigate+"
+      "submittedFrigatePlus": "Fotogramma inviato correttamente a Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Impossibile inviare il fotogramma a Frigate+"
+      "submitFrigatePlusFailed": "Impossibile inviare il fotogramma a Hosted Models"
     }
   },
   "cameraDisabled": "La telecamera è disabilita",

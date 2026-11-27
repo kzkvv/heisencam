@@ -12,6 +12,7 @@ from pathlib import Path
 
 import psutil
 import uvicorn
+from peewee import DatabaseError
 from peewee_migrate import Router
 from playhouse.sqlite_ext import SqliteExtDatabase
 
@@ -190,6 +191,16 @@ class FrigateApp:
 
         # Migrate DB schema
         migrate_db = SqliteExtDatabase(self.config.database.path)
+        try:
+            integrity = migrate_db.execute_sql("PRAGMA quick_check(1)").fetchone()
+            if integrity != ("ok",):
+                raise DatabaseError(str(integrity))
+        except DatabaseError as exc:
+            migrate_db.close()
+            raise RuntimeError(
+                "Could not validate the recording database. Keep the database and "
+                "its journal files for recovery, or restore a known-good backup."
+            ) from exc
 
         # Run migrations
         del logging.getLogger("peewee_migrate").handlers[:]
@@ -557,7 +568,7 @@ class FrigateApp:
                 logger.info("********************************************************")
 
     def start(self) -> None:
-        logger.info(f"Starting Frigate ({VERSION})")
+        logger.info(f"Starting HeisenCam ({VERSION})")
 
         # Ensure global state.
         self.ensure_dirs()
@@ -634,6 +645,13 @@ class FrigateApp:
                     self.dispatcher,
                     self.profile_manager,
                     config_holder=self.config_holder,
+                    capture_workers=(
+                        self.camera_maintainer,
+                        self.detected_frames_processor,
+                        self.event_processor,
+                        self.storage_maintainer,
+                        self.recording_process,
+                    ),
                 ),
                 host="127.0.0.1",
                 port=5001,

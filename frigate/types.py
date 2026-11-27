@@ -11,7 +11,7 @@ class StatsTrackingTypes(TypedDict):
     embeddings_metrics: DataProcessorMetrics
     detectors: dict[str, ObjectDetectProcess]
     started: int
-    latest_frigate_version: str
+    latest_release_version: str
     last_updated: int
     processes: dict[str, int]
 

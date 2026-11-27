@@ -6,7 +6,7 @@
     "masksAndZones": "Maske ve Alan Düzenleyici - HeisenCam",
     "authentication": "Kimlik Doğrulama Ayarları - HeisenCam",
     "motionTuner": "Hareket Algılama Ayarları - HeisenCam",
-    "frigatePlus": "Frigate+ Ayarları - HeisenCam",
+    "frigatePlus": "Hosted Models Ayarları - HeisenCam",
     "object": "Hata Ayıklama - HeisenCam",
     "general": "Kullanıcı Arayüzü Ayarları – HeisenCam",
     "notifications": "Bildirim Ayarları - HeisenCam",
@@ -17,7 +17,7 @@
   "menu": {
     "masksAndZones": "Maskeler / Alanlar",
     "users": "Kullanıcılar",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "ui": "Arayüz",
     "notifications": "Bildirimler",
     "motionTuner": "Hareket Algılama",
@@ -660,13 +660,13 @@
     "unsavedRegistrations": "Kaydedilmemiş bildirim ayar değişiklikleri"
   },
   "frigatePlus": {
-    "title": "Frigate+ Ayarları",
+    "title": "Hosted Models Ayarları",
     "apiKey": {
-      "title": "Frigate+ API Anahtarı",
-      "validated": "Frigate+ API anahtarınız doğrulandı",
-      "plusLink": "Frigate+ hakkında daha fazla bilgi edinin",
-      "notValidated": "Frigate+ API anahtarı bulunamadı veya doğrulanamadı",
-      "desc": "Frigate+ API anahtarı, Frigate+ hizmetiyle entegrasyonu sağlar."
+      "title": "Hosted Models API Anahtarı",
+      "validated": "Hosted Models API anahtarınız doğrulandı",
+      "plusLink": "Hosted Models hakkında daha fazla bilgi edinin",
+      "notValidated": "Hosted Models API anahtarı bulunamadı veya doğrulanamadı",
+      "desc": "Hosted Models API anahtarı, Hosted Models hizmetiyle entegrasyonu sağlar."
     },
     "snapshotConfig": {
       "title": "Fotoğraf Yapılandırması",
@@ -676,8 +676,8 @@
         "snapshots": "Fotoğraflar",
         "cleanCopySnapshots": "<code>clean_copy</code> Fotoğraflar"
       },
-      "desc": "Frigate+'a göndermek için yapılandırmanızda hem fotoğrafların hem de <code>clean_copy</code> fotoğraflarının etkinleştirilmesi gerekir.",
-      "cleanCopyWarning": "Bazı kameralarda fotoğraflar etkin ancak temiz kopya özelliği devre dışı. Bu kameralardan Frigate+'a görüntü gönderebilmek için fotoğraf(snapshots) yapılandırmanızda <code>clean_copy</code>'yi etkinleştirmeniz gerekiyor."
+      "desc": "Hosted Models'a göndermek için yapılandırmanızda hem fotoğrafların hem de <code>clean_copy</code> fotoğraflarının etkinleştirilmesi gerekir.",
+      "cleanCopyWarning": "Bazı kameralarda fotoğraflar etkin ancak temiz kopya özelliği devre dışı. Bu kameralardan Hosted Models'a görüntü gönderebilmek için fotoğraf(snapshots) yapılandırmanızda <code>clean_copy</code>'yi etkinleştirmeniz gerekiyor."
     },
     "modelInfo": {
       "error": "Model bilgileri yüklenemedi",
@@ -686,7 +686,7 @@
       "modelType": "Model Türü",
       "dimensions": "Boyutlar",
       "availableModels": "Kullanılabilir Modeller",
-      "modelSelect": "Frigate+'daki kullanılabilir modelleriniz buradan seçilebilir. Yalnızca mevcut algılayıcı yapılandırmanızla uyumlu modellerin seçilebileceğini unutmayın.",
+      "modelSelect": "Hosted Models'daki kullanılabilir modelleriniz buradan seçilebilir. Yalnızca mevcut algılayıcı yapılandırmanızla uyumlu modellerin seçilebileceğini unutmayın.",
       "baseModel": "Temel Model",
       "title": "Model Bilgileri",
       "trainDate": "Eğitim Tarihi",
@@ -698,11 +698,11 @@
       }
     },
     "toast": {
-      "success": "Frigate+ ayarları kaydedildi. Değişiklikleri uygulamak için HeisenCam'i yeniden başlatın.",
+      "success": "Hosted Models ayarları kaydedildi. Değişiklikleri uygulamak için HeisenCam'i yeniden başlatın.",
       "error": "Yapılandırma değişiklikleri kaydedilemedi: {{errorMessage}}"
     },
-    "restart_required": "Yeniden Başlatma Gerekli (Frigate+ modeli değiştirildi)",
-    "unsavedChanges": "Kaydedilmemiş Frigate+ ayar değişiklikleri"
+    "restart_required": "Yeniden Başlatma Gerekli (Hosted Models modeli değiştirildi)",
+    "unsavedChanges": "Kaydedilmemiş Hosted Models ayar değişiklikleri"
   },
   "enrichments": {
     "birdClassification": {

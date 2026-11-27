@@ -435,7 +435,7 @@
             "description": "Opciones de configuración de modelo específicas del detector (ruta, tamaño de entrada, etc.).",
             "path": {
                 "label": "Ruta del modelo de detector de objetos personalizado",
-                "description": "Ruta a un archivo de modelo de detección personalizado (o plus://<model_id> para modelos de Frigate+)."
+                "description": "Ruta a un archivo de modelo de detección personalizado (o plus://<model_id> para modelos de Hosted Models)."
             },
             "labelmap_path": {
                 "label": "Mapa de etiquetas para detector de objetos personalizado",
@@ -1516,7 +1516,7 @@
         "description": "Ajustes para configurar un modelo de detección de objetos personalizado y su forma de entrada.",
         "path": {
             "label": "Ruta del modelo de detector de objetos personalizado",
-            "description": "Ruta a un archivo de modelo de detección personalizado (o plus://<model_id> para modelos de Frigate+)."
+            "description": "Ruta a un archivo de modelo de detección personalizado (o plus://<model_id> para modelos de Hosted Models)."
         },
         "labelmap_path": {
             "label": "Mapa de etiquetas para detector de objetos personalizado",

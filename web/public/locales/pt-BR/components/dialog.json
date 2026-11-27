@@ -12,12 +12,12 @@
   "explore": {
     "plus": {
       "submitToPlus": {
-        "label": "Enviar para Frigate+",
+        "label": "Enviar para Hosted Models",
         "desc": "Objetos nos lugares que você quer evitar não são falsos positivos. Enviá-los como falsos positivos confundirá o modelo."
       },
       "review": {
         "question": {
-          "label": "Confirmar esse rótulo para Frigate Plus",
+          "label": "Confirmar esse rótulo para HeisenCam Plus",
           "ask_a": "Este objeto é um <code>{{label}}</code>?",
           "ask_an": "Este objeto é um <code>{{label}}</code>?",
           "ask_full": "Este objeto é um <code>{{untranslatedLabel}}</code> ({{translatedLabel}})?"
@@ -26,7 +26,7 @@
           "submitted": "Enviado"
         },
         "toast": {
-          "error": "Falha ao enviar para o Frigate+. Verifique sua conexão de rede e tente novamente."
+          "error": "Falha ao enviar para o HeisenCam+. Verifique sua conexão de rede e tente novamente."
         }
       }
     },

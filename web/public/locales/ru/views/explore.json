@@ -191,8 +191,8 @@
       "aria": "Найти похожие отслеживаемые объекты"
     },
     "submitToPlus": {
-      "label": "Отправить в Frigate+",
-      "aria": "Отправить в Frigate Plus"
+      "label": "Отправить в Облачные модели",
+      "aria": "Отправить в HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Посмотреть в Истории",
@@ -300,6 +300,15 @@
     "carousel": {
       "previous": "Предыдущий слайд",
       "next": "Следующий слайд"
+    }
+  },
+  "classic": {
+    "inProgress": "В процессе",
+    "eventTabs": "Подробности события",
+    "tabs": {
+      "clip": "Запись",
+      "snapshot": "Снимок",
+      "tracking_details": "Отслеживание"
     }
   }
 }

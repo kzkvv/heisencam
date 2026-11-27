@@ -54,6 +54,7 @@ from frigate.config.camera.updater import (
 from frigate.const import (
     CAMERA_CONTROLS_LOCKED,
     CAMERA_CONTROLS_LOCKED_MESSAGE,
+    DOCS_URL,
     LOCKED_CAMERA_SECTIONS,
     REDACTED_CREDENTIAL_SENTINEL,
 )
@@ -111,7 +112,33 @@ _PROBE_OUTER_TIMEOUT_SECONDS = 15
     "/", response_class=PlainTextResponse, dependencies=[Depends(allow_public())]
 )
 def is_healthy():
-    return "Frigate is running. Alive and healthy!"
+    return "HeisenCam is running. Alive and healthy!"
+
+
+@router.get("/ready", dependencies=[Depends(allow_public())])
+def readiness(request: Request) -> JSONResponse:
+    """Report capture readiness without exposing camera names."""
+    config = request.app.frigate_config
+    workers = request.app.state.capture_workers
+    if (
+        config.safe_mode
+        or not workers
+        or any(not worker.is_alive() for worker in workers)
+    ):
+        return JSONResponse(
+            {"ready": False, "reason": "capture_unavailable"}, status_code=503
+        )
+
+    now = datetime.now().timestamp()
+    processor = request.app.detected_frames_processor
+    for name, camera in config.cameras.items():
+        if camera.enabled and now - processor.get_current_frame_time(name) > max(
+            30, camera.ffmpeg.retry_interval or 10
+        ):
+            return JSONResponse(
+                {"ready": False, "reason": "capture_stale"}, status_code=503
+            )
+    return JSONResponse({"ready": True})
 
 
 @lru_cache(maxsize=1)
@@ -604,32 +631,38 @@ def _restricted_go2rtc_response(
     )
 
 
-def _protected_camera_settings(raw_config: str) -> tuple:
-    """Return file-backed enablement values relevant to the camera controls lock."""
-
-    def enabled_fields(section):
-        return (
-            section.get("enabled"),
-            *(
-                (section.get(key) or {}).get("enabled")
-                for key in sorted(LOCKED_CAMERA_SECTIONS)
-            ),
+def _protected_camera_settings(raw_config: str) -> dict[str, tuple[bool, ...]]:
+    """Return resolved enablement after inheritance and defaults."""
+    if not raw_config.strip():
+        return {}
+    config = FrigateConfig.parse_yaml(raw_config)
+    return {
+        name: (
+            camera.enabled,
+            camera.detect.enabled,
+            camera.motion.enabled,
+            camera.record.enabled,
         )
-
-    raw = ruamel.yaml.YAML(typ="safe").load(raw_config) or {}
-    return (
-        enabled_fields(raw),
-        {
-            name: enabled_fields(camera)
-            for name, camera in (raw.get("cameras") or {}).items()
-        },
-    )
+        for name, camera in config.cameras.items()
+    }
 
 
 def _camera_controls_conflict(old_config: str, new_config: str) -> JSONResponse | None:
-    if CAMERA_CONTROLS_LOCKED and _protected_camera_settings(
-        old_config
-    ) != _protected_camera_settings(new_config):
+    if not CAMERA_CONTROLS_LOCKED:
+        return None
+    try:
+        old = _protected_camera_settings(old_config)
+        new = _protected_camera_settings(new_config)
+    except (ValidationError, ValueError, ruamel.yaml.YAMLError):
+        # A safe-mode recovery cannot establish the previous effective states.
+        return JSONResponse(
+            {
+                "success": False,
+                "message": "Recover the locked configuration from its file.",
+            },
+            status_code=409,
+        )
+    if any(settings != new.get(name) for name, settings in old.items()):
         return JSONResponse(
             status_code=403,
             content={"success": False, "message": CAMERA_CONTROLS_LOCKED_MESSAGE},
@@ -695,7 +728,7 @@ def config_save(save_option: str, body: Any = Body(media_type="text/plain")):
             content=(
                 {
                     "success": False,
-                    "message": "Your configuration is invalid.\nSee the official documentation at docs.frigate.video.\n\n"
+                    "message": f"Your configuration is invalid.\nSee the documentation at {DOCS_URL}.\n\n"
                     + "\n".join(error_message),
                 }
             ),
@@ -707,7 +740,7 @@ def config_save(save_option: str, body: Any = Body(media_type="text/plain")):
             content=(
                 {
                     "success": False,
-                    "message": f"\nYour configuration is invalid.\nSee the official documentation at docs.frigate.video.\n\n{escape(str(traceback.format_exc()))}",
+                    "message": f"\nYour configuration is invalid.\nSee the documentation at {DOCS_URL}.\n\n{escape(str(traceback.format_exc()))}",
                 }
             ),
             status_code=400,
@@ -737,7 +770,7 @@ def config_save(save_option: str, body: Any = Body(media_type="text/plain")):
             content=(
                 {
                     "success": False,
-                    "message": "Could not write config file, be sure that Frigate has write permission on the config file.",
+                    "message": "Could not write config file, be sure that HeisenCam has write permission on the config file.",
                 }
             ),
             status_code=400,
@@ -747,12 +780,12 @@ def config_save(save_option: str, body: Any = Body(media_type="text/plain")):
         try:
             restart_frigate()
         except Exception as e:
-            logging.error(f"Error restarting Frigate: {e}")
+            logging.error(f"Error restarting HeisenCam: {e}")
             return JSONResponse(
                 content=(
                     {
                         "success": True,
-                        "message": "Config successfully saved, unable to restart Frigate",
+                        "message": "Config successfully saved, unable to restart HeisenCam",
                     }
                 ),
                 status_code=200,
@@ -1272,12 +1305,12 @@ def restart():
     try:
         restart_frigate()
     except Exception as e:
-        logging.error(f"Error restarting Frigate: {e}")
+        logging.error(f"Error restarting HeisenCam: {e}")
         return JSONResponse(
             content=(
                 {
                     "success": False,
-                    "message": "Unable to restart Frigate.",
+                    "message": "Unable to restart HeisenCam.",
                 }
             ),
             status_code=500,
@@ -1470,7 +1503,7 @@ def get_audio_labels():
 def plusModels(request: Request, filterByCurrentModelDetector: bool = False):
     if not request.app.frigate_config.plus_api.is_active():
         return JSONResponse(
-            content=({"success": False, "message": "Frigate+ is not enabled"}),
+            content=({"success": False, "message": "Hosted Models is not enabled"}),
             status_code=400,
         )
 

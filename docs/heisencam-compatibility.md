@@ -1,6 +1,6 @@
 # HeisenCam candidate and compatibility checks
 
-The candidate is based on upstream Frigate `v0.18.3` at `a19e23ae2dd3dd1082bf82a0ad5d2b62a5813676`. The classic interface and detection changes have a separate commit history on `heisencam/0.18.3`. Build from that branch or pull the image tagged `sha-<40-character commit SHA>`. Inspect `org.opencontainers.image.revision` on the image to identify the source revision.
+The candidate is based on the upstream release `v0.18.3` at `a19e23ae2dd3dd1082bf82a0ad5d2b62a5813676`. The classic interface and detection changes are in `dev`. Build from that branch or pull the image tagged `sha-<40-character commit SHA>`. Inspect `org.opencontainers.image.revision` on the image to identify the source revision.
 
 ## What the legacy archive contains
 
@@ -10,12 +10,12 @@ The annotated tag [legacy-workaround-1](https://github.com/kzkvv/heisencam/tree/
 
 | Legacy behavior | Candidate behavior |
 | --- | --- |
-| MQTT detect, motion and recording commands acknowledge the request without changing the underlying switch | Set `FRIGATE_CONFIG_ONLY_CAMERA_CONTROLS=true` for file-controlled enablement. The dispatcher ignores locked commands and the HTTP API rejects them with 403. |
+| MQTT detect, motion and recording commands acknowledge the request without changing the underlying switch | Set `HEISENCAM_CONFIG_ONLY_CAMERA_CONTROLS=true` for file-controlled enablement. The dispatcher ignores locked commands and the HTTP API rejects them with 403. |
 | Snapshot toggles and remote restart are suppressed | Snapshot and restart operations retain their upstream role and command semantics. The capture lock covers camera, motion, detect and recording enablement. |
 | Raw config and saving config return a disabled message | Native roles protect administrative config routes. The capture lock rejects changes to protected enablement values while allowing other settings to be edited. |
 | The event deletion handler returns a response without deleting media or the database row | Authorized event deletion is real in 0.18.3. A deployment that requires immutable evidence needs separate access controls and a retention policy. |
 
-The Python package, storage paths, environment prefix, MQTT default prefix, API routes and upstream version format remain compatible. The product name, UI, manifests, icons and OCI metadata identify HeisenCam. Frigate+ and third-party integrations retain their own names.
+The Python package, storage paths, environment prefix, MQTT default prefix, API routes and upstream version format remain compatible. The product name, UI, manifests, icons and OCI metadata identify HeisenCam. Hosted Models and third-party integrations retain their own names.
 
 ## Quality replay
 

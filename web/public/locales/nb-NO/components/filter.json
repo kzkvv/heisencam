@@ -13,8 +13,8 @@
   "features": {
     "hasVideoClip": "Har et videoklipp",
     "submittedToFrigatePlus": {
-      "label": "Sendt til Frigate+",
-      "tips": "Du må først filtrere på sporede objekter som har et stillbilde.<br /><br />Sporede objekter uten et stillbilde kan ikke sendes til Frigate+."
+      "label": "Sendt til Hosted Models",
+      "tips": "Du må først filtrere på sporede objekter som har et stillbilde.<br /><br />Sporede objekter uten et stillbilde kan ikke sendes til HeisenCam+."
     },
     "label": "Funksjoner",
     "hasSnapshot": "Har et stillbilde"

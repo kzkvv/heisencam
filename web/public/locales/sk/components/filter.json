@@ -39,8 +39,8 @@
     "hasSnapshot": "Má snímku",
     "hasVideoClip": "Má videoklip",
     "submittedToFrigatePlus": {
-      "label": "Odoslané do Frigate+",
-      "tips": "Najprv musíte filtrovať sledované objekty, ktoré majú snímku.<br /><br />Sledované objekty bez snímky nie je možné odoslať do Frigate+."
+      "label": "Odoslané do Hosted Models",
+      "tips": "Najprv musíte filtrovať sledované objekty, ktoré majú snímku.<br /><br />Sledované objekty bez snímky nie je možné odoslať do HeisenCam+."
     }
   },
   "sort": {

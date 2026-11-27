@@ -11,7 +11,7 @@ import requests
 from numpy import ndarray
 from requests.models import Response
 
-from frigate.const import PLUS_API_HOST, PLUS_ENV_VAR
+from frigate.const import DOCS_URL, PLUS_API_HOST, PLUS_ENV_VAR
 
 logger = logging.getLogger(__name__)
 
@@ -69,7 +69,7 @@ class PlusApi:
         ):
             if self.key is None:
                 raise Exception(
-                    "Plus API key not set. See https://docs.frigate.video/integrations/plus#set-your-api-key"
+                    f"Plus API key not set. See {DOCS_URL}/integrations/plus#set-your-api-key"
                 )
             parts = self.key.split(":")
             r = requests.get(f"{self.host}/v1/auth/token", auth=(parts[0], parts[1]))

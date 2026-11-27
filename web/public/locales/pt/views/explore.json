@@ -183,8 +183,8 @@
       "aria": "Encontrar objetos rastreados similares"
     },
     "submitToPlus": {
-      "label": "Enviar para o Frigate+",
-      "aria": "Enviar para o Frigate Plus"
+      "label": "Enviar para o Hosted Models",
+      "aria": "Enviar para o HeisenCam Plus"
     },
     "deleteTrackedObject": {
       "label": "Excluir este objeto rastreado"

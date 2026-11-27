@@ -48,8 +48,8 @@
       "label": "Намери подобни"
     },
     "submitToPlus": {
-      "label": "Изпрати към Frigate+",
-      "aria": "Изпрати към Frigate Plus"
+      "label": "Изпрати към Hosted Models",
+      "aria": "Изпрати към HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Виж в история",

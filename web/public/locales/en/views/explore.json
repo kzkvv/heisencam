@@ -214,8 +214,8 @@
       "aria": "Request audio transcription"
     },
     "submitToPlus": {
-      "label": "Submit to Frigate+",
-      "aria": "Submit to Frigate Plus"
+      "label": "Submit to Hosted Models",
+      "aria": "Submit to HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "View in History",

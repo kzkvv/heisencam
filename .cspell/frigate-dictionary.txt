@@ -29,7 +29,6 @@ Beelink
 BGRA
 BHWC
 blackshear
-blakeblackshear
 bottombar
 buildx
 castable

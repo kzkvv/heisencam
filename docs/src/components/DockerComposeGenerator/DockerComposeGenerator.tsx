@@ -48,6 +48,14 @@ export default function DockerComposeGenerator() {
       <div className={styles.card}>
         <DeviceSelector selectedId={deviceId} onSelect={selectDevice} />
 
+        {(device.imageTag !== "stable" || device.imageTagSuffix) && (
+          <Admonition type="info" title="Hardware-specific build">
+            This option builds HeisenCam from a compatible base image. Set
+            <code>HEISENCAM_HARDWARE_BASE</code> to the matching 0.18.3 hardware
+            variant, preferably pinned by digest, before running Compose.
+          </Admonition>
+        )}
+
         {device.helpText && (
           <Admonition type={device.helpType || "info"}>
             {renderHelpText(device.helpText)}

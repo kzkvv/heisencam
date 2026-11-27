@@ -26,7 +26,7 @@ import ActivityIndicator from "../indicators/activity-indicator";
 import { Link } from "react-router-dom";
 import { LuExternalLink } from "react-icons/lu";
 import { Trans, useTranslation } from "react-i18next";
-import { useDocDomain } from "@/hooks/use-doc-domain";
+import { documentationUrl, useDocDomain } from "@/hooks/use-doc-domain";
 import NameAndIdFields from "../input/NameAndIdFields";
 import { Switch } from "../ui/switch";
 import { useMotionMaskState } from "@/api/ws";
@@ -386,7 +386,7 @@ export default function MotionMaskEditPane({
           <div className="mb-3 text-sm text-primary">
             {t("masksAndZones.motionMasks.polygonAreaTooLarge.tips")}
             <Link
-              to="https://github.com/blakeblackshear/frigate/discussions/13040"
+              to={documentationUrl("/configuration/masks/")}
               target="_blank"
               rel="noopener noreferrer"
               className="my-3 block"

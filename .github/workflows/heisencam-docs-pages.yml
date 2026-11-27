@@ -5,13 +5,27 @@ on:
     branches: [dev]
     paths:
       - "docs/**"
+      - "web/**"
+      - "site/demo/**"
+      - "site/style.css"
+      - "examples/demo/media/**"
+      - "tools/build_public_site.py"
       - "tools/prepare_docs_pages.py"
+      - "tools/check_pages_links.py"
+      - "tools/serve_docs_pages.py"
       - ".github/workflows/heisencam-docs-pages.yml"
   push:
     branches: [dev]
     paths:
       - "docs/**"
+      - "web/**"
+      - "site/demo/**"
+      - "site/style.css"
+      - "examples/demo/media/**"
+      - "tools/build_public_site.py"
       - "tools/prepare_docs_pages.py"
+      - "tools/check_pages_links.py"
+      - "tools/serve_docs_pages.py"
       - ".github/workflows/heisencam-docs-pages.yml"
   workflow_dispatch:
 
@@ -33,30 +47,41 @@ jobs:
         if: github.event_name != 'pull_request'
         id: pages
         uses: actions/configure-pages@v5
-      - name: Check out the published demo
-        uses: actions/checkout@v6
-        with:
-          # Pin the existing React demo until its source is on the default branch.
-          ref: 6ccf33b1ece4edd0be9523bfb609a89c99dc0318
-          path: published-demo
-          sparse-checkout: demo
-          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: docs/package-lock.json
-      - run: npm ci
+          cache-dependency-path: |
+            docs/package-lock.json
+            web/package-lock.json
+      - run: npm ci --no-audit --no-fund
         working-directory: docs
+      - run: npm ci --no-audit --no-fund
+        working-directory: web
       - name: Build and check documentation links
         run: npm run build
         working-directory: docs
         env:
           HEISENCAM_DOCS_URL: ${{ steps.pages.outputs.base_url }}
+      - name: Build the application in demo mode
+        working-directory: web
+        env:
+          HEISENCAM_DEMO_BASE: ${{ steps.pages.outputs.base_path }}/demo/
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: npm run build:demo
       - name: Package the demo and legacy URLs
-        run: python3 tools/prepare_docs_pages.py docs/build published-demo --docs-url "$HEISENCAM_DOCS_URL"
+        run: |
+          python3 tools/prepare_docs_pages.py docs/build --docs-url "$HEISENCAM_DOCS_URL"
+          python3 tools/check_pages_links.py docs/build --docs-url "$HEISENCAM_DOCS_URL"
         env:
           HEISENCAM_DOCS_URL: ${{ steps.pages.outputs.base_url }}
+      - name: Check the packaged demo in Chrome
+        working-directory: web
+        env:
+          HEISENCAM_PAGES_BASE: ${{ steps.pages.outputs.base_path }}
+        run: |
+          npx playwright install --with-deps chrome
+          npx playwright test --config e2e/playwright.pages.config.ts
       - uses: actions/upload-pages-artifact@v4
         if: github.event_name != 'pull_request'
         with:

@@ -1,4 +1,4 @@
-"""Regression tests for selecting the active Frigate SQLite database."""
+"""Regression tests for selecting the active HeisenCam SQLite database."""
 
 import json
 import sqlite3

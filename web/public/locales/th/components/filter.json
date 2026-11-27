@@ -24,7 +24,7 @@
   "features": {
     "label": "คุณสมบัติ",
     "submittedToFrigatePlus": {
-      "label": "ส่งไปยัง Frigate+",
+      "label": "ส่งไปยัง Hosted Models",
       "tips": "คุณต้องกรองครั้งแรกบนวัตถุที่มีภาพ. <br /><br /> วัตถุที่ไม่มีภาพไม่สามารถส่งออกได้."
     },
     "hasSnapshot": "มีภาพ",

@@ -437,14 +437,14 @@
       "availableModels": "Доступні моделі",
       "trainDate": "Дата тренування",
       "baseModel": "Базова модель",
-      "modelSelect": "Тут можна вибрати доступні моделі на Frigate+. Зверніть увагу, що можна вибрати лише моделі, сумісні з вашою поточною конфігурацією детектора.",
+      "modelSelect": "Тут можна вибрати доступні моделі на HeisenCam+. Зверніть увагу, що можна вибрати лише моделі, сумісні з вашою поточною конфігурацією детектора.",
       "title": "Інформація про модель",
       "modelType": "Тип моделі",
       "cameras": "Камери"
     },
     "snapshotConfig": {
       "title": "Конфігурація знімків",
-      "desc": "Для надсилання до Frigate+ потрібно ввімкнути як знімки, так і знімки <code>clean_copy</code> у вашій конфігурації.",
+      "desc": "Для надсилання до Hosted Models потрібно ввімкнути як знімки, так і знімки <code>clean_copy</code> у вашій конфігурації.",
       "documentation": "Прочитайте документацію",
       "table": {
         "camera": "Камера",
@@ -454,19 +454,19 @@
       "cleanCopyWarning": "На деяких камерах знімки екрана вимкнені"
     },
     "apiKey": {
-      "desc": "Ключ API Frigate+ забезпечує інтеграцію з сервісом Frigate+.",
-      "notValidated": "Ключ API Frigate+ не виявлено або не перевірено",
+      "desc": "Ключ API Hosted Models забезпечує інтеграцію з сервісом HeisenCam+.",
+      "notValidated": "Ключ API Hosted Models не виявлено або не перевірено",
       "title": "Ключ API Фрегат+",
-      "validated": "Ключ API Frigate+ виявлено та перевірено",
+      "validated": "Ключ API Hosted Models виявлено та перевірено",
       "plusLink": "Дізнайтеся більше про Фрегат+"
     },
-    "restart_required": "Потрібно перезавантаження (модель Frigate+ змінена)",
+    "restart_required": "Потрібно перезавантаження (модель Hosted Models змінена)",
     "toast": {
-      "success": "Налаштування Frigate+ збережено. Перезапустіть HeisenCam, щоб застосувати зміни.",
+      "success": "Налаштування Hosted Models збережено. Перезапустіть HeisenCam, щоб застосувати зміни.",
       "error": "Не вдалося зберегти зміни конфігурації: {{errorMessage}}"
     },
     "title": "Налаштування Фрегат+",
-    "unsavedChanges": "Незбережені зміни налаштувань Frigate+"
+    "unsavedChanges": "Незбережені зміни налаштувань Hosted Models"
   },
   "general": {
     "calendar": {
@@ -559,7 +559,7 @@
     "masksAndZones": "Редактор масок та зон – Фрегат",
     "motionTuner": "Тюнер руху - Фрегат",
     "general": "Основна Статус – HeisenCam",
-    "frigatePlus": "Налаштування Frigate+ – HeisenCam",
+    "frigatePlus": "Налаштування Hosted Models – HeisenCam",
     "enrichments": "Налаштуваннях збагачення – HeisenCam",
     "cameraManagement": "Керування камерами - HeisenCam",
     "cameraReview": "Налаштування перегляду камери - HeisenCam"
@@ -573,7 +573,7 @@
     "motionTuner": "Тюнер руху",
     "debug": "Налагодження",
     "notifications": "Сповіщення",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "enrichments": "Збагаченням",
     "triggers": "Тригери",
     "roles": "Ролі",

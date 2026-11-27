@@ -123,7 +123,7 @@ for name in list(go2rtc_config.get("streams", {})):
             go2rtc_config["streams"][name] = formatted_stream
         except KeyError as e:
             print(
-                "[ERROR] Invalid substitution found, see https://docs.frigate.video/configuration/restream#advanced-restream-configurations for more info."
+                "[ERROR] Invalid substitution found, see https://docs.heisen.cam/configuration/restream#advanced-restream-configurations for more info."
             )
             sys.exit(e)
 
@@ -142,7 +142,7 @@ for name in list(go2rtc_config.get("streams", {})):
                 filtered_streams.append(formatted_stream)
             except KeyError as e:
                 print(
-                    "[ERROR] Invalid substitution found, see https://docs.frigate.video/configuration/restream#advanced-restream-configurations for more info."
+                    "[ERROR] Invalid substitution found, see https://docs.heisen.cam/configuration/restream#advanced-restream-configurations for more info."
                 )
                 sys.exit(e)
 

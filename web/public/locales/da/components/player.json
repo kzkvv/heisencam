@@ -4,7 +4,7 @@
   "cameraDisabled": "Kamera er deaktiveret",
   "noPreviewFoundFor": "Ingen forhåndsvisning fundet for {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Indsend dette billede til Frigate+?",
+    "title": "Indsend dette billede til Hosted Models?",
     "submit": "Indsend"
   },
   "livePlayerRequiredIOSVersion": "iOS 17.1 eller nyere kræves for denne type livestream.",
@@ -42,10 +42,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Billede sendt til Frigate+"
+      "submittedFrigatePlus": "Billede sendt til Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Kunne ikke sende billede til Frigate+"
+      "submitFrigatePlusFailed": "Kunne ikke sende billede til Hosted Models"
     }
   }
 }

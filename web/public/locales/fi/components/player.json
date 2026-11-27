@@ -3,7 +3,7 @@
   "noPreviewFoundFor": "Ei esikatselua {{cameraName}}lle",
   "noRecordingsFoundForThisTime": "Ei tallenteita valitulta ajalta",
   "submitFrigatePlus": {
-    "title": "Lähetä tämä kuva Frigate+:aan?",
+    "title": "Lähetä tämä kuva Hosted Models:aan?",
     "submit": "Lähetä",
     "previewError": "Pysäytyskuvan esikatselua ei voi ladata. Tallenne ei ole ehkä saatavissa tällä hetkellä."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Onnistuneesti lähetetty Frigate+:aan"
+      "submittedFrigatePlus": "Onnistuneesti lähetetty Hosted Models:aan"
     },
     "error": {
-      "submitFrigatePlusFailed": "Frigate+:aan lähetys epäonnistui"
+      "submitFrigatePlusFailed": "Hosted Models:aan lähetys epäonnistui"
     }
   }
 }

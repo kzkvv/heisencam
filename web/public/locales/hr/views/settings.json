@@ -5,7 +5,7 @@
     "cameraManagement": "Upravljaj kamerama - HeisenCam",
     "masksAndZones": "Uređivač maski i zona - HeisenCam",
     "general": "Postavke sučelja - HeisenCam",
-    "frigatePlus": "Frigate+ postavke - HeisenCam",
+    "frigatePlus": "Hosted Models postavke - HeisenCam",
     "notifications": "Postavke notifikacija - HeisenCam",
     "enrichments": "Postavke obogaćivanja - HeisenCam",
     "cameraReview": "Postavke Pregleda Kamere - HeisenCam",
@@ -24,7 +24,7 @@
     "debug": "Debug",
     "roles": "Uloga",
     "notifications": "Obavijesti",
-    "frigateplus": "Frigate+"
+    "frigateplus": "Hosted Models"
   },
   "dialog": {
     "unsavedChanges": {
@@ -906,18 +906,18 @@
     }
   },
   "frigatePlus": {
-    "title": "Frigate+ postavke",
+    "title": "Hosted Models postavke",
     "apiKey": {
-      "title": "Frigate+ API ključ",
-      "validated": "Frigate+ API ključ je detektiran i validiran",
-      "notValidated": "Frigate+ API ključ nije detektiran ili nije validiran",
-      "desc": "Frigate+ API ključ omogućuje integraciju s Frigate+ uslugom.",
-      "plusLink": "Pročitajte više o Frigate+"
+      "title": "Hosted Models API ključ",
+      "validated": "Hosted Models API ključ je detektiran i validiran",
+      "notValidated": "Hosted Models API ključ nije detektiran ili nije validiran",
+      "desc": "Hosted Models API ključ omogućuje integraciju s Hosted Models uslugom.",
+      "plusLink": "Pročitajte više o Hosted Models"
     },
     "snapshotConfig": {
       "title": "Konfiguracija snimaka",
-      "desc": "Slanje na Frigate+ zahtijeva da su u tvojoj konfiguraciji omogućeni i snapshotovi i <code>clean_copy</code> snapshotovi.",
-      "cleanCopyWarning": "Neke kamere imaju omogućene snimke, ali je čista kopija onemogućena. Morate omogućiti <code>clean_copy</code> u konfiguraciji za snimke da biste mogli slati slike s tih kamera na Frigate+.",
+      "desc": "Slanje na Hosted Models zahtijeva da su u tvojoj konfiguraciji omogućeni i snapshotovi i <code>clean_copy</code> snapshotovi.",
+      "cleanCopyWarning": "Neke kamere imaju omogućene snimke, ali je čista kopija onemogućena. Morate omogućiti <code>clean_copy</code> u konfiguraciji za snimke da biste mogli slati slike s tih kamera na HeisenCam+.",
       "table": {
         "camera": "Kamera",
         "snapshots": "Snimke",
@@ -939,12 +939,12 @@
       "error": "Neuspješno učitavanje informacije o modelu",
       "availableModels": "Dostupni modeli",
       "loadingAvailableModels": "Učitavanje dostupnih modela…",
-      "modelSelect": "Dostupne modele na Frigate+ možete odabrati ovdje. Imajte na umu da se mogu odabrati samo modeli kompatibilni s vašom trenutnom konfiguracijom detektora."
+      "modelSelect": "Dostupne modele na Hosted Models možete odabrati ovdje. Imajte na umu da se mogu odabrati samo modeli kompatibilni s vašom trenutnom konfiguracijom detektora."
     },
-    "unsavedChanges": "Nespremljene promjene postavki Frigate+",
-    "restart_required": "Potreban je restart (promijenjen model Frigate+)",
+    "unsavedChanges": "Nespremljene promjene postavki Hosted Models",
+    "restart_required": "Potreban je restart (promijenjen model Hosted Models)",
     "toast": {
-      "success": "Frigate+ postavke su spremljene. Ponovno pokrenite HeisenCam da primijenite promjene.",
+      "success": "Hosted Models postavke su spremljene. Ponovno pokrenite HeisenCam da primijenite promjene.",
       "error": "Nije uspjelo spremiti promjene konfiguracije: {{errorMessage}}"
     }
   },

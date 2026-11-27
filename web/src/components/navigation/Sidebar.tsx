@@ -13,6 +13,8 @@ import { useHasFullCameraAccess } from "@/hooks/use-has-full-camera-access";
 import { useIsAdmin } from "@/hooks/use-is-admin";
 import { cn } from "@/lib/utils";
 import { FrigateConfig } from "@/types/frigateConfig";
+import { demoBuild } from "@/env";
+import { baseUrl } from "@/api/baseUrl";
 
 function Wordmark({ onNavigate }: { onNavigate?: () => void }) {
   return (
@@ -32,7 +34,8 @@ function ClassicNavigation({ onNavigate }: { onNavigate?: () => void }) {
   const { data: config } = useSWR<FrigateConfig>("config");
   const isAdmin = useIsAdmin();
   const hasFullCameraAccess = useHasFullCameraAccess();
-  const { pathname, hash } = useLocation();
+  const { pathname: path, hash } = useLocation();
+  const pathname = path.replace(/\/$/, "") || "/";
   const modernItems = useNavigation().filter(
     (item) => item.id !== ID_LIVE && item.enabled !== false,
   );
@@ -74,12 +77,35 @@ function ClassicNavigation({ onNavigate }: { onNavigate?: () => void }) {
           {item("/logs", "menu.classic.logs", pathname === "/logs")}
         </>
       )}
-      <hr className="-mx-2 border-secondary-highlight" />
-      {modernItems.map(({ url, title }) => item(url, title, pathname === url))}
-      {item("/settings", "menu.settings", pathname === "/settings")}
-      {isAdmin &&
-        item("/replay", "menu.classic.replay", pathname === "/replay")}
+      {!demoBuild && (
+        <>
+          <hr className="-mx-2 border-secondary-highlight" />
+          {modernItems.map(({ url, title }) =>
+            item(url, title, pathname === url),
+          )}
+          {item("/settings", "menu.settings", pathname === "/settings")}
+          {isAdmin &&
+            item("/replay", "menu.classic.replay", pathname === "/replay")}
+        </>
+      )}
     </nav>
+  );
+}
+
+function NavigationFooter() {
+  const { t } = useTranslation("common");
+  if (demoBuild) {
+    return (
+      <a className="p-2 text-sm underline" href={`${baseUrl}sources/`}>
+        {t("demo.sources")}
+      </a>
+    );
+  }
+  return (
+    <>
+      <GeneralSettings />
+      <AccountSettings />
+    </>
   );
 }
 
@@ -95,11 +121,10 @@ export default function Sidebar() {
         </div>
         <ClassicNavigation />
         <div className="mb-8 flex items-center justify-end gap-3 border-t border-secondary-highlight p-2">
-          <GeneralSettings />
-          <AccountSettings />
+          <NavigationFooter />
         </div>
       </aside>
-      <header className="absolute inset-x-0 top-0 z-10 flex h-14 items-center justify-between border-b border-gray-200 bg-white px-2 dark:border-gray-700 dark:bg-gray-900 lg:hidden">
+      <header className="absolute inset-x-0 top-0 z-10 flex h-[calc(3.5rem+env(safe-area-inset-top))] items-center justify-between border-b border-gray-200 bg-white px-2 pt-[env(safe-area-inset-top)] dark:border-gray-700 dark:bg-gray-900 lg:hidden">
         <div className="flex items-center">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -128,8 +153,7 @@ export default function Sidebar() {
           <Wordmark />
         </div>
         <div className="flex items-center gap-2">
-          <GeneralSettings />
-          <AccountSettings />
+          <NavigationFooter />
         </div>
       </header>
     </>

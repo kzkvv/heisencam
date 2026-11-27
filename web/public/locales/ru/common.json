@@ -279,7 +279,20 @@
     "profiles": "Профили",
     "chat": "Чат",
     "actions": "Действия",
-    "features": "Функции"
+    "features": "Функции",
+    "classic": {
+      "cameras": "Камеры",
+      "birdseye": "Общий обзор",
+      "events": "События",
+      "storage": "Хранилище",
+      "config": "Конфигурация",
+      "logs": "Журналы",
+      "replay": "Повтор",
+      "recordings": "Записи",
+      "detection": "Детекция",
+      "snapshots": "Снимки",
+      "navigation": "Навигация"
+    }
   },
   "pagination": {
     "label": "пагинация",
@@ -337,5 +350,9 @@
   "no_items": "Нет элементов",
   "credentialField": {
     "savedPlaceholder": "Сохранено — оставьте пустым, чтобы сохранить текущее значение"
+  },
+  "demo": {
+    "loadError": "Демо не загрузилось. Обновите страницу.",
+    "sources": "Источники записей"
   }
 }

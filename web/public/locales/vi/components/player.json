@@ -32,14 +32,14 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Đã gửi thành công khung hình tới Frigate+"
+      "submittedFrigatePlus": "Đã gửi thành công khung hình tới Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Không gửi được khung hình tới Frigate+"
+      "submitFrigatePlusFailed": "Không gửi được khung hình tới Hosted Models"
     }
   },
   "submitFrigatePlus": {
-    "title": "Gửi khung hình này tới Frigate+?",
+    "title": "Gửi khung hình này tới Hosted Models?",
     "submit": "Gửi"
   },
   "livePlayerRequiredIOSVersion": "Yêu cầu iOS 17.1 trở lên cho loại luồng trực tiếp này.",

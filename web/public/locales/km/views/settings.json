@@ -11,7 +11,7 @@
     "general": "ការកំណត់ចំណុចប្រទាក់ - HeisenCam",
     "globalConfig": "ការកំណត់រចនាសម្ព័ន្ធសកល - HeisenCam",
     "cameraConfig": "ការកំណត់រចនាសម្ព័ន្ធកាមេរ៉ា - HeisenCam",
-    "frigatePlus": "ការកំណត់ Frigate+ - HeisenCam",
+    "frigatePlus": "ការកំណត់ Hosted Models - HeisenCam",
     "detectorsAndModel": "ឧបករណ៍ចាប់សញ្ញា និងម៉ូដែល - HeisenCam",
     "notifications": "ការកំណត់ការជូនដំណឹង - HeisenCam",
     "maintenance": "ការថែទាំ - HeisenCam",
@@ -107,7 +107,7 @@
     "notifications": "ការជូនដំណឹង",
     "triggers": "កេះ",
     "debug": "បំបាត់កំហុស",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "maintenance": "ការថែទាំ",
     "mediaSync": "ការធ្វើសមកាលកម្មមេឌៀ",
     "regionGrid": "ក្រឡាតំបន់"
@@ -1191,8 +1191,8 @@
     }
   },
   "frigatePlus": {
-    "title": "ការកំណត់ Frigate+",
-    "description": "Frigate+ គឺជាសេវាកម្មជាវដែលផ្តល់ការចូលប្រើប្រាស់មុខងារ និងសមត្ថភាពបន្ថែម សម្រាប់ HeisenCam របស់អ្នក រួមទាំងសមត្ថភាពក្នុងការប្រើប្រាស់ម៉ូដែលរកឃើញវត្ថុផ្ទាល់ខ្លួន ដែលបានបណ្តុះបណ្តាលលើទិន្នន័យរបស់អ្នកផ្ទាល់។ អ្នកអាចគ្រប់គ្រងការកំណត់ម៉ូដែល Frigate+ របស់អ្នកនៅទីនេះ។",
+    "title": "ការកំណត់ Hosted Models",
+    "description": "Hosted Models គឺជាសេវាកម្មជាវដែលផ្តល់ការចូលប្រើប្រាស់មុខងារ និងសមត្ថភាពបន្ថែម សម្រាប់ HeisenCam របស់អ្នក រួមទាំងសមត្ថភាពក្នុងការប្រើប្រាស់ម៉ូដែលរកឃើញវត្ថុផ្ទាល់ខ្លួន ដែលបានបណ្តុះបណ្តាលលើទិន្នន័យរបស់អ្នកផ្ទាល់។ អ្នកអាចគ្រប់គ្រងការកំណត់ម៉ូដែល Hosted Models របស់អ្នកនៅទីនេះ។",
     "cardTitles": {
       "api": "API",
       "currentModel": "ម៉ូដែលបច្ចុប្បន្ន",
@@ -1200,15 +1200,15 @@
       "configuration": "ការកំណត់"
     },
     "apiKey": {
-      "title": "Frigate+ API Key",
-      "validated": "Frigate+ API key ត្រូវបានរកឃើញ និងផ្ទៀងផ្ទាត់",
-      "notValidated": "Frigate+ API key មិនត្រូវបានរកឃើញ ឬមិនបានផ្ទៀងផ្ទាត់",
-      "desc": "Frigate+ API key អនុញ្ញាតឱ្យមានការរួមបញ្ចូលជាមួយសេវាកម្ម Frigate+។",
-      "plusLink": "អានបន្ថែមអំពី Frigate+"
+      "title": "Hosted Models API Key",
+      "validated": "Hosted Models API key ត្រូវបានរកឃើញ និងផ្ទៀងផ្ទាត់",
+      "notValidated": "Hosted Models API key មិនត្រូវបានរកឃើញ ឬមិនបានផ្ទៀងផ្ទាត់",
+      "desc": "Hosted Models API key អនុញ្ញាតឱ្យមានការរួមបញ្ចូលជាមួយសេវាកម្ម Hosted Models។",
+      "plusLink": "អានបន្ថែមអំពី Hosted Models"
     },
     "snapshotConfig": {
       "title": "ការកំណត់រូបថត",
-      "desc": "ការដាក់ស្នើទៅ Frigate+ តម្រូវឱ្យបើករូបថតនៅក្នុងការកំណត់របស់អ្នក។",
+      "desc": "ការដាក់ស្នើទៅ Hosted Models តម្រូវឱ្យបើករូបថតនៅក្នុងការកំណត់របស់អ្នក។",
       "cleanCopyWarning": "កាមេរ៉ាមួយចំនួនបានបិទរូបថត",
       "table": {
         "camera": "កាមេរ៉ា",
@@ -1228,8 +1228,8 @@
       "cameras": "កាមេរ៉ា",
       "loading": "កំពុងផ្ទុកព័ត៌មានម៉ូដែល…",
       "error": "បរាជ័យក្នុងការផ្ទុកព័ត៌មានម៉ូដែល",
-      "noModelLoaded": "បច្ចុប្បន្នមិនមានម៉ូដែល Frigate+ ណាមួយត្រូវបានផ្ទុកទេ។",
-      "availableModels": "ម៉ូដែល Frigate+ ដែលមាន",
+      "noModelLoaded": "បច្ចុប្បន្នមិនមានម៉ូដែល Hosted Models ណាមួយត្រូវបានផ្ទុកទេ។",
+      "availableModels": "ម៉ូដែល Hosted Models ដែលមាន",
       "loadingAvailableModels": "កំពុងផ្ទុកម៉ូដែលដែលមាន…",
       "selectModel": "ជ្រើសរើសម៉ូដែល",
       "noModelsAvailable": "មិនមានម៉ូដែលទេ",
@@ -1238,13 +1238,13 @@
         "baseModels": "ម៉ូដែលមូលដ្ឋាន",
         "fineTunedModels": "ម៉ូដែលដែលបានកែសម្រួល"
       },
-      "modelSelect": "ម៉ូដែលដែលមានរបស់អ្នកនៅលើ Frigate+ អាចត្រូវបានជ្រើសរើសនៅទីនេះ។ សូមចំណាំថា មានតែម៉ូដែលដែលឆបគ្នានឹងការកំណត់ឧបករណ៍រកឃើញបច្ចុប្បន្នរបស់អ្នកប៉ុណ្ណោះ ដែលអាចត្រូវបានជ្រើសរើស។"
+      "modelSelect": "ម៉ូដែលដែលមានរបស់អ្នកនៅលើ Hosted Models អាចត្រូវបានជ្រើសរើសនៅទីនេះ។ សូមចំណាំថា មានតែម៉ូដែលដែលឆបគ្នានឹងការកំណត់ឧបករណ៍រកឃើញបច្ចុប្បន្នរបស់អ្នកប៉ុណ្ណោះ ដែលអាចត្រូវបានជ្រើសរើស។"
     },
     "changeInDetectorsAndModel": "ផ្លាស់ប្តូរម៉ូដែល",
-    "unsavedChanges": "ការផ្លាស់ប្តូរការកំណត់ Frigate+ ដែលមិនបានរក្សាទុក",
-    "restart_required": "ត្រូវការចាប់ផ្តើមឡើងវិញ (ម៉ូដែល Frigate+ បានផ្លាស់ប្តូរ)",
+    "unsavedChanges": "ការផ្លាស់ប្តូរការកំណត់ Hosted Models ដែលមិនបានរក្សាទុក",
+    "restart_required": "ត្រូវការចាប់ផ្តើមឡើងវិញ (ម៉ូដែល Hosted Models បានផ្លាស់ប្តូរ)",
     "toast": {
-      "success": "ការកំណត់ Frigate+ ត្រូវបានរក្សាទុក។ សូមចាប់ផ្តើម HeisenCam ឡើងវិញដើម្បីអនុវត្តការផ្លាស់ប្តូរ។",
+      "success": "ការកំណត់ Hosted Models ត្រូវបានរក្សាទុក។ សូមចាប់ផ្តើម HeisenCam ឡើងវិញដើម្បីអនុវត្តការផ្លាស់ប្តូរ។",
       "error": "បរាជ័យក្នុងការរក្សាទុកការផ្លាស់ប្តូរការកំណត់៖ {{errorMessage}}"
     }
   },
@@ -1256,15 +1256,15 @@
       "model": "ម៉ូដែលរកឃើញ"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "ម៉ូដែលផ្ទាល់ខ្លួន"
     },
     "mismatch": {
-      "warning": "ម៉ូដែល Frigate+ បច្ចុប្បន្ន \"{{model}}\" ត្រូវការឧបករណ៍រកឃើញ {{required}}។ ជ្រើសរើសម៉ូដែលដែលឆបគ្នាខាងក្រោម ឬប្តូរទៅម៉ូដែលផ្ទាល់ខ្លួន មុនពេលរក្សាទុក។"
+      "warning": "ម៉ូដែល Hosted Models បច្ចុប្បន្ន \"{{model}}\" ត្រូវការឧបករណ៍រកឃើញ {{required}}។ ជ្រើសរើសម៉ូដែលដែលឆបគ្នាខាងក្រោម ឬប្តូរទៅម៉ូដែលផ្ទាល់ខ្លួន មុនពេលរក្សាទុក។"
     },
     "plusModel": {
       "requiresDetector": "ត្រូវការ៖ {{detector}}",
-      "noModelSelected": "ជ្រើសរើសម៉ូដែល Frigate+"
+      "noModelSelected": "ជ្រើសរើសម៉ូដែល Hosted Models"
     },
     "toast": {
       "saveSuccess": "ការកំណត់ឧបករណ៍រកឃើញ និងម៉ូដែលត្រូវបានរក្សាទុក។ សូមចាប់ផ្តើម HeisenCam ឡើងវិញដើម្បីអនុវត្តការផ្លាស់ប្តូរ។",

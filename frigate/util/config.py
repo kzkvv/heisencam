@@ -85,10 +85,6 @@ def migrate_frigate_config(config_file: str):
     """handle migrating the frigate config."""
     logger.info("Checking if frigate config needs migration...")
 
-    if not os.access(config_file, mode=os.W_OK):
-        logger.error("Config file is read-only, unable to migrate config file.")
-        return
-
     yaml = YAML()
     yaml.indent(mapping=2, sequence=4, offset=2)
     with open(config_file) as f:
@@ -101,7 +97,11 @@ def migrate_frigate_config(config_file: str):
     previous_version = str(config.get("version", "0.13"))
 
     if previous_version == CURRENT_CONFIG_VERSION:
-        logger.info("frigate config does not need migration...")
+        logger.info("Configuration does not need migration")
+        return
+
+    if not os.access(config_file, mode=os.W_OK):
+        logger.error("Upgrade the configuration before mounting it read-only")
         return
 
     logger.info("copying config as backup...")

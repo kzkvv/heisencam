@@ -1221,7 +1221,7 @@
             "description": "Opcije konfiguracije modela specifične za detektor (putanja, veličina ulaza, itd.).",
             "path": {
                 "label": "Putanja za prilagođeni model detektora objekata",
-                "description": "Putanja do datoteke prilagođenog modela detekcije (ili plus://<model_id> za modele Frigate+)."
+                "description": "Putanja do datoteke prilagođenog modela detekcije (ili plus://<model_id> za modele Hosted Models)."
             },
             "labelmap_path": {
                 "label": "Mapa oznaka za prilagođeni detektor objekata",
@@ -1394,7 +1394,7 @@
         "description": "Postavke za konfiguraciju prilagođenog modela detekcije objekata i njegove ulazne oblike.",
         "path": {
             "label": "Put do prilagođenog modela detekcije",
-            "description": "Put do datoteke prilagođenog modela detekcije (ili plus://<model_id> za modele Frigate+)."
+            "description": "Put do datoteke prilagođenog modela detekcije (ili plus://<model_id> za modele Hosted Models)."
         },
         "labelmap_path": {
             "label": "Mapa oznaka za prilagođeni detektor objekata",

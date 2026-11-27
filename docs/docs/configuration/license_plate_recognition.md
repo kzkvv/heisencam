@@ -29,7 +29,7 @@ When a plate is recognized, the details are:
 
 ## Model Requirements
 
-Users running a Frigate+ model (or any custom model that natively detects license plates) should ensure that `license_plate` is added to the [list of objects to track](https://docs.frigate.video/plus/#available-label-types) either globally or for a specific camera. This will improve the accuracy and performance of the LPR model.
+Users running a Hosted Models model (or any custom model that natively detects license plates) should ensure that `license_plate` is added to the [list of objects to track](https://docs.heisen.cam/plus/#available-label-types) either globally or for a specific camera. This will improve the accuracy and performance of the LPR model.
 
 Users without a model that detects license plates can still run LPR. HeisenCam uses a lightweight YOLOv9 license plate detection model that can be configured to run on your CPU or GPU. In this case, you should _not_ define `license_plate` in your list of objects to track.
 
@@ -101,7 +101,7 @@ Fine-tune the LPR feature using these optional parameters. The only optional par
 
 Navigate to <NavPath path="Settings > Enrichments > License plate recognition" />.
 
-- **Detection threshold**: License plate object detection confidence score required before recognition runs. This field only applies to the standalone license plate detection model; `threshold` and `min_score` object filters should be used for models like Frigate+ that have license plate detection built in.
+- **Detection threshold**: License plate object detection confidence score required before recognition runs. This field only applies to the standalone license plate detection model; `threshold` and `min_score` object filters should be used for models like Hosted Models that have license plate detection built in.
   - Default: `0.7`
 - **Minimum plate area**: Minimum area (in pixels) a license plate must be before recognition runs. This is an _area_ measurement (length x width). For reference, 1000 pixels represents a ~32x32 pixel square in your camera image. Depending on the resolution of your camera's `detect` stream, you can increase this value to ignore small or distant plates.
   - Default: `1000` pixels
@@ -351,11 +351,11 @@ HeisenCam's dedicated LPR mode is optimized for cameras with a narrow field of v
 
 :::
 
-Users can configure HeisenCam's dedicated LPR mode in two different ways depending on whether a Frigate+ (or native `license_plate` detecting) model is used:
+Users can configure HeisenCam's dedicated LPR mode in two different ways depending on whether a Hosted Models (or native `license_plate` detecting) model is used:
 
-### Using a Frigate+ (or Native `license_plate` Detecting) Model
+### Using a Hosted Models (or Native `license_plate` Detecting) Model
 
-Users running a Frigate+ model (or any model that natively detects `license_plate`) can take advantage of `license_plate` detection. This allows license plates to be treated as standard objects in dedicated LPR mode, meaning that alerts, detections, snapshots, and other HeisenCam features work as usual, and plates are detected efficiently through your configured object detector.
+Users running a Hosted Models model (or any model that natively detects `license_plate`) can take advantage of `license_plate` detection. This allows license plates to be treated as standard objects in dedicated LPR mode, meaning that alerts, detections, snapshots, and other HeisenCam features work as usual, and plates are detected efficiently through your configured object detector.
 
 An example configuration for a dedicated LPR camera using a `license_plate`-detecting model:
 
@@ -456,11 +456,11 @@ With this setup:
 - Snapshots will have license plate bounding boxes on them.
 - The `frigate/events` MQTT topic will publish tracked object updates.
 - Debug view will display `license_plate` bounding boxes.
-- If you are using a Frigate+ model and want to submit images from your dedicated LPR camera for model training and fine-tuning, annotate both the vehicle and the `license_plate` in the snapshots on the Frigate+ website, even if the vehicle is barely visible.
+- If you are using a Hosted Models model and want to submit images from your dedicated LPR camera for model training and fine-tuning, annotate both the vehicle and the `license_plate` in the snapshots on the Hosted Models website, even if the vehicle is barely visible.
 
-### Using the Secondary LPR Pipeline (Without Frigate+)
+### Using the Secondary LPR Pipeline (Without Hosted Models)
 
-If you are not running a Frigate+ model, you can use HeisenCam's built-in secondary dedicated LPR pipeline. In this mode, HeisenCam bypasses the standard object detection pipeline and runs a local license plate detector model on the full frame whenever motion activity occurs.
+If you are not running a Hosted Models model, you can use HeisenCam's built-in secondary dedicated LPR pipeline. In this mode, HeisenCam bypasses the standard object detection pipeline and runs a local license plate detector model on the full frame whenever motion activity occurs.
 
 An example configuration for a dedicated LPR camera using the secondary pipeline:
 
@@ -491,7 +491,7 @@ Navigate to <NavPath path="Settings > Camera configuration > Objects" />.
 
 | Field                | Description                                                                            |
 | -------------------- | -------------------------------------------------------------------------------------- |
-| **Objects to track** | Set to an empty list, required when not using a Frigate+ model for dedicated LPR mode |
+| **Objects to track** | Set to an empty list, required when not using a Hosted Models model for dedicated LPR mode |
 
 Navigate to <NavPath path="Settings > Camera configuration > Motion detection" />.
 
@@ -535,12 +535,12 @@ cameras:
       enhancement: 3 # optional, enhance the image before trying to recognize characters
     ffmpeg: ... # add your streams
     detect:
-      enabled: False # disable Frigate's standard object detection pipeline
-      fps: 5 # increase if necessary, though high values may slow down Frigate's enrichments pipeline and use considerable CPU
+      enabled: False # disable HeisenCam's standard object detection pipeline
+      fps: 5 # increase if necessary, though high values may slow down HeisenCam's enrichments pipeline and use considerable CPU
       width: 1920
       height: 1080
     objects:
-      track: [] # required when not using a Frigate+ model for dedicated LPR mode
+      track: [] # required when not using a Hosted Models model for dedicated LPR mode
     motion:
       threshold: 30
       contour_area: 60 # use an increased value here to tune out small motion changes
@@ -571,16 +571,16 @@ With this setup:
 
 ### Summary
 
-| Feature                 | Native `license_plate` detecting Model (like Frigate+) | Secondary Pipeline (without native model or Frigate+)           |
+| Feature                 | Native `license_plate` detecting Model (like Hosted Models) | Secondary Pipeline (without native model or Hosted Models)           |
 | ----------------------- | ------------------------------------------------------ | --------------------------------------------------------------- |
 | License Plate Detection | Uses `license_plate` as a tracked object               | Runs a dedicated LPR pipeline                                   |
 | FPS Setting             | 5 (increase for fast-moving cars)                      | 5 (increase for fast-moving cars, but it may use much more CPU) |
-| Object Detection        | Standard Frigate+ detection applies                    | Bypasses standard object detection                              |
+| Object Detection        | Standard Hosted Models detection applies                    | Bypasses standard object detection                              |
 | Debug View              | May show `license_plate` bounding boxes                | May **not** show `license_plate` bounding boxes                 |
 | MQTT `frigate/events`   | Publishes tracked object updates                       | Publishes limited updates                                       |
 | Explore                 | Recognized plates available in More Filters            | Recognized plates available in More Filters                     |
 
-By selecting the appropriate configuration, users can optimize their dedicated LPR cameras based on whether they are using a Frigate+ model or the secondary LPR pipeline.
+By selecting the appropriate configuration, users can optimize their dedicated LPR cameras based on whether they are using a Hosted Models model or the secondary LPR pipeline.
 
 ### Best practices for using Dedicated LPR camera mode
 
@@ -602,7 +602,7 @@ Ensure that:
 - The plate is large enough in the image (try adjusting `min_area`) or increasing the resolution of your camera's stream.
 - Your `enhancement` level (if you've changed it from the default of `0`) is not too high. Too much enhancement will run too much denoising and cause the plate characters to become blurry and unreadable.
 
-If you are using a Frigate+ model or a custom model that detects license plates, ensure that `license_plate` is added to your list of objects to track.
+If you are using a Hosted Models model or a custom model that detects license plates, ensure that `license_plate` is added to your list of objects to track.
 If you are using the free model that ships with HeisenCam, you should _not_ add `license_plate` to the list of objects to track.
 
 Recognized plates will show as object labels in the debug view and will appear in the "Recognized License Plates" select box in the More Filters popout in Explore.
@@ -687,12 +687,12 @@ lpr:
 
 3. Ensure your plates are being _detected_.
 
-   If you are using a Frigate+ or `license_plate` detecting model:
+   If you are using a Hosted Models or `license_plate` detecting model:
    - Watch the [Debug view](/usage/live#the-single-camera-view) to ensure that `license_plate` is being detected.
    - View MQTT messages for `frigate/events` to verify detected plates.
    - You may need to adjust your `min_score` and/or `threshold` for the `license_plate` object if your plates are not being detected.
 
-   If you are **not** using a Frigate+ or `license_plate` detecting model:
+   If you are **not** using a Hosted Models or `license_plate` detecting model:
    - Watch the debug logs for messages from the YOLOv9 plate detector.
    - You may need to adjust your `detection_threshold` if your plates are not being detected.
 
@@ -710,7 +710,7 @@ LPR's performance impact depends on your hardware. Ensure you have at least 4GB 
 
 </FaqItem>
 
-<FaqItem id="i-am-seeing-a-yolov9-plate-detection-metric-in-enrichment-metrics-but-i-have-a-frigate-or-custom-model-that-detects-license_plate-why-is-the-yolov9-model-running" question={<>I am seeing a YOLOv9 plate detection metric in Enrichment Metrics, but I have a Frigate+ or custom model that detects <code>license_plate</code>. Why is the YOLOv9 model running?</>}>
+<FaqItem id="i-am-seeing-a-yolov9-plate-detection-metric-in-enrichment-metrics-but-i-have-a-frigate-or-custom-model-that-detects-license_plate-why-is-the-yolov9-model-running" question={<>I am seeing a YOLOv9 plate detection metric in Enrichment Metrics, but I have a Hosted Models or custom model that detects <code>license_plate</code>. Why is the YOLOv9 model running?</>}>
 
 The YOLOv9 license plate detector model will run (and the metric will appear) if you've enabled LPR but haven't defined `license_plate` as an object to track, either at the global or camera level.
 
@@ -718,7 +718,7 @@ If you are detecting vehicles on cameras where you don't want to run LPR, make s
 
 </FaqItem>
 
-<FaqItem id="it-looks-like-frigate-picked-up-my-cameras-timestamp-or-overlay-text-as-the-license-plate-how-can-i-prevent-this" question="It looks like Frigate picked up my camera's timestamp or overlay text as the license plate. How can I prevent this?">
+<FaqItem id="it-looks-like-frigate-picked-up-my-cameras-timestamp-or-overlay-text-as-the-license-plate-how-can-i-prevent-this" question="It looks like HeisenCam picked up my camera's timestamp or overlay text as the license plate. How can I prevent this?">
 
 This could happen if vehicles travel close to your camera's timestamp or overlay text. You could either move the text through your camera's firmware, or apply a mask to it in HeisenCam.
 

@@ -3,7 +3,7 @@
   "noPreviewFound": "Nije pronađen pregled",
   "noPreviewFoundFor": "Nije pronađen pregled za {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Pošalji ovaj okvir Frigate+?",
+    "title": "Pošalji ovaj okvir Hosted Models?",
     "submit": "Pošalji",
     "previewError": "Nije moguće učitati prikaz snimke. Snimka možda trenutno nije dostupna."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Uspješno je poslano okvir Frigate+"
+      "submittedFrigatePlus": "Uspješno je poslano okvir Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Neuspješno slanje okvira Frigate+"
+      "submitFrigatePlusFailed": "Neuspješno slanje okvira Hosted Models"
     }
   }
 }

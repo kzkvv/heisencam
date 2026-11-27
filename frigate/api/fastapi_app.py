@@ -76,6 +76,7 @@ def create_fastapi_app(
     profile_manager: ProfileManager | None = None,
     enforce_default_admin: bool = True,
     config_holder: ConfigHolder | None = None,
+    capture_workers: tuple = (),
 ):
     logger.info("Starting FastAPI app")
     app = FastAPI(
@@ -167,6 +168,7 @@ def create_fastapi_app(
     app.dispatcher = dispatcher
     app.profile_manager = profile_manager
     app.config_holder = config_holder
+    app.state.capture_workers = capture_workers
 
     if frigate_config.auth.enabled:
         secret = get_jwt_secret()

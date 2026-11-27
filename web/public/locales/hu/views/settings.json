@@ -7,7 +7,7 @@
     "masksAndZones": "Maszk és zónaszerkesztő - HeisenCam",
     "object": "Hibakeresés - HeisenCam",
     "general": "Felhasználói felület beállításai - HeisenCam",
-    "frigatePlus": "Frigate+ beállítások - HeisenCam",
+    "frigatePlus": "Hosted Models beállítások - HeisenCam",
     "notifications": "Értesítések beállítása - HeisenCam",
     "motionTuner": "Mozgás Hangoló - HeisenCam",
     "enrichments": "Kiegészítés Beállítások - HeisenCam",
@@ -27,7 +27,7 @@
     "debug": "Hibakeresés",
     "users": "Felhasználók",
     "notifications": "Értesítések",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "enrichments": "Extra funkciók",
     "triggers": "Triggerek",
     "roles": "Szerepkörök",
@@ -250,14 +250,14 @@
       "title": "Modell Információ",
       "cameras": "Kamerák",
       "trainDate": "Tanítás dátum",
-      "modelSelect": "A Frigate+-on elérhető modelljeit itt választhatja ki. Figyelem: csak az aktuális érzékelő konfigurációval kompatibilis modellek választhatók."
+      "modelSelect": "A HeisenCam+-on elérhető modelljeit itt választhatja ki. Figyelem: csak az aktuális érzékelő konfigurációval kompatibilis modellek választhatók."
     },
     "apiKey": {
-      "plusLink": "Tudjon meg többet a Frigate+-ról",
-      "title": "Frigate+ API kulcs",
-      "validated": "Frigate+ API kulcs észlelve és ellenőrizve",
-      "notValidated": "Frigate+ API kulcs nem található vagy nem ellenőrzött",
-      "desc": "A Frigate+ API kulcs lehetővé teszi az integrációt a Frigate+ szolgáltatással."
+      "plusLink": "Tudjon meg többet a HeisenCam+-ról",
+      "title": "Hosted Models API kulcs",
+      "validated": "Hosted Models API kulcs észlelve és ellenőrizve",
+      "notValidated": "Hosted Models API kulcs nem található vagy nem ellenőrzött",
+      "desc": "A Hosted Models API kulcs lehetővé teszi az integrációt a Hosted Models szolgáltatással."
     },
     "snapshotConfig": {
       "title": "Pillanatkép Konfiguráció",
@@ -267,16 +267,16 @@
         "cleanCopySnapshots": "<code>clean_copy</code> pillanatképek"
       },
       "documentation": "Olvassa el a dokumentációt",
-      "desc": "A Frigate+ szolgáltatásba történő beküldéshez a konfigurációban engedélyezni kell a pillanatképeket és a <code>clean_copy</code> pillanatképeket is.",
-      "cleanCopyWarning": "Néhány kamerán engedélyezve vannak a pillanatképek, de a tiszta másolat ki van kapcsolva. Ahhoz, hogy ezekről a kamerákról képeket tudjon beküldeni a Frigate+ szolgáltatásba, engedélyeznie kell a <code>clean_copy</code> beállítást a pillanatkép konfigurációban."
+      "desc": "A Hosted Models szolgáltatásba történő beküldéshez a konfigurációban engedélyezni kell a pillanatképeket és a <code>clean_copy</code> pillanatképeket is.",
+      "cleanCopyWarning": "Néhány kamerán engedélyezve vannak a pillanatképek, de a tiszta másolat ki van kapcsolva. Ahhoz, hogy ezekről a kamerákról képeket tudjon beküldeni a Hosted Models szolgáltatásba, engedélyeznie kell a <code>clean_copy</code> beállítást a pillanatkép konfigurációban."
     },
-    "restart_required": "Újraindítás szükséges ( Frigate+ modell megváltozott)",
+    "restart_required": "Újraindítás szükséges ( Hosted Models modell megváltozott)",
     "toast": {
-      "success": "Frigate+ beállítások elmentve. Indítsa újra a HeisenCam-et a változtatások érvényrejutásához.",
+      "success": "Hosted Models beállítások elmentve. Indítsa újra a HeisenCam-et a változtatások érvényrejutásához.",
       "error": "Konfigurációs módosítások mentése sikertelen: {{errorMessage}}"
     },
-    "title": "Frigate+ Beállítások",
-    "unsavedChanges": "Mentetlen Frigate+ beállítás változtatások"
+    "title": "Hosted Models Beállítások",
+    "unsavedChanges": "Mentetlen Hosted Models beállítás változtatások"
   },
   "users": {
     "dialog": {

@@ -11,8 +11,8 @@
   },
   "features": {
     "submittedToFrigatePlus": {
-      "tips": "Trước tiên, bạn phải lọc các đối tượng được theo dõi có ảnh chụp nhanh.<br /><br />Không thể gửi các đối tượng được theo dõi không có ảnh chụp nhanh tới Frigate+.",
-      "label": "Đã gửi tới Frigate+"
+      "tips": "Trước tiên, bạn phải lọc các đối tượng được theo dõi có ảnh chụp nhanh.<br /><br />Không thể gửi các đối tượng được theo dõi không có ảnh chụp nhanh tới HeisenCam+.",
+      "label": "Đã gửi tới Hosted Models"
     },
     "label": "Tính năng",
     "hasSnapshot": "Có ảnh chụp nhanh",

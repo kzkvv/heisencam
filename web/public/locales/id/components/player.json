@@ -3,7 +3,7 @@
   "noPreviewFoundFor": "Tidak ada Pratinjau untuk {{cameraName}}",
   "submitFrigatePlus": {
     "submit": "Kirim",
-    "title": "Kirim frame ini ke Frigate+?"
+    "title": "Kirim frame ini ke Hosted Models?"
   },
   "noRecordingsFoundForThisTime": "Tidak ada rekaman ditemukan pada waktu ini",
   "livePlayerRequiredIOSVersion": "iOS 17.1 atau yang lebih tinggi diperlukan untuk tipe siaran langsung ini.",
@@ -42,10 +42,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Berhasil mengirim frame ke Frigate+"
+      "submittedFrigatePlus": "Berhasil mengirim frame ke Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Gagal mengirim frame ke Frigate+"
+      "submitFrigatePlusFailed": "Gagal mengirim frame ke Hosted Models"
     }
   }
 }

@@ -20,8 +20,8 @@
       "aria": "Atrast līdzīgus izsekotos priekšmetus"
     },
     "submitToPlus": {
-      "label": "Iesniegt Frigate+",
-      "aria": "Iesniegt Frigate Plus"
+      "label": "Iesniegt Hosted Models",
+      "aria": "Iesniegt HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Atrast vēsturē"

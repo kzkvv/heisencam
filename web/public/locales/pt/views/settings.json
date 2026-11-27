@@ -7,7 +7,7 @@
     "object": "Depuração - HeisenCam",
     "authentication": "Configurações de autenticação - HeisenCam",
     "general": "Configurações gerais - HeisenCam",
-    "frigatePlus": "Configurações do Frigate+ - HeisenCam",
+    "frigatePlus": "Configurações do Hosted Models - HeisenCam",
     "default": "Configurações - HeisenCam",
     "notifications": "Configuração de Notificações - HeisenCam",
     "enrichments": "Configurações Avançadas - HeisenCam",
@@ -23,7 +23,7 @@
     "debug": "Depuração",
     "users": "Utilizadores",
     "notifications": "Notificações",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "enrichments": "Avançado",
     "triggers": "Gatilhos",
     "cameraManagement": "Gestão",
@@ -217,11 +217,11 @@
         "cleanCopySnapshots": "<code>clean_copy</code> Snapshots"
       },
       "title": "Configuração de snapshots",
-      "desc": "O envio para o Frigate+ requer que tanto os snapshots quanto os snapshots <code>clean_copy</code> estejam habilitados na sua configuração.",
-      "cleanCopyWarning": "Algumas câmaras têm snapshots habilitados, mas a cópia limpa está desabilitada. É necessário habilitar <code>clean_copy</code> na sua configuração de snapshot para poder enviar imagens dessas câmaras para o Frigate+."
+      "desc": "O envio para o Hosted Models requer que tanto os snapshots quanto os snapshots <code>clean_copy</code> estejam habilitados na sua configuração.",
+      "cleanCopyWarning": "Algumas câmaras têm snapshots habilitados, mas a cópia limpa está desabilitada. É necessário habilitar <code>clean_copy</code> na sua configuração de snapshot para poder enviar imagens dessas câmaras para o HeisenCam+."
     },
     "toast": {
-      "success": "As definições do Frigate+ foram guardadas. Reinicie o HeisenCam para aplicar as alterações.",
+      "success": "As definições do Hosted Models foram guardadas. Reinicie o HeisenCam para aplicar as alterações.",
       "error": "Falha ao guardar alterações de configuração: {{errorMessage}}"
     },
     "modelInfo": {
@@ -239,18 +239,18 @@
       "loading": "Carregando informações do modelo…",
       "cameras": "Câmaras",
       "loadingAvailableModels": "Carregando modelos disponíveis…",
-      "modelSelect": "Os modelos disponíveis no Frigate+ podem ser selecionados aqui. Observe que apenas modelos compatíveis com a configuração atual do seu detector podem ser selecionados."
+      "modelSelect": "Os modelos disponíveis no Hosted Models podem ser selecionados aqui. Observe que apenas modelos compatíveis com a configuração atual do seu detector podem ser selecionados."
     },
-    "title": "Configurações Frigate+",
+    "title": "Configurações Hosted Models",
     "apiKey": {
-      "validated": "A chave da API do Frigate+ foi detectada e validada",
-      "notValidated": "A chave da API do Frigate+ não foi detectada ou não foi validada",
-      "desc": "A chave de API do Frigate+ permite a integração com o serviço Frigate+.",
-      "plusLink": "Saiba mais sobre o Frigate+",
-      "title": "Chave de API do Frigate+"
+      "validated": "A chave da API do Hosted Models foi detectada e validada",
+      "notValidated": "A chave da API do Hosted Models não foi detectada ou não foi validada",
+      "desc": "A chave de API do Hosted Models permite a integração com o serviço HeisenCam+.",
+      "plusLink": "Saiba mais sobre o Hosted Models",
+      "title": "Chave de API do Hosted Models"
     },
-    "restart_required": "Reinicialização necessária (modelo Frigate+ alterado)",
-    "unsavedChanges": "Alterações nas configurações do Frigate+ não salvas"
+    "restart_required": "Reinicialização necessária (modelo Hosted Models alterado)",
+    "unsavedChanges": "Alterações nas configurações do Hosted Models não salvas"
   },
   "masksAndZones": {
     "motionMasks": {

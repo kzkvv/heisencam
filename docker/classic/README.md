@@ -1,14 +1,14 @@
 # HeisenCam development and benchmarks
 
-Build from the repository root. The image extends the pinned Frigate base and builds
+Build from the repository root. The image extends the pinned HeisenCam base and builds
 the frontend from this checkout. Set the build argument `FRIGATE_BASE` to a
-different upstream hardware image at the same Frigate version when appropriate.
+different upstream hardware image at the same HeisenCam version when appropriate.
 
 ```sh
 docker build -f docker/classic/Dockerfile -t heisencam:0.18.3 .
 ```
 
-Use Frigate's normal container mounts and configuration. For a development
+Use HeisenCam's normal container mounts and configuration. For a development
 instance, the example below binds the internal admin UI to localhost. Use the
 authenticated port `8971` for deployments accessible from other machines.
 
@@ -50,7 +50,7 @@ event, pass `--case person-missed`. The JSON reports peak raw model confidence,
 peak object-tracker score, confirmation, frame count, and detector calls. With
 `--trace` it also records boxes and scores at each relevant observation.
 
-Replay feeds recorded frames through Frigate's native motion detector, region
+Replay feeds recorded frames through HeisenCam's native motion detector, region
 selection, model preprocessing, Norfair tracker, and camera state. Each
 clip starts with an empty camera region grid unless a saved grid is supplied
 with `--grid`. The runner measures object confirmation before Review rules,
@@ -69,7 +69,7 @@ System before increasing the scan rate or the number of detector workers.
 
 ## Control detection and recording from the configuration file
 
-Set `FRIGATE_CONFIG_ONLY_CAMERA_CONTROLS=true` in the container environment
+Set `HEISENCAM_CONFIG_ONLY_CAMERA_CONTROLS=true` in the container environment
 to lock runtime camera enablement, detection, motion, and recording controls.
 Previously persisted overrides for these controls are ignored while locked.
 Profiles can still change their other settings. Edit the mounted config file
@@ -110,7 +110,7 @@ Config test holds the Monaco download until it sees the YAML request.
 The Events test covers tab persistence, no-clip fallback, and deferred video
 and tracking requests.
 
-From the repository root, run the backend guards in the Frigate Python
+From the repository root, run the backend guards in the HeisenCam Python
 environment:
 
 ```sh
@@ -166,7 +166,7 @@ To check SQLite on the local Docker instance, use its API and container:
 python3 tools/performance_smoke.py --database-only --container frigate-classic-0183
 ```
 
-The check reads the configured database path from Frigate and verifies that
+The check reads the configured database path from HeisenCam and verifies that
 the container has it open before running SQLite's read-only `quick_check`.
 
 ### Replay regression budgets

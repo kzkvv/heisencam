@@ -67,7 +67,7 @@
     "notifications": "Апавяшчэнні",
     "triggers": "Трыгеры",
     "debug": "Адладка",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "maintenance": "Абслугоўванне",
     "mediaSync": "Сінхранізацыя медыя",
     "regionGrid": "Сетка рэгіёнаў"
@@ -84,7 +84,7 @@
     "general": "Налады інтэрфейсу - HeisenCam",
     "globalConfig": "Глабальная канфігурацыя - HeisenCam",
     "cameraConfig": "Канфігурацыя камеры - HeisenCam",
-    "frigatePlus": "Налады Frigate+ - HeisenCam",
+    "frigatePlus": "Налады Hosted Models - HeisenCam",
     "detectorsAndModel": "Дэтэктары і мадэль - HeisenCam",
     "notifications": "Налады апавяшчэнняў - HeisenCam",
     "maintenance": "Абслугоўванне - HeisenCam",
@@ -1217,8 +1217,8 @@
     }
   },
   "frigatePlus": {
-    "title": "Налады Frigate+",
-    "description": "Frigate+ - гэта падпіска, якая дае доступ да дадатковых магчымасцей вашага асобніка HeisenCam, у тым ліку да ўласных мадэляў дэтэктавання аб'ектаў, навучаных на вашых даных. Тут можна кіраваць наладамі мадэлі Frigate+.",
+    "title": "Налады Hosted Models",
+    "description": "Hosted Models - гэта падпіска, якая дае доступ да дадатковых магчымасцей вашага асобніка HeisenCam, у тым ліку да ўласных мадэляў дэтэктавання аб'ектаў, навучаных на вашых даных. Тут можна кіраваць наладамі мадэлі HeisenCam+.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Бягучая мадэль",
@@ -1226,15 +1226,15 @@
       "configuration": "Канфігурацыя"
     },
     "apiKey": {
-      "title": "Ключ API Frigate+",
-      "validated": "Ключ API Frigate+ выяўлены і правераны",
-      "notValidated": "Ключ API Frigate+ не выяўлены або не правераны",
-      "desc": "Ключ API Frigate+ уключае інтэграцыю з сэрвісам Frigate+.",
-      "plusLink": "Падрабязней пра Frigate+"
+      "title": "Ключ API Hosted Models",
+      "validated": "Ключ API Hosted Models выяўлены і правераны",
+      "notValidated": "Ключ API Hosted Models не выяўлены або не правераны",
+      "desc": "Ключ API Hosted Models уключае інтэграцыю з сэрвісам HeisenCam+.",
+      "plusLink": "Падрабязней пра Hosted Models"
     },
     "snapshotConfig": {
       "title": "Канфігурацыя здымкаў",
-      "desc": "Каб адпраўляць у Frigate+, у канфігурацыі мусяць быць уключаны здымкі.",
+      "desc": "Каб адпраўляць у Hosted Models, у канфігурацыі мусяць быць уключаны здымкі.",
       "cleanCopyWarning": "У некаторых камер здымкі адключаны",
       "table": {
         "camera": "Камера",
@@ -1254,8 +1254,8 @@
       "cameras": "Камеры",
       "loading": "Загрузка звестак пра мадэль…",
       "error": "Не ўдалося загрузіць звесткі пра мадэль",
-      "noModelLoaded": "Зараз мадэль Frigate+ не загружана.",
-      "availableModels": "Даступныя мадэлі Frigate+",
+      "noModelLoaded": "Зараз мадэль Hosted Models не загружана.",
+      "availableModels": "Даступныя мадэлі Hosted Models",
       "loadingAvailableModels": "Загрузка даступных мадэляў…",
       "selectModel": "Выберыце мадэль",
       "noModelsAvailable": "Няма даступных мадэляў",
@@ -1264,13 +1264,13 @@
         "baseModels": "Базавыя мадэлі",
         "fineTunedModels": "Дадаткова наладжаныя мадэлі"
       },
-      "modelSelect": "Тут можна выбраць вашы даступныя мадэлі на Frigate+. Улічыце, што выбраць можна толькі мадэлі, сумяшчальныя з бягучай канфігурацыяй дэтэктара."
+      "modelSelect": "Тут можна выбраць вашы даступныя мадэлі на HeisenCam+. Улічыце, што выбраць можна толькі мадэлі, сумяшчальныя з бягучай канфігурацыяй дэтэктара."
     },
     "changeInDetectorsAndModel": "Змяніць мадэль",
-    "unsavedChanges": "Незахаваныя змены налад Frigate+",
-    "restart_required": "Патрабуецца перазапуск (зменена мадэль Frigate+)",
+    "unsavedChanges": "Незахаваныя змены налад Hosted Models",
+    "restart_required": "Патрабуецца перазапуск (зменена мадэль Hosted Models)",
     "toast": {
-      "success": "Налады Frigate+ захаваны. Перазапусціце HeisenCam, каб прымяніць змены.",
+      "success": "Налады Hosted Models захаваны. Перазапусціце HeisenCam, каб прымяніць змены.",
       "error": "Не ўдалося захаваць змены канфігурацыі: {{errorMessage}}"
     }
   },
@@ -1282,15 +1282,15 @@
       "model": "Мадэль дэтэктавання"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "Уласная мадэль"
     },
     "mismatch": {
-      "warning": "Бягучая мадэль Frigate+ «{{model}}» патрабуе дэтэктар {{required}}. Выберыце сумяшчальную мадэль ніжэй або пераключыцеся на ўласную мадэль перад захаваннем."
+      "warning": "Бягучая мадэль Hosted Models «{{model}}» патрабуе дэтэктар {{required}}. Выберыце сумяшчальную мадэль ніжэй або пераключыцеся на ўласную мадэль перад захаваннем."
     },
     "plusModel": {
       "requiresDetector": "Патрабуе: {{detector}}",
-      "noModelSelected": "Выберыце мадэль Frigate+"
+      "noModelSelected": "Выберыце мадэль Hosted Models"
     },
     "toast": {
       "saveSuccess": "Налады дэтэктараў і мадэлі захаваны. Перазапусціце HeisenCam, каб прымяніць змены.",

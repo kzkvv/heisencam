@@ -28,8 +28,8 @@
     "label": "Functies",
     "hasSnapshot": "Heeft een snapshot",
     "submittedToFrigatePlus": {
-      "label": "Ingediend bij Frigate+",
-      "tips": "Je moet eerst filteren op gevolgde objecten met een snapshot.<br /><br />Gevolgde objecten zonder snapshot kunnen niet worden verzonden naar Frigate+."
+      "label": "Ingediend bij Hosted Models",
+      "tips": "Je moet eerst filteren op gevolgde objecten met een snapshot.<br /><br />Gevolgde objecten zonder snapshot kunnen niet worden verzonden naar HeisenCam+."
     }
   },
   "review": {

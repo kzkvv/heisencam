@@ -585,7 +585,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -644,7 +644,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -711,7 +711,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -778,7 +778,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -837,7 +837,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -896,7 +896,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -955,7 +955,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -1014,7 +1014,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -1073,7 +1073,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -1132,7 +1132,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -1187,7 +1187,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -1242,7 +1242,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -1301,7 +1301,7 @@
                 "description": "检测器特定的模型配置选项（路径、输入大小等）。",
                 "path": {
                     "label": "自定义目标检测模型路径",
-                    "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+                    "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
                 },
                 "labelmap_path": {
                     "label": "自定义目标检测器的标签映射",
@@ -1369,7 +1369,7 @@
             "description": "检测器特定的模型配置选项（路径、输入尺寸等）。",
             "path": {
                 "label": "自定义目标检测模型路径",
-                "description": "自定义检测模型文件的路径（或使用 plus://<model_id> 指定 Frigate+ 模型）。"
+                "description": "自定义检测模型文件的路径（或使用 plus://<model_id> 指定 Hosted Models 模型）。"
             },
             "labelmap_path": {
                 "label": "自定义目标检测器的标签映射（labelmap）",
@@ -1418,7 +1418,7 @@
         "description": "用于配置自定义目标检测模型及其输入形状的设置。",
         "path": {
             "label": "自定义目标检测模型路径",
-            "description": "自定义检测模型文件的路径（或 Frigate+ 模型的 plus://<model_id>）。"
+            "description": "自定义检测模型文件的路径（或 Hosted Models 模型的 plus://<model_id>）。"
         },
         "labelmap_path": {
             "label": "自定义目标检测器的标签映射",

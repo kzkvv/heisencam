@@ -3,7 +3,7 @@
   "noPreviewFound": "No Preview Found",
   "noPreviewFoundFor": "No Preview Found for {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Submit this frame to Frigate+?",
+    "title": "Submit this frame to Hosted Models?",
     "submit": "Submit",
     "previewError": "Could not load snapshot preview. The recording may not be available at this time."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Successfully submitted frame to Frigate+"
+      "submittedFrigatePlus": "Successfully submitted frame to Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Failed to submit frame to Frigate+"
+      "submitFrigatePlusFailed": "Failed to submit frame to Hosted Models"
     }
   }
 }

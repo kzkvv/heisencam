@@ -92,7 +92,13 @@ function System() {
         </h1>
         {page !== "storage" && statsSnapshot && (
           <span className="text-sm text-muted-foreground">
-            {statsSnapshot.service.version}
+            {statsSnapshot.service.build_revision
+              ? t("buildInfo", {
+                  channel: statsSnapshot.service.build_channel,
+                  revision: statsSnapshot.service.build_revision.slice(0, 12),
+                  base: statsSnapshot.service.version,
+                })
+              : statsSnapshot.service.version}
           </span>
         )}
       </div>

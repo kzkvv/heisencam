@@ -7,7 +7,11 @@ import monacoEditorPlugin from "vite-plugin-monaco-editor";
 const proxyHost = process.env.PROXY_HOST || "localhost:5000";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base:
+    mode === "demo"
+      ? process.env.HEISENCAM_DEMO_BASE || "/heisencam/demo/"
+      : "/",
   define: {
     "import.meta.vitest": "undefined",
   },
@@ -44,7 +48,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        login: resolve(__dirname, "login.html"),
+        ...(mode === "demo" ? {} : { login: resolve(__dirname, "login.html") }),
       },
     },
   },
@@ -77,4 +81,4 @@ export default defineConfig({
     restoreMocks: true,
     globals: true,
   },
-});
+}));

@@ -31,7 +31,7 @@
   "noPreviewFound": "No s'ha trobat previsualització",
   "noPreviewFoundFor": "No s'ha trobat cap previsualització per a {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Enviar aquesta imatge a Frigate+?",
+    "title": "Enviar aquesta imatge a Hosted Models?",
     "submit": "Enviar",
     "previewError": "No s'ha pogut carregar la vista prèvia de la instantània. És possible que l'enregistrament no estigui disponible en aquest moment."
   },
@@ -43,10 +43,10 @@
   "cameraDisabled": "La càmera està desactivada",
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Fotograma enviat correctament a Frigate+"
+      "submittedFrigatePlus": "Fotograma enviat correctament a Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Error al enviar fotograma a Frigate+"
+      "submitFrigatePlusFailed": "Error al enviar fotograma a Hosted Models"
     }
   },
   "cameraOff": "La càmera està apagada"

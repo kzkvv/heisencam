@@ -8,7 +8,7 @@
     "masksAndZones": "Masker- en zone-editor - HeisenCam",
     "object": "Foutopsporing HeisenCam",
     "general": "UI Instellingen - HeisenCam",
-    "frigatePlus": "Frigate+ Instellingen - HeisenCam",
+    "frigatePlus": "Hosted Models Instellingen - HeisenCam",
     "notifications": "Meldingsinstellingen - HeisenCam",
     "enrichments": "Verrijkingsinstellingen - HeisenCam",
     "cameraManagement": "Camera's beheren - HeisenCam",
@@ -28,7 +28,7 @@
     "users": "Gebruikers",
     "notifications": "Meldingen",
     "cameras": "Camera-instellingen",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "enrichments": "Verrijkingen",
     "triggers": "Triggers",
     "roles": "Rollen",
@@ -771,17 +771,17 @@
     "unsavedRegistrations": "Niet-opgeslagen notificatieregistraties"
   },
   "frigatePlus": {
-    "title": "Frigate+ Instellingen",
+    "title": "Hosted Models Instellingen",
     "apiKey": {
-      "title": "Frigate+ API-sleutel",
-      "plusLink": "Lees meer over Frigate+",
-      "validated": "Frigate+ API-sleutel is gedetecteerd en gevalideerd",
-      "desc": "Met de Frigate+ API-sleutel is integratie met de Frigate+ service mogelijk.",
-      "notValidated": "Frigate+ API-sleutel wordt niet gedetecteerd of niet gevalideerd"
+      "title": "Hosted Models API-sleutel",
+      "plusLink": "Lees meer over Hosted Models",
+      "validated": "Hosted Models API-sleutel is gedetecteerd en gevalideerd",
+      "desc": "Met de Hosted Models API-sleutel is integratie met de Hosted Models service mogelijk.",
+      "notValidated": "Hosted Models API-sleutel wordt niet gedetecteerd of niet gevalideerd"
     },
     "snapshotConfig": {
       "title": "Snapshot-configuratie",
-      "desc": "Om te verzenden naar Frigate+ moeten snapshots ingeschakeld zijn in je configuratie.",
+      "desc": "Om te verzenden naar Hosted Models moeten snapshots ingeschakeld zijn in je configuratie.",
       "documentation": "Lees de documentatie",
       "table": {
         "camera": "Camera",
@@ -798,7 +798,7 @@
       "cameras": "Camera's",
       "error": "Het laden van modelinformatie is mislukt",
       "loadingAvailableModels": "Beschikbare modellen laden…",
-      "modelSelect": "Je beschikbare modellen op Frigate+ kunnen hier worden geselecteerd. Houd er rekening mee dat alleen modellen die compatibel zijn met je huidige detectorconfiguratie geselecteerd kunnen worden.",
+      "modelSelect": "Je beschikbare modellen op Hosted Models kunnen hier worden geselecteerd. Houd er rekening mee dat alleen modellen die compatibel zijn met je huidige detectorconfiguratie geselecteerd kunnen worden.",
       "dimensions": "Afmetingen",
       "supportedDetectors": "Ondersteunde detectoren",
       "availableModels": "Beschikbare modellen",
@@ -807,7 +807,7 @@
         "baseModel": "Basismodel",
         "userModel": "Verfijnd"
       },
-      "noModelLoaded": "Er is momenteel geen Frigate+-model geladen.",
+      "noModelLoaded": "Er is momenteel geen HeisenCam+-model geladen.",
       "selectModel": "Selecteren a model",
       "noModelsAvailable": "Geen modellen beschikbaar",
       "filter": {
@@ -817,12 +817,12 @@
       }
     },
     "toast": {
-      "success": "Frigate+ instellingen zijn opgeslagen. Herstart HeisenCam om de wijzigingen toe te passen.",
+      "success": "Hosted Models instellingen zijn opgeslagen. Herstart HeisenCam om de wijzigingen toe te passen.",
       "error": "Configuratiewijzigingen konden niet worden opgeslagen: {{errorMessage}}"
     },
-    "restart_required": "Herstart vereist (Frigate+ model gewijzigd)",
-    "unsavedChanges": "Niet-opgeslagen wijzigingen in Frigate+ instellingen",
-    "description": "Frigate+ is een abonnementsdienst die toegang biedt tot extra functies en mogelijkheden voor je HeisenCam-installatie, waaronder het gebruik van aangepaste objectdetectiemodellen die op je eigen gegevens zijn getraind. Je kunt je Frigate+-modelinstellingen hier beheren.",
+    "restart_required": "Herstart vereist (Hosted Models model gewijzigd)",
+    "unsavedChanges": "Niet-opgeslagen wijzigingen in Hosted Models instellingen",
+    "description": "Hosted Models is een abonnementsdienst die toegang biedt tot extra functies en mogelijkheden voor je HeisenCam-installatie, waaronder het gebruik van aangepaste objectdetectiemodellen die op je eigen gegevens zijn getraind. Je kunt je HeisenCam+-modelinstellingen hier beheren.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Huidig model",
@@ -1532,15 +1532,15 @@
       "model": "Detectie Model"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "Aangepast Model"
     },
     "mismatch": {
-      "warning": "Het huidige Frigate+-model \"{{model}}\" vereist de {{required}}-detector. Kies hieronder een compatibel model of schakel over naar Aangepast model voordat je opslaat."
+      "warning": "Het huidige HeisenCam+-model \"{{model}}\" vereist de {{required}}-detector. Kies hieronder een compatibel model of schakel over naar Aangepast model voordat je opslaat."
     },
     "plusModel": {
       "requiresDetector": "Vereist: {{detector}}",
-      "noModelSelected": "Selecteren a Frigate+ model"
+      "noModelSelected": "Selecteren a Hosted Models model"
     },
     "toast": {
       "saveSuccess": "Detector- en modelinstellingen zijn opgeslagen. Herstart HeisenCam om de wijzigingen toe te passen.",

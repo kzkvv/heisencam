@@ -100,8 +100,8 @@
     "hasSnapshot": "Leidub hetkvõte",
     "hasVideoClip": "Videoklipp on olemas",
     "submittedToFrigatePlus": {
-      "label": "Saadetud teenusesse Frigate+",
-      "tips": "Sa pead filtreerima jälgitavaid objekte, millel on tõmmis.<br /><br />Kui jälgitaval objektil pole tõmmist, siis teda Frigate+ teenusesse saata ei saa."
+      "label": "Saadetud teenusesse Hosted Models",
+      "tips": "Sa pead filtreerima jälgitavaid objekte, millel on tõmmis.<br /><br />Kui jälgitaval objektil pole tõmmist, siis teda Hosted Models teenusesse saata ei saa."
     }
   },
   "attributes": {

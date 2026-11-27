@@ -131,7 +131,7 @@ cameras:
           roles:
             - detect
     live:
-      streams: # <--- Multiple streams for Frigate 0.16 and later
+      streams: # <--- Multiple streams for HeisenCam 0.16 and later
         Main Stream: test_cam # <--- Specify a "friendly name" followed by the go2rtc stream name
         Sub Stream: test_cam_sub
         Special Stream: test_cam_another_sub
@@ -402,7 +402,7 @@ On the default Live dashboard ("All Cameras"), your camera images will update on
 
 </FaqItem>
 
-<FaqItem id="frigate-shows-that-my-live-stream-is-in-low-bandwidth-mode-what-does-this-mean" question={'Frigate shows that my live stream is in "low bandwidth mode". What does this mean?'}>
+<FaqItem id="frigate-shows-that-my-live-stream-is-in-low-bandwidth-mode-what-does-this-mean" question={'HeisenCam shows that my live stream is in "low bandwidth mode". What does this mean?'}>
 
 HeisenCam intelligently selects the live streaming technology based on a number of factors (user-selected modes like two-way talk, camera settings, browser capabilities, available bandwidth) and prioritizes showing an actual up-to-date live view of your camera's stream as quickly as possible.
 
@@ -442,7 +442,7 @@ A stream that starts on time but falls further behind live is buffering, which i
 
 </FaqItem>
 
-<FaqItem id="why-does-frigate-prefer-mse-over-webrtc-for-live-view" question="Why does Frigate prefer MSE over WebRTC for live view?">
+<FaqItem id="why-does-frigate-prefer-mse-over-webrtc-for-live-view" question="Why does HeisenCam prefer MSE over WebRTC for live view?">
 
 HeisenCam prefers MSE because it delivers a better out-of-the-box experience than WebRTC on nearly every axis that matters for a security camera system. MSE is an open standard optimized and supported by all modern browsers, works without any extra configuration (WebRTC requires port forwarding and candidate setup, and lacks H.265 support in some browsers), and requires no internet access for NAT traversal. More importantly, MSE runs over TCP, so every frame arrives and is decoded in order, so nothing is ever silently skipped. WebRTC optimizes for latency over UDP by discarding late or incomplete frames, which works against you on cellular or spotty Wi-Fi: you can end up with frozen video, visual corruption, or gaps in the feed without ever knowing you missed something. HeisenCam's enhanced MSE player has adaptive speed playback and has been tuned for latency and connection robustness that meets or exceeds WebRTC, so you get near-real-time playback with a guarantee that when the video plays, every frame is actually there - which, for an NVR whose whole purpose is letting you see what happened, matters more than shaving fractions of a second off a latency number. That's why HeisenCam defaults to MSE and reserves WebRTC for cases that require it, like two-way talk.
 

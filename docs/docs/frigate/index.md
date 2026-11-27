@@ -6,7 +6,7 @@ slug: /
 
 import DemoLink from "@site/src/components/DemoLink";
 
-HeisenCam is a local network video recorder built on Frigate 0.18.3. Open a camera from the classic dashboard, play a tracked object's recording in Events, or use History to find the minute you need.
+HeisenCam is a local network video recorder built on HeisenCam 0.18.3. Open a camera from the classic dashboard, play a tracked object's recording in Events, or use History to find the minute you need.
 
 ## Get started
 
@@ -16,4 +16,4 @@ HeisenCam is a local network video recorder built on Frigate 0.18.3. Open a came
 
 ## Measure changes
 
-Use [quality replay](../guides/heisencam-demo.md#compare-detection-settings) to compare settings on the same labeled clips. The reference also covers [recording retention](../configuration/record.md), [MQTT](../integrations/mqtt.md) and the [HTTP API](./integrations/api/frigate-http-api/).
+Use [quality replay](../guides/heisencam-demo.md#compare-detection-settings) to compare settings on the same labeled clips. The reference also covers [recording retention](../configuration/record.md), [MQTT](../integrations/mqtt.md) and the [HTTP API](./integrations/api/http-api/).

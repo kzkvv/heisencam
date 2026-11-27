@@ -190,8 +190,8 @@
       "label": "Najít podobné"
     },
     "submitToPlus": {
-      "aria": "Odeslat do Frigate Plus",
-      "label": "Odeslat do Frigate+"
+      "aria": "Odeslat do HeisenCam Plus",
+      "label": "Odeslat do Hosted Models"
     },
     "viewObjectLifecycle": {
       "label": "Zobrazit životní cyklus objektu",

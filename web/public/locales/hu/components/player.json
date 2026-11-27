@@ -2,7 +2,7 @@
   "noRecordingsFoundForThisTime": "Ebben az időpontban nem található felvétel",
   "noPreviewFound": "Nincs elérhető előkép",
   "submitFrigatePlus": {
-    "title": "Elküldi ezt a képet a Frigate+-nak?",
+    "title": "Elküldi ezt a képet a HeisenCam+-nak?",
     "submit": "Küldés",
     "previewError": "Nem sikerült betölteni a pillanatkép előnézetét. Előfordulhat, hogy a felvétel jelenleg nem elérhető."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "error": {
-      "submitFrigatePlusFailed": "Kép küldése a Frigate+-hoz meghiúsult"
+      "submitFrigatePlusFailed": "Kép küldése a HeisenCam+-hoz meghiúsult"
     },
     "success": {
-      "submittedFrigatePlus": "Kép sikeresen elküldve a Frigate+-nak"
+      "submittedFrigatePlus": "Kép sikeresen elküldve a HeisenCam+-nak"
     }
   }
 }

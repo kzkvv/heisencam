@@ -3,7 +3,7 @@
   "noPreviewFound": "Δεν βρέθηκε προεπισκόπηση",
   "noPreviewFoundFor": "Δεν βρέθηκε προεπισκόπηση για {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Να υποβληθεί αυτό το καρέ στο Frigate+;",
+    "title": "Να υποβληθεί αυτό το καρέ στο Hosted Models;",
     "submit": "Υποβολή"
   },
   "livePlayerRequiredIOSVersion": "iOS 17.1 ή μεγαλύτερο χρειάζεται για αυτό τον τύπο του live stream.",
@@ -42,10 +42,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Επιτυχής αποστολή εικόνας στο Frigate+"
+      "submittedFrigatePlus": "Επιτυχής αποστολή εικόνας στο Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Αποτυχία αποστολής εικόνας στο Frigate+"
+      "submitFrigatePlusFailed": "Αποτυχία αποστολής εικόνας στο Hosted Models"
     }
   }
 }

@@ -1,6 +1,10 @@
 import os
 import re
 
+DOCS_URL = "https://docs.heisen.cam"
+BUILD_REVISION = os.getenv("HEISENCAM_REVISION", "development")
+BUILD_CHANNEL = os.getenv("HEISENCAM_CHANNEL", "development")
+
 INSTALL_DIR = "/opt/frigate"
 CONFIG_DIR = "/config"
 DEFAULT_DB_PATH = f"{CONFIG_DIR}/frigate.db"
@@ -22,7 +26,8 @@ PLUS_API_HOST = "https://api.frigate.video"
 SHM_FRAMES_VAR = "SHM_MAX_FRAMES"
 
 CAMERA_CONTROLS_LOCKED = os.getenv(
-    "FRIGATE_CONFIG_ONLY_CAMERA_CONTROLS", ""
+    "HEISENCAM_CONFIG_ONLY_CAMERA_CONTROLS",
+    os.getenv("FRIGATE_CONFIG_ONLY_CAMERA_CONTROLS", ""),
 ).lower() in {
     "1",
     "true",

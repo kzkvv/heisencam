@@ -8,7 +8,7 @@
     "object": "Test og feilsøk - HeisenCam",
     "general": "Innstillinger for brukergrensesnitt - HeisenCam",
     "classification": "Klassifiseringsinnstillinger - HeisenCam",
-    "frigatePlus": "Frigate+ innstillinger - HeisenCam",
+    "frigatePlus": "Hosted Models innstillinger - HeisenCam",
     "notifications": "Innstillinger for meldingsvarsler - HeisenCam",
     "enrichments": "Innstillinger for utvidelser - HeisenCam",
     "cameraManagement": "Administrer kameraer - HeisenCam",
@@ -26,7 +26,7 @@
     "motionTuner": "Finjustering av bevegelse",
     "debug": "Test og feilsøk",
     "users": "Brukere",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "ui": "Brukergrensesnitt",
     "notifications": "Meldingsvarsler",
     "enrichments": "Utvidelser",
@@ -772,11 +772,11 @@
   },
   "frigatePlus": {
     "apiKey": {
-      "notValidated": "Frigate+ API-nøkkel er ikke detektert eller validert",
-      "title": "Frigate+ API-nøkkel",
-      "validated": "Frigate+ API-nøkkel er detektert og validert",
-      "desc": "Frigate+ API-nøkkelen muliggjør integrasjon med Frigate+ tjenesten.",
-      "plusLink": "Les mer om Frigate+"
+      "notValidated": "Hosted Models API-nøkkel er ikke detektert eller validert",
+      "title": "Hosted Models API-nøkkel",
+      "validated": "Hosted Models API-nøkkel er detektert og validert",
+      "desc": "Hosted Models API-nøkkelen muliggjør integrasjon med Hosted Models tjenesten.",
+      "plusLink": "Les mer om Hosted Models"
     },
     "modelInfo": {
       "trainDate": "Treningsdato",
@@ -789,13 +789,13 @@
       "supportedDetectors": "Støttede detektorer",
       "dimensions": "Dimensjoner",
       "cameras": "Kameraer",
-      "availableModels": "Tilgjengelige Frigate+ modeller",
-      "modelSelect": "Dine tilgjengelige modeller på Frigate+ kan velges her. Merk at bare modeller som er kompatible med din nåværende detektorkonfigurasjon kan velges.",
+      "availableModels": "Tilgjengelige Hosted Models modeller",
+      "modelSelect": "Dine tilgjengelige modeller på Hosted Models kan velges her. Merk at bare modeller som er kompatible med din nåværende detektorkonfigurasjon kan velges.",
       "plusModelType": {
         "userModel": "Finjustert",
         "baseModel": "Basismodell"
       },
-      "noModelLoaded": "Ingen Frigate+-modell er lastet inn for øyeblikket.",
+      "noModelLoaded": "Ingen HeisenCam+-modell er lastet inn for øyeblikket.",
       "selectModel": "Velg en modell",
       "noModelsAvailable": "Ingen modeller tilgjengelig",
       "filter": {
@@ -804,10 +804,10 @@
         "fineTunedModels": "Finjusterte modeller"
       }
     },
-    "title": "Frigate+ Innstillinger",
+    "title": "Hosted Models Innstillinger",
     "snapshotConfig": {
       "title": "Konfigurasjon av stillbilde",
-      "desc": "Innsending til Frigate+ krever at både stillbilder og <code>clean_copy</code>-stillbilder er aktivert i konfigurasjonen din.",
+      "desc": "Innsending til Hosted Models krever at både stillbilder og <code>clean_copy</code>-stillbilder er aktivert i konfigurasjonen din.",
       "documentation": "Se dokumentasjonen",
       "table": {
         "camera": "Kamera",
@@ -817,18 +817,18 @@
       "cleanCopyWarning": "Noen kameraer har stillbilder deaktivert"
     },
     "toast": {
-      "success": "Frigate+ innstillingene er lagret. Start HeisenCam på nytt for å aktivere endringene.",
+      "success": "Hosted Models innstillingene er lagret. Start HeisenCam på nytt for å aktivere endringene.",
       "error": "Kunne ikke lagre konfigurasjonsendringer: {{errorMessage}}"
     },
-    "restart_required": "Omstart påkrevd (Frigate+ modell endret)",
-    "unsavedChanges": "Ulagrede endringer for Frigate+ innstillinger",
+    "restart_required": "Omstart påkrevd (Hosted Models modell endret)",
+    "unsavedChanges": "Ulagrede endringer for Hosted Models innstillinger",
     "cardTitles": {
       "otherModels": "Andre modeller",
       "api": "API",
       "currentModel": "Gjeldende modell",
       "configuration": "Konfigurasjon"
     },
-    "description": "Frigate+ er en abonnementstjeneste som gir tilgang til tilleggsfunksjoner og kapasiteter for HeisenCam-instansen din, inkludert muligheten til å bruke egendefinerte objektdeteksjonsmodeller trent på dine egne data. Du kan administrere innstillingene for Frigate+-modellen din her.",
+    "description": "Hosted Models er en abonnementstjeneste som gir tilgang til tilleggsfunksjoner og kapasiteter for HeisenCam-instansen din, inkludert muligheten til å bruke egendefinerte objektdeteksjonsmodeller trent på dine egne data. Du kan administrere innstillingene for HeisenCam+-modellen din her.",
     "changeInDetectorsAndModel": "Endre modell"
   },
   "enrichments": {
@@ -1856,9 +1856,9 @@
   },
   "detectionModel": {
     "plusActive": {
-      "title": "Administrasjon av Frigate+-modell",
-      "description": "Denne instansen kjører en Frigate+-modell. Velg eller endre modell i Frigate+-innstillingene.",
-      "goToFrigatePlus": "Gå til Frigate+-innstillinger",
+      "title": "Administrasjon av HeisenCam+-modell",
+      "description": "Denne instansen kjører en HeisenCam+-modell. Velg eller endre modell i HeisenCam+-innstillingene.",
+      "goToFrigatePlus": "Gå til HeisenCam+-innstillinger",
       "label": "Kilde for gjeldende modell",
       "showModelForm": "Konfigurer en modell manuelt"
     }
@@ -2239,15 +2239,15 @@
       "model": "Deteksjonsmodell"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "Egendefinert modell"
     },
     "mismatch": {
-      "warning": "Den gjeldende Frigate+-modellen \"{{model}}\" krever {{required}}-detektoren. Velg en kompatibel modell nedenfor eller bytt til Egendefinert modell før du lagrer."
+      "warning": "Den gjeldende HeisenCam+-modellen \"{{model}}\" krever {{required}}-detektoren. Velg en kompatibel modell nedenfor eller bytt til Egendefinert modell før du lagrer."
     },
     "plusModel": {
       "requiresDetector": "Krever: {{detector}}",
-      "noModelSelected": "Velg en Frigate+ modell"
+      "noModelSelected": "Velg en Hosted Models modell"
     },
     "toast": {
       "saveSuccess": "Innstillinger for detektorer og modell er lagret. Start HeisenCam på nytt for å aktivere endringene.",

@@ -3,7 +3,7 @@
   "noPreviewFoundFor": "No se encontró vista previa para {{cameraName}}",
   "submitFrigatePlus": {
     "submit": "Enviar",
-    "title": "¿Enviar este fotograma a Frigate+?",
+    "title": "¿Enviar este fotograma a Hosted Models?",
     "previewError": "No se pudo cargar la vista previa de la instantánea. Es posible que la grabación no esté disponible en este momento."
   },
   "streamOffline": {
@@ -41,10 +41,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Fotograma enviado correctamente a Frigate+"
+      "submittedFrigatePlus": "Fotograma enviado correctamente a Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Error al enviar el fotograma a Frigate+"
+      "submitFrigatePlusFailed": "Error al enviar el fotograma a Hosted Models"
     }
   },
   "livePlayerRequiredIOSVersion": "Se requiere iOS 17.1 o superior para este tipo de transmisión en vivo.",

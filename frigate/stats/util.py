@@ -13,7 +13,13 @@ import requests
 from requests.exceptions import RequestException
 
 from frigate.config import FrigateConfig
-from frigate.const import CACHE_DIR, CLIPS_DIR, RECORD_DIR
+from frigate.const import (
+    BUILD_CHANNEL,
+    BUILD_REVISION,
+    CACHE_DIR,
+    CLIPS_DIR,
+    RECORD_DIR,
+)
 from frigate.data_processing.types import DataProcessorMetrics
 from frigate.object_detection.base import ObjectDetectProcess
 from frigate.types import StatsTrackingTypes
@@ -46,7 +52,7 @@ def get_latest_version(config: FrigateConfig) -> str:
 
     try:
         request = requests.get(
-            "https://api.github.com/repos/blakeblackshear/frigate/releases/latest",
+            "https://api.github.com/repos/kzkvv/heisencam/releases/latest",
             timeout=10,
         )
         response = request.json()
@@ -71,7 +77,7 @@ def stats_init(
         "embeddings_metrics": embeddings_metrics,
         "detectors": detectors,
         "started": int(time.time()),
-        "latest_frigate_version": get_latest_version(config),
+        "latest_release_version": get_latest_version(config),
         "last_updated": int(time.time()),
         "processes": processes,
     }
@@ -492,7 +498,9 @@ def stats_snapshot(
     stats["service"] = {
         "uptime": (int(time.time()) - stats_tracking["started"]),
         "version": VERSION,
-        "latest_version": stats_tracking["latest_frigate_version"],
+        "build_revision": BUILD_REVISION,
+        "build_channel": BUILD_CHANNEL,
+        "latest_version": stats_tracking["latest_release_version"],
         "storage": {},
         "last_updated": int(time.time()),
     }

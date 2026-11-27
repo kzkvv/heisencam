@@ -125,8 +125,8 @@ cameras:
           roles:
             - record
     detect:
-      width: 1280 # <- optional, by default Frigate tries to automatically detect resolution
-      height: 720 # <- optional, by default Frigate tries to automatically detect resolution
+      width: 1280 # <- optional, by default HeisenCam tries to automatically detect resolution
+      height: 720 # <- optional, by default HeisenCam tries to automatically detect resolution
 ```
 
 </TabItem>
@@ -252,6 +252,10 @@ camera_groups:
 
 </TabItem>
 </ConfigTabs>
+
+## Idle scan interval
+
+Set `idle_scan_interval` in the camera's `detect` section to scan one extra tile after that many idle frames. The default of zero disables idle scans. The setting helps when a person or vehicle is present but generates too little motion to trigger a detection region. A shorter interval increases detector work. Use the [recorded replay](../guides/heisencam-demo.md#compare-detection-settings) to measure both effects before changing it on a live camera.
 
 ## Two-Way Audio
 

@@ -203,8 +203,8 @@
       "aria": "Descarcă video-ul"
     },
     "submitToPlus": {
-      "label": "Trimite către Frigate+",
-      "aria": "Trimite către Frigate Plus"
+      "label": "Trimite către Hosted Models",
+      "aria": "Trimite către HeisenCam Plus"
     },
     "addTrigger": {
       "label": "Adaugă declanșator",

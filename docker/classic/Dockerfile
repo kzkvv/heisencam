@@ -14,14 +14,22 @@ RUN export VITE_GIT_COMMIT_HASH="$(find public/locales -type f -print0 | sort -z
 
 FROM ${FRIGATE_BASE}
 ARG HEISENCAM_REVISION=development
+ARG HEISENCAM_CHANNEL=development
+ENV HEISENCAM_REVISION=$HEISENCAM_REVISION HEISENCAM_CHANNEL=$HEISENCAM_CHANNEL
 LABEL org.opencontainers.image.title="HeisenCam" \
       org.opencontainers.image.source="https://github.com/kzkvv/heisencam" \
       org.opencontainers.image.revision="${HEISENCAM_REVISION}" \
       org.opencontainers.image.licenses="MIT"
 WORKDIR /opt/frigate
+COPY LICENSE TRADEMARK.md ./
 COPY frigate/ frigate/
 COPY tools/quality_replay.py tools/
 COPY docker/main/rootfs/usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf
+COPY docker/main/rootfs/usr/local/go2rtc/create_config.py /usr/local/go2rtc/create_config.py
+COPY docker/main/rootfs/etc/s6-overlay/s6-rc.d/frigate/run /etc/s6-overlay/s6-rc.d/frigate/run
+COPY docker/main/rootfs/etc/s6-overlay/s6-rc.d/frigate/finish /etc/s6-overlay/s6-rc.d/frigate/finish
 RUN rm -rf web
 ENV PYTHONPATH=/opt/frigate
 COPY --from=web-build /work/dist/ web/
+HEALTHCHECK --start-period=120s --start-interval=5s --interval=15s --timeout=5s --retries=3 \
+    CMD test -f /dev/shm/.frigate-is-stopping || curl --fail --silent http://127.0.0.1:5001/ready

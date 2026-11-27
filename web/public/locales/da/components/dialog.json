@@ -12,12 +12,12 @@
   "explore": {
     "plus": {
       "submitToPlus": {
-        "label": "Indsend til Frigate+",
+        "label": "Indsend til Hosted Models",
         "desc": "Objekter på steder, du ønsker at undgå, er ikke falske positiver. Hvis du indsender dem som falske positiver, vil det forvirre modellen."
       },
       "review": {
         "question": {
-          "label": "Bekræft denne etiket til Frigate Plus",
+          "label": "Bekræft denne etiket til HeisenCam Plus",
           "ask_a": "Er dette objekt et <code>{{label}}</code>?",
           "ask_an": "Er dette objekt en <code>{{label}}</code>?",
           "ask_full": "Er dette objekt en <code>{{untranslatedLabel}}</code> ({{translatedLabel}})?"
@@ -26,7 +26,7 @@
           "submitted": "Indsendt"
         },
         "toast": {
-          "error": "Fejl under indsendelse til Frigate+. Kontroller venligst din netværksforbindelse og prøv igen."
+          "error": "Fejl under indsendelse til HeisenCam+. Kontroller venligst din netværksforbindelse og prøv igen."
         }
       }
     },

@@ -12,7 +12,7 @@ The <DemoLink>browser demo</DemoLink> plays recorded street scenes from Californ
 Run these commands on a machine with Git and Docker Compose installed.
 
 ```sh
-git clone --depth 1 --branch heisencam/0.18.3 https://github.com/kzkvv/heisencam.git
+git clone --depth 1 --branch dev https://github.com/kzkvv/heisencam.git
 cd heisencam/examples/demo
 docker compose up -d
 ```
@@ -27,6 +27,8 @@ Use the [camera setup guide](../frigate/camera_setup.md) to assign your camera's
 
 ## Compare detection settings
 
-Keep a set of labeled clips with people or cars and a second set of false alerts. Run the same clips before and after changing the model or `detect.idle_scan_interval`. The replay reports confirmed objects, detector calls and per-frame scores. See the [replay command and input format](https://github.com/kzkvv/heisencam/blob/heisencam/0.18.3/docker/classic/README.md#measure-detection-quality-on-local-recordings).
+Keep a set of labeled clips with people or cars and a second set of false alerts. Run the same clips before and after changing the model or `detect.idle_scan_interval`. The replay reports confirmed objects, detector calls and per-frame scores. See the [replay command and input format](https://github.com/kzkvv/heisencam/blob/dev/docker/classic/README.md#measure-detection-quality-on-local-recordings).
+
+Run the [public replay fixtures](https://github.com/kzkvv/heisencam/tree/dev/examples/demo#public-detection-replay) to see a small baseline for people and cars.
 
 The <DemoLink sources>demo sources and credits</DemoLink> identify each camera, its publisher and how the recording was prepared.

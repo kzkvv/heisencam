@@ -12,12 +12,12 @@
     "plus": {
       "review": {
         "question": {
-          "label": "Confirma esta etiqueta para Frigate Plus",
+          "label": "Confirma esta etiqueta para HeisenCam Plus",
           "ask_an": "E isto un obxecto <code>{{label}}</code>?"
         }
       },
       "submitToPlus": {
-        "label": "Enviar a Frigate+"
+        "label": "Enviar a Hosted Models"
       }
     }
   }

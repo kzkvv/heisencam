@@ -29,7 +29,7 @@
     "decodedFrames": "Gedecodeerde frames:"
   },
   "submitFrigatePlus": {
-    "title": "Dit frame indienen bij Frigate+?",
+    "title": "Dit frame indienen bij Hosted Models?",
     "submit": "Indienen",
     "previewError": "Het was niet mogelijk om de snapshot preview te laden. De opname is mogelijk niet beschikbaar op dit moment."
   },
@@ -43,10 +43,10 @@
   "cameraDisabled": "Camera is uitgeschakeld",
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Frame succesvol ingediend bij Frigate+"
+      "submittedFrigatePlus": "Frame succesvol ingediend bij Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Het is niet gelukt om een frame naar Frigate+ te sturen"
+      "submitFrigatePlusFailed": "Het is niet gelukt om een frame naar Hosted Models te sturen"
     }
   },
   "cameraOff": "De camera staat uit"

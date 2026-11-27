@@ -367,7 +367,7 @@ async def _execute_find_similar_objects(
             "error": "semantic_search_disabled",
             "message": (
                 "Semantic search must be enabled to find similar objects. "
-                "Enable it in the Frigate config under semantic_search."
+                "Enable it in the HeisenCam config under semantic_search."
             ),
         }
 
@@ -1132,7 +1132,7 @@ async def _execute_pending_tools(
     summary="Chat completion with tool calling",
     description=(
         "Send a chat message to the configured GenAI provider with tool calling support. "
-        "The LLM can call Frigate tools to answer questions about your cameras and events."
+        "The LLM can call HeisenCam tools to answer questions about your cameras and events."
     ),
 )
 async def chat_completion(
@@ -1156,7 +1156,7 @@ async def chat_completion(
     if not genai_client:
         return JSONResponse(
             content={
-                "error": "GenAI is not configured. Please configure a GenAI provider in your Frigate config.",
+                "error": "GenAI is not configured. Please configure a GenAI provider in your HeisenCam config.",
             },
             status_code=400,
         )

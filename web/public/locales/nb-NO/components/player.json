@@ -31,7 +31,7 @@
   "noPreviewFound": "Ingen forhåndsvisning funnet",
   "noPreviewFoundFor": "Ingen forhåndsvisning funnet for {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Send dette bildet til Frigate+?",
+    "title": "Send dette bildet til Hosted Models?",
     "submit": "Send",
     "previewError": "Kunne ikke laste forhåndsvisning av stillbilde. Opptaket er kanskje ikke tilgjengelig for øyeblikket."
   },
@@ -43,10 +43,10 @@
   "cameraDisabled": "Kameraet er deaktivert",
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Bildet ble sendt til Frigate+"
+      "submittedFrigatePlus": "Bildet ble sendt til Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Kunne ikke sende bildet til Frigate+"
+      "submitFrigatePlusFailed": "Kunne ikke sende bildet til Hosted Models"
     }
   },
   "cameraOff": "Kameraet er av"

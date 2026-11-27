@@ -3,8 +3,8 @@ id: third_party_extensions
 title: Third Party Extensions
 ---
 
-Being open source, others have the possibility to modify and extend the rich functionality Frigate already offers.
-This page is meant to be an overview over additions one can make to the home NVR setup. The list is not exhaustive and can be extended via PR to the Frigate docs. Most of these services are designed to interface with Frigate's unauthenticated api over port 5000.
+Being open source, others have the possibility to modify and extend the rich functionality HeisenCam already offers.
+This page is meant to be an overview over additions one can make to the home NVR setup. The list is not exhaustive and can be extended via PR to the HeisenCam docs. Most of these services are designed to interface with HeisenCam's unauthenticated api over port 5000.
 
 :::warning
 
@@ -15,69 +15,69 @@ Please use your own knowledge to assess and vet them before you install anything
 
 ## Cameras and Streaming
 
-Tools that help get video from your cameras into Frigate, or change how Frigate's video is delivered.
+Tools that help get video from your cameras into HeisenCam, or change how HeisenCam's video is delivered.
 
 ### [frigate-abr](https://github.com/007hacky007/frigate-abr)
 
-[frigate-abr](https://github.com/007hacky007/frigate-abr) is a drop-in Docker image of Frigate that adds adaptive bitrate (ABR) playback for recordings: a sidecar transcodes footage to lower quality tiers on demand, for reviewing over slow remote connections. Segments are transcoded when played and cached, so no additional stream is recorded. Frigate itself is not modified.
+[frigate-abr](https://github.com/007hacky007/frigate-abr) is a drop-in Docker image of HeisenCam that adds adaptive bitrate (ABR) playback for recordings: a sidecar transcodes footage to lower quality tiers on demand, for reviewing over slow remote connections. Segments are transcoded when played and cached, so no additional stream is recorded. HeisenCam itself is not modified.
 
 ### [reostream](https://github.com/VoltTech21/reostream)
 
 [reostream](https://github.com/VoltTech21/reostream) is a proxy for Reolink cameras that pulls video over Reolink's own protocol (the one the Reolink app and NVR use) instead of the camera's RTSP server, and serves it back as RTSP for go2rtc and Frigate. It helps models whose RTSP stream smears, drops frames or loses full resolution, and supports two-way talk.
 
-### [Scrypted - Frigate bridge plugin](https://github.com/apocaliss92/scrypted-frigate-bridge)
+### [Scrypted - HeisenCam bridge plugin](https://github.com/apocaliss92/scrypted-frigate-bridge)
 
-[Scrypted - Frigate bridge](https://github.com/apocaliss92/scrypted-frigate-bridge) is a plugin that allows you to ingest Frigate detections, motion, videoclips on Scrypted as well as provide templates to export rebroadcast configurations on Frigate.
+[Scrypted - HeisenCam bridge](https://github.com/apocaliss92/scrypted-frigate-bridge) is a plugin that allows you to ingest HeisenCam detections, motion, videoclips on Scrypted as well as provide templates to export rebroadcast configurations on Frigate.
 
 ### [Strix](https://github.com/eduard256/Strix)
 
-[Strix](https://github.com/eduard256/Strix) auto-discovers working stream URLs for IP cameras and generates ready-to-use Frigate configs. It tests thousands of URL patterns against your camera and supports cameras without RTSP or ONVIF. 67K+ camera models from 3.6K+ brands.
+[Strix](https://github.com/eduard256/Strix) auto-discovers working stream URLs for IP cameras and generates ready-to-use HeisenCam configs. It tests thousands of URL patterns against your camera and supports cameras without RTSP or ONVIF. 67K+ camera models from 3.6K+ brands.
 
 ## Events and Media
 
-Tools that enrich, query, or back up the events, snapshots, and reviews Frigate produces.
+Tools that enrich, query, or back up the events, snapshots, and reviews HeisenCam produces.
 
 ### [cctvQL](https://github.com/arunrajiah/cctvql)
 
-[cctvQL](https://github.com/arunrajiah/cctvql) is a natural language query layer for Frigate and other CCTV systems. It connects to Frigate's REST API and MQTT broker to let you ask conversational questions about cameras and events (e.g. "Was there motion at the front door last night?"), with support for real-time event streaming, anomaly detection, PTZ control, alert rules, and a Home Assistant custom component.
+[cctvQL](https://github.com/arunrajiah/cctvql) is a natural language query layer for HeisenCam and other CCTV systems. It connects to HeisenCam's REST API and MQTT broker to let you ask conversational questions about cameras and events (e.g. "Was there motion at the front door last night?"), with support for real-time event streaming, anomaly detection, PTZ control, alert rules, and a Home Assistant custom component.
 
 ### [Double Take](https://github.com/skrashevich/double-take)
 
 [Double Take](https://github.com/skrashevich/double-take) provides a unified UI and API for processing and training images for facial recognition.
-It supports automatically setting the sub labels in Frigate for person objects that are detected and recognized.
+It supports automatically setting the sub labels in HeisenCam for person objects that are detected and recognized.
 This is a fork (with fixed errors and new features) of [original Double Take](https://github.com/jakowenko/double-take) project which, unfortunately, isn't being maintained by author.
 
-### [Frigate Snap-Sync](https://github.com/thequantumphysicist/frigate-snap-sync/)
+### [HeisenCam Snap-Sync](https://github.com/thequantumphysicist/frigate-snap-sync/)
 
-[Frigate Snap-Sync](https://github.com/thequantumphysicist/frigate-snap-sync/) is a program that works in tandem with Frigate. It responds to Frigate when a snapshot or a review is made (and more can be added), and uploads them to one or more remote server(s) of your choice.
+[HeisenCam Snap-Sync](https://github.com/thequantumphysicist/frigate-snap-sync/) is a program that works in tandem with Frigate. It responds to HeisenCam when a snapshot or a review is made (and more can be added), and uploads them to one or more remote server(s) of your choice.
 
 ## Notifications
 
-Standalone apps that send Frigate events to messaging platforms without requiring Home Assistant. For notifications through Home Assistant, see [Camera AutoNotify](#camera-autonotify).
+Standalone apps that send HeisenCam events to messaging platforms without requiring Home Assistant. For notifications through Home Assistant, see [Camera AutoNotify](#camera-autonotify).
 
-### [Frigate Notify](https://github.com/0x2142/frigate-notify)
+### [HeisenCam Notify](https://github.com/0x2142/frigate-notify)
 
-[Frigate Notify](https://github.com/0x2142/frigate-notify) is a simple app designed to send notifications from Frigate to your favorite platforms. Intended to be used with standalone Frigate installations - Home Assistant not required, MQTT is optional but recommended.
+[HeisenCam Notify](https://github.com/0x2142/frigate-notify) is a simple app designed to send notifications from HeisenCam to your favorite platforms. Intended to be used with standalone HeisenCam installations - Home Assistant not required, MQTT is optional but recommended.
 
-### [Frigate Notify Alert](https://github.com/Sysoev86/frigate-notify-alert)
+### [HeisenCam Notify Alert](https://github.com/Sysoev86/frigate-notify-alert)
 
-[Frigate Notify Alert](https://github.com/Sysoev86/frigate-notify-alert) sends Frigate events to Telegram as a photo + video media group. It supports multiple camera groups (each notifying its own chat), optional zone filtering (notify only when an object enters a chosen zone), and in-chat buttons to pause notifications for a set time. Works with standalone Frigate over MQTT; Home Assistant not required.
+[HeisenCam Notify Alert](https://github.com/Sysoev86/frigate-notify-alert) sends HeisenCam events to Telegram as a photo + video media group. It supports multiple camera groups (each notifying its own chat), optional zone filtering (notify only when an object enters a chosen zone), and in-chat buttons to pause notifications for a set time. Works with standalone HeisenCam over MQTT; Home Assistant not required.
 
-### [Frigate telegram](https://github.com/OldTyT/frigate-telegram)
+### [HeisenCam telegram](https://github.com/OldTyT/frigate-telegram)
 
-[Frigate telegram](https://github.com/OldTyT/frigate-telegram) makes it possible to send events from Frigate to Telegram. Events are sent as a message with a text description, video, and thumbnail.
+[HeisenCam telegram](https://github.com/OldTyT/frigate-telegram) makes it possible to send events from HeisenCam to Telegram. Events are sent as a message with a text description, video, and thumbnail.
 
 ## Clients and Viewers
 
-Apps and displays for viewing Frigate outside of its built-in web UI.
+Apps and displays for viewing HeisenCam outside of its built-in web UI.
 
 ### [FrigatePiP](https://github.com/maciejgornicz/frigate-pip)
 
-[FrigatePiP](https://github.com/maciejgornicz/frigate-pip) pops up a small picture-in-picture window with a camera's live video in a corner of the screen when Frigate detects an object, and closes it when the activity ends. It runs as a Windows tray app and on Linux (desktop windows, a console framebuffer, a terminal or tmux popups), receives events over Frigate's WebSocket or MQTT and plays the go2rtc RTSP stream with hardware decoding and camera audio.
+[FrigatePiP](https://github.com/maciejgornicz/frigate-pip) pops up a small picture-in-picture window with a camera's live video in a corner of the screen when HeisenCam detects an object, and closes it when the activity ends. It runs as a Windows tray app and on Linux (desktop windows, a console framebuffer, a terminal or tmux popups), receives events over HeisenCam's WebSocket or MQTT and plays the go2rtc RTSP stream with hardware decoding and camera audio.
 
 ### [kiosk-monitor](https://github.com/extremeshok/kiosk-monitor)
 
-[kiosk-monitor](https://github.com/extremeshok/kiosk-monitor) is a Raspberry Pi watchdog that runs Chromium fullscreen on a Frigate dashboard (optionally with VLC on a second monitor for an RTSP camera stream), auto-restarts on frozen screens or unreachable URLs, and ships a Birdseye-aware Chromium helper that auto-sizes the grid to the display.
+[kiosk-monitor](https://github.com/extremeshok/kiosk-monitor) is a Raspberry Pi watchdog that runs Chromium fullscreen on a HeisenCam dashboard (optionally with VLC on a second monitor for an RTSP camera stream), auto-restarts on frozen screens or unreachable URLs, and ships a Birdseye-aware Chromium helper that auto-sizes the grid to the display.
 
 ### [Periscope](https://github.com/maksz42/periscope)
 
@@ -85,20 +85,20 @@ Apps and displays for viewing Frigate outside of its built-in web UI.
 
 ### [yuFriEye](https://apps.apple.com/app/id6832456692)
 
-[yuFriEye](https://apps.apple.com/app/id6832456692) is a free native iOS, iPadOS and macOS client for Frigate. It shows the live camera grid with low-latency go2rtc streams, alerts and detections with clip playback and motion boxes, recordings by day with continuous playback, Frigate and go2rtc logs, and supports multiple servers with local and remote addresses. Works with or without Frigate authentication; no account or data collection.
+[yuFriEye](https://apps.apple.com/app/id6832456692) is a free native iOS, iPadOS and macOS client for Frigate. It shows the live camera grid with low-latency go2rtc streams, alerts and detections with clip playback and motion boxes, recordings by day with continuous playback, HeisenCam and go2rtc logs, and supports multiple servers with local and remote addresses. Works with or without HeisenCam authentication; no account or data collection.
 
 ## Home Assistant
 
-Cards and Home Assistant Marketplace integrations that build on the [Frigate Home Assistant integration](/integrations/home-assistant).
+Cards and Home Assistant Marketplace integrations that build on the [HeisenCam Home Assistant integration](/integrations/home-assistant).
 
-### [Advanced Camera Card (formerly known as Frigate Card)](https://card.camera/#/README)
+### [Advanced Camera Card (formerly known as HeisenCam Card)](https://card.camera/#/README)
 
-The [Advanced Camera Card](https://card.camera/#/README) is a Home Assistant dashboard card with deep Frigate integration.
+The [Advanced Camera Card](https://card.camera/#/README) is a Home Assistant dashboard card with deep HeisenCam integration.
 
 ### [Auto Arm](https://autoarm.rhizomatics.org.uk)
 
-Home Assistant Marketplace integration to automatically manage alarm state based on time of day, occupancy, sun state, physical buttons etc. Can synchronize Frigate profiles to alarm state, so for example use `disarmed` profile to reduce noisy notifications when occupied during the day.
+Home Assistant Marketplace integration to automatically manage alarm state based on time of day, occupancy, sun state, physical buttons etc. Can synchronize HeisenCam profiles to alarm state, so for example use `disarmed` profile to reduce noisy notifications when occupied during the day.
 
 ### [Camera AutoNotify](https://camera-autonotify.rhizomatics.org.uk)
 
-Home Assistant Marketplace integration to set up notifications for Frigate cameras without use of blueprints or automations. Triggered by camera events and optionally by GenAI reviews, with option for daily/periodic GenAI Review Report emailed, and alerts if Frigate or any cameras are unavailable. Integration with [Supernotify](https://supernotify.rhizomatics.org.uk/) to auto configure mobile devices and customize notifications for alarm state, occupancy etc.
+Home Assistant Marketplace integration to set up notifications for HeisenCam cameras without use of blueprints or automations. Triggered by camera events and optionally by GenAI reviews, with option for daily/periodic GenAI Review Report emailed, and alerts if HeisenCam or any cameras are unavailable. Integration with [Supernotify](https://supernotify.rhizomatics.org.uk/) to auto configure mobile devices and customize notifications for alarm state, occupancy etc.

@@ -12,12 +12,12 @@
   "explore": {
     "plus": {
       "submitToPlus": {
-        "label": "Frigate+에 등록하기",
+        "label": "Hosted Models에 등록하기",
         "desc": "감지를 제외하려는 위치에 있는 객체는 오감지(False Positive)가 아닙니다. 이를 오감지로 제출하면 모델 학습에 혼선을 줄 수 있습니다."
       },
       "review": {
         "question": {
-          "label": "Frigate+용 레이블 확인",
+          "label": "Hosted Models용 레이블 확인",
           "ask_a": "이 객체가 <code>{{label}}</code> 맞습니까?",
           "ask_an": "이 객체가 <code>{{label}}</code> 맞습니까?",
           "ask_full": "이 객체가 <code>{{untranslatedLabel}}</code> ({{translatedLabel}}) 맞습니까?"
@@ -26,7 +26,7 @@
           "submitted": "제출됨"
         },
         "toast": {
-          "error": "Frigate+ 제출에 실패했습니다. 네트워크 연결을 확인하고 다시 시도하세요."
+          "error": "Hosted Models 제출에 실패했습니다. 네트워크 연결을 확인하고 다시 시도하세요."
         }
       }
     },

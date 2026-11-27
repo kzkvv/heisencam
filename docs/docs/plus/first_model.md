@@ -9,7 +9,7 @@ import NavPath from "@site/src/components/NavPath";
 
 ## Step 1: Upload and annotate your images
 
-Before requesting your first model, you will need to upload and verify at least 10 images to Frigate+. The more images you upload, annotate, and verify the better your results will be. Most users start to see very good results once they have at least 100 verified images per camera. Keep in mind that varying conditions should be included. You will want images from cloudy days, sunny days, dawn, dusk, and night. Refer to the [integration docs](../integrations/plus.md#generate-an-api-key) for instructions on how to easily submit images to Frigate+ directly from Frigate.
+Before requesting your first model, you will need to upload and verify at least 10 images to HeisenCam+. The more images you upload, annotate, and verify the better your results will be. Most users start to see very good results once they have at least 100 verified images per camera. Keep in mind that varying conditions should be included. You will want images from cloudy days, sunny days, dawn, dusk, and night. Refer to the [integration docs](../integrations/plus.md#generate-an-api-key) for instructions on how to easily submit images to Hosted Models directly from HeisenCam.
 
 It is recommended to submit **both** true positives and false positives. This will help the model differentiate between what is and isn't correct. You should aim for a target of 80% true positive submissions and 20% false positives across all of your images. If you are experiencing false positives in a specific area, submitting true positives for any object type near that area in similar lighting conditions will help teach the model what that area looks like when no objects are present.
 
@@ -18,19 +18,15 @@ For more detailed recommendations, you can refer to the docs on [annotating](./a
 ## Step 2: Submit a model request
 
 Once you have an initial set of verified images, you can request a model on the Models page. For guidance on choosing a model type, refer to [available model types](./index.md#available-model-types) and [choosing a model](./choosing_a_model.md). If you are unsure which type to request, you can test the base model for each version from the "Base Models" tab. For most hardware, `yolov9` is recommended; `mobiledet` is a legacy model type and will be removed in 2027. Each model request requires 1 of the 12 trainings that you receive with your annual subscription. This model will support all [label types available](./index.md#available-label-types) even if you do not submit any examples for those labels. Model creation can take up to 36 hours.
-![Plus Models Page](/img/plus/plus-models.jpg)
-
 ## Step 3: Set your model
 
-You will receive an email notification when your Frigate+ model is ready.
-![Model Ready Email](/img/plus/model-ready-email.jpg)
-
-Models available in Frigate+ can be used with a special model path. No other information needs to be configured because it fetches the remaining config from Frigate+ automatically.
+You will receive an email notification when your Hosted Models model is ready.
+Models available in Hosted Models can be used with a special model path. No other information needs to be configured because it fetches the remaining config from Hosted Models automatically.
 
 <ConfigTabs>
 <TabItem value="ui">
 
-Navigate to <NavPath path="Settings > System > Detectors and model" />. In the **Detection Model** section, choose the **Frigate+** tab. Select your new Frigate+ model from the **Available Frigate+ models** dropdown, then click **Save**. Restart Frigate to apply the change.
+Navigate to <NavPath path="Settings > System > Detectors and model" />. In the **Detection Model** section, choose the **Hosted Models** tab. Select your new Hosted Models model from the **Available Hosted Models models** dropdown, then click **Save**. Restart HeisenCam to apply the change.
 
 </TabItem>
 <TabItem value="yaml">
@@ -44,7 +40,7 @@ model:
 
 :::tip
 
-When setting the plus model id, all other fields should be removed as these are configured automatically with the Frigate+ model config
+When setting the plus model id, all other fields should be removed as these are configured automatically with the Hosted Models model config
 
 :::
 
@@ -59,7 +55,7 @@ Model IDs are not secret values and can be shared freely. Access to your model i
 
 ## Step 4: Adjust your object filters for higher scores
 
-Frigate+ models generally have much higher scores than the default model provided in Frigate. You will likely need to increase your `threshold` and `min_score` values. Here is an example of how these values can be refined, but you should expect these to evolve as your model improves. For more information about how `threshold` and `min_score` are related, see the docs on [object filters](../configuration/object_filters.md#object-scores).
+Hosted Models models generally have much higher scores than the default model provided in Frigate. You will likely need to increase your `threshold` and `min_score` values. Here is an example of how these values can be refined, but you should expect these to evolve as your model improves. For more information about how `threshold` and `min_score` are related, see the docs on [object filters](../configuration/object_filters.md#object-scores).
 
 <ConfigTabs>
 <TabItem value="ui">
