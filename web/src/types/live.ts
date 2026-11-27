@@ -5,30 +5,11 @@ export type VideoResolutionType = {
 };
 
 type LiveProducerMetadata = {
-  type: string;
-  url: string;
-  remote_addr: string;
-  user_agent: string;
-  sdp: string;
-  medias?: string[];
-  receivers?: string[];
-  recv: number;
-};
-
-type LiveConsumerMetadata = {
-  type: string;
-  url: string;
-  remote_addr: string;
-  user_agent: string;
-  sdp: string;
-  medias?: string[];
-  senders?: string[];
-  send: number;
+  medias?: string[] | null;
 };
 
 export type LiveStreamMetadata = {
   producers: LiveProducerMetadata[];
-  consumers: LiveConsumerMetadata[];
 };
 
 export type LivePlayerError = "stalled" | "startup" | "mse-decode";

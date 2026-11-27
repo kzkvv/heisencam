@@ -520,6 +520,19 @@ class TestMaterializeForWs(unittest.TestCase):
         self.assertIn("detectors", inner)
         self.assertIn("service", inner)
 
+    def test_stats_viewer_receives_cpu_usage_summary(self):
+        payload = json.dumps(
+            {
+                "cpu_usages": {"1234": {"cpu": "2.0", "cmdline": "camera process"}},
+                "bandwidth_usages": {"1234": {"rx": 5}},
+            }
+        )
+        message = self._materialize(_ws("viewer"), "stats", payload)
+        envelope = json.loads(message)  # type: ignore[arg-type]
+        self.assertEqual(
+            json.loads(envelope["payload"]), {"cpu_usages": {"1234": {"cpu": "2.0"}}}
+        )
+
     def test_stats_restricted_with_no_allowed_cameras_still_sends_aggregates(self):
         """A restricted role whose allow-list contains only nonexistent cameras
         still gets the global aggregates and service block."""

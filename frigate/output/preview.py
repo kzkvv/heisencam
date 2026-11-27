@@ -65,6 +65,12 @@ def get_cache_image_name(camera: str, frame_time: float) -> str:
     )
 
 
+def is_camera_preview_frame(file_name: str, camera: str) -> bool:
+    """Check the camera name in a cached preview frame filename."""
+    name, _, timestamp = file_name.rpartition("-")
+    return name == f"preview_{camera}" and timestamp.endswith(f".{PREVIEW_FRAME_TYPE}")
+
+
 def get_most_recent_preview_frame(
     camera: str, before: float | None = None
 ) -> str | None:
@@ -78,8 +84,7 @@ def get_most_recent_preview_frame(
         preview_files = [
             f
             for f in os.listdir(PREVIEW_CACHE_DIR)
-            if f.startswith(f"preview_{camera}-")
-            and f.endswith(f".{PREVIEW_FRAME_TYPE}")
+            if is_camera_preview_frame(f, camera)
         ]
 
         if not preview_files:
@@ -274,7 +279,7 @@ class PreviewRecorder:
         start_file = f"{file_start}{start_ts}.webp"
 
         for file in sorted(os.listdir(os.path.join(CACHE_DIR, FOLDER_PREVIEW_FRAMES))):
-            if not file.startswith(file_start):
+            if not is_camera_preview_frame(file, config.name):
                 continue
 
             if file < start_file:

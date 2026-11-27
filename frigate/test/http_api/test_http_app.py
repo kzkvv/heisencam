@@ -47,6 +47,35 @@ class TestHttpApp(BaseTestHttp):
             assert response.status_code == 200
             assert response.json()["front_door"]["usage_percent"] == 25.0
 
+    def test_metrics_requires_admin(self):
+        stats = Mock(spec=StatsEmitter)
+        stats.get_latest_stats.return_value = self.test_stats
+        app = super().create_app(stats)
+
+        with AuthTestClient(app) as client:
+            viewer = {"remote-user": "viewer", "remote-role": "viewer"}
+            self.assertEqual(client.get("/metrics", headers=viewer).status_code, 403)
+            self.assertEqual(client.get("/metrics").status_code, 200)
+
+    def test_viewer_config_keeps_live_stream_names(self):
+        self.minimal_config["go2rtc"] = {
+            "streams": {"front_door": ["rtsp://camera.local/stream"]},
+            "webrtc": {"candidates": ["recorder.local:8555"]},
+        }
+        app = super().create_app()
+
+        with AuthTestClient(app) as client:
+            viewer = {"remote-user": "viewer", "remote-role": "viewer"}
+            response = client.get("/config", headers=viewer)
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(
+                response.json()["go2rtc"],
+                {
+                    "streams": {"front_door": []},
+                    "webrtc": {"candidates": ["recorder.local:8555"]},
+                },
+            )
+
     def test_camera_name_collision_keeps_admin_default(self):
         self.minimal_config["cameras"]["faces"] = self.minimal_config["cameras"].pop(
             "front_door"

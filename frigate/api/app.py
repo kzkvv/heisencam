@@ -73,6 +73,7 @@ from frigate.util.builtin import (
     flatten_config_data,
     load_labels,
     process_config_query_string,
+    scope_stats_for_non_admin,
     update_yaml_file_bulk,
 )
 from frigate.util.config import (
@@ -143,33 +144,9 @@ def stats(
     if request.headers.get("remote-role") == "admin":
         return JSONResponse(content=stats_data)
 
-    allowed_set = set(allowed_cameras)
-
-    # Shallow-copy so we don't mutate the cached stats history entry.
-    filtered = {**stats_data}
-
-    cameras = stats_data.get("cameras")
-    if cameras is not None:
-        filtered["cameras"] = {
-            name: data for name, data in cameras.items() if name in allowed_set
-        }
-
-    bandwidth = stats_data.get("bandwidth_usages")
-    if bandwidth is not None:
-        filtered["bandwidth_usages"] = {
-            name: data for name, data in bandwidth.items() if name in allowed_set
-        }
-
-    # cmdline can leak camera URLs/paths; strip but keep cpu/mem so
-    # client-side problem heuristics still work.
-    cpu_usages = stats_data.get("cpu_usages")
-    if cpu_usages is not None:
-        filtered["cpu_usages"] = {
-            pid: {k: v for k, v in usage.items() if k != "cmdline"}
-            for pid, usage in cpu_usages.items()
-        }
-
-    return JSONResponse(content=filtered)
+    return JSONResponse(
+        content=scope_stats_for_non_admin(stats_data, set(allowed_cameras))
+    )
 
 
 @router.get("/stats/history", dependencies=[Depends(require_role(["admin"]))])
@@ -180,7 +157,7 @@ def stats_history(request: Request, keys: str = None):
     return JSONResponse(content=request.app.stats_emitter.get_stats_history(keys))
 
 
-@router.get("/metrics", dependencies=[Depends(allow_any_authenticated())])
+@router.get("/metrics", dependencies=[Depends(require_role(["admin"]))])
 def metrics(request: Request):
     """Expose Prometheus metrics endpoint and update metrics with latest stats"""
     # Retrieve the latest statistics and update the Prometheus metrics
@@ -316,9 +293,11 @@ def config(request: Request):
 
     config["camera_controls_locked"] = CAMERA_CONTROLS_LOCKED
 
-    # remove environment_vars for non-admin users
-    if request.headers.get("remote-role") != "admin":
+    is_admin = request.headers.get("remote-role") == "admin"
+    if not is_admin:
         config.pop("environment_vars", None)
+        redact_credential(config.get("notifications", {}), "email")
+        _drop_ffmpeg_args(config.get("ffmpeg", {}))
 
     # redact mqtt credentials
     redact_credential(config["mqtt"], "password")
@@ -330,6 +309,9 @@ def config(request: Request):
     for _genai_name, genai_cfg in config.get("genai", {}).items():
         if isinstance(genai_cfg, dict):
             redact_credential(genai_cfg, "api_key")
+            if not is_admin:
+                genai_cfg.pop("base_url", None)
+                genai_cfg.pop("provider_options", None)
 
     for camera_name, camera in request.app.frigate_config.cameras.items():
         camera_dict = config["cameras"][camera_name]
@@ -339,14 +321,21 @@ def config(request: Request):
         if onvif_dict:
             redact_credential(onvif_dict, "password")
 
-        # clean paths
-        for input in camera_dict.get("ffmpeg", {}).get("inputs", []):
-            input["path"] = clean_camera_user_pass(input["path"])
+        ffmpeg = camera_dict.get("ffmpeg", {})
+        if is_admin:
+            for input_config in ffmpeg.get("inputs", []):
+                input_config["path"] = clean_camera_user_pass(input_config["path"])
 
-        # add clean ffmpeg_cmds
-        camera_dict["ffmpeg_cmds"] = copy.deepcopy(camera.ffmpeg_cmds)
-        for cmd in camera_dict["ffmpeg_cmds"]:
-            cmd["cmd"] = clean_camera_user_pass(" ".join(cmd["cmd"]))
+            camera_dict["ffmpeg_cmds"] = copy.deepcopy(camera.ffmpeg_cmds)
+            for cmd in camera_dict["ffmpeg_cmds"]:
+                cmd["cmd"] = clean_camera_user_pass(" ".join(cmd["cmd"]))
+        else:
+            _drop_ffmpeg_args(ffmpeg)
+            for input_config in ffmpeg.get("inputs", []):
+                input_config["path"] = ""
+                _drop_ffmpeg_args(input_config)
+            camera_dict["ffmpeg_cmds"] = []
+            camera_dict.pop("webui_url", None)
 
         # ensure that zones are relative
         for zone_name, zone in config_obj.cameras[camera_name].zones.items():
@@ -358,17 +347,19 @@ def config(request: Request):
         # over the camera's actual base values (e.g. threshold=20).
         if camera.profiles:
             for profile_name, profile_config in camera.profiles.items():
-                camera_dict.setdefault("profiles", {})[profile_name] = (
-                    profile_config.model_dump(
-                        mode="json", warnings="none", exclude_unset=True
-                    )
+                profile_dict = profile_config.model_dump(
+                    mode="json", warnings="none", exclude_unset=True
                 )
+                if not is_admin:
+                    redact_credential(profile_dict.get("notifications") or {}, "email")
+                camera_dict.setdefault("profiles", {})[profile_name] = profile_dict
 
         # When a profile is active, the top-level camera sections contain
         # profile-merged (effective) values.  Include the original base
         # configs so the frontend settings can display them separately.
         if (
-            config_obj.active_profile is not None
+            is_admin
+            and config_obj.active_profile is not None
             and request.app.profile_manager is not None
         ):
             base_sections = request.app.profile_manager.get_base_configs_for_api(
@@ -377,22 +368,20 @@ def config(request: Request):
             if base_sections:
                 camera_dict["base_config"] = base_sections
 
-    # remove go2rtc stream passwords
-    go2rtc: dict[str, Any] = config_obj.go2rtc.model_dump(
-        mode="json", warnings="none", exclude_none=True
-    )
-    for stream_name, stream in go2rtc.get("streams", {}).items():
-        if stream is None:
-            continue
-        if isinstance(stream, str):
-            cleaned = clean_camera_user_pass(stream)
-        else:
-            cleaned = []
-
-            for item in stream:
-                cleaned.append(clean_camera_user_pass(item))
-
-        config["go2rtc"]["streams"][stream_name] = cleaned
+    go2rtc: dict[str, Any] = config["go2rtc"]
+    streams = go2rtc.get("streams") or {}
+    if is_admin:
+        for stream_name, stream in streams.items():
+            if isinstance(stream, str):
+                streams[stream_name] = clean_camera_user_pass(stream)
+            elif stream is not None:
+                streams[stream_name] = [clean_camera_user_pass(item) for item in stream]
+    else:
+        webrtc = go2rtc.get("webrtc") or {}
+        config["go2rtc"] = {
+            "streams": {name: [] for name in streams},
+            "webrtc": {"candidates": webrtc.get("candidates") or []},
+        }
 
     config["plus"] = {"enabled": request.app.frigate_config.plus_api.is_active()}
     config["model"]["colormap"] = config_obj.model.colormap
@@ -422,6 +411,11 @@ def config(request: Request):
         )
 
     return JSONResponse(content=config)
+
+
+def _drop_ffmpeg_args(ffmpeg: dict[str, Any]) -> None:
+    for key in ("global_args", "input_args", "output_args"):
+        ffmpeg.pop(key, None)
 
 
 @router.get("/profiles", dependencies=[Depends(allow_any_authenticated())])
