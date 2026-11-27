@@ -1,0 +1,1 @@
+var n=Object.defineProperty;var t=(e,s)=>n(e,"name",{value:s,configurable:!0});import{j as a,f as m}from"./main-BR6-ZHyf.js";function u({className:e,...s}){return a.jsx("div",{className:m("animate-pulse rounded-md bg-muted",e),...s})}t(u,"Skeleton");export{u as S};

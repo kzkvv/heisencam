@@ -1,36 +1,60 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore six public street cameras, recorded detections and a six-camera overview in the HeisenCam browser demo.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
-  <title>Cameras · HeisenCam demo</title>
-  <link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="demo.css">
-  <script defer src="demo.js"></script>
-</head>
-<body>
-  <a class="skip" href="#content">Skip to content</a>
-  <aside>
-    <a class="brand" href="../"><img src="../assets/mark.svg" width="34" height="34" alt="">HeisenCam</a>
-    <nav aria-label="Demo views">
-      <a href="#cameras">Cameras</a>
-      <a href="#birdseye">Birdseye</a>
-      <a href="#events">Events</a>
-    </nav>
-    <nav class="resources" aria-label="Resources">
-      <a href="../docs/">Documentation</a>
-      <a href="#sources">Camera sources</a>
-    </nav>
-  </aside>
-  <div class="workspace">
-    <header><a href="../">HeisenCam</a><span aria-hidden="true">/</span>Browser demo</header>
-    <main id="content" tabindex="-1">
-      <h1>Cameras</h1>
-      <p>Loading the camera wall…</p>
-      <noscript><p>The interactive demo uses JavaScript. <a href="../assets/dashboard.webp">View the dashboard screenshot</a> or <a href="../docs/">read the guide</a>.</p></noscript>
-    </main>
-  </div>
-</body>
+  <head>
+    <script>self["MonacoEnvironment"] = (function (paths) {
+          return {
+            globalAPI: false,
+            getWorkerUrl : function (moduleId, label) {
+              var result =  paths[label];
+              if (/^((http:)|(https:)|(file:)|(\/\/))/.test(result)) {
+                var currentUrl = String(window.location);
+                var currentOrigin = currentUrl.substr(0, currentUrl.length - window.location.hash.length - window.location.search.length - window.location.pathname.length);
+                if (result.substring(0, currentOrigin.length) !== currentOrigin) {
+                  var js = '/*' + label + '*/importScripts("' + result + '");';
+                  var blob = new Blob([js], { type: 'application/javascript' });
+                  return URL.createObjectURL(blob);
+                }
+              }
+              return result;
+            }
+          };
+        })({
+  "editorWorkerService": "/heisencam/demo/monacoeditorwork/editor.worker.bundle.js",
+  "yaml": "/heisencam/demo/monacoeditorwork/yaml.worker.bundle.js"
+});</script>
+
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/heisencam/demo/assets/favicon-BXDqO2j9.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>HeisenCam</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/heisencam/demo/assets/apple-touch-icon-AFFPwzBI.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/heisencam/demo/assets/favicon-32x32-BGSDCMi_.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/heisencam/demo/assets/favicon-16x16-MV8ch2lZ.png"
+    />
+    <link rel="icon" type="image/svg+xml" href="/heisencam/demo/assets/favicon-CjuwN2A0.svg" />
+    <link rel="manifest" href="/heisencam/demo/assets/site-gxH9yR_I.webmanifest" crossorigin="use-credentials" />
+    <link rel="mask-icon" href="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3ccircle%20cx='32'%20cy='32'%20r='31'%20fill='%23242932'/%3e%3ccircle%20cx='32'%20cy='32'%20r='26'%20fill='%2311161d'%20stroke='%23697480'%20stroke-width='2'/%3e%3cpath%20fill='%23434c57'%20d='M16%2018a22%2022%200%200%201%2023-6l-9%2010-10%206z'/%3e%3cpath%20fill='%23333d49'%20d='M42%2013a22%2022%200%200%201%2012%2020l-13-4-9-8z'/%3e%3cpath%20fill='%23414b56'%20d='M54%2036a22%2022%200%200%201-15%2017l-2-13%205-10z'/%3e%3cpath%20fill='%23303945'%20d='M36%2054a22%2022%200%200%201-22-10l12-6%2010%203z'/%3e%3cpath%20fill='%23515b66'%20d='M12%2041a22%2022%200%200%201%202-21l6%2010%203%209z'/%3e%3ccircle%20cx='32'%20cy='32'%20r='10'%20fill='%2311161d'/%3e%3cpath%20fill='%2348c9ee'%20d='m37%2013%2012%202-4%2013-12-5z'/%3e%3cpath%20fill='%23bdedfa'%20d='m37%2013%2012%202-9%205z'/%3e%3cpath%20fill='%231789ac'%20d='m40%2020%209-5-4%2013z'/%3e%3c/svg%3e" color="#3b82f7" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <script type="module" crossorigin src="/heisencam/demo/assets/main-BR6-ZHyf.js"></script>
+    <link rel="stylesheet" crossorigin href="/heisencam/demo/assets/main-EHw9YDZA.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+  </body>
 </html>

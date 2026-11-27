@@ -1,0 +1,58 @@
+{
+  "documentTitle": {
+    "default": "Ρυθμίσεις - HeisenCam",
+    "authentication": "Ρυθμίσεις ελέγχου ταυτοποίησης - HeisenCam",
+    "camera": "Ρυθμίσεις Κάμερας - HeisenCam",
+    "enrichments": "Ρυθμίσεις εμπλουτισμού - HeisenCam",
+    "masksAndZones": "Ρυθμίσεις Μασκών και Ζωνών - HeisenCam",
+    "motionTuner": "Ρύθμιση Κίνησης - HeisenCam",
+    "object": "Επίλυση σφαλμάτων - HeisenCam",
+    "general": "Ρυθμίσεις UI - HeisenCam",
+    "frigatePlus": "Ρυθμίσεις Frigate+ - HeisenCam",
+    "notifications": "Ρυθμίσεις Ειδοποιήσεων",
+    "cameraManagement": "Διαχείριση καμερών - HeisenCam",
+    "cameraReview": "Ρυθμίσεις αξιολόγησης κάμερας - HeisenCam"
+  },
+  "masksAndZones": {
+    "zones": {
+      "point_one": "{{count}} σημέιο",
+      "point_other": "{{count}} σημεία"
+    },
+    "motionMasks": {
+      "point_one": "{{count}} σημείο",
+      "point_other": "{{count}} σημεία"
+    },
+    "objectMasks": {
+      "point_one": "{{count}} σημέιο",
+      "point_other": "{{count}} σημεία"
+    }
+  },
+  "menu": {
+    "ui": "Επιφάνεια Εργασίας",
+    "enrichments": "Εμπλουτισμοί",
+    "cameras": "Ρυθμίσεις Κάμερας",
+    "masksAndZones": "Μάσκες / Ζώνες",
+    "motionTuner": "Ρυθμιστής Κίνησης",
+    "debug": "Επίλυση Σφαλμάτων"
+  },
+  "dialog": {
+    "unsavedChanges": {
+      "title": "Έχετε μη αποθηκευμένες αλλαγές.",
+      "desc": "Θέλετε να αποθηκεύσετε τις αλλαγές σας πριν την συνέχεια;"
+    }
+  },
+  "cameraSetting": {
+    "camera": "Κάμερα",
+    "noCamera": "Δεν υπάρχει Κάμερα"
+  },
+  "triggers": {
+    "dialog": {
+      "form": {
+        "friendly_name": {
+          "placeholder": "Ονομάτισε ή περιέγραψε αυτό το εύνασμα",
+          "description": "Ένα προαιρετικό φιλικό όνομα, ή ένα περιγραφικό κείμενο για αυτό το εύνασμα."
+        }
+      }
+    }
+  }
+}

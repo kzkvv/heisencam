@@ -1,0 +1,1 @@
+var a=Object.defineProperty;var t=(o,s)=>a(o,"name",{value:s,configurable:!0});import{c as r}from"./index-DITcYrJK.js";import{t as e,a_ as i}from"./main-BR6-ZHyf.js";function m(o,s){window.isSecureContext&&"share"in navigator?navigator.share({url:o,title:s}):(r(o),e.success(i("toast.copyUrlToClipboard",{ns:"common"}),{position:"top-center"}))}t(m,"shareOrCopy");export{m as s};

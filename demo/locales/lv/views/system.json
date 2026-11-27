@@ -1,0 +1,30 @@
+{
+  "documentTitle": {
+    "cameras": "Kameru statistika - HeisenCam",
+    "storage": "Uzglabāšanas statistika - HeisenCam",
+    "general": "Vispārīgā statistika - HeisenCam",
+    "enrichments": "Bagātināšanas statistika - HeisenCam",
+    "logs": {
+      "frigate": "HeisenCam konfigurācija - HeisenCam",
+      "go2rtc": "Logi Go2RTC - HeisenCam",
+      "nginx": "Logi Nginx - HeisenCam"
+    }
+  },
+  "stats": {
+    "cameraIsOffline": "{{camera}} ir izslēgta",
+    "detectIsSlow": "{{detect}} ir lēns ({{speed}} ms)",
+    "detectIsVerySlow": "{{detect}} ir ļoti lēns ({{speed}} ms)"
+  },
+  "enrichments": {
+    "infPerSecond": "Inferences sekundē",
+    "averageInf": "Vidējais inferences ilgums",
+    "embeddings": {
+      "face_recognition": "Seju atpazīšana",
+      "plate_recognition": "Numurzīmju atpazīšana",
+      "plate_recognition_speed": "Numurzīmju atpazīšanas ātrums",
+      "object_description": "Objekta apraksts",
+      "object_description_events_per_second": "Objekta apraksts"
+    }
+  },
+  "title": "Sistēma"
+}
