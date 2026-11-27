@@ -45,4 +45,4 @@ mkdir -p replay-results
 docker run --rm --network none --entrypoint python3   -v "$PWD/examples/demo:/sample:ro" -v "$PWD/replay-results:/results"   ghcr.io/kzkvv/heisencam:candidate-0.18.3 /opt/frigate/tools/quality_replay.py   --config /sample/config.yml --manifest /sample/replay/manifest.json   --root /sample --idle-scan 2 --output /results/public.json
 ```
 
-Use the included baseline JSON to compare the same model and replay input. The provider list describes the initialized runtime. An ONNX provider list can include a fallback provider and does not identify how every operator ran.
+The [recorded CPU baseline](replay/baseline-cpu.json) confirmed three of four positive cases. The Torrance car reached a 72.7% model score and a 68.4% tracker score, below the configured 70% confirmation threshold. The two synthetic negative runs each made 29 detector calls and produced no tracked person or car. Compare this report using the same model and replay input. The provider list describes the initialized runtime. An ONNX provider list can include a fallback provider and does not identify how every operator ran.

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "twelfth_avenue-person",
+    "expected": "tp",
+    "camera": "twelfth_avenue",
+    "label": "person",
+    "threshold": 0.7,
+    "frames": 32,
+    "input": {
+      "decoded_sha256": "38c664bfc36261b55fc03047c59d1bf9b20ab57b9bbea3c884f71ebcbe96c2b7",
+      "size": [
+        800,
+        600
+      ],
+      "fps": 2,
+      "window": null,
+      "bounds": null
+    },
+    "first": 1.0,
+    "last": 16.5,
+    "detector_calls": 115,
+    "raw_peak": 0.76171875,
+    "track_peak": 0.75390625,
+    "confirmed": true,
+    "first_confirmed": 14.5,
+    "elapsed_seconds": 6.521,
+    "profile": {
+      "config_sha256": "903fb083a46d1c913307051ca530f350ff61254bfbc32711c5ba3be306b08243",
+      "detector": "cpu",
+      "execution_provider": [
+        "TensorFlow Lite CPU"
+      ],
+      "backend_version": "0.18.3-a19e23a",
+      "build_revision": "86351b4bc63c21daf45e4d1685148b60ca7ea017",
+      "model_hash": "115eb60dc73b76e183b6a16b66aa3291",
+      "grid_sha256": null,
+      "idle_scan": 2,
+      "seed": 42,
+      "onnx_threads": 2
+    }
+  },
+  {
+    "id": "ninth_avenue-person",
+    "expected": "tp",
+    "camera": "ninth_avenue",
+    "label": "person",
+    "threshold": 0.7,
+    "frames": 32,
+    "input": {
+      "decoded_sha256": "352392f46a32bb218580a3ea61960926dba44b56be40815114279dc5f7708642",
+      "size": [
+        800,
+        600
+      ],
+      "fps": 2,
+      "window": null,
+      "bounds": null
+    },
+    "first": 1.0,
+    "last": 16.5,
+    "detector_calls": 53,
+    "raw_peak": 0.76953125,
+    "track_peak": 0.76171875,
+    "confirmed": true,
+    "first_confirmed": 13.5,
+    "elapsed_seconds": 3.305,
+    "profile": {
+      "config_sha256": "903fb083a46d1c913307051ca530f350ff61254bfbc32711c5ba3be306b08243",
+      "detector": "cpu",
+      "execution_provider": [
+        "TensorFlow Lite CPU"
+      ],
+      "backend_version": "0.18.3-a19e23a",
+      "build_revision": "86351b4bc63c21daf45e4d1685148b60ca7ea017",
+      "model_hash": "115eb60dc73b76e183b6a16b66aa3291",
+      "grid_sha256": null,
+      "idle_scan": 2,
+      "seed": 42,
+      "onnx_threads": 2
+    }
+  },
+  {
+    "id": "fortieth_street-car",
+    "expected": "tp",
+    "camera": "fortieth_street",
+    "label": "car",
+    "threshold": 0.7,
+    "frames": 32,
+    "input": {
+      "decoded_sha256": "c5c2ad0e4184dfd7ce48efe72d8e7d21bc4e501f2cc233329db669e8a18988f8",
+      "size": [
+        960,
+        540
+      ],
+      "fps": 2,
+      "window": null,
+      "bounds": null
+    },
+    "first": 1.0,
+    "last": 16.5,
+    "detector_calls": 46,
+    "raw_peak": 0.734375,
+    "track_peak": 0.724609375,
+    "confirmed": true,
+    "first_confirmed": 12.5,
+    "elapsed_seconds": 2.437,
+    "profile": {
+      "config_sha256": "903fb083a46d1c913307051ca530f350ff61254bfbc32711c5ba3be306b08243",
+      "detector": "cpu",
+      "execution_provider": [
+        "TensorFlow Lite CPU"
+      ],
+      "backend_version": "0.18.3-a19e23a",
+      "build_revision": "86351b4bc63c21daf45e4d1685148b60ca7ea017",
+      "model_hash": "115eb60dc73b76e183b6a16b66aa3291",
+      "grid_sha256": null,
+      "idle_scan": 2,
+      "seed": 42,
+      "onnx_threads": 2
+    }
+  },
+  {
+    "id": "pacific_coast-car",
+    "expected": "tp",
+    "camera": "pacific_coast",
+    "label": "car",
+    "threshold": 0.7,
+    "frames": 32,
+    "input": {
+      "decoded_sha256": "3a11c6bf7784d025bbc1285958ba9c38e4855990ac76d102ae6e322d84fd4829",
+      "size": [
+        960,
+        540
+      ],
+      "fps": 2,
+      "window": null,
+      "bounds": null
+    },
+    "first": 1.0,
+    "last": 16.5,
+    "detector_calls": 41,
+    "raw_peak": 0.7265625,
+    "track_peak": 0.68359375,
+    "confirmed": false,
+    "first_confirmed": null,
+    "elapsed_seconds": 2.271,
+    "profile": {
+      "config_sha256": "903fb083a46d1c913307051ca530f350ff61254bfbc32711c5ba3be306b08243",
+      "detector": "cpu",
+      "execution_provider": [
+        "TensorFlow Lite CPU"
+      ],
+      "backend_version": "0.18.3-a19e23a",
+      "build_revision": "86351b4bc63c21daf45e4d1685148b60ca7ea017",
+      "model_hash": "115eb60dc73b76e183b6a16b66aa3291",
+      "grid_sha256": null,
+      "idle_scan": 2,
+      "seed": 42,
+      "onnx_threads": 2
+    }
+  },
+  {
+    "id": "empty-person",
+    "expected": "fp",
+    "camera": "fortieth_street",
+    "label": "person",
+    "threshold": 0.7,
+    "frames": 32,
+    "input": {
+      "decoded_sha256": "b6912ae492427deddfb330eb95e5636f40d58b0000cb69644fd4fa7f8cad4101",
+      "size": [
+        960,
+        540
+      ],
+      "fps": 2,
+      "window": null,
+      "bounds": null
+    },
+    "first": 1.0,
+    "last": 16.5,
+    "detector_calls": 29,
+    "raw_peak": null,
+    "track_peak": null,
+    "confirmed": false,
+    "first_confirmed": null,
+    "elapsed_seconds": 1.005,
+    "profile": {
+      "config_sha256": "903fb083a46d1c913307051ca530f350ff61254bfbc32711c5ba3be306b08243",
+      "detector": "cpu",
+      "execution_provider": [
+        "TensorFlow Lite CPU"
+      ],
+      "backend_version": "0.18.3-a19e23a",
+      "build_revision": "86351b4bc63c21daf45e4d1685148b60ca7ea017",
+      "model_hash": "115eb60dc73b76e183b6a16b66aa3291",
+      "grid_sha256": null,
+      "idle_scan": 2,
+      "seed": 42,
+      "onnx_threads": 2
+    }
+  },
+  {
+    "id": "empty-car",
+    "expected": "fp",
+    "camera": "fortieth_street",
+    "label": "car",
+    "threshold": 0.7,
+    "frames": 32,
+    "input": {
+      "decoded_sha256": "b6912ae492427deddfb330eb95e5636f40d58b0000cb69644fd4fa7f8cad4101",
+      "size": [
+        960,
+        540
+      ],
+      "fps": 2,
+      "window": null,
+      "bounds": null
+    },
+    "first": 1.0,
+    "last": 16.5,
+    "detector_calls": 29,
+    "raw_peak": null,
+    "track_peak": null,
+    "confirmed": false,
+    "first_confirmed": null,
+    "elapsed_seconds": 1.041,
+    "profile": {
+      "config_sha256": "903fb083a46d1c913307051ca530f350ff61254bfbc32711c5ba3be306b08243",
+      "detector": "cpu",
+      "execution_provider": [
+        "TensorFlow Lite CPU"
+      ],
+      "backend_version": "0.18.3-a19e23a",
+      "build_revision": "86351b4bc63c21daf45e4d1685148b60ca7ea017",
+      "model_hash": "115eb60dc73b76e183b6a16b66aa3291",
+      "grid_sha256": null,
+      "idle_scan": 2,
+      "seed": 42,
+      "onnx_threads": 2
+    }
+  }
+]
