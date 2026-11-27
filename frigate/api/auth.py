@@ -76,6 +76,7 @@ def require_admin_by_default():
         # Public info endpoints (allow_public)
         "/",
         "/version",
+        "/ready",
         "/config/schema.json",
         # Authenticated user endpoints (allow_any_authenticated)
         "/metrics",

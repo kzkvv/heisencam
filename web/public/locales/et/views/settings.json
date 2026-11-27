@@ -249,7 +249,7 @@
     "authentication": "Autentimise seaded - HeisenCam",
     "cameraReview": "Kaamerate kordusvaatuste seaded - HeisenCam",
     "general": "Profiili seaded - HeisenCam",
-    "frigatePlus": "Frigate+ seaded - HeisenCam",
+    "frigatePlus": "Hosted Models seaded - HeisenCam",
     "notifications": "Teavituste seaded - HeisenCam",
     "cameraManagement": "Kaamerate haldus - HeisenCam",
     "masksAndZones": "Maskide ja tsoonide haldus - HeisenCam",
@@ -332,10 +332,10 @@
     }
   },
   "frigatePlus": {
-    "title": "Frigate+ seadistused",
-    "unsavedChanges": "Frigate+ seadistuste muudatused on salvestamata",
+    "title": "Hosted Models seadistused",
+    "unsavedChanges": "Hosted Models seadistuste muudatused on salvestamata",
     "toast": {
-      "success": "Frigate+ seadistuste muudatused on salvestatud. Muudatuste kasutuselevõtmiseks käivita HeisenCam uuesti."
+      "success": "Hosted Models seadistuste muudatused on salvestatud. Muudatuste kasutuselevõtmiseks käivita HeisenCam uuesti."
     },
     "snapshotConfig": {
       "title": "Hetkvõtte seadistused",
@@ -424,7 +424,7 @@
     "users": "Kasutajad",
     "roles": "Rollid",
     "notifications": "Teavitused",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "cameraReview": "Ülevaatamine",
     "profiles": "Profiilid",
     "integrationLpr": "Sõidukite numbrimärkide tuvastus",

@@ -204,7 +204,7 @@
       "aria": "오디오 텍스트 변환 요청"
     },
     "submitToPlus": {
-      "label": "Frigate+에 제출",
+      "label": "Hosted Models에 제출",
       "aria": "HeisenCam Plus에 제출"
     },
     "viewInHistory": {

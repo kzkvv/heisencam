@@ -1,0 +1,22 @@
+name: Bug report
+description: Report an issue in HeisenCam
+body:
+  - type: input
+    id: build
+    attributes:
+      label: Build revision and channel
+      description: Copy the values displayed in System → General.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps, expected behavior and actual behavior
+      description: Remove credentials, private addresses and camera images before posting.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and relevant logs
+      description: Include the detector, hardware and operating system where relevant.

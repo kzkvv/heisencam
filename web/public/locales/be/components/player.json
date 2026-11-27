@@ -3,7 +3,7 @@
   "noPreviewFound": "Перадпрагляд не знойдзены",
   "noPreviewFoundFor": "Перадпрагляд для {{cameraName}} не знойдзены",
   "submitFrigatePlus": {
-    "title": "Адправіць гэты кадр у Frigate+?",
+    "title": "Адправіць гэты кадр у Hosted Models?",
     "submit": "Адправіць",
     "previewError": "Не ўдалося загрузіць перадпрагляд здымка. Магчыма, запіс зараз недаступны."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Кадр паспяхова адпраўлены ў Frigate+"
+      "submittedFrigatePlus": "Кадр паспяхова адпраўлены ў Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Не ўдалося адправіць кадр у Frigate+"
+      "submitFrigatePlusFailed": "Не ўдалося адправіць кадр у Hosted Models"
     }
   }
 }

@@ -10,7 +10,7 @@
     "cameraManagement": "Управљање камерама - HeisenCam",
     "cameraReview": "Преглед подешавања камере - HeisenCam",
     "object": "Дебаговање - HeisenCam",
-    "frigatePlus": "Подешавања за Frigate+ - HeisenCam",
+    "frigatePlus": "Подешавања за Hosted Models - HeisenCam",
     "notifications": "Подешавања обавештавања - HeisenCam",
     "globalConfig": "Глобална конфигурација - HeisenCam",
     "cameraConfig": "Конфигурација камере - HeisenCam",
@@ -30,7 +30,7 @@
     "users": "Корисници",
     "roles": "Улоге",
     "notifications": "Обавештења",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "general": "Опште",
     "globalConfig": "Глобална конфигурација",
     "system": "Систем",
@@ -1155,8 +1155,8 @@
     }
   },
   "frigatePlus": {
-    "title": "Подешавања Frigate+",
-    "description": "Frigate+ је претплатнички сервис који пружа приступ додатним функцијама и могућностима за вашу HeisenCam инстанцу, укључујући могућност коришћења прилагођених модела детекције објеката обучених на вашим сопственим подацима. Овде можете управљати подешавањима Frigate+ модела.",
+    "title": "Подешавања Hosted Models",
+    "description": "Hosted Models је претплатнички сервис који пружа приступ додатним функцијама и могућностима за вашу HeisenCam инстанцу, укључујући могућност коришћења прилагођених модела детекције објеката обучених на вашим сопственим подацима. Овде можете управљати подешавањима Hosted Models модела.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Тренутни модел",
@@ -1164,15 +1164,15 @@
       "configuration": "Конфигурација"
     },
     "apiKey": {
-      "title": "Frigate+ API кључ",
-      "validated": "Frigate+ API кључ је детектован и валидиран",
-      "notValidated": "Frigate+ API кључ није детектован или није валидиран",
-      "desc": "Frigate+ API кључ омогућава интеграцију са Frigate+ сервисом.",
-      "plusLink": "Прочитајте више о Frigate+"
+      "title": "Hosted Models API кључ",
+      "validated": "Hosted Models API кључ је детектован и валидиран",
+      "notValidated": "Hosted Models API кључ није детектован или није валидиран",
+      "desc": "Hosted Models API кључ омогућава интеграцију са Hosted Models сервисом.",
+      "plusLink": "Прочитајте више о Hosted Models"
     },
     "snapshotConfig": {
       "title": "Конфигурација снимака",
-      "desc": "Слање на Frigate+ захтева да снимци буду омогућени у конфигурацији.",
+      "desc": "Слање на Hosted Models захтева да снимци буду омогућени у конфигурацији.",
       "cleanCopyWarning": "Неке камере имају онемогућене снимке",
       "table": {
         "camera": "Камера",
@@ -1192,8 +1192,8 @@
       "cameras": "Камере",
       "loading": "Учитавање информација о моделу…",
       "error": "Неуспешно учитавање информација о моделу",
-      "noModelLoaded": "Ниједан Frigate+ модел тренутно није учитан.",
-      "availableModels": "Доступни Frigate+ модели",
+      "noModelLoaded": "Ниједан Hosted Models модел тренутно није учитан.",
+      "availableModels": "Доступни Hosted Models модели",
       "loadingAvailableModels": "Учитавање доступних модела…",
       "selectModel": "Изаберите модел",
       "noModelsAvailable": "Нема доступних модела",
@@ -1202,13 +1202,13 @@
         "baseModels": "Основни модели",
         "fineTunedModels": "Фино подешени модели"
       },
-      "modelSelect": "Овде можете одабрати доступне моделе на Frigate+. Имајте на уму да се могу одабрати само модели компатибилни са тренутном конфигурацијом детектора."
+      "modelSelect": "Овде можете одабрати доступне моделе на HeisenCam+. Имајте на уму да се могу одабрати само модели компатибилни са тренутном конфигурацијом детектора."
     },
     "changeInDetectorsAndModel": "Промени модел",
-    "unsavedChanges": "Несачуване измене подешавања Frigate+",
-    "restart_required": "Потребно је рестартовање (промењен Frigate+ модел)",
+    "unsavedChanges": "Несачуване измене подешавања Hosted Models",
+    "restart_required": "Потребно је рестартовање (промењен Hosted Models модел)",
     "toast": {
-      "success": "Подешавања Frigate+ су сачувана. Рестартујте HeisenCam за примену измена.",
+      "success": "Подешавања Hosted Models су сачувана. Рестартујте HeisenCam за примену измена.",
       "error": "Неуспешно чување измена конфигурације: {{errorMessage}}"
     }
   },
@@ -1220,15 +1220,15 @@
       "model": "Модел детекције"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "Прилагођени модел"
     },
     "mismatch": {
-      "warning": "Тренутни Frigate+ модел \"{{model}}\" захтева {{required}} детектор. Изаберите компатибилан модел испод или пређите на Прилагођени модел пре чувања."
+      "warning": "Тренутни Hosted Models модел \"{{model}}\" захтева {{required}} детектор. Изаберите компатибилан модел испод или пређите на Прилагођени модел пре чувања."
     },
     "plusModel": {
       "requiresDetector": "Захтева: {{detector}}",
-      "noModelSelected": "Изаберите Frigate+ модел"
+      "noModelSelected": "Изаберите Hosted Models модел"
     },
     "toast": {
       "saveSuccess": "Подешавања детектора и модела су сачувана. Рестартујте HeisenCam за примену измена.",

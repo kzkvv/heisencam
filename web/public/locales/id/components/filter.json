@@ -51,7 +51,7 @@
     "hasSnapshot": "Memiliki Cuplikan",
     "hasVideoClip": "Memiliki Klip Video",
     "submittedToFrigatePlus": {
-      "label": "Dikirim ke Frigate+"
+      "label": "Dikirim ke Hosted Models"
     }
   },
   "cameras": {

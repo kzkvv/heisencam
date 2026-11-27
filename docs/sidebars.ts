@@ -148,9 +148,9 @@ const sidebars: SidebarsConfig = {
         label: "HTTP API",
         link: {
           type: "generated-index",
-          title: "Frigate HTTP API",
+          title: "HeisenCam HTTP API",
           description: "HTTP API",
-          slug: "/integrations/api/frigate-http-api",
+          slug: "/integrations/api/http-api",
         },
         items: frigateHttpApiSidebar,
       },

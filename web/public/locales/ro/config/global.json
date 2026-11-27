@@ -1266,7 +1266,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1325,7 +1325,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1392,7 +1392,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1459,7 +1459,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1518,7 +1518,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1577,7 +1577,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1636,7 +1636,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1695,7 +1695,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1754,7 +1754,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1813,7 +1813,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1868,7 +1868,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1923,7 +1923,7 @@
                 "description": "Opțiuni de configurare specifice modelului detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale labelmap pentru detector personalizat",
@@ -1982,7 +1982,7 @@
                 "description": "Opțiuni de configurare specifice modelului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Cale model personalizat detecție obiecte",
-                    "description": "Calea către un fișier de model personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Cale label map pentru detector personalizat",
@@ -2049,7 +2049,7 @@
                 "description": "Opțiuni de configurare a modelului specifice detectorului (cale, dimensiune intrare etc.).",
                 "path": {
                     "label": "Calea către modelul personalizat de detecție a obiectelor",
-                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+                    "description": "Calea către un fișier de model de detecție personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Harta etichetelor pentru detectorul de obiecte personalizat",
@@ -2098,7 +2098,7 @@
             "description": "Opțiuni de configurare a modelului specifice detectorului (cale, dimensiune intrare etc.).",
             "path": {
                 "label": "Cale model detector de obiecte personalizat",
-                "description": "Calea către un fișier al modelului personalizat de detecție (sau plus://<model_id> pentru modelele Frigate+)."
+                "description": "Calea către un fișier al modelului personalizat de detecție (sau plus://<model_id> pentru modelele Hosted Models)."
             },
             "labelmap_path": {
                 "label": "Harta de etichete pentru detectorul personalizat de obiecte",
@@ -2147,7 +2147,7 @@
         "description": "Setări pentru configurarea unui model personalizat de detecție și a formei intrării acestuia.",
         "path": {
             "label": "Cale model detector de obiecte personalizat",
-            "description": "Calea către un fișier de model personalizat (sau plus://<model_id> pentru modelele Frigate+)."
+            "description": "Calea către un fișier de model personalizat (sau plus://<model_id> pentru modelele Hosted Models)."
         },
         "labelmap_path": {
             "label": "Cale label map pentru detector personalizat",

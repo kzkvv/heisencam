@@ -2,7 +2,7 @@
   "noRecordingsFoundForThisTime": "Не найдено ни одной записи",
   "noPreviewFound": "Предпросмотр не найден",
   "submitFrigatePlus": {
-    "title": "Отправить этот кадр в Frigate+?",
+    "title": "Отправить этот кадр в Облачные модели?",
     "submit": "Отправить"
   },
   "noPreviewFoundFor": "Не найдено предпросмотра для {{cameraName}}",
@@ -42,10 +42,10 @@
   },
   "toast": {
     "error": {
-      "submitFrigatePlusFailed": "Не удалось отправить кадр в Frigate+"
+      "submitFrigatePlusFailed": "Не удалось отправить кадр в Облачные модели"
     },
     "success": {
-      "submittedFrigatePlus": "Кадр успешно загружен в Frigate+"
+      "submittedFrigatePlus": "Кадр успешно загружен в Облачные модели"
     }
   }
 }

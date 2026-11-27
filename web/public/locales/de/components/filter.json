@@ -37,8 +37,8 @@
     "hasSnapshot": "Hat einen Schnappschuss",
     "hasVideoClip": "Hat einen Video-Clip",
     "submittedToFrigatePlus": {
-      "label": "Eingereicht bei Frigate+",
-      "tips": "Du musst zuerst nach deine erkannten Objekten, die einen Schnappschuss haben, filtern.<br /><br />Erkante Objekte ohne Schnappschuss können nicht zu Frigate+ übermittelt werden."
+      "label": "Eingereicht bei Hosted Models",
+      "tips": "Du musst zuerst nach deine erkannten Objekten, die einen Schnappschuss haben, filtern.<br /><br />Erkante Objekte ohne Schnappschuss können nicht zu Hosted Models übermittelt werden."
     }
   },
   "score": "Ergebnis",

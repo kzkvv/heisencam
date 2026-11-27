@@ -1216,7 +1216,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1275,7 +1275,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1342,7 +1342,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1409,7 +1409,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1468,7 +1468,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1527,7 +1527,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1586,7 +1586,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1645,7 +1645,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1704,7 +1704,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1763,7 +1763,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1818,7 +1818,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1873,7 +1873,7 @@
                 "description": "Možnosti konfiguracije modela za določen detektor (pot, vhodna velikost itd.).",
                 "path": {
                     "label": "Pot do modela za zaznavanje objektov po meri",
-                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+                    "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Pot do labelmap datoteke za detektor po meri",
@@ -1994,7 +1994,7 @@
         "description": "Nastavitve za konfiguracijo modela za zaznavanje objektov po meri in njegove vhodne oblike.",
         "path": {
             "label": "Pot do modela za zaznavanje objektov po meri",
-            "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Frigate+)."
+            "description": "Pot do datoteke modela po meri (ali plus://<model_id> za modele Hosted Models)."
         },
         "labelmap_path": {
             "label": "Pot do labelmap datoteke za detektor po meri",

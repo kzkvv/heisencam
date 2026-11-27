@@ -16,7 +16,7 @@ The values HeisenCam reports for FFmpeg, capture, detect, detector, and other pr
 Host and hypervisor tools instead report a percentage of the machine's total capacity across all cores. This includes `docker stats`, the `htop` summary, the Proxmox summary graph, the Unraid dashboard, Synology Resource Monitor, and Home Assistant's system monitor sensors. To reconcile the two:
 
 ```
-host percentage ≈ (sum of Frigate's process percentages) / (number of cores)
+host percentage ≈ (sum of HeisenCam's process percentages) / (number of cores)
 ```
 
 On a 4 core system, an FFmpeg process reporting 100% is consuming one quarter of the machine, so the host will show roughly 25 to 30% once the remaining HeisenCam processes are included. That same 100% on a 16 core system is about 6%. HeisenCam's own warning thresholds use the per-core convention as well, so an FFmpeg process is flagged at 20% of a single core, not 20% of the system.

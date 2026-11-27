@@ -109,8 +109,6 @@ Once some images are assigned, training will begin automatically.
 
 Selecting dozens of nearly identical images is one of the fastest ways to degrade model performance. MobileNetV2 can overfit quickly when trained on homogeneous data. The model learns what _that exact moment_ looked like rather than what actually defines the state. This often leads to models that work perfectly under the original conditions but become unstable when day turns to night, weather changes, or seasonal lighting shifts. **This is why HeisenCam does not implement bulk training in the UI.**
 
-For more detail, see [HeisenCam Tip: Best Practices for Training Face and Custom Classification Models](https://github.com/blakeblackshear/frigate/discussions/21374).
-
 :::
 
 - **Start small and iterate**: Begin with a small, representative set of images per class. Models often begin working well with surprisingly few examples and improve naturally over time.

@@ -96,9 +96,11 @@ export function FrigatePlusDialog({
         )}
       >
         <DialogHeader>
-          <DialogTitle className="sr-only">Submit to Frigate+</DialogTitle>
+          <DialogTitle className="sr-only">
+            {t("explore.plus.submitToPlus.label")}
+          </DialogTitle>
           <DialogDescription className="sr-only">
-            Submit this snapshot to Frigate+
+            {t("explore.plus.submitToPlus.desc")}
           </DialogDescription>
         </DialogHeader>
 

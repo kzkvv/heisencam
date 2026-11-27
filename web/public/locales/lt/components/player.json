@@ -3,7 +3,7 @@
   "noPreviewFound": "Peržiūrų nerasta",
   "noPreviewFoundFor": "Peržiūrų nerasta {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Pateikti šį kadrą į Frigate+?",
+    "title": "Pateikti šį kadrą į Hosted Models?",
     "submit": "Pateikti",
     "previewError": "Nepavyko užkrauti momentinės nuotraukos peržiūros. Irašas gali būti nepasikiamas šiuo momentu."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Kadras sėkmingai pateiktas į Frigate+"
+      "submittedFrigatePlus": "Kadras sėkmingai pateiktas į Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Nepavyko pateikti kadro į Frigate+"
+      "submitFrigatePlusFailed": "Nepavyko pateikti kadro į Hosted Models"
     }
   },
   "cameraOff": "Kamera yra išjungta"

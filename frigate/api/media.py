@@ -81,8 +81,8 @@ def _resolve_cache_age(max_cache_age: int) -> int:
     description=(
         "An MJPEG stream of the camera's latest processed frame, intended for debugging only. "
         "Every frame of every open stream is color converted, annotated, resized, and JPEG "
-        "encoded in Frigate's main process, which adds load to the system and can slow down "
-        "Frigate's processing. It is strictly not recommended to view this stream "
+        "encoded in the recorder's main process, which adds load to the system and can slow down "
+        "HeisenCam's processing. It is strictly not recommended to view this stream "
         "continuously, such as on a dashboard. For live viewing, use a go2rtc restream "
         "instead. The frame rate and resolution can be raised with the fps and height "
         "parameters, for example ?fps=10&height=1080, at the cost of additional load."
@@ -198,6 +198,23 @@ async def latest_frame(
     )
 
 
+def _preview_size(
+    frame: np.ndarray, requested_height: int | None
+) -> tuple[int, int] | None:
+    """Limit the allocation for one encoded preview to eight megapixels."""
+    source_height, source_width = frame.shape[:2]
+    max_pixels = 3840 * 2160
+    height = requested_height
+    if height is None:
+        height = min(
+            source_height, int((max_pixels * source_height / source_width) ** 0.5)
+        )
+    width = int(height * source_width / source_height)
+    if height < 1 or width < 1 or height * width > max_pixels:
+        return None
+    return width, height
+
+
 def _render_latest_frame(
     request: Request,
     camera_name: str,
@@ -221,23 +238,22 @@ def _render_latest_frame(
         frame = frame_processor.get_current_frame(camera_name, draw_options)
         retry_interval = float(camera_config.ffmpeg.retry_interval or 10)
 
-        is_offline = False
-        if frame is None or datetime.now().timestamp() > (
-            frame_processor.get_current_frame_time(camera_name) + retry_interval
-        ):
-            last_frame_time = frame_processor.get_current_frame_time(camera_name)
+        last_frame_time = frame_processor.get_current_frame_time(camera_name)
+        is_offline = (
+            frame is None
+            or not last_frame_time
+            or datetime.now().timestamp() - last_frame_time > retry_interval
+        )
+        if is_offline:
             preview_path = get_most_recent_preview_frame(
                 camera_name, before=last_frame_time
             )
-
+            frame = None
             if preview_path:
                 logger.debug(f"Using most recent preview frame for {camera_name}")
                 frame = cv2.imread(preview_path, cv2.IMREAD_UNCHANGED)
 
-                if frame is not None:
-                    is_offline = True
-
-            if frame is None or not is_offline:
+            if frame is None:
                 logger.debug(
                     f"No live or preview frame available for {camera_name}. Using error image."
                 )
@@ -259,18 +275,14 @@ def _render_latest_frame(
                 status_code=500,
             )
 
-        height = int(params.height or str(frame.shape[0]))
-        width = int(height * frame.shape[1] / frame.shape[0])
-
-        if height < 1 or width < 1:
+        dimensions = _preview_size(frame, params.height)
+        if dimensions is None:
             return JSONResponse(
-                content="Invalid height / width requested :: {} / {}".format(
-                    height, width
-                ),
-                status_code=400,
+                content={"message": "Requested preview exceeds the image size limit"},
+                status_code=422,
             )
 
-        frame = cv2.resize(frame, dsize=(width, height), interpolation=cv2.INTER_AREA)
+        frame = cv2.resize(frame, dsize=dimensions, interpolation=cv2.INTER_AREA)
 
         _, img = cv2.imencode(f".{extension.value}", frame, quality_params)
 
@@ -280,6 +292,8 @@ def _render_latest_frame(
 
         if is_offline:
             headers["X-Frigate-Offline"] = "true"
+        else:
+            headers["X-HeisenCam-Frame-Time"] = str(last_frame_time)
 
         return Response(
             content=img.tobytes(),
@@ -296,10 +310,13 @@ def _render_latest_frame(
             cv2.COLOR_YUV2BGR_I420,
         )
 
-        height = int(params.height or str(frame.shape[0]))
-        width = int(height * frame.shape[1] / frame.shape[0])
-
-        frame = cv2.resize(frame, dsize=(width, height), interpolation=cv2.INTER_AREA)
+        dimensions = _preview_size(frame, params.height)
+        if dimensions is None:
+            return JSONResponse(
+                content={"message": "Requested preview exceeds the image size limit"},
+                status_code=422,
+            )
+        frame = cv2.resize(frame, dsize=dimensions, interpolation=cv2.INTER_AREA)
 
         _, img = cv2.imencode(f".{extension.value}", frame, quality_params)
         return Response(

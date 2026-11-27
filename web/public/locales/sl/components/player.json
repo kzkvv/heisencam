@@ -3,7 +3,7 @@
   "noPreviewFound": "Predogleda ni mogoče najti",
   "noPreviewFoundFor": "Za kamero {{cameraName}} ni predogleda",
   "submitFrigatePlus": {
-    "title": "Želiš poslati ta okvir v Frigate+?",
+    "title": "Želiš poslati ta okvir v Hosted Models?",
     "submit": "Pošlji"
   },
   "stats": {
@@ -42,10 +42,10 @@
   "cameraDisabled": "Kamera je onemogočena",
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Okvir je bil uspešno poslan v Frigate+"
+      "submittedFrigatePlus": "Okvir je bil uspešno poslan v Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Napaka pri pošiljanju okvirja v Frigate+"
+      "submitFrigatePlusFailed": "Napaka pri pošiljanju okvirja v Hosted Models"
     }
   }
 }

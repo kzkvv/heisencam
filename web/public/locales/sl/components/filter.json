@@ -106,8 +106,8 @@
     "hasSnapshot": "Ima posnetek (snapshot)",
     "hasVideoClip": "Ima video posnetek",
     "submittedToFrigatePlus": {
-      "label": "Poslano v Frigate+",
-      "tips": "Najprej moraš filtrirati sledene objekte, ki imajo posnetek.<br /><br />Sledenih objektov brez posnetka ni mogoče poslati v Frigate+."
+      "label": "Poslano v Hosted Models",
+      "tips": "Najprej moraš filtrirati sledene objekte, ki imajo posnetek.<br /><br />Sledenih objektov brez posnetka ni mogoče poslati v HeisenCam+."
     }
   },
   "cameras": {

@@ -140,8 +140,8 @@
       "aria": "Tìm các đối tượng được theo dõi tương tự"
     },
     "submitToPlus": {
-      "aria": "Gửi đến Frigate Plus",
-      "label": "Gửi đến Frigate+"
+      "aria": "Gửi đến HeisenCam Plus",
+      "label": "Gửi đến Hosted Models"
     },
     "viewInHistory": {
       "label": "Xem trong Lịch sử",

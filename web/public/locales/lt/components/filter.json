@@ -58,8 +58,8 @@
     "hasSnapshot": "Turi Momentinę Nuotrauką",
     "hasVideoClip": "Turi vaizdo klipą",
     "submittedToFrigatePlus": {
-      "label": "Pateikta į Frigate+",
-      "tips": "Pradžioje turite išfiltruoti sekamus objektus su momentinėmis nuotraukomis.<br /><br />Sekami Objektai be momentinių nuotraukų negali būti pateikti į Frigate+."
+      "label": "Pateikta į Hosted Models",
+      "tips": "Pradžioje turite išfiltruoti sekamus objektus su momentinėmis nuotraukomis.<br /><br />Sekami Objektai be momentinių nuotraukų negali būti pateikti į HeisenCam+."
     }
   },
   "sort": {

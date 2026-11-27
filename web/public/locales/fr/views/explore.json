@@ -196,8 +196,8 @@
       "aria": "Télécharger la vidéo"
     },
     "submitToPlus": {
-      "label": "Soumettre à Frigate+",
-      "aria": "Soumettre à Frigate+"
+      "label": "Soumettre à Hosted Models",
+      "aria": "Soumettre à Hosted Models"
     },
     "deleteTrackedObject": {
       "label": "Supprimer cet objet suivi"

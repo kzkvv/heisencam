@@ -192,8 +192,8 @@
       "aria": "Znajdź podobne śledzone obiekty"
     },
     "submitToPlus": {
-      "label": "Prześlij do Frigate+",
-      "aria": "Prześlij do Frigate Plus"
+      "label": "Prześlij do Hosted Models",
+      "aria": "Prześlij do HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Wyświetl w Historii",

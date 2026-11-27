@@ -17,22 +17,22 @@ Wherever a topic below includes a camera, mask, or zone name, use its `ID` from 
 
 :::
 
-## General Frigate Topics
+## General HeisenCam Topics
 
 ### `frigate/available`
 
 Designed to be used as an availability topic with Home Assistant. Possible message are:
-"online": published once Frigate is running and has published its initial state. Note that this is published on every connection to the broker, so it is republished if the broker restarts or the connection drops and recovers, without Frigate itself restarting.
-"stopped": published when Frigate is stopped normally
-"offline": published automatically by the MQTT broker if Frigate disconnects unexpectedly (via MQTT Will Message)
+"online": published once HeisenCam is running and has published its initial state. Note that this is published on every connection to the broker, so it is republished if the broker restarts or the connection drops and recovers, without HeisenCam itself restarting.
+"stopped": published when HeisenCam is stopped normally
+"offline": published automatically by the MQTT broker if HeisenCam disconnects unexpectedly (via MQTT Will Message)
 
 ### `frigate/restart`
 
-Causes Frigate to exit. Docker should be configured to automatically restart the container on exit.
+Causes HeisenCam to exit. Docker should be configured to automatically restart the container on exit.
 
 ### `frigate/events`
 
-Message published for each changed tracked object. The first message is published when the tracked object is no longer marked as a false_positive. When Frigate finds a better snapshot of the tracked object or when a zone change occurs, it will publish a message with the same id. When the tracked object ends, a final message is published with `end_time` set.
+Message published for each changed tracked object. The first message is published when the tracked object is no longer marked as a false_positive. When HeisenCam finds a better snapshot of the tracked object or when a zone change occurs, it will publish a message with the same id. When the tracked object ends, a final message is published with `end_time` set.
 
 ```json
 {
@@ -300,13 +300,13 @@ Topic with the currently active profile name. Published value is the profile nam
 
 Topic to turn notifications on and off for all cameras. Expected values are `ON` and `OFF`.
 
-Only available when notifications are enabled in the config. Not persisted across Frigate restarts.
+Only available when notifications are enabled in the config. Not persisted across HeisenCam restarts.
 
 ### `frigate/notifications/state`
 
 Topic with current state of notifications. Published values are `ON` and `OFF`.
 
-## Frigate Camera Topics
+## HeisenCam Camera Topics
 
 ### `frigate/<camera_name>/status/<role>`
 
@@ -316,7 +316,7 @@ Publishes the current health status of each role that is enabled (`audio`, `dete
 - `offline`: Stream is offline and is being restarted
 - `disabled`: Camera is currently turned off (either at runtime via the `enabled/set` topic, or persistently via the configuration file). See [Camera state](/configuration/live#camera-state) for the distinction.
 
-These reflect the state of Frigate's process for that role, not the camera's reachability, so an unreachable camera alternates between `offline` and `online` as the watchdog restarts ffmpeg. Wait for the status to hold steady (for example with Home Assistant's `for:`) rather than acting on a single message.
+These reflect the state of HeisenCam's process for that role, not the camera's reachability, so an unreachable camera alternates between `offline` and `online` as the watchdog restarts ffmpeg. Wait for the status to hold steady (for example with Home Assistant's `for:`) rather than acting on a single message.
 
 ### `frigate/<camera_name>/<object_name>`
 
@@ -378,7 +378,7 @@ The published value is the detected state class name (e.g., `open`, `closed`, `o
 
 ### `frigate/<camera_name>/enabled/set`
 
-Topic to turn Frigate's processing of a camera on or off at runtime. Expected values are `ON` and `OFF`. The change is persisted across Frigate restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)). To permanently change the configured value, use **Settings → Global configuration → Camera management** in the Frigate UI. See [Camera state](/configuration/live#camera-state) for the difference between turning a camera off and disabling it.
+Topic to turn HeisenCam's processing of a camera on or off at runtime. Expected values are `ON` and `OFF`. The change is persisted across HeisenCam restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)). To permanently change the configured value, use **Settings → Global configuration → Camera management** in the HeisenCam UI. See [Camera state](/configuration/live#camera-state) for the difference between turning a camera off and disabling it.
 
 ### `frigate/<camera_name>/enabled/state`
 
@@ -386,7 +386,7 @@ Topic with current runtime state of processing for a camera. Published values ar
 
 ### `frigate/<camera_name>/detect/set`
 
-Topic to turn object detection for a camera on and off. Expected values are `ON` and `OFF`. The change is persisted across Frigate restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)).
+Topic to turn object detection for a camera on and off. Expected values are `ON` and `OFF`. The change is persisted across HeisenCam restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)).
 
 ### `frigate/<camera_name>/detect/state`
 
@@ -394,7 +394,7 @@ Topic with current state of object detection for a camera. Published values are 
 
 ### `frigate/<camera_name>/audio/set`
 
-Topic to turn audio detection for a camera on and off. Expected values are `ON` and `OFF`. The change is persisted across Frigate restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)).
+Topic to turn audio detection for a camera on and off. Expected values are `ON` and `OFF`. The change is persisted across HeisenCam restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)).
 
 ### `frigate/<camera_name>/audio/state`
 
@@ -404,7 +404,7 @@ Topic with current state of audio detection for a camera. Published values are `
 
 Topic to turn [live audio transcription](/configuration/audio_detectors#live-transcription) for a camera on and off. Expected values are `ON` and `OFF`. Transcribed text is published to `frigate/<camera_name>/audio/transcription`.
 
-`ON` is ignored unless audio transcription is enabled in the config for the camera. Unlike the other camera toggles, this one is not persisted across Frigate restarts.
+`ON` is ignored unless audio transcription is enabled in the config for the camera. Unlike the other camera toggles, this one is not persisted across HeisenCam restarts.
 
 **NOTE:** Requires audio detection and transcription to be enabled
 
@@ -414,7 +414,7 @@ Topic with current state of live audio transcription for a camera. Published val
 
 ### `frigate/<camera_name>/recordings/set`
 
-Topic to turn recordings for a camera on and off. Expected values are `ON` and `OFF`. The change is persisted across Frigate restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)).
+Topic to turn recordings for a camera on and off. Expected values are `ON` and `OFF`. The change is persisted across HeisenCam restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)).
 
 ### `frigate/<camera_name>/recordings/state`
 
@@ -422,7 +422,7 @@ Topic with current state of recordings for a camera. Published values are `ON` a
 
 ### `frigate/<camera_name>/snapshots/set`
 
-Topic to turn snapshots for a camera on and off. Expected values are `ON` and `OFF`. The change is persisted across Frigate restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)).
+Topic to turn snapshots for a camera on and off. Expected values are `ON` and `OFF`. The change is persisted across HeisenCam restarts (see [Runtime toggle persistence](/configuration/live#runtime-toggle-persistence)).
 
 ### `frigate/<camera_name>/snapshots/state`
 
@@ -580,7 +580,7 @@ Topic with current state of the Birdseye mode for a camera. Published values are
 
 Topic to turn notifications for a camera on and off. Expected values are `ON` and `OFF`.
 
-`ON` is ignored unless notifications are enabled in the config for the camera. This is not persisted across Frigate restarts. It is the same control the UI labels **Suspend until restart**.
+`ON` is ignored unless notifications are enabled in the config for the camera. This is not persisted across HeisenCam restarts. It is the same control the UI labels **Suspend until restart**.
 
 ### `frigate/<camera_name>/notifications/state`
 

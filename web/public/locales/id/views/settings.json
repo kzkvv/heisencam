@@ -11,7 +11,7 @@
     "enrichments": "Pengaturan Pengayaan - HeisenCam",
     "cameraManagement": "Kelola Kamera - HeisenCam",
     "cameraReview": "Pengaturan Tinjauan Kamera - HeisenCam",
-    "frigatePlus": "Pengaturan Frigate+ - HeisenCam",
+    "frigatePlus": "Pengaturan Hosted Models - HeisenCam",
     "notifications": "Pengaturan Notifikasi - HeisenCam",
     "globalConfig": "Konfigurasi Global - HeisenCam",
     "cameraConfig": "Konfigurasi Kamera - HeisenCam",
@@ -29,7 +29,7 @@
     "triggers": "Pemicu",
     "users": "Pengguna",
     "roles": "Peran",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "masksAndZones": "Masker / Zona",
     "debug": "Debug",
     "general": "Umum",
@@ -1261,8 +1261,8 @@
     }
   },
   "frigatePlus": {
-    "title": "Pengaturan Frigate+",
-    "description": "Frigate+ adalah layanan berlangganan yang menyediakan akses ke fitur dan kemampuan tambahan untuk instance HeisenCam Anda, termasuk kemampuan menggunakan model deteksi objek kustom yang dilatih dengan data Anda sendiri. Anda dapat mengelola pengaturan model Frigate+ Anda di sini.",
+    "title": "Pengaturan Hosted Models",
+    "description": "Hosted Models adalah layanan berlangganan yang menyediakan akses ke fitur dan kemampuan tambahan untuk instance HeisenCam Anda, termasuk kemampuan menggunakan model deteksi objek kustom yang dilatih dengan data Anda sendiri. Anda dapat mengelola pengaturan model Hosted Models Anda di sini.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Model Saat Ini",
@@ -1270,15 +1270,15 @@
       "configuration": "Konfigurasi"
     },
     "apiKey": {
-      "title": "Kunci API Frigate+",
-      "validated": "Kunci API Frigate+ terdeteksi dan tervalidasi",
-      "notValidated": "Kunci API Frigate+ tidak terdeteksi atau tidak tervalidasi",
-      "desc": "Kunci API Frigate+ memungkinkan integrasi dengan layanan Frigate+.",
-      "plusLink": "Baca lebih lanjut tentang Frigate+"
+      "title": "Kunci API Hosted Models",
+      "validated": "Kunci API Hosted Models terdeteksi dan tervalidasi",
+      "notValidated": "Kunci API Hosted Models tidak terdeteksi atau tidak tervalidasi",
+      "desc": "Kunci API Hosted Models memungkinkan integrasi dengan layanan HeisenCam+.",
+      "plusLink": "Baca lebih lanjut tentang Hosted Models"
     },
     "snapshotConfig": {
       "title": "Konfigurasi Cuplikan",
-      "desc": "Mengirim ke Frigate+ mengharuskan cuplikan diaktifkan dalam konfigurasi Anda.",
+      "desc": "Mengirim ke Hosted Models mengharuskan cuplikan diaktifkan dalam konfigurasi Anda.",
       "cleanCopyWarning": "Beberapa kamera menonaktifkan cuplikan",
       "table": {
         "camera": "Kamera",
@@ -1298,8 +1298,8 @@
       "cameras": "Kamera",
       "loading": "Memuat informasi model…",
       "error": "Gagal memuat informasi model",
-      "noModelLoaded": "Saat ini tidak ada model Frigate+ yang dimuat.",
-      "availableModels": "Model Frigate+ yang tersedia",
+      "noModelLoaded": "Saat ini tidak ada model Hosted Models yang dimuat.",
+      "availableModels": "Model Hosted Models yang tersedia",
       "loadingAvailableModels": "Memuat model yang tersedia…",
       "selectModel": "Pilih model",
       "noModelsAvailable": "Tidak ada model tersedia",
@@ -1308,13 +1308,13 @@
         "baseModels": "Model Dasar",
         "fineTunedModels": "Model yang Disetel Halus"
       },
-      "modelSelect": "Model Frigate+ Anda yang tersedia dapat dipilih di sini. Perlu dicatat bahwa hanya model yang kompatibel dengan konfigurasi detektor Anda saat ini yang dapat dipilih."
+      "modelSelect": "Model Hosted Models Anda yang tersedia dapat dipilih di sini. Perlu dicatat bahwa hanya model yang kompatibel dengan konfigurasi detektor Anda saat ini yang dapat dipilih."
     },
     "changeInDetectorsAndModel": "Ubah model",
-    "unsavedChanges": "Perubahan pengaturan Frigate+ yang belum disimpan",
-    "restart_required": "Perlu mulai ulang (model Frigate+ berubah)",
+    "unsavedChanges": "Perubahan pengaturan Hosted Models yang belum disimpan",
+    "restart_required": "Perlu mulai ulang (model Hosted Models berubah)",
     "toast": {
-      "success": "Pengaturan Frigate+ telah disimpan. Mulai ulang HeisenCam untuk menerapkan perubahan.",
+      "success": "Pengaturan Hosted Models telah disimpan. Mulai ulang HeisenCam untuk menerapkan perubahan.",
       "error": "Gagal menyimpan perubahan konfigurasi: {{errorMessage}}"
     }
   },
@@ -1326,15 +1326,15 @@
       "model": "Model Deteksi"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "Model Kustom"
     },
     "mismatch": {
-      "warning": "Model Frigate+ saat ini \"{{model}}\" memerlukan detektor {{required}}. Pilih model yang kompatibel di bawah atau beralih ke Model Kustom sebelum menyimpan."
+      "warning": "Model Hosted Models saat ini \"{{model}}\" memerlukan detektor {{required}}. Pilih model yang kompatibel di bawah atau beralih ke Model Kustom sebelum menyimpan."
     },
     "plusModel": {
       "requiresDetector": "Memerlukan: {{detector}}",
-      "noModelSelected": "Pilih model Frigate+"
+      "noModelSelected": "Pilih model Hosted Models"
     },
     "toast": {
       "saveSuccess": "Pengaturan detektor dan model telah disimpan. Mulai ulang HeisenCam untuk menerapkan perubahan.",

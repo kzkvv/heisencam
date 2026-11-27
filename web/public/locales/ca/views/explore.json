@@ -192,8 +192,8 @@
       "label": "Descarregar vídeo"
     },
     "submitToPlus": {
-      "aria": "Enviar a Frigate Plus",
-      "label": "Enviar a Frigate+"
+      "aria": "Enviar a HeisenCam Plus",
+      "label": "Enviar a Hosted Models"
     },
     "downloadSnapshot": {
       "label": "Descarregar instantània",

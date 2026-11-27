@@ -2,7 +2,7 @@
   "noRecordingsFoundForThisTime": "Keine Aufnahmen für diesen Zeitpunkt gefunden",
   "noPreviewFound": "Keine Vorschau gefunden",
   "submitFrigatePlus": {
-    "title": "Dieses Bild an Frigate+ senden?",
+    "title": "Dieses Bild an Hosted Models senden?",
     "submit": "Absenden",
     "previewError": "Schnappschuss Vorschau konnte nicht geladen werden. Die Aufnahme ist möglicherweise derzeit nicht verfügbar."
   },
@@ -42,10 +42,10 @@
   },
   "toast": {
     "error": {
-      "submitFrigatePlusFailed": "Bild an Frigate+ senden gescheitert"
+      "submitFrigatePlusFailed": "Bild an Hosted Models senden gescheitert"
     },
     "success": {
-      "submittedFrigatePlus": "Bild erfolgreich an Frigate+ gesendet"
+      "submittedFrigatePlus": "Bild erfolgreich an Hosted Models gesendet"
     }
   },
   "noPreviewFoundFor": "Keine Vorschau für {{cameraName}} gefunden",

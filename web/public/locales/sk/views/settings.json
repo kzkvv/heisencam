@@ -8,7 +8,7 @@
     "motionTuner": "Ladič detekcie pohybu - HeisenCam",
     "object": "Ladenie - HeisenCam",
     "general": "UI nastavenia – HeisenCam",
-    "frigatePlus": "Nastavenia Frigate+ – HeisenCam",
+    "frigatePlus": "Nastavenia Hosted Models – HeisenCam",
     "notifications": "Nastavenia upozornení – HeisenCam",
     "cameraManagement": "Manažment kamier - HeisenCam",
     "cameraReview": "Nastavenie kamier - HeisenCam"
@@ -22,7 +22,7 @@
     "debug": "Ladenie",
     "users": "Uživatelia",
     "notifications": "Notifikacie",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "triggers": "Spúšťače",
     "roles": "Roly",
     "cameraManagement": "Manažment",
@@ -1045,18 +1045,18 @@
     }
   },
   "frigatePlus": {
-    "title": "Nastavenie Frigate+",
+    "title": "Nastavenie Hosted Models",
     "apiKey": {
-      "title": "Frigate + API kľúč",
-      "validated": "Frigate + API kľúč je detekovaný a overený",
-      "notValidated": "Frigate + API kľúč nie je detekovaný alebo nie je overený",
-      "desc": "Frigate+ API kľúč umožňuje integráciu s Frigate+ služby.",
-      "plusLink": "Prečítajte si viac o Frigate+"
+      "title": "HeisenCam + API kľúč",
+      "validated": "HeisenCam + API kľúč je detekovaný a overený",
+      "notValidated": "HeisenCam + API kľúč nie je detekovaný alebo nie je overený",
+      "desc": "Hosted Models API kľúč umožňuje integráciu s Hosted Models služby.",
+      "plusLink": "Prečítajte si viac o Hosted Models"
     },
     "snapshotConfig": {
       "title": "Konfigurácia snímky",
-      "desc": "Odosielanie do Frigate+ vyžaduje, aby boli v konfigurácii povolené snímky aj snímky <code>clean_copy</code>.",
-      "cleanCopyWarning": "Niektoré kamery majú povolené snímky, ale voľba <code>clean_copy</code> je zakázaná. Pre možnosť odosielania snímok z týchto kamier do služby Frigate+ je nutné túto voľbu povoliť v konfigurácii snímok.",
+      "desc": "Odosielanie do Hosted Models vyžaduje, aby boli v konfigurácii povolené snímky aj snímky <code>clean_copy</code>.",
+      "cleanCopyWarning": "Niektoré kamery majú povolené snímky, ale voľba <code>clean_copy</code> je zakázaná. Pre možnosť odosielania snímok z týchto kamier do služby Hosted Models je nutné túto voľbu povoliť v konfigurácii snímok.",
       "table": {
         "camera": "Kamera",
         "snapshots": "Snímky",
@@ -1078,12 +1078,12 @@
       "error": "Chyba načítania informácií o modeli",
       "availableModels": "Dostupné Moduly",
       "loadingAvailableModels": "Načítavam dostupné modely…",
-      "modelSelect": "Tu môžete vybrať dostupné modely zo služby Frigate+. Upozorňujeme, že je možné zvoliť iba modely kompatibilné s aktuálnou konfiguráciou detektora."
+      "modelSelect": "Tu môžete vybrať dostupné modely zo služby HeisenCam+. Upozorňujeme, že je možné zvoliť iba modely kompatibilné s aktuálnou konfiguráciou detektora."
     },
-    "unsavedChanges": "Neuložené zmeny nastavenia Frigate+",
-    "restart_required": "Vyžadovaný reštart (model Frigate+ zmenený)",
+    "unsavedChanges": "Neuložené zmeny nastavenia Hosted Models",
+    "restart_required": "Vyžadovaný reštart (model Hosted Models zmenený)",
     "toast": {
-      "success": "Nastavenia Frigate+ boli uložené. Reštartujte Frigate+ pre aplikovanie zmien.",
+      "success": "Nastavenia Hosted Models boli uložené. Reštartujte Hosted Models pre aplikovanie zmien.",
       "error": "Chyba pri ukladaní zmien konfigurácie: {{errorMessage}}"
     }
   },

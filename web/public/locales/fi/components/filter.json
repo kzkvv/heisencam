@@ -38,8 +38,8 @@
     "label": "Piirteet",
     "hasVideoClip": "Videoleike löytyy",
     "submittedToFrigatePlus": {
-      "label": "Lähetetty Frigate+:aan",
-      "tips": "Sinun on ensin suodatettava seuratut kohteet, joilla on tilannekuva.<br /><br />Kohteita, joilla ei ole tilannekuvaa, ei voida lähettää Frigate+:aan."
+      "label": "Lähetetty Hosted Models:aan",
+      "tips": "Sinun on ensin suodatettava seuratut kohteet, joilla on tilannekuva.<br /><br />Kohteita, joilla ei ole tilannekuvaa, ei voida lähettää Hosted Models:aan."
     },
     "hasSnapshot": "Tilannekuva löytyy"
   },

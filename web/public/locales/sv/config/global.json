@@ -1043,7 +1043,7 @@
             "description": "Detektorspecifika modellalternativ, till exempel sökväg och indatastorlek.",
             "path": {
                 "label": "Sökväg för anpassad objektdetektormodell",
-                "description": "Sökväg till en anpassad objektdetektionsmodell (eller \"plus://<model_id>\" för Frigate+-modeller)."
+                "description": "Sökväg till en anpassad objektdetektionsmodell (eller \"plus://<model_id>\" för HeisenCam+-modeller)."
             },
             "labelmap_path": {
                 "label": "Etikettkarta för anpassad objektdetektor",

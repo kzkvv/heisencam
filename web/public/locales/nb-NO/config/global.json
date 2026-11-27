@@ -294,7 +294,7 @@
             "description": "Detektorspesifikke konfigurasjonsalternativer for modell (sti, inndatastørrelse, osv.).",
             "path": {
                 "label": "Sti til egendefinert objektdetektormodell",
-                "description": "Sti til en egendefinert deteksjonsmodellfil (eller plus://<modell_id> for Frigate+-modeller)."
+                "description": "Sti til en egendefinert deteksjonsmodellfil (eller plus://<modell_id> for HeisenCam+-modeller)."
             },
             "labelmap_path": {
                 "label": "Etikettkart (labelmap) for egendefinert detektor",
@@ -467,7 +467,7 @@
         "description": "Innstillinger for å konfigurere en egendefinert objektdeteksjonsmodell og dens inndataform.",
         "path": {
             "label": "Sti til egendefinert objektdeteksjonsmodell",
-            "description": "Sti til en egendefinert deteksjonsmodellfil (eller plus://<modell_id> for Frigate+-modeller)."
+            "description": "Sti til en egendefinert deteksjonsmodellfil (eller plus://<modell_id> for HeisenCam+-modeller)."
         },
         "labelmap_path": {
             "label": "Etikettkart (labelmap) for egendefinert detektor",

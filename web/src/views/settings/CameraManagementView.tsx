@@ -261,6 +261,7 @@ export default function CameraManagementView({
                 <Button
                   variant="destructive"
                   onClick={() => setShowDeleteDialog(true)}
+                  disabled={config?.camera_controls_locked}
                   className="mb-2 flex max-w-48 items-center gap-2"
                 >
                   <LuTrash2 className="h-4 w-4" />
@@ -268,6 +269,12 @@ export default function CameraManagementView({
                 </Button>
               )}
             </div>
+
+            {config?.camera_controls_locked && (
+              <p className="text-sm text-muted-foreground">
+                {t("cameraManagement.captureLocked")}
+              </p>
+            )}
 
             {enabledCameras.length + disabledCameras.length > 0 && (
               <div className="mb-5 space-y-3">

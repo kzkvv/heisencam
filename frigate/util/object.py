@@ -586,3 +586,35 @@ def reduce_detections(
     return get_consolidated_object_detections(
         reduce_overlapping_detections(all_detections)
     )
+
+
+def reduce_with_cached_detections(frame_shape, detections, cached_ids):
+    """Consolidate live observations before restoring unmatched stationary boxes."""
+    live = reduce_detections(
+        frame_shape, [item for item in detections if id(item) not in cached_ids]
+    )
+    cached = reduce_detections(
+        frame_shape, [item for item in detections if id(item) in cached_ids]
+    )
+
+    def overlaps(old, current):
+        if old[0] != current[0]:
+            return False
+        left, right = old[2], current[2]
+        if intersection_over_union(left, right) > LABEL_NMS_MAP.get(
+            old[0], LABEL_NMS_DEFAULT
+        ):
+            return True
+        common = intersection(left, right)
+        smaller, larger = sorted((area(left), area(right)))
+        return (
+            common is not None
+            and smaller > 0
+            and smaller >= 0.05 * larger
+            and area(common) / smaller
+            > LABEL_CONSOLIDATION_MAP.get(old[0], LABEL_CONSOLIDATION_DEFAULT)
+        )
+
+    return live + [
+        item for item in cached if not any(overlaps(item, row) for row in live)
+    ]

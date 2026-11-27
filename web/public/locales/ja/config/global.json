@@ -466,7 +466,7 @@
             "description": "検出器固有のモデル設定オプション（パス、入力サイズなど）。",
             "path": {
                 "label": "カスタム物体検知モデルパス",
-                "description": "カスタム検知モデルファイルへのパス（または Frigate+ モデルの場合は plus://<model_id>）。"
+                "description": "カスタム検知モデルファイルへのパス（または Hosted Models モデルの場合は plus://<model_id>）。"
             },
             "labelmap_path": {
                 "label": "カスタム検出器のラベルマップ",
@@ -639,7 +639,7 @@
         "description": "カスタム物体検知モデルとその入力形状を設定します。",
         "path": {
             "label": "カスタム物体検知モデルパス",
-            "description": "カスタム検知モデルファイルへのパス（または Frigate+ モデルの場合は plus://<model_id>）。"
+            "description": "カスタム検知モデルファイルへのパス（または Hosted Models モデルの場合は plus://<model_id>）。"
         },
         "labelmap_path": {
             "label": "カスタム検出器のラベルマップ",

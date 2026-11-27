@@ -8,7 +8,7 @@
     "motionTuner": "画面变动调整 - HeisenCam",
     "object": "调试 - HeisenCam",
     "general": "界面设置 - HeisenCam",
-    "frigatePlus": "Frigate+ 设置 - HeisenCam",
+    "frigatePlus": "Hosted Models 设置 - HeisenCam",
     "notifications": "通知设置 - HeisenCam",
     "enrichments": "增强功能设置 - HeisenCam",
     "cameraManagement": "管理摄像头 - HeisenCam",
@@ -28,7 +28,7 @@
     "debug": "调试",
     "users": "用户",
     "notifications": "通知",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "enrichments": "增强功能",
     "triggers": "触发器",
     "roles": "权限组",
@@ -769,17 +769,17 @@
     "unsavedChanges": "未保存通知设置更改"
   },
   "frigatePlus": {
-    "title": "Frigate+ 设置",
+    "title": "Hosted Models 设置",
     "apiKey": {
-      "title": "Frigate+ API 密钥",
-      "validated": "Frigate+ API 密钥已检测并验证通过",
-      "notValidated": "未检测到 Frigate+ API 密钥或验证未通过",
-      "desc": "Frigate+ API 密钥用于启用与 Frigate+ 服务的集成。",
-      "plusLink": "了解更多关于 Frigate+"
+      "title": "Hosted Models API 密钥",
+      "validated": "Hosted Models API 密钥已检测并验证通过",
+      "notValidated": "未检测到 Hosted Models API 密钥或验证未通过",
+      "desc": "Hosted Models API 密钥用于启用与 Hosted Models 服务的集成。",
+      "plusLink": "了解更多关于 Hosted Models"
     },
     "snapshotConfig": {
       "title": "快照配置",
-      "desc": "提交到 Frigate+ 需要同时在配置中开启快照功能。",
+      "desc": "提交到 Hosted Models 需要同时在配置中开启快照功能。",
       "documentation": "阅读文档",
       "cleanCopyWarning": "部分摄像头未开启快照功能",
       "table": {
@@ -798,14 +798,14 @@
       "cameras": "摄像头",
       "loading": "正在加载模型信息…",
       "error": "加载模型信息失败",
-      "availableModels": "可用 Frigate+ 模型",
+      "availableModels": "可用 Hosted Models 模型",
       "loadingAvailableModels": "正在加载可用模型…",
-      "modelSelect": "您可以在Frigate+上选择可用的模型。请注意，只能选择与当前检测器配置兼容的模型。",
+      "modelSelect": "您可以在Hosted Models上选择可用的模型。请注意，只能选择与当前检测器配置兼容的模型。",
       "plusModelType": {
         "baseModel": "基础模型",
         "userModel": "定向调优"
       },
-      "noModelLoaded": "当前未加载任何Frigate+模型。",
+      "noModelLoaded": "当前未加载任何Hosted Models模型。",
       "selectModel": "选择一个模型",
       "noModelsAvailable": "无可用模型",
       "filter": {
@@ -815,12 +815,12 @@
       }
     },
     "toast": {
-      "success": "Frigate+ 设置已保存。请重启 HeisenCam 以应用更改。",
+      "success": "Hosted Models 设置已保存。请重启 HeisenCam 以应用更改。",
       "error": "配置更改保存失败：{{errorMessage}}"
     },
-    "restart_required": "需要重启（Frigate+模型已修改）",
-    "unsavedChanges": "未保存Frigate+变更设置",
-    "description": "Frigate+ 是一项订阅服务，可为你的 HeisenCam 实例提供额外的功能和能力，包括使用基于你自己的数据训练的自定义目标检测模型。你可以在此管理 Frigate+ 的模型设置。",
+    "restart_required": "需要重启（Hosted Models模型已修改）",
+    "unsavedChanges": "未保存Hosted Models变更设置",
+    "description": "Hosted Models 是一项订阅服务，可为你的 HeisenCam 实例提供额外的功能和能力，包括使用基于你自己的数据训练的自定义目标检测模型。你可以在此管理 Hosted Models 的模型设置。",
     "cardTitles": {
       "api": "API",
       "currentModel": "当前模型",
@@ -1604,10 +1604,10 @@
   },
   "detectionModel": {
     "plusActive": {
-      "title": "Frigate+ 模型管理",
+      "title": "Hosted Models 模型管理",
       "label": "当前模型来源",
-      "description": "此实例正在运行 Frigate+ 模型。请在 Frigate+ 设置中选择或更改您的模型。",
-      "goToFrigatePlus": "前往 Frigate+ 设置",
+      "description": "此实例正在运行 Hosted Models 模型。请在 Hosted Models 设置中选择或更改您的模型。",
+      "goToFrigatePlus": "前往 Hosted Models 设置",
       "showModelForm": "手动配置模型"
     }
   },
@@ -2219,15 +2219,15 @@
       "model": "检测器模型"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "自定义模型"
     },
     "mismatch": {
-      "warning": "当前 Frigate+ 模型“{{model}}”需搭配 {{required}} 检测器使用。请在下方选择兼容的模型，或切换为自定义模型后再保存。"
+      "warning": "当前 Hosted Models 模型“{{model}}”需搭配 {{required}} 检测器使用。请在下方选择兼容的模型，或切换为自定义模型后再保存。"
     },
     "plusModel": {
       "requiresDetector": "需要检测器：{{detector}}",
-      "noModelSelected": "选择 Frigate+ 模型"
+      "noModelSelected": "选择 Hosted Models 模型"
     },
     "toast": {
       "saveSuccess": "检测器与模型设置已保存，请重启 HeisenCam 以生效配置。",

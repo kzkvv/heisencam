@@ -178,9 +178,9 @@ To override for a specific camera, navigate to <NavPath path="Settings > Camera 
 ```yaml
 motion:
   # Optional: Fraction of the frame that must change in a single update
-  #           before Frigate will completely ignore any motion in that frame.
+  #           before HeisenCam will completely ignore any motion in that frame.
   #           Values range between 0.0 and 1.0, leave unset (null) to disable.
-  #           Setting this to 0.7 would cause Frigate to **skip** reporting
+  #           Setting this to 0.7 would cause HeisenCam to **skip** reporting
   #           motion boxes when more than 70% of the image appears to change
   #           (e.g. during lightning storms, IR/color mode switches, or other
   #           sudden lighting events).

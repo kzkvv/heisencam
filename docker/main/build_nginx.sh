@@ -42,7 +42,7 @@ patch -d /tmp/nginx-vod-module/ -p1 << 'EOF'
 
  bool_t
  avc_hevc_parser_rbsp_trailing_bits(bit_reader_state_t* reader) {
-+	// https://github.com/blakeblackshear/frigate/issues/4572
++	// Keep retrying while an active playlist is being written.
 +	return TRUE;
 +
  	uint32_t one_bit;

@@ -1,3 +1,4 @@
+import { documentationUrl } from "@/hooks/use-doc-domain";
 import { baseUrl } from "@/api/baseUrl";
 import { useUserPersistence } from "@/hooks/use-user-persistence";
 import {
@@ -99,7 +100,7 @@ function MSEPlayer({
     (error: LivePlayerError, description: string = "Unknown error") => {
       // eslint-disable-next-line no-console
       console.error(
-        `${camera} - MSE error '${error}': ${description} See the documentation: https://docs.frigate.video/configuration/live/#live-player-error-messages`,
+        `${camera} - MSE error '${error}': ${description} See the documentation: ${documentationUrl("configuration/live/#live-player-error-messages")}`,
       );
 
       if (mseCodecRef.current) {

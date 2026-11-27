@@ -9,7 +9,7 @@
     "motionTuner": "Reglaj Mișcare - HeisenCam",
     "object": "Depanare - HeisenCam",
     "general": "Setări interfață - HeisenCam",
-    "frigatePlus": "Setări Frigate+ - HeisenCam",
+    "frigatePlus": "Setări Hosted Models - HeisenCam",
     "enrichments": "Setări Îmbunătățiri - HeisenCam",
     "cameraManagement": "Gestionare Camere - HeisenCam",
     "cameraReview": "Setări Review Cameră - HeisenCam",
@@ -28,7 +28,7 @@
     "debug": "Depanare",
     "users": "Utilizatori",
     "notifications": "Notificări",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "triggers": "Declanșatori",
     "roles": "Roluri",
     "cameraManagement": "Gestionare cameră",
@@ -752,11 +752,11 @@
   },
   "frigatePlus": {
     "apiKey": {
-      "plusLink": "Citește mai multe despre Frigate+",
-      "desc": "Cheia API Frigate+ permite integrarea cu serviciul Frigate+.",
-      "validated": "Cheia API Frigate+ a fost detectată și validată",
-      "title": "Cheie API Frigate+",
-      "notValidated": "Cheia API Frigate+ nu este detectată sau validată"
+      "plusLink": "Citește mai multe despre Hosted Models",
+      "desc": "Cheia API Hosted Models permite integrarea cu serviciul HeisenCam+.",
+      "validated": "Cheia API Hosted Models a fost detectată și validată",
+      "title": "Cheie API Hosted Models",
+      "notValidated": "Cheia API Hosted Models nu este detectată sau validată"
     },
     "snapshotConfig": {
       "title": "Configurare snapshot-uri",
@@ -767,7 +767,7 @@
       },
       "documentation": "Citește documentația",
       "cleanCopyWarning": "Unele camere au snapshot-urile dezactivate",
-      "desc": "Trimiterea către Frigate+ necesită ca snapshot-urile să fie activate în configurația ta."
+      "desc": "Trimiterea către Hosted Models necesită ca snapshot-urile să fie activate în configurația ta."
     },
     "modelInfo": {
       "title": "Informații Model",
@@ -777,15 +777,15 @@
         "userModel": "Reglat fin"
       },
       "loadingAvailableModels": "Se încarcă modelele disponibile…",
-      "modelSelect": "Poți selecta modelele tale disponibile pe Frigate+ aici. Reține că pot fi selectate doar modelele compatibile cu configurația actuală a detectorului.",
+      "modelSelect": "Poți selecta modelele tale disponibile pe Hosted Models aici. Reține că pot fi selectate doar modelele compatibile cu configurația actuală a detectorului.",
       "baseModel": "Model de Bază",
       "loading": "Se încarcă informațiile despre model…",
       "error": "Eroare la încărcarea informațiilor despre model",
-      "availableModels": "Modele Frigate+ disponibile",
+      "availableModels": "Modele Hosted Models disponibile",
       "modelType": "Tip Model",
       "trainDate": "Data Antrenării",
       "cameras": "Camere",
-      "noModelLoaded": "Niciun model Frigate+ nu este încărcat în prezent.",
+      "noModelLoaded": "Niciun model Hosted Models nu este încărcat în prezent.",
       "selectModel": "Selectează un model",
       "noModelsAvailable": "Niciun model disponibil",
       "filter": {
@@ -796,12 +796,12 @@
     },
     "toast": {
       "error": "Eroare la salvarea modificărilor de config: {{errorMessage}}",
-      "success": "Setările Frigate+ au fost salvate. Repornește HeisenCam pentru a aplica modificările."
+      "success": "Setările Hosted Models au fost salvate. Repornește HeisenCam pentru a aplica modificările."
     },
-    "restart_required": "Repornire necesară (modelul Frigate+ a fost schimbat)",
-    "unsavedChanges": "Modificări Frigate+ nesalvate",
-    "title": "Setări Frigate+",
-    "description": "Frigate+ este un serviciu pe bază de abonament care oferă funcții suplimentare, inclusiv posibilitatea de a folosi modele personalizate de detecție obiecte, antrenate pe propriile date. Poți gestiona setările modelului Frigate+ aici.",
+    "restart_required": "Repornire necesară (modelul Hosted Models a fost schimbat)",
+    "unsavedChanges": "Modificări Hosted Models nesalvate",
+    "title": "Setări Hosted Models",
+    "description": "Hosted Models este un serviciu pe bază de abonament care oferă funcții suplimentare, inclusiv posibilitatea de a folosi modele personalizate de detecție obiecte, antrenate pe propriile date. Poți gestiona setările modelului Hosted Models aici.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Model Actual",
@@ -1554,10 +1554,10 @@
   },
   "detectionModel": {
     "plusActive": {
-      "title": "Gestionare model Frigate+",
+      "title": "Gestionare model Hosted Models",
       "label": "Sursa modelului curent",
-      "description": "Această instanță rulează un model Frigate+. Selectează sau schimbă modelul în setările Frigate+.",
-      "goToFrigatePlus": "Mergi la setările Frigate+",
+      "description": "Această instanță rulează un model HeisenCam+. Selectează sau schimbă modelul în setările HeisenCam+.",
+      "goToFrigatePlus": "Mergi la setările Hosted Models",
       "showModelForm": "Configurează manual un model"
     }
   },
@@ -2194,15 +2194,15 @@
       "detector": "Hardware detector"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "Model personalizat"
     },
     "mismatch": {
-      "warning": "Modelul curent Frigate+ \"{{model}}\" necesită detectorul {{required}}. Alege un model compatibil mai jos sau treci la Model personalizat înainte de a salva."
+      "warning": "Modelul curent Hosted Models \"{{model}}\" necesită detectorul {{required}}. Alege un model compatibil mai jos sau treci la Model personalizat înainte de a salva."
     },
     "plusModel": {
       "requiresDetector": "Necesită: {{detector}}",
-      "noModelSelected": "Selectează un model Frigate+"
+      "noModelSelected": "Selectează un model Hosted Models"
     },
     "toast": {
       "saveSuccess": "Setările pentru detectoare și model au fost salvate. Repornește HeisenCam pentru a aplica modificările.",

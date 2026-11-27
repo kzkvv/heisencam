@@ -7,7 +7,7 @@
     "masksAndZones": "Urejevalnik mask in območij - HeisenCam",
     "object": "Razhroščevanje - HeisenCam",
     "general": "Nastavitve profila - HeisenCam",
-    "frigatePlus": "Nastavitve Frigate+ - HeisenCam",
+    "frigatePlus": "Nastavitve Hosted Models - HeisenCam",
     "enrichments": "Nastavitve obogatenih podatkov - HeisenCam",
     "motionTuner": "Prilagajanje zaznavanja gibanja - HeisenCam",
     "cameraManagement": "Upravljanje kamer - HeisenCam",
@@ -24,7 +24,7 @@
     "debug": "Razhroščevanje",
     "users": "Uporabniki",
     "notifications": "Obvestila",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "motionTuner": "Nastavljalnik gibanja",
     "triggers": "Sprožilci",
     "cameraManagement": "Upravljanje",
@@ -1257,8 +1257,8 @@
     }
   },
   "frigatePlus": {
-    "title": "Nastavitve Frigate+",
-    "description": "Frigate+ je naročniška storitev, ki omogoča dostop do dodatnih funkcij, vključno z modeli za zaznavanje objektov po meri, ki so naučeni na tvojih lastnih podatkih. Tukaj lahko upravljaš s svojimi Frigate+ modeli.",
+    "title": "Nastavitve Hosted Models",
+    "description": "Hosted Models je naročniška storitev, ki omogoča dostop do dodatnih funkcij, vključno z modeli za zaznavanje objektov po meri, ki so naučeni na tvojih lastnih podatkih. Tukaj lahko upravljaš s svojimi Hosted Models modeli.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Trenutni model",
@@ -1266,16 +1266,16 @@
       "configuration": "Konfiguracija"
     },
     "apiKey": {
-      "title": "Frigate+ API ključ",
+      "title": "Hosted Models API ključ",
       "validated": "API ključ je zaznan in potrjen",
       "notValidated": "API ključ ni zaznan ali ni veljaven",
-      "desc": "API ključ omogoča integracijo s storitvijo Frigate+.",
-      "plusLink": "Preberi več o Frigate+"
+      "desc": "API ključ omogoča integracijo s storitvijo HeisenCam+.",
+      "plusLink": "Preberi več o Hosted Models"
     },
     "snapshotConfig": {
       "title": "Konfiguracija slik (Snapshots)",
-      "desc": "Pošiljanje v Frigate+ zahteva, da sta v tvoji konfiguraciji omogočena tako <code>snapshots</code> kot <code>clean_copy</code>.",
-      "cleanCopyWarning": "Nekatere kamere imajo omogočene slike, vendar onemogočeno možnost 'clean copy'. Da bi lahko pošiljal slike v Frigate+, moraš v nastavitvah omogočiti <code>clean_copy</code>.",
+      "desc": "Pošiljanje v Hosted Models zahteva, da sta v tvoji konfiguraciji omogočena tako <code>snapshots</code> kot <code>clean_copy</code>.",
+      "cleanCopyWarning": "Nekatere kamere imajo omogočene slike, vendar onemogočeno možnost 'clean copy'. Da bi lahko pošiljal slike v Hosted Models, moraš v nastavitvah omogočiti <code>clean_copy</code>.",
       "table": {
         "camera": "Kamera",
         "snapshots": "Slike (Snapshots)",
@@ -1297,21 +1297,21 @@
       "error": "Nalaganje informacij o modelu ni uspelo",
       "availableModels": "Razpoložljivi modeli",
       "loadingAvailableModels": "Nalaganje razpoložljivih modelov…",
-      "modelSelect": "Tukaj lahko izbereš svoje modele, ki so na voljo v Frigate+. Izbereš lahko le modele, ki so združljivi s tvojo trenutno konfiguracijo detektorja."
+      "modelSelect": "Tukaj lahko izbereš svoje modele, ki so na voljo v HeisenCam+. Izbereš lahko le modele, ki so združljivi s tvojo trenutno konfiguracijo detektorja."
     },
-    "unsavedChanges": "Neshranjene spremembe Frigate+ nastavitev",
-    "restart_required": "Potreben ponovni zagon (sprememba Frigate+ modela)",
+    "unsavedChanges": "Neshranjene spremembe Hosted Models nastavitev",
+    "restart_required": "Potreben ponovni zagon (sprememba Hosted Models modela)",
     "toast": {
-      "success": "Nastavitve Frigate+ so bile shranjene. Ponovno zaženi HeisenCam za uveljavitev sprememb.",
+      "success": "Nastavitve Hosted Models so bile shranjene. Ponovno zaženi HeisenCam za uveljavitev sprememb.",
       "error": "Napaka pri shranjevanju konfiguracije: {{errorMessage}}"
     }
   },
   "detectionModel": {
     "plusActive": {
-      "title": "Upravljanje modelov Frigate+",
+      "title": "Upravljanje modelov Hosted Models",
       "label": "Trenutni vir modela",
-      "description": "Ta instanca uporablja Frigate+ model. Model lahko izbereš ali spremeniš v nastavitvah Frigate+.",
-      "goToFrigatePlus": "Pojdi na nastavitve Frigate+",
+      "description": "Ta instanca uporablja Hosted Models model. Model lahko izbereš ali spremeniš v nastavitvah HeisenCam+.",
+      "goToFrigatePlus": "Pojdi na nastavitve Hosted Models",
       "showModelForm": "Ročno nastavi model"
     }
   },

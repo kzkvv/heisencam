@@ -13,7 +13,7 @@
     "plus": {
       "review": {
         "question": {
-          "label": "確認此 Frigate Plus 標籤",
+          "label": "確認此 HeisenCam Plus 標籤",
           "ask_a": "此物件是 <code>{{label}}</code> 嗎？",
           "ask_an": "此物件是 <code>{{label}}</code> 嗎？",
           "ask_full": "此物件是 <code>{{untranslatedLabel}}</code> ({{translatedLabel}}) 嗎？"
@@ -22,11 +22,11 @@
           "submitted": "已提交"
         },
         "toast": {
-          "error": "無法提交至 Frigate+，請檢查您的網路連線並再試一次。"
+          "error": "無法提交至 Hosted Models，請檢查您的網路連線並再試一次。"
         }
       },
       "submitToPlus": {
-        "label": "提交到 Frigate+",
+        "label": "提交到 Hosted Models",
         "desc": "在你欲遮蓋範圍內的物件並不是誤判。將他們標示為誤判並提交會使模型混淆。"
       }
     },

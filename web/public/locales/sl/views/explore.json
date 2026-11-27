@@ -123,8 +123,8 @@
       "label": "Najdi podobne"
     },
     "submitToPlus": {
-      "label": "Pošlji v Frigate+",
-      "aria": "Pošlji v Frigate Plus"
+      "label": "Pošlji v Hosted Models",
+      "aria": "Pošlji v HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Ogled v zgodovini",

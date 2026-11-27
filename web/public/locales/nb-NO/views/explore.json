@@ -189,8 +189,8 @@
       "label": "Slett dette sporede objektet"
     },
     "submitToPlus": {
-      "label": "Send til Frigate+",
-      "aria": "Send til Frigate Plus"
+      "label": "Send til Hosted Models",
+      "aria": "Send til HeisenCam Plus"
     },
     "addTrigger": {
       "label": "Legg til utløser",

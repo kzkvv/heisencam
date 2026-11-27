@@ -201,7 +201,7 @@ go2rtc's native zero-copy handling only supports well-formed RTSP H.264/H.265. A
 
 ## Hardware-accelerated transcoding with FFmpeg 8
 
-Frigate 0.18 ships **FFmpeg 8.0** as the default, and FFmpeg 8 is stricter about hardware-accelerated filtering than earlier versions. Whenever go2rtc transcodes video with hardware acceleration (any source using `#hardware`, `#hardware=vaapi`, or the **Automatic** hardware option in the UI), it builds a filter chain that uploads frames to the GPU with the `hwupload` filter. FFmpeg 8 now refuses to do this unless it is told **which device** to use. Earlier versions selected one automatically. The result is that an otherwise-working transcode fails to start, the live view never loads, and go2rtc logs:
+HeisenCam 0.18 ships **FFmpeg 8.0** as the default, and FFmpeg 8 is stricter about hardware-accelerated filtering than earlier versions. Whenever go2rtc transcodes video with hardware acceleration (any source using `#hardware`, `#hardware=vaapi`, or the **Automatic** hardware option in the UI), it builds a filter chain that uploads frames to the GPU with the `hwupload` filter. FFmpeg 8 now refuses to do this unless it is told **which device** to use. Earlier versions selected one automatically. The result is that an otherwise-working transcode fails to start, the live view never loads, and go2rtc logs:
 
 ```
 [hwupload] A hardware device reference is required to upload frames to.

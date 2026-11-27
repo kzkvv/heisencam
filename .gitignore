@@ -18,11 +18,13 @@ models
 !examples/demo/media/pacific_coast.mp4
 !examples/demo/media/ninth_avenue.mp4
 !site/demo/birdseye.mp4
+!examples/demo/replay/no_objects.mp4
 *.db
 *.db-*
 *.csv
 frigate/version.py
 web/build
+web/dist-demo
 web/node_modules
 web/coverage
 web/.env

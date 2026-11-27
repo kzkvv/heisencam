@@ -2,7 +2,7 @@
 """Generate Frigate UI tab content for documentation files.
 
 This script reads YAML code blocks from documentation markdown files and
-generates corresponding "Frigate UI" tab instructions based on:
+generates corresponding "HeisenCam UI" tab instructions based on:
 - JSON Schema (from Pydantic config models)
 - i18n translation files (for UI field labels)
 - Section configs (for hidden/advanced field info)

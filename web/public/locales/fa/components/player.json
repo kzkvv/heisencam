@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "فریم با موفقیت به Frigate+ ارسال شد"
+      "submittedFrigatePlus": "فریم با موفقیت به Hosted Models ارسال شد"
     },
     "error": {
-      "submitFrigatePlusFailed": "ارسال فریم به Frigate+ ناموفق بود"
+      "submitFrigatePlusFailed": "ارسال فریم به Hosted Models ناموفق بود"
     }
   },
   "cameraOff": "دوربین خاموش است"

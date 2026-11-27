@@ -1052,7 +1052,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1111,7 +1111,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Camí personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1178,7 +1178,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1245,7 +1245,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1304,7 +1304,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1363,7 +1363,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1421,7 +1421,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1480,7 +1480,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Rutaa un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Rutaa un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1539,7 +1539,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1599,7 +1599,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)"
+                    "description": "Ruta un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)"
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1653,7 +1653,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1708,7 +1708,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1767,7 +1767,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Ruta personalitzat del model de detecció d'objectes",
-                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1835,7 +1835,7 @@
                 "description": "Opcions de configuració del model específic del detector (camí, mida d'entrada, etc.).",
                 "path": {
                     "label": "Camí personalitzat del model de detecció d'objectes",
-                    "description": "Camí a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+                    "description": "Camí a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
                 },
                 "labelmap_path": {
                     "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",
@@ -1884,7 +1884,7 @@
             "description": "Opcions de configuració de model de detector específic (ruta, tamany entrada, etc.).",
             "path": {
                 "label": "Ruta del model de detector d'objectes personalitzat",
-                "description": "Ruta a l'arxiu del model de detecció personalitzat ( o plus://<model_id> per a models Frigate+)."
+                "description": "Ruta a l'arxiu del model de detecció personalitzat ( o plus://<model_id> per a models Hosted Models)."
             },
             "labelmap_path": {
                 "label": "Etiqueta per a detector d'objectes personalitzat",
@@ -1933,7 +1933,7 @@
         "description": "Configuració per a configurar un model de detecció d'objectes personalitzat i la seva forma d'entrada.",
         "path": {
             "label": "Ruta del model de detector d'objectes personalitzat",
-            "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Frigate+)."
+            "description": "Ruta a un fitxer de model de detecció personalitzat (o plus://<model_id> per a models Hosted Models)."
         },
         "labelmap_path": {
             "label": "Mapa d'etiquetes per al detector d'objectes personalitzat",

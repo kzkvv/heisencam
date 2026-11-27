@@ -32,7 +32,7 @@
   "noPreviewFound": "Nie znaleziono podglądu",
   "noPreviewFoundFor": "Nie znaleziono podglądu dla {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Wyślij tę klatkę do Frigate+?",
+    "title": "Wyślij tę klatkę do Hosted Models?",
     "submit": "Wyślij",
     "previewError": "Nie udało się załadować podglądu nagrania. Nagranie może być niedostępne w podanym czasie."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Pomyślnie wysłano klatkę do Frigate+"
+      "submittedFrigatePlus": "Pomyślnie wysłano klatkę do Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Nie udało się wysłać klatki do Frigate+"
+      "submitFrigatePlusFailed": "Nie udało się wysłać klatki do Hosted Models"
     }
   },
   "cameraOff": "Kamera jest wyłączona"

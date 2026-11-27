@@ -205,8 +205,8 @@
       "aria": "Zatražite audio transkripciju"
     },
     "submitToPlus": {
-      "label": "Pošalji na Frigate+",
-      "aria": "Pošalji na Frigate Plus"
+      "label": "Pošalji na Hosted Models",
+      "aria": "Pošalji na HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Pogled u povijest",

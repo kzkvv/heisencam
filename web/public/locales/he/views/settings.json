@@ -625,11 +625,11 @@
   "frigatePlus": {
     "title": "הגדרות +HeisenCam",
     "apiKey": {
-      "title": "Frigate+ API מפתח",
-      "validated": "מפתח ה-API של Frigate+ זוהה ואושר",
-      "notValidated": "מפתח ה-API של Frigate+ לא זוהה או לא אומת",
-      "desc": "מפתח ה-API של Frigate+ מאפשר אינטגרציה עם שירות Frigate+.",
-      "plusLink": "קרא עוד על Frigate+"
+      "title": "Hosted Models API מפתח",
+      "validated": "מפתח ה-API של Hosted Models זוהה ואושר",
+      "notValidated": "מפתח ה-API של Hosted Models לא זוהה או לא אומת",
+      "desc": "מפתח ה-API של Hosted Models מאפשר אינטגרציה עם שירות HeisenCam+.",
+      "plusLink": "קרא עוד על Hosted Models"
     },
     "snapshotConfig": {
       "title": "תצורת לכידת תמונה",
@@ -660,9 +660,9 @@
       "modelSelect": "ניתן לבחור כאן את הדגמים הזמינים ב-Frigate+. שים לב שניתן לבחור רק דגמים התואמים לתצורת הגלאי הנוכחית שלך."
     },
     "unsavedChanges": "שינויים בהגדרות של frigate+ שלא נשמרו",
-    "restart_required": "נדרש הפעלה מחדש (דגם Frigate+ שונה)",
+    "restart_required": "נדרש הפעלה מחדש (דגם Hosted Models שונה)",
     "toast": {
-      "success": "הגדרות Frigate+ נשמרו. הפעל מחדש את HeisenCam כדי להחיל את השינויים.",
+      "success": "הגדרות Hosted Models נשמרו. הפעל מחדש את HeisenCam כדי להחיל את השינויים.",
       "error": "שמירת שינויי התצורה נכשלה: {{errorMessage}}"
     }
   },

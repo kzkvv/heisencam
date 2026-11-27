@@ -190,8 +190,8 @@
       "aria": "Požiadajte o prepis zvuku"
     },
     "submitToPlus": {
-      "label": "Odoslať na Frigate+",
-      "aria": "Odoslať na Frigate Plus"
+      "label": "Odoslať na Hosted Models",
+      "aria": "Odoslať na HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Zobraziť v histórii",

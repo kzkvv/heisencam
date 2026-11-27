@@ -11,7 +11,7 @@
     "general": "Postavke korisničkog sučelja - HeisenCam",
     "globalConfig": "Globalna konfiguracija - HeisenCam",
     "cameraConfig": "Konfiguracija kamere - HeisenCam",
-    "frigatePlus": "Postavke Frigate+ - HeisenCam",
+    "frigatePlus": "Postavke Hosted Models - HeisenCam",
     "notifications": "Postavke obavijesti - HeisenCam",
     "maintenance": "Održavanje - HeisenCam",
     "profiles": "Profili - HeisenCam"
@@ -85,7 +85,7 @@
     "notifications": "Obavještenja",
     "triggers": "Pokretači",
     "debug": "Debug",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "maintenance": "Održavanje",
     "mediaSync": "Sinkronizacija medija",
     "regionGrid": "Mreža regija"
@@ -1098,8 +1098,8 @@
     }
   },
   "frigatePlus": {
-    "title": "Postavke Frigate+",
-    "description": "Frigate+ je usluga pretplate koja pruža pristup dodatnim funkcijama i mogućnostima za vašu instancu HeisenCam, uključujući mogućnost korištenja prilagođenih modela detekcije objekata treniranih na vašim podacima. Ovdje možete upravljati postavkama modela Frigate+.",
+    "title": "Postavke Hosted Models",
+    "description": "Hosted Models je usluga pretplate koja pruža pristup dodatnim funkcijama i mogućnostima za vašu instancu HeisenCam, uključujući mogućnost korištenja prilagođenih modela detekcije objekata treniranih na vašim podacima. Ovdje možete upravljati postavkama modela HeisenCam+.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Trenutni model",
@@ -1107,15 +1107,15 @@
       "configuration": "Konfiguracija"
     },
     "apiKey": {
-      "title": "Frigate+ API ključ",
-      "validated": "Frigate+ API ključ je detektovan i validiran",
-      "notValidated": "Frigate+ API ključ nije detektovan ili nije validiran",
-      "desc": "Frigate+ API ključ omogućava integraciju sa uslugom Frigate+.",
-      "plusLink": "Pročitajte više o Frigate+"
+      "title": "Hosted Models API ključ",
+      "validated": "Hosted Models API ključ je detektovan i validiran",
+      "notValidated": "Hosted Models API ključ nije detektovan ili nije validiran",
+      "desc": "Hosted Models API ključ omogućava integraciju sa uslugom HeisenCam+.",
+      "plusLink": "Pročitajte više o Hosted Models"
     },
     "snapshotConfig": {
       "title": "Konfiguracija snimaka",
-      "desc": "Slanje na Frigate+ zahtijeva da su snimci omogućeni u vašoj konfiguraciji.",
+      "desc": "Slanje na Hosted Models zahtijeva da su snimci omogućeni u vašoj konfiguraciji.",
       "cleanCopyWarning": "Neki uređaji imaju isključene snimke",
       "table": {
         "camera": "Kamera",
@@ -1137,21 +1137,21 @@
       "error": "Neuspješno učitavanje informacija o modelu",
       "availableModels": "Dostupni modeli",
       "loadingAvailableModels": "Učitavanje dostupnih modela…",
-      "modelSelect": "Vaši dostupni modeli na Frigate+ mogu se odabrati ovdje. Napomena: samo modeli kompatibilni s vašom trenutnom konfiguracijom detektora mogu se odabrati."
+      "modelSelect": "Vaši dostupni modeli na Hosted Models mogu se odabrati ovdje. Napomena: samo modeli kompatibilni s vašom trenutnom konfiguracijom detektora mogu se odabrati."
     },
-    "unsavedChanges": "Nespremljene promjene postavki Frigate+",
-    "restart_required": "Potrebno je ponovno pokretanje (model Frigate+ promijenjen)",
+    "unsavedChanges": "Nespremljene promjene postavki Hosted Models",
+    "restart_required": "Potrebno je ponovno pokretanje (model Hosted Models promijenjen)",
     "toast": {
-      "success": "Postavke Frigate+ su spremljene. Ponovno pokrenite HeisenCam da biste primijenili promjene.",
+      "success": "Postavke Hosted Models su spremljene. Ponovno pokrenite HeisenCam da biste primijenili promjene.",
       "error": "Nije uspješno sačuvana promjena konfiguracije: {{errorMessage}}"
     }
   },
   "detectionModel": {
     "plusActive": {
-      "title": "Upravljanje modelima Frigate+",
+      "title": "Upravljanje modelima Hosted Models",
       "label": "Trenutni izvor modela",
-      "description": "Ova instanca pokreće model Frigate+. Odaberite ili promijenite svoj model u postavkama Frigate+.",
-      "goToFrigatePlus": "Idi na postavke Frigate+",
+      "description": "Ova instanca pokreće model HeisenCam+. Odaberite ili promijenite svoj model u postavkama HeisenCam+.",
+      "goToFrigatePlus": "Idi na postavke Hosted Models",
       "showModelForm": "Ručno konfigurirajte model"
     }
   },

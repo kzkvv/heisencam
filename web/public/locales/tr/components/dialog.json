@@ -18,25 +18,25 @@
         "true": {
           "true_one": "Bu bir {{label}}",
           "true_other": "Bu bir {{label}}",
-          "label": "Frigate+ için bu etiketi onaylayın"
+          "label": "Hosted Models için bu etiketi onaylayın"
         },
         "false": {
-          "label": "Bu etiketi Frigate+ için onaylamaktan vazgeç",
+          "label": "Bu etiketi Hosted Models için onaylamaktan vazgeç",
           "false_one": "Bu bir {{label}} değil",
           "false_other": "Bu bir {{label}} değil"
         },
         "question": {
           "ask_an": "Bu nesne bir <code>{{label}}</code> nesnesi mi?",
-          "label": "Bu etiketi Frigate+ için onaylayın",
+          "label": "Bu etiketi Hosted Models için onaylayın",
           "ask_a": "Bu nesne bir <code>{{label}}</code> mi?",
           "ask_full": "Bu nesne bir <code>{{untranslatedLabel}}</code> ({{translatedLabel}}) nesnesi mi?"
         },
         "toast": {
-          "error": "Frigate+'a gönderilemedi. Lütfen ağ bağlantınızı kontrol edin ve tekrar deneyin."
+          "error": "Hosted Models'a gönderilemedi. Lütfen ağ bağlantınızı kontrol edin ve tekrar deneyin."
         }
       },
       "submitToPlus": {
-        "label": "Frigate+'ya Gönder",
+        "label": "Hosted Models'ya Gönder",
         "desc": "Görülmesini istemediğiniz yerlerdeki nesneler yanlış pozitif değildir. Bunları yanlış pozitif olarak göndermek modeli yanıltacaktır."
       }
     },

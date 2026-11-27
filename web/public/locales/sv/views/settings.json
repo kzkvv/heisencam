@@ -7,7 +7,7 @@
     "classification": "Klassificeringsinställningar - HeisenCam",
     "masksAndZones": "Maskerings- och zonverktyg - HeisenCam",
     "enrichments": "Berikningsinställningar - HeisenCam",
-    "frigatePlus": "Frigate+-inställningar - HeisenCam",
+    "frigatePlus": "HeisenCam+-inställningar - HeisenCam",
     "notifications": "Aviseringsinställningar - HeisenCam",
     "motionTuner": "Rörelsejustering - HeisenCam",
     "object": "Felsökning - HeisenCam",
@@ -145,7 +145,7 @@
     "masksAndZones": "Masker och zoner",
     "users": "Användare",
     "notifications": "Aviseringar",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "enrichments": "Berikningar",
     "motionTuner": "Rörelsemottagare",
     "debug": "Felsökning",
@@ -733,17 +733,17 @@
     }
   },
   "frigatePlus": {
-    "title": "Frigate+-inställningar",
+    "title": "HeisenCam+-inställningar",
     "apiKey": {
-      "notValidated": "Frigate+-API-nyckeln kunde inte identifieras eller valideras",
-      "desc": "Frigate+ API-nyckeln möjliggör integration med Frigate+-tjänsten.",
-      "plusLink": "Läs mer om Frigate+",
-      "title": "Frigate+ API-nyckel",
-      "validated": "Frigate+-API-nyckeln har identifierats och validerats"
+      "notValidated": "HeisenCam+-API-nyckeln kunde inte identifieras eller valideras",
+      "desc": "Hosted Models API-nyckeln möjliggör integration med HeisenCam+-tjänsten.",
+      "plusLink": "Läs mer om Hosted Models",
+      "title": "Hosted Models API-nyckel",
+      "validated": "HeisenCam+-API-nyckeln har identifierats och validerats"
     },
     "snapshotConfig": {
       "title": "Konfiguration av ögonblicksbilder",
-      "desc": "För att skicka till Frigate+ måste ögonblicksbilder vara aktiverade i konfigurationen.",
+      "desc": "För att skicka till Hosted Models måste ögonblicksbilder vara aktiverade i konfigurationen.",
       "cleanCopyWarning": "Ögonblicksbilder är inaktiverade för vissa kameror",
       "table": {
         "camera": "Kamera",
@@ -766,12 +766,12 @@
       "error": "Misslyckades med att ladda modellinformationen",
       "availableModels": "Tillgängliga modeller",
       "loadingAvailableModels": "Laddar tillgängliga modeller…",
-      "modelSelect": "Dina tillgängliga modeller på Frigate+ kan väljas här. Observera att endast modeller som är kompatibla med din nuvarande detektorkonfiguration kan väljas."
+      "modelSelect": "Dina tillgängliga modeller på Hosted Models kan väljas här. Observera att endast modeller som är kompatibla med din nuvarande detektorkonfiguration kan väljas."
     },
-    "unsavedChanges": "Osparade ändringar av inställningar för Frigate+",
-    "restart_required": "Omstart krävs eftersom Frigate+-modellen har ändrats",
+    "unsavedChanges": "Osparade ändringar av inställningar för Hosted Models",
+    "restart_required": "Omstart krävs eftersom HeisenCam+-modellen har ändrats",
     "toast": {
-      "success": "Inställningarna för Frigate+ har sparats. Starta om HeisenCam för att tillämpa ändringarna.",
+      "success": "Inställningarna för Hosted Models har sparats. Starta om HeisenCam för att tillämpa ändringarna.",
       "error": "Kunde inte spara konfigurationsändringarna: {{errorMessage}}"
     }
   },

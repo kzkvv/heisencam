@@ -18,6 +18,7 @@ from typing import Literal
 
 from pydantic import ConfigDict, Field
 
+from frigate.const import DOCS_URL
 from frigate.detectors.detection_api import DetectionApi
 from frigate.detectors.detector_config import BaseDetectorConfig
 
@@ -231,10 +232,10 @@ class TensorRtDetector(DetectionApi):
     def __init__(self, detector_config: TensorRTDetectorConfig):
         if platform.machine() == "x86_64":
             logger.error(
-                "TensorRT detector is no longer supported on amd64 system. Please use ONNX detector instead, see https://docs.frigate.video/configuration/object_detectors#onnx for more information."
+                f"TensorRT detector is no longer supported on amd64 system. Please use ONNX detector instead, see {DOCS_URL}/configuration/object_detectors#onnx for more information."
             )
             raise ImportError(
-                "TensorRT detector is no longer supported on amd64 system. Please use ONNX detector instead, see https://docs.frigate.video/configuration/object_detectors#onnx for more information."
+                f"TensorRT detector is no longer supported on amd64 system. Please use ONNX detector instead, see {DOCS_URL}/configuration/object_detectors#onnx for more information."
             )
 
         assert TRT_SUPPORT, (

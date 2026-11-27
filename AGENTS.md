@@ -1,10 +1,10 @@
-# Agent Instructions for Frigate NVR
+# Agent Instructions for HeisenCam
 
-This document provides coding guidelines and best practices for contributing to Frigate NVR, a complete and local NVR designed for Home Assistant with AI object detection.
+This document provides coding guidelines and best practices for contributing to HeisenCam, a complete and local NVR designed for Home Assistant with AI object detection.
 
 ## Project Overview
 
-Frigate NVR is a realtime object detection system for IP cameras that uses:
+HeisenCam is a realtime object detection system for IP cameras that uses:
 
 - **Backend**: Python 3.13+ with FastAPI, OpenCV, TensorFlow/ONNX
 - **Frontend**: React with TypeScript, Vite, TailwindCSS
@@ -330,7 +330,7 @@ After adding, changing, or removing an endpoint (or its auth dependency), regene
 ### Configuration Access
 
 ```python
-# Access Frigate configuration
+# Access HeisenCam configuration
 config: FrigateConfig = request.app.frigate_config
 camera_config = config.cameras["front_door"]
 ```
@@ -445,6 +445,5 @@ Always conform new and refactored code to the existing coding style in the proje
 
 ## Additional Resources
 
-- Documentation: https://docs.frigate.video
-- Main Repository: https://github.com/blakeblackshear/frigate
-- Home Assistant Integration: https://github.com/blakeblackshear/frigate-hass-integration
+- Documentation: https://docs.heisen.cam
+- Main Repository: https://github.com/kzkvv/heisencam

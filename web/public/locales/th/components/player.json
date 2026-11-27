@@ -5,7 +5,7 @@
   },
   "noPreviewFound": "ไม่พบตัวอย่าง",
   "submitFrigatePlus": {
-    "title": "ส่งเฟรมนี้ให้ Frigate+ ไหม?",
+    "title": "ส่งเฟรมนี้ให้ Hosted Models ไหม?",
     "submit": "ส่ง"
   },
   "livePlayerRequiredIOSVersion": "ต้องใช้ iOS 17.1 ขึ้นไปสำหรับประเภทสตรีมสดนี้",
@@ -40,10 +40,10 @@
   },
   "toast": {
     "error": {
-      "submitFrigatePlusFailed": "ไม่สามารถส่งเฟรมไปยัง Frigate+ ได้"
+      "submitFrigatePlusFailed": "ไม่สามารถส่งเฟรมไปยัง Hosted Models ได้"
     },
     "success": {
-      "submittedFrigatePlus": "ส่งเฟรมให้ Frigate+ เรียบร้อยแล้ว"
+      "submittedFrigatePlus": "ส่งเฟรมให้ Hosted Models เรียบร้อยแล้ว"
     }
   },
   "noRecordingsFoundForThisTime": "ไม่เจอการบันทึกในช่วงเวลานี้",

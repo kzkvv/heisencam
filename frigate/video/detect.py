@@ -46,7 +46,7 @@ from frigate.util.object import (
     inside_any,
     intersects_any,
     is_object_filtered,
-    reduce_detections,
+    reduce_with_cached_detections,
 )
 from frigate.util.process import FrigateProcess
 from frigate.util.time import get_tomorrow_at_time
@@ -459,7 +459,9 @@ def process_frames(
                     )
                 )
 
-            consolidated_detections = reduce_detections(frame_shape, detections)
+            consolidated_detections = reduce_with_cached_detections(
+                frame_shape, detections, cached_detection_ids
+            )
 
             # if detection was run on this frame, consolidate
             if len(regions) > 0:

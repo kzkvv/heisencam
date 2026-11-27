@@ -1,7 +1,12 @@
+import { demoBuild } from "@/env";
+
 declare global {
   interface Window {
     baseUrl?: string;
   }
 }
 
-export const baseUrl = `${window.location.protocol}//${window.location.host}${window.baseUrl || "/"}`;
+export const basePath = demoBuild
+  ? import.meta.env.BASE_URL
+  : window.baseUrl || "/";
+export const baseUrl = new URL(basePath, window.location.origin).href;

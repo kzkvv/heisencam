@@ -8,7 +8,7 @@
     "general": "Paramètres de l'interface - HeisenCam",
     "masksAndZones": "Éditeur de masques et de zones - HeisenCam",
     "object": "Débogage - HeisenCam",
-    "frigatePlus": "Paramètres Frigate+ - HeisenCam",
+    "frigatePlus": "Paramètres Hosted Models - HeisenCam",
     "notifications": "Paramètres de notification - HeisenCam",
     "enrichments": "Paramètres d'enrichissements - HeisenCam",
     "cameraManagement": "Gestion des caméras - HeisenCam",
@@ -28,7 +28,7 @@
     "cameras": "Paramètres des caméras",
     "users": "Utilisateurs",
     "notifications": "Notifications",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "enrichments": "Enrichissements",
     "triggers": "Déclencheurs",
     "roles": "Rôles",
@@ -218,16 +218,16 @@
   },
   "frigatePlus": {
     "apiKey": {
-      "notValidated": "La clé API Frigate+ n'est pas détectée ou n'est pas validée.",
-      "title": "Clé API Frigate+",
-      "validated": "La clé API Frigate+ est détectée et validée",
-      "desc": "La clé API Frigate+ permet l'intégration avec le service Frigate+.",
-      "plusLink": "En savoir plus sur Frigate+"
+      "notValidated": "La clé API Hosted Models n'est pas détectée ou n'est pas validée.",
+      "title": "Clé API Hosted Models",
+      "validated": "La clé API Hosted Models est détectée et validée",
+      "desc": "La clé API Hosted Models permet l'intégration avec le service HeisenCam+.",
+      "plusLink": "En savoir plus sur Hosted Models"
     },
-    "title": "Paramètres Frigate+",
+    "title": "Paramètres Hosted Models",
     "snapshotConfig": {
       "documentation": "Lire la documentation",
-      "desc": "La soumission à Frigate+ nécessite que les instantanés soient activés dans votre configuration.",
+      "desc": "La soumission à Hosted Models nécessite que les instantanés soient activés dans votre configuration.",
       "title": "Configuration des instantanés",
       "table": {
         "snapshots": "Instantanés",
@@ -248,18 +248,18 @@
       "availableModels": "Modèles disponibles",
       "dimensions": "Dimensions",
       "loadingAvailableModels": "Chargement des modèles disponibles…",
-      "modelSelect": "Vous pouvez sélectionner ici vos modèles disponibles dans Frigate+. Notez que seuls les modèles compatibles avec votre configuration de détecteur actuelle peuvent être sélectionnés.",
+      "modelSelect": "Vous pouvez sélectionner ici vos modèles disponibles dans HeisenCam+. Notez que seuls les modèles compatibles avec votre configuration de détecteur actuelle peuvent être sélectionnés.",
       "plusModelType": {
         "baseModel": "Modèle de base",
         "userModel": "Optimisé"
       }
     },
     "toast": {
-      "success": "Les paramètres de Frigate+ ont été enregistrés. Redémarrez HeisenCam pour appliquer les modifications.",
+      "success": "Les paramètres de Hosted Models ont été enregistrés. Redémarrez HeisenCam pour appliquer les modifications.",
       "error": "Échec de l'enregistrement des modifications de configuration : {{errorMessage}}"
     },
-    "restart_required": "Redémarrage requis (modèle Frigate+ changé)",
-    "unsavedChanges": "Modifications de paramètres de Frigate+ non enregistrées"
+    "restart_required": "Redémarrage requis (modèle Hosted Models changé)",
+    "unsavedChanges": "Modifications de paramètres de Hosted Models non enregistrées"
   },
   "classification": {
     "title": "Paramètres de classification",

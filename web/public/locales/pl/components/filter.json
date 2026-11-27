@@ -27,8 +27,8 @@
     "hasSnapshot": "Posiada stop klatkę",
     "hasVideoClip": "Posiada klip wideo",
     "submittedToFrigatePlus": {
-      "label": "Przesłano do Frigate+",
-      "tips": "Musisz najpierw filtrować obiekty śledzone, które mają stop klatkę.<br /><br />Obiekty śledzone bez stop klatki nie mogą być przesłane do Frigate+."
+      "label": "Przesłano do Hosted Models",
+      "tips": "Musisz najpierw filtrować obiekty śledzone, które mają stop klatkę.<br /><br />Obiekty śledzone bez stop klatki nie mogą być przesłane do HeisenCam+."
     }
   },
   "sort": {

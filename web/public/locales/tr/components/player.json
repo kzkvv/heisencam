@@ -34,10 +34,10 @@
   "noPreviewFound": "Önizleme Bulunamadı",
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Kare başarıyla Frigate+'a gönderildi"
+      "submittedFrigatePlus": "Kare başarıyla Hosted Models'a gönderildi"
     },
     "error": {
-      "submitFrigatePlusFailed": "Kare Frigate+'a gönderilemedi"
+      "submitFrigatePlusFailed": "Kare Hosted Models'a gönderilemedi"
     }
   },
   "noRecordingsFoundForThisTime": "Bu zaman aralığı için kayıt bulunamadı",
@@ -45,7 +45,7 @@
   "noPreviewFoundFor": "{{cameraName}} için Önizleme Bulunamadı",
   "livePlayerRequiredIOSVersion": "Bu canlı yayın türü için iOS 17.1 veya daha yeni sürüm gereklidir.",
   "submitFrigatePlus": {
-    "title": "Bu kare Frigate+'ya gönderilsin mi?",
+    "title": "Bu kare Hosted Models'ya gönderilsin mi?",
     "submit": "Gönder",
     "previewError": "Önizleme şuan aktif edilemiyor. Kayıt şuan mevcut olmayabilir."
   },

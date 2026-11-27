@@ -3,7 +3,7 @@
   "noRecordingsFoundForThisTime": "Inga inspelningar hittades vid den här tidpunkten",
   "noPreviewFoundFor": "Ingen förhandsvisning hittad för {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Skicka denna bild till Frigate+?",
+    "title": "Skicka denna bild till Hosted Models?",
     "submit": "Skicka",
     "previewError": "Det gick inte att ladda förhandsgranskningen av ögonblicksbilden. Inspelningen är kanske inte tillgänglig just nu."
   },
@@ -43,10 +43,10 @@
   "cameraDisabled": "Kameran är inaktiverad",
   "toast": {
     "error": {
-      "submitFrigatePlusFailed": "Det gick inte att skicka bildrutan till Frigate+"
+      "submitFrigatePlusFailed": "Det gick inte att skicka bildrutan till Hosted Models"
     },
     "success": {
-      "submittedFrigatePlus": "Bildrutan har skickats till Frigate+"
+      "submittedFrigatePlus": "Bildrutan har skickats till Hosted Models"
     }
   },
   "cameraOff": "Kameran är avstängd"

@@ -36,14 +36,14 @@
           "ask_a": "Kas see objekt on <code>{{label}}</code>?",
           "ask_an": "Kas see objekt on <code>{{label}}</code>?",
           "ask_full": "Kas see objekt on <code>{{untranslatedLabel}}</code> ({{translatedLabel}})?",
-          "label": "Kinnita see silt Frigate+ teenuse jaoks"
+          "label": "Kinnita see silt Hosted Models teenuse jaoks"
         },
         "toast": {
-          "error": "Frigate+ teenusesse saatmine ebaõnnestus. Palun kontrolli oma võrguühendust ja proovi uuesti."
+          "error": "Hosted Models teenusesse saatmine ebaõnnestus. Palun kontrolli oma võrguühendust ja proovi uuesti."
         }
       },
       "submitToPlus": {
-        "label": "Saada teenusesse Frigate+",
+        "label": "Saada teenusesse Hosted Models",
         "desc": "Objektid asukohtades, mida sa tahad vältida, pole valepositiivsed. Kui sa neid sellistena saadad teenusele, siis see ainult ajab tehisaru mudeli sassi."
       }
     }

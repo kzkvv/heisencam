@@ -225,11 +225,11 @@ Repeat corruption usually points at the underlying storage: move the database of
 
 ## Startup and web access
 
-<FaqItem id="unable-to-start-frigate-in-safe-mode" question="Unable to start Frigate in safe mode / Starting Frigate in safe mode">
+<FaqItem id="unable-to-start-frigate-in-safe-mode" question="Unable to start HeisenCam in safe mode / Starting HeisenCam in safe mode">
 
 When your config fails validation at startup, HeisenCam prints the validation errors (with line numbers), then starts in **safe mode**: a minimal configuration with no cameras and MQTT disabled, so the UI stays reachable. In safe mode the only available page is the Config Editor, which shows the validation errors so you can fix them, then save and restart. Note that recording retention and storage cleanup do **not** run while in safe mode, so do not leave a low-disk system sitting in it.
 
-`Unable to start Frigate in safe mode` means even the minimal config failed, which points at an error in your `auth`, `proxy`, or `database` section, or a config file that is not valid YAML at all. Safe mode is not sticky; fix the config and restart and HeisenCam returns to normal.
+`Unable to start HeisenCam in safe mode` means even the minimal config failed, which points at an error in your `auth`, `proxy`, or `database` section, or a config file that is not valid YAML at all. Safe mode is not sticky; fix the config and restart and HeisenCam returns to normal.
 
 </FaqItem>
 

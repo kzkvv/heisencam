@@ -183,8 +183,8 @@
       "label": "Levenscyclus van object bekijken"
     },
     "submitToPlus": {
-      "label": "Verzenden naar Frigate+",
-      "aria": "Verzenden naar Frigate Plus"
+      "label": "Verzenden naar Hosted Models",
+      "aria": "Verzenden naar HeisenCam Plus"
     },
     "viewInHistory": {
       "aria": "Bekijk in Geschiedenis",

@@ -11,7 +11,7 @@
   "explore": {
     "plus": {
       "submitToPlus": {
-        "label": "Pošalji na Frigate+",
+        "label": "Pošalji na Hosted Models",
         "desc": "Objekti na lokacijama koje želite da izbegnete nisu lažno pozitivni. Slanje lažno pozitivnih rezultata će zbuniti model."
       },
       "review": {

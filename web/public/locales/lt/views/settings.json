@@ -5,7 +5,7 @@
     "camera": "Kameros Nustatymai - HeisenCam",
     "object": "Debug - HeisenCam",
     "general": "Išvaizdos Parametrai - HeisenCam",
-    "frigatePlus": "Frigate+ Nustatymai - HeisenCam",
+    "frigatePlus": "Hosted Models Nustatymai - HeisenCam",
     "notifications": "Pranešimų Nustatymai - HeisenCam",
     "motionTuner": "Judesio Derinimas - HeisenCam",
     "enrichments": "Patobulinimų Nustatymai - HeisenCam",
@@ -24,7 +24,7 @@
     "debug": "Debug",
     "users": "Vartotojai",
     "notifications": "Pranešimai",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "triggers": "Trigeriai",
     "roles": "Rolės",
     "cameraManagement": "Valdymas",
@@ -740,17 +740,17 @@
     }
   },
   "frigatePlus": {
-    "title": "Frigate+ Nustatymai",
+    "title": "Hosted Models Nustatymai",
     "apiKey": {
-      "title": "Frigate+ API raktas",
-      "validated": "Frigate+ API raktas aptiktas ir patvirtintas",
-      "notValidated": "Frigate+ API raktas neaptiktas ir nepatvirtintas",
-      "desc": "Frigate+ API raktas įgalina integraciją su Frigate+ paslauga.",
-      "plusLink": "Skaityti daugiau apie Frigate+"
+      "title": "Hosted Models API raktas",
+      "validated": "Hosted Models API raktas aptiktas ir patvirtintas",
+      "notValidated": "Hosted Models API raktas neaptiktas ir nepatvirtintas",
+      "desc": "Hosted Models API raktas įgalina integraciją su Hosted Models paslauga.",
+      "plusLink": "Skaityti daugiau apie Hosted Models"
     },
     "snapshotConfig": {
       "title": "Momentinių kadrų Konfiguravimas",
-      "desc": "Pateikti į Frigate+ reikalauja abiejų, momentinių kadrų ir <code>švarios_kopijos</code>momentinių kadrų įjungimo jūsų konfiguracijoje.",
+      "desc": "Pateikti į Hosted Models reikalauja abiejų, momentinių kadrų ir <code>švarios_kopijos</code>momentinių kadrų įjungimo jūsų konfiguracijoje.",
       "cleanCopyWarning": "Kai kurios kameros turi momentinius kadrus išjungtus",
       "table": {
         "camera": "Kamera",
@@ -773,12 +773,12 @@
       "error": "Nepavyko užkrauti modelio informacijos",
       "availableModels": "Pireinami Modeliai",
       "loadingAvailableModels": "Kraunami prieinami modeliai…",
-      "modelSelect": "Jūsų prieinami modeliai iš Frigate+ gali būti pasirinkti čia. Pastaba, pasirinkiti galite modelius tik tuos kurie suderinami su esamu detektoriumi."
+      "modelSelect": "Jūsų prieinami modeliai iš Hosted Models gali būti pasirinkti čia. Pastaba, pasirinkiti galite modelius tik tuos kurie suderinami su esamu detektoriumi."
     },
-    "unsavedChanges": "Neišsaugoti Frigate+ nustatymų pokyčiai",
-    "restart_required": "Perkrovimas privalomas (Frigate+ modeliai pakeisti)",
+    "unsavedChanges": "Neišsaugoti Hosted Models nustatymų pokyčiai",
+    "restart_required": "Perkrovimas privalomas (Hosted Models modeliai pakeisti)",
     "toast": {
-      "success": "Frigate+ nustatymai buvo išsaugoti. Perkraukite HeisenCam kad pritaikytumėte pokyčius.",
+      "success": "Hosted Models nustatymai buvo išsaugoti. Perkraukite HeisenCam kad pritaikytumėte pokyčius.",
       "error": "Nepavyko išsaugoti konfiguraijos pokyčių: {{errorMessage}}"
     }
   },

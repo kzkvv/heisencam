@@ -87,7 +87,7 @@ Along with picking a detector for your hardware, you will choose a model's **inp
 
 :::tip
 
-The best detection accuracy comes from a model trained on images that look like what HeisenCam actually sees: security camera footage cropped to regions of interest. You can train or fine-tune your own model on images like this and run it as a custom model (see the per-detector sections below), but [Frigate+](/plus) makes this much easier by handling the training for you on images submitted from your own cameras. For YOLOv9, the `s` (small) variant at `320x320` resolution is a good place to start, and the larger `c` variant is available for more powerful hardware.
+The best detection accuracy comes from a model trained on images that look like what HeisenCam actually sees: security camera footage cropped to regions of interest. You can train or fine-tune your own model on images like this and run it as a custom model (see the per-detector sections below), but [Hosted Models](/plus) makes this much easier by handling the training for you on images submitted from your own cameras. For YOLOv9, the `s` (small) variant at `320x320` resolution is a good place to start, and the larger `c` variant is available for more powerful hardware.
 
 :::
 
@@ -152,7 +152,7 @@ detectors:
 
 ### Native Coral (Dev Board)
 
-_warning: may have [compatibility issues](https://github.com/blakeblackshear/frigate/issues/1706) after `v0.9.x`_
+_Check your host's compatibility before installing this detector._
 
 <ConfigTabs>
 <TabItem value="ui">
@@ -314,7 +314,7 @@ Intel NPUs cannot be used under Home Assistant OS, which does not include the NP
 
 ## Apple Silicon detector
 
-The NPU in Apple Silicon can't be accessed from within a container, so the [Apple Silicon detector client](https://github.com/frigate-nvr/apple-silicon-detector) must first be setup. It is recommended to use the HeisenCam docker image with `-standard-arm64` suffix, for example `ghcr.io/blakeblackshear/frigate:stable-standard-arm64`.
+The NPU in Apple Silicon can't be accessed from within a container, so the [Apple Silicon detector client](https://github.com/frigate-nvr/apple-silicon-detector) must first be setup. Use the ARM64 HeisenCam image from the [installation guide](../frigate/installation.md) with the detector client running on the host.
 
 ### Setup {#setup-apple-silicon}
 
@@ -333,7 +333,7 @@ Note that the labelmap uses a subset of the complete COCO label set that has onl
 
 ### Setup {#setup-rocm}
 
-Support for AMD GPUs is provided using the [ONNX detector](#onnx). In order to utilize the AMD GPU for object detection use a frigate docker image with `-rocm` suffix, for example `ghcr.io/blakeblackshear/frigate:stable-rocm`.
+Support for AMD GPUs is provided using the [ONNX detector](#onnx). Build HeisenCam with a pinned 0.18.3 ROCm-compatible base using the [hardware build instructions](../frigate/installation.md#docker).
 
 ### Docker settings for GPU access
 
@@ -597,7 +597,7 @@ For detailed instructions on compiling models, refer to the [MemryX Compiler](ht
 
 ## NVidia TensorRT Detector
 
-Nvidia Jetson devices may be used for object detection using the TensorRT libraries. Due to the size of the additional libraries, this detector is only provided in images with the `-tensorrt-jp6` tag suffix, e.g. `ghcr.io/blakeblackshear/frigate:stable-tensorrt-jp6`. This detector is designed to work with Yolo models for object detection.
+Nvidia Jetson devices may be used for object detection using the TensorRT libraries. Build HeisenCam with a pinned 0.18.3 JetPack 6 base using the [hardware build instructions](../frigate/installation.md#docker). This detector is designed to work with Yolo models for object detection.
 
 ### Generate Models
 

@@ -1251,7 +1251,7 @@
             "description": "감지기별 모델 설정 옵션(경로, 입력 크기 등)입니다.",
             "path": {
                 "label": "커스텀 감지 모델 경로",
-                "description": "사용자 지정 감지 모델 파일의 경로(또는 Frigate+ 모델용 plus://<model_id>)입니다."
+                "description": "사용자 지정 감지 모델 파일의 경로(또는 Hosted Models 모델용 plus://<model_id>)입니다."
             },
             "labelmap_path": {
                 "label": "커스텀 감지기 레이블 맵",
@@ -1408,7 +1408,7 @@
         "description": "커스텀 객체 감지 모델 및 입력 형태를 구성하기 위한 설정입니다.",
         "path": {
             "label": "커스텀 감지 모델 경로",
-            "description": "사용자 지정 감지 모델 파일의 경로(또는 Frigate+ 모델용 plus://<model_id>)입니다."
+            "description": "사용자 지정 감지 모델 파일의 경로(또는 Hosted Models 모델용 plus://<model_id>)입니다."
         },
         "labelmap_path": {
             "label": "커스텀 감지기 레이블 맵",

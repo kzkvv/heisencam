@@ -222,7 +222,7 @@
             "description": "Opzioni di configurazione del modello specifiche del rilevatore (percorso, dimensioni di ingresso, ecc.).",
             "path": {
                 "label": "Percorso del modello di rilevamento oggetti personalizzato",
-                "description": "Percorso di un file del modello di rilevamento personalizzato (o plus://<model_id> per i modelli Frigate+)."
+                "description": "Percorso di un file del modello di rilevamento personalizzato (o plus://<model_id> per i modelli Hosted Models)."
             },
             "labelmap_path": {
                 "label": "Mappa delle etichette (label map) per il rilevatore di oggetti personalizzato",
@@ -1338,7 +1338,7 @@
         "description": "Impostazioni per configurare un modello di rilevamento oggetti personalizzato e la forma del suo tensore di ingresso.",
         "path": {
             "label": "Percorso del modello di rilevamento oggetti personalizzato",
-            "description": "Percorso al file del modello di rilevamento personalizzato (o plus://<model_id> per i modelli Frigate+)."
+            "description": "Percorso al file del modello di rilevamento personalizzato (o plus://<model_id> per i modelli Hosted Models)."
         },
         "labelmap_path": {
             "label": "Mappa delle etichette (label map) per il rilevatore di oggetti personalizzato",

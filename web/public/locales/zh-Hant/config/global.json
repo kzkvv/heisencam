@@ -330,7 +330,7 @@
             "description": "偵測器特定的模型配置選項（路徑、輸入尺寸等）。",
             "path": {
                 "label": "自訂目標偵測模型路徑",
-                "description": "自訂偵測模型檔案的路徑（或使用 plus://<model_id> 指定 Frigate+ 模型）。"
+                "description": "自訂偵測模型檔案的路徑（或使用 plus://<model_id> 指定 Hosted Models 模型）。"
             },
             "labelmap_path": {
                 "label": "自訂目標偵測器的標籤對映（labelmap）",
@@ -503,7 +503,7 @@
         "description": "用於配置自訂目標偵測模型及其輸入形狀的設定。",
         "path": {
             "label": "自訂目標偵測模型路徑",
-            "description": "自訂偵測模型檔案的路徑（或 Frigate+ 模型的 plus://<model_id>）。"
+            "description": "自訂偵測模型檔案的路徑（或 Hosted Models 模型的 plus://<model_id>）。"
         },
         "labelmap_path": {
             "label": "自訂目標偵測器的標籤對映",

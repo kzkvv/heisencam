@@ -136,7 +136,9 @@ def check_api(base, samples):
         assert headers.get("Content-Type") == "image/webp", cam
         assert "no-store" in headers.get("Cache-Control", ""), cam
         assert body[:4] == b"RIFF" and body[8:12] == b"WEBP", cam
-        return started, finished
+        stamp = float(headers.get("X-HeisenCam-Frame-Time", "0"))
+        assert stamp > 0, f"{cam} returned a fallback preview"
+        return started, finished, stamp
 
     schema_times = [
         fetch(base, "/api/config/schema.json", {"X-Cache-Bypass": "1"})[2]
@@ -144,6 +146,17 @@ def check_api(base, samples):
     ]
     profiles, batches, in_flight = [], [], []
     with concurrent.futures.ThreadPoolExecutor(max_workers=len(cameras)) as pool:
+
+        def wait_for_fresh_frame(cam):
+            first = snapshot(cam)[2]
+            deadline = time.monotonic() + 12
+            while time.monotonic() < deadline:
+                time.sleep(0.25)
+                if snapshot(cam)[2] > first:
+                    return
+            raise AssertionError(f"{cam} did not produce a newer frame")
+
+        list(pool.map(wait_for_fresh_frame, cameras))
         for _ in range(samples):
             start = time.perf_counter()
             frames = [pool.submit(snapshot, cam) for cam in cameras]
@@ -153,7 +166,7 @@ def check_api(base, samples):
             profiles.append(fetch(base, "/api/profile")[2])
             spans = [frame.result() for frame in frames]
             in_flight.append(
-                sum(begin <= profile_started < end for begin, end in spans)
+                sum(begin <= profile_started < end for begin, end, _ in spans)
             )
             batches.append(round((time.perf_counter() - start) * 1000, 2))
 

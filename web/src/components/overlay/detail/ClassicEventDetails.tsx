@@ -5,6 +5,7 @@ import ActivityIndicator from "@/components/indicators/activity-indicator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Event } from "@/types/event";
 import type { SearchResult } from "@/types/search";
+import { demoBuild } from "@/env";
 
 const EventClip = lazy(() => import("./EventClip"));
 const InlineTrackingDetails = lazy(() =>
@@ -30,7 +31,18 @@ export default function ClassicEventDetails({
 }: ClassicEventDetailsProps) {
   const { t } = useTranslation("views/explore");
   const apiHost = useApiHost();
-  const tab = event.has_clip ? preferredTab : "snapshot";
+  const tab = !event.has_clip
+    ? "snapshot"
+    : demoBuild && preferredTab === "tracking_details"
+      ? "clip"
+      : preferredTab;
+  const tabs = demoBuild
+    ? EVENT_TABS.filter((name) => name !== "tracking_details")
+    : EVENT_TABS;
+  const snapshot =
+    event.has_snapshot && !demoBuild
+      ? "snapshot.jpg?crop=0&bbox=1"
+      : "thumbnail.webp";
 
   return (
     <Tabs
@@ -43,7 +55,7 @@ export default function ClassicEventDetails({
         aria-label={t("classic.eventTabs")}
         className="mx-auto flex h-auto w-fit flex-wrap gap-1 bg-transparent p-0"
       >
-        {EVENT_TABS.map((name) => (
+        {tabs.map((name) => (
           <TabsTrigger
             key={name}
             value={name}
@@ -64,16 +76,18 @@ export default function ClassicEventDetails({
       <TabsContent value="snapshot">
         <img
           className="mx-auto max-h-[75dvh] max-w-full rounded object-contain"
-          src={`${apiHost}api/events/${event.id}/${event.has_snapshot ? "snapshot.jpg?crop=0&bbox=1" : "thumbnail.webp"}`}
+          src={`${apiHost}api/events/${event.id}/${snapshot}`}
           alt={t("classic.tabs.snapshot")}
         />
       </TabsContent>
 
-      <TabsContent value="tracking_details">
-        <Suspense fallback={<ActivityIndicator />}>
-          <InlineTrackingDetails event={event as unknown as Event} />
-        </Suspense>
-      </TabsContent>
+      {!demoBuild && (
+        <TabsContent value="tracking_details">
+          <Suspense fallback={<ActivityIndicator />}>
+            <InlineTrackingDetails event={event as unknown as Event} />
+          </Suspense>
+        </TabsContent>
+      )}
     </Tabs>
   );
 }

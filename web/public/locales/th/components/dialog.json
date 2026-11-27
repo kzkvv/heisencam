@@ -61,7 +61,7 @@
       "review": {
         "question": {
           "ask_full": "วัตถุนี้คือ <code>{{untranslatedLabel}}</code> ({{translatedLabel}})?",
-          "label": "ยืนยันหมวดหมู่นี้สําหรับ Frigate+",
+          "label": "ยืนยันหมวดหมู่นี้สําหรับ Hosted Models",
           "ask_a": "วัตถุนี้คือ <code>{{label}}</code>?",
           "ask_an": "วัตถุนี้คือ <code>{{label}}</code>?"
         },
@@ -70,7 +70,7 @@
         }
       },
       "submitToPlus": {
-        "label": "ส่งไปยัง Frigate+"
+        "label": "ส่งไปยัง Hosted Models"
       }
     },
     "video": {

@@ -28,6 +28,8 @@ import { useCameraFriendlyName } from "@/hooks/use-camera-friendly-name";
 import { ImageShadowOverlay } from "../overlay/ImageShadowOverlay";
 import { getTranslatedLabel } from "@/utils/i18n";
 import { formatList } from "@/utils/stringUtil";
+import { demoBuild } from "@/env";
+import DemoVideo from "@/demo/DemoVideo";
 
 type LivePlayerProps = {
   cameraRef?: (ref: HTMLDivElement | null) => void;
@@ -254,7 +256,16 @@ export default function LivePlayer({
   }
 
   let player;
-  if (!autoLive || !streamName || !cameraEnabled) {
+  if (demoBuild) {
+    player = showStillWithoutActivity ? null : (
+      <DemoVideo
+        camera={cameraConfig.name}
+        loop
+        onPlaying={playerIsPlaying}
+        onResolution={setFullResolution}
+      />
+    );
+  } else if (!autoLive || !streamName || !cameraEnabled) {
     player = null;
   } else if (preferredLiveMode == "webrtc") {
     player = (

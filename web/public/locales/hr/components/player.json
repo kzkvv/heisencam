@@ -1,7 +1,7 @@
 {
   "noRecordingsFoundForThisTime": "Nisu pronađene snimke za ovo vrijeme",
   "submitFrigatePlus": {
-    "title": "Pošalji ovaj kadar u Frigate+?",
+    "title": "Pošalji ovaj kadar u Hosted Models?",
     "submit": "Pošalji"
   },
   "cameraDisabled": "Kamera je onemogućena",
@@ -42,10 +42,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Kadar je uspješno poslan u Frigate+"
+      "submittedFrigatePlus": "Kadar je uspješno poslan u Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Neuspješno slanje kadra u Frigate+"
+      "submitFrigatePlusFailed": "Neuspješno slanje kadra u Hosted Models"
     }
   }
 }

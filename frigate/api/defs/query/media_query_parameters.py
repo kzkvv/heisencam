@@ -1,6 +1,6 @@
 from enum import Enum
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Extension(str, Enum):
@@ -24,7 +24,7 @@ class MediaLatestFrameQueryParams(BaseModel):
     paths: int | None = None
     regions: int | None = None
     quality: int | None = 70
-    height: int | None = None
+    height: int | None = Field(default=None, ge=1, le=4096)
     store: int | None = None
 
 

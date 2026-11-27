@@ -20,11 +20,13 @@ from unittest.mock import patch
 import cv2
 import numpy as np
 import onnxruntime as ort
+from frigate.version import VERSION
 from ruamel.yaml import YAML
 
 from frigate.camera import PTZMetrics
 from frigate.camera.state import CameraState
 from frigate.config import FrigateConfig
+from frigate.const import BUILD_REVISION
 from frigate.detectors import detection_runners
 from frigate.motion.improved_motion import ImprovedMotionDetector
 from frigate.object_detection.base import LocalObjectDetector
@@ -44,6 +46,21 @@ PROFILE_FIELDS = (
     "onnx_threads",
 )
 INPUT_FIELDS = ("camera", "label", "expected", "frames", "input")
+
+
+def execution_provider(detector: LocalObjectDetector) -> list[str] | None:
+    """Report provider order or device assignment from the running model."""
+    api = detector.detect_api
+    runner = getattr(api, "runner", None)
+    if isinstance(runner, detection_runners.ONNXModelRunner):
+        return runner.ort.get_providers()
+    if isinstance(runner, detection_runners.OpenVINOModelRunner):
+        return list(runner.compiled_model.get_property("EXECUTION_DEVICES"))
+    if api.type_key == "cpu":
+        return ["TensorFlow Lite CPU"]
+    if api.type_key == "edgetpu":
+        return ["Coral Edge TPU"]
+    return None
 
 
 def file_sha256(path):
@@ -458,6 +475,9 @@ def main():
     profile = {
         "config_sha256": file_sha256(args.config),
         "detector": detector_config.type,
+        "execution_provider": execution_provider(detector),
+        "backend_version": VERSION,
+        "build_revision": BUILD_REVISION,
         "model_hash": detector_config.model.model_hash,
         "grid_sha256": file_sha256(args.grid),
         "idle_scan": args.idle_scan,

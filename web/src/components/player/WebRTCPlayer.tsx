@@ -1,3 +1,4 @@
+import { documentationUrl } from "@/hooks/use-doc-domain";
 import { baseUrl } from "@/api/baseUrl";
 import { LivePlayerError, PlayerStatsType } from "@/types/live";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -42,7 +43,7 @@ export default function WebRtcPlayer({
     (error: LivePlayerError, description: string = "Unknown error") => {
       // eslint-disable-next-line no-console
       console.error(
-        `${camera} - WebRTC error '${error}': ${description} See the documentation: https://docs.frigate.video/configuration/live/#live-player-error-messages`,
+        `${camera} - WebRTC error '${error}': ${description} See the documentation: ${documentationUrl("configuration/live/#live-player-error-messages")}`,
       );
       onError?.(error);
     },

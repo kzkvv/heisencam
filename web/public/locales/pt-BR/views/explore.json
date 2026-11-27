@@ -170,8 +170,8 @@
       "label": "Encontrar similar"
     },
     "submitToPlus": {
-      "label": "Enviar ao Frigate+",
-      "aria": "Enviar ao Frigate Plus"
+      "label": "Enviar ao Hosted Models",
+      "aria": "Enviar ao HeisenCam Plus"
     },
     "downloadVideo": {
       "label": "Baixar vídeo",

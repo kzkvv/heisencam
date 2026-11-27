@@ -12,12 +12,12 @@
   "explore": {
     "plus": {
       "submitToPlus": {
-        "label": "Kirim ke Frigate+",
+        "label": "Kirim ke Hosted Models",
         "desc": "Objek di lokasi yang ingin Anda hindari bukanlah deteksi palsu. Mengirimnya sebagai deteksi palsu akan membingungkan model."
       },
       "review": {
         "question": {
-          "label": "Konfirmasi label ini untuk Frigate Plus",
+          "label": "Konfirmasi label ini untuk HeisenCam Plus",
           "ask_a": "Apakah objek ini adalah sebuah <code>{{label}}</code>?",
           "ask_an": "Apakah objek ini <code>{{label}}</code>?",
           "ask_full": "Apakah ini object <code>{{untranslatedLabel}}</code> ({{translatedLabel}})?"
@@ -26,7 +26,7 @@
           "submitted": "Terkirim"
         },
         "toast": {
-          "error": "Gagal submit ke Frigate+. Harap periksa koneksi jaringan Anda dan coba lagi."
+          "error": "Gagal submit ke HeisenCam+. Harap periksa koneksi jaringan Anda dan coba lagi."
         }
       }
     },

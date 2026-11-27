@@ -4,6 +4,8 @@ import { WsProvider } from "./WsProvider";
 import axios from "axios";
 import { ReactNode } from "react";
 import { isRedirectingToLogin, setRedirectingToLogin } from "./auth-redirect";
+import { demoBuild } from "@/env";
+import { WsSendContext } from "./wsContext";
 
 axios.defaults.baseURL = `${baseUrl}api/`;
 
@@ -51,7 +53,18 @@ type WsWithConfigType = {
 };
 
 function WsWithConfig({ children }: WsWithConfigType) {
+  if (demoBuild) {
+    return (
+      <WsSendContext.Provider value={ignoreDemoCommand}>
+        {children}
+      </WsSendContext.Provider>
+    );
+  }
   return <WsProvider>{children}</WsProvider>;
+}
+
+function ignoreDemoCommand() {
+  // Demo activity is a recorded snapshot. Commands have no device to update.
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

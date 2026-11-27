@@ -89,6 +89,8 @@ export type ServiceStats = {
   storage: { [path: string]: StorageStats };
   uptime: number;
   latest_version: string;
+  build_revision?: string;
+  build_channel?: string;
   version: string;
 };
 

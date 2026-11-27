@@ -12,7 +12,7 @@
   "explore": {
     "plus": {
       "submitToPlus": {
-        "label": "Lähetä Frigate+:lle",
+        "label": "Lähetä Hosted Models:lle",
         "desc": "Välttämissäsi paikoissa olevat kohteet eivät ole vääriä positiivisia. Niiden lähettäminen väärinä positiivisina sekoittaa mallia."
       },
       "review": {

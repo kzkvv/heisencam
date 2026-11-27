@@ -1,3 +1,4 @@
+import { demoBuild } from "@/env";
 import {
   useAudioLiveTranscription,
   useAudioState,
@@ -554,30 +555,32 @@ export default function LiveCameraView({
                   </div>
                 )}
               </Button>
-              <Button
-                className="flex items-center gap-2.5 rounded-lg"
-                aria-label={t("history.label")}
-                size="sm"
-                onClick={() => {
-                  navigate("review", {
-                    state: {
-                      severity: "alert",
-                      recording: {
-                        camera: camera.name,
-                        startTime: Date.now() / 1000 - 30,
+              {!demoBuild && (
+                <Button
+                  className="flex items-center gap-2.5 rounded-lg"
+                  aria-label={t("history.label")}
+                  size="sm"
+                  onClick={() => {
+                    navigate("review", {
+                      state: {
                         severity: "alert",
-                      } as RecordingStartingPoint,
-                    },
-                  });
-                }}
-              >
-                <LuHistory className="size-5 text-secondary-foreground" />
-                {isDesktop && (
-                  <div className="text-primary">
-                    {t("button.history", { ns: "common" })}
-                  </div>
-                )}
-              </Button>
+                        recording: {
+                          camera: camera.name,
+                          startTime: Date.now() / 1000 - 30,
+                          severity: "alert",
+                        } as RecordingStartingPoint,
+                      },
+                    });
+                  }}
+                >
+                  <LuHistory className="size-5 text-secondary-foreground" />
+                  {isDesktop && (
+                    <div className="text-primary">
+                      {t("button.history", { ns: "common" })}
+                    </div>
+                  )}
+                </Button>
+              )}
             </div>
           ) : (
             <div />

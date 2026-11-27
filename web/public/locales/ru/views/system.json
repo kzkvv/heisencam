@@ -270,5 +270,6 @@
       "classification_events_per_second": "{{name}} событий классификации в секунду"
     },
     "averageInf": "Среднее время обработки"
-  }
+  },
+  "buildInfo": "Сборка {{channel}} {{revision}} · Среда выполнения {{base}}"
 }

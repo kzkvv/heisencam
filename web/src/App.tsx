@@ -19,6 +19,7 @@ import useSWR from "swr";
 import { FrigateConfig } from "./types/frigateConfig";
 import ActivityIndicator from "@/components/indicators/activity-indicator";
 import { isRedirectingToLogin } from "@/api/auth-redirect";
+import { basePath } from "@/api/baseUrl";
 
 const Live = lazy(() => import("@/pages/Live"));
 const Events = lazy(() => import("@/pages/Events"));
@@ -42,7 +43,7 @@ function App() {
 
   return (
     <Providers>
-      <BrowserRouter basename={window.baseUrl}>
+      <BrowserRouter basename={basePath}>
         <Wrapper>
           {config?.safe_mode ? <SafeAppView /> : <DefaultAppView />}
         </Wrapper>
@@ -80,7 +81,7 @@ function DefaultAppView() {
       </div>
       <div
         id="pageRoot"
-        className="absolute inset-x-0 bottom-0 top-14 overflow-hidden lg:bottom-8 lg:left-64 lg:top-0"
+        className="absolute inset-x-0 bottom-[env(safe-area-inset-bottom)] top-[calc(3.5rem+env(safe-area-inset-top))] overflow-hidden lg:bottom-8 lg:left-64 lg:top-0"
       >
         <Suspense
           fallback={

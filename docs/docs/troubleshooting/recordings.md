@@ -55,7 +55,7 @@ If you expected continuous footage but only configured motion/event retention, a
 `alerts` and `detections` retention only keep footage that overlaps a tracked object, so they depend on object detection running:
 
 - **Detection must be enabled.** If `detect: enabled: False`, no alerts or detections are ever created, so alert/detection retention keeps nothing. (Continuous and motion retention still work with detection disabled.)
-- **The object must be supported by your model.** If you track an object your model doesn't support (for example `deer` or `license_plate` on the default model), HeisenCam never detects it and never records for it. Check your logs for warnings such as `... is configured to track ['deer'] objects, which are not supported by the current model` and remove unsupported objects or switch to a model (e.g. [Frigate+](/plus/)) that includes them.
+- **The object must be supported by your model.** If you track an object your model doesn't support (for example `deer` or `license_plate` on the default model), HeisenCam never detects it and never records for it. Check your logs for warnings such as `... is configured to track ['deer'] objects, which are not supported by the current model` and remove unsupported objects or switch to a model (e.g. [Hosted Models](/plus/)) that includes them.
 
 </FaqItem>
 
@@ -455,7 +455,7 @@ If the next-line error references a camera name that no longer exists in your co
 
 ## Other recording questions
 
-<FaqItem id="i-have-frigate-configured-for-motion-recording-only-but-it-still-seems-to-be-recording-even-with-no-motion-why" question="I have Frigate configured for motion recording only, but it still seems to be recording even with no motion. Why?">
+<FaqItem id="i-have-frigate-configured-for-motion-recording-only-but-it-still-seems-to-be-recording-even-with-no-motion-why" question="I have HeisenCam configured for motion recording only, but it still seems to be recording even with no motion. Why?">
 
 You'll want to:
 
@@ -465,7 +465,7 @@ You'll want to:
 
 </FaqItem>
 
-<FaqItem id="my-timeline-previews-are-black-after-restarting-frigate-or-recreating-the-container" question="My timeline previews are black after restarting Frigate or recreating the container. Why?">
+<FaqItem id="my-timeline-previews-are-black-after-restarting-frigate-or-recreating-the-container" question="My timeline previews are black after restarting HeisenCam or recreating the container. Why?">
 
 The scrubbing previews (the timelapse clips shown when dragging the History timeline, the secondary-camera previews, and the preview that plays when hovering a review card) are not recorded continuously. HeisenCam caches low-resolution preview frames in `/tmp/cache` throughout each hour and only assembles them into a finished preview clip **at the top of the hour**.
 

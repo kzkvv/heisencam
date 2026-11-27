@@ -375,7 +375,7 @@ def clear_and_unlink(file: Path, missing_ok: bool = True) -> None:
     if not missing_ok and not file.exists():
         raise FileNotFoundError()
 
-    # empty contents of file before unlinking https://github.com/blakeblackshear/frigate/issues/4769
+    # Truncate before unlinking to release disk space held by readers.
     with open(file, "w"):
         pass
 

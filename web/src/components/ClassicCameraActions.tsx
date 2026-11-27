@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { LuCamera, LuClapperboard, LuScanLine } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { demoBuild } from "@/env";
 
 function CameraToggles({ camera }: { camera: CameraConfig }) {
   const { t } = useTranslation("common");
@@ -86,11 +87,13 @@ export default function ClassicCameraActions({
             {t("menu.classic.events")}
           </Link>
         </Button>
-        <Button variant="ghost" size="sm" asChild>
-          <Link to={`/recording/${cameraPath}`}>
-            {t("menu.classic.recordings")}
-          </Link>
-        </Button>
+        {!demoBuild && (
+          <Button variant="ghost" size="sm" asChild>
+            <Link to={`/recording/${cameraPath}`}>
+              {t("menu.classic.recordings")}
+            </Link>
+          </Button>
+        )}
         {isAdmin && <CameraToggles camera={camera} />}
       </div>
     </div>

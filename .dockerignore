@@ -12,5 +12,6 @@ core
 *.ts
 
 web/dist/
+web/dist-demo/
 web/node_modules/
 web/.npm

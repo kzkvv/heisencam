@@ -96,7 +96,13 @@ If for example you are running the standard App variant and use the [VS Code App
 
 ## VS Code Configuration Schema
 
-VS Code supports JSON schemas for automatically validating configuration files. You can enable this feature by adding `# yaml-language-server: $schema=http://frigate_host:5000/api/config/schema.json` to the beginning of the configuration file. Replace `frigate_host` with the IP address or hostname of your HeisenCam server. If you're using both VS Code and HeisenCam as an App, you should use `ccab4aaf-frigate` instead. Make sure to expose the internal unauthenticated port `5000` when accessing the config from VS Code on another machine.
+VS Code supports validating YAML with a JSON Schema. Download `/api/config/schema.json` through your authenticated recorder URL and save it beside your configuration. Add this first line to your YAML file.
+
+```yaml
+# yaml-language-server: $schema=./config-schema.json
+```
+
+Use the schema from the same build as the recorder. Keep the internal unauthenticated API port on the container network.
 
 ## Environment Variable Substitution
 

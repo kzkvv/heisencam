@@ -32,7 +32,7 @@
   },
   "noPreviewFound": "Попередній перегляд не знайдені",
   "submitFrigatePlus": {
-    "title": "Відправити це зображення Frigate+?",
+    "title": "Відправити це зображення Hosted Models?",
     "submit": "Посилати",
     "previewError": "Не вдалося завантажити прев'ю. Запис може бути наразі недоступним."
   },
@@ -43,10 +43,10 @@
   "cameraDisabled": "Камера вимкнена",
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Зображення успішно завантажено до Frigate+"
+      "submittedFrigatePlus": "Зображення успішно завантажено до Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Не вдалося надіслати фрейм Frigate+"
+      "submitFrigatePlusFailed": "Не вдалося надіслати фрейм Hosted Models"
     }
   },
   "cameraOff": "Камера вимкнена"

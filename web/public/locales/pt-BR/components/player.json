@@ -3,7 +3,7 @@
   "noPreviewFound": "Nenhuma pré-visualização encontrada",
   "noPreviewFoundFor": "Nenhuma Pré-Visualização Encontrada em {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Enviar esse frame para Frigate+?",
+    "title": "Enviar esse frame para Hosted Models?",
     "submit": "Enviar",
     "previewError": "Não foi possível carregar a prévia do instantâneo. A gravação pode não estar disponível no momento."
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Quadro enviado ao Frigate+ com sucesso"
+      "submittedFrigatePlus": "Quadro enviado ao Hosted Models com sucesso"
     },
     "error": {
-      "submitFrigatePlusFailed": "Falha em submeter quadro ao Frigate+"
+      "submitFrigatePlusFailed": "Falha em submeter quadro ao Hosted Models"
     }
   },
   "cameraOff": "A câmera está desligada"

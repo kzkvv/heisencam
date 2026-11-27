@@ -722,7 +722,7 @@
                 "description": "Detektorspezifische Modellkonfigurationsoptionen (Pfad, Eingabegröße usw.).",
                 "path": {
                     "label": "Pfad zum benutzerdefinierten Objekterkennungsmodell",
-                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für Frigate+-Modelle)."
+                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für HeisenCam+-Modelle)."
                 },
                 "labelmap_path": {
                     "label": "Label-Karte für benutzerdefinierten Objektdetektor",
@@ -781,7 +781,7 @@
                 "description": "Detektorspezifische Modellkonfigurationsoptionen (Pfad, Eingabegröße usw.).",
                 "path": {
                     "label": "Pfad zum benutzerdefinierten Objekterkennungsmodell",
-                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für Frigate+-Modelle)."
+                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für HeisenCam+-Modelle)."
                 },
                 "labelmap_path": {
                     "label": "Label-Karte für benutzerdefinierten Objektdetektor",
@@ -848,7 +848,7 @@
                 "description": "Detektorspezifische Optionen zur Modellkonfiguration (Pfad, Eingabegröße usw.).",
                 "path": {
                     "label": "Pfad zum benutzerdefinierten Objekt-Erkennungsmodell",
-                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für Frigate+-Modelle)."
+                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für HeisenCam+-Modelle)."
                 },
                 "labelmap_path": {
                     "label": "Label-Karte für benutzerdefinierten Objektdetektor",
@@ -915,7 +915,7 @@
                 "description": "Detektorspezifische Optionen zur Modellkonfiguration (Pfad, Eingabegröße usw.).",
                 "path": {
                     "label": "Pfad zum benutzerdefinierten Objekt-Erkennungsmodell",
-                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für Frigate+-Modelle)."
+                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für HeisenCam+-Modelle)."
                 },
                 "labelmap_path": {
                     "label": "Label-Karte für benutzerdefinierten Objektdetektor",
@@ -974,7 +974,7 @@
                 "description": "Detektorspezifische Optionen zur Modellkonfiguration (Pfad, Eingabegröße usw.).",
                 "path": {
                     "label": "Pfad zum benutzerdefinierten Objekterkennungsmodell",
-                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für Frigate+-Modelle)."
+                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für HeisenCam+-Modelle)."
                 },
                 "labelmap_path": {
                     "label": "Label-Karte für benutzerdefinierten Objektdetektor",
@@ -1046,7 +1046,7 @@
                 "description": "Detektorspezifische Optionen zur Modellkonfiguration (Pfad, Eingabegröße usw.).",
                 "path": {
                     "label": "Pfad zum benutzerdefinierten Objekterkennungsmodell",
-                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für Frigate+-Modelle)."
+                    "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für HeisenCam+-Modelle)."
                 },
                 "labelmap_path": {
                     "label": "Label-Karte für benutzerdefinierten Objektdetektor",
@@ -1087,7 +1087,7 @@
             "description": "Detektorspezifische Optionen zur Modellkonfiguration (Pfad, Eingabegröße usw.). Detektorspezifische Modellkonfiguration.",
             "path": {
                 "label": "Pfad zum benutzerdefinierten Objekterkennungsmodell",
-                "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für Frigate+-Modelle)."
+                "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für HeisenCam+-Modelle)."
             },
             "labelmap_path": {
                 "label": "Label-Karte für benutzerdefinierten Objektdetektor",
@@ -1696,7 +1696,7 @@
         "description": "Einstellungen zur Konfiguration eines benutzerdefinierten Objekterkennungsmodells und seiner Eingabeform.",
         "path": {
             "label": "Pfad zum benutzerdefinierten Objekterkennungsmodell",
-            "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für Frigate+-Modelle)."
+            "description": "Pfad zu einer benutzerdefinierten Erkennungsmodelldatei (oder plus://<model_id> für HeisenCam+-Modelle)."
         },
         "labelmap_path": {
             "label": "Label-Karte für benutzerdefinierten Objektdetektor",

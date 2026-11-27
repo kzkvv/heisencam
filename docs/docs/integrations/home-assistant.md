@@ -3,22 +3,22 @@ id: home-assistant
 title: Home Assistant Integration
 ---
 
-The best way to integrate with Home Assistant is to use the [official integration](https://github.com/blakeblackshear/frigate-hass-integration).
+The best way to integrate with Home Assistant is to use the existing HACS integration as described below.
 
 ## Installation
 
 ### Preparation
 
-Frigate itself must be installed and running before setting up the integration. See the [installation documentation](../frigate/installation.md) for details.
+HeisenCam must be installed and running before setting up the integration. See the [installation documentation](../frigate/installation.md) for details.
 
-The Frigate integration requires the `mqtt` integration to be installed and
+The HeisenCam integration requires the `mqtt` integration to be installed and
 manually configured first.
 
 See the [MQTT integration
 documentation](https://www.home-assistant.io/integrations/mqtt/) for more
 details.
 
-In addition, MQTT must be enabled in your Frigate configuration file and Frigate must be connected to the same MQTT server as Home Assistant for many of the entities created by the integration to function, e.g.:
+In addition, MQTT must be enabled in your HeisenCam configuration file and HeisenCam must be connected to the same MQTT server as Home Assistant for many of the entities created by the integration to function, e.g.:
 
 ```yaml
 mqtt:
@@ -57,15 +57,15 @@ that card.
 
 ## Configuration
 
-When configuring the integration, you will be asked for the `URL` of your Frigate instance which can be pointed at the internal unauthenticated port (`5000`) or the authenticated port (`8971`) for your instance. This may look like `http://<host>:5000/`.
+When configuring the integration, you will be asked for the `URL` of your HeisenCam instance which can be pointed at the internal unauthenticated port (`5000`) or the authenticated port (`8971`) for your instance. This may look like `http://<host>:5000/`.
 
 ### Docker Compose Examples
 
-If you are running Home Assistant and Frigate with Docker Compose on the same device, here are some examples.
+If you are running Home Assistant and HeisenCam with Docker Compose on the same device, here are some examples.
 
 #### Home Assistant running with host networking
 
-It is not recommended to run Frigate in host networking mode. In this example, you would use `http://172.17.0.1:5000` or `http://172.17.0.1:8971` when configuring the integration.
+It is not recommended to run HeisenCam in host networking mode. In this example, you would use `http://172.17.0.1:5000` or `http://172.17.0.1:8971` when configuring the integration.
 
 ```yaml
 services:
@@ -84,7 +84,7 @@ services:
 
 #### Home Assistant _not_ running with host networking or in a separate compose file
 
-In this example, it is recommended to connect to the authenticated port, for example, `http://frigate:8971` when configuring the integration. There is no need to map the port for the Frigate container.
+In this example, it is recommended to connect to the authenticated port, for example, `http://frigate:8971` when configuring the integration. There is no need to map the port for the HeisenCam container.
 
 ```yaml
 services:
@@ -103,18 +103,11 @@ services:
 
 ### Home Assistant App
 
-If you are using Home Assistant App, the URL should be one of the following depending on which App variant you are using. Note that if you are using the Proxy App, you should NOT point the integration at the proxy URL. Just enter the same URL used to access Frigate directly from your network.
+For an upstream Home Assistant app that you still run, refer to that app's internal hostname. Use your HeisenCam host and authenticated port for a separate installation.
 
-| App Variant                | URL                                    |
-| -------------------------- | -------------------------------------- |
-| Frigate                    | `http://ccab4aaf-frigate:5000`         |
-| Frigate (Full Access)      | `http://ccab4aaf-frigate-fa:5000`      |
-| Frigate Beta               | `http://ccab4aaf-frigate-beta:5000`    |
-| Frigate Beta (Full Access) | `http://ccab4aaf-frigate-fa-beta:5000` |
+### HeisenCam running on a separate machine
 
-### Frigate running on a separate machine
-
-If you run Frigate on a separate device within your local network, Home Assistant will need access to port 8971.
+If you run HeisenCam on a separate device within your local network, Home Assistant will need access to port 8971.
 
 #### Local network
 
@@ -123,8 +116,8 @@ Use `http://<frigate_device_ip>:8971` as the URL for the integration so that aut
 :::tip
 
 The above URL assumes you have [disabled TLS](../configuration/tls).
-By default, TLS is enabled and Frigate will be using a self-signed certificate. HomeAssistant will fail to connect HTTPS to port 8971 since it fails to verify the self-signed certificate.
-Either disable TLS and use HTTP from HomeAssistant, or configure Frigate to be accessible with a valid certificate.
+By default, TLS is enabled and HeisenCam will be using a self-signed certificate. HomeAssistant will fail to connect HTTPS to port 8971 since it fails to verify the self-signed certificate.
+Either disable TLS and use HTTP from HomeAssistant, or configure HeisenCam to be accessible with a valid certificate.
 
 :::
 
@@ -168,7 +161,7 @@ Home Assistant > Configuration > Integrations > Frigate > Options
 | --------------- | ------------------------------------------------------------------------------- |
 | `camera`        | Live camera stream (requires RTSP).                                             |
 | `image`         | Image of the latest detected object for each camera.                            |
-| `sensor`        | States to monitor Frigate performance, object counts for all zones and cameras. |
+| `sensor`        | States to monitor HeisenCam performance, object counts for all zones and cameras. |
 | `switch`        | Switch entities to toggle detection, recordings and snapshots.                  |
 | `binary_sensor` | A "motion" binary sensor entity per camera/zone/object.                         |
 
@@ -197,13 +190,13 @@ For clips to be castable to media devices, audio is required and may need to be 
 
 ## Camera API
 
-To turn a camera off (pauses Frigate's processing of the stream; does not persist across Frigate restarts; see [Camera state](/configuration/live#camera-state)):
+To turn a camera off (pauses HeisenCam's processing of the stream; does not persist across HeisenCam restarts; see [Camera state](/configuration/live#camera-state)):
 
 ```
 action: camera.turn_off
 data: {}
 target:
-  entity_id: camera.back_deck_cam  # your Frigate camera entity ID
+  entity_id: camera.back_deck_cam  # your HeisenCam camera entity ID
 ```
 
 To turn a camera back on:
@@ -212,18 +205,18 @@ To turn a camera back on:
 action: camera.turn_on
 data: {}
 target:
-  entity_id: camera.back_deck_cam  # your Frigate camera entity ID
+  entity_id: camera.back_deck_cam  # your HeisenCam camera entity ID
 ```
 
 :::note
 
-These actions toggle Frigate's runtime On/Off state. To permanently disable a camera, set its status to **Disabled** in **Settings → Camera Management** in the Frigate UI.
+These actions toggle HeisenCam's runtime On/Off state. To permanently disable a camera, set its status to **Disabled** in **Settings → Camera Management** in the HeisenCam UI.
 
 :::
 
 ## Notification API
 
-Many people do not want to expose Frigate to the web, so the integration creates some public API endpoints that can be used for notifications.
+Many people do not want to expose HeisenCam to the web, so the integration creates some public API endpoints that can be used for notifications.
 
 To load a thumbnail for a tracked object:
 
@@ -281,11 +274,11 @@ For advanced usecases, this behavior can be changed with the [RTSP URL
 template](#options) option. When set, this string will override the default stream
 address that is derived from the default behavior described above. This option supports
 [jinja2 templates](https://jinja.palletsprojects.com/) and has the `camera` dict
-variables from [Frigate API](/integrations/api/frigate-http-api)
+variables from [HeisenCam API](/integrations/api/http-api)
 available for the template. Note that no Home Assistant state is available to the
-template, only the camera dict from Frigate.
+template, only the camera dict from HeisenCam.
 
-This is potentially useful when Frigate is behind a reverse proxy, and/or when
+This is potentially useful when HeisenCam is behind a reverse proxy, and/or when
 the default stream port is otherwise not accessible to Home Assistant (e.g.
 firewall rules).
 
@@ -311,11 +304,11 @@ rtsp://<frigate_host>:2000/{{ name|lower }}
 
 ## Multiple Instance Support
 
-The Frigate integration seamlessly supports the use of multiple Frigate servers.
+The HeisenCam integration seamlessly supports the use of multiple HeisenCam servers.
 
 ### Requirements for Multiple Instances
 
-In order for multiple Frigate instances to function correctly, the
+In order for multiple HeisenCam instances to function correctly, the
 `topic_prefix` and `client_id` parameters must be set differently per server.
 See [MQTT
 configuration](mqtt)
@@ -323,8 +316,8 @@ for how to set these.
 
 #### API URLs
 
-When multiple Frigate instances are configured, [API](#notification-api) URLs should include an
-identifier to tell Home Assistant which Frigate instance to refer to. The
+When multiple HeisenCam instances are configured, [API](#notification-api) URLs should include an
+identifier to tell Home Assistant which HeisenCam instance to refer to. The
 identifier used is the MQTT `client_id` parameter included in the configuration,
 and is used like so:
 
@@ -338,9 +331,9 @@ https://HA_URL/api/frigate/<client-id>/clips/front_door-1624599978.427826-976jaa
 
 #### Default Treatment
 
-When a single Frigate instance is configured, the `client-id` parameter need not
+When a single HeisenCam instance is configured, the `client-id` parameter need not
 be specified in URLs/identifiers -- that single instance is assumed. When
-multiple Frigate instances are configured, the user **must** explicitly specify
+multiple HeisenCam instances are configured, the user **must** explicitly specify
 which server they are referring to.
 
 ## FAQ
@@ -349,6 +342,6 @@ which server they are referring to.
 
 The [HomeKit integration](https://www.home-assistant.io/integrations/homekit/) randomly links one of the binary sensors (motion sensor entities) grouped with the camera device in Home Assistant. You can specify a `linked_motion_sensor` in the Home Assistant [HomeKit configuration](https://www.home-assistant.io/integrations/homekit/#linked_motion_sensor) for each camera.
 
-#### I have set up automations based on the occupancy sensors. Sometimes the automation runs because the sensors are turned on, but then I look at Frigate I can't find the object that triggered the sensor. Is this a bug?
+#### I have set up automations based on the occupancy sensors. Sometimes the automation runs because the sensors are turned on, but then I look at HeisenCam I can't find the object that triggered the sensor. Is this a bug?
 
 No. The occupancy sensors have fewer checks in place because they are often used for things like turning the lights on where latency needs to be as low as possible. So false positives can sometimes trigger these sensors. If you want false positive filtering, you should use an mqtt sensor on the `frigate/events` or `frigate/reviews` topic.

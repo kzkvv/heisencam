@@ -197,8 +197,8 @@
       "aria": "音声文字起こしをリクエスト"
     },
     "submitToPlus": {
-      "label": "Frigate+ に送信",
-      "aria": "Frigate Plus に送信"
+      "label": "Hosted Models に送信",
+      "aria": "HeisenCam Plus に送信"
     },
     "viewInHistory": {
       "label": "履歴で表示",

@@ -51,7 +51,14 @@ function buildImage(device: DeviceConfig): string[] {
   if (tag === "stable") {
     return ["    image: ghcr.io/kzkvv/heisencam:candidate-0.18.3"];
   }
-  return [`    image: ghcr.io/blakeblackshear/frigate:${tag} # Upstream hardware-specific image`];
+  return [
+    `    image: heisencam:${tag}`,
+    "    build:",
+    "      context: https://github.com/kzkvv/heisencam.git#dev",
+    "      dockerfile: docker/classic/Dockerfile",
+    "      args:",
+    '        FRIGATE_BASE: "${HEISENCAM_HARDWARE_BASE:?Set the matching 0.18.3 hardware base image}"',
+  ];
 }
 
 function buildDevices(

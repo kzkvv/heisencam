@@ -3,7 +3,7 @@
   "noPreviewFound": "没有找到预览",
   "noPreviewFoundFor": "没有在 {{cameraName}} 下找到预览",
   "submitFrigatePlus": {
-    "title": "提交此帧到 Frigate+？",
+    "title": "提交此帧到 Hosted Models？",
     "submit": "提交",
     "previewError": "无法加载快照预览。该录制当前可能不可用。"
   },
@@ -43,10 +43,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "已成功提交帧到 Frigate+"
+      "submittedFrigatePlus": "已成功提交帧到 Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "提交帧到 Frigate+ 失败"
+      "submitFrigatePlusFailed": "提交帧到 Hosted Models 失败"
     }
   },
   "cameraOff": "摄像头已关闭"

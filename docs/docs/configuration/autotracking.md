@@ -101,7 +101,7 @@ cameras:
         # Optional: calibrate the camera on startup (default: shown below)
         # A calibration will move the PTZ in increments and measure the time it takes to move.
         # The results are used to help estimate the position of tracked objects after a camera move.
-        # Frigate will update your config file automatically after a calibration with
+        # HeisenCam will update your config file automatically after a calibration with
         # a "movement_weights" entry for the camera. You should then set calibrate_on_startup to False.
         calibrate_on_startup: False
         # Optional: the mode to use for zooming in/out on objects during autotracking. (default: shown below)
@@ -112,7 +112,7 @@ cameras:
         zooming: disabled
         # Optional: A value to change the behavior of zooming on autotracked objects. (default: shown below)
         # A lower value will keep more of the scene in view around a tracked object.
-        # A higher value will zoom in more on a tracked object, but Frigate may lose tracking more quickly.
+        # A higher value will zoom in more on a tracked object, but HeisenCam may lose tracking more quickly.
         # The value should be between 0.1 and 0.75
         zoom_factor: 0.3
         # Optional: list of objects to track from labelmap.txt (default: shown below)
@@ -221,13 +221,13 @@ Some cameras have firmware that reports that FOV RelativeMove, the ONVIF command
 
 ### Calibration Issues
 
-<FaqItem id="i-tried-calibrating-my-camera-but-the-logs-show-that-it-is-stuck-at-0-and-frigate-is-not-starting-up" question="I tried calibrating my camera, but the logs show that it is stuck at 0% and Frigate is not starting up.">
+<FaqItem id="i-tried-calibrating-my-camera-but-the-logs-show-that-it-is-stuck-at-0-and-frigate-is-not-starting-up" question="I tried calibrating my camera, but the logs show that it is stuck at 0% and HeisenCam is not starting up.">
 
 This is often caused by the same reason as the "MOVING" status error above - the `MoveStatus` ONVIF parameter is not changing due to a bug in your camera's firmware. Also, see the note above: HeisenCam's web UI and all other cameras will be unresponsive while calibration is in progress. This is expected and normal. But if you don't see log entries every few seconds for calibration progress, your camera is not compatible with autotracking.
 
 </FaqItem>
 
-<FaqItem id="frigate-reports-an-error-saying-that-calibration-has-failed-why" question="Frigate reports an error saying that calibration has failed. Why?">
+<FaqItem id="frigate-reports-an-error-saying-that-calibration-has-failed-why" question="HeisenCam reports an error saying that calibration has failed. Why?">
 
 Calibration measures the amount of time it takes for HeisenCam to make a series of movements with your PTZ. This error message is recorded in the log if these values are too high for HeisenCam to support calibrated autotracking. This is often the case when your camera's motor or network connection is too slow or your camera's firmware doesn't report the motor status in a timely manner.
 

@@ -1,15 +1,15 @@
 ---
 id: plus
-title: Frigate+
+title: Hosted Models
 ---
 
 import NavPath from "@site/src/components/NavPath";
 
-For more information about how to use Frigate+ to improve your model, see the [Frigate+ docs](/plus/).
+For more information about how to use Hosted Models to improve your model, see the [Hosted Models docs](/plus/).
 
 :::info
 
-Frigate+ requires an active internet connection to communicate with `https://api.frigate.video` for model downloads, image uploads, and annotations. See [Network Requirements](/frigate/network_requirements#frigate) for details.
+Hosted Models requires an active internet connection to communicate with `https://api.frigate.video` for model downloads, image uploads, and annotations. See [Network Requirements](/frigate/network_requirements#frigate) for details.
 
 :::
 
@@ -21,29 +21,27 @@ Free accounts can be created at [https://plus.frigate.video](https://plus.frigat
 
 ### Generate an API key
 
-Once logged in, you can generate an API key for Frigate in Settings.
-
-![API key](/img/plus-api-key-min.png)
+Once logged in, you can generate an API key in Settings.
 
 ### Set your API key
 
-In Frigate, you can use an environment variable or a docker secret named `PLUS_API_KEY` to enable the `Frigate+` buttons on the Explore page. Home Assistant App users can set it under Settings > Apps > Frigate > Configuration > Options (be sure to toggle the "Show unused optional configuration options" switch).
+In HeisenCam, you can use an environment variable or a docker secret named `PLUS_API_KEY` to enable the `Hosted Models` buttons on the Explore page. Home Assistant App users can set it under Settings > Apps > HeisenCam > Configuration > Options (be sure to toggle the "Show unused optional configuration options" switch).
 
 :::warning
 
-You cannot use the `environment_vars` section of your Frigate configuration file to set this environment variable. It must be defined as an environment variable in the docker config or Home Assistant App config.
+You cannot use the `environment_vars` section of your HeisenCam configuration file to set this environment variable. It must be defined as an environment variable in the docker config or Home Assistant App config.
 
 :::
 
 ## Submit examples
 
-Once your API key is configured, you can submit examples directly from the Explore page in Frigate. From the More Filters menu, select "Has a Snapshot - Yes" and "Submitted to Frigate+ - No", and press Apply at the bottom of the pane. Then, click on a thumbnail and select the Snapshot tab.
+Once your API key is configured, you can submit examples directly from the Explore page in HeisenCam. From the More Filters menu, select "Has a Snapshot - Yes" and "Submitted to Hosted Models - No", and press Apply at the bottom of the pane. Then, click on a thumbnail and select the Snapshot tab.
 
 You can use your keyboard's left and right arrow keys to quickly navigate between the tracked object snapshots.
 
 :::note
 
-Snapshots must be enabled to be able to submit examples to Frigate+
+Snapshots must be enabled to be able to submit examples to Hosted Models
 
 :::
 
@@ -57,9 +55,9 @@ You can view all of your submitted images at [https://plus.frigate.video](https:
 
 ## Use Models
 
-Once you have [requested your first model](../plus/first_model.md) and gotten your own model ID, it can be used with a special model path. No other information needs to be configured for Frigate+ models because it fetches the remaining config from Frigate+ automatically.
+Once you have [requested your first model](../plus/first_model.md) and gotten your own model ID, it can be used with a special model path. No other information needs to be configured for Hosted Models models because it fetches the remaining config from Hosted Models automatically.
 
-You can either choose the new model from the <NavPath path="Settings > System > Detectors and model" /> pane in the Frigate UI (the **Frigate+** tab), or manually set the model at the root level in your config:
+You can either choose the new model from the <NavPath path="Settings > System > Detectors and model" /> pane in HeisenCam (the **Hosted Models** tab), or manually set the model at the root level in your config:
 
 ```yaml
 detectors: ...
@@ -76,7 +74,7 @@ Model IDs are not secret values and can be shared freely. Access to your model i
 
 Models are downloaded into the `/config/model_cache` folder and only downloaded if needed.
 
-If needed, you can override the labelmap for Frigate+ models. This is not recommended as renaming labels will break the Submit to Frigate+ feature if the labels are not available in Frigate+.
+If needed, you can override the labelmap for Hosted Models models. This is not recommended as renaming labels will break the Submit to Hosted Models feature if the labels are not available in HeisenCam+.
 
 ```yaml
 model:

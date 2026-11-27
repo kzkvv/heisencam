@@ -1,0 +1,50 @@
+[
+  {
+    "id": "twelfth_avenue-person",
+    "camera": "twelfth_avenue",
+    "label": "person",
+    "expected": "tp",
+    "file": "media/twelfth_avenue.mp4",
+    "start": 1.0
+  },
+  {
+    "id": "ninth_avenue-person",
+    "camera": "ninth_avenue",
+    "label": "person",
+    "expected": "tp",
+    "file": "media/ninth_avenue.mp4",
+    "start": 1.0
+  },
+  {
+    "id": "fortieth_street-car",
+    "camera": "fortieth_street",
+    "label": "car",
+    "expected": "tp",
+    "file": "media/fortieth_street.mp4",
+    "start": 1.0
+  },
+  {
+    "id": "pacific_coast-car",
+    "camera": "pacific_coast",
+    "label": "car",
+    "expected": "tp",
+    "file": "media/pacific_coast.mp4",
+    "start": 1.0
+  },
+  {
+    "id": "empty-person",
+    "camera": "fortieth_street",
+    "label": "person",
+    "expected": "fp",
+    "file": "replay/no_objects.mp4",
+    "start": 1.0
+  },
+  {
+    "id": "empty-car",
+    "camera": "fortieth_street",
+    "label": "car",
+    "expected": "fp",
+    "file": "replay/no_objects.mp4",
+    "start": 1.0
+  }
+]

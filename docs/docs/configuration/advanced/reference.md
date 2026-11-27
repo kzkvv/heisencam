@@ -61,7 +61,7 @@ detectors:
   # Required: name of the detector
   detector_name:
     # Required: type of the detector
-    # Frigate provides many types, see https://docs.frigate.video/configuration/object_detectors for more details (default: shown below)
+    # HeisenCam provides many types, see https://docs.frigate.video/configuration/object_detectors for more details (default: shown below)
     # Additional detector types can also be plugged in.
     # Detectors may require additional configuration.
     # Refer to the Detectors configuration page for more information.
@@ -82,7 +82,7 @@ networking:
   # Optional: Enable IPv6 on 5000, and 8971 if tls is configured (default: shown below)
   ipv6:
     enabled: False
-  # Optional: Override ports Frigate uses for listening (defaults: shown below)
+  # Optional: Override ports HeisenCam uses for listening (defaults: shown below)
   # An IP address may also be provided to bind to a specific interface, e.g. ip:port
   # NOTE: This setting is for advanced users and may break some integrations. The majority
   #       of users should change ports in the docker compose file
@@ -93,7 +93,7 @@ networking:
 
 # Optional: Proxy configuration
 proxy:
-  # Optional: Mapping for headers from upstream proxies. Only used if Frigate's auth
+  # Optional: Mapping for headers from upstream proxies. Only used if HeisenCam's auth
   # is disabled.
   # NOTE: Many authentication proxies pass a header downstream with the authenticated
   #       user name and role. Not all values are supported. It must be a whitelisted header.
@@ -161,7 +161,7 @@ auth:
 # NOTE: The default values are for the EdgeTPU detector.
 # Other detectors will require the model config to be set.
 model:
-  # Required: path to the model. Frigate+ models use plus://<model_id> (default: automatic based on detector)
+  # Required: path to the model. Hosted Models models use plus://<model_id> (default: automatic based on detector)
   path: /edgetpu_model.tflite
   # Required: path to the labelmap (default: shown below)
   labelmap_path: /labelmap.txt
@@ -311,7 +311,7 @@ detect:
   fps: 5
   # Optional: Number of consecutive detection hits required for an object to be initialized in the tracker. (default: 1/2 the frame rate)
   min_initialized: 2
-  # Optional: Number of frames without a detection before Frigate considers an object to be gone. (default: 5x the frame rate)
+  # Optional: Number of frames without a detection before HeisenCam considers an object to be gone. (default: 5x the frame rate)
   max_disappeared: 25
   # Optional: Configuration for stationary object tracking
   stationary:
@@ -687,7 +687,7 @@ face_recognition:
   # Optional: Minimum face distance score required to mark as a potential match (default: shown below)
   unknown_score: 0.8
   # Optional: Minimum face detection score required to detect a face (default: shown below)
-  # NOTE: This only applies when not running a Frigate+ model
+  # NOTE: This only applies when not running a Hosted Models model
   detection_threshold: 0.7
   # Optional: Minimum face distance score required to be considered a match (default: shown below)
   recognition_threshold: 0.9
@@ -876,9 +876,9 @@ cameras:
   back:
     # Optional: Enable/Disable the camera (default: shown below).
     # When False, ffmpeg is not started and the camera is hidden from the UI
-    # (except Camera Management). Re-enabling requires a Frigate restart.
+    # (except Camera Management). Re-enabling requires a HeisenCam restart.
     enabled: True
-    # Optional: camera type used for some Frigate features (default: shown below)
+    # Optional: camera type used for some HeisenCam features (default: shown below)
     # Options are "generic" and "lpr"
     type: "generic"
     # Required: ffmpeg settings for the camera
@@ -1021,7 +1021,7 @@ cameras:
         # Optional: calibrate the camera on startup (default: shown below)
         # A calibration will move the PTZ in increments and measure the time it takes to move.
         # The results are used to help estimate the position of tracked objects after a camera move.
-        # Frigate will update your config file automatically after a calibration with
+        # HeisenCam will update your config file automatically after a calibration with
         # a "movement_weights" entry for the camera. You should then set calibrate_on_startup to False.
         calibrate_on_startup: False
         # Optional: the mode to use for zooming in/out on objects during autotracking. (default: shown below)
@@ -1032,7 +1032,7 @@ cameras:
         zooming: disabled
         # Optional: A value to change the behavior of zooming on autotracked objects. (default: shown below)
         # A lower value will keep more of the scene in view around a tracked object.
-        # A higher value will zoom in more on a tracked object, but Frigate may lose tracking more quickly.
+        # A higher value will zoom in more on a tracked object, but HeisenCam may lose tracking more quickly.
         # The value should be between 0.1 and 0.75
         zoom_factor: 0.3
         # Optional: list of objects to track from labelmap.txt (default: shown below)

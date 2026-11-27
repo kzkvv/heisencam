@@ -3,7 +3,7 @@
   "noPreviewFound": "Náhled nenalezen",
   "noPreviewFoundFor": "Náhled nenalezen pro {{cameraName}}",
   "submitFrigatePlus": {
-    "title": "Odeslat tento snímek do služby Frigate+?",
+    "title": "Odeslat tento snímek do služby Hosted Models?",
     "submit": "Odeslat"
   },
   "livePlayerRequiredIOSVersion": "Pro tento typ živého přenosu je vyžadován systém iOS 17.1 nebo novější.",
@@ -42,10 +42,10 @@
   },
   "toast": {
     "success": {
-      "submittedFrigatePlus": "Snimek byl úspěšně odeslán službě Frigate+"
+      "submittedFrigatePlus": "Snimek byl úspěšně odeslán službě Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "Nepodařilo se odeslat snímek službě Frigate+"
+      "submitFrigatePlusFailed": "Nepodařilo se odeslat snímek službě Hosted Models"
     }
   }
 }

@@ -5,7 +5,7 @@
     "ui": "Interfejs Użytkownika",
     "classification": "Klasyfikacja",
     "cameras": "Ustawienia Kamery",
-    "frigateplus": "Frigate+",
+    "frigateplus": "Hosted Models",
     "masksAndZones": "Maski / Strefy",
     "motionTuner": "Konfigurator ruchu",
     "debug": "Debugowanie",
@@ -145,7 +145,7 @@
     "default": "Ustawienia - HeisenCam",
     "camera": "Ustawienia Kamery - HeisenCam",
     "masksAndZones": "Edytor Masek i Stref - HeisenCam",
-    "frigatePlus": "Ustawienia Frigate+ - HeisenCam",
+    "frigatePlus": "Ustawienia Hosted Models - HeisenCam",
     "classification": "Ustawienia Klasyfikacji - HeisenCam",
     "general": "Ustawienia Interfejsu - HeisenCam",
     "authentication": "Ustawienia Uwierzytelniania - HeisenCam",
@@ -771,18 +771,18 @@
     "unsavedChanges": "Niezapisane zmiany ustawień powiadomień"
   },
   "frigatePlus": {
-    "title": "Ustawienia Frigate+",
+    "title": "Ustawienia Hosted Models",
     "apiKey": {
-      "title": "Klucz API Frigate+",
-      "validated": "Klucz API Frigate+ został wykryty i zweryfikowany",
-      "plusLink": "Dowiedz się więcej o Frigate+",
-      "notValidated": "Klucz API Frigate+ nie został wykryty lub nie został zweryfikowany",
-      "desc": "Klucz API Frigate+ umożliwia integrację z usługą Frigate+."
+      "title": "Klucz API Hosted Models",
+      "validated": "Klucz API Hosted Models został wykryty i zweryfikowany",
+      "plusLink": "Dowiedz się więcej o Hosted Models",
+      "notValidated": "Klucz API Hosted Models nie został wykryty lub nie został zweryfikowany",
+      "desc": "Klucz API Hosted Models umożliwia integrację z usługą HeisenCam+."
     },
     "snapshotConfig": {
       "title": "Konfiguracja zrzutów ekranu",
       "documentation": "Przeczytaj dokumentację",
-      "desc": "Aby wysyłać dane do Frigate+, w konfiguracji muszą być włączone zarówno zwykłe zrzuty ekranu, jak i zrzuty typu <code>clean_copy</code>.",
+      "desc": "Aby wysyłać dane do Hosted Models, w konfiguracji muszą być włączone zarówno zwykłe zrzuty ekranu, jak i zrzuty typu <code>clean_copy</code>.",
       "table": {
         "snapshots": "Zrzuty ekranu",
         "cleanCopySnapshots": "Zrzuty ekranu <code>clean_copy</code>",
@@ -802,12 +802,12 @@
       "availableModels": "Dostępne modele",
       "loadingAvailableModels": "Ładowanie dostępnych modeli…",
       "baseModel": "Model bazowy",
-      "modelSelect": "Tutaj możesz wybrać swoje dostępne modele w Frigate+. Pamiętaj, że można wybrać tylko modele kompatybilne z Twoją aktualną konfiguracją detektora.",
+      "modelSelect": "Tutaj możesz wybrać swoje dostępne modele w HeisenCam+. Pamiętaj, że można wybrać tylko modele kompatybilne z Twoją aktualną konfiguracją detektora.",
       "plusModelType": {
         "baseModel": "Model bazowy",
         "userModel": "Dostrojony"
       },
-      "noModelLoaded": "Żaden model Frigate+ nie jest obecnie załadowany.",
+      "noModelLoaded": "Żaden model Hosted Models nie jest obecnie załadowany.",
       "selectModel": "Wybierz model",
       "noModelsAvailable": "Brak dostępnych modeli",
       "filter": {
@@ -817,12 +817,12 @@
       }
     },
     "toast": {
-      "success": "Ustawienia Frigate+ zostały zapisane. Uruchom ponownie HeisenCam, aby zastosować zmiany.",
+      "success": "Ustawienia Hosted Models zostały zapisane. Uruchom ponownie HeisenCam, aby zastosować zmiany.",
       "error": "Nie udało się zapisać zmian konfiguracji: {{errorMessage}}"
     },
-    "restart_required": "Wymagane ponowne uruchomienie (Zmieniony model Frigate+)",
-    "unsavedChanges": "Niezapisane zmiany ustawień Frigate+",
-    "description": "Frigate+ to usługa subskrypcyjna dająca dostęp do dodatkowych funkcji HeisenCam, w tym możliwość używania niestandardowych modeli detekcji obiektów wytrenowanych na Twoich danych. Tutaj możesz zarządzać ustawieniami modelu Frigate+.",
+    "restart_required": "Wymagane ponowne uruchomienie (Zmieniony model Hosted Models)",
+    "unsavedChanges": "Niezapisane zmiany ustawień Hosted Models",
+    "description": "Hosted Models to usługa subskrypcyjna dająca dostęp do dodatkowych funkcji HeisenCam, w tym możliwość używania niestandardowych modeli detekcji obiektów wytrenowanych na Twoich danych. Tutaj możesz zarządzać ustawieniami modelu HeisenCam+.",
     "cardTitles": {
       "api": "API",
       "currentModel": "Bieżący model",
@@ -1561,15 +1561,15 @@
       "model": "Model detekcji"
     },
     "tabs": {
-      "plus": "Frigate+",
+      "plus": "Hosted Models",
       "custom": "Model niestandardowy"
     },
     "mismatch": {
-      "warning": "Bieżący model Frigate+ \"{{model}}\" wymaga detektora {{required}}. Wybierz kompatybilny model poniżej lub przełącz na Model niestandardowy przed zapisaniem."
+      "warning": "Bieżący model Hosted Models \"{{model}}\" wymaga detektora {{required}}. Wybierz kompatybilny model poniżej lub przełącz na Model niestandardowy przed zapisaniem."
     },
     "plusModel": {
       "requiresDetector": "Wymaga: {{detector}}",
-      "noModelSelected": "Wybierz model Frigate+"
+      "noModelSelected": "Wybierz model Hosted Models"
     },
     "toast": {
       "saveSuccess": "Zapisano ustawienia detektorów i modelu. Zrestartuj HeisenCam, aby zastosować zmiany.",

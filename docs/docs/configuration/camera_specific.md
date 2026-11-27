@@ -110,8 +110,8 @@ cameras:
             - detect
             - record
     detect:
-      width: # <- optional, by default Frigate tries to automatically detect resolution
-      height: # <- optional, by default Frigate tries to automatically detect resolution
+      width: # <- optional, by default HeisenCam tries to automatically detect resolution
+      height: # <- optional, by default HeisenCam tries to automatically detect resolution
 ```
 
 ### Blue Iris RTSP Cameras
@@ -178,7 +178,7 @@ The wizard covers standard single-camera setups. For two way talk, cameras conne
 
 #### Manual configuration
 
-According to [this discussion](https://github.com/blakeblackshear/frigate/issues/3235#issuecomment-1135876973), the http video streams seem to be the most reliable for Reolink.
+If RTSP is unreliable on a supported Reolink camera, test its HTTP-FLV stream.
 
 Cameras connected via a Reolink NVR can be connected with the http stream, use `channel[0..15]` in the stream url for the additional channels.
 The setup of main stream can be also done via RTSP, but isn't always reliable on all hardware versions. The example configuration is working with the oldest HW version RLN16-410 device with multiple types of cameras.

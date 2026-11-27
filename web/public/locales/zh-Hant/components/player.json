@@ -3,7 +3,7 @@
   "noPreviewFound": "找不到預覽",
   "noPreviewFoundFor": "找不到 {{cameraName}} 的預覽",
   "submitFrigatePlus": {
-    "title": "提交此畫面至 Frigate+？",
+    "title": "提交此畫面至 Hosted Models？",
     "submit": "提交",
     "previewError": "無法載入快照預覽。這個錄製目前可能無法使用。"
   },
@@ -43,10 +43,10 @@
   "livePlayerRequiredIOSVersion": "此串流類型需要 IOS 17.1 或以上版本。",
   "toast": {
     "success": {
-      "submittedFrigatePlus": "成功提交畫面至 Frigate+"
+      "submittedFrigatePlus": "成功提交畫面至 Hosted Models"
     },
     "error": {
-      "submitFrigatePlusFailed": "提交畫面至 Frigate+ 失敗"
+      "submitFrigatePlusFailed": "提交畫面至 Hosted Models 失敗"
     }
   },
   "cameraOff": "攝影機關機"

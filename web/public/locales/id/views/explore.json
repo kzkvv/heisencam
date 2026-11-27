@@ -204,8 +204,8 @@
       "aria": "Minta transkripsi audio"
     },
     "submitToPlus": {
-      "label": "Kirim ke Frigate+",
-      "aria": "Kirim ke Frigate Plus"
+      "label": "Kirim ke Hosted Models",
+      "aria": "Kirim ke HeisenCam Plus"
     },
     "viewInHistory": {
       "label": "Lihat di Riwayat",

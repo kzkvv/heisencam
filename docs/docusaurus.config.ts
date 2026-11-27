@@ -21,6 +21,10 @@ const config: Config = {
   themes: [
     "@docusaurus/theme-mermaid",
     "docusaurus-theme-openapi-docs",
+    [
+      "@easyops-cn/docusaurus-search-local",
+      { hashed: true, language: ["en"], indexBlog: false, docsRouteBasePath: "/" },
+    ],
   ],
   markdown: {
     mermaid: true,
@@ -35,6 +39,7 @@ const config: Config = {
     },
   },
   themeConfig: {
+    image: "demo/posters/fortieth_street.webp",
     docs: {
       sidebar: {
         hideable: true,
@@ -90,7 +95,7 @@ const config: Config = {
       },
       items: [
         {
-          href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3",
+          href: "https://github.com/kzkvv/heisencam/tree/dev",
           label: "0.18.3",
           position: "left",
         },
@@ -108,15 +113,9 @@ const config: Config = {
         {
           type: "localeDropdown",
           position: "right",
-          dropdownItemsAfter: [
-            {
-              label: "简体中文（社区翻译）",
-              href: "https://docs.frigate-cn.video",
-            },
-          ],
         },
         {
-          href: "https://github.com/kzkvv/heisencam/tree/heisencam/0.18.3",
+          href: "https://github.com/kzkvv/heisencam/tree/dev",
           label: "GitHub",
           position: "right",
         },
@@ -133,13 +132,17 @@ const config: Config = {
               href: "https://github.com/kzkvv/heisencam",
             },
             {
-              label: "Discussions",
-              href: "https://github.com/kzkvv/heisencam/discussions",
+              label: "Report an issue",
+              href: "https://github.com/kzkvv/heisencam/issues/new/choose",
+            },
+            {
+              label: "Contribute",
+              href: "https://github.com/kzkvv/heisencam/blob/dev/CONTRIBUTING.md",
             },
           ],
         },
       ],
-      copyright: `HeisenCam contributors. Based on Frigate by Frigate, Inc.`,
+      copyright: "HeisenCam contributors",
     },
   },
   plugins: [
