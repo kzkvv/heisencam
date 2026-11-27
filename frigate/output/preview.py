@@ -65,10 +65,14 @@ def get_cache_image_name(camera: str, frame_time: float) -> str:
     )
 
 
-def is_camera_preview_frame(file_name: str, camera: str) -> bool:
+def is_camera_preview_frame(file_name: str, camera: str | None) -> bool:
     """Check the camera name in a cached preview frame filename."""
     name, _, timestamp = file_name.rpartition("-")
-    return name == f"preview_{camera}" and timestamp.endswith(f".{PREVIEW_FRAME_TYPE}")
+    return (
+        camera is not None
+        and name == f"preview_{camera}"
+        and timestamp.endswith(f".{PREVIEW_FRAME_TYPE}")
+    )
 
 
 def get_most_recent_preview_frame(
