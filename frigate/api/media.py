@@ -6,7 +6,9 @@ import logging
 import math
 import os
 import subprocess as sp
+import tempfile
 import time
+from collections.abc import Generator
 from datetime import UTC, datetime, timedelta
 from pathlib import Path as FilePath
 from typing import Any
@@ -20,6 +22,7 @@ from fastapi import APIRouter, Depends, Path, Query, Request, Response
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from pathvalidate import sanitize_filename
 from peewee import DoesNotExist, fn
+from starlette.background import BackgroundTasks
 from tzlocal import get_localzone_name
 
 from frigate.api.auth import (
@@ -44,8 +47,12 @@ from frigate.const import (
     PREVIEW_FRAME_TYPE,
 )
 from frigate.models import Event, Previews, Recordings, Regions, ReviewSegment
-from frigate.output.preview import get_most_recent_preview_frame
+from frigate.output.preview import (
+    get_most_recent_preview_frame,
+    is_camera_preview_frame,
+)
 from frigate.track.object_processing import TrackedObjectProcessor
+from frigate.util.ffmpeg import terminate_ffmpeg_stream
 from frigate.util.file import (
     get_event_snapshot_bytes,
     get_event_snapshot_path,
@@ -60,6 +67,9 @@ logger = logging.getLogger(__name__)
 
 
 router = APIRouter(tags=[Tags.media])
+
+CLIP_STDERR_LOG_BYTES = 8192
+CLIP_FFMPEG_EXIT_TIMEOUT = 10
 
 
 def _resolve_cache_age(max_cache_age: int) -> int:
@@ -410,7 +420,7 @@ async def get_snapshot_from_recording(
 
 
 @router.post(
-    "/{camera_name}/plus/{frame_time}", dependencies=[Depends(require_camera_access)]
+    "/{camera_name}/plus/{frame_time}", dependencies=[Depends(require_role(["admin"]))]
 )
 async def submit_recording_snapshot_to_plus(
     request: Request, camera_name: str, frame_time: str
@@ -478,6 +488,36 @@ async def submit_recording_snapshot_to_plus(
         )
 
 
+def _run_clip_download(
+    ffmpeg_cmd: list[str], playlist: FilePath
+) -> Generator[bytes, None, None]:
+    """Stream an MP4 and release both the child process and its playlist."""
+    try:
+        with tempfile.TemporaryFile() as stderr:
+            process = sp.Popen(ffmpeg_cmd, stdout=sp.PIPE, stderr=stderr)
+            try:
+                assert process.stdout is not None
+                while chunk := process.stdout.read(8192):
+                    yield chunk
+
+                try:
+                    exit_code = process.wait(timeout=CLIP_FFMPEG_EXIT_TIMEOUT)
+                except sp.TimeoutExpired:
+                    logger.warning("Timed out waiting for clip FFmpeg to exit.")
+                else:
+                    if exit_code:
+                        stderr.seek(0, os.SEEK_END)
+                        stderr.seek(max(0, stderr.tell() - CLIP_STDERR_LOG_BYTES))
+                        logger.error(
+                            "Failed to generate clip, FFmpeg logs: %s",
+                            stderr.read().decode("utf-8", "replace"),
+                        )
+            finally:
+                terminate_ffmpeg_stream(process)
+    finally:
+        playlist.unlink(missing_ok=True)
+
+
 @router.get(
     "/{camera_name}/start/{start_ts}/end/{end_ts}/clip.mp4",
     dependencies=[Depends(require_camera_access)],
@@ -489,26 +529,6 @@ async def recording_clip(
     start_ts: float,
     end_ts: float,
 ):
-    def run_download(ffmpeg_cmd: list[str], file_path: str):
-        with sp.Popen(
-            ffmpeg_cmd,
-            stderr=sp.PIPE,
-            stdout=sp.PIPE,
-            text=False,
-        ) as ffmpeg:
-            while True:
-                data = ffmpeg.stdout.read(8192)
-                if data is not None and len(data) > 0:
-                    yield data
-                else:
-                    if ffmpeg.returncode and ffmpeg.returncode != 0:
-                        logger.error(
-                            f"Failed to generate clip, ffmpeg logs: {ffmpeg.stderr.read()}"
-                        )
-                    else:
-                        FilePath(file_path).unlink(missing_ok=True)
-                    break
-
     recordings = (
         Recordings.select(
             Recordings.path,
@@ -533,29 +553,27 @@ async def recording_clip(
             status_code=400,
         )
 
-    file_name = sanitize_filename(f"playlist_{camera_name}_{start_ts}-{end_ts}.txt")
-    file_path = os.path.join(CACHE_DIR, file_name)
-    with open(file_path, "w") as file:
-        clip: Recordings
-        for clip in recordings:
-            file.write(f"file '{clip.path}'\n")
-
-            # if this is the starting clip, add an inpoint
-            if clip.start_time < start_ts:
-                file.write(f"inpoint {int(start_ts - clip.start_time)}\n")
-
-            # if this is the ending clip, add an outpoint
-            if clip.end_time > end_ts:
-                file.write(f"outpoint {int(end_ts - clip.start_time)}\n")
-
-    if len(file_name) > 1000:
-        return JSONResponse(
-            content={
-                "success": False,
-                "message": "Filename exceeded max length of 1000",
-            },
-            status_code=403,
-        )
+    with tempfile.NamedTemporaryFile(
+        mode="w",
+        encoding="utf-8",
+        dir=CACHE_DIR,
+        prefix="playlist-",
+        suffix=".txt",
+        delete=False,
+    ) as file:
+        playlist = FilePath(file.name)
+        try:
+            clip: Recordings
+            for clip in recordings:
+                file.write(f"file '{clip.path}'\n")
+                if clip.start_time < start_ts:
+                    file.write(f"inpoint {int(start_ts - clip.start_time)}\n")
+                if clip.end_time > end_ts:
+                    file.write(f"outpoint {int(end_ts - clip.start_time)}\n")
+            file.flush()
+        except Exception:
+            playlist.unlink(missing_ok=True)
+            raise
 
     config: FrigateConfig = request.app.frigate_config
 
@@ -570,7 +588,7 @@ async def recording_clip(
         "-safe",
         "0",
         "-i",
-        file_path,
+        str(playlist),
         "-c",
         "copy",
         "-movflags",
@@ -580,9 +598,14 @@ async def recording_clip(
         "pipe:",
     ]
 
+    download = _run_clip_download(ffmpeg_cmd, playlist)
+    cleanup = BackgroundTasks()
+    cleanup.add_task(download.close)
+    cleanup.add_task(playlist.unlink, missing_ok=True)
     return StreamingResponse(
-        run_download(ffmpeg_cmd, file_path),
+        download,
         media_type="video/mp4",
+        background=cleanup,
     )
 
 
@@ -1431,7 +1454,7 @@ async def preview_gif(
         camera_files = [
             entry.name
             for entry in os.scandir(preview_dir)
-            if entry.name.startswith(file_start)
+            if is_camera_preview_frame(entry.name, camera_name)
         ]
         camera_files.sort()
 
@@ -1620,7 +1643,7 @@ async def preview_mp4(
         camera_files = [
             entry.name
             for entry in os.scandir(preview_dir)
-            if entry.name.startswith(file_start)
+            if is_camera_preview_frame(entry.name, camera_name)
         ]
         camera_files.sort()
 

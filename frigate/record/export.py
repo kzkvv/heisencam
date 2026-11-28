@@ -30,6 +30,7 @@ from frigate.ffmpeg_presets import (
     parse_preset_hardware_acceleration_encode,
 )
 from frigate.models import Export, Previews, Recordings, ReviewSegment
+from frigate.output.preview import is_camera_preview_frame
 from frigate.util.ffmpeg import run_ffmpeg_with_progress
 from frigate.util.time import is_current_hour
 
@@ -661,7 +662,7 @@ class RecordingExporter(threading.Thread):
             fallback_preview = None
 
             for file in sorted(os.listdir(preview_dir)):
-                if not file.startswith(file_start):
+                if not is_camera_preview_frame(file, self.camera):
                     continue
 
                 if file < start_file:
@@ -799,7 +800,7 @@ class RecordingExporter(threading.Thread):
             end_file = f"{file_start}{self.end_time}.{PREVIEW_FRAME_TYPE}"
 
             for file in sorted(os.listdir(preview_dir)):
-                if not file.startswith(file_start):
+                if not is_camera_preview_frame(file, self.camera):
                     continue
 
                 if file < start_file:

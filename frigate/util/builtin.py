@@ -28,6 +28,29 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+def scope_stats_for_non_admin(
+    stats: dict[str, Any], allowed_cameras: set[str]
+) -> dict[str, Any]:
+    """Return a copy with allowed cameras and safe process statistics."""
+    scoped = {**stats}
+    scoped.pop("bandwidth_usages", None)
+
+    if stats.get("cameras") is not None:
+        scoped["cameras"] = {
+            name: data
+            for name, data in stats["cameras"].items()
+            if name in allowed_cameras
+        }
+
+    if stats.get("cpu_usages") is not None:
+        scoped["cpu_usages"] = {
+            pid: {key: value for key, value in usage.items() if key != "cmdline"}
+            for pid, usage in stats["cpu_usages"].items()
+        }
+
+    return scoped
+
+
 class EventsPerSecond:
     def __init__(self, max_events=1000, last_n_seconds=10) -> None:
         self._start = None

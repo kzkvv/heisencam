@@ -11,6 +11,8 @@ import NavPath from "@site/src/components/NavPath";
 
 HeisenCam exposes Prometheus metrics at the `/api/metrics` endpoint that can be used to monitor the performance and health of your HeisenCam instance.
 
+The authenticated API requires the admin role to read metrics.
+
 ## Enabling Telemetry
 
 Prometheus metrics are exposed via the telemetry configuration. Enable or configure telemetry to control metric availability.

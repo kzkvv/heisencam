@@ -1,7 +1,14 @@
 import datetime
 import sys
+import tempfile
 import unittest
+from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import AsyncMock, MagicMock, patch
+
+from peewee import SqliteDatabase
+
+from frigate.models import ReviewSegment
 
 # Mock complex imports before importing maintainer, saving originals so we can
 # restore them after import and avoid polluting sys.modules for other tests.
@@ -16,7 +23,7 @@ for name in _MOCKED_MODULES:
     sys.modules[name] = MagicMock()
 
 # Now import the class under test
-from frigate.config import FrigateConfig, RetainModeEnum  # noqa: E402
+from frigate.config import FrigateConfig, RecordConfig, RetainModeEnum  # noqa: E402
 from frigate.record.maintainer import RecordingMaintainer  # noqa: E402
 
 # Restore original modules (or remove mock if there was no original)
@@ -178,6 +185,93 @@ class TestMaintainer(unittest.IsolatedAsyncioTestCase):
 
         maintainer.drop_segment.assert_not_called()
         maintainer.move_segment.assert_awaited_once()
+
+    async def test_closed_review_keeps_post_capture_candidates(self):
+        camera = "test_cam"
+        config = MagicMock(spec=FrigateConfig)
+        config.cameras = {
+            camera: SimpleNamespace(
+                record=RecordConfig.model_validate(
+                    {"enabled": True, "alerts": {"post_capture": 60}}
+                )
+            )
+        }
+        # Full discovery can import the maintainer before this module's mocks.
+        with (
+            patch("frigate.record.maintainer.InterProcessRequestor"),
+            patch("frigate.record.maintainer.RecordingsDataPublisher"),
+        ):
+            maintainer = RecordingMaintainer(config, MagicMock())
+        maintainer.validate_and_move_segment = AsyncMock(return_value=None)
+        start = datetime.datetime(2026, 1, 1, tzinfo=datetime.UTC)
+        review_end = start.timestamp() - 40
+
+        with (
+            SqliteDatabase(":memory:") as db,
+            db.bind_ctx([ReviewSegment]),
+            tempfile.TemporaryDirectory() as cache_dir,
+        ):
+            db.create_tables([ReviewSegment])
+            ReviewSegment.create(
+                id="review",
+                camera=camera,
+                start_time=review_end - 10,
+                end_time=review_end,
+                severity="alert",
+                thumb_path="",
+                data={},
+            )
+            timestamp = start.strftime("%Y%m%d%H%M%S%z")
+            Path(cache_dir, f"{camera}@{timestamp}.mp4").touch()
+            with (
+                patch("frigate.record.maintainer.CACHE_DIR", cache_dir),
+                patch("frigate.record.maintainer.psutil.process_iter", return_value=[]),
+            ):
+                await maintainer.move_files()
+
+            reviews = maintainer.validate_and_move_segment.call_args.args[1]
+            self.assertEqual([review.end_time for review in reviews], [review_end])
+
+    async def test_overlapping_alert_keeps_quiet_segment(self):
+        camera = "test_cam"
+        config = MagicMock(spec=FrigateConfig)
+        config.cameras = {
+            camera: SimpleNamespace(
+                record=RecordConfig.model_validate(
+                    {
+                        "enabled": True,
+                        "continuous": {"days": 0},
+                        "motion": {"days": 0},
+                        "alerts": {"retain": {"mode": "all"}},
+                        "detections": {"retain": {"mode": "motion"}},
+                    }
+                )
+            )
+        }
+        maintainer = RecordingMaintainer(config, MagicMock())
+        start = datetime.datetime(2026, 1, 1, tzinfo=datetime.UTC)
+        end = start + datetime.timedelta(seconds=10)
+        path = "/tmp/quiet-segment.mp4"
+        maintainer.end_time_cache[path] = (end, 10.0)
+        maintainer.object_recordings_info[camera] = [(end.timestamp(), [], [], [])]
+        maintainer.move_segment = AsyncMock()
+        maintainer.drop_segment = MagicMock()
+
+        await maintainer.validate_and_move_segment(
+            camera,
+            reviews=[
+                SimpleNamespace(
+                    severity="detection", start_time=start.timestamp(), end_time=None
+                ),
+                SimpleNamespace(
+                    severity="alert", start_time=start.timestamp() + 1, end_time=None
+                ),
+            ],
+            recording={"start_time": start, "cache_path": path},
+        )
+
+        maintainer.move_segment.assert_awaited_once()
+        maintainer.drop_segment.assert_not_called()
 
     async def test_expire_stale_recordings_info_drops_only_absent_cameras(self):
         config = MagicMock(spec=FrigateConfig)

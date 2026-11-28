@@ -266,8 +266,11 @@ class RecordingMaintainer(threading.Thread):
             ):
                 self.audio_recordings_info[camera].pop(0)
 
-            # get all reviews with the end time after the start of the oldest cache file
-            # or with end_time None
+            camera_cfg = self.config.cameras.get(camera)
+            post_capture = camera_cfg.record.event_post_capture if camera_cfg else 0
+            earliest_end = recordings[0]["start_time"].timestamp() - post_capture
+
+            # Include reviews whose post-capture window reaches the oldest segment.
             reviews = (
                 ReviewSegment.select(
                     ReviewSegment.start_time,
@@ -278,10 +281,7 @@ class RecordingMaintainer(threading.Thread):
                 .where(
                     ReviewSegment.camera == camera,
                     (ReviewSegment.end_time == None)
-                    | (
-                        ReviewSegment.end_time
-                        >= recordings[0]["start_time"].timestamp()
-                    ),
+                    | (ReviewSegment.end_time >= earliest_end),
                 )
                 .order_by(ReviewSegment.start_time)
             )
@@ -291,7 +291,6 @@ class RecordingMaintainer(threading.Thread):
             )
 
             # publish most recently available recording time and None if disabled
-            camera_cfg = self.config.cameras.get(camera)
             self.recordings_publisher.publish(
                 (
                     camera,
@@ -436,40 +435,36 @@ class RecordingMaintainer(threading.Thread):
 
         # we fell through the continuous / motion check, so we need to check the review items
         # if the cached segment overlaps with the review items:
-        overlaps = False
+        modes: set[RetainModeEnum] = set()
         for review in reviews:
             severity = SeverityEnum[review.severity]
 
-            # if the review item starts in the future, stop checking review items
-            # and remove this segment
+            if (
+                review.start_time - record_config.event_pre_capture
+            ) > end_time.timestamp():
+                break
+
             if (
                 review.start_time - record_config.get_review_pre_capture(severity)
             ) > end_time.timestamp():
-                overlaps = False
-                break
+                continue
 
-            # if the review item is in progress or ends after the recording starts, keep it
-            # and stop looking at review items
             if (
                 review.end_time is None
                 or (review.end_time + record_config.get_review_post_capture(severity))
                 >= start_time.timestamp()
             ):
-                overlaps = True
-                break
+                modes.add(
+                    record_config.alerts.retain.mode
+                    if severity == SeverityEnum.alert
+                    else record_config.detections.retain.mode
+                )
 
-        if overlaps:
-            record_mode = (
-                record_config.alerts.retain.mode
-                if review.severity == "alert"
-                else record_config.detections.retain.mode
-            )
-
+        if modes:
             if segment_stats is None:
                 segment_stats = self.segment_stats(camera, start_time, end_time)
 
-            if not segment_stats.should_discard_segment(record_mode):
-                # move from cache to recordings immediately
+            if any(not segment_stats.should_discard_segment(mode) for mode in modes):
                 return await self.move_segment(
                     camera,
                     start_time,

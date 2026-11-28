@@ -2225,6 +2225,10 @@ paths:
       tags:
         - Review
       summary: Get Review From Event
+      description: |-
+        **Access:** Any authenticated user.
+
+        Find the review containing the event within the user's allowed cameras.
       operationId: get_review_from_event_review_event__event_id__get
       parameters:
         - name: event_id
@@ -2248,8 +2252,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
         - frigateUserAuth: []
-      x-required-role: camera
-      description: '**Access:** Authenticated user with access to the referenced camera.'
+      x-required-role: any
   /review/{review_id}:
     get:
       tags:
@@ -2447,7 +2450,7 @@ paths:
         - App
       summary: Metrics
       description: |-
-        **Access:** Any authenticated user.
+        **Access:** Admin role required.
 
         Expose Prometheus metrics endpoint and update metrics with latest stats
       operationId: metrics_metrics_get
@@ -2458,8 +2461,8 @@ paths:
             application/json:
               schema: {}
       security:
-        - frigateUserAuth: []
-      x-required-role: any
+        - frigateAdminAuth: []
+      x-required-role: admin
   /genai/models:
     get:
       tags:
@@ -5697,9 +5700,7 @@ paths:
           in: path
           required: true
           schema:
-            anyOf:
-              - type: string
-              - type: 'null'
+            type: string
             title: Camera Name
         - name: frame_time
           in: path
@@ -5720,9 +5721,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
-        - frigateUserAuth: []
-      x-required-role: camera
-      description: '**Access:** Authenticated user with access to the referenced camera.'
+        - frigateAdminAuth: []
+      x-required-role: admin
+      description: '**Access:** Admin role required.'
   /{camera_name}/start/{start_ts}/end/{end_ts}/clip.mp4:
     get:
       tags:
